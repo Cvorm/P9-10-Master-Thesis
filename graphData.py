@@ -4,6 +4,7 @@ import pandas as pd
 import networkx as nx
 from networkx import *
 
+from typing import List, Any
 import surprise as sur
 from surprise import SVD
 from surprise import Dataset
@@ -30,4 +31,17 @@ G.add_weighted_edges_from([(uId, mId,rating) for (uId, mId, rating)
 print(info(G))
 
 print(G.is_directed(), G.is_multigraph(), is_bipartite(G))
-pagerank = nx.pagerank(G, alpha=0.9)
+
+dict_pagerank = nx.pagerank(G)
+
+for k in list(dict_pagerank):
+    if k.startswith('u'):
+        dict_pagerank.pop(k)
+
+sorted_by_value: List[Any] = sorted(dict_pagerank.items(), key=lambda kv: kv[1], reverse=True)
+
+
+for i in range(0,10):
+    print(sorted_by_value[i])
+
+print("myes")
