@@ -1,0 +1,26 @@
+head,relation,tail
+1,has_genre,"['Documentary', 'Short']"
+2,has_genre,"['Animation', 'Short']"
+3,has_genre,"['Animation', 'Comedy', 'Short', 'Romance']"
+4,has_genre,"['Animation', 'Short']"
+5,has_genre,"['Short', 'Comedy']"
+6,has_genre,['Short']
+7,has_genre,"['Short', 'Sport']"
+8,has_genre,"['Documentary', 'Short']"
+9,has_genre,['Romance']
+10,has_genre,"['Documentary', 'Short']"
+11,has_genre,"['Documentary', 'Short']"
+12,has_genre,"['Documentary', 'Short', 'Action']"
+13,has_genre,"['Documentary', 'Short']"
+14,has_genre,"['Short', 'Comedy']"
+15,has_genre,"['Animation', 'Short']"
+16,has_genre,"['Documentary', 'Short']"
+17,has_genre,"['Documentary', 'Short']"
+18,has_genre,['Short']
+19,has_genre,"['Short', 'Comedy']"
+20,has_genre,"['Documentary', 'Short', 'Sport']"
+21,has_genre,"['Documentary', 'Short']"
+22,has_genre,"['Documentary', 'Short']"
+23,has_genre,"['Documentary', 'Short']"
+24,has_genre,"['Short', 'News']"
+25,has_genre,"['Short', 'News', 'Sport']"
