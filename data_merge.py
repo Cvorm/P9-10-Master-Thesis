@@ -42,23 +42,45 @@ def transform_data():
     for r in relations:
         if r == 'has_genre':
             with open('Data/has_genre.csv', 'w') as f:
-                writer = csv.writer(f, delimiter=',')
+                writer = csv.writer(f, delimiter='\t')
                 writer.writerow(('head','relation','tail'))
                 for index, row in updated_data.iterrows():
                     writer.writerow((row['id'],'has_genre',row['genres']))
         if r == 'has_rating':
             with open('Data/has_rating.csv', 'w') as f:
-                writer = csv.writer(f, delimiter=',')
+                writer = csv.writer(f, delimiter='\t')
                 writer.writerow(('head','relation','tail'))
                 for index, row in updated_data.iterrows():
                     writer.writerow((row['id'],'has_rating',row['rating']))
         if r == 'directed_by':
             with open('Data/directed_by.csv', 'w') as f:
-                writer = csv.writer(f, delimiter=',')
+                writer = csv.writer(f, delimiter='\t')
                 writer.writerow(('head','relation','tail'))
                 for index, row in updated_data.iterrows():
                     writer.writerow((row['id'],'directed_by',row['director']))
 
 
-#get_data()
+def combine_data():
+    all_filenames = ['Data\has_genre.csv','Data\has_rating.csv','Data\directed_by.csv']
+    combined_csv = pd.concat([pd.read_csv(f,encoding = "ISO-8859-1", engine='python', delimiter='\t') for f in all_filenames])
+    combined_and_shuffled_csv = combined_csv.sample(frac=1)
+    combined_and_shuffled_csv.to_csv("Data\combined.csv",index=False,sep='\t')
+
+
+def split_data():
+    ds = pd.read_csv('Data\combined.csv', encoding = "utf-8", engine='python', delimiter='\t')
+    bookmark =  0 #len(ds)
+    print(len(ds))
+    for i in ['movie-training.txt','movie-valid.txt','movie-test.txt']:
+        with open('Data/%s.csv' % i, 'w') as f:
+            writer = csv.writer(f, delimiter='\t')
+            for j in range(round(len(ds)/3)):
+                writer.writerow(ds.iloc[bookmark+j])
+        bookmark = bookmark + round(len(ds)/3)
+        print(bookmark)
+
+
+get_data()
 transform_data()
+combine_data()
+split_data()
