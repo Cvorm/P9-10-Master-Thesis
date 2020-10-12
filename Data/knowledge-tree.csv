@@ -1,107 +1,261 @@
 head	relation	tail
-1	has_genre	Documentary
-1	has_genre	Short
-1	has_rating	5.6
-1	has_director	William K.L. Dickson
-2	has_genre	Animation
-2	has_genre	Short
-2	has_rating	6.1
-2	has_director	Émile Reynaud
-3	has_genre	Animation
-3	has_genre	Comedy
-3	has_genre	Short
-3	has_genre	Romance
-3	has_rating	6.5
-3	has_director	Émile Reynaud
-4	has_genre	Animation
-4	has_genre	Short
-4	has_rating	6.2
-4	has_director	Émile Reynaud
-5	has_genre	Short
-5	has_genre	Comedy
-5	has_rating	6.2
-5	has_director	William K.L. Dickson
-6	has_genre	Short
-6	has_rating	5.3
-6	has_director	William K.L. Dickson
-7	has_genre	Short
-7	has_genre	Sport
-7	has_rating	5.5
-7	has_director	William K.L. Dickson
-7	has_director	William Heise
-8	has_genre	Documentary
-8	has_genre	Short
-8	has_rating	5.4
-8	has_director	William K.L. Dickson
-9	has_genre	Romance
-9	has_rating	5.9
-9	has_director	Alexander Black
-10	has_genre	Documentary
-10	has_genre	Short
-10	has_rating	6.9
-10	has_director	Louis Lumière
-11	has_genre	Documentary
-11	has_genre	Short
-11	has_rating	5.2
-11	has_director	Max Skladanowsky
-12	has_genre	Documentary
-12	has_genre	Short
-12	has_genre	Action
-12	has_rating	7.4
-12	has_director	Auguste Lumière
-12	has_director	Louis Lumière
-13	has_genre	Documentary
-13	has_genre	Short
-13	has_rating	5.7
-13	has_director	Louis Lumière
-14	has_genre	Short
-14	has_genre	Comedy
-14	has_rating	7.1
-14	has_director	Alice Guy
-14	has_director	Louis Lumière
-15	has_genre	Animation
-15	has_genre	Short
-15	has_rating	6.1
-15	has_director	Émile Reynaud
-16	has_genre	Documentary
-16	has_genre	Short
-16	has_rating	5.9
-16	has_director	Louis Lumière
-17	has_genre	Documentary
-17	has_genre	Short
-17	has_rating	4.6
-17	has_director	Emil Skladanowsky
-17	has_director	Max Skladanowsky
-18	has_genre	Short
-18	has_rating	5.3
-18	has_director	Max Skladanowsky
-19	has_genre	Short
-19	has_genre	Comedy
-19	has_rating	5.3
-19	has_director	James Williamson
-20	has_genre	Documentary
-20	has_genre	Short
-20	has_genre	Sport
-20	has_rating	5.0
-20	has_director	Birt Acres
-21	has_genre	Documentary
-21	has_genre	Short
-21	has_rating	5.7
-21	has_director	Louis Lumière
-22	has_genre	Documentary
-22	has_genre	Short
-22	has_rating	5.1
-22	has_director	Louis Lumière
-23	has_genre	Documentary
-23	has_genre	Short
-23	has_rating	5.7
-23	has_director	Louis Lumière
-24	has_genre	Short
-24	has_genre	News
-24	has_rating	4.5
-24	has_director	Birt Acres
-25	has_genre	Short
-25	has_genre	News
-25	has_genre	Sport
-25	has_rating	4.2
-25	has_director	Birt Acres
+m1	has_genre	Animation
+m1	has_genre	Adventure
+m1	has_genre	Comedy
+m1	has_genre	Family
+m1	has_genre	Fantasy
+m1	has_director	John Lasseter
+m1	has_actors	Tom Hanks
+m1	has_actors	Tim Allen
+m1	has_actors	Don Rickles
+m1	has_actors	Jim Varney
+m1	has_actors	Wallace Shawn
+u4	has_rating	m1
+m2	has_genre	Adventure
+m2	has_genre	Comedy
+m2	has_genre	Family
+m2	has_genre	Fantasy
+m2	has_director	Joe Johnston
+m2	has_actors	Robin Williams
+m2	has_actors	Jonathan Hyde
+m2	has_actors	Kirsten Dunst
+m2	has_actors	Bradley Pierce
+m2	has_actors	Bonnie Hunt
+u4	has_rating	m2
+m3	has_genre	Comedy
+m3	has_genre	Romance
+m3	has_director	Howard Deutch
+m3	has_actors	Walter Matthau
+m3	has_actors	Jack Lemmon
+m3	has_actors	Sophia Loren
+m3	has_actors	Ann-Margret
+m3	has_actors	Burgess Meredith
+u5	has_rating	m3
+m4	has_genre	Comedy
+m4	has_genre	Drama
+m4	has_genre	Romance
+m4	has_director	Forest Whitaker
+m4	has_actors	Whitney Houston
+m4	has_actors	Angela Bassett
+m4	has_actors	Loretta Devine
+m4	has_actors	Lela Rochon
+m4	has_actors	Gregory Hines
+u5	has_rating	m4
+m5	has_genre	Comedy
+m5	has_genre	Family
+m5	has_genre	Romance
+m5	has_director	Charles Shyer
+m5	has_actors	Steve Martin
+m5	has_actors	Diane Keaton
+m5	has_actors	Martin Short
+m5	has_actors	Kimberly Williams-Paisley
+m5	has_actors	George Newbern
+u3	has_rating	m5
+m6	has_genre	Crime
+m6	has_genre	Drama
+m6	has_genre	Thriller
+m6	has_director	Michael Mann
+m6	has_actors	Al Pacino
+m6	has_actors	Robert De Niro
+m6	has_actors	Val Kilmer
+m6	has_actors	Jon Voight
+m6	has_actors	Tom Sizemore
+u5	has_rating	m6
+m7	has_genre	Comedy
+m7	has_genre	Drama
+m7	has_genre	Romance
+m7	has_director	Sydney Pollack
+m7	has_actors	Harrison Ford
+m7	has_actors	Julia Ormond
+m7	has_actors	Greg Kinnear
+m7	has_actors	Nancy Marchand
+m7	has_actors	John Wood
+u4	has_rating	m7
+m8	has_genre	Adventure
+m8	has_genre	Comedy
+m8	has_genre	Drama
+m8	has_genre	Family
+m8	has_genre	Romance
+m8	has_genre	Western
+m8	has_director	Peter Hewitt
+m8	has_actors	Jonathan Taylor Thomas
+m8	has_actors	Brad Renfro
+m8	has_actors	Eric Schweig
+m8	has_actors	Charles Rocket
+m8	has_actors	Amy Wright
+u5	has_rating	m8
+m9	has_genre	Action
+m9	has_genre	Crime
+m9	has_genre	Thriller
+m9	has_director	Peter Hyams
+m9	has_actors	Jean-Claude Van Damme
+m9	has_actors	Powers Boothe
+m9	has_actors	Raymond J. Barry
+m9	has_actors	Whittni Wright
+m9	has_actors	Ross Malinger
+u5	has_rating	m9
+m10	has_genre	Action
+m10	has_genre	Adventure
+m10	has_genre	Thriller
+m10	has_director	Martin Campbell
+m10	has_actors	Pierce Brosnan
+m10	has_actors	Sean Bean
+m10	has_actors	Izabella Scorupco
+m10	has_actors	Famke Janssen
+m10	has_actors	Joe Don Baker
+u5	has_rating	m10
+m11	has_genre	Comedy
+m11	has_genre	Drama
+m11	has_genre	Romance
+m11	has_director	Rob Reiner
+m11	has_actors	Michael Douglas
+m11	has_actors	Annette Bening
+m11	has_actors	Martin Sheen
+m11	has_actors	Michael J. Fox
+m11	has_actors	Anna Deavere Smith
+u5	has_rating	m11
+m12	has_genre	Comedy
+m12	has_genre	Fantasy
+m12	has_genre	Horror
+m12	has_director	Mel Brooks
+m12	has_actors	Leslie Nielsen
+m12	has_actors	Peter MacNicol
+m12	has_actors	Steven Weber
+m12	has_actors	Amy Yasbeck
+m12	has_actors	Lysette Anthony
+u3	has_rating	m12
+m13	has_genre	Animation
+m13	has_genre	Adventure
+m13	has_genre	Drama
+m13	has_genre	Family
+m13	has_genre	History
+m13	has_director	Simon Wells
+m13	has_actors	Kevin Bacon
+m13	has_actors	Bob Hoskins
+m13	has_actors	Bridget Fonda
+m13	has_actors	Jim Cummings
+m13	has_actors	Phil Collins
+u5	has_rating	m13
+m14	has_genre	Biography
+m14	has_genre	Drama
+m14	has_genre	History
+m14	has_director	Oliver Stone
+m14	has_actors	Anthony Hopkins
+m14	has_actors	Joan Allen
+m14	has_actors	Powers Boothe
+m14	has_actors	Ed Harris
+m14	has_actors	Bob Hoskins
+u4	has_rating	m14
+m15	has_genre	Action
+m15	has_genre	Adventure
+m15	has_genre	Comedy
+m15	has_director	Renny Harlin
+m15	has_actors	Geena Davis
+m15	has_actors	Matthew Modine
+m15	has_actors	Frank Langella
+m15	has_actors	Maury Chaykin
+m15	has_actors	Patrick Malahide
+u5	has_rating	m15
+m16	has_genre	Crime
+m16	has_genre	Drama
+m16	has_director	Martin Scorsese
+m16	has_actors	Robert De Niro
+m16	has_actors	Sharon Stone
+m16	has_actors	Joe Pesci
+m16	has_actors	James Woods
+m16	has_actors	Don Rickles
+u3	has_rating	m16
+m17	has_genre	Drama
+m17	has_genre	Romance
+m17	has_director	Ang Lee
+m17	has_actors	James Fleet
+m17	has_actors	Tom Wilkinson
+m17	has_actors	Harriet Walter
+m17	has_actors	Kate Winslet
+m17	has_actors	Emma Thompson
+u3	has_rating	m17
+m18	has_genre	Comedy
+m18	has_director	Allison Anders
+m18	has_director	Alexandre Rockwell
+m18	has_director	Robert Rodriguez
+m18	has_director	Quentin Tarantino
+m18	has_director	Chuck Jones
+m18	has_actors	Sammi Davis
+m18	has_actors	Amanda De Cadenet
+m18	has_actors	Valeria Golino
+m18	has_actors	Madonna
+m18	has_actors	Ione Skye
+u5	has_rating	m18
+m19	has_genre	Adventure
+m19	has_genre	Comedy
+m19	has_genre	Crime
+m19	has_director	Steve Oedekerk
+m19	has_actors	Jim Carrey
+m19	has_actors	Ian McNeice
+m19	has_actors	Simon Callow
+m19	has_actors	Maynard Eziashi
+m19	has_actors	Bob Gunton
+u4	has_rating	m19
+m20	has_genre	Action
+m20	has_genre	Comedy
+m20	has_genre	Crime
+m20	has_genre	Drama
+m20	has_genre	Thriller
+m20	has_director	Joseph Ruben
+m20	has_actors	Wesley Snipes
+m20	has_actors	Woody Harrelson
+m20	has_actors	Jennifer Lopez
+m20	has_actors	Robert Blake
+m20	has_actors	Chris Cooper
+u4	has_rating	m20
+m21	has_genre	Comedy
+m21	has_genre	Crime
+m21	has_genre	Thriller
+m21	has_director	Barry Sonnenfeld
+m21	has_actors	John Travolta
+m21	has_actors	Gene Hackman
+m21	has_actors	Rene Russo
+m21	has_actors	Danny DeVito
+m21	has_actors	Dennis Farina
+u5	has_rating	m21
+m22	has_genre	Drama
+m22	has_genre	Mystery
+m22	has_genre	Thriller
+m22	has_director	Jon Amiel
+m22	has_actors	Sigourney Weaver
+m22	has_actors	Holly Hunter
+m22	has_actors	Dermot Mulroney
+m22	has_actors	William McNamara
+m22	has_actors	Harry Connick Jr.
+u4	has_rating	m22
+m23	has_genre	Action
+m23	has_genre	Crime
+m23	has_genre	Thriller
+m23	has_director	Richard Donner
+m23	has_actors	Sylvester Stallone
+m23	has_actors	Antonio Banderas
+m23	has_actors	Julianne Moore
+m23	has_actors	Anatoli Davydov
+m23	has_actors	Muse Watson
+u3	has_rating	m23
+m24	has_genre	Drama
+m24	has_genre	Fantasy
+m24	has_genre	Mystery
+m24	has_genre	Sci-Fi
+m24	has_genre	Thriller
+m24	has_director	Victor Salva
+m24	has_actors	Mary Steenburgen
+m24	has_actors	Sean Patrick Flanery
+m24	has_actors	Lance Henriksen
+m24	has_actors	Jeff Goldblum
+m24	has_actors	Brandon Smith
+u4	has_rating	m24
+m25	has_genre	Drama
+m25	has_genre	Romance
+m25	has_director	Mike Figgis
+m25	has_actors	Nicolas Cage
+m25	has_actors	Elisabeth Shue
+m25	has_actors	Julian Sands
+m25	has_actors	Richard Lewis
+m25	has_actors	Steven Weber
+u5	has_rating	m25

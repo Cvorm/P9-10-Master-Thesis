@@ -1,35 +1,86 @@
-17	has_rating	4.6
-17	has_director	Emil Skladanowsky
-17	has_director	Max Skladanowsky
-18	has_genre	Short
-18	has_rating	5.3
-18	has_director	Max Skladanowsky
-19	has_genre	Short
-19	has_genre	Comedy
-19	has_rating	5.3
-19	has_director	James Williamson
-20	has_genre	Documentary
-20	has_genre	Short
-20	has_genre	Sport
-20	has_rating	5.0
-20	has_director	Birt Acres
-21	has_genre	Documentary
-21	has_genre	Short
-21	has_rating	5.7
-21	has_director	Louis Lumière
-22	has_genre	Documentary
-22	has_genre	Short
-22	has_rating	5.1
-22	has_director	Louis Lumière
-23	has_genre	Documentary
-23	has_genre	Short
-23	has_rating	5.7
-23	has_director	Louis Lumière
-24	has_genre	Short
-24	has_genre	News
-24	has_rating	4.5
-24	has_director	Birt Acres
-25	has_genre	Short
-25	has_genre	News
-25	has_genre	Sport
-25	has_rating	4.2
+u5	has_rating	m25
+m12	has_actors	Lysette Anthony
+m1	has_genre	Comedy
+m15	has_actors	Frank Langella
+m23	has_actors	Anatoli Davydov
+m3	has_director	Howard Deutch
+m13	has_genre	Adventure
+m24	has_director	Victor Salva
+m16	has_actors	Robert De Niro
+m21	has_actors	Dennis Farina
+m3	has_actors	Jack Lemmon
+m8	has_actors	Brad Renfro
+m25	has_actors	Steven Weber
+m4	has_actors	Angela Bassett
+m22	has_actors	Holly Hunter
+m23	has_actors	Antonio Banderas
+m6	has_genre	Crime
+m24	has_genre	Mystery
+m7	has_director	Sydney Pollack
+m20	has_actors	Woody Harrelson
+m14	has_actors	Ed Harris
+m12	has_actors	Amy Yasbeck
+m7	has_actors	John Wood
+m20	has_actors	Chris Cooper
+m21	has_actors	Danny DeVito
+m22	has_actors	Dermot Mulroney
+u3	has_rating	m23
+m25	has_genre	Drama
+m15	has_genre	Adventure
+m6	has_actors	Val Kilmer
+m3	has_actors	Burgess Meredith
+m2	has_actors	Bradley Pierce
+m4	has_genre	Drama
+m10	has_director	Martin Campbell
+m19	has_genre	Crime
+u3	has_rating	m12
+m25	has_genre	Romance
+m2	has_actors	Kirsten Dunst
+m15	has_actors	Maury Chaykin
+m19	has_genre	Adventure
+m16	has_director	Martin Scorsese
+m8	has_genre	Drama
+m4	has_actors	Whitney Houston
+m18	has_actors	Valeria Golino
+m11	has_genre	Drama
+m11	has_director	Rob Reiner
+m13	has_actors	Kevin Bacon
+m15	has_director	Renny Harlin
+m16	has_actors	Sharon Stone
+m25	has_actors	Richard Lewis
+m11	has_actors	Martin Sheen
+m13	has_genre	Animation
+m2	has_genre	Comedy
+m10	has_actors	Izabella Scorupco
+m20	has_director	Joseph Ruben
+m2	has_actors	Bonnie Hunt
+m1	has_actors	Tom Hanks
+m2	has_genre	Fantasy
+u5	has_rating	m21
+m12	has_genre	Horror
+m5	has_actors	Steve Martin
+m4	has_genre	Comedy
+m16	has_genre	Drama
+u4	has_rating	m14
+u3	has_rating	m17
+u4	has_rating	m2
+m24	has_actors	Lance Henriksen
+m7	has_actors	Nancy Marchand
+m14	has_actors	Anthony Hopkins
+m1	has_actors	Don Rickles
+m12	has_genre	Fantasy
+u4	has_rating	m1
+m10	has_genre	Thriller
+m10	has_genre	Action
+m8	has_genre	Comedy
+m11	has_genre	Romance
+m2	has_actors	Robin Williams
+m1	has_genre	Animation
+m7	has_actors	Julia Ormond
+m23	has_genre	Crime
+m24	has_actors	Sean Patrick Flanery
+m17	has_actors	Harriet Walter
+m10	has_actors	Famke Janssen
+m13	has_actors	Jim Cummings
+m13	has_actors	Bob Hoskins
+u4	has_rating	m19

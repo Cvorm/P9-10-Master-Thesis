@@ -1,35 +1,86 @@
-9	has_rating	5.9
-9	has_director	Alexander Black
-10	has_genre	Documentary
-10	has_genre	Short
-10	has_rating	6.9
-10	has_director	Louis Lumière
-11	has_genre	Documentary
-11	has_genre	Short
-11	has_rating	5.2
-11	has_director	Max Skladanowsky
-12	has_genre	Documentary
-12	has_genre	Short
-12	has_genre	Action
-12	has_rating	7.4
-12	has_director	Auguste Lumière
-12	has_director	Louis Lumière
-13	has_genre	Documentary
-13	has_genre	Short
-13	has_rating	5.7
-13	has_director	Louis Lumière
-14	has_genre	Short
-14	has_genre	Comedy
-14	has_rating	7.1
-14	has_director	Alice Guy
-14	has_director	Louis Lumière
-15	has_genre	Animation
-15	has_genre	Short
-15	has_rating	6.1
-15	has_director	Émile Reynaud
-16	has_genre	Documentary
-16	has_genre	Short
-16	has_rating	5.9
-16	has_director	Louis Lumière
-17	has_genre	Documentary
-17	has_genre	Short
+m20	has_genre	Crime
+m3	has_actors	Walter Matthau
+m6	has_actors	Al Pacino
+u5	has_rating	m8
+m5	has_actors	Martin Short
+m21	has_actors	Rene Russo
+m11	has_genre	Comedy
+m9	has_genre	Action
+m1	has_genre	Adventure
+m12	has_actors	Steven Weber
+m5	has_genre	Comedy
+m10	has_actors	Pierce Brosnan
+m24	has_genre	Fantasy
+m5	has_actors	Diane Keaton
+m8	has_genre	Adventure
+m14	has_director	Oliver Stone
+m17	has_director	Ang Lee
+m15	has_genre	Action
+m18	has_director	Allison Anders
+m4	has_actors	Lela Rochon
+m17	has_actors	James Fleet
+m17	has_actors	Tom Wilkinson
+m5	has_genre	Family
+m8	has_actors	Eric Schweig
+m19	has_actors	Bob Gunton
+m5	has_actors	George Newbern
+m18	has_actors	Sammi Davis
+m23	has_genre	Thriller
+m1	has_genre	Family
+m24	has_actors	Jeff Goldblum
+m8	has_actors	Charles Rocket
+m21	has_director	Barry Sonnenfeld
+u4	has_rating	m20
+m5	has_genre	Romance
+m16	has_actors	Don Rickles
+m2	has_actors	Jonathan Hyde
+m3	has_genre	Comedy
+m25	has_actors	Julian Sands
+m9	has_genre	Thriller
+m7	has_genre	Romance
+m18	has_actors	Madonna
+m8	has_actors	Jonathan Taylor Thomas
+m1	has_actors	Jim Varney
+m20	has_genre	Drama
+m16	has_actors	Joe Pesci
+m12	has_actors	Leslie Nielsen
+m16	has_actors	James Woods
+m3	has_actors	Ann-Margret
+m3	has_actors	Sophia Loren
+m13	has_actors	Bridget Fonda
+m18	has_actors	Amanda De Cadenet
+m14	has_actors	Bob Hoskins
+m19	has_actors	Ian McNeice
+m24	has_genre	Sci-Fi
+u5	has_rating	m13
+m21	has_genre	Comedy
+m18	has_director	Alexandre Rockwell
+m12	has_genre	Comedy
+m11	has_actors	Annette Bening
+m7	has_genre	Drama
+m8	has_actors	Amy Wright
+m11	has_actors	Anna Deavere Smith
+u5	has_rating	m11
+m11	has_actors	Michael J. Fox
+m22	has_genre	Mystery
+u5	has_rating	m10
+m14	has_actors	Powers Boothe
+m11	has_actors	Michael Douglas
+m9	has_actors	Ross Malinger
+m9	has_actors	Whittni Wright
+m20	has_genre	Thriller
+m17	has_actors	Emma Thompson
+m5	has_director	Charles Shyer
+m9	has_actors	Jean-Claude Van Damme
+u4	has_rating	m22
+m24	has_actors	Mary Steenburgen
+m22	has_actors	William McNamara
+m25	has_director	Mike Figgis
+m2	has_genre	Adventure
+u5	has_rating	m9
+m23	has_director	Richard Donner
+m17	has_genre	Drama
+m13	has_actors	Phil Collins
+m20	has_genre	Action
+m13	has_director	Simon Wells
+m6	has_genre	Drama

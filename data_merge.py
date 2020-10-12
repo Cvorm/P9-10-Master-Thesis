@@ -1,72 +1,74 @@
 import pandas as pd
 import imdb
 import csv
+
 moviesDB = imdb.IMDb()
 data = pd.read_csv('Data/movies.csv')
+ratings = pd.read_csv('Data/ratings.csv')
 kg = pd.DataFrame(columns=['head', 'relation', 'tail'])
+print(data)
 
 
 def transform_data():
-    relations = ['has_genre', 'has_rating', 'directed_by']
+    relations = ['has_genre', 'directed_by', 'acted_by', 'rated']
     with open('Data/knowledge-tree.csv', 'w', encoding='utf-8') as f:
         writer = csv.writer(f, delimiter='\t')
         writer.writerow(('head', 'relation', 'tail'))
-        for x in range(25): #len(data)
+        for x in range(25):  # len(data)
+            movieID = data['title'][x]
             id = data['movieId'][x]
-            movie = moviesDB.get_movie(id)
-            try: title = movie['title']
-            except: title = 'null'
+            movie = moviesDB.get_movie(moviesDB.search_movie(movieID)[0].movieID)
+            try:
+                title = movie['title']
+            except:
+                title = 'null'
             print(f'.:{x + 1}/{len(data)}:. - {title}')
             for r in relations:
                 if r == 'has_genre':
                     try:
                         genres = movie['genres']
                         for g in genres:
-                            writer.writerow((id, 'has_genre', g))
+                            writer.writerow(('m' + str(id), 'has_genre', g))
                     except:
-                        genres = 'null'
-                        writer.writerow((id, 'has_genre', g))
-                if r == 'has_rating':
-                    try:
-                        rating = movie['rating']
-                    except:
-                        rating = 'null'
-                    writer.writerow((id, 'has_rating', rating))
+                        g = 'null'
+                        writer.writerow(('m' + str(id), 'has_genre', g))
                 if r == 'directed_by':
                     try:
                         director = movie['directors']
                         for d in director:
-                            writer.writerow((id, 'has_director', d))
+                            writer.writerow(('m' + str(id), 'has_director', d))
                     except:
-                        director = 'null'
-                        writer.writerow((id, 'has_director', d))
-
-
-
-def combine_data():
-    all_filenames = ['Data\has_genre.csv','Data\has_rating.csv','Data\directed_by.csv']
-    combined_csv = pd.concat([pd.read_csv(f,encoding = "ISO-8859-1", engine='python', delimiter='\t') for f in all_filenames])
-    combined_and_shuffled_csv = combined_csv.sample(frac=1)
-    combined_and_shuffled_csv.to_csv("Data\combined.csv",index=False,sep='\t')
+                        d = 'null'
+                        writer.writerow(('m' + str(id), 'has_director', d))
+                if r == 'acted_by':
+                    try:
+                        cast = movie['cast']
+                        for a in cast[:5]:
+                            writer.writerow(('m' + str(id), 'has_actors', a))
+                    except:
+                        cast = 'null'
+                        writer.writerow(('m' + str(id), 'has_actors', cast))
+                if r == 'rated':
+                    try:
+                        rating = ratings['rating']
+                        writer.writerow(('u' + str(int(rating['userId'][id])), 'has_rating', 'm' + str(id)))
+                    except:
+                        writer.writerow(('u' + str(int(rating[id])), 'has_rating', 'm' + str(id)))
 
 
 def split_data():
-    ds = pd.read_csv('Data\knowledge-tree.csv', delimiter='\t',encoding='utf-8') #engine='python'
-    bookmark =  0 #len(ds)
-    for i in ['movie-train','movie-valid','movie-test']:
-        with open('Data/%s.txt' % i, 'w', encoding='utf-8',newline='') as f:
+    ds_init = pd.read_csv('Data\knowledge-tree.csv', delimiter='\t', encoding='utf-8')  # engine='python'
+    ds = ds_init.sample(frac=1)  # shuffles the data
+    bookmark = 0  # len(ds)
+    for i in ['movie-train', 'movie-valid', 'movie-test']:
+        with open('Data/%s.txt' % i, 'w', encoding='utf-8', newline='') as f:
             writer = csv.writer(f, delimiter='\t')
-            for j in range(round(len(ds)/3)):
-                 writer.writerow(ds.iloc[bookmark+j])
-            #     for x in ds.iloc[bookmark+j]:
-            #         f.write(str(x))
-            #         f.write('\t')
-            #     f.write('\n')
-        bookmark = bookmark + round(len(ds)/3)
+            for j in range(round(len(ds) / 3) - 1):
+                writer.writerow(ds.iloc[bookmark + j])
+        bookmark = bookmark + round(len(ds) / 3 - 1)
 
 
-#transform_data()
-#combine_data()
+transform_data()
 split_data()
 
 # def get_data():
@@ -99,3 +101,10 @@ split_data()
 #             print(f'{x+1}/25\r', end="")
 #             writer.writerow((id,title,year,rating,genres,director,country))
 #     print()
+
+# def combine_data():
+#     all_filenames = ['Data\has_genre.csv', 'Data\has_rating.csv', 'Data\directed_by.csv']
+#     combined_csv = pd.concat(
+#         [pd.read_csv(f, encoding="ISO-8859-1", engine='python', delimiter='\t') for f in all_filenames])
+#     combined_and_shuffled_csv = combined_csv.sample(frac=1)
+#     combined_and_shuffled_csv.to_csv("Data\combined.csv", index=False, sep='\t')
