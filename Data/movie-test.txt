@@ -1,0 +1,35 @@
+17	has_rating	4.6
+17	has_director	Emil Skladanowsky
+17	has_director	Max Skladanowsky
+18	has_genre	Short
+18	has_rating	5.3
+18	has_director	Max Skladanowsky
+19	has_genre	Short
+19	has_genre	Comedy
+19	has_rating	5.3
+19	has_director	James Williamson
+20	has_genre	Documentary
+20	has_genre	Short
+20	has_genre	Sport
+20	has_rating	5.0
+20	has_director	Birt Acres
+21	has_genre	Documentary
+21	has_genre	Short
+21	has_rating	5.7
+21	has_director	Louis Lumière
+22	has_genre	Documentary
+22	has_genre	Short
+22	has_rating	5.1
+22	has_director	Louis Lumière
+23	has_genre	Documentary
+23	has_genre	Short
+23	has_rating	5.7
+23	has_director	Louis Lumière
+24	has_genre	Short
+24	has_genre	News
+24	has_rating	4.5
+24	has_director	Birt Acres
+25	has_genre	Short
+25	has_genre	News
+25	has_genre	Sport
+25	has_rating	4.2
