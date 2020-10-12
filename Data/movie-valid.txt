@@ -1,0 +1,35 @@
+9	has_rating	5.9
+9	has_director	Alexander Black
+10	has_genre	Documentary
+10	has_genre	Short
+10	has_rating	6.9
+10	has_director	Louis Lumière
+11	has_genre	Documentary
+11	has_genre	Short
+11	has_rating	5.2
+11	has_director	Max Skladanowsky
+12	has_genre	Documentary
+12	has_genre	Short
+12	has_genre	Action
+12	has_rating	7.4
+12	has_director	Auguste Lumière
+12	has_director	Louis Lumière
+13	has_genre	Documentary
+13	has_genre	Short
+13	has_rating	5.7
+13	has_director	Louis Lumière
+14	has_genre	Short
+14	has_genre	Comedy
+14	has_rating	7.1
+14	has_director	Alice Guy
+14	has_director	Louis Lumière
+15	has_genre	Animation
+15	has_genre	Short
+15	has_rating	6.1
+15	has_director	Émile Reynaud
+16	has_genre	Documentary
+16	has_genre	Short
+16	has_rating	5.9
+16	has_director	Louis Lumière
+17	has_genre	Documentary
+17	has_genre	Short
