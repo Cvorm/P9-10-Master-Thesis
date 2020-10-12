@@ -3,61 +3,44 @@ import imdb
 import csv
 moviesDB = imdb.IMDb()
 data = pd.read_csv('Data/movies.csv')
-
-
-def get_data():
-    with open('Data/csvfile.csv', 'w') as f:
-        writer = csv.writer(f, delimiter=',')
-        writer.writerow(('id', 'title', 'year', 'rating', 'genres', 'director', 'country'))
-        for x in range(0,25): # iteratates through each movie
-            id = data['movieId'][x]
-            movie = moviesDB.get_movie(id)
-            # TITLE
-            try: title = movie['title']
-            except: title = 'null'
-            # YEAR
-            try: year = movie['year']
-            except: year = 'null'
-            # RATING
-            try: rating = movie['rating']
-            except: rating = 'null'
-            # DIRECTORS
-            try: director = movie['directors']
-            except: director = 'null'
-            # COUNTRIES
-            try: country = movie['countries']
-            except: country = 'null'
-            # GENRES
-            try: genres = movie['genres']
-            except: genres = 'null'
-            # votes = movie['votes'],kind = movie['kind'],plot = movie['plot'],aka = movie['akas'],
-            # casting = movie['cast']
-            print(movie)
-            writer.writerow((str(id),str(title),str(year),str(rating),str(genres),str(director),str(country)))
+kg = pd.DataFrame(columns=['head', 'relation', 'tail'])
 
 
 def transform_data():
-    updated_data = pd.read_csv('Data/csvfile.csv',encoding = "ISO-8859-1", engine='python')
     relations = ['has_genre', 'has_rating', 'directed_by']
-    for r in relations:
-        if r == 'has_genre':
-            with open('Data/has_genre.csv', 'w') as f:
-                writer = csv.writer(f, delimiter='\t')
-                writer.writerow(('head','relation','tail'))
-                for index, row in updated_data.iterrows():
-                    writer.writerow((row['id'],'has_genre',row['genres']))
-        if r == 'has_rating':
-            with open('Data/has_rating.csv', 'w') as f:
-                writer = csv.writer(f, delimiter='\t')
-                writer.writerow(('head','relation','tail'))
-                for index, row in updated_data.iterrows():
-                    writer.writerow((row['id'],'has_rating',row['rating']))
-        if r == 'directed_by':
-            with open('Data/directed_by.csv', 'w') as f:
-                writer = csv.writer(f, delimiter='\t')
-                writer.writerow(('head','relation','tail'))
-                for index, row in updated_data.iterrows():
-                    writer.writerow((row['id'],'directed_by',row['director']))
+    with open('Data/knowledge-tree.csv', 'w', encoding='utf-8') as f:
+        writer = csv.writer(f, delimiter='\t')
+        writer.writerow(('head', 'relation', 'tail'))
+        for x in range(25): #len(data)
+            id = data['movieId'][x]
+            movie = moviesDB.get_movie(id)
+            try: title = movie['title']
+            except: title = 'null'
+            print(f'.:{x + 1}/{len(data)}:. - {title}')
+            for r in relations:
+                if r == 'has_genre':
+                    try:
+                        genres = movie['genres']
+                        for g in genres:
+                            writer.writerow((id, 'has_genre', g))
+                    except:
+                        genres = 'null'
+                        writer.writerow((id, 'has_genre', g))
+                if r == 'has_rating':
+                    try:
+                        rating = movie['rating']
+                    except:
+                        rating = 'null'
+                    writer.writerow((id, 'has_rating', rating))
+                if r == 'directed_by':
+                    try:
+                        director = movie['directors']
+                        for d in director:
+                            writer.writerow((id, 'has_director', d))
+                    except:
+                        director = 'null'
+                        writer.writerow((id, 'has_director', d))
+
 
 
 def combine_data():
@@ -68,19 +51,51 @@ def combine_data():
 
 
 def split_data():
-    ds = pd.read_csv('Data\combined.csv', encoding = "utf-8", engine='python', delimiter='\t')
+    ds = pd.read_csv('Data\knowledge-tree.csv', delimiter='\t',encoding='utf-8') #engine='python'
     bookmark =  0 #len(ds)
-    print(len(ds))
-    for i in ['movie-training.txt','movie-valid.txt','movie-test.txt']:
-        with open('Data/%s.csv' % i, 'w') as f:
+    for i in ['movie-train','movie-valid','movie-test']:
+        with open('Data/%s.txt' % i, 'w', encoding='utf-8',newline='') as f:
             writer = csv.writer(f, delimiter='\t')
             for j in range(round(len(ds)/3)):
-                writer.writerow(ds.iloc[bookmark+j])
+                 writer.writerow(ds.iloc[bookmark+j])
+            #     for x in ds.iloc[bookmark+j]:
+            #         f.write(str(x))
+            #         f.write('\t')
+            #     f.write('\n')
         bookmark = bookmark + round(len(ds)/3)
-        print(bookmark)
 
 
-get_data()
-transform_data()
-combine_data()
+#transform_data()
+#combine_data()
 split_data()
+
+# def get_data():
+#     with open('Data/csvfile.csv', 'w',encoding='utf-8') as f:
+#         writer = csv.writer(f, delimiter=',')
+#         writer.writerow(('id', 'title', 'year', 'rating', 'genres', 'director', 'country'))
+#         for x in range(0,25): # iteratates through each movie
+#             id = data['movieId'][x]
+#             movie = moviesDB.get_movie(id)
+#             # TITLE
+#             try: title = movie['title']
+#             except: title = 'null'
+#             # YEAR
+#             try: year = movie['year']
+#             except: year = 'null'
+#             # RATING
+#             try: rating = movie['rating']
+#             except: rating = 'null'
+#             # DIRECTORS
+#             try: director = movie['directors']
+#             except: director = 'null'
+#             # COUNTRIES
+#             try: country = movie['countries']
+#             except: country = 'null'
+#             # GENRES
+#             try: genres = movie['genres']
+#             except: genres = 'null'
+#             # votes = movie['votes'],kind = movie['kind'],plot = movie['plot'],aka = movie['akas'],
+#             # casting = movie['cast']
+#             print(f'{x+1}/25\r', end="")
+#             writer.writerow((id,title,year,rating,genres,director,country))
+#     print()

@@ -1,26 +1,77 @@
 head	relation	tail
-1	has_genre	['Documentary', 'Short']
-2	has_genre	['Animation', 'Short']
-3	has_genre	['Animation', 'Comedy', 'Short', 'Romance']
-4	has_genre	['Animation', 'Short']
-5	has_genre	['Short', 'Comedy']
-6	has_genre	['Short']
-7	has_genre	['Short', 'Sport']
-8	has_genre	['Documentary', 'Short']
-9	has_genre	['Romance']
-10	has_genre	['Documentary', 'Short']
-11	has_genre	['Documentary', 'Short']
-12	has_genre	['Documentary', 'Short', 'Action']
-13	has_genre	['Documentary', 'Short']
-14	has_genre	['Short', 'Comedy']
-15	has_genre	['Animation', 'Short']
-16	has_genre	['Documentary', 'Short']
-17	has_genre	['Documentary', 'Short']
-18	has_genre	['Short']
-19	has_genre	['Short', 'Comedy']
-20	has_genre	['Documentary', 'Short', 'Sport']
-21	has_genre	['Documentary', 'Short']
-22	has_genre	['Documentary', 'Short']
-23	has_genre	['Documentary', 'Short']
-24	has_genre	['Short', 'News']
-25	has_genre	['Short', 'News', 'Sport']
+1	has_genre	Documentary
+1	has_genre	Short
+head	relation	tail
+2	has_genre	Animation
+2	has_genre	Short
+head	relation	tail
+3	has_genre	Animation
+3	has_genre	Comedy
+3	has_genre	Short
+3	has_genre	Romance
+head	relation	tail
+4	has_genre	Animation
+4	has_genre	Short
+head	relation	tail
+5	has_genre	Short
+5	has_genre	Comedy
+head	relation	tail
+6	has_genre	Short
+head	relation	tail
+7	has_genre	Short
+7	has_genre	Sport
+head	relation	tail
+8	has_genre	Documentary
+8	has_genre	Short
+head	relation	tail
+9	has_genre	Romance
+head	relation	tail
+10	has_genre	Documentary
+10	has_genre	Short
+head	relation	tail
+11	has_genre	Documentary
+11	has_genre	Short
+head	relation	tail
+12	has_genre	Documentary
+12	has_genre	Short
+12	has_genre	Action
+head	relation	tail
+13	has_genre	Documentary
+13	has_genre	Short
+head	relation	tail
+14	has_genre	Short
+14	has_genre	Comedy
+head	relation	tail
+15	has_genre	Animation
+15	has_genre	Short
+head	relation	tail
+16	has_genre	Documentary
+16	has_genre	Short
+head	relation	tail
+17	has_genre	Documentary
+17	has_genre	Short
+head	relation	tail
+18	has_genre	Short
+head	relation	tail
+19	has_genre	Short
+19	has_genre	Comedy
+head	relation	tail
+20	has_genre	Documentary
+20	has_genre	Short
+20	has_genre	Sport
+head	relation	tail
+21	has_genre	Documentary
+21	has_genre	Short
+head	relation	tail
+22	has_genre	Documentary
+22	has_genre	Short
+head	relation	tail
+23	has_genre	Documentary
+23	has_genre	Short
+head	relation	tail
+24	has_genre	Short
+24	has_genre	News
+head	relation	tail
+25	has_genre	Short
+25	has_genre	News
+25	has_genre	Sport
