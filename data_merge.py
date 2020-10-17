@@ -10,14 +10,17 @@ print(data)
 
 
 def transform_data():
-    relations = ['has_genre', 'directed_by', 'acted_by', 'rated']
+    relations = ['has_genre', 'directed_by', 'rated','country'] #'acted_by',
     with open('Data/knowledge-tree.csv', 'w', encoding='utf-8') as f:
         writer = csv.writer(f, delimiter='\t')
         writer.writerow(('head', 'relation', 'tail'))
-        for x in range(25):  # len(data)
+        for x in range(500):  # len(data)
             movieID = data['title'][x]
             id = data['movieId'][x]
-            movie = moviesDB.get_movie(moviesDB.search_movie(movieID)[0].movieID)
+            try:
+                movie = moviesDB.get_movie(moviesDB.search_movie(movieID)[0].movieID)
+            except:
+                continue
             try:
                 title = movie['title']
             except:
@@ -51,9 +54,20 @@ def transform_data():
                 if r == 'rated':
                     try:
                         rating = ratings['rating']
-                        writer.writerow(('u' + str(int(rating['userId'][id])), 'has_rating', 'm' + str(id)))
+                        _movie = [x for x in ratings if x['movieID'] == id]
+                        for mm in _movie:
+                            #writer.writerow(('u' + str(int(rating['userId'][id])), 'has_rated', 'm' + str(id)))
+                            writer.writerow(('u' + str(int(mm['userId'][id])), 'has_rated', 'm' + str(id)))
                     except:
-                        writer.writerow(('u' + str(int(rating[id])), 'has_rating', 'm' + str(id)))
+                        writer.writerow(('u' + str(int(rating[id])), 'has_rated', 'm' + str(id)))
+                if r == 'country':
+                    try:
+                        country = movie['countries']
+                        for c in country:
+                            writer.writerow(('m' + str(id), 'has_countries', c))
+                    except:
+                        c = 'null'
+                        writer.writerow(('m' + str(id), 'has_countries', c))
 
 
 def split_data():
