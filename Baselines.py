@@ -45,6 +45,7 @@ res['movieId'] = ratings['movieId']
 res['rating'] = ratings['rating']
 res['timestamp'] = ratings['timestamp']
 
+#yes
 # for x in range(len(res.index)):
 for x in range(5):
     ID = res.iloc[x]['movieId']
