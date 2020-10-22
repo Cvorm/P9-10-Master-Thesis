@@ -46,10 +46,7 @@ res['rating'] = ratings['rating']
 res['timestamp'] = ratings['timestamp']
 
 #yes
-# for x in range(len(res.index)):
-for x in range(5):
-    ID = res.iloc[x]['movieId']
-    res.loc[x, 'genre'] = movies_data.loc[movies_data['movieId'] == ID, 'genres'].iloc[0]
+
 
 print(res.head(5))
 print(res['genre'])
@@ -58,6 +55,10 @@ print(res['genre'])
 #
 def get_data(num_ratings):
 
+    for x in range(num_ratings):
+        # for x in range(5):
+        ID = res.iloc[x]['movieId']
+        res.loc[x, 'genre'] = movies_data.loc[movies_data['movieId'] == ID, 'genres'].iloc[0]
     # movie_titles = pd.DataFrame(columns=['title'])
     # movie_titles['title'] = movies_data['title']
     # print(movie_titles.head(10))
@@ -84,7 +85,7 @@ def get_data(num_ratings):
         # for result in movie:
         #     print(result.movieID, result)
 
-        print(movie['title'])
+        # print(movie['title'])
         # print(movie.keys())
         # print(movie['genres'])
         # print(movie['director'])
@@ -98,7 +99,7 @@ def get_data(num_ratings):
         try:
             res.loc[x, 'title'] = movie['title']
         except:
-            continue
+            res.loc[x, 'title'] = 'null'
         #res.loc[x, 'genre'] = movie['genre']
 
 
@@ -111,7 +112,9 @@ def get_data(num_ratings):
                    director_list.append(director['name'])
                 res.at[x, 'directors'] = director_list
             except:
-                continue
+                res.at[x, 'directors'] = 'null'
+        else:
+            res.at[x, 'directors'] = 'null'
         #
         if movie.has_key('cast') and len(movie['cast']) > 0:
             try:
@@ -121,14 +124,16 @@ def get_data(num_ratings):
                    actor_list.append(actor['name'])
                 res.at[x, 'cast'] = actor_list
             except:
-                continue
+                res.at[x, 'cast'] = 'null'
+        else:
+            res.at[x, 'cast'] = 'null'
 
-# get_data(len(res.index))
-get_data(5)
+get_data(500)
+# get_data(5)
 # get_data(3)
 print(res.head())
 # print(res['cast'])
-# res.to_csv('testtest.csv', index=False)
+res.to_csv('testtest.csv', index=False)
 #
 
 # stingerBELL = "Heat (1995)"
