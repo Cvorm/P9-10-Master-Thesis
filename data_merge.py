@@ -65,8 +65,8 @@ def split_data():
         bookmark = bookmark + round(len(ds)/3)
 
 
-#transform_data()
-#combine_data()
+transform_data()
+combine_data()
 split_data()
 
 # def get_data():
