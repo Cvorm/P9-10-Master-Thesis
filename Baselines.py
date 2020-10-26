@@ -49,7 +49,7 @@ res['timestamp'] = ratings['timestamp']
 
 
 print(res.head(5))
-print(res['genre'])
+print(res["genre"])
 # # kg = pd.DataFrame(columns=['head', 'relation', 'tail'])
 # # print(data)
 #
