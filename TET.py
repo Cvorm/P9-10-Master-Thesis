@@ -3,6 +3,7 @@ from anytree import Node, RenderTree
 import networkx as nx
 import matplotlib.pyplot as plt
 import re
+import nltk
 import numpy as np
 
 # class TET:
@@ -26,53 +27,68 @@ import numpy as np
 #     def makeTET(self, vars):
 #         self.freevars = vars
 
-def TETspec(tet_spec):
-    tet_tree = nx.Graph()
-    tokens = []
-    nodes = []
-    edges = []
-    if len(tet_spec.split(" | ")) <= 2:
-        print("dude")
-        exit(0)
-    else:
-        tokens = tet_spec.split(" | ")
-        # for x in range(len(tokens)):
-        for x in tokens:
-            if re.search("(-(\([A-Z]*\))->)", x):
-                edges.append(x)
-            elif re.search("[A-Za-z0-9]*\([A-Z]*\)", x):
-                nodes.append(x)
-            else:
-                print("wrong syntax")
-                exit(0)
-        for y in nodes:
-            tet_tree.add_node(y)
-        for i, z in enumerate(edges):
-            # print(i)
-            # print(z)
-            tet_tree.add_edge(nodes[i], nodes[i+1], attr=z)
-        print(nodes)
-        print(edges)
-    return tet_tree
-        # if len(tet_spec) <= 1:
-        #     print("ya dumb bitch")
-        #     exit(0)
-        # for x in range(len(tet_spec)):
-        #     if x % 2 == 0:
+def TETSpec(tet_spec):
+    nltk_tokens = nltk.word_tokenize(tet_spec)
+
+    if(not(nltk_tokens[0] == "[")):
+        print("incorrect tet string")
+
+    while(nltk_tokens):
+        print(nltk_tokens)
+        nltk_tokens.pop(-1)
+
+TETSpec("[i take it you are down with this nigga]")
+    # for token in nltk_tokens:
 
 
-graph = TETspec("Yes(A) | -(A)-> | Bitch(A)")
-nx.draw(graph, pos=nx.spring_layout(graph))
-plt.show()
+# def TETspec(tet_spec):
+#     tet_tree = nx.Graph()
+#     tokens = []
+#     nodes = []
+#     edges = []
+#     if len(tet_spec.split(" | ")) <= 2:
+#         print("dude")
+#         exit(0)
+#     else:
+#         tokens = tet_spec.split(" | ")
+#         # for x in range(len(tokens)):
+#         for x in tokens:
+#             if re.search("(-(\([A-Z]*\))->)", x):
+#                 edges.append(x)
+#             elif re.search("[A-Za-z0-9]*\([A-Z]*\)", x):
+#                 nodes.append(x)
+#             else:
+#                 print("wrong syntax")
+#                 exit(0)
+#         for y in nodes:
+#             tet_tree.add_node(y)
+#         for i, z in enumerate(edges):
+#             # print(i)
+#             # print(z)
+#             tet_tree.add_edge(nodes[i], nodes[i+1], attr=z)
+#         print(nodes)
+#         print(edges)
+#     return tet_tree
+#         # if len(tet_spec) <= 1:
+#         #     print("ya dumb bitch")
+#         #     exit(0)
+#         # for x in range(len(tet_spec)):
+#         #     if x % 2 == 0:
 
 
-def count_of_counts(graph=nx.DiGraph()):
-    for node in graph:
-        if graph.out_degree(node) == 0 and graph.in_degree(node) >= 1:
-            leaf_count = nx.set_node_attributes(graph, 'count', 1)
-            graph.node[node]['count']
+# graph = TETspec("Yes(A) | -(A)-> | Bitch(A)")
+# nx.draw(graph, pos=nx.spring_layout(graph))
+# plt.show()
 
-        elif graph.out_degree(node) >= 1 and graph.in_degree(node) >=1:
+# nltk_tokens = nltk.word_tokenize("([fsdfdfg])")
+# print(nltk_tokens)
+# def count_of_counts(graph=nx.DiGraph()):
+#     for node in graph:
+#         if graph.out_degree(node) == 0 and graph.in_degree(node) >= 1:
+#             leaf_count = nx.set_node_attributes(graph, 'count', 1)
+#             graph.node[node]['count']
+#
+#         elif graph.out_degree(node) >= 1 and graph.in_degree(node) >=1:
 
 
 
