@@ -1,76 +1,102 @@
 head	relation	tail
-5	has_genre	['Short', 'Comedy']
-12	has_genre	['Documentary', 'Short', 'Action']
-14	directed_by	[<Person id:0349785[http] name:_Alice Guy_>, <Person id:0525910[http] name:_Louis Lumière_>]
-8	has_rating	5.4
-1	has_genre	['Documentary', 'Short']
-19	has_genre	['Short', 'Comedy']
-23	has_rating	5.7
-6	has_rating	5.3
-17	has_rating	4.6
-21	has_rating	5.7
-9	has_rating	5.9
-11	has_rating	5.2
-2	directed_by	[<Person id:0721526[http] name:_Émile Reynaud_>]
-19	directed_by	[<Person id:0932055[http] name:_James Williamson_>]
-9	has_genre	['Romance']
-24	has_rating	4.5
-20	has_genre	['Documentary', 'Short', 'Sport']
-18	directed_by	[<Person id:0804434[http] name:_Max Skladanowsky_>]
-17	has_genre	['Documentary', 'Short']
-2	has_rating	6.1
-23	has_genre	['Documentary', 'Short']
-3	directed_by	[<Person id:0721526[http] name:_Émile Reynaud_>]
-21	directed_by	[<Person id:0525910[http] name:_Louis Lumière_>]
-20	has_rating	5.0
-7	has_genre	['Short', 'Sport']
-2	has_genre	['Animation', 'Short']
-11	directed_by	[<Person id:0804434[http] name:_Max Skladanowsky_>]
-8	has_genre	['Documentary', 'Short']
-21	has_genre	['Documentary', 'Short']
-12	directed_by	[<Person id:0525908[http] name:_Auguste Lumière_>, <Person id:0525910[http] name:_Louis Lumière_>]
-1	directed_by	[<Person id:0005690[http] name:_William K.L. Dickson_>]
-1	has_rating	5.6
-24	has_genre	['Short', 'News']
-11	has_genre	['Documentary', 'Short']
-25	directed_by	[<Person id:0010291[http] name:_Birt Acres_>]
-14	has_rating	7.1
-12	has_rating	7.4
-7	directed_by	[<Person id:0005690[http] name:_William K.L. Dickson_>, <Person id:0374658[http] name:_William Heise_>]
-10	has_genre	['Documentary', 'Short']
-16	has_genre	['Documentary', 'Short']
-6	directed_by	[<Person id:0005690[http] name:_William K.L. Dickson_>]
-17	directed_by	[<Person id:1587194[http] name:_Emil Skladanowsky_>, <Person id:0804434[http] name:_Max Skladanowsky_>]
-18	has_genre	['Short']
-13	directed_by	[<Person id:0525910[http] name:_Louis Lumière_>]
-4	directed_by	[<Person id:0721526[http] name:_Émile Reynaud_>]
-5	has_rating	6.2
-22	has_rating	5.1
-8	directed_by	[<Person id:0005690[http] name:_William K.L. Dickson_>]
+head	relation	tail
+3	has_genre	Animation
+20	has_genre	Sport
 7	has_rating	5.5
-10	has_rating	6.9
-19	has_rating	5.3
-3	has_genre	['Animation', 'Comedy', 'Short', 'Romance']
+18	has_genre	Short
+13	has_genre	Short
 18	has_rating	5.3
+head	relation	tail
+14	has_rating	7.1
+5	has_rating	6.2
+13	has_genre	Documentary
+head	relation	tail
+12	has_genre	Action
+12	has_genre	Short
+16	has_genre	Short
+24	has_rating	4.5
+2	has_rating	6.1
+15	has_genre	Animation
+12	has_rating	7.4
+17	has_rating	4.6
+22	has_genre	Documentary
+head	relation	tail
+11	has_rating	5.2
+2	has_genre	Animation
 3	has_rating	6.5
-13	has_rating	5.7
-6	has_genre	['Short']
-15	has_genre	['Animation', 'Short']
-15	has_rating	6.1
-10	directed_by	[<Person id:0525910[http] name:_Louis Lumière_>]
-16	has_rating	5.9
-20	directed_by	[<Person id:0010291[http] name:_Birt Acres_>]
-22	directed_by	[<Person id:0525910[http] name:_Louis Lumière_>]
-4	has_genre	['Animation', 'Short']
-15	directed_by	[<Person id:0721526[http] name:_Émile Reynaud_>]
-14	has_genre	['Short', 'Comedy']
-25	has_rating	4.2
-5	directed_by	[<Person id:0005690[http] name:_William K.L. Dickson_>]
-23	directed_by	[<Person id:0525910[http] name:_Louis Lumière_>]
-13	has_genre	['Documentary', 'Short']
-24	directed_by	[<Person id:0010291[http] name:_Birt Acres_>]
-9	directed_by	[<Person id:0085156[http] name:_Alexander Black_>]
-16	directed_by	[<Person id:0525910[http] name:_Louis Lumière_>]
-25	has_genre	['Short', 'News', 'Sport']
+21	has_genre	Short
+15	has_genre	Short
+11	has_genre	Documentary
+9	has_genre	Romance
+17	has_genre	Documentary
+21	has_rating	5.7
+17	has_genre	Short
+5	has_genre	Comedy
+3	has_genre	Short
+10	has_genre	Documentary
+12	has_genre	Documentary
+25	has_genre	Sport
+20	has_genre	Short
+head	relation	tail
+head	relation	tail
+16	has_genre	Documentary
+11	has_genre	Short
+25	has_genre	News
+3	has_genre	Comedy
+23	has_genre	Documentary
+head	relation	tail
+19	has_genre	Comedy
+head	relation	tail
+24	has_genre	Short
+3	has_genre	Romance
+4	has_genre	Short
+23	has_genre	Short
+7	has_genre	Short
+4	has_genre	Animation
+6	has_rating	5.3
+head	relation	tail
+19	has_genre	Short
+head	relation	tail
+14	has_genre	Comedy
 4	has_rating	6.2
-22	has_genre	['Documentary', 'Short']
+head	relation	tail
+head	relation	tail
+10	has_genre	Short
+5	has_genre	Short
+head	relation	tail
+8	has_genre	Documentary
+25	has_rating	4.2
+22	has_rating	5.1
+13	has_rating	5.7
+head	relation	tail
+8	has_genre	Short
+head	relation	tail
+head	relation	tail
+1	has_genre	Documentary
+8	has_rating	5.4
+head	relation	tail
+head	relation	tail
+2	has_genre	Short
+head	relation	tail
+1	has_genre	Short
+21	has_genre	Documentary
+15	has_rating	6.1
+25	has_genre	Short
+head	relation	tail
+20	has_rating	5.0
+7	has_genre	Sport
+head	relation	tail
+9	has_rating	5.9
+head	relation	tail
+6	has_genre	Short
+23	has_rating	5.7
+head	relation	tail
+head	relation	tail
+1	has_rating	5.6
+14	has_genre	Short
+19	has_rating	5.3
+24	has_genre	News
+16	has_rating	5.9
+22	has_genre	Short
+10	has_rating	6.9
+20	has_genre	Documentary
