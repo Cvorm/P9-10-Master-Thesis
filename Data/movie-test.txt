@@ -1,35 +1,995 @@
-17	has_rating	4.6
-17	has_director	Emil Skladanowsky
-17	has_director	Max Skladanowsky
-18	has_genre	Short
-18	has_rating	5.3
-18	has_director	Max Skladanowsky
-19	has_genre	Short
-19	has_genre	Comedy
-19	has_rating	5.3
-19	has_director	James Williamson
-20	has_genre	Documentary
-20	has_genre	Short
-20	has_genre	Sport
-20	has_rating	5.0
-20	has_director	Birt Acres
-21	has_genre	Documentary
-21	has_genre	Short
-21	has_rating	5.7
-21	has_director	Louis Lumière
-22	has_genre	Documentary
-22	has_genre	Short
-22	has_rating	5.1
-22	has_director	Louis Lumière
-23	has_genre	Documentary
-23	has_genre	Short
-23	has_rating	5.7
-23	has_director	Louis Lumière
-24	has_genre	Short
-24	has_genre	News
-24	has_rating	4.5
-24	has_director	Birt Acres
-25	has_genre	Short
-25	has_genre	News
-25	has_genre	Sport
-25	has_rating	4.2
+m160	has_genre	Mystery
+m452	has_genre	Crime
+m367	has_genre	Crime
+m380	has_genre	Thriller
+m255	has_countries	nan
+u4	has_rated	m218
+m320	has_director	David Siegel
+m453	has_director	Barry Sonnenfeld
+u5	has_rated	m444
+m1	has_director	John Lasseter
+u5	has_rated	m380
+m89	has_genre	Drama
+m438	has_countries	United States
+m195	has_countries	United States
+m338	has_director	Brett Leonard
+m107	has_countries	United States
+m434	has_genre	Adventure
+m334	has_director	Louis Malle
+m362	has_countries	United States
+m409	has_genre	Thriller
+u4	has_rated	m125
+m247	has_countries	New Zealand
+u4	has_rated	m40
+m484	has_director	Daniel Petrie
+m343	has_genre	Family
+m44	has_genre	Fantasy
+m8	has_genre	Romance
+m19	has_countries	United States
+m160	has_genre	Adventure
+m147	has_countries	United States
+m567	has_director	Pedro Almodóvar
+u3	has_rated	m496
+u5	has_rated	m432
+m156	has_director	Paul Auster
+m479	has_countries	United States
+m29	has_director	Jean-Pierre Jeunet
+m296	has_genre	Crime
+m535	has_genre	Drama
+m506	has_genre	Drama
+m62	has_countries	United States
+m149	has_genre	Crime
+m427	has_genre	Drama
+m128	has_director	Michel Negroponte
+m548	has_genre	Mystery
+m314	has_director	John Sayles
+m552	has_countries	United Kingdom
+m454	has_genre	Drama
+m504	has_director	Martin Campbell
+m360	has_genre	Comedy
+m577	has_countries	United States
+u0	has_rated	m273
+m477	has_genre	Drama
+u3	has_rated	m558
+m355	has_genre	Comedy
+m534	has_genre	Romance
+m555	has_director	Tony Scott
+m107	has_genre	Family
+u5	has_rated	m478
+m18	has_countries	United States
+m549	has_director	François Girard
+m468	has_genre	Comedy
+m163	has_genre	Thriller
+m63	has_genre	Comedy
+m261	has_genre	Romance
+m189	has_genre	Fantasy
+m270	has_genre	Romance
+u5	has_rated	m179
+m242	has_countries	France
+m381	has_genre	Drama
+m180	has_countries	United States
+u3	has_rated	m272
+m153	has_countries	United States
+m291	has_genre	Drama
+m259	has_genre	Drama
+m478	has_genre	Comedy
+m376	has_genre	Thriller
+m455	has_genre	Family
+m166	has_countries	United States
+m15	has_countries	United States
+m305	has_genre	Drama
+m151	has_genre	Biography
+m188	has_countries	United States
+m75	has_genre	Thriller
+m356	has_director	Robert Zemeckis
+m509	has_countries	Australia
+m172	has_genre	Action
+m567	has_countries	France
+m242	has_genre	Music
+u3	has_rated	m577
+m285	has_countries	United Kingdom
+m11	has_countries	United States
+m78	has_countries	United States
+m155	has_genre	Drama
+m421	has_director	Caroline Thompson
+u5	has_rated	m342
+m198	has_genre	Thriller
+m159	has_genre	Drama
+m25	has_countries	France
+m21	has_genre	Thriller
+m63	has_director	Paris Barclay
+m422	has_countries	nan
+m528	has_genre	Sport
+m20	has_countries	United States
+m332	has_countries	United States
+m22	has_countries	United States
+m522	has_countries	Australia
+u5	has_rated	m191
+m479	has_director	Stephen Hopkins
+m479	has_genre	Crime
+m9	has_genre	Thriller
+m26	has_genre	Drama
+u4	has_rated	m344
+m234	has_countries	United States
+m471	has_countries	United States
+m31	has_genre	Drama
+u5	has_rated	m89
+u4	has_rated	m517
+m356	has_genre	Drama
+m188	has_genre	Crime
+m227	has_genre	Adventure
+m148	has_genre	Drama
+u4	has_rated	m235
+m474	has_genre	Action
+m40	has_countries	South Africa
+m146	has_genre	Family
+m358	has_director	John Singleton
+m449	has_director	Rusty Cundieff
+m65	has_countries	United States
+m199	has_countries	France
+m15	has_countries	Germany
+m111	has_genre	Drama
+m424	has_director	William Friedkin
+m344	has_countries	United States
+m122	has_genre	Comedy
+m550	has_director	Andrew Fleming
+m321	has_genre	Romance
+m12	has_genre	Fantasy
+m299	has_director	Antonia Bird
+m104	has_genre	Comedy
+m547	has_genre	Thriller
+u4	has_rated	m441
+m242	has_countries	Italy
+m178	has_genre	Drama
+m43	has_genre	Biography
+m257	has_genre	Thriller
+m579	has_genre	Crime
+m137	has_genre	Comedy
+u5	has_rated	m62
+m31	has_genre	Biography
+u5	has_rated	m85
+m148	has_genre	Comedy
+m183	has_genre	Thriller
+m217	has_director	David Butler
+m69	has_genre	Drama
+m218	has_director	Herbert Ross
+m194	has_genre	Comedy
+u4	has_rated	m526
+m577	has_genre	Drama
+m149	has_countries	United States
+m52	has_director	Woody Allen
+m238	has_countries	United States
+u4	has_rated	m43
+m73	has_genre	Drama
+m365	has_countries	United Kingdom
+m337	has_countries	United States
+m441	has_genre	Comedy
+m283	has_countries	United States
+m250	has_director	nan
+m407	has_genre	Horror
+u3	has_rated	m472
+m506	has_genre	Romance
+m7	has_genre	Drama
+m495	has_countries	France
+m236	has_genre	Romance
+m229	has_genre	Thriller
+m128	has_genre	Mystery
+m258	has_countries	United States
+m263	has_genre	Drama
+m237	has_genre	Romance
+m365	has_countries	Liechtenstein
+m149	has_genre	Comedy
+m8	has_genre	Drama
+m147	has_director	Scott Kalvert
+m76	has_genre	Horror
+m107	has_genre	Romance
+m407	has_director	John Carpenter
+u4	has_rated	m295
+m195	has_director	Lasse Hallström
+u5	has_rated	m135
+m162	has_genre	Documentary
+m372	has_genre	Comedy
+m89	has_genre	Crime
+m220	has_genre	Thriller
+m301	has_director	Kayo Hatta
+m546	has_countries	United Kingdom
+m482	has_genre	Talk-Show
+m23	has_genre	Action
+m518	has_director	Don DuPree
+m132	has_countries	United States
+u4	has_rated	m283
+m308	has_genre	Drama
+u5	has_rated	m354
+m354	has_genre	Biography
+m366	has_countries	United States
+m208	has_director	Kevin Reynolds
+m82	has_countries	France
+m458	has_genre	Western
+m502	has_director	Christopher Cain
+m68	has_genre	Comedy
+m283	has_director	Nick Gomez
+m417	has_genre	Comedy
+m464	has_genre	Action
+m247	has_countries	Germany
+m491	has_director	Mel Gibson
+m338	has_genre	Thriller
+m548	has_genre	Thriller
+u5	has_rated	m515
+m31	has_countries	United States
+m496	has_genre	Comedy
+m46	has_genre	Drama
+m421	has_genre	Adventure
+m146	has_director	Christopher Cain
+m506	has_countries	France
+m549	has_countries	Portugal
+m406	has_genre	Drama
+u5	has_rated	m68
+u1	has_rated	m450
+u5	has_rated	m339
+m150	has_director	Ron Howard
+u4	has_rated	m360
+m86	has_director	Ridley Scott
+m169	has_genre	Family
+m547	has_genre	Drama
+m280	has_genre	Drama
+u5	has_rated	m61
+m99	has_genre	Documentary
+m288	has_countries	United States
+m441	has_director	Richard Linklater
+m520	has_genre	Adventure
+m12	has_countries	France
+m230	has_genre	Drama
+m304	has_genre	Comedy
+m4	has_genre	Comedy
+m62	has_director	Stephen Herek
+m166	has_genre	Comedy
+m514	has_genre	Drama
+m435	has_genre	Sci-Fi
+m12	has_director	Mel Brooks
+m36	has_director	Tim Robbins
+m437	has_genre	Thriller
+m95	has_genre	Adventure
+m538	has_genre	Mystery
+m165	has_genre	Adventure
+m236	has_director	Lawrence Kasdan
+u4	has_rated	m22
+m505	has_genre	Comedy
+u5	has_rated	m319
+m407	has_genre	Thriller
+m232	has_genre	Romance
+m169	has_countries	Luxembourg
+m60	has_genre	Fantasy
+m367	has_genre	Drama
+m29	has_countries	Belgium
+u5	has_rated	m209
+m155	has_genre	Action
+m330	has_genre	Drama
+m151	has_director	Michael Caton-Jones
+u5	has_rated	m331
+m445	has_countries	United States
+m480	has_genre	Sci-Fi
+m549	has_genre	Biography
+m41	has_genre	Drama
+m360	has_director	Charles Shyer
+m376	has_genre	Adventure
+m549	has_countries	Finland
+m393	has_director	Steven E. de Souza
+m438	has_genre	Crime
+u5	has_rated	m86
+m181	has_countries	New Zealand
+m187	has_countries	United States
+m524	has_genre	Biography
+m215	has_countries	Austria
+m82	has_countries	United Kingdom
+m563	has_genre	Drama
+m444	has_genre	Drama
+m320	has_genre	Drama
+m537	has_genre	Comedy
+m164	has_genre	Mystery
+m249	has_genre	Drama
+m87	has_genre	Family
+m258	has_genre	Family
+m151	has_genre	Drama
+m15	has_countries	Italy
+m513	has_genre	Mystery
+m140	has_countries	Philippines
+m423	has_genre	Thriller
+m126	has_genre	Comedy
+m151	has_genre	Adventure
+u2	has_rated	m328
+m476	has_genre	Comedy
+m363	has_genre	Biography
+m533	has_director	nan
+m492	has_genre	Mystery
+m434	has_genre	Action
+m458	has_countries	United States
+m57	has_countries	United States
+m129	has_genre	Comedy
+m372	has_genre	Romance
+u5	has_rated	m208
+u3	has_rated	m16
+u5	has_rated	m149
+m246	has_countries	United States
+u5	has_rated	m50
+u3	has_rated	m510
+m79	has_director	Brian Gibson
+m329	has_genre	Adventure
+m217	has_countries	United States
+m489	has_countries	United States
+m435	has_director	Steve Barron
+m153	has_genre	Action
+u4	has_rated	m471
+m336	has_genre	Drama
+m87	has_genre	Comedy
+m6	has_genre	Thriller
+u5	has_rated	m188
+m95	has_countries	United States
+m308	has_director	Krzysztof Kieslowski
+m117	has_director	Benjamin Ross
+m42	has_director	Allen Hughes
+m316	has_genre	Action
+m145	has_genre	Comedy
+m252	has_countries	United States
+m87	has_genre	Adventure
+m469	has_countries	Germany
+m157	has_countries	United States
+u1	has_rated	m417
+m262	has_genre	Drama
+m96	has_genre	Drama
+u4	has_rated	m72
+m413	has_countries	United States
+m71	has_genre	Thriller
+m282	has_genre	Drama
+m44	has_countries	United States
+m173	has_genre	Action
+u3	has_rated	m106
+m272	has_countries	United Kingdom
+m10	has_genre	Action
+m472	has_countries	United States
+m147	has_genre	Crime
+m366	has_genre	Thriller
+m274	has_countries	United States
+m568	has_genre	Comedy
+u0	has_rated	m263
+m105	has_genre	Drama
+m60	has_genre	Family
+m349	has_genre	Crime
+m24	has_countries	United States
+m418	has_genre	Horror
+u4	has_rated	m347
+m515	has_genre	Short
+m271	has_countries	United States
+m188	has_director	Gregory Widen
+u1	has_rated	m445
+m496	has_director	Tom Noonan
+m64	has_genre	Romance
+u4	has_rated	m470
+u3	has_rated	m251
+m199	has_genre	Drama
+m122	has_genre	Romance
+m291	has_genre	Thriller
+u4	has_rated	m513
+m18	has_director	Robert Rodriguez
+m407	has_countries	United States
+m107	has_director	Brian Henson
+m17	has_genre	Drama
+m169	has_genre	Drama
+u5	has_rated	m178
+m241	has_countries	United States
+m386	has_director	Jefery Levy
+m105	has_director	Clint Eastwood
+m281	has_director	Robert Benton
+m26	has_countries	United States
+m508	has_genre	Drama
+m118	has_countries	United States
+m556	has_genre	Documentary
+m178	has_genre	Comedy
+m377	has_genre	Action
+m537	has_director	John Duigan
+m474	has_genre	Drama
+m220	has_countries	United States
+m230	has_director	Taylor Hackford
+m25	has_director	Mike Figgis
+m471	has_director	nan
+m232	has_countries	Taiwan
+m547	has_genre	Crime
+m150	has_genre	History
+m214	has_genre	War
+u3	has_rated	m177
+m448	has_countries	United States
+m540	has_genre	Thriller
+u5	has_rated	m103
+m342	has_countries	Australia
+m74	has_director	Michael Goldenberg
+m304	has_countries	United States
+m455	has_genre	Drama
+m351	has_director	Jessie Nelson
+u4	has_rated	m113
+m284	has_countries	Japan
+m382	has_director	Mike Nichols
+m434	has_countries	United States
+m307	has_genre	Drama
+m519	has_genre	Thriller
+u5	has_rated	m151
+u5	has_rated	m100
+m231	has_director	nan
+m531	has_countries	nan
+m273	has_director	Kenneth Branagh
+m371	has_genre	Drama
+m314	has_genre	Family
+m22	has_genre	Drama
+m179	has_genre	Romance
+m351	has_genre	Drama
+m227	has_director	John Badham
+m546	has_genre	Comedy
+m448	has_director	Peter Weir
+u3	has_rated	m492
+u3	has_rated	m378
+m487	has_genre	Western
+m423	has_genre	Action
+m423	has_genre	Crime
+m186	has_genre	Romance
+m118	has_genre	Romance
+m510	has_genre	Drama
+m464	has_director	John Woo
+m513	has_genre	Comedy
+m21	has_genre	Comedy
+m224	has_genre	Drama
+m163	has_genre	Action
+m27	has_director	Lesli Linka Glatter
+m450	has_genre	Drama
+u5	has_rated	m285
+m563	has_countries	Italy
+m161	has_genre	Action
+u3	has_rated	m163
+m160	has_countries	United States
+m538	has_genre	Comedy
+m300	has_genre	Drama
+m207	has_countries	Mexico
+m362	has_genre	Family
+m218	has_genre	Drama
+m495	has_countries	Japan
+m163	has_genre	Crime
+m209	has_director	Desmond Nakano
+m469	has_countries	United States
+u4	has_rated	m568
+m155	has_countries	United Kingdom
+m488	has_countries	Canada
+m168	has_countries	United Kingdom
+u4	has_rated	m351
+m208	has_genre	Sci-Fi
+m65	has_genre	Comedy
+m528	has_genre	Comedy
+u3	has_rated	m481
+m83	has_director	Tim Reid
+m421	has_genre	Romance
+m337	has_genre	Drama
+m363	has_director	Ray Müller
+m487	has_genre	Comedy
+m77	has_director	Susanne Ofteringer
+m307	has_countries	France
+m117	has_countries	United Kingdom
+m13	has_director	Simon Wells
+u2	has_rated	m76
+m179	has_countries	United States
+m312	has_countries	United States
+m466	has_genre	Action
+m350	has_genre	Thriller
+m543	has_director	Thomas Schlamme
+m556	has_director	D.A. Pennebaker
+m444	has_genre	Comedy
+m469	has_countries	Denmark
+m544	has_genre	Action
+m83	has_countries	United States
+m460	has_genre	Crime
+m524	has_genre	Sport
+m480	has_genre	Adventure
+m330	has_genre	Thriller
+m58	has_genre	Drama
+m96	has_director	James Strong
+m179	has_genre	Comedy
+m194	has_countries	Japan
+u4	has_rated	m75
+m49	has_genre	Drama
+m564	has_genre	Romance
+m83	has_genre	Romance
+m408	has_genre	Drama
+m58	has_genre	Romance
+u4	has_rated	m63
+m575	has_genre	Short
+m436	has_genre	Mystery
+m206	has_director	Douglas Keeve
+u4	has_rated	m141
+m175	has_genre	Drama
+m353	has_countries	nan
+m380	has_director	James Cameron
+m9	has_genre	Crime
+m148	has_director	Mike Newell
+m209	has_genre	Thriller
+m389	has_director	Yves Angelo
+m364	has_genre	Comedy
+u5	has_rated	m372
+m16	has_genre	Crime
+m548	has_genre	Action
+m263	has_countries	United Kingdom
+m42	has_genre	Crime
+m176	has_countries	United States
+m100	has_director	Harold Becker
+m551	has_director	Henry Selick
+m537	has_genre	Drama
+m421	has_countries	United States
+m489	has_countries	France
+m193	has_director	Paul Verhoeven
+m178	has_countries	Canada
+m278	has_director	David Frankel
+u4	has_rated	m383
+m520	has_director	Mel Brooks
+m381	has_genre	Romance
+m451	has_genre	Drama
+m360	has_genre	Romance
+u5	has_rated	m511
+m446	has_director	Kaige Chen
+m550	has_genre	Drama
+m261	has_genre	Family
+m260	has_countries	United States
+m494	has_director	Stuart Baird
+m24	has_genre	Drama
+m3	has_genre	Romance
+m433	has_director	Mick Jackson
+m155	has_genre	Adventure
+m452	has_genre	Thriller
+m450	has_countries	United States
+m195	has_genre	Comedy
+u4	has_rated	m104
+u1	has_rated	m531
+u5	has_rated	m430
+u3	has_rated	m547
+m287	has_genre	Romance
+m437	has_director	Michael Ritchie
+u5	has_rated	m140
+m4	has_genre	Drama
+u4	has_rated	m491
+m173	has_director	Danny Cannon
+u4	has_rated	m202
+m94	has_genre	Drama
+m516	has_genre	Drama
+m4	has_genre	Romance
+m223	has_genre	Comedy
+m54	has_genre	Sport
+m8	has_genre	Western
+m312	has_genre	Drama
+m77	has_countries	Germany
+u4	has_rated	m171
+m272	has_genre	Drama
+m352	has_genre	Comedy
+m185	has_genre	Thriller
+m567	has_countries	Spain
+m458	has_genre	Drama
+m440	has_director	Ivan Reitman
+u4	has_rated	m110
+m335	has_countries	United States
+u4	has_rated	m183
+m526	has_countries	France
+m454	has_genre	Thriller
+m194	has_genre	Drama
+m390	has_director	Rob Boor
+m359	has_genre	Romance
+m285	has_director	Vadim Jean
+m363	has_countries	Germany
+m333	has_genre	Comedy
+m417	has_genre	Drama
+m214	has_genre	Drama
+m519	has_director	Fred Dekker
+m45	has_countries	Canada
+m329	has_genre	Mystery
+m317	has_countries	nan
+m165	has_genre	Thriller
+u4	has_rated	m230
+m553	has_genre	Biography
+m214	has_countries	France
+u5	has_rated	m385
+m481	has_genre	Crime
+u3	has_rated	m499
+m289	has_genre	Comedy
+m76	has_countries	United Kingdom
+m501	has_genre	Drama
+m445	has_director	Carl Reiner
+m410	has_director	Barry Sonnenfeld
+m188	has_genre	Drama
+m362	has_genre	Adventure
+m332	has_genre	Sci-Fi
+m555	has_countries	United States
+m537	has_countries	Australia
+m42	has_director	Albert Hughes
+u5	has_rated	m358
+u4	has_rated	m275
+m224	has_genre	Romance
+m354	has_director	Ron Shelton
+m207	has_genre	Drama
+m193	has_countries	United States
+u4	has_rated	m242
+u5	has_rated	m158
+m319	has_director	Danny Boyle
+m420	has_director	John Landis
+m194	has_countries	Germany
+m83	has_genre	Drama
+m567	has_genre	Comedy
+m270	has_countries	United States
+u5	has_rated	m176
+m45	has_genre	Thriller
+u2	has_rated	m479
+m149	has_countries	France
+u5	has_rated	m311
+m524	has_director	David Anspaugh
+m539	has_countries	United States
+m489	has_director	Richard Benjamin
+m442	has_genre	Thriller
+m181	has_genre	Family
+m470	has_countries	United States
+m212	has_genre	Mystery
+m129	has_countries	Australia
+u3	has_rated	m83
+u2	has_rated	m389
+m425	has_genre	Drama
+m409	has_countries	United States
+u5	has_rated	m165
+m258	has_director	Michael Gottlieb
+u4	has_rated	m474
+u5	has_rated	m10
+m368	has_director	Richard Donner
+m316	has_countries	France
+m230	has_genre	Mystery
+m579	has_director	Ricky Tognazzi
+m458	has_genre	History
+m198	has_genre	Sci-Fi
+m547	has_genre	Action
+m95	has_genre	Thriller
+m304	has_genre	Drama
+m190	has_countries	United Kingdom
+m552	has_genre	Short
+m27	has_genre	Romance
+m579	has_genre	Action
+m22	has_genre	Thriller
+u1	has_rated	m205
+m332	has_genre	Thriller
+u4	has_rated	m487
+m347	has_genre	Romance
+m446	has_genre	Romance
+m228	has_genre	Fantasy
+m548	has_director	Deran Sarafian
+m266	has_genre	War
+m26	has_countries	United Kingdom
+m469	has_countries	Portugal
+m348	has_director	Woody Allen
+m511	has_genre	Action
+u2	has_rated	m410
+m425	has_director	Tony Richardson
+m85	has_genre	Romance
+u0	has_rated	m299
+m546	has_genre	Sci-Fi
+m308	has_genre	Comedy
+m379	has_director	Peter Hyams
+m318	has_countries	United States
+m391	has_genre	Crime
+m509	has_genre	Romance
+m549	has_genre	Music
+m101	has_countries	United States
+m457	has_genre	Mystery
+m538	has_director	Fred Schepisi
+u4	has_rated	m422
+m50	has_genre	Game-Show
+m534	has_director	Richard Attenborough
+m240	has_director	Brett Leonard
+m105	has_genre	Romance
+m239	has_countries	France
+m174	has_director	John Fortenberry
+m507	has_director	Clint Eastwood
+m202	has_countries	Belgium
+m505	has_genre	Drama
+m393	has_countries	United States
+m285	has_genre	Horror
+u5	has_rated	m4
+u0	has_rated	m267
+m459	has_genre	Action
+m512	has_genre	Comedy
+m252	has_genre	Romance
+m220	has_genre	Drama
+m246	has_genre	Sport
+m11	has_director	Rob Reiner
+m558	has_genre	Fantasy
+m438	has_genre	Action
+u3	has_rated	m310
+m177	has_countries	United States
+m457	has_genre	Crime
+m267	has_genre	Comedy
+u5	has_rated	m225
+u5	has_rated	m357
+m129	has_countries	United Kingdom
+m202	has_countries	France
+m380	has_countries	United States
+m269	has_genre	Crime
+m449	has_countries	United States
+m158	has_genre	Comedy
+m210	has_genre	Biography
+u3	has_rated	m359
+m171	has_genre	Comedy
+m231	has_genre	Talk-Show
+m93	has_genre	Horror
+m415	has_genre	Comedy
+m486	has_countries	United States
+m34	has_director	Chris Noonan
+m154	has_genre	Drama
+m426	has_director	Abel Ferrara
+m66	has_director	Farhad Mann
+m372	has_countries	United States
+u4	has_rated	m455
+m308	has_countries	France
+u5	has_rated	m231
+u2	has_rated	m312
+m70	has_countries	United States
+m343	has_director	Melanie Mayron
+m472	has_genre	Comedy
+m569	has_countries	United States
+m490	has_genre	Thriller
+m562	has_countries	United States
+u3	has_rated	m370
+u5	has_rated	m315
+m497	has_countries	United Kingdom
+m289	has_countries	United States
+m77	has_genre	Biography
+m485	has_director	John McTiernan
+u5	has_rated	m73
+m302	has_countries	Italy
+m295	has_genre	Comedy
+m328	has_genre	Talk-Show
+m564	has_genre	Comedy
+m107	has_genre	Adventure
+u4	has_rated	m220
+m257	has_genre	Action
+m86	has_countries	United States
+m372	has_genre	Drama
+u5	has_rated	m313
+m239	has_countries	Canada
+m334	has_genre	Romance
+m2	has_director	Joe Johnston
+m442	has_countries	United States
+m408	has_countries	United States
+m542	has_genre	Drama
+m113	has_countries	United States
+m42	has_genre	Action
+m558	has_genre	Animation
+m270	has_director	Glenn Gordon Caron
+u4	has_rated	m373
+m146	has_countries	United States
+u4	has_rated	m551
+u3	has_rated	m237
+m299	has_genre	Drama
+m5	has_genre	Family
+m302	has_genre	History
+u2	has_rated	m423
+m384	has_countries	United States
+m232	has_genre	Drama
+m430	has_genre	Comedy
+m15	has_director	Renny Harlin
+m154	has_director	Luis Buñuel
+u5	has_rated	m355
+m125	has_countries	United States
+m315	has_genre	Action
+m435	has_countries	United States
+m275	has_countries	United States
+m302	has_genre	Romance
+m379	has_genre	Action
+m475	has_countries	Ireland
+m481	has_genre	Thriller
+m379	has_countries	United States
+m185	has_genre	Mystery
+m240	has_genre	Thriller
+u3	has_rated	m482
+m523	has_genre	Romance
+m205	has_countries	United States
+m102	has_genre	Comedy
+m45	has_director	Gus Van Sant
+m558	has_genre	Adventure
+m100	has_countries	United States
+u5	has_rated	m371
+m310	has_director	Fred Gerber
+m196	has_director	Roger Donaldson
+m546	has_countries	United States
+m313	has_countries	United States
+u1	has_rated	m434
+m541	has_genre	Sci-Fi
+u2	has_rated	m574
+m5	has_countries	United States
+m495	has_genre	Romance
+m168	has_genre	Romance
+m573	has_director	Lina Wertmüller
+u3	has_rated	m345
+m495	has_director	Nagisa Ôshima
+m414	has_genre	Family
+m42	has_genre	War
+m506	has_countries	United Kingdom
+m499	has_genre	Romance
+m242	has_countries	United Kingdom
+m460	has_director	Howard Deutch
+u3	has_rated	m155
+m329	has_genre	Thriller
+u3	has_rated	m23
+m499	has_director	Anthony Minghella
+m391	has_countries	United States
+m528	has_countries	United States
+u2	has_rated	m413
+u4	has_rated	m468
+m29	has_genre	Fantasy
+m541	has_countries	United States
+m260	has_genre	Action
+u4	has_rated	m521
+m310	has_genre	Comedy
+m332	has_genre	Horror
+m174	has_countries	United States
+m58	has_countries	Belgium
+m256	has_genre	Sci-Fi
+u4	has_rated	m416
+m436	has_countries	United States
+m383	has_director	Lawrence Kasdan
+u5	has_rated	m318
+u5	has_rated	m71
+m488	has_countries	United States
+u5	has_rated	m260
+m7	has_director	Sydney Pollack
+m536	has_countries	United States
+m27	has_countries	United States
+m247	has_genre	Biography
+m218	has_countries	United States
+m502	has_genre	Family
+m260	has_genre	Fantasy
+m544	has_countries	United States
+m383	has_genre	Drama
+m466	has_director	Jim Abrahams
+m493	has_genre	Thriller
+m479	has_countries	Japan
+m420	has_genre	Action
+u2	has_rated	m539
+m302	has_genre	Biography
+m41	has_genre	Sci-Fi
+m431	has_director	Brian De Palma
+m10	has_director	Martin Campbell
+m214	has_director	Milcho Manchevski
+m70	has_genre	Horror
+m388	has_countries	United Kingdom
+m325	has_countries	United States
+m209	has_countries	France
+m365	has_countries	France
+m467	has_genre	Comedy
+m254	has_director	James Ivory
+m150	has_genre	Adventure
+m95	has_genre	Action
+m113	has_genre	Crime
+m383	has_genre	Biography
+m372	has_director	Ben Stiller
+m57	has_genre	Drama
+u4	has_rated	m523
+m442	has_genre	Sci-Fi
+m510	has_director	John Singleton
+m307	has_countries	Poland
+u5	has_rated	m13
+m299	has_genre	Romance
+m341	has_genre	Romance
+u5	has_rated	m250
+m371	has_countries	United States
+m156	has_countries	United States
+u3	has_rated	m562
+m357	has_countries	United Kingdom
+m518	has_genre	Talk-Show
+u4	has_rated	m507
+m476	has_genre	Romance
+m385	has_countries	Ireland
+m563	has_countries	France
+m449	has_countries	United Kingdom
+m196	has_genre	Sci-Fi
+m473	has_countries	United States
+u3	has_rated	m92
+m42	has_genre	Drama
+m459	has_genre	Adventure
+m337	has_director	Lasse Hallström
+u5	has_rated	m522
+m147	has_genre	Drama
+m240	has_countries	Canada
+u0	has_rated	m265
+m202	has_genre	Romance
+m11	has_genre	Romance
+m251	has_genre	Action
+m469	has_genre	Drama
+m89	has_genre	Thriller
+m455	has_countries	Mexico
+m351	has_genre	Romance
+u3	has_rated	m207
+m222	has_genre	Drama
+m146	has_genre	Adventure
+m541	has_director	Ridley Scott
+m161	has_director	Tony Scott
+m360	has_countries	United States
+m376	has_countries	United States
+m88	has_director	Penelope Spheeris
+m180	has_director	Kevin Smith
+m368	has_genre	Thriller
+m214	has_countries	United Kingdom
+u3	has_rated	m107
+m57	has_director	Jodie Foster
+m547	has_countries	United States
+m24	has_genre	Sci-Fi
+m416	has_genre	Action
+m273	has_countries	United States
+m468	has_countries	United Kingdom
+m97	has_countries	France
+m70	has_genre	Action
+m170	has_genre	Crime
+m252	has_genre	Comedy
+m186	has_director	Chris Columbus
+m39	has_genre	Comedy
+m34	has_genre	Drama
+m183	has_countries	Germany
+m68	has_countries	France
+u3	has_rated	m538
+u2	has_rated	m303
+m158	has_genre	Fantasy
+m452	has_genre	Comedy
+m183	has_countries	Russia
+m110	has_genre	History
+m429	has_director	Adam Resnick
+m190	has_genre	Drama
+m237	has_director	Billy Crystal
+m13	has_genre	Animation
+m294	has_director	Don DuPree
+m474	has_genre	Crime
+m181	has_genre	Sci-Fi
+m505	has_countries	United States
+m9	has_countries	United States
+m414	has_genre	Sport
+m479	has_genre	Drama
+m430	has_director	John Whitesell
+m259	has_countries	United States
+m249	has_countries	United Kingdom
+m321	has_director	Juan Carlos Tabío
+u5	has_rated	m38
+m195	has_genre	Romance
+m494	has_genre	Thriller
+m383	has_genre	Adventure
+m563	has_director	Claude Berri
+m412	has_countries	United States
+m421	has_genre	Drama
+m93	has_genre	Fantasy
+u1	has_rated	m433
+m49	has_director	Patricia Rozema
+m389	has_genre	Drama
+m416	has_genre	Western
+m371	has_director	Ron Howard
+m165	has_countries	United States
+m110	has_countries	United States
+m199	has_genre	Romance
+m289	has_genre	Romance
+u2	has_rated	m257
+m10	has_genre	Adventure
+m69	has_countries	United States
+u5	has_rated	m454
+u4	has_rated	m249
+u5	has_rated	m248
+m113	has_genre	Mystery
+m534	has_genre	Drama
+m296	has_genre	Drama
+m26	has_director	Oliver Parker
+m481	has_countries	United States
+m38	has_genre	Romance
+m555	has_genre	Drama
+m417	has_countries	United States
+m168	has_genre	Adventure
+m92	has_genre	Romance
+u5	has_rated	m367
+m278	has_genre	Comedy
+u0	has_rated	m261
+m44	has_genre	Action
+u3	has_rated	m415
+m478	has_genre	Drama
+u4	has_rated	m518
+u3	has_rated	m488
+m529	has_director	Steven Zaillian
+m227	has_countries	United States
