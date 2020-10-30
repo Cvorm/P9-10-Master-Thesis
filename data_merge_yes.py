@@ -6,6 +6,8 @@ import imdb
 import csv
 import networkx as nx
 from networkx import *
+import nltk
+from nltk import Tree
 
 #RENAME TO MDATA 4 MOVIE DATA
 moviesDB = imdb.IMDb()
@@ -23,14 +25,14 @@ def generate_bipartite_graph():
     data['movieId'] = 'm' + data['movieId'].astype(str)
 
     B = nx.DiGraph()
-    B.add_nodes_from(rdata.userId, bipartite=0)
-    B.add_nodes_from(rdata.movieId, bipartite=1)
+    B.add_nodes_from(rdata.userId, bipartite=0, user=True)
+    B.add_nodes_from(rdata.movieId, bipartite=1, movie=True)
     B.add_edges_from([(uId, mId) for (uId, mId) in rdata[['userId', 'movieId']].to_numpy()])
     for index, movie in data.iterrows():
         #print(movie)
         for genre in movie['genres']:
             #print(genre)
-            B.add_node(genre, bipartite=0)
+            B.add_node(genre, bipartite=0, genre=True)
             B.add_edge(movie['movieId'], genre)
 
     print(is_bipartite(B))
@@ -96,24 +98,33 @@ def most_def(g, leafs, internals):
         g.nodes[j1]['count'] = counterrr
 
 
+def generate_tet(g,spec): #,parent,current_node
+    #for hver node specification, add current node
 
+    for subtree in spec: #kør for subtrees
+        if type(subtree) == nltk.tree.Tree:
+            print(subtree)
+            generate_tet(g,subtree)
+    # for n, info in g.nodes(data=True):
+    #     if (info.get('genre')):
+    #         print(n)
 
-def generate_tet(g):
-    nx.set_node_attributes(g, 0, 'count')
-    users = [u for u in g.nodes if u[0] == 'u']
-    print(g.nodes(data=True))
-    leaf = [x for x in g.nodes() if g.out_degree(x) == 0 and g.in_degree(x) >= 1]
-    internal = [x for x in g.nodes() if g.out_degree(x) >= 1 and g.in_degree(x) >= 1]
-    print(leaf[0])
-    print(internal[0])
-    # for u in users:
-        # count_of_counts(u, g, leaf, internal)
-    most_def(g, leaf, internal)
-    #res = [idx for idx in test_list if idx[0].lower() == check.lower()]
-    # #users = {n for n, d in g.nodes(data=True) if d["bipartite"] == 0}
-    # for u in set1:
-    #     foo(u,g)
-    return g
+# def generate_tet(g):
+#     nx.set_node_attributes(g, 0, 'count')
+#     users = [u for u in g.nodes if u[0] == 'u']
+#     print(g.nodes(data=True))
+#     leaf = [x for x in g.nodes() if g.out_degree(x) == 0 and g.in_degree(x) >= 1]
+#     internal = [x for x in g.nodes() if g.out_degree(x) >= 1 and g.in_degree(x) >= 1]
+#     print(leaf[0])
+#     print(internal[0])
+#     # for u in users:
+#         # count_of_counts(u, g, leaf, internal)
+#     most_def(g, leaf, internal)
+#     #res = [idx for idx in test_list if idx[0].lower() == check.lower()]
+#     # #users = {n for n, d in g.nodes(data=True) if d["bipartite"] == 0}
+#     # for u in set1:
+#     #     foo(u,g)
+#     return g
 def transform_data():
     relations = ['has_genre', 'directed_by', 'rated','country'] #'acted_by',
     with open('Data/knowledge-tree.csv', 'w', encoding='utf-8') as f:
@@ -186,12 +197,12 @@ def split_data():
                 writer.writerow(ds.iloc[bookmark + j])
         bookmark = bookmark + round(len(ds) / 3 - 1)
 graph = generate_bipartite_graph()
-graph2 = generate_tet(graph)
+graph2 = generate_tet(graph, Tree.fromstring("(user(movie(genre)(actor))(movie(genre)(actor)))"))
 
-[print(x) for x in graph2.nodes(data=True) if x[0] == "u2"]
-yes = graph2.nodes['m1']['count']
+#[print(x) for x in graph2.nodes(data=True) if x[0] == "u2"]
+#yes = graph2.nodes['m1']['count']
 
-print(yes)
+#print(yes)
 # myesss = yes['count']
 # print(myesss)
 #print(graph2.nodes(data=True))
