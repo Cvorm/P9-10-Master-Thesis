@@ -4,6 +4,7 @@ import networkx as nx
 import matplotlib.pyplot as plt
 import re
 import nltk
+from nltk import Tree
 import numpy as np
 
 # class TET:
@@ -27,17 +28,57 @@ import numpy as np
 #     def makeTET(self, vars):
 #         self.freevars = vars
 
-def TETSpec(tet_spec):
-    nltk_tokens = nltk.word_tokenize(tet_spec)
+# def Parse(tokens):
+#     buffer = []
+#     buffer.append(tokens[0])
+#     buffer.append(tokens[1])
+#     print(tokens)
+#     print(buffer)
+#     if buffer[0]
+# def TETSpec(tet_spec):
+#     nltk_tokens = nltk.word_tokenize(tet_spec)
+#     graph = nx.Graph()
+#     Parse(nltk_tokens)
+#     # if(not(nltk_tokens[0] == "[")):
+#     #     print("incorrect tet string")
+#     #     exit(0)
+#     #
+#     # Parse(tet_spec)
+#     # while(not(nltk_tokens[0] == "]")):
+#     #     token = nltk_tokens[0]
+#     #     if(not(token == "[")):
+#     #         print("incorrect tet string")
+#     #         exit(0)
+#     #     print(nltk_tokens)
+#     #     while()
+#     #     nltk_tokens.pop(0)
 
-    if(not(nltk_tokens[0] == "[")):
-        print("incorrect tet string")
+# def TETSpec(tet_spec):
+#
+#     tree = Tree.fromstring(tet_spec)
+#     tree.pretty_print()
+#     # yes = tree.label()
+#     # tree.treepositions()
+#     graph = nx.Graph()
+#     graph.add_node(tree.label())
+#     traverse_tree(tree, graph)
+#     for x in tree:
+# #         print(x)
+# def get_count(graph):
+#     if descendants()
 
-    while(nltk_tokens):
-        print(nltk_tokens)
-        nltk_tokens.pop(-1)
+def traverse_tree(tree):
 
-TETSpec("[i take it you are down with this nigga]")
+    print("tree:", tree)
+    for subtree in tree:
+        if type(subtree) == nltk.tree.Tree:
+            traverse_tree(subtree)
+    # # print(yes)
+
+# TETSpec("(movie[M](comedy[M])(romance[M]))")
+tree = Tree.fromstring("(user(movie(genre)(actor))(movie(genre)(actor)))")
+print(tree)
+traverse_tree(tree)
     # for token in nltk_tokens:
 
 
