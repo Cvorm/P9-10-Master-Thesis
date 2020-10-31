@@ -108,11 +108,13 @@ def most_def(g, leafs, internals):
         g.nodes[j1]['count'] = counterrr
 
 
-def generate_tet(g,cn,spec): #,parent,current_node
+def generate_tet(g,cn,spec): #brug specification to calculate edges, kører users i ydre loop
+    #print(spec.predecessors(cn))
     neighbors = [n for n in spec.neighbors(f'{cn}')]
     if len(neighbors) == 0:
         for x, info in g.nodes(data=True):
             if info.get(f'{cn}'):
+                print(x)
                 multi = Multiset("user1")
                 multi.add_leaf(str(x))
                 return multi
@@ -121,8 +123,9 @@ def generate_tet(g,cn,spec): #,parent,current_node
             ms = generate_tet(g,n,spec)
         for x, info in g.nodes(data=True):
             if info.get(f'{cn}'):
+                print(x)
                 ms.add_internal_w_leaves(x)
-                return(ms)
+                #return(ms)
     return ms
 
 
