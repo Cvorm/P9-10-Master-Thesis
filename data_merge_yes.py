@@ -39,6 +39,16 @@ def generate_bipartite_graph():
     return B
 
 
+def nested_list(nodes, edges):
+    g = nx.DiGraph()
+    g.add_nodes_from(nodes)
+    g.add_edges_from(edges)
+    nx.set_node_attributes(g, 'null', 'type')
+    for n in g.nodes:
+        g.nodes(data=True)[n]['type'] = n
+    return g
+
+
 def foo(n,g):
     e = g.edges(n)
     g.nodes[n]['count'] += len(e)
@@ -98,13 +108,52 @@ def most_def(g, leafs, internals):
         g.nodes[j1]['count'] = counterrr
 
 
-def generate_tet(g,spec): #,parent,current_node
-    #for hver node specification, add current node
+def generate_tet(g,cn,spec): #,parent,current_node
+    neighbors = [n for n in spec.neighbors(f'{cn}')]
+    if len(neighbors) == 0:
+        for x, info in g.nodes(data=True):
+            if info.get(f'{cn}'):
+                print(x)
+                #return TET
+    else:
+        for n in neighbors:
+            generate_tet(g,n,spec)
+        for x, info in g.nodes(data=True):
+            if info.get(f'{cn}'):
+                print(x)
+                    #return TET
+    return "tet"
 
-    for subtree in spec: #kør for subtrees
-        if type(subtree) == nltk.tree.Tree:
-            print(subtree)
-            generate_tet(g,subtree)
+
+
+    #for hver node specification, add current node
+    # for subtree in spec(data=True): #kør for subtrees
+    #     print(subtree)
+    #     if subtree.out_edges == 0:
+    #         print('child')
+    #         for n, info in g.nodes(data=True):
+    #             if (info.get(f'{subtree}')):
+    #                 ms += 1
+    #         return ms
+    #     else:
+    #         ms_tmp = generate_tet(g,subtree,ms)
+    #         for n, info in g.nodes(data=True):
+    #             if (info.get(f'{subtree}')):
+    #                 ms +=1
+    #         return ms
+    # return ms
+            # for loop for all leaf nodes in G(spec)
+            #add internal
+
+        # if type(subtree) == nltk.tree.Tree:
+        #     #print(subtree.label())
+        #     for n, info in g.nodes(data=True):
+        #         if info.get(f'{subtree.label()}'):
+        #             a.append('a')
+        #             #print(info)
+        #         #print(subtree.label())
+        #     generate_tet(g,subtree)
+        #     #print(subtree)
     # for n, info in g.nodes(data=True):
     #     if (info.get('genre')):
     #         print(n)
@@ -196,8 +245,14 @@ def split_data():
             for j in range(round(len(ds) / 3) - 1):
                 writer.writerow(ds.iloc[bookmark + j])
         bookmark = bookmark + round(len(ds) / 3 - 1)
+
+
+# tree = Tree.fromstring("(user(movie(genre))(movie(genre)))")
+# print(tree.leaves())
 graph = generate_bipartite_graph()
-graph2 = generate_tet(graph, Tree.fromstring("(user(movie(genre)(actor))(movie(genre)(actor)))"))
+speci = nested_list(["user","movie","genre"],[("user","movie"),("movie","genre")])
+graph2 = generate_tet(graph,'user',speci)
+
 
 #[print(x) for x in graph2.nodes(data=True) if x[0] == "u2"]
 #yes = graph2.nodes['m1']['count']
