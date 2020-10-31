@@ -46,9 +46,9 @@ class Multiset:
     #     count = Counter()
     #     count[node] += 1
 
-multi = Multiset("Yes")
+multi = Multiset("user1")
 multi.add_leaf("action")
-multi.add_leaf("bullshit")
+multi.add_leaf("bromance")
 yes = multi.add_internal_w_leaves("movie")
 yesss = multi.add_internal("user", yes)
 print(yesss)
