@@ -8,7 +8,7 @@ import networkx as nx
 from networkx import *
 import nltk
 from nltk import Tree
-
+from multiset import *
 #RENAME TO MDATA 4 MOVIE DATA
 moviesDB = imdb.IMDb()
 data = pd.read_csv('Data/movies.csv')
@@ -113,16 +113,17 @@ def generate_tet(g,cn,spec): #,parent,current_node
     if len(neighbors) == 0:
         for x, info in g.nodes(data=True):
             if info.get(f'{cn}'):
-                print(x)
-                #return TET
+                multi = Multiset("user1")
+                multi.add_leaf(str(x))
+                return multi
     else:
         for n in neighbors:
-            generate_tet(g,n,spec)
+            ms = generate_tet(g,n,spec)
         for x, info in g.nodes(data=True):
             if info.get(f'{cn}'):
-                print(x)
-                    #return TET
-    return "tet"
+                ms.add_internal_w_leaves(x)
+                return(ms)
+    return ms
 
 
 
@@ -252,7 +253,7 @@ def split_data():
 graph = generate_bipartite_graph()
 speci = nested_list(["user","movie","genre"],[("user","movie"),("movie","genre")])
 graph2 = generate_tet(graph,'user',speci)
-
+print(graph2)
 
 #[print(x) for x in graph2.nodes(data=True) if x[0] == "u2"]
 #yes = graph2.nodes['m1']['count']
