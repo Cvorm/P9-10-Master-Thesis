@@ -108,25 +108,25 @@ def most_def(g, leafs, internals):
         g.nodes[j1]['count'] = counterrr
 
 
-def generate_tet(g,cn,spec): #brug specification to calculate edges, kører users i ydre loop
-    #print(spec.predecessors(cn))
-    neighbors = [n for n in spec.neighbors(f'{cn}')]
-    if len(neighbors) == 0:
-        for x, info in g.nodes(data=True):
-            if info.get(f'{cn}'):
-                print(x)
-                multi = Multiset("user1")
-                multi.add_leaf(str(x))
-                return multi
-    else:
-        for n in neighbors:
-            ms = generate_tet(g,n,spec)
-        for x, info in g.nodes(data=True):
-            if info.get(f'{cn}'):
-                print(x)
-                ms.add_internal_w_leaves(x)
-                #return(ms)
-    return ms
+# def generate_tet(g,cn,spec): #brug specification to calculate edges, kører users i ydre loop
+#     #print(spec.predecessors(cn))
+#     neighbors = [n for n in spec.neighbors(f'{cn}')]
+#     if len(neighbors) == 0:
+#         for x, info in g.nodes(data=True):
+#             if info.get(f'{cn}'):
+#                 print(x)
+#                 multi = Multiset("user1")
+#                 multi.add_leaf(str(x))
+#                 return multi
+#     else:
+#         for n in neighbors:
+#             ms = generate_tet(g,n,spec)
+#         for x, info in g.nodes(data=True):
+#             if info.get(f'{cn}'):
+#                 print(x)
+#                 ms.add_internal_w_leaves(x)
+#                 #return(ms)
+#     return ms
 
 
 
@@ -250,6 +250,62 @@ def split_data():
                 writer.writerow(ds.iloc[bookmark + j])
         bookmark = bookmark + round(len(ds) / 3 - 1)
 
+def generate_tet(graph, root ,spec):
+    roots = [n for n, info in graph.nodes(data=True) if info.get(f'{root}')]
+    complete = list(nx.Graph())
+    # print(roots)
+    # yes = nx.Graph()
+    # yes.add_node("nigga")
+    # dude.append(yes)
+    # yes2 = nx.Graph()
+    # yes2.add_node("please")
+    # dude.append(yes2)
+    # for x in dude:
+    #     print(x.nodes())
+
+    # subgraph = [n for n in graph.neighbors(roots[0])]
+    # print(subgraph)
+    # for m in subgraph:
+    #     nodes = [n for n in dfs_edges(graph, source=m)]
+    #     print(nodes)
+
+    # for n in roots:
+    # movies = [n for n, info in graph.nodes(data=True) if info.get()]
+    # print(nodes)
+    # for x in nodes:
+    #     print(x)
+    # print(nodes)
+    complete.append(generate_tet_yes(graph, roots[0], spec))
+#         subgraph = descendants(n, )
+#         # subgraphs.append()
+def check_in_list(list, element):
+     new = [x[0] for x in list]
+     # print(new)
+     if(element in new):
+         return True
+     else:
+         return False
+
+
+def generate_tet_yes(graph, user, spec):
+    print("yes")
+    nodes = [n[-1] for n in dfs_edges(spec, source="user")]
+    subgraph = [n for n in graph.neighbors(user) if n[0] == f'{nodes[0][0]}']
+    for i in subgraph:
+        nodess = [n for n in dfs_edges(graph, source=i)]
+        # print(nodess[0])
+        # check_in_list(nodess, "yes")
+        for x in nodess:
+            if check_in_list(nodess, x[1]):
+                print("internal node:", x)
+            else:
+                print("leaf node:", x)
+            # if([j for j in nodess[j][0] if x[1] in j]):
+            # # if(x[1])
+            #     print(x)
+
+        print("----------")
+    print(subgraph)
 
 # tree = Tree.fromstring("(user(movie(genre))(movie(genre)))")
 # print(tree.leaves())
