@@ -252,7 +252,7 @@ def split_data():
 
 def generate_tet(graph, root ,spec):
     roots = [n for n, info in graph.nodes(data=True) if info.get(f'{root}')]
-    complete = list(nx.Graph())
+    complete = []
     # print(roots)
     # yes = nx.Graph()
     # yes.add_node("nigga")
@@ -278,43 +278,48 @@ def generate_tet(graph, root ,spec):
     complete.append(generate_tet_yes(graph, roots[0], spec))
 #         subgraph = descendants(n, )
 #         # subgraphs.append()
-def check_in_list(list, element):
+    return complete
+
+
+def is_internal(element, list):
      new = [x[0] for x in list]
-     # print(new)
-     if(element in new):
+     if (element in new):
          return True
      else:
          return False
 
 
 def generate_tet_yes(graph, user, spec):
-    print("yes")
     nodes = [n[-1] for n in dfs_edges(spec, source="user")]
+    ms = Multiset()
+    ms.add_root(user, len(graph.out_edges(user)))
     subgraph = [n for n in graph.neighbors(user) if n[0] == f'{nodes[0][0]}']
     for i in subgraph:
         nodess = [n for n in dfs_edges(graph, source=i)]
-        # print(nodess[0])
-        # check_in_list(nodess, "yes")
         for x in nodess:
-            if check_in_list(nodess, x[1]):
-                print("internal node:", x)
-            else:
-                print("leaf node:", x)
-            # if([j for j in nodess[j][0] if x[1] in j]):
-            # # if(x[1])
-            #     print(x)
-
-        print("----------")
-    print(subgraph)
+            if len(graph.out_edges(x[0])) > 0:
+                # add_node (x[1]) with count 1
+                ms.add_node_w_count(x[0], len((graph.out_edges(x[0]))))
+            #if not(is_internal(x[1], nodess_reversed)):
+            if len(graph.out_edges(x[1])) == 0:
+                # add_node (x[1]) with count 1
+                ms.add_node_w_count(x[1], 1)
+        for (k,l) in nodess:
+            ms.add_edge((k,l))
+    for (e1,e2) in graph.edges(user):
+        ms.add_edge((e1,e2))
+    return ms
 
 # tree = Tree.fromstring("(user(movie(genre))(movie(genre)))")
 # print(tree.leaves())
 graph = generate_bipartite_graph()
 speci = nested_list(["user","movie","genre"],[("user","movie"),("movie","genre")])
 graph2 = generate_tet(graph,'user',speci)
-print(graph2)
+print(graph2[0].graph.nodes(data=True))
+graph2[0].foo()
+#print(graph2)
 
-#[print(x) for x in graph2.nodes(data=True) if x[0] == "u2"]
+#[x.foo() for x in graph2]
 #yes = graph2.nodes['m1']['count']
 
 #print(yes)

@@ -8,11 +8,12 @@ class Multiset:
         g = nx.DiGraph()
         self.graph = g
 
-    def add_root(self,node):
-        self.graph.add_node(node, count=0, mult=[],root=True)
+    def add_root(self,node, c):
+        self.graph.add_node(node, count=c, mult=[],root=True)
 
     def add_node_w_count(self,node,c):
-        self.graph.add_node(node,count=c)
+        if not self.graph.has_node(node):
+            self.graph.add_node(node,count=c, mult=0)
 
     def add_node(self, node):
         self.graph.add_node(node, count=1, mult=0)
@@ -25,7 +26,7 @@ class Multiset:
         self.graph.add_edge(v1,v2, weight=0)
 
     def add_edges(self, edge):
-        self.graph.add_nodes_from(edge, weight=0)
+        self.graph.add_edges_from(edge, weight=0)
 
     def get_graph(self):
         return self.graph
@@ -45,16 +46,12 @@ class Multiset:
             self.__count_helper(n)
             print(n)
 
-    def __bar(self,pred):
+    def __bar(self, pred):
         predecessors = [list(self.graph.predecessors(node)) for node in pred]
         final = list(set(self.__flat_list(predecessors)))
-        if len(final) == 0:
-            return "hello"
-        else:
+        if len(pred) > 0:
             for x in pred:
-                print(x)
                 for p in final:
-                    print(p)
                     if self.graph.nodes(data=True)[p]['root']:
                         combined = [(self.graph.nodes(data=True)[x]['count'],self.graph.nodes(data=True)[x]['mult'])]
                         self.graph.nodes(data=True)[p]['mult'] += combined
@@ -75,31 +72,38 @@ class Multiset:
         leaf_nodes = [node for node in self.graph.nodes if (self.graph.in_degree(node) != 0 and self.graph.out_degree(node) == 0)]
         predecessors = [list(self.graph.predecessors(node)) for node in leaf_nodes]
         final = list(set(self.__flat_list(predecessors)))
-        for leaf in leaf_nodes:
-            for pred in self.graph.predecessors(leaf):
-                self.graph.nodes(data=True)[pred]['mult'] += self.graph.nodes(data=True)[leaf].get('count')
         self.__bar(final)
-
+        root = [x for x, y in self.graph.nodes(data=True) if y.get('root')]
+        print(root)
+        ree = list(self.graph.nodes(data=True)[root[0]]['mult'])
+        for ind,(n,m) in enumerate(ree):
+            for ind2, (nn,mm) in enumerate(ree):
+                if n == nn:
+                    v = n + 1
+                    ree[ind] = (nn, v)
+                    ree[ind2] = (nn,v)
+        self.graph.nodes(data=True)[root[0]]['mult'] = ree
+        print(ree)
         print(self.graph.nodes(data=True))
 
 
 #example graph
-ms = Multiset()
-ms.add_root('u1')
-ms.add_node('m1')
-ms.add_node('m2')
-ms.add_node('action')
-ms.add_node('comedy')
-ms.add_node('bromance')
-ms.add_edge(('u1','m1'))
-ms.add_edge(('u1','m2'))
-ms.add_edge(('m2','action'))
-ms.add_edge(('m2','comedy'))
-ms.add_edge(('m1','action'))
-ms.add_edge(('m1','comedy'))
-ms.add_edge(('m1','bromance'))
-
-ms.foo()
+# ms = Multiset()
+# ms.add_root('u1')
+# ms.add_node('m1')
+# ms.add_node('m2')
+# ms.add_node('action')
+# ms.add_node('comedy')
+# ms.add_node('bromance')
+# ms.add_edge(('u1','m1'))
+# ms.add_edge(('u1','m2'))
+# ms.add_edge(('m2','action'))
+# ms.add_edge(('m2','comedy'))
+# ms.add_edge(('m1','action'))
+# ms.add_edge(('m1','comedy'))
+# ms.add_edge(('m1','bromance'))
+#
+# ms.foo()
 
 
 # class Multiset:
