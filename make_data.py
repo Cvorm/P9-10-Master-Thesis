@@ -18,10 +18,6 @@ from surprise import prediction_algorithms
 import surprise as sur
 from surprise import KNNBasic
 from surprise.model_selection import train_test_split, cross_validate, KFold
-# res = pd.DataFrame({'title': pd.Series([], dtype='str'),
-#                    'genre': pd.Series([], dtype='str'),
-#                    'directors': pd.Series([], dtype='str'),
-#                    'cast': pd.Series([], dtype='str')})
 
 
  # conn = sqlite3.connect('TestDB.db')  # You can create a new database by changing the name within the quotes
@@ -31,29 +27,30 @@ from surprise.model_selection import train_test_split, cross_validate, KFold
 # res2 = pd.DataFrame(columns=['userId', 'movieId', 'rating', ])
 # # res['directors'] = res['directors'].fillna('')
 # moviesDB = imdb.IMDb()
-moviesDB = IMDb('s3', 'sqlite:///C:\\Users\\Darkmaster\\PycharmProjects\\Recommender\\TestDB.db')
 
-# results = DB.search_movie('the matrix')
-# for result in results:
-#     print(result.movieID, result)
-link_data = pd.read_csv('Data/links.csv')
-movies_data = pd.read_csv('Data/movies.csv')
-ratings = pd.read_csv('Data/ratings.csv')
-res = pd.DataFrame(columns=['userId', 'movieId', 'rating', 'timestamp', 'title', 'genre', 'directors', 'cast'])
-res['userId'] = ratings['userId']
-res['movieId'] = ratings['movieId']
-res['rating'] = ratings['rating']
-res['timestamp'] = ratings['timestamp']
 
 #yes
 
 
-print(res.head(5))
-print(res["genre"])
+# print(res.head(5))
+# print(res["genre"])
 # # kg = pd.DataFrame(columns=['head', 'relation', 'tail'])
 # # print(data)
 #
-def get_data(num_ratings):
+def get_data(num_ratings, file_name):
+    moviesDB = IMDb('s3', 'sqlite:///C:\\Users\\Darkmaster\\PycharmProjects\\Recommender\\TestDB.db')
+
+    # results = DB.search_movie('the matrix')
+    # for result in results:
+    #     print(result.movieID, result)
+    link_data = pd.read_csv('Data/links.csv')
+    movies_data = pd.read_csv('Data/movies.csv')
+    ratings = pd.read_csv('Data/ratings.csv')
+    res = pd.DataFrame(columns=['userId', 'movieId', 'rating', 'timestamp', 'title', 'genre', 'directors', 'cast'])
+    res['userId'] = ratings['userId']
+    res['movieId'] = ratings['movieId']
+    res['rating'] = ratings['rating']
+    res['timestamp'] = ratings['timestamp']
 
     for x in range(num_ratings):
         # for x in range(5):
@@ -128,12 +125,15 @@ def get_data(num_ratings):
         else:
             res.at[x, 'cast'] = 'null'
 
-get_data(500)
+    res.to_csv(file_name, index=False)
+
+get_data(500, 'testtest.csv')
+
 # get_data(5)
 # get_data(3)
-print(res.head())
+# print(res.head())
 # print(res['cast'])
-res.to_csv('testtest.csv', index=False)
+# yes.to_csv('testtest.csv', index=False)
 #
 
 # stingerBELL = "Heat (1995)"
