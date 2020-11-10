@@ -13,7 +13,7 @@ from surprise.model_selection import GridSearchCV
 from surprise import accuracy
 from surprise.model_selection import train_test_split, cross_validate, KFold
 
-data = pd.read_csv('Data/ratings.csv')
+data = pd.read_csv('../Data/ratings.csv')
 
 data['userId'] = 'u' + data['userId'].astype(str)
 data['movieId'] = 'i' + data['movieId'].astype(str)

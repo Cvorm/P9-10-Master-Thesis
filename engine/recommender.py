@@ -1,18 +1,10 @@
-import matplotlib.pyplot as plt
 import pandas as pd
-from collections import Counter
-import numpy as np
 import imdb
-import csv
-import networkx as nx
-from networkx import *
-import nltk
-from nltk import Tree
-from multiset import *
+from engine.multiset import *
 #RENAME TO MDATA 4 MOVIE DATA
 moviesDB = imdb.IMDb()
-data = pd.read_csv('Data/movies.csv')
-ratings = pd.read_csv('Data/ratings.csv')
+data = pd.read_csv('../Data/movies.csv')
+ratings = pd.read_csv('../Data/ratings.csv')
 kg = pd.DataFrame(columns=['head', 'relation', 'tail'])
 rdata = pd.DataFrame(columns=['userId', 'movieId', 'rating'])
 
