@@ -37,7 +37,7 @@
 #     combined_and_shuffled_csv.to_csv("Data\combined.csv", index=False, sep='\t')
 def transform_data():
     relations = ['has_genre', 'directed_by', 'rated','country'] #'acted_by',
-    with open('Data/knowledge-tree.csv', 'w', encoding='utf-8') as f:
+    with open('../Data/knowledge-tree.csv', 'w', encoding='utf-8') as f:
         writer = csv.writer(f, delimiter='\t')
         writer.writerow(('head', 'relation', 'tail'))
         for x in range(500):  # len(data)

@@ -43,9 +43,9 @@ def get_data(num_ratings, file_name):
     # results = DB.search_movie('the matrix')
     # for result in results:
     #     print(result.movieID, result)
-    link_data = pd.read_csv('Data/links.csv')
-    movies_data = pd.read_csv('Data/movies.csv')
-    ratings = pd.read_csv('Data/ratings.csv')
+    link_data = pd.read_csv('../Data/links.csv')
+    movies_data = pd.read_csv('../Data/movies.csv')
+    ratings = pd.read_csv('../Data/ratings.csv')
     res = pd.DataFrame(columns=['userId', 'movieId', 'rating', 'timestamp', 'title', 'genre', 'directors', 'cast'])
     res['userId'] = ratings['userId']
     res['movieId'] = ratings['movieId']

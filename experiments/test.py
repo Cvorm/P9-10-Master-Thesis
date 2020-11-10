@@ -13,14 +13,14 @@ from surprise.model_selection import GridSearchCV
 from surprise import accuracy
 from surprise.model_selection import train_test_split, cross_validate, KFold
 
-data = pd.read_csv('Data/ratings.csv')
+data = pd.read_csv('../Data/ratings.csv')
 # print(data.head(10))
 # print(data)
 # data = pd.Dataset.load_builtin("ml-100k")
 reader = Reader(rating_scale=(1, 10))
 data_test = Dataset.load_from_df(data[['userId', 'movieId', 'rating']], reader)
 
-KG = pd.read_csv('Data\knowledge-tree.csv', delimiter='\t',encoding='utf-8')
+KG = pd.read_csv('../Data/knowledge-tree.csv', delimiter='\t', encoding='utf-8')
 print(KG.head(10))
 print(data.head(10))
 # testdata = Dataset.load_from_df(data[[]], reader)
