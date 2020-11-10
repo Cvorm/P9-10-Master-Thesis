@@ -9,8 +9,8 @@ from networkx import *
 
 #RENAME TO MDATA 4 MOVIE DATA
 moviesDB = imdb.IMDb()
-data = pd.read_csv('Data/movies.csv')
-ratings = pd.read_csv('Data/ratings.csv')
+data = pd.read_csv('../Data/movies.csv')
+ratings = pd.read_csv('../Data/ratings.csv')
 kg = pd.DataFrame(columns=['head', 'relation', 'tail'])
 rdata = pd.DataFrame(columns=['userId', 'movieId', 'rating'])
 
@@ -62,7 +62,7 @@ def generate_tet(g):
     return g
 def transform_data():
     relations = ['has_genre', 'directed_by', 'rated','country'] #'acted_by',
-    with open('Data/knowledge-tree.csv', 'w', encoding='utf-8') as f:
+    with open('../Data/knowledge-tree.csv', 'w', encoding='utf-8') as f:
         writer = csv.writer(f, delimiter='\t')
         writer.writerow(('head', 'relation', 'tail'))
         for x in range(500):  # len(data)
@@ -122,7 +122,7 @@ def transform_data():
 
 
 def split_data():
-    ds_init = pd.read_csv('Data\knowledge-tree.csv', delimiter='\t', encoding='utf-8')  # engine='python'
+    ds_init = pd.read_csv('../Data/knowledge-tree.csv', delimiter='\t', encoding='utf-8')  # engine='python'
     ds = ds_init.sample(frac=1)  # shuffles the data
     bookmark = 0  # len(ds)
     for i in ['movie-train', 'movie-valid', 'movie-test']:

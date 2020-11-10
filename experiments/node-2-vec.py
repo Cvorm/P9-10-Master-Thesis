@@ -16,7 +16,7 @@ def make_edgelist(filename):
     # print(edgelist)
     return edgelist
 
-edges = make_edgelist("Data/movie-train.txt")
+edges = make_edgelist("../Data/movie-train.txt")
 graph = nx.Graph(edges)
 node2vec_obj = Node2Vec(graph, dimensions=20, walk_length=30, num_walks=200, p=1, q=1, workers=1)
 node2vec_model = node2vec_obj.fit(window=10, min_count=1, batch_words=4)
