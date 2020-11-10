@@ -1,3 +1,5 @@
+import math
+
 from anytree import Node, RenderTree
 from collections import Counter
 from networkx import *
@@ -9,17 +11,17 @@ class Multiset:
         self.graph = g
 
     def add_root(self,node, c):
-        self.graph.add_node(node, count=c, mult=[],root=True)
+        self.graph.add_node(node, count=c, mult=[],root=True,weight=0,value=0)
 
     def add_node_w_count(self,node,c):
         if not self.graph.has_node(node):
-            self.graph.add_node(node,count=c, mult=0)
+            self.graph.add_node(node,count=c, mult=0,weight=0,value=0)
 
     def add_node(self, node):
-        self.graph.add_node(node, count=1, mult=0)
+        self.graph.add_node(node, count=0, mult=0,weight=0,value=0)
 
     def add_nodes(self, node):
-        self.graph.add_nodes_from(node, count=0, mult=0)
+        self.graph.add_nodes_from(node, count=0, mult=0,weight=0,value=0)
 
     def add_edge(self, edge):
         (v1,v2) = edge
@@ -46,7 +48,7 @@ class Multiset:
             self.__count_helper(n)
             print(n)
 
-    def __bar(self, pred):
+    def __count_tree(self, pred):
         predecessors = [list(self.graph.predecessors(node)) for node in pred]
         final = list(set(self.__flat_list(predecessors)))
         if len(pred) > 0:
@@ -57,7 +59,7 @@ class Multiset:
                         self.graph.nodes(data=True)[p]['mult'] += combined
                     else:
                         self.graph.nodes(data=True)[p]['mult'] += self.graph.nodes(data=True)[x]['mult']
-            self.__bar(final)
+            self.__count_tree(final)
 
 
     @staticmethod
@@ -68,11 +70,11 @@ class Multiset:
                 flat_list.append(item)
         return flat_list
 
-    def foo(self):
+    def count_tree(self):
         leaf_nodes = [node for node in self.graph.nodes if (self.graph.in_degree(node) != 0 and self.graph.out_degree(node) == 0)]
         predecessors = [list(self.graph.predecessors(node)) for node in leaf_nodes]
         final = list(set(self.__flat_list(predecessors)))
-        self.__bar(final)
+        self.__count_tree(final)
         root = [x for x, y in self.graph.nodes(data=True) if y.get('root')]
         print(root)
         ree = list(self.graph.nodes(data=True)[root[0]]['mult'])
@@ -85,6 +87,45 @@ class Multiset:
         self.graph.nodes(data=True)[root[0]]['mult'] = ree
         print(ree)
         print(self.graph.nodes(data=True))
+
+    def __sigmoid(self, x):
+        return 1 / (1 + math.exp(-x))
+
+    def __set_weight(self,n,w):
+
+        if self.graph.has_node(n):
+            self.graph.nodes(data=True)[n]['weight'] = w
+        else:
+            (e1,e2) = n
+            if self.graph.has_edge(e1,e2):
+                self.graph[e1][e2]['weight'] = w
+
+    def __logistic_eval(self, node, bias, weight, leafs):
+        edges = list(self.graph.out_edges(node))
+        [self.__set_weight(e,weight) for e in edges]
+        if not node in leafs:
+            #print('NOT')
+            self.__set_weight(node, bias)
+            for n in self.graph.neighbors(node):
+                self.__logistic_eval(n, bias, weight, leafs)
+
+            var = [self.graph.nodes(data=True)[n]['value'] for n in self.graph.neighbors(node)].count(1)
+            v_b = bias + (len(self.graph.out_edges(node)) * weight) * var
+            v = self.__sigmoid(v_b)
+            self.graph.nodes(data=True)[node]['value'] = v
+
+        if node in leafs:
+            #print('LEAF')
+            self.__set_weight(node,1)
+            self.graph.nodes(data=True)[node]['value'] = weight
+
+    def logistic_eval(self,bias,weight):
+        # set weight root, and iterate through each edge from root to internal node
+        leaf_nodes = [node for node in self.graph.nodes if
+                      (self.graph.in_degree(node) != 0 and self.graph.out_degree(node) == 0)]
+        root = [x for x, y in self.graph.nodes(data=True) if y.get('root')]
+        self.__logistic_eval(root[0], bias, weight, leaf_nodes)
+
 
 
 #example graph
@@ -104,56 +145,3 @@ class Multiset:
 # ms.add_edge(('m1','bromance'))
 #
 # ms.foo()
-
-
-# class Multiset:
-#     tree = []
-#     root = Node("")
-#     leaves = Counter()
-#     def get_multiset(self):
-#         return self.multi
-#
-#     def set_multiset(self, x):
-#         self.multi = x
-#
-#     def __init__(self, root):
-#         self.root = Node(root)
-#
-#     def add_leaf(self, genre):
-#         self.leaves[genre] += 1
-#
-#     def add_internal_w_leaves(self, node):
-#         count = Counter()
-#         count[node] += 1
-#         subtree = []
-#         subtree.append(count)
-#         subtree.append([self.leaves])
-#         self.leaves = Counter()
-#         return subtree
-#
-#     def add_internal(self, node, list):
-#         count = Counter()
-#         count[node] += 1
-#         subtree = []
-#         subtree.append(count)
-#         res = []
-#         for node in list:
-#             res.append(node)
-#         subtree.append([res])
-#         return subtree
-    # def add_leaves(self, list):
-    #     list_leaves = []
-    #     for count in list:
-    #         list_leaves
-    # def add_internal_with_leaves(self, node):
-    #     if(len(self.leaves) < 1):
-    #         print("No leaves to add")
-    #     count = Counter()
-    #     count[node] += 1
-
-# multi = Multiset("user1")
-# multi.add_leaf("action")
-# multi.add_leaf("bromance")
-# yes = multi.add_internal_w_leaves("movie")
-# yesss = multi.add_internal("user", yes)
-# print(yesss)
