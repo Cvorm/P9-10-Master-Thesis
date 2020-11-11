@@ -1,5 +1,5 @@
 import math
-
+import numpy as np
 from anytree import Node, RenderTree
 from collections import Counter
 from networkx import *
@@ -11,17 +11,17 @@ class Multiset:
         self.graph = g
 
     def add_root(self,node, c):
-        self.graph.add_node(node, count=c, mult=[],root=True,weight=0,value=0)
+        self.graph.add_node(node, count=c, mult=[],root=True,weight=0,value=0,hist=[])
 
     def add_node_w_count(self,node,c):
         if not self.graph.has_node(node):
-            self.graph.add_node(node,count=c, mult=0,weight=0,value=0)
+            self.graph.add_node(node,count=c, mult=0,weight=0,value=0,hist=[])
 
     def add_node(self, node):
-        self.graph.add_node(node, count=0, mult=0,weight=0,value=0)
+        self.graph.add_node(node, count=0, mult=0,weight=0,value=0,hist=[])
 
     def add_nodes(self, node):
-        self.graph.add_nodes_from(node, count=0, mult=0,weight=0,value=0)
+        self.graph.add_nodes_from(node, count=0, mult=0,weight=0,value=0,hist=[])
 
     def add_edge(self, edge):
         (v1,v2) = edge
@@ -108,9 +108,12 @@ class Multiset:
             self.__set_weight(node, bias)
             for n in self.graph.neighbors(node):
                 self.__logistic_eval(n, bias, weight, leafs)
-
-            var = [self.graph.nodes(data=True)[n]['value'] for n in self.graph.neighbors(node)].count(1)
-            v_b = bias + (len(self.graph.out_edges(node)) * weight) * var
+            var = [self.graph.nodes(data=True)[n]['value'] for n in self.graph.neighbors(node)] #.count(1)
+            c = 0
+            for x in var:
+                c += x
+            #v_b = bias + (len(self.graph.out_edges(node)) * weight) * var
+            v_b = bias + weight * c
             v = self.__sigmoid(v_b)
             self.graph.nodes(data=True)[node]['value'] = v
 
@@ -126,8 +129,28 @@ class Multiset:
         root = [x for x, y in self.graph.nodes(data=True) if y.get('root')]
         self.__logistic_eval(root[0], bias, weight, leaf_nodes)
 
+    def __histogram(self, node, leafs):
+        if not node in leafs:
+            h = []
+            for x in self.graph.neighbors(node):
+                h.append(self.graph.nodes(data=True)[x]['value'])
+            # myset = set(h)
+            # mysett = list(myset)
+            # mysett.sort()
+            hist, bin_edges = np.histogram(h, bins='auto')
+            histogram = []
+            histogram.append(list(hist))
+            histogram.append(list(bin_edges))
+            print(histogram)
+            self.graph.nodes(data=True)[node]['hist'] += histogram
+            for x in self.graph.neighbors(node):
+                self.__histogram(x, leafs)
 
-
+    def histogram(self):
+        leaf_nodes = [node for node in self.graph.nodes if
+                      (self.graph.in_degree(node) != 0 and self.graph.out_degree(node) == 0)]
+        root = [x for x, y in self.graph.nodes(data=True) if y.get('root')]
+        self.__histogram(root[0], leaf_nodes)
 #example graph
 # ms = Multiset()
 # ms.add_root('u1')

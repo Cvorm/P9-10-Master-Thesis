@@ -3,8 +3,8 @@ import imdb
 from engine.multiset import *
 #RENAME TO MDATA 4 MOVIE DATA
 moviesDB = imdb.IMDb()
-data = pd.read_csv('../Data/movies.csv')
-ratings = pd.read_csv('../Data/ratings.csv')
+data = pd.read_csv('Data/movies.csv')
+ratings = pd.read_csv('Data/ratings.csv')
 kg = pd.DataFrame(columns=['head', 'relation', 'tail'])
 rdata = pd.DataFrame(columns=['userId', 'movieId', 'rating'])
 
@@ -84,6 +84,7 @@ graph2 = generate_tet(graph,'user',speci)
 print(graph2[0].graph.nodes(data=True))
 graph2[0].count_tree()
 graph2[0].logistic_eval(0,1)
+graph2[0].histogram()
 print(graph2[0].graph.edges(data=True))
 print(graph2[0].graph.nodes(data=True))
 #print(graph2)
