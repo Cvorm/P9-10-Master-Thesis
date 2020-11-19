@@ -36,17 +36,15 @@ class Multiset:
     def set_graph(self, g):
         self.graph = g
 
-    def __count_helper(self,node):
-        curr_node = self.graph.nodes[node]
-        for n in self.graph.neighbors(curr_node):
-            print(n)
-
-    def count_of_counts(self):
-        root = [x for x, y in self.graph.nodes(data=True) if y.get('root')]
-        self.graph.nodes(data=True)[root]['count'] = len(self.graph.edges(root))
-        for n in self.graph.neighbors(root):
-            self.__count_helper(n)
-            print(n)
+    # def __count_helper(self,node):
+    #     curr_node = self.graph.nodes[node]
+    #     for n in self.graph.neighbors(curr_node):
+    #
+    # def count_of_counts(self):
+    #     root = [x for x, y in self.graph.nodes(data=True) if y.get('root')]
+    #     self.graph.nodes(data=True)[root]['count'] = len(self.graph.edges(root))
+    #     for n in self.graph.neighbors(root):
+    #         self.__count_helper(n)
 
     def __count_tree(self, pred):
         predecessors = [list(self.graph.predecessors(node)) for node in pred]
@@ -54,7 +52,7 @@ class Multiset:
         if len(pred) > 0:
             for x in pred:
                 for p in final:
-                    if self.graph.nodes(data=True)[p]['root']:
+                    if self.graph.nodes(data=True)[p].get('root'):
                         combined = [(self.graph.nodes(data=True)[x]['count'],self.graph.nodes(data=True)[x]['mult'])]
                         self.graph.nodes(data=True)[p]['mult'] += combined
                     else:
@@ -76,7 +74,6 @@ class Multiset:
         final = list(set(self.__flat_list(predecessors)))
         self.__count_tree(final)
         root = [x for x, y in self.graph.nodes(data=True) if y.get('root')]
-        print(root)
         ree = list(self.graph.nodes(data=True)[root[0]]['mult'])
         for ind,(n,m) in enumerate(ree):
             for ind2, (nn,mm) in enumerate(ree):
@@ -85,8 +82,6 @@ class Multiset:
                     ree[ind] = (nn, v)
                     ree[ind2] = (nn,v)
         self.graph.nodes(data=True)[root[0]]['mult'] = ree
-        print(ree)
-        print(self.graph.nodes(data=True))
 
     def __sigmoid(self, x):
         return 1 / (1 + math.exp(-x))
@@ -134,15 +129,17 @@ class Multiset:
             h = []
             for x in self.graph.neighbors(node):
                 h.append(self.graph.nodes(data=True)[x]['value'])
-            # myset = set(h)
-            # mysett = list(myset)
-            # mysett.sort()
-            hist, bin_edges = np.histogram(h, bins='auto')
-            histogram = []
-            histogram.append(list(hist))
-            histogram.append(list(bin_edges))
-            print(histogram)
-            self.graph.nodes(data=True)[node]['hist'] += histogram
+            h_unique_set = set(h)
+            h_unique_list = list(h_unique_set)
+            h_unique_list.sort()
+            if len(h_unique_list) <= 1:
+                hist, bin_edges = np.histogram(h, bins='auto')
+                histogram = [list(hist), list(bin_edges)]
+                self.graph.nodes(data=True)[node]['hist'] += histogram
+            else:
+                hist, bin_edges = np.histogram(h, bins=h_unique_list)
+                histogram = [list(hist), list(bin_edges)]
+                self.graph.nodes(data=True)[node]['hist'] += histogram
             for x in self.graph.neighbors(node):
                 self.__histogram(x, leafs)
 
@@ -151,6 +148,28 @@ class Multiset:
                       (self.graph.in_degree(node) != 0 and self.graph.out_degree(node) == 0)]
         root = [x for x, y in self.graph.nodes(data=True) if y.get('root')]
         self.__histogram(root[0], leaf_nodes)
+
+    def __get_random_pair(self):
+        print(self)
+
+    def __splitdata(self):
+        print(self)
+
+    def __mtbuild(self,d_max,b_max,d):
+        print(self)
+
+    def mtbuild(self):
+        self.__mtbuild(1,1,1)
+
+        print(self)
+
+    def __mtsearch(self):
+        print(self)
+
+    def mtsearch(self):
+        print(self)
+
+
 #example graph
 # ms = Multiset()
 # ms.add_root('u1')

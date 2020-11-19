@@ -14,7 +14,6 @@ ratings = pd.read_csv('../Data/ratings.csv')
 kg = pd.DataFrame(columns=['head', 'relation', 'tail'])
 rdata = pd.DataFrame(columns=['userId', 'movieId', 'rating'])
 
-
 def generate_bipartite_graph():
     rdata['userId'] = 'u' + ratings['userId'].astype(str)
     rdata['movieId'] = 'm' + ratings['movieId'].astype(str)
@@ -32,7 +31,6 @@ def generate_bipartite_graph():
             #print(genre)
             B.add_node(genre, bipartite=0)
             B.add_edge(movie['movieId'], genre)
-
     print(is_bipartite(B))
     return B
 
