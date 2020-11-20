@@ -26,8 +26,8 @@ print(folds_files)
 data = Dataset.load_from_folds(folds_files, reader=reader)
 pkf = PredefinedKFold()
 
-algo = KNNBasic()
-
+# algo = KNNBasic()
+# algo = SVD()
 for trainset, testset in pkf.split(data):
 
     algo.fit(trainset)
