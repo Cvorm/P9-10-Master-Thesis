@@ -6,15 +6,15 @@ from engine.multiset import *
 import time
 # RENAME TO MDATA 4 MOVIE DATA
 moviesDB = imdb.IMDb()
-data = pd.read_csv('Data/movies.csv')
-ratings = pd.read_csv('Data/ratings.csv')
-links = pd.read_csv('Data/links.csv')
+data = pd.read_csv('../Data/movies.csv')
+ratings = pd.read_csv('../Data/ratings.csv')
+links = pd.read_csv('../Data/links.csv')
 #kg = pd.DataFrame(columns=['head', 'relation', 'tail'])
 rdata = pd.DataFrame(columns=['userId', 'movieId', 'rating'])
 adata = pd.DataFrame(columns=['actorId','awards'])
 xdata = pd.DataFrame(columns=['movieId','actors','directors','budget'])
-updated_data = pd.read_csv('movie.csv',converters={'cast': eval})
-updated_actor = pd.read_csv('actor_data.csv',converters={'awards': eval})
+updated_data = pd.read_csv('../movie.csv',converters={'cast': eval})
+updated_actor = pd.read_csv('../actor_data.csv',converters={'awards': eval})
 
 
 def update_movie_data():
