@@ -134,11 +134,11 @@ class Multiset:
             h_unique_list.sort()
             if len(h_unique_list) <= 1:
                 hist, bin_edges = np.histogram(h, bins='auto')
-                histogram = [list(hist), list(bin_edges)]
+                histogram = [list(self.normalize_list(hist)), list(bin_edges)]
                 self.graph.nodes(data=True)[node]['hist'] += histogram
             else:
                 hist, bin_edges = np.histogram(h, bins=h_unique_list)
-                histogram = [list(hist), list(bin_edges)]
+                histogram = [list(self.normalize_list(hist)), list(bin_edges)]
                 self.graph.nodes(data=True)[node]['hist'] += histogram
             for x in self.graph.neighbors(node):
                 self.__histogram(x, leafs)
@@ -149,8 +149,41 @@ class Multiset:
         root = [x for x, y in self.graph.nodes(data=True) if y.get('root')]
         self.__histogram(root[0], leaf_nodes)
 
+    def normalize_list(self, list):
+        norm = [float(i) / sum(list) for i in list]
+        return norm
+
+    def same_length_lists(self, list1, list2):
+        while len(list1) != len(list2):
+            list1.append(0)
+        return list1
+
+    def emd_1d_histogram_similarity(self, hist1, hist2):
+        #hist1 and hist2 must have the same length
+        hist_w_padding = []
+        dist = 0.0
+        if len(hist1) < len(hist2):
+            hist_w_padding = self.same_length_lists(hist1, hist2)
+            dist = self.__compute_manhatten_distance(hist_w_padding, hist2)
+        elif len(hist1) > len(hist2):
+            hist_w_padding = self.same_length_lists(hist2, hist1)
+            dist = self.__compute_manhatten_distance(hist_w_padding, hist1)
+        else:
+            dist = self.__compute_manhatten_distance(hist1, hist2)
+
+        return dist
+
+    def __compute_manhatten_distance(self, hist1, hist2):
+        print(hist1, hist2)
+        sum_list = []
+        for x, y in zip(hist1, hist2):
+            sum_list.append(abs(x - y))
+        distance = sum(sum_list)
+        return distance
+
     def __get_random_pair(self):
         print(self)
+
 
     def __splitdata(self):
         print(self)
@@ -169,7 +202,11 @@ class Multiset:
     def mtsearch(self):
         print(self)
 
-
+mult = Multiset()
+list1 = [0.2, 0.3, 1, 1, 1]
+list2 = [1, 1, 1, 0.6]
+yes = mult.emd_1d_histogram_similarity(list1, list2)
+print(yes)
 #example graph
 # ms = Multiset()
 # ms.add_root('u1')
