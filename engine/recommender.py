@@ -14,14 +14,14 @@ rdata = pd.DataFrame(columns=['userId', 'movieId', 'rating'])
 adata = pd.DataFrame(columns=['actorId','awards'])
 xdata = pd.DataFrame(columns=['movieId','actors','directors','budget'])
 updated_data = pd.read_csv('movie.csv',converters={'cast': eval})
-updated_actor = pd.read_csv('actor_data.csv',converters={'awards': eval})
+#updated_actor = pd.read_csv('actor_data.csv',converters={'awards': eval})
 
 
 def update_movie_data():
     actor_id_l = []
     for index, movie in data.iterrows():
         print(f'{index} / {len(data)}')
-        if index == 5: break
+        #if index == 5: break
         s = str(movie['movieId'])
         sx = s[1:]
         temp = links[links['movieId'] == int(sx)]
@@ -64,23 +64,44 @@ def update_movie_data():
     return actor_id_l
 
 
+def temp_func():
+    dat = updated_data['director']
+    tmp = []
+    update_actor_data(dat)
+    # for x in dat:
+    #     for y in x:
+    #         tmp.append(y)
+    # res = set(tmp)
+    # update_actor_data(list(res))
+
+
 def update_actor_data(actor_list):
     s = set(actor_list)
     ss = list(s)
     adata['actorId'] = ss
-    adata['actorId'] = 'a' + adata['actorId'].astype(str)
     for index, actor in adata.iterrows():
+        print(f'{index} \ {len(adata)}')
         awards = []
         j = str(actor['actorId'])
+        print(j)
         jx = j[1:]
-        award = moviesDB.get_person_awards(jx)
-        for x,y in award['data'].items():
-            #print(n,m)
-            for a in y:
-                res = a.get('result')
-                awards.append(res)
-
-        adata.at[index, 'awards'] = awards
+        temp_dict = {"Winner": 0, "Nominee": 0}
+        try:
+            award = moviesDB.get_person_awards(jx)
+            for x,y in award['data'].items():
+                #print(n,m)
+                for a in y:
+                    res = a.get('result')
+                    if res == 'Winner':
+                        temp_dict["Winner"] += 1
+                    if res == 'Nominee':
+                        temp_dict['Nominee'] += 1
+                    awards.append(res)
+            print(temp_dict)
+            adata.at[index, 'awards'] = temp_dict
+        except:
+            print('fail')
+            adata.at[index,'awards'] = temp_dict
     print(adata)
     adata.to_csv('actor_data.csv',index=False)
 
@@ -102,21 +123,22 @@ def format_data():
 
 def generate_bipartite_graph():
     B = nx.DiGraph()
-    B.add_nodes_from(rdata.userId, bipartite=0, user=True)
+    B.add_nodes_from(rdata.userId, bipartite=0, user=True, free=True, type='user')
     #B.add_nodes_from(rdata.movieId, bipartite=1, movie=True)
-    B.add_nodes_from(updated_data.movieId, bipartite=1, movie=True)
-    B.add_nodes_from(updated_actor.actorId,bipartite=1, actor=True)
+    B.add_nodes_from(updated_data.movieId, bipartite=1, movie=True, free=True, type='movie')
+    #B.add_nodes_from(updated_actor.actorId,bipartite=1, actor=True)
+    B.add_nodes_from(updated_data.director, bipartite=1, director=True, free=True, type='director')
     for index,row in updated_data.iterrows():
-        for actor in row['cast']:
-            B.add_edge(row['movieId'],actor)
-        for director in row['director']:
-            B.add_node(director,bipartite=1, director=True)
-            B.add_edge(row['movieId'],director)
-    for index,row in updated_actor.iterrows():
-        for award in row['awards']:
-            if not award is None:
-                B.add_node(award,bipartite=1,award=True)
-                B.add_edge(row['actorId'],award)
+        # for actor in row['cast']:
+        #     B.add_edge(row['movieId'],actor)
+        B.add_edge(row['movieId'],row['director'])
+        #     B.add_node(director,bipartite=1, director=True)
+        #     B.add_edge(row['movieId'],director)
+    # for index,row in updated_actor.iterrows():
+    #     for award in row['awards']:
+    #         if not award is None:
+    #             B.add_node(award,bipartite=1,award=True)
+    #             B.add_edge(row['actorId'],award)
         # for actor in list(row['cast']):
         #     print(actor)
 
@@ -125,19 +147,20 @@ def generate_bipartite_graph():
         # print(movie)
         for genre in movie['genres']:
             # print(genre)
-            B.add_node(genre, bipartite=1, genre=True)
+            B.add_node(genre, bipartite=1, genre=True, free=False, type='genre')
             B.add_edge(movie['movieId'], genre)
-    [print(x) for x in B.nodes if B.nodes(data=True)[x].get('actor')]
+    #[print(x) for x in B.nodes if B.nodes(data=True)[x].get('actor')]
     return B
 
 
-def nested_list(nodes, edges):
+def nested_list(nodes, edges, freevars):
     g = nx.DiGraph()
-    g.add_nodes_from(nodes)
+    for n in nodes:
+        if n in freevars:
+            g.add_node(n, type=n, free=True)
+        else:
+            g.add_node(n, type=n, free=False)
     g.add_edges_from(edges)
-    nx.set_node_attributes(g, 'null', 'type')
-    for n in g.nodes:
-        g.nodes(data=True)[n]['type'] = n
     return g
 
 
@@ -167,17 +190,23 @@ def generate_tet_yes(graph, user, spec):
         nodess = [n for n in dfs_edges(graph, source=i)]
         for x in nodess:
             if len(graph.out_edges(x[0])) > 0:
-                # add_node (x[1]) with count 1
-                ms.add_node_w_count(x[0], len((graph.out_edges(x[0]))))
+                type = graph.nodes(data=True)[x[0]].get('type')
+                if graph.nodes(data=True)[x[0]].get('free'):
+                    ms.add_node_w_freevar(x[0],1, type) #len(graph.out_edges(x[0]))
+                else:
+                    # add_node (x[1]) with count 1
+                    ms.add_node_w_count(x[0],1, type) #len((graph.out_edges(x[0])))
             # if not(is_internal(x[1], nodess_reversed)):
             if len(graph.out_edges(x[1])) == 0:
+                type = graph.nodes(data=True)[x[1]].get('type')
                 # add_node (x[1]) with count 1
-                ms.add_node_w_count(x[1], 1)
+                ms.add_node_w_count(x[1], 1, type)
         for (k, l) in nodess:
             ms.add_edge((k, l))
     for (e1, e2) in graph.edges(user):
         ms.add_edge((e1, e2))
     return ms
+
 
 def generate_histograms(l):
     h = []
@@ -206,8 +235,8 @@ def run():
     start_time = time.time()
     #speci = nested_list(["user", "movie", "genre"], [("user", "movie"), ("movie", "genre")])
     #speci = nested_list(["user,","movie","genre","actor","budget","award","rated"], [("user","movie"),("movie", "genre"),("movie","actor"),("movie","budget"),("actor","award"),("movie","rated")])
-    speci = nested_list(["user,", "movie", "genre", "actor", "director"],
-                        [("user", "movie"), ("movie", "genre"), ("movie", "actor"), ("movie", "director")])
+    speci = nested_list(["user,", "movie", "genre", "director","awards"],
+                        [("user", "movie"), ("movie", "genre"), ("movie", "director"),("director","awards")], ["director","movie","user"])
     print("--- %s seconds ---" % (time.time() - start_time))
 
     print('Generating TET according to graph and specification...')
@@ -243,12 +272,11 @@ def run():
     print('Top 5 users:')
     [print(graph2[i].graph.nodes(data=True)) for i in range(5)]
 
-
+#temp_func()
 #format_data()
 #update_data(True,True)
-
-
 run()
+
 # [print(q) for q in graph2[0].graph.nodes(data=True)]
 
 # x for x, y in self.graph.nodes(data=True) if y.get('root')
