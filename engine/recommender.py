@@ -6,15 +6,15 @@ from engine.multiset import *
 import time
 # RENAME TO MDATA 4 MOVIE DATA
 moviesDB = imdb.IMDb()
-data = pd.read_csv('../Data/movies.csv')
-ratings = pd.read_csv('../Data/ratings.csv')
-links = pd.read_csv('../Data/links.csv')
+data = pd.read_csv('Data/movies.csv')
+ratings = pd.read_csv('Data/ratings.csv')
+links = pd.read_csv('Data/links.csv')
 #kg = pd.DataFrame(columns=['head', 'relation', 'tail'])
 rdata = pd.DataFrame(columns=['userId', 'movieId', 'rating'])
 adata = pd.DataFrame(columns=['actorId','awards'])
 xdata = pd.DataFrame(columns=['movieId','actors','directors','budget'])
-updated_data = pd.read_csv('../movie.csv',converters={'cast': eval})
-updated_actor = pd.read_csv('../actor_data.csv',converters={'awards': eval})
+updated_data = pd.read_csv('movie.csv',converters={'cast': eval})
+updated_actor = pd.read_csv('actor_data.csv',converters={'awards': eval})
 
 
 def update_movie_data():
@@ -221,6 +221,88 @@ def generate_histograms(l):
     return histogram
 
 
+def same_length_lists(list1, list2):
+    while len(list1) != len(list2):
+        list1.append(0)
+    return list1
+
+
+def emd_1d_histogram_similarity(hist1, hist2):
+    #hist1 and hist2 must have the same length
+    hist_w_padding = []
+    dist = 0.0
+    if len(hist1) < len(hist2):
+        hist_w_padding = same_length_lists(hist1, hist2)
+        dist = __compute_manhatten_distance(hist_w_padding, hist2)
+    elif len(hist1) > len(hist2):
+        hist_w_padding = same_length_lists(hist2, hist1)
+        dist = __compute_manhatten_distance(hist_w_padding, hist1)
+    else:
+        dist = __compute_manhatten_distance(hist1, hist2)
+    return dist
+
+
+def __compute_manhatten_distance(hist1, hist2):
+        sum_list = []
+        for x, y in zip(hist1, hist2):
+            sum_list.append(abs(x - y))
+        distance = sum(sum_list)
+        return distance
+
+
+def __get_random_pair(data):
+    dist = 0
+    while dist == 0:
+        v1,v2 = np.random.choice(data, 2, replace=False)
+        v1_root = [x for x, y in v1.graph.nodes(data=True) if y.get('root')]
+        v2_root = [x for x, y in v2.graph.nodes(data=True) if y.get('root')]
+        v1_hist = v1.get_histogram(v1_root[0])
+        v2_hist = v2.get_histogram(v2_root[0])
+        dist = emd_1d_histogram_similarity(v1_hist[1], v2_hist[1])
+    return v1, v2
+
+
+def __split_data(data, v1, v2):
+    data_1 = []
+    data_2 = []
+    v1_root = [x for x, y in v1.graph.nodes(data=True) if y.get('root')]
+    v2_root = [x for x, y in v2.graph.nodes(data=True) if y.get('root')]
+    v1_hist = v1.get_histogram(v1_root[0])
+    v2_hist = v2.get_histogram(v2_root[0])
+    # print(f'v1 histogram: {v1_hist}')
+    # print(f'v2 histogram: {v2_hist}')
+    for g in data:
+        root = [x for x, y in g.graph.nodes(data=True) if y.get('root')]
+        g_hist = g.graph.nodes(data=True)[root[0]]['hist']
+        v1_len = emd_1d_histogram_similarity(g_hist[1], v1_hist[1])
+        v2_len = emd_1d_histogram_similarity(g_hist[1], v2_hist[1])
+        # print(f'v1: {v1_len}, v2: {v2_len}')
+        if v1_len < v2_len:
+            data_1.append(g)
+        elif v2_len < v1_len:
+            data_2.append(g)
+    return data_1, data_2
+
+
+def __mt_build(g, d_max, b_max, d, data, name):
+    if not (d == d_max or len(data) <= b_max):
+        z1, z2 = __get_random_pair(data)
+        data_1, data_2 = __split_data(data,z1,z2)
+        __mt_build(g, d_max, b_max, d + 1, data_1, 1)
+        __mt_build(g, d_max, b_max, d + 1, data_2, 2)
+        g.add_node(f'{d}_{name}', left=data_1, right=data_2, z1=z1, z2=z2)
+        g.add_edge(f'{d}_{name}', f'{d + 1}_1')
+        g.add_edge(f'{d}_{name}', f'{d + 1}_2')
+    else:
+        g.add_node(f'{d}_{name}', bucket=data)
+
+
+def mt_build(tet):
+    g = nx.DiGraph()
+    __mt_build(g, 3, 2, 0, tet, 0)
+    return g
+
+
 def run():
     print('Running...')
     start_time_total = time.time()
@@ -241,36 +323,42 @@ def run():
 
     print('Generating TET according to graph and specification...')
     start_time = time.time()
-    graph2 = generate_tet(graph, 'user', speci)
+    tet = generate_tet(graph, 'user', speci)
     print("--- %s seconds ---" % (time.time() - start_time))
 
     print('Counting TETs...')
     start_time = time.time()
-    [g.count_tree() for g in graph2]
+    [g.count_tree() for g in tet]
     print("--- %s seconds ---" % (time.time() - start_time))
 
     print('Performing Logistic Evaluation on TETs...')
     start_time = time.time()
-    [g.logistic_eval(0, 1) for g in graph2]
+    [g.logistic_eval(0, 1) for g in tet]
     print("--- %s seconds ---" % (time.time() - start_time))
 
     print('Generating histograms...')
     start_time = time.time()
-    [g.histogram() for g in graph2]
+    [g.histogram() for g in tet]
     print("--- %s seconds ---" % (time.time() - start_time))
 
     print('Generating overall histogram for all users...')
     start_time = time.time()
-    hist = generate_histograms(graph2)
+    hist = generate_histograms(tet)
+    print("--- %s seconds ---" % (time.time() - start_time))
+    print('Building Metric Tree')
+    start_time = time.time()
+    mts = mt_build(tet)
+    print(mts.nodes)
+   #[print(mts[i].graph.nodes(data=True)) for i in range(5)]
     print("--- %s seconds ---\n" % (time.time() - start_time))
-
     print('|| ------ COMPLETE ------ ||')
     print('Total run time: %s seconds.' % (time.time() - start_time_total))
-    print('Amount of users: %s.' % len(graph2))
+    print('Amount of users: %s.' % len(tet))
     print('Amount of bins in histogram: %s.' % len(hist[0]))
     print('|| ---------------------- ||\n')
     print('Top 5 users:')
-    [print(graph2[i].graph.nodes(data=True)) for i in range(5)]
+    [print(tet[i].graph.nodes(data=True)) for i in range(5)]
+
 
 #temp_func()
 #format_data()

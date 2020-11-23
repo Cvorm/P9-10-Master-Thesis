@@ -8,7 +8,9 @@ from networkx import *
 class Multiset:
     def __init__(self):
         g = nx.DiGraph()
+        mt = nx.DiGraph()
         self.graph = g
+        self.mt = mt
 
     def add_root(self, node, c):
         self.graph.add_node(node, count=c, mult=[], root=True, weight=0, value=0, hist=[], free=True, type='user')
@@ -39,6 +41,8 @@ class Multiset:
     def set_graph(self, g):
         self.graph = g
 
+    def get_histogram(self,node):
+        return self.graph.nodes(data=True)[node]['hist']
     # def __count_helper(self,node):
     #     curr_node = self.graph.nodes[node]
     #     for n in self.graph.neighbors(curr_node):
@@ -214,11 +218,11 @@ class Multiset:
             h_unique_list.sort()
             if len(h_unique_list) <= 1:
                 hist, bin_edges = np.histogram(h, bins='auto')
-                histogram = [list(self.normalize_list(hist)), list(bin_edges)]
+                histogram = [list(self.__normalize_list(hist)), list(bin_edges)]
                 self.graph.nodes(data=True)[node]['hist'] += histogram
             else:
                 hist, bin_edges = np.histogram(h, bins=h_unique_list)
-                histogram = [list(self.normalize_list(hist)), list(bin_edges)]
+                histogram = [list(self.__normalize_list(hist)), list(bin_edges)]
                 self.graph.nodes(data=True)[node]['hist'] += histogram
             for x in self.graph.neighbors(node):
                 self.__histogram(x, leafs)
@@ -229,65 +233,77 @@ class Multiset:
         root = [x for x, y in self.graph.nodes(data=True) if y.get('root')]
         self.__histogram(root[0], leaf_nodes)
 
-    def normalize_list(self, list):
+    def __normalize_list(self, list):
         norm = [float(i) / sum(list) for i in list]
         return norm
+    #
+    # def same_length_lists(self, list1, list2):
+    #     while len(list1) != len(list2):
+    #         list1.append(0)
+    #     return list1
+    #
+    # def emd_1d_histogram_similarity(self, hist1, hist2):
+    #     #hist1 and hist2 must have the same length
+    #     hist_w_padding = []
+    #     dist = 0.0
+    #     if len(hist1) < len(hist2):
+    #         hist_w_padding = self.same_length_lists(hist1, hist2)
+    #         dist = self.__compute_manhatten_distance(hist_w_padding, hist2)
+    #     elif len(hist1) > len(hist2):
+    #         hist_w_padding = self.same_length_lists(hist2, hist1)
+    #         dist = self.__compute_manhatten_distance(hist_w_padding, hist1)
+    #     else:
+    #         dist = self.__compute_manhatten_distance(hist1, hist2)
+    #
+    #     return dist
+    #
+    # def __compute_manhatten_distance(self, hist1, hist2):
+    #     print(hist1, hist2)
+    #     sum_list = []
+    #     for x, y in zip(hist1, hist2):
+    #         sum_list.append(abs(x - y))
+    #     distance = sum(sum_list)
+    #     return distance
+    #
+    # def __get_random_pair(self,data):
+    #     return np.random.choice(data, 2, replace=False)
+    #     # data_1, data_2 = data
+    #     # return data_1, data_2
+    #
+    #
+    # def __splitdata(self):
+    #     print(self)
+    #
+    # def __mtbuild(self, d_max, b_max, d, data):
+    #     if not d == d_max or len(data) <= b_max:
+    #         z1, z2 = self.__get_random_pair(data)
+    #         print(z1)
+    #         data_1,data_2 = self.__splitdata(data,z1,z2)
+    #         left = self.__mtbuild(d_max,b_max,d + 1,data_1)
+    #         right = self.__mtbuild(d_max,b_max,d + 1,data_2)
+    #         self.mt.add_node(d, left=left, right=right, z1=z1, z2=z2)
+    #     else:
+    #         self.mt.add_node(d, bucket=data)
+    #
+    #
+    # def mtbuild(self):
+    #     print(self.graph.nodes(data=True)[0]['hist'])
+    #     # self.__mtbuild(3, 1, 1, self.graph.nodes(data=True))
+    #     #
+    #     # print(self.mt.nodes(data=True))
+    #
+    # def __mtsearch(self):
+    #     print(self)
+    #
+    # def mtsearch(self):
+    #     print(self)
 
-    def same_length_lists(self, list1, list2):
-        while len(list1) != len(list2):
-            list1.append(0)
-        return list1
 
-    def emd_1d_histogram_similarity(self, hist1, hist2):
-        #hist1 and hist2 must have the same length
-        hist_w_padding = []
-        dist = 0.0
-        if len(hist1) < len(hist2):
-            hist_w_padding = self.same_length_lists(hist1, hist2)
-            dist = self.__compute_manhatten_distance(hist_w_padding, hist2)
-        elif len(hist1) > len(hist2):
-            hist_w_padding = self.same_length_lists(hist2, hist1)
-            dist = self.__compute_manhatten_distance(hist_w_padding, hist1)
-        else:
-            dist = self.__compute_manhatten_distance(hist1, hist2)
-
-        return dist
-
-    def __compute_manhatten_distance(self, hist1, hist2):
-        print(hist1, hist2)
-        sum_list = []
-        for x, y in zip(hist1, hist2):
-            sum_list.append(abs(x - y))
-        distance = sum(sum_list)
-        return distance
-
-    def __get_random_pair(self):
-        print(self)
-
-
-    def __splitdata(self):
-        print(self)
-
-    def __mtbuild(self, d_max, b_max, d):
-        print(self)
-
-    def mtbuild(self):
-        self.__mtbuild(1, 1, 1)
-
-        print(self)
-
-    def __mtsearch(self):
-        print(self)
-
-    def mtsearch(self):
-        print(self)
-
-
-mult = Multiset()
-list1 = [0.2, 0.3, 1, 1, 1]
-list2 = [1, 1, 1, 0.6]
-yes = mult.emd_1d_histogram_similarity(list1, list2)
-print(yes)
+# mult = Multiset()
+# list1 = [0.2, 0.3, 1, 1, 1]
+# list2 = [1, 1, 1, 0.6]
+# yes = mult.emd_1d_histogram_similarity(list1, list2)
+# print(yes)
 #example graph
 # ms = Multiset()
 # ms.add_root('u1')
