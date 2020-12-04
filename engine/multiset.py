@@ -5,6 +5,7 @@ from collections import Counter
 from networkx import *
 
 
+# This structure contains a TET and a metric tree for each user
 class Multiset:
     def __init__(self):
         g = nx.DiGraph()
@@ -43,33 +44,7 @@ class Multiset:
 
     def get_histogram(self,node):
         return self.graph.nodes(data=True)[node]['hist']
-    # def __count_helper(self,node):
-    #     curr_node = self.graph.nodes[node]
-    #     for n in self.graph.neighbors(curr_node):
-    #
-    # def count_of_counts(self):
-    #     root = [x for x, y in self.graph.nodes(data=True) if y.get('root')]
-    #     self.graph.nodes(data=True)[root]['count'] = len(self.graph.edges(root))
-    #     for n in self.graph.neighbors(root):
-    #         self.__count_helper(n)
 
-    def __count_tree(self, pred):
-        predecessors = [list(self.graph.predecessors(node)) for node in pred]
-        final = list(set(self.__flat_list(predecessors)))
-        if len(pred) > 0:
-            for x in pred:
-                print(f'pred: {x}')
-                for p in final:
-                    print(f'final: {final}')
-                    if self.graph.nodes(data=True)[p].get('free'):
-                        combined = [(self.graph.nodes(data=True)[x]['count'], self.graph.nodes(data=True)[x]['mult'])]
-                        self.graph.nodes(data=True)[p]['mult'] += combined
-                    else:
-                        self.graph.nodes(data=True)[p]['mult'] += self.graph.nodes(data=True)[x]['count']
-            self.__count_tree(final)
-        else:
-            for x in pred:
-                print('YOOOO')
     @staticmethod
     def __flat_list(lst):
         flat_list = []
@@ -77,17 +52,19 @@ class Multiset:
             for item in sublist:
                 flat_list.append(item)
         return flat_list
-    def __count_t(self, curr_node, leafs):
-        if curr_node in leafs:
+
+    # helper function for counting the tree
+    def __count_tree(self, curr_node, leafs):
+        if curr_node in leafs:  # if our current node is a leaf, then the count is simply the count
             self.graph.nodes(data=True)[curr_node]['mult'] = self.graph.nodes(data=True)[curr_node]['count']
             #leaves are directly evaluated by the Boolean value of their atom)
-        elif self.graph.nodes(data=True)[curr_node].get('free'):
+        elif self.graph.nodes(data=True)[curr_node].get('free'):    # if our current node is a free variable, then we calculate the count of counts
             succesors = list(self.graph.successors(curr_node))
             ls = []
             ls2 = []
             #DER SKAL TILFØJES NOGET SÅ VI HAR ET COUNT FOR HVER TYPE AF NODE
             for s in succesors:
-                self.__count_t(s,leafs)
+                self.__count_tree(s, leafs)
                 ls.append(self.graph.nodes(data=True)[s]['mult'])
                 ls2.append(self.graph.nodes(data=True)[s]['type'])
                 # combined = [(self.graph.nodes(data=True)[s]['mult'], self.graph.nodes(data=True)[curr_node]['count'])]
@@ -112,47 +89,19 @@ class Multiset:
                             res[tuple(x)] += 1
                 for x in res.items():
                     self.graph.nodes(data=True)[curr_node]['mult'] += [x]
+
+    # call function for counting the tree
     def count_tree(self):
         root = [x for x, y in self.graph.nodes(data=True) if y.get('root')]
         leaf_nodes = [node for node in self.graph.nodes if
                       (self.graph.in_degree(node) != 0 and self.graph.out_degree(node) == 0)]
-        self.__count_t(root[0],leaf_nodes)
-    # def count_tree(self):
-    #     leaf_nodes = [node for node in self.graph.nodes if
-    #                   (self.graph.in_degree(node) != 0 and self.graph.out_degree(node) == 0)]
-    #     predecessors = [list(self.graph.predecessors(node)) for node in leaf_nodes]
-    #     final = list(set(self.__flat_list(predecessors)))
-    #     self.__count_tree(leaf_nodes)
-    #     freevar = [x for x, y in self.graph.nodes(data=True) if y.get('free')]
-    #     print(freevar)
-    #     root = [x for x, y in self.graph.nodes(data=True) if y.get('root')]
-    #     for z in freevar:
-    #         ree = list(self.graph.nodes(data=True)[z].get('mult'))
-    #         # if len(ree) <= 1: continue
-    #         # else:
-    #         #     print(ree)
-    #             # ree = list(self.graph.nodes(data=True)[z]['mult'])
-    #         for ind, (n, m) in enumerate(ree):
-    #             for ind2, (nn, mm) in enumerate(ree):
-    #                 if n == nn:
-    #                     v = n + 1
-    #                     ree[ind] = (nn, v)
-    #                     ree[ind2] = (nn, v)
-    #         self.graph.nodes(data=True)[z]['mult'] = ree
-    #     # ree = list(self.graph.nodes(data=True)[root[0]]['mult'])
-    #     # for ind, (n, m) in enumerate(ree):
-    #     #     for ind2, (nn, mm) in enumerate(ree):
-    #     #         if n == nn:
-    #     #             v = n + 1
-    #     #             ree[ind] = (nn, v)
-    #     #             ree[ind2] = (nn, v)
-    #     #self.graph.nodes(data=True)[root[0]]['mult'] = ree
+        self.__count_tree(root[0], leaf_nodes)
 
     def __sigmoid(self, x):
         return 1 / (1 + math.exp(-x))
 
+    # helper function for setting the weight of edges
     def __set_weight(self, n, w):
-
         if self.graph.has_node(n):
             self.graph.nodes(data=True)[n]['weight'] = w
         else:
@@ -160,6 +109,7 @@ class Multiset:
             if self.graph.has_edge(e1, e2):
                 self.graph[e1][e2]['weight'] = w
 
+    # function for performing logistic evaluation
     def __logistic_eval(self, node, bias, weight, leafs):
         edges = list(self.graph.out_edges(node))
         [self.__set_weight(e, weight) for e in edges]
@@ -201,6 +151,7 @@ class Multiset:
             self.__set_weight(node, 1)
             self.graph.nodes(data=True)[node]['value'] = weight
 
+    # call function for logistic evalution
     def logistic_eval(self, bias, weight):
         # set weight root, and iterate through each edge from root to internal node
         leaf_nodes = [node for node in self.graph.nodes if
@@ -208,6 +159,7 @@ class Multiset:
         root = [x for x, y in self.graph.nodes(data=True) if y.get('root')]
         self.__logistic_eval(root[0], bias, weight, leaf_nodes)
 
+    # function for calculating histograms
     def __histogram(self, node, leafs):
         if not node in leafs:
             h = []
@@ -227,76 +179,17 @@ class Multiset:
             for x in self.graph.neighbors(node):
                 self.__histogram(x, leafs)
 
+    # call function for histogram
     def histogram(self):
         leaf_nodes = [node for node in self.graph.nodes if
                       (self.graph.in_degree(node) != 0 and self.graph.out_degree(node) == 0)]
         root = [x for x, y in self.graph.nodes(data=True) if y.get('root')]
         self.__histogram(root[0], leaf_nodes)
 
-    def __normalize_list(self, list):
+    @staticmethod
+    def __normalize_list(list):
         norm = [float(i) / sum(list) for i in list]
         return norm
-    #
-    # def same_length_lists(self, list1, list2):
-    #     while len(list1) != len(list2):
-    #         list1.append(0)
-    #     return list1
-    #
-    # def emd_1d_histogram_similarity(self, hist1, hist2):
-    #     #hist1 and hist2 must have the same length
-    #     hist_w_padding = []
-    #     dist = 0.0
-    #     if len(hist1) < len(hist2):
-    #         hist_w_padding = self.same_length_lists(hist1, hist2)
-    #         dist = self.__compute_manhatten_distance(hist_w_padding, hist2)
-    #     elif len(hist1) > len(hist2):
-    #         hist_w_padding = self.same_length_lists(hist2, hist1)
-    #         dist = self.__compute_manhatten_distance(hist_w_padding, hist1)
-    #     else:
-    #         dist = self.__compute_manhatten_distance(hist1, hist2)
-    #
-    #     return dist
-    #
-    # def __compute_manhatten_distance(self, hist1, hist2):
-    #     print(hist1, hist2)
-    #     sum_list = []
-    #     for x, y in zip(hist1, hist2):
-    #         sum_list.append(abs(x - y))
-    #     distance = sum(sum_list)
-    #     return distance
-    #
-    # def __get_random_pair(self,data):
-    #     return np.random.choice(data, 2, replace=False)
-    #     # data_1, data_2 = data
-    #     # return data_1, data_2
-    #
-    #
-    # def __splitdata(self):
-    #     print(self)
-    #
-    # def __mtbuild(self, d_max, b_max, d, data):
-    #     if not d == d_max or len(data) <= b_max:
-    #         z1, z2 = self.__get_random_pair(data)
-    #         print(z1)
-    #         data_1,data_2 = self.__splitdata(data,z1,z2)
-    #         left = self.__mtbuild(d_max,b_max,d + 1,data_1)
-    #         right = self.__mtbuild(d_max,b_max,d + 1,data_2)
-    #         self.mt.add_node(d, left=left, right=right, z1=z1, z2=z2)
-    #     else:
-    #         self.mt.add_node(d, bucket=data)
-    #
-    #
-    # def mtbuild(self):
-    #     print(self.graph.nodes(data=True)[0]['hist'])
-    #     # self.__mtbuild(3, 1, 1, self.graph.nodes(data=True))
-    #     #
-    #     # print(self.mt.nodes(data=True))
-    #
-    # def __mtsearch(self):
-    #     print(self)
-    #
-    # def mtsearch(self):
-    #     print(self)
 
 
 # mult = Multiset()
