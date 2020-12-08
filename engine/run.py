@@ -95,4 +95,6 @@ def run():
     [print(tet[i].graph.nodes(data=True)) for i in range(top)]
     [print(tet[i].ht.nodes(data=True)) for i in range(top)]
 
+    dist = calc_distance(tet[0].ht.nodes(data=True), tet[1].ht.nodes(data=True), speci_test, "user")
+    print(dist)
 run()
