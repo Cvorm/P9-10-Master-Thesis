@@ -160,8 +160,13 @@ def distance_c_emd(hist1,hist2):
 def distance_r_count(hist1, hist2):
     hist1_sum = sum(hist1)
     hist2_sum = sum(hist2)
-    dist = 1 - ((min(hist1_sum, hist2_sum))/(math.sqrt(hist1_sum * hist2_sum)))
-    return dist
+    if (hist1_sum == 0 and hist2_sum != 0) or (hist2_sum == 0 and hist1_sum != 0):
+        return 1
+    elif hist1_sum == 0 and hist2_sum == 0:
+        return 0
+    else:
+        dist = 1 - ((min(hist1_sum, hist2_sum))/(math.sqrt(hist1_sum * hist2_sum)))
+        return dist
 
 
 
@@ -196,15 +201,21 @@ def __same_length_lists(list1, list2):
 
 def EMD_hists(hist1, hist2):
     #normalize the two histograms
-    hist1 = __normalize_list(hist1)
-    hist2 = __normalize_list(hist2)
-    dist = np.zeros(len(hist1))
-    # print(hist1)
-    # print(hist2)
-    for i in range(len(hist1)-1):
-        dist[i+1] = (hist1[i] + dist[i]) - hist2[i]
-    sum = np.sum(abs(dist))
-    return sum
+    if (sum(hist1) == 0 and sum(hist2) != 0) or (sum(hist2) == 0 and sum(hist1) != 0):
+        return 1
+    elif sum(hist2) == 0 and sum(hist1) == 0:
+        return 0
+
+    else:
+        hist1 = __normalize_list(hist1)
+        hist2 = __normalize_list(hist2)
+        dist = np.zeros(len(hist1))
+        # print(hist1)
+        # print(hist2)
+        for i in range(len(hist1)-1):
+            dist[i+1] = (hist1[i] + dist[i]) - hist2[i]
+        summ = np.sum(abs(dist))
+        return summ
 
 
 # helper function to compute manhatten distance
@@ -217,6 +228,8 @@ def __compute_manhatten_distance(hist1, hist2):
 
 
 def __normalize_list(list):
+        # print(list)
+        # print(list)
         norm = [float(i) / sum(list) for i in list]
         return norm
 
@@ -226,16 +239,18 @@ def calc_distance(hist_tree1, hist_tree2, spec, root):
     # hist1_nodes = hist_tree1.nodes(data=True)
     # hist2_nodes = hist_tree2.nodes(data=True)
     dist = []
-    print(spec_nodes)
+    # print(spec_nodes)
     for x,y in spec_nodes:
-        curr_node_hist1 = hist_tree1['u1']['hist']
-        curr_node_hist2 = hist_tree2['u2']['hist']
-        print(curr_node_hist1)
-        print(curr_node_hist2)
-        num_siblings = get_siblings(spec, "genre") + 1
+        # print(y)
+        curr_node_hist1 = hist_tree1[y]['hist']
+        curr_node_hist2 = hist_tree2[y]['hist']
+        print(y, curr_node_hist1)
+        # print(curr_node_hist2)
+        num_siblings = get_siblings(spec, y) + 1
         temp_dist = 1/num_siblings * distance_c_emd(curr_node_hist1[0], curr_node_hist2[0])
         dist.append(temp_dist)
-        print(num_siblings)
+        print(temp_dist)
+        # print(num_siblings)
 
     res = sum(dist)
     return res
@@ -359,7 +374,8 @@ def mt_search(t, g, k):
     res = __mt_search(g, root[0], t[1], k, leaf_nodes)
     return res
 
-
+# myesss = __normalize_list([0,0,0])
+# print(myesss)
 # calc_distance(tet[0].graph.nodes(data=True), tet[1].graph.nodes(data=True), speci, "user")
 
 
