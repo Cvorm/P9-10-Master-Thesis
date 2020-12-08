@@ -174,3 +174,21 @@ def foo(n,g):
     #     #             ree[ind] = (nn, v)
     #     #             ree[ind2] = (nn, v)
     #     #self.graph.nodes(data=True)[root[0]]['mult'] = ree
+
+    # nei = list(self.graph.neighbors(node))
+    # rn = 0
+    # for n in nei:
+    #     print(n)
+    #     m = self.graph.nodes(data=True)[n]['mult']
+    #     if type(m) == int:
+    #         rn += 1
+    #         print('SINGLE INT')
+    #         print(m)
+    #     elif any(isinstance(i, tuple) for i in m):
+    #         rn += 1
+    #         print('LIST OF LIST')
+    #         print(m)
+    #     else:
+    #         rn += 1
+    #         print('ELSE')
+    #         print(m)
