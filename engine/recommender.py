@@ -88,8 +88,8 @@ def tet_specification2(nodes, edges, freevars,genres):
 def generate_tet(graph, root, spec):
     roots = [n for n, info in graph.nodes(data=True) if info.get(f'{root}')]
     complete = []
-    for r in range(20):
-        complete.append(__generate_tet(graph, roots[r], spec))
+    for r in roots:
+        complete.append(__generate_tet(graph, r, spec))
     return complete
 
 
@@ -233,6 +233,7 @@ def __normalize_list(list):
         norm = [float(i) / sum(list) for i in list]
         return norm
 
+
 def calc_distance(hist_tree1, hist_tree2, spec, root):
     # nodes = [n[-1] for n in dfs_edges(spec, source=root)]
     spec_nodes = [n for n in edge_dfs(spec, source=root)]
@@ -244,16 +245,17 @@ def calc_distance(hist_tree1, hist_tree2, spec, root):
         # print(y)
         curr_node_hist1 = hist_tree1[y]['hist']
         curr_node_hist2 = hist_tree2[y]['hist']
-        print(y, curr_node_hist1)
+        #print(y, curr_node_hist1)
         # print(curr_node_hist2)
         num_siblings = get_siblings(spec, y) + 1
         temp_dist = 1/num_siblings * distance_c_emd(curr_node_hist1[0], curr_node_hist2[0])
         dist.append(temp_dist)
-        print(temp_dist)
+        #print(temp_dist)
         # print(num_siblings)
 
     res = sum(dist)
     return res
+
 
 def get_siblings(aGraph, aNode):
      try:
@@ -287,34 +289,26 @@ def get_siblings(aGraph, aNode):
 
 
 # helper function to get random pair
-def __get_random_pair(data):
+def __get_random_pair(data, spec, root):
     dist = 0
     while dist == 0:
         v1,v2 = np.random.choice(data, 2, replace=False)
-        v1_root = [x for x, y in v1.graph.nodes(data=True) if y.get('root')]
-        v2_root = [x for x, y in v2.graph.nodes(data=True) if y.get('root')]
-        v1_hist = v1.get_histogram(v1_root[0])
-        v2_hist = v2.get_histogram(v2_root[0])
-        dist = EMD_hists(v1_hist[1], v2_hist[1])
+        v1_hist = v1.get_histogram()
+        v2_hist = v2.get_histogram()
+        dist = calc_distance(v1_hist, v2_hist, spec, root)
     return v1, v2
 
 
 # helper function to split data according to distance to v1 and v2
-def __split_data(data, v1, v2):
+def __split_data(data, v1, v2, spec, root):
     data_1 = []
     data_2 = []
-    v1_root = [x for x, y in v1.graph.nodes(data=True) if y.get('root')]
-    v2_root = [x for x, y in v2.graph.nodes(data=True) if y.get('root')]
-    v1_hist = v1.get_histogram(v1_root[0])
-    v2_hist = v2.get_histogram(v2_root[0])
-    # print(f'v1 histogram: {v1_hist}')
-    # print(f'v2 histogram: {v2_hist}')
+    v1_hist = v1.get_histogram()
+    v2_hist = v2.get_histogram()
     for g in data:
-        root = [x for x, y in g.graph.nodes(data=True) if y.get('root')]
-        g_hist = g.graph.nodes(data=True)[root[0]]['hist']
-        v1_len = EMD_hists(g_hist[1], v1_hist[1])
-        v2_len = EMD_hists(g_hist[1], v2_hist[1])
-        # print(f'v1: {v1_len}, v2: {v2_len}')
+        g_hist = g.get_histogram()
+        v1_len = calc_distance(g_hist, v1_hist, spec, root)
+        v2_len = calc_distance(g_hist, v2_hist, spec, root)
         if v1_len < v2_len:
             data_1.append(g)
         elif v2_len < v1_len:
@@ -323,12 +317,12 @@ def __split_data(data, v1, v2):
 
 
 # helper function to build metric tree
-def __mt_build(g, d_max, b_max, d, data, name):
+def __mt_build(g, d_max, b_max, d, data, name, spec, root):
     if not (d == d_max or len(data) <= b_max):
-        z1, z2 = __get_random_pair(data)
-        data_1, data_2 = __split_data(data,z1,z2)
-        __mt_build(g, d_max, b_max, d + 1, data_1, 1)
-        __mt_build(g, d_max, b_max, d + 1, data_2, 2)
+        z1, z2 = __get_random_pair(data, spec, root)
+        data_1, data_2 = __split_data(data,z1,z2, spec, root)
+        __mt_build(g, d_max, b_max, d + 1, data_1, 1, spec, root)
+        __mt_build(g, d_max, b_max, d + 1, data_2, 2, spec, root)
         g.add_node(f'{d}_{name}', left=f'{d + 1}_1', right=f'{d + 1}_2', z1=z1, z2=z2) #left=data_1, right=data_2
         g.add_edge(f'{d}_{name}', f'{d + 1}_1')
         g.add_edge(f'{d}_{name}', f'{d + 1}_2')
@@ -337,41 +331,39 @@ def __mt_build(g, d_max, b_max, d, data, name):
 
 
 # function for building metric tree
-def mt_build(tet, k):
+def mt_build(tet, k, bucket_max, spec):
     g = nx.DiGraph()
-    __mt_build(g, k, 50, 0, tet, 0)
+    __mt_build(g, k, bucket_max, 0, tet, 0, spec, 'user')
     return g
 
 
 # function for calculating distance between two histograms
-def __distance(v1,v2):
-    v1_root = [x for x, y in v1.graph.nodes(data=True) if y.get('root')]
-    v2_root = [x for x, y in v2.graph.nodes(data=True) if y.get('root')]
-    v1_hist = v1.get_histogram(v1_root[0])
-    v2_hist = v2.get_histogram(v2_root[0])
-    return EMD_hists(v1_hist[1], v2_hist[1])
+def __distance(v1,v2, spec, root):
+    v1_hist = v1.get_histogram()
+    v2_hist = v2.get_histogram()
+    return calc_distance(v1_hist, v2_hist, spec, root)
 
 
 # helper function for searching metric tree
-def __mt_search(g, mn, h, k,leafs):
+def __mt_search(g, mn, h, k,leafs, spec, root):
     if mn in leafs:
         bucket = g.nodes(data=True)[mn]['bucket']
         return bucket
         #sort bucket according to h and return k
-    dist1 = __distance(h, g.nodes(data=True)[mn]['z1'])
-    dist2 = __distance(h, g.nodes(data=True)[mn]['z2'])
+    dist1 = __distance(h, g.nodes(data=True)[mn]['z1'], spec, root)
+    dist2 = __distance(h, g.nodes(data=True)[mn]['z2'], spec, root)
     if dist1 <= dist2:
-        return __mt_search(g, g.nodes(data=True)[mn]['left'], h, k, leafs)
+        return __mt_search(g, g.nodes(data=True)[mn]['left'], h, k, leafs, spec, root)
     else:
-        return __mt_search(g, g.nodes(data=True)[mn]['right'], h, k, leafs)
+        return __mt_search(g, g.nodes(data=True)[mn]['right'], h, k, leafs, spec, root)
 
 
 # function for searching metric tree
-def mt_search(t, g, k):
+def mt_search(t, g, k, spec):
     leaf_nodes = [node for node in g.nodes if
                   (g.in_degree(node) != 0 and g.out_degree(node) == 0)]
     root = [node for node in g.nodes if (g.in_degree(node) == 0 and g.out_degree != 0)]
-    res = __mt_search(g, root[0], t[1], k, leaf_nodes)
+    res = __mt_search(g, root[0], t[1], k, leaf_nodes, spec, 'user')
     return res
 
 # myesss = __normalize_list([0,0,0])
