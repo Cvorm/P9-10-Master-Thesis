@@ -156,7 +156,7 @@ class Multiset:
         self.__logistic_eval(root[0], bias, weight, leaf_nodes)
 
     # function for calculating histograms
-    def __histogram(self, node, leafs):
+    def __histogram(self, node, leafs, num_bins):
         if not node in leafs:
             h = []
             for x in self.graph.neighbors(node):
@@ -166,21 +166,22 @@ class Multiset:
             h_unique_list.sort()
             if len(h_unique_list) <= 1:
                 hist, bin_edges = np.histogram(h, bins='auto')
-                histogram = [list(self.__normalize_list(hist)), list(bin_edges)]
+                histogram = [list(hist), list(bin_edges)]
                 self.graph.nodes(data=True)[node]['hist'] += histogram
             else:
-                hist, bin_edges = np.histogram(h, bins=h_unique_list)
-                histogram = [list(self.__normalize_list(hist)), list(bin_edges)]
+                hist, bin_edges = np.histogram(h, bins=num_bins)
+                histogram = [list(hist), list(bin_edges)]
                 self.graph.nodes(data=True)[node]['hist'] += histogram
             for x in self.graph.neighbors(node):
-                self.__histogram(x, leafs)
+                self.__histogram(x, leafs, num_bins)
 
     # call function for histogram
-    def histogram(self):
+    def histogram(self, num_bins):
         leaf_nodes = [node for node in self.graph.nodes if
                       (self.graph.in_degree(node) != 0 and self.graph.out_degree(node) == 0)]
         root = [x for x, y in self.graph.nodes(data=True) if y.get('root')]
-        self.__histogram(root[0], leaf_nodes)
+        self.__histogram(root[0], leaf_nodes, num_bins)
+
 
     def __histogram2(self, node, leafs, specif):
         self.ht.add_node(node, hist=[])
@@ -215,3 +216,4 @@ class Multiset:
     def __normalize_list(list):
         norm = [float(i) / sum(list) for i in list]
         return norm
+
