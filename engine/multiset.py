@@ -46,8 +46,8 @@ class Multiset:
     def set_graph(self, g):
         self.graph = g
 
-    def get_histogram(self,node):
-        return self.graph.nodes(data=True)[node]['hist']
+    def get_histogram(self):
+        return self.ht.nodes(data=True)
 
     # def get_logistic_values(self,node):
     #     for n in node:
