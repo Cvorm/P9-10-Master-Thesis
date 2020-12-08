@@ -1,17 +1,23 @@
 from engine.multiset import *
 from engine.data_setup import *
-import time
-import math
-import ast
-import networkx as nx
-from scipy.stats import wasserstein_distance
 
-updated_data = pd.read_csv('../movie.csv',converters={'cast': eval})
-updated_actor = pd.read_csv('../actor_data.csv',converters={'awards': eval})
+updated_data = pd.read_csv('../movie.csv', converters={'cast': eval})
+updated_actor = pd.read_csv('../actor_data.csv', converters={'awards': eval})
+
+
+def get_genres():
+    l = []
+    for index, movie in data.iterrows():
+         for genre in movie['genres']:
+            l.append(genre)
+    s = set(l)
+    final_list = list(s)
+    final_list.sort()
+    return final_list
 
 
 # creates an overall directed bipartite graph used for constructing TETs
-def generate_bipartite_graph():
+def generate_bipartite_graph(genres):
     B = nx.DiGraph()
     B.add_nodes_from(rdata.userId, bipartite=0, user=True, free=True, type='user')
     B.add_nodes_from(updated_data.movieId, bipartite=1, movie=True, free=True, type='movie')
@@ -19,7 +25,7 @@ def generate_bipartite_graph():
     for index,row in updated_data.iterrows():
         # for actor in row['cast']:
         #     B.add_edge(row['movieId'],actor)
-        B.add_edge(row['movieId'],row['director'])
+        B.add_edge(row['movieId'], row['director'])
         #     B.add_node(director,bipartite=1, director=True)
         #     B.add_edge(row['movieId'],director)
     # for index,row in updated_actor.iterrows():
@@ -30,10 +36,24 @@ def generate_bipartite_graph():
         # for actor in list(row['cast']):
         #     print(actor)
     B.add_edges_from([(uId, mId) for (uId, mId) in rdata[['userId', 'movieId']].to_numpy()])
+    # ADD GENRES
     for index, movie in data.iterrows():
         for genre in movie['genres']:
             B.add_node(genre, bipartite=1, genre=True, free=False, type='genre')
             B.add_edge(movie['movieId'], genre)
+    # TEST FOR ADDING CROSS CLASSIFICATION ON GENRES
+    # for index, movie in data.iterrows():
+    #     tmp = []
+    #     for genre in genres:
+    #         #for g in movie['genres']:
+    #         if genre in movie['genres']:
+    #             tmp.append(True)
+    #         else:
+    #             tmp.append(False)
+    #     id = 'g' + str(index)
+    #     # tmp2 = tuple(tmp)
+    #     B.add_node(id, bipartite=1, genre=True, free=False, type='genre', cross=tmp)
+    #     B.add_edge(movie['movieId'], id)
     return B
 
 
@@ -49,6 +69,21 @@ def tet_specification(nodes, edges, freevars):
     return g
 
 
+def tet_specification2(nodes, edges, freevars,genres):
+    g = nx.DiGraph()
+    for n in nodes:
+        if n in freevars:
+            g.add_node(n, type=n, free=True)
+        elif n == 'genre':
+            for genre in genres:
+                g.add_node(genre,type=n,free=False)
+        else:
+            g.add_node(n, type=n, free=False)
+    for genre in genres:
+        g.add_edge('movie',genre)
+    g.add_edges_from(edges)
+    return g
+
 # function used to generate our TETs for each user (root) based on the overall graph, and our specification
 def generate_tet(graph, root, spec):
     roots = [n for n, info in graph.nodes(data=True) if info.get(f'{root}')]
@@ -61,11 +96,11 @@ def generate_tet(graph, root, spec):
 # private helper function used to generate TETs
 def __generate_tet(graph, user, spec):
     nodes = [n[-1] for n in dfs_edges(spec, source="user")]
-    ms = Multiset()
+    ms = Multiset()     # here we instantiate our TETs
     ms.add_root(user, len(graph.out_edges(user)))
     subgraph = [n for n in graph.neighbors(user) if n[0] == f'{nodes[0][0]}']
     for i in subgraph:
-        nodess = [n for n in dfs_edges(graph, source=i)]
+        nodess = [n for n in dfs_edges(graph, source=i)]    # perform DFS and loop over the pairs and add nodes to TET
         for x in nodess:
             if len(graph.out_edges(x[0])) > 0:
                 type = graph.nodes(data=True)[x[0]].get('type')
@@ -75,6 +110,9 @@ def __generate_tet(graph, user, spec):
                     ms.add_node_w_count(x[0],1, type) #len((graph.out_edges(x[0])))
             if len(graph.out_edges(x[1])) == 0:
                 type = graph.nodes(data=True)[x[1]].get('type')
+                # if type == 'genre':
+                #     ms.add_node_w_cross(x[1],type,graph.nodes(data=True)[x[1]]['cross'])
+                # else:
                 ms.add_node_w_count(x[1], 1, type)
         for (k, l) in nodess:
             ms.add_edge((k, l))
@@ -284,9 +322,9 @@ def __mt_build(g, d_max, b_max, d, data, name):
 
 
 # function for building metric tree
-def mt_build(tet):
+def mt_build(tet, k):
     g = nx.DiGraph()
-    __mt_build(g, 2, 5, 0, tet, 0)
+    __mt_build(g, k, 50, 0, tet, 0)
     return g
 
 
@@ -308,9 +346,9 @@ def __mt_search(g, mn, h, k,leafs):
     dist1 = __distance(h, g.nodes(data=True)[mn]['z1'])
     dist2 = __distance(h, g.nodes(data=True)[mn]['z2'])
     if dist1 <= dist2:
-        return __mt_search(g,g.nodes(data=True)[mn]['left'],h,k,leafs)
+        return __mt_search(g, g.nodes(data=True)[mn]['left'], h, k, leafs)
     else:
-        return __mt_search(g,g.nodes(data=True)[mn]['right'],h,k,leafs)
+        return __mt_search(g, g.nodes(data=True)[mn]['right'], h, k, leafs)
 
 
 # function for searching metric tree
@@ -322,138 +360,7 @@ def mt_search(t, g, k):
     return res
 
 
-# overall run function, where we run our 'pipeline'
-def run():
-    print('Running...')
-    start_time_total = time.time()
-    print('Formatting data...')
-    run_data()
-    print('Generating graph...')
-    start_time = time.time()
-    graph = generate_bipartite_graph()
-    print("--- %s seconds ---" % (time.time() - start_time))
-
-    print('Building TET specification...')
-    start_time = time.time()
-    #speci = nested_list(["user", "movie", "genre"], [("user", "movie"), ("movie", "genre")])
-    #speci = nested_list(["user,","movie","genre","actor","budget","award","rated"], [("user","movie"),("movie", "genre"),("movie","actor"),("movie","budget"),("actor","award"),("movie","rated")])
-    speci = tet_specification(["user,", "movie", "genre", "director", ],
-                              [("user", "movie"), ("movie", "genre"), ("movie", "director")], ["movie","user"])
-    print("--- %s seconds ---" % (time.time() - start_time))
-
-    print('Generating TET according to graph and specification...')
-    start_time = time.time()
-    tet = generate_tet(graph, 'user', speci)
-    print("--- %s seconds ---" % (time.time() - start_time))
-
-    #TILFØJ RATINGS
-
-    print('Counting TETs...')
-    start_time = time.time()
-    [g.count_tree() for g in tet]
-    print("--- %s seconds ---" % (time.time() - start_time))
-
-    print('Performing Logistic Evaluation on TETs...')
-    start_time = time.time()
-    [g.logistic_eval(0, 1) for g in tet]
-    print("--- %s seconds ---" % (time.time() - start_time))
-
-    print('Generating histograms...')
-    start_time = time.time()
-    [g.histogram(5) for g in tet]
-    print("--- %s seconds ---" % (time.time() - start_time))
-
-    print('Generating overall histogram for all users...')
-    start_time = time.time()
-    hist = generate_histograms(tet)
-    print("--- %s seconds ---" % (time.time() - start_time))
-
-    print('Building Metric Tree')
-    start_time = time.time()
-    mts = mt_build(tet)
-    print(mts.nodes)
-    print(mts.edges)
-   #[print(mts[i].graph.nodes(data=True)) for i in range(5)]
-    print("--- %s seconds ---" % (time.time() - start_time))
-
-    print('Searching Metric Tree')
-    start_time = time.time()
-    mts_res = mt_search(tet,mts,3)
-    print(f'Amount of similiar users found: {len(mts_res)}')
-    print(mts_res[0].graph.nodes(data=True))
-    #[print(x.graph.nodes(data=True)) for x in mts_res]
-    print("--- %s seconds ---\n" % (time.time() - start_time))
-
-    print('|| ------ COMPLETE ------ ||')
-    print('Total run time: %s seconds.' % (time.time() - start_time_total))
-    print('Amount of users: %s.' % len(tet))
-    print('Amount of bins in histogram: %s.' % len(hist[0]))
-    print('|| ---------------------- ||\n')
-    print('Top 5 users:')
-    [print(tet[i].graph.nodes(data=True)) for i in range(5)]
-
-    # f = open("TETs.txt", "w")
-    # for i in range(5):
-    #     f.write(str(tet[i].graph.nodes(data=True)))
-    #     f.write("\n")
-    # f.close()
-    # for i in (tet[1].graph.nodes(data=True)):
-    #     print(i)
-    # yes = tet[0].graph.nodes(data=True)
-    # for i in yes:
-    #     print(i)
-    # print(yes)
-    # print(list(dfs_edges(yes, source="u1")))
-    # myes = [n for n in tet[0].graph.nodes(data=True)]
-    # for x,y in myes:
-    #     # print([i]['hist'])
-    #     dict = ast.literal_eval(y)
-    #     print(dict['hist'])
-
-    # for n in list(tet[0].graph.nodes(data=True)):
-    #     print(n[0]['hist'])
-
-    # myes = tet[0].graph.nodes(data=True)
-    # for x,y in myes:
-    #     print(x, y['hist'])
-
-
-
-    # yeeee = list(dfs_edges(tet[1].graph.nodes(data=True), source="u2"))
-    # print(yeeee)
-
-
-        # print(y)
-        # for x in i:
-            # print(x)
-        # for x in j:
-        # for j in i:
-
-            # print(x)
-    calc_distance(tet[0].graph.nodes(data=True), tet[1].graph.nodes(data=True), speci, "user")
-    # doood = get_siblings(speci, "genre")
-    # print(doood)
-
-run()
-# load_TETs("TETs.txt")
-
-# dist = emd_1d_histogram_similarityyyyyyy([1, 1, 1], [1, 1, 2])
-# print(dist)
-
-# def new_EMD(hist1, hist2):
-#     #normalize the two histograms
-#     hist1 = __normalize_list(hist1)
-#     hist2 = __normalize_list(hist2)
-#     dist = np.zeros(len(hist1))
-#     # print(hist1)
-#     # print(hist2)
-#     for i in range(len(hist1)-1):
-#         dist[i+1] = (hist1[i] + dist[i]) - hist2[i]
-#     sum = np.sum(abs(dist))
-#     return sum
-
-
-
+calc_distance(tet[0].graph.nodes(data=True), tet[1].graph.nodes(data=True), speci, "user")
 
 
 # dist = EMD_hists([1, 5, 1], [1, 1, 5])
