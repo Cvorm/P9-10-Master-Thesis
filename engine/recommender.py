@@ -84,6 +84,7 @@ def tet_specification2(nodes, edges, freevars,genres):
     g.add_edges_from(edges)
     return g
 
+
 # function used to generate our TETs for each user (root) based on the overall graph, and our specification
 def generate_tet(graph, root, spec):
     roots = [n for n, info in graph.nodes(data=True) if info.get(f'{root}')]
@@ -121,40 +122,9 @@ def __generate_tet(graph, user, spec):
     return ms
 
 
-# function to generate the overall histogram for each user
-def generate_histograms(l):
-    h = []
-    for x in l:
-        root = [x for x, y in x.graph.nodes(data=True) if y.get('root')]
-        h.append(x.graph.nodes(data=True)[root[0]]['value'])
-    h_unique_set = set(h)
-    h_unique_list = list(h_unique_set)
-    h_unique_list.sort()
-    hist, bin_edges = np.histogram(h, bins=h_unique_list)
-    histogram = [list(hist), list(bin_edges)]
-    return histogram
-
 def distance_c_emd(hist1,hist2):
     dist = 0.5 * (distance_r_count(hist1,hist2) + EMD_hists(hist1, hist2))
     return dist
-
-# def load_TETs(file):
-#     f = open(file, "r")
-#     contents = f.read().splitlines()
-#     first = contents[0]
-#     # for i in contents:/
-#     print(first)
-#     for i in first:
-#         print(i)
-    # yes = contents.split('{')
-    # print(contents)
-    # for i in yes:
-    #     print(i)
-    # dict = eval(contents)
-    # print(dict)
-    # f.close()
-
-# def distance_c_emd_hist_trees(user1, user2):
 
 
 def distance_r_count(hist1, hist2):
@@ -169,35 +139,12 @@ def distance_r_count(hist1, hist2):
         return dist
 
 
-
 # helper function for calculating length
 def __same_length_lists(list1, list2):
     while len(list1) != len(list2):
         list1.append(0)
     return list1
 
-
-# function to calculate length / similarity between 1-dimensional histograms
-# def emd_1d_histogram_similarity(hist1, hist2):
-#     # hist1 and hist2 must have the same length. normalize the counts:
-#     hist1 = __normalize_list(hist1)
-#     hist2 = __normalize_list(hist2)
-#
-#     # print(hist1)
-#     # print(hist2)
-#
-#     # AKA Earth Movers Distance.
-#     dist = wasserstein_distance(hist1, hist2)
-#
-#     # if len(hist1) < len(hist2):
-#     #     hist_w_padding = __same_length_lists(hist1, hist2)
-#     #     dist = __compute_manhatten_distance(hist_w_padding, hist2)
-#     # elif len(hist1) > len(hist2):
-#     #     hist_w_padding = __same_length_lists(hist2, hist1)
-#     #     dist = __compute_manhatten_distance(hist_w_padding, hist1)
-#     # else:
-#     #     dist = __compute_manhatten_distance(hist1, hist2)
-#     return dist
 
 def EMD_hists(hist1, hist2):
     #normalize the two histograms
@@ -210,8 +157,6 @@ def EMD_hists(hist1, hist2):
         hist1 = __normalize_list(hist1)
         hist2 = __normalize_list(hist2)
         dist = np.zeros(len(hist1))
-        # print(hist1)
-        # print(hist2)
         for i in range(len(hist1)-1):
             dist[i+1] = (hist1[i] + dist[i]) - hist2[i]
         summ = np.sum(abs(dist))
@@ -228,31 +173,19 @@ def __compute_manhatten_distance(hist1, hist2):
 
 
 def __normalize_list(list):
-        # print(list)
-        # print(list)
         norm = [float(i) / sum(list) for i in list]
         return norm
 
 
 def calc_distance(hist_tree1, hist_tree2, spec, root):
-    # nodes = [n[-1] for n in dfs_edges(spec, source=root)]
     spec_nodes = [n for n in edge_dfs(spec, source=root)]
-    # hist1_nodes = hist_tree1.nodes(data=True)
-    # hist2_nodes = hist_tree2.nodes(data=True)
     dist = []
-    # print(spec_nodes)
     for x,y in spec_nodes:
-        # print(y)
         curr_node_hist1 = hist_tree1[y]['hist']
         curr_node_hist2 = hist_tree2[y]['hist']
-        #print(y, curr_node_hist1)
-        # print(curr_node_hist2)
         num_siblings = get_siblings(spec, y) + 1
         temp_dist = 1/num_siblings * distance_c_emd(curr_node_hist1[0], curr_node_hist2[0])
         dist.append(temp_dist)
-        #print(temp_dist)
-        # print(num_siblings)
-
     res = sum(dist)
     return res
 
@@ -268,24 +201,6 @@ def get_siblings(aGraph, aNode):
         return len(siblings)
      except:
          return 0
-    #     exit("no siblings found!")
-
-
-        # print(y)
-    # for n in list(tet[0].graph.nodes(data=True)):
-    #     print(n[0]['hist'])
-
-    # myes = tet[0].graph.nodes(data=True)
-    # for x,y in myes:
-    #     print(x, y['hist'])
-
-# def wasserstein_distance(A,B):
-#     n = len(A)
-#     dist = np.zeros(n)
-#     for x in range(n-1):
-#         dist[x+1] = A[x]-B[x]+dist[x]
-#     return np.sum(abs(dist))
-
 
 
 # helper function to get random pair
@@ -366,10 +281,3 @@ def mt_search(t, g, k, spec):
     res = __mt_search(g, root[0], t[1], k, leaf_nodes, spec, 'user')
     return res
 
-# myesss = __normalize_list([0,0,0])
-# print(myesss)
-# calc_distance(tet[0].graph.nodes(data=True), tet[1].graph.nodes(data=True), speci, "user")
-
-
-# dist = EMD_hists([1, 5, 1], [1, 1, 5])
-# print(dist)

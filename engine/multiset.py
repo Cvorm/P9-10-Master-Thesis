@@ -16,10 +16,6 @@ class Multiset:
     def add_root(self, node, c):
         self.graph.add_node(node, count=c, mult=[], root=True, weight=0, value=0, hist=[], free=True, type='user')
 
-    def add_node_w_cross(self, node, t, cross):
-        tmp_count = cross.count(True)
-        self.graph.add_node(node, count=tmp_count, mult=[], weight=0, value=0, hist=[], type=t, cross=cross)
-
     def add_node_w_count(self, node, c, t):
         if not self.graph.has_node(node):
             self.graph.add_node(node, count=c, mult=0, weight=0, value=0, hist=[], type=t)
@@ -49,11 +45,6 @@ class Multiset:
     def get_histogram(self):
         return self.ht.nodes(data=True)
 
-    # def get_logistic_values(self,node):
-    #     for n in node:
-    #
-    #     return self.graph.nodes(data=True)[node]
-
     @staticmethod
     def __flat_list(lst):
         flat_list = []
@@ -66,15 +57,10 @@ class Multiset:
     def __count_tree(self, curr_node, leafs):
         if curr_node in leafs:  # if our current node is a leaf, then the count is simply the count
             self.graph.nodes(data=True)[curr_node]['mult'] = self.graph.nodes(data=True)[curr_node]['count']
-            # if self.graph.nodes(data=True)[curr_node]['type'] == 'genre':
-            #     self.graph.nodes(data=True)[curr_node]['mult'] += self.graph.nodes(data=True)[curr_node]['cross']
-            # if self.graph.nodes(data=True)[curr_node]['type'] != 'genre':
-            #     self.graph.nodes(data=True)[curr_node]['mult'] = self.graph.nodes(data=True)[curr_node]['count']
         elif self.graph.nodes(data=True)[curr_node].get('free'):    # if our current node is a free variable, then we calculate the count of counts
             succesors = list(self.graph.successors(curr_node))
             ls = []
             ls2 = []
-            ls3 = []
             for s in succesors:
                 self.__count_tree(s, leafs)
                 ls.append(self.graph.nodes(data=True)[s]['mult'])
@@ -82,8 +68,6 @@ class Multiset:
                     ls2.append(s)
                 else:
                     ls2.append(self.graph.nodes(data=True)[s]['type'])
-                # ls3.append([self.graph.nodes(data=True)[s]['type'], self.graph.nodes(data=True)[s]['mult']])
-                # self.graph.nodes(data=True)[curr_node]['mult'] += combined
             types = set(ls2)
             res = dict.fromkeys(types, 0)
             if not any(isinstance(i, list) for i in ls):    # if we are dealing we a list of list of count
@@ -156,34 +140,7 @@ class Multiset:
         self.__logistic_eval(root[0], bias, weight, leaf_nodes)
 
     # function for calculating histograms
-    def __histogram(self, node, leafs, num_bins):
-        if not node in leafs:
-            h = []
-            for x in self.graph.neighbors(node):
-                h.append(self.graph.nodes(data=True)[x]['value'])
-            h_unique_set = set(h)
-            h_unique_list = list(h_unique_set)
-            h_unique_list.sort()
-            if len(h_unique_list) <= 1:
-                hist, bin_edges = np.histogram(h, bins='auto')
-                histogram = [list(hist), list(bin_edges)]
-                self.graph.nodes(data=True)[node]['hist'] += histogram
-            else:
-                hist, bin_edges = np.histogram(h, bins=num_bins)
-                histogram = [list(hist), list(bin_edges)]
-                self.graph.nodes(data=True)[node]['hist'] += histogram
-            for x in self.graph.neighbors(node):
-                self.__histogram(x, leafs, num_bins)
-
-    # call function for histogram
-    def histogram(self, num_bins):
-        leaf_nodes = [node for node in self.graph.nodes if
-                      (self.graph.in_degree(node) != 0 and self.graph.out_degree(node) == 0)]
-        root = [x for x, y in self.graph.nodes(data=True) if y.get('root')]
-        self.__histogram(root[0], leaf_nodes, num_bins)
-
-
-    def __histogram2(self, node, leafs, specif):
+    def __histogram(self, node, leafs, specif):
         self.ht.add_node(node, hist=[])
         h = []
         if node in ['Action', 'Adventure', 'Animation', 'Children', 'Comedy', 'Crime', 'Documentary', 'Drama', 'Fantasy', 'Film-Noir', 'Horror', 'IMAX', 'Musical', 'Mystery', 'Romance', 'Sci-Fi', 'Thriller', 'War', 'Western']:
@@ -192,8 +149,7 @@ class Multiset:
                 d = int(tmp)
                 for n in range(d):
                     h.append(1)
-            except:
-                pass
+            except: pass
         else:
             nodes = [x for x,y in self.graph.nodes(data=True) if y.get('type') == node]
             for n in nodes:
@@ -202,15 +158,15 @@ class Multiset:
         histogram = [list(hist), list(bin_edges)]
         self.ht.nodes(data=True)[node]['hist'] += histogram
         for x in specif.neighbors(node):
-            self.__histogram2(x, leafs,specif)
+            self.__histogram(x, leafs, specif)
             self.ht.add_edge(node,x)
 
-    def histogram2(self,specif):
+    def histogram(self, specif):
         leaf_nodes = [node for node in self.graph.nodes if
                       (self.graph.in_degree(node) != 0 and self.graph.out_degree(node) == 0)]
         root = [x for x, y in self.graph.nodes(data=True) if y.get('root')]
         r = [x for x in specif.nodes if x == 'user']
-        self.__histogram2(r[0], leaf_nodes,specif)
+        self.__histogram(r[0], leaf_nodes, specif)
 
     @staticmethod
     def __normalize_list(list):
