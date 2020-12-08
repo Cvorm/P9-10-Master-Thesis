@@ -360,7 +360,7 @@ def mt_search(t, g, k):
     return res
 
 
-calc_distance(tet[0].graph.nodes(data=True), tet[1].graph.nodes(data=True), speci, "user")
+# calc_distance(tet[0].graph.nodes(data=True), tet[1].graph.nodes(data=True), speci, "user")
 
 
 # dist = EMD_hists([1, 5, 1], [1, 1, 5])
