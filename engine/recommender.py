@@ -194,7 +194,7 @@ def calc_distance(hist_tree1, hist_tree2, spec, root):
         curr_node_hist2 = hist_tree2['u2']['hist']
         print(curr_node_hist1)
         print(curr_node_hist2)
-        num_siblings = len(get_siblings(spec, "genre")) + 1
+        num_siblings = get_siblings(spec, "genre") + 1
         temp_dist = 1/num_siblings * distance_c_emd(curr_node_hist1[0], curr_node_hist2[0])
         dist.append(temp_dist)
         print(num_siblings)
@@ -203,16 +203,16 @@ def calc_distance(hist_tree1, hist_tree2, spec, root):
     return res
 
 def get_siblings(aGraph, aNode):
-    # try:
+     try:
         parentEdge = [(u, v, d) for u, v, d in aGraph.edges(data=True) if v == aNode]
         # print(parentEdge)
         parent = parentEdge[0][0]
         # print(parent)
         siblings = [v for u, v in aGraph.out_edges(parent) if v != aNode]
         # print(siblings)
-        return siblings
-
-    # except:
+        return len(siblings)
+     except:
+         return 0
     #     exit("no siblings found!")
 
 
