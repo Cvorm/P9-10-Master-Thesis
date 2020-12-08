@@ -17,11 +17,13 @@ log_weight = 1
 bin_size = 10
 bin_amount = 10
 # metric tree settings
-mt_depth = 3
+mt_depth = 7
+bucket_max_mt = 10
 mt_search_k = 5
 # print settings
 top = 10
-
+# seed
+np.random.seed(1)
 
 # overall run function, where we run our 'pipeline'
 def run():
@@ -70,26 +72,25 @@ def run():
     # hist = generate_histograms(tet)
     # print("--- %s seconds ---" % (time.time() - start_time))
     #
-    # print('Building Metric Tree')
-    # start_time = time.time()
-    # mts = mt_build(tet, mt_depth)
-    # print(mts.nodes)
-    # print(mts.edges)
-    # # [print(mts[i].graph.nodes(data=True)) for i in range(5)]
-    # print("--- %s seconds ---" % (time.time() - start_time))
+    print('Building Metric Tree')
+    start_time = time.time()
+    mts = mt_build(tet, mt_depth, bucket_max_mt, speci_test)
+    print(f' MT nodes: {mts.nodes}')
+    print(f' MT edges: {mts.edges}')
+    # [print(mts[i].graph.nodes(data=True)) for i in range(5)]
+    print("--- %s seconds ---" % (time.time() - start_time))
     #
-    # print('Searching Metric Tree')
-    # start_time = time.time()
-    # mts_res = mt_search(tet,mts,mt_search_k)
-    # print(f'Amount of similar users found: {len(mts_res)}')
-    # print(mts_res[0].graph.nodes(data=True))
-    # # [print(x.graph.nodes(data=True)) for x in mts_res]
-    # print("--- %s seconds ---\n" % (time.time() - start_time))
+    print('Searching Metric Tree')
+    start_time = time.time()
+    mts_res = mt_search(tet,mts,mt_search_k, speci_test)
+    print(f'Amount of similar users found: {len(mts_res)}')
+    print(mts_res[0].graph.nodes(data=True))
+    # [print(x.graph.nodes(data=True)) for x in mts_res]
+    print("--- %s seconds ---\n" % (time.time() - start_time))
 
     print('|| ------ COMPLETE ------ ||')
     print('Total run time: %s seconds.' % (time.time() - start_time_total))
     print('Amount of users: %s.' % len(tet))
-    #print('Amount of bins in histogram: %s.' % len(hist[0]))
     print('|| ---------------------- ||\n')
     print(f'Top {top} users:')
     [print(tet[i].graph.nodes(data=True)) for i in range(top)]
