@@ -39,8 +39,6 @@ def run():
     print("--- %s seconds ---" % (time.time() - start_time))
     print('Building TET specification...')
     start_time = time.time()
-    #speci = nested_list(["user", "movie", "genre"], [("user", "movie"), ("movie", "genre")])
-    #speci = nested_list(["user,","movie","genre","actor","budget","award","rated"], [("user","movie"),("movie", "genre"),("movie","actor"),("movie","budget"),("actor","award"),("movie","rated")])
     speci = tet_specification(spec[0],spec[1],spec[2])
     print("--- %s seconds ---" % (time.time() - start_time))
 
@@ -64,14 +62,9 @@ def run():
     print('Generating histograms...')
     start_time = time.time()
     speci_test = tet_specification2(spec2[0], spec2[1], spec2[2], genres)
-    [g.histogram2(speci_test) for g in tet]
+    [g.histogram(speci_test) for g in tet]
     print("--- %s seconds ---" % (time.time() - start_time))
 
-    # print('Generating overall histogram for all users...')
-    # start_time = time.time()
-    # hist = generate_histograms(tet)
-    # print("--- %s seconds ---" % (time.time() - start_time))
-    #
     print('Building Metric Tree')
     start_time = time.time()
     mts = mt_build(tet, mt_depth, bucket_max_mt, speci_test)
@@ -94,8 +87,8 @@ def run():
     print('|| ---------------------- ||\n')
     print(f'Top {top} users:')
     [print(tet[i].graph.nodes(data=True)) for i in range(top)]
+    print(f'Top {top} users histogram:')
     [print(tet[i].ht.nodes(data=True)) for i in range(top)]
 
-    dist = calc_distance(tet[0].ht.nodes(data=True), tet[1].ht.nodes(data=True), speci_test, "user")
-    print(dist)
+
 run()
