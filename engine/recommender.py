@@ -1,9 +1,6 @@
 from engine.multiset import *
 from engine.data_setup import *
 
-updated_data = pd.read_csv('../movie.csv', converters={'cast': eval})
-updated_actor = pd.read_csv('../actor_data.csv', converters={'awards': eval})
-
 
 def get_genres():
     l = []
@@ -23,37 +20,12 @@ def generate_bipartite_graph(genres):
     B.add_nodes_from(updated_data.movieId, bipartite=1, movie=True, free=True, type='movie')
     B.add_nodes_from(updated_data.director, bipartite=1, director=True, free=True, type='director')
     for index,row in updated_data.iterrows():
-        # for actor in row['cast']:
-        #     B.add_edge(row['movieId'],actor)
         B.add_edge(row['movieId'], row['director'])
-        #     B.add_node(director,bipartite=1, director=True)
-        #     B.add_edge(row['movieId'],director)
-    # for index,row in updated_actor.iterrows():
-    #     for award in row['awards']:
-    #         if not award is None:
-    #             B.add_node(award,bipartite=1,award=True)
-    #             B.add_edge(row['actorId'],award)
-        # for actor in list(row['cast']):
-        #     print(actor)
     B.add_edges_from([(uId, mId) for (uId, mId) in rdata[['userId', 'movieId']].to_numpy()])
-    # ADD GENRES
     for index, movie in data.iterrows():
         for genre in movie['genres']:
             B.add_node(genre, bipartite=1, genre=True, free=False, type='genre')
             B.add_edge(movie['movieId'], genre)
-    # TEST FOR ADDING CROSS CLASSIFICATION ON GENRES
-    # for index, movie in data.iterrows():
-    #     tmp = []
-    #     for genre in genres:
-    #         #for g in movie['genres']:
-    #         if genre in movie['genres']:
-    #             tmp.append(True)
-    #         else:
-    #             tmp.append(False)
-    #     id = 'g' + str(index)
-    #     # tmp2 = tuple(tmp)
-    #     B.add_node(id, bipartite=1, genre=True, free=False, type='genre', cross=tmp)
-    #     B.add_edge(movie['movieId'], id)
     return B
 
 
@@ -120,6 +92,28 @@ def __generate_tet(graph, user, spec):
     for (e1, e2) in graph.edges(user):
         ms.add_edge((e1, e2))
     return ms
+
+
+def __update_tet(t, rating_df):
+    movies = [x for x,y in t.graph.nodes(data=True) if y['type'] == 'movie']
+    for idx, m in enumerate(movies):
+        rat = rating_df[rating_df.movieId == m].rating.item()
+        t.add_node_w_count(f'r{idx}',rat, 'rating')
+        t.add_edge((m,f'r{idx}'))
+    director = [x for x,y in t.graph.nodes(data=True) if y['type'] == 'director']
+    for idx, d in enumerate(director):
+        if type(d) == str:
+            award_amount = updated_actor[updated_actor.actorId == d].awards.item()
+            if award_amount > 0:
+                t.add_node_w_count(f'aw{idx}',award_amount, 'award')
+                t.add_edge((d, f'aw{idx}'))
+
+
+def update_tet(tet_multiset):
+    for t in tet_multiset:
+        root = [x for x, y in t.graph.nodes(data=True) if y.get('root')]
+        temp_r = rdata[rdata['userId'] == root[0]]
+        __update_tet(t, temp_r)
 
 
 def distance_c_emd(hist1,hist2):

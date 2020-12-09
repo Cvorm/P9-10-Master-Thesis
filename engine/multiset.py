@@ -74,7 +74,7 @@ class Multiset:
                 for s in succesors:
                     for t in types:
                         if self.graph.nodes(data=True)[s]['type'] == t:
-                            res[t] += 1
+                            res[t] += self.graph.nodes(data=True)[s]['count']
                         elif self.graph.nodes(data=True)[s]['type'] == 'genre':
                             if t == s:
                                 res[t] += 1
