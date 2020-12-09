@@ -8,7 +8,8 @@ links = pd.read_csv('../Data/links.csv')
 rdata = pd.DataFrame(columns=['userId', 'movieId', 'rating'])
 adata = pd.DataFrame(columns=['actorId','awards'])
 xdata = pd.DataFrame(columns=['movieId','actors','directors','budget'])
-
+updated_data = pd.read_csv('../movie.csv', converters={'cast': eval})
+updated_actor = pd.read_csv('actor_data.csv', converters={'awards': eval})
 
 # function used for updating the movies in movielens dataset by adding data from IMDb
 def update_movie_data():
@@ -82,10 +83,10 @@ def update_actor_data(actor_list):
                         temp_dict['Nominee'] += 1
                     awards.append(res)
             print(temp_dict)
-            adata.at[index, 'awards'] = temp_dict
+            adata.at[index, 'awards'] = temp_dict["Winner"]
         except:
             print('fail')
-            adata.at[index,'awards'] = temp_dict
+            adata.at[index,'awards'] = temp_dict["Winner"]
     print(adata)
     adata.to_csv('actor_data.csv',index=False)
 
@@ -111,3 +112,4 @@ def format_data():
 def run_data():
     update_data(False, False)
     format_data()
+
