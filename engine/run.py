@@ -6,10 +6,10 @@ from engine.recommender import *
 spec = [["user,", "movie", "genre", "director", ],
         [("user", "movie"), ("movie", "genre"), ("movie", "director")],
         ["movie","user"]]
-spec2 = [["user,", "movie", "genre", "director", ],
-        [("user", "movie"), ("movie", "director")],
-        ["movie","user"]]
-#spec2 = [['Action', 'Adventure', 'Animation', 'Children', 'Comedy', 'Crime', 'Documentary', 'Drama', 'Fantasy', 'Film-Noir', 'Horror', 'IMAX', 'Musical', 'Mystery', 'Romance', 'Sci-Fi', 'Thriller', 'War', 'Western']]
+spec2 = [["user,", "movie", "genre", "director", "rating", "award"],
+        [("user", "movie"), ("movie", "director"), ("movie", "rating"), ("director", "award")],
+        ["movie", "user", "director"]]
+
 # logistic evaluation function settings
 log_bias = -5
 log_weight = 1
@@ -17,26 +17,35 @@ log_weight = 1
 bin_size = 10
 bin_amount = 10
 # metric tree settings
-mt_depth = 7
-bucket_max_mt = 10
+mt_depth = 9
+bucket_max_mt = 25
 mt_search_k = 5
 # print settings
 top = 10
 # seed
 np.random.seed(1)
 
+
 # overall run function, where we run our 'pipeline'
+def run_imdb_stuff():
+    run_data()
+    foo = [x for x in updated_actor["actorId"]]
+    update_actor_data(foo)
+
+
 def run():
     print('Running...')
     start_time_total = time.time()
+
     print('Formatting data...')
     run_data()
     genres = get_genres()
-    print(genres)
+
     print('Generating graph...')
     start_time = time.time()
     graph = generate_bipartite_graph(genres)
     print("--- %s seconds ---" % (time.time() - start_time))
+
     print('Building TET specification...')
     start_time = time.time()
     speci = tet_specification(spec[0],spec[1],spec[2])
@@ -45,9 +54,9 @@ def run():
     print('Generating TET according to graph and specification...')
     start_time = time.time()
     tet = generate_tet(graph, 'user', speci)
+    print('Adding rating and award information to graph...')
+    update_tet(tet)
     print("--- %s seconds ---" % (time.time() - start_time))
-
-    #TILFØJ RATINGS
 
     print('Counting TETs...')
     start_time = time.time()
@@ -91,4 +100,5 @@ def run():
     [print(tet[i].ht.nodes(data=True)) for i in range(top)]
 
 
+#run_imdb_stuff()
 run()
