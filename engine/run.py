@@ -2,6 +2,7 @@ import time
 from engine.recommender import *
 
 # SETTINGS
+
 # tet specification settings: [nodes],[edges], [free variables]
 spec = [["user,", "movie", "genre", "director", ],
         [("user", "movie"), ("movie", "genre"), ("movie", "director")],
@@ -17,11 +18,11 @@ log_weight = 1
 bin_size = 10
 bin_amount = 10
 # metric tree settings
-mt_depth = 9
+mt_depth = 7
 bucket_max_mt = 25
 mt_search_k = 5
 # print settings
-top = 10
+top = 5
 # seed
 np.random.seed(1)
 
@@ -84,11 +85,19 @@ def run():
     #
     print('Searching Metric Tree')
     start_time = time.time()
-    mts_res = mt_search(tet,mts,mt_search_k, speci_test)
-    print(f'Amount of similar users found: {len(mts_res)}')
-    print(mts_res[0].graph.nodes(data=True))
-    # [print(x.graph.nodes(data=True)) for x in mts_res]
+    target_user = tet[2]
+    mts_res = mt_search(tet, mts, target_user, mt_search_k, speci_test)
+    username = [x for x,y in target_user.graph.nodes(data=True) if y.get('root')]
     print("--- %s seconds ---\n" % (time.time() - start_time))
+
+    print(f'Amount of similar users found for user {username[0]}: {len(mts_res)}')
+    print(f'User {username[0]}\'s histogram')
+    print(target_user.ht.nodes(data=True))
+    print('----------------------------')
+    for res in mts_res:
+        _res_id = [x for x, y in res.graph.nodes(data=True) if y.get('root')]
+        print(f'USER ID: {_res_id[0]}, HISTOGRAM: {res.ht.nodes(data=True)}')
+    print('|| ---------------------- ||\n')
 
     print('|| ------ COMPLETE ------ ||')
     print('Total run time: %s seconds.' % (time.time() - start_time_total))

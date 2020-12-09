@@ -252,13 +252,20 @@ def __distance(v1,v2, spec, root):
     v2_hist = v2.get_histogram()
     return calc_distance(v1_hist, v2_hist, spec, root)
 
+def __sort_dist(val,h,spec,root):
+    dist = __distance(val,h,spec,root)
+    return dist
 
 # helper function for searching metric tree
-def __mt_search(g, mn, h, k,leafs, spec, root):
+def __mt_search(g, mn, h, k, leafs, spec, root):
     if mn in leafs:
         bucket = g.nodes(data=True)[mn]['bucket']
-        return bucket
-        #sort bucket according to h and return k
+        dist = [__distance(h, b, spec, root) for b in bucket]
+        bucket_sorted = [x for _, x in sorted(zip(dist, bucket))]
+        if len(bucket_sorted) < k:
+            return bucket_sorted
+        else:
+            return bucket_sorted[:k]
     dist1 = __distance(h, g.nodes(data=True)[mn]['z1'], spec, root)
     dist2 = __distance(h, g.nodes(data=True)[mn]['z2'], spec, root)
     if dist1 <= dist2:
@@ -268,10 +275,10 @@ def __mt_search(g, mn, h, k,leafs, spec, root):
 
 
 # function for searching metric tree
-def mt_search(t, g, k, spec):
+def mt_search(t, g, user_tet, k, spec):
     leaf_nodes = [node for node in g.nodes if
                   (g.in_degree(node) != 0 and g.out_degree(node) == 0)]
     root = [node for node in g.nodes if (g.in_degree(node) == 0 and g.out_degree != 0)]
-    res = __mt_search(g, root[0], t[1], k, leaf_nodes, spec, 'user')
+    res = __mt_search(g, root[0], user_tet, k, leaf_nodes, spec, 'user')
     return res
 
