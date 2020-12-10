@@ -108,6 +108,34 @@ def run():
     print(f'Top {top} users histogram:')
     [print(tet[i].ht.nodes(data=True)) for i in range(top)]
 
-
+    # res = 10000000.0
+    # movies = ["",""]
+    # temp_dist = 0.0
+    # for x,y in tet[0].graph.nodes(data=True):
+    #     if type(x) is str and x[0] == 'm':
+    #         for i,j in tet[1].graph.nodes(data=True):
+    #             # print(i)
+    #             if type(i) is str and i[0] == 'm':
+    #                 temp_dist = abs(y['value'] - j['value'])
+    #                 print(temp_dist)
+    #                 if temp_dist < res:
+    #                     # print(temp_dist)
+    #                     res = temp_dist
+    #                     movies[0] = x
+    #                     movies[1] = i
+    #         # print(x)
+    # print("mov1:", movies[0], "mov2:", movies[1], "dist:", res)
+    #             # print(y['value'])
 #run_imdb_stuff()
+    myessss = get_movies(target_user, mts_res, 0.8, 1, 20)
+    print(len(myessss))
+    ids = [x[0] for x in myessss]
+    print(ids)
+    movies = get_movies_from_id(ids)
+    print(len(movies))
+    for title, genres in movies.items():
+        print(f'title: {title} genres: {genres}')
+    # print(myessss)
+    # print(len(myessss))
 run()
+# def movie_search(hist_tree1, hist_tree2):
