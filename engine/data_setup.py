@@ -1,6 +1,6 @@
 import pandas as pd
 import imdb
-
+from sklearn.model_selection import train_test_split
 moviesDB = imdb.IMDb()
 data = pd.read_csv('../Data/movies.csv')
 ratings = pd.read_csv('../Data/ratings.csv')
@@ -8,8 +8,14 @@ links = pd.read_csv('../Data/links.csv')
 rdata = pd.DataFrame(columns=['userId', 'movieId', 'rating'])
 adata = pd.DataFrame(columns=['actorId','awards'])
 xdata = pd.DataFrame(columns=['movieId','actors','directors','budget'])
+<<<<<<< HEAD
+updated_data = pd.read_csv('movie.csv', converters={'cast': eval})
+updated_actor = pd.read_csv('actor_data_small.csv', converters={'awards': eval})
+=======
 updated_data = pd.read_csv('../movie.csv', converters={'cast': eval})
 updated_actor = pd.read_csv('actor_data.csv', converters={'awards': eval})
+>>>>>>> parent of d064af6... big data
+
 
 # function used for updating the movies in movielens dataset by adding data from IMDb
 def update_movie_data():
@@ -112,4 +118,6 @@ def format_data():
 def run_data():
     update_data(False, False)
     format_data()
+    x_train, x_test = train_test_split(rdata, test_size=0.3)
+    return x_train, x_test
 
