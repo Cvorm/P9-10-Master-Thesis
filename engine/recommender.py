@@ -14,14 +14,15 @@ def get_genres():
 
 
 # creates an overall directed bipartite graph used for constructing TETs
-def generate_bipartite_graph(genres):
+def generate_bipartite_graph(x_data):
     B = nx.DiGraph()
-    B.add_nodes_from(rdata.userId, bipartite=0, user=True, free=True, type='user')
+    print(x_data)
+    B.add_nodes_from(x_data.userId, bipartite=0, user=True, free=True, type='user')
     B.add_nodes_from(updated_data.movieId, bipartite=1, movie=True, free=True, type='movie')
     B.add_nodes_from(updated_data.director, bipartite=1, director=True, free=True, type='director')
     for index,row in updated_data.iterrows():
         B.add_edge(row['movieId'], row['director'])
-    B.add_edges_from([(uId, mId) for (uId, mId) in rdata[['userId', 'movieId']].to_numpy()])
+    B.add_edges_from([(uId, mId) for (uId, mId) in x_data[['userId', 'movieId']].to_numpy()])
     for index, movie in data.iterrows():
         for genre in movie['genres']:
             B.add_node(genre, bipartite=1, genre=True, free=False, type='genre')
@@ -109,11 +110,11 @@ def __update_tet(t, rating_df):
                 t.add_edge((d, f'aw{idx}'))
 
 
-def update_tet(tet_multiset):
+def update_tet(tet_multiset,x_train):
     for t in tet_multiset:
         root = [x for x, y in t.graph.nodes(data=True) if y.get('root')]
-        temp_r = rdata[rdata['userId'] == root[0]]
-        __update_tet(t, temp_r)
+        temp_r_df = x_train[x_train['userId'] == root[0]]
+        __update_tet(t, temp_r_df)
 
 
 def distance_c_emd(hist1,hist2):
@@ -252,9 +253,11 @@ def __distance(v1,v2, spec, root):
     v2_hist = v2.get_histogram()
     return calc_distance(v1_hist, v2_hist, spec, root)
 
+
 def __sort_dist(val,h,spec,root):
     dist = __distance(val,h,spec,root)
     return dist
+
 
 # helper function for searching metric tree
 def __mt_search(g, mn, h, k, leafs, spec, root):
