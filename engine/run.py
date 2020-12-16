@@ -20,7 +20,7 @@ bin_amount = 10
 # metric tree settings
 mt_depth = 7
 bucket_max_mt = 25
-mt_search_k = 5
+mt_search_k = 10
 # print settings
 top = 5
 # seed
@@ -39,12 +39,13 @@ def run():
     start_time_total = time.time()
 
     print('Formatting data...')
-    run_data()
+    x_train, x_test = run_data()
     genres = get_genres()
 
     print('Generating graph...')
     start_time = time.time()
-    graph = generate_bipartite_graph(genres)
+    training_graph = generate_bipartite_graph(x_train)
+    test_graph = generate_bipartite_graph(x_test)
     print("--- %s seconds ---" % (time.time() - start_time))
 
     print('Building TET specification...')
@@ -54,25 +55,30 @@ def run():
 
     print('Generating TET according to graph and specification...')
     start_time = time.time()
-    tet = generate_tet(graph, 'user', speci)
+    tet = generate_tet(training_graph, 'user', speci)
+    test_tet = generate_tet(test_graph, 'user', speci)
     print('Adding rating and award information to graph...')
-    update_tet(tet)
+    update_tet(tet,x_train)
+    update_tet(test_tet,x_test)
     print("--- %s seconds ---" % (time.time() - start_time))
 
     print('Counting TETs...')
     start_time = time.time()
     [g.count_tree() for g in tet]
+    [g.count_tree() for g in test_tet]
     print("--- %s seconds ---" % (time.time() - start_time))
 
     print('Performing Logistic Evaluation on TETs...')
     start_time = time.time()
     [g.logistic_eval(log_bias, log_weight) for g in tet]
+    [g.logistic_eval(log_bias, log_weight) for g in test_tet]
     print("--- %s seconds ---" % (time.time() - start_time))
 
     print('Generating histograms...')
     start_time = time.time()
     speci_test = tet_specification2(spec2[0], spec2[1], spec2[2], genres)
     [g.histogram(speci_test) for g in tet]
+    [g.histogram(speci_test) for g in test_tet]
     print("--- %s seconds ---" % (time.time() - start_time))
 
     print('Building Metric Tree')
@@ -85,16 +91,29 @@ def run():
     #
     print('Searching Metric Tree')
     start_time = time.time()
-    target_user = tet[2]
+    for t1 in test_tet:
+        username = [x for x,y in t1.graph.nodes(data=True) if y.get('root')]
+        if username[0] == 'u387':
+            n1 = t1
+    for t2 in tet:
+        username = [x for x,y in t2.graph.nodes(data=True) if y.get('root')]
+        if username[0] == 'u387':
+            n2 = t2
+    target_user = n1    # test_tet[0]
     mts_res = mt_search(tet, mts, target_user, mt_search_k, speci_test)
+    mts_res2 = mt_search(tet, mts, n2, mt_search_k, speci_test)
     username = [x for x,y in target_user.graph.nodes(data=True) if y.get('root')]
     print("--- %s seconds ---\n" % (time.time() - start_time))
 
     print(f'Amount of similar users found for user {username[0]}: {len(mts_res)}')
     print(f'User {username[0]}\'s histogram')
-    print(target_user.ht.nodes(data=True))
+    print(f'HISTOGRAM: {target_user.ht.nodes(data=True)}')
     print('----------------------------')
     for res in mts_res:
+        _res_id = [x for x, y in res.graph.nodes(data=True) if y.get('root')]
+        print(f'USER ID: {_res_id[0]}, HISTOGRAM: {res.ht.nodes(data=True)}')
+    print('----------------------------')
+    for res in mts_res2:
         _res_id = [x for x, y in res.graph.nodes(data=True) if y.get('root')]
         print(f'USER ID: {_res_id[0]}, HISTOGRAM: {res.ht.nodes(data=True)}')
     print('|| ---------------------- ||\n')
@@ -103,10 +122,12 @@ def run():
     print('Total run time: %s seconds.' % (time.time() - start_time_total))
     print('Amount of users: %s.' % len(tet))
     print('|| ---------------------- ||\n')
-    print(f'Top {top} users:')
-    [print(tet[i].graph.nodes(data=True)) for i in range(top)]
-    print(f'Top {top} users histogram:')
-    [print(tet[i].ht.nodes(data=True)) for i in range(top)]
+    # print(f'Top {top} users:')
+    # [print(tet[i].graph.nodes(data=True)) for i in range(top)]
+    # print(f'Top {top} users:')
+    # [print(test_tet[i].graph.nodes(data=True)) for i in range(top)]
+    # print(f'Top {top} users histogram:')
+    # [print(tet[i].ht.nodes(data=True)) for i in range(top)]
 
 
 #run_imdb_stuff()
