@@ -14,7 +14,7 @@ class Multiset:
         self.ht = ht
 
     def add_root(self, node, c):
-        self.graph.add_node(node, count=c, mult=[], root=True, weight=0, value=0, hist=[], free=True, type='user')
+        self.graph.add_node(node, count=c, mult=[], root=True, weight=0, value=0, hist=[], free=True, type='user', user=node)
 
     def add_node_w_count(self, node, c, t):
         if not self.graph.has_node(node):
@@ -80,9 +80,13 @@ class Multiset:
                                 res[t] += 1
                 for x in res.items():
                     self.graph.nodes(data=True)[curr_node]['mult'] += [x]
-            else:   # if we are dealing with a single count
+            else:
                 res = {}
                 for x in ls:
+                    if x == 0:
+                        # print(f'x: {x}')
+                        # print(f'ls: {ls}')
+                        continue
                     res[tuple(x)] = 0
                     for j in ls:
                         if x == j:
