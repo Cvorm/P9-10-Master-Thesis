@@ -148,13 +148,19 @@ def run():
     # print("mov1:", movies[0], "mov2:", movies[1], "dist:", res)
     #             # print(y['value'])
 #run_imdb_stuff()
-    myessss = get_movies(target_user, mts_res, 0.8, 1, 20)
+    myessss = get_movies(target_user, mts_res, 0.8, 1, 10)
+    test_movies = get_movies(target_user, mts_res2, 0.8, 1, 10)
     print(len(myessss))
     ids = [x[0] for x in myessss]
-    print(ids)
+    ids2 = [x[0] for x in test_movies]
+    print(f'ID TRAIN {ids}')
+    print(f'ID TEST {ids2}')
     movies = get_movies_from_id(ids)
+    movies2 = get_movies_from_id(ids2)
     print(len(movies))
     for title, genres in movies.items():
+        print(f'title: {title} genres: {genres}')
+    for title, genres in movies2.items():
         print(f'title: {title} genres: {genres}')
     # print(myessss)
     # print(len(myessss))
