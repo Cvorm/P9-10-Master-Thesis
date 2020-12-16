@@ -1,6 +1,20 @@
 from engine.multiset import *
 from engine.data_setup import *
 
+import itertools
+
+def get_movies_from_id(movie_ids):
+    movies = {}
+    # for i in movie_ids:
+    for index, movie in data.iterrows():
+        if movie['movieId'] in movie_ids:
+            movies[movie['title']] = movie['genres']
+    return movies
+    # for i, movie in data.iterrows():
+    #     if movie['movieId'] ==
+    #     movies[movie['title']] = movie['genres']
+    #     # df.loc[df['column_name'] == some_value]
+
 
 def get_genres():
     l = []
@@ -184,6 +198,55 @@ def calc_distance(hist_tree1, hist_tree2, spec, root):
     res = sum(dist)
     return res
 
+def get_movies_user(user, top_k_movies, interval1, interval2):
+    movies = {}
+    for x, y in user.graph.nodes(data=True):
+        if type(x) is str and x[0] == 'm':
+            if interval1 <= y['value'] <= interval2:
+                movies[x] = y['value']
+    sort_movies = sorted(movies.items(), key=lambda k: k[1], reverse=True)
+    # print(sort_movies)
+    # res = [i for i in sort_movies if i < top_k_movies]
+    # res = dict(itertools.islice(sort_movies.items(), top_k_movies))
+    res = sort_movies[:top_k_movies]
+    return res
+
+
+
+def get_movies(user_hist, other_users_hist, interval1, interval2, top_k_movies):
+    movies = []
+    for u in other_users_hist:
+        temp_movies = get_movies_user(u, top_k_movies, interval1, interval2)
+        for i in temp_movies:
+            movies.append(i)
+    no_duplicates = [list(v) for v in dict(movies).items()]
+        # movies.append([i for i in temp_movies])
+    # sorted(movies)
+    # movies = list(set(movies))
+    # movies1 = [t for t in (set(tuple(i)) for i in movies)]
+    # movies = list(movies)
+    sort_movies = sorted(no_duplicates, key=lambda k: k[1], reverse=True)
+    # res = [i for i in sort_movies if i < top_k_movies]
+    # res = dict(itertools.islice(sort_movies.items(), top_k_movies))
+    res = sort_movies[:top_k_movies]
+    # print("User:", user_hist, "movies: ", [])
+    user_movies = []
+    for x, y in user_hist.graph.nodes(data=True):
+        if type(x) is str and x[0] == 'm':
+            if interval1 <= y['value'] <= interval2:
+                user_movies.append(x)
+    print("Users movies: ", user_movies)
+    print("------------------------------------------------------------------")
+    print("recommended movies:", res)
+    return res
+
+
+
+# def get_movies(user, other_users, spec, root):
+#   user_hist_interval = calc_interval(num_bins)
+#   user_genres = calc_most_occuring_genres_in_movies
+#   for u in other_users:
+#       find movies where the genres between user and u overlap.
 
 def get_siblings(aGraph, aNode):
      try:
