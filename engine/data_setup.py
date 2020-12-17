@@ -102,11 +102,29 @@ def update_data(movie,actor):
             update_actor_data(actor_list)
 
 
+def split_data():
+    df = rdata
+    ranks = df.groupby('userId')['timestamp'].rank(method='first')
+    counts = df['userId'].map(df.groupby('userId')['timestamp'].apply(len))
+    # myes = (ranks / counts) > 0.8
+    df['new_col'] = (ranks / counts) > 0.70
+    # print(myes)
+    print(df.head())
+    train = df.loc[df['new_col'] == False]
+    test = df.loc[df['new_col'] == True]
+
+    train = train.drop(['new_col'], axis=1)
+    test = test.drop(['new_col'], axis=1)
+
+    return test, train
+
+
 # formats data
 def format_data():
     rdata['userId'] = 'u' + ratings['userId'].astype(str)
     rdata['movieId'] = 'm' + ratings['movieId'].astype(str)
     rdata['rating'] = ratings['rating']
+    rdata['timestamp'] = ratings['timestamp']
     data['genres'] = [str(m).split("|") for m in data.genres]
     data['movieId'] = 'm' + data['movieId'].astype(str)
 
@@ -115,6 +133,11 @@ def format_data():
 def run_data():
     update_data(False, False)
     format_data()
-    x_train, x_test = train_test_split(rdata, test_size=0.3)
+    x_train, x_test = split_data()
+    #x_train, x_test = train_test_split(rdata, test_size=0.3)
     return x_train, x_test
 
+
+
+    # train.to_csv(r'C:\Users\Darkmaster\PycharmProjects\Recommender\Data\Cvorm\training.csv', header=False, index=False)
+    # test.to_csv(r'C:\Users\Darkmaster\PycharmProjects\Recommender\Data\Cvorm\testing.csv', header=False, index=False)

@@ -198,19 +198,24 @@ def calc_distance(hist_tree1, hist_tree2, spec, root):
     res = sum(dist)
     return res
 
+
 def get_movies_user(user, top_k_movies, interval1, interval2):
     movies = {}
     for x, y in user.graph.nodes(data=True):
         if type(x) is str and x[0] == 'm':
-            if interval1 <= y['value'] <= interval2:
-                movies[x] = y['value']
+            for n in user.graph.neighbors(x):
+                if type(n) is str and n[0] == 'r':
+                    rat = user.graph.nodes(data=True)[n]['count']
+                    if rat >= 4.0:
+                        movies[x] = rat
+            # if interval1 <= y['value'] <= interval2:
+            #     movies[x] = y['value']
     sort_movies = sorted(movies.items(), key=lambda k: k[1], reverse=True)
     # print(sort_movies)
     # res = [i for i in sort_movies if i < top_k_movies]
     # res = dict(itertools.islice(sort_movies.items(), top_k_movies))
     res = sort_movies[:top_k_movies]
     return res
-
 
 
 def get_movies(user_hist, other_users_hist, interval1, interval2, top_k_movies):
@@ -220,24 +225,19 @@ def get_movies(user_hist, other_users_hist, interval1, interval2, top_k_movies):
         for i in temp_movies:
             movies.append(i)
     no_duplicates = [list(v) for v in dict(movies).items()]
-        # movies.append([i for i in temp_movies])
-    # sorted(movies)
-    # movies = list(set(movies))
-    # movies1 = [t for t in (set(tuple(i)) for i in movies)]
-    # movies = list(movies)
     sort_movies = sorted(no_duplicates, key=lambda k: k[1], reverse=True)
-    # res = [i for i in sort_movies if i < top_k_movies]
-    # res = dict(itertools.islice(sort_movies.items(), top_k_movies))
     res = sort_movies[:top_k_movies]
-    # print("User:", user_hist, "movies: ", [])
-    user_movies = []
-    for x, y in user_hist.graph.nodes(data=True):
-        if type(x) is str and x[0] == 'm':
-            if interval1 <= y['value'] <= interval2:
-                user_movies.append(x)
-    print("Users movies: ", user_movies)
-    print("------------------------------------------------------------------")
-    print("recommended movies:", res)
+    # user_movies = []
+    # for x, y in user_hist.graph.nodes(data=True):
+    #     if type(x) is str and x[0] == 'm':
+    #         for n in user_hist.graph.neighbors(x):
+    #             if type(n) is str and n[0] == 'r':
+    #                 rat = user_hist.graph.nodes(data=True)[n]['count']
+    #                 print(n, rat)
+    #                 if rat >= 4.0:
+    #                     movies.append(x)
+    #         # if interval1 <= y['value'] <= interval2:
+    #         #     user_movies.append(x)
     return res
 
 
@@ -348,3 +348,38 @@ def mt_search(t, g, user_tet, k, spec):
     res = __mt_search(g, root[0], user_tet, k, leaf_nodes, spec, 'user')
     return res
 
+
+def hitrate(topNpredictions, leftoutpredictions):
+    hits = 0
+    total = 0
+    for leftout in leftoutpredictions:
+        hit = False
+        for movieId, predictedRating in topNpredictions:
+            mid = leftout[0]
+            if movieId == mid:
+                hit = True
+        if hit:
+            hits += 1
+        total += 1
+
+    return hits / total
+
+
+def get_movies_juujiro(user, k_movies):
+    movies = {}
+    for x, y in user.graph.nodes(data=True):
+        if type(x) is str and x[0] == 'm':
+                movies[x] = y['value']
+    no_duplicates = [list(v) for v in dict(movies).items()]
+    sort_movies = sorted(no_duplicates, key=lambda k: k[1], reverse=True)
+    # res = sort_movies[:top_k_movies]
+    # sort_movies = sorted(movies.items(), key=lambda k: k[1], reverse=True)
+    res = sort_movies #[:k_movies]
+    return res
+
+
+def get_tet_user(tet,user):
+    for t in tet:
+        username = [x for x, y in t.graph.nodes(data=True) if y.get('root')]
+        if username[0] == user:
+            return t
