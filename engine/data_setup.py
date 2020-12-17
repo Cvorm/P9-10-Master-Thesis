@@ -10,8 +10,8 @@ adata = pd.DataFrame(columns=['actorId','awards'])
 xdata = pd.DataFrame(columns=['movieId','actors','directors','budget'])
 # updated_data = pd.read_csv('movie.csv', converters={'cast': eval})
 # updated_actor = pd.read_csv('actor_data_small.csv', converters={'awards': eval})
-updated_data = pd.read_csv('movie.csv', converters={'cast': eval})
-updated_actor = pd.read_csv('actor_data.csv', converters={'awards': eval})
+updated_data = pd.read_csv('../engine/movie.csv', converters={'cast': eval})
+updated_actor = pd.read_csv('../engine/actor_data.csv', converters={'awards': eval})
 
 
 # function used for updating the movies in movielens dataset by adding data from IMDb
