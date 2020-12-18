@@ -116,7 +116,7 @@ def split_data():
     train = train.drop(['new_col'], axis=1)
     test = test.drop(['new_col'], axis=1)
 
-    return test, train
+    return train, test
 
 
 # formats data
