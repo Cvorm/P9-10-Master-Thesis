@@ -30,7 +30,9 @@ def make_edgelist(filename):
 
 
 
-train_edges = make_edgelist("Data/movie-train.txt")
+# train_edges = make_edgelist("Data/movie-train.txt")
+train_edges = make_edgelist("../Data/Cvorm/edges.csv")
+
 # print(train_edges)
 # test_edges = make_edgelist("Data/movie-test.txt")
 # validation_edges = make_edgelist("Data/movie-valid.txt")
