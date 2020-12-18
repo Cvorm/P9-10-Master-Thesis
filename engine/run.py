@@ -12,15 +12,15 @@ spec2 = [["user,", "movie", "genre", "director", "rating", "award"],
         ["movie", "user", "director"]]
 
 # logistic evaluation function settings
-log_bias = -5
-log_weight = 1
+log_bias = -12
+log_weight = 2
 # histogram settings
 bin_size = 10
 bin_amount = 10
 # metric tree settings
 mt_depth = 7
-bucket_max_mt = 25
-mt_search_k = 3
+bucket_max_mt = 30
+mt_search_k = 1
 # print settings
 top = 5
 # seed
@@ -100,30 +100,30 @@ def run():
     #     username = [x for x,y in t2.graph.nodes(data=True) if y.get('root')]
     #     if username[0] == 'u100':
     #         n2 = t2
-    tmpp = []
-    hitrates = []
-    for t in tet:
-        username = [x for x,y in t.graph.nodes(data=True) if y.get('root')]
-        tmpp.append(username[0])
-        t2 = get_tet_user(test_tet,username[0])
-        mts_res = mt_search(tet, mts, t, mt_search_k, speci_test)
-        myessss = get_movies(t, mts_res, 0.8, 1, 10)
-        ta = get_movies_juujiro(t2, 20)
-        #print(f'ALL MOVIES: {ta}')
-        hitrates.append(hitrate(myessss,ta))
-        #print(hitrate(myessss, ta))
-    print(f'tmppp {tmpp}')
-    print(f'hitrates: {hitrates}')
-    tmp_val = 0.0
-    tmp_val_len = 0
-    for hitz in hitrates:
-        tmp_val = tmp_val + hitz
-        tmp_val_len = tmp_val_len + 1
-    tmp_hit = tmp_val / tmp_val_len
-    print(tmp_val)
-    print(tmp_val_len)
-    print(f'over all hitrate: {tmp_hit}')
-
+    # tmpp = []
+    # hitrates = []
+    # for t in tet:
+    #     username = [x for x,y in t.graph.nodes(data=True) if y.get('root')]
+    #     tmpp.append(username[0])
+    #     t2 = get_tet_user(test_tet,username[0])
+    #     mts_res = mt_search(tet, mts, t, mt_search_k, speci_test)
+    #     myessss = get_movies(t, mts_res, 0.8, 1, 100)
+    #     ta = get_movies_juujiro(t2, 20)
+    #     #print(f'ALL MOVIES: {ta}')
+    #     hitrates.append(hitrate(myessss,ta))
+    #     #print(hitrate(myessss, ta))
+    # print(f'tmppp {tmpp}')
+    # print(f'hitrates: {hitrates}')
+    # tmp_val = 0.0
+    # tmp_val_len = 0
+    # for hitz in hitrates:
+    #     tmp_val = tmp_val + hitz
+    #     tmp_val_len = tmp_val_len + 1
+    # tmp_hit = tmp_val / tmp_val_len
+    # print(tmp_val)
+    # print(tmp_val_len)
+    # print(f'over all hitrate: {tmp_hit}')
+    print(recall(test_tet,tet,mts,mt_search_k,speci_test))
     # target_user = n1    # test_tet[0]
     # mts_res = mt_search(tet, mts, target_user, mt_search_k, speci_test)
     # mts_res2 = mt_search(tet, mts, n2, mt_search_k, speci_test)
@@ -152,8 +152,8 @@ def run():
     # [print(tet[i].graph.nodes(data=True)) for i in range(top)]
     # print(f'Top {top} users:')
     # [print(test_tet[i].graph.nodes(data=True)) for i in range(top)]
-    # print(f'Top {top} users histogram:')
-    # [print(tet[i].ht.nodes(data=True)) for i in range(top)]
+    print(f'Top {top} users histogram:')
+    [print(tet[i].ht.nodes(data=True)) for i in range(top)]
 
     # myessss = get_movies(target_user, mts_res, 0.8, 1, 50)
     #test_movies = get_movies(n2, mts_res2, 0.8, 1, 10)
