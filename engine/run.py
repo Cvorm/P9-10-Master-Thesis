@@ -12,15 +12,15 @@ spec2 = [["user,", "movie", "genre", "director", "rating", "award"],
         ["movie", "user", "director"]]
 
 # logistic evaluation function settings
-log_bias = -5
-log_weight = 1
+log_bias = -12
+log_weight = 2
 # histogram settings
 bin_size = 10
 bin_amount = 10
 # metric tree settings
 mt_depth = 7
-bucket_max_mt = 25
-mt_search_k = 10
+bucket_max_mt = 30
+mt_search_k = 1
 # print settings
 top = 5
 # seed
@@ -91,72 +91,91 @@ def run():
     #
     print('Searching Metric Tree')
     start_time = time.time()
-    for t1 in test_tet:
-        username = [x for x,y in t1.graph.nodes(data=True) if y.get('root')]
-        if username[0] == 'u387':
-            n1 = t1
-    for t2 in tet:
-        username = [x for x,y in t2.graph.nodes(data=True) if y.get('root')]
-        if username[0] == 'u387':
-            n2 = t2
-    target_user = n1    # test_tet[0]
-    mts_res = mt_search(tet, mts, target_user, mt_search_k, speci_test)
-    mts_res2 = mt_search(tet, mts, n2, mt_search_k, speci_test)
-    username = [x for x,y in target_user.graph.nodes(data=True) if y.get('root')]
+    # for t1 in test_tet:
+    #     username = [x for x,y in t1.graph.nodes(data=True) if y.get('root')]
+    #     if username[0] == 'u100':
+    #         n1 = t1
+    #
+    # for t2 in tet:
+    #     username = [x for x,y in t2.graph.nodes(data=True) if y.get('root')]
+    #     if username[0] == 'u100':
+    #         n2 = t2
+    # tmpp = []
+    # hitrates = []
+    # for t in tet:
+    #     username = [x for x,y in t.graph.nodes(data=True) if y.get('root')]
+    #     tmpp.append(username[0])
+    #     t2 = get_tet_user(test_tet,username[0])
+    #     mts_res = mt_search(tet, mts, t, mt_search_k, speci_test)
+    #     myessss = get_movies(t, mts_res, 0.8, 1, 100)
+    #     ta = get_movies_juujiro(t2, 20)
+    #     #print(f'ALL MOVIES: {ta}')
+    #     hitrates.append(hitrate(myessss,ta))
+    #     #print(hitrate(myessss, ta))
+    # print(f'tmppp {tmpp}')
+    # print(f'hitrates: {hitrates}')
+    # tmp_val = 0.0
+    # tmp_val_len = 0
+    # for hitz in hitrates:
+    #     tmp_val = tmp_val + hitz
+    #     tmp_val_len = tmp_val_len + 1
+    # tmp_hit = tmp_val / tmp_val_len
+    # print(tmp_val)
+    # print(tmp_val_len)
+    # print(f'over all hitrate: {tmp_hit}')
+    print(recall(test_tet,tet,mts,mt_search_k,speci_test))
+    # target_user = n1    # test_tet[0]
+    # mts_res = mt_search(tet, mts, target_user, mt_search_k, speci_test)
+    # mts_res2 = mt_search(tet, mts, n2, mt_search_k, speci_test)
+    # username = [x for x,y in target_user.graph.nodes(data=True) if y.get('root')]
     print("--- %s seconds ---\n" % (time.time() - start_time))
-
-    print(f'Amount of similar users found for user {username[0]}: {len(mts_res)}')
-    print(f'User {username[0]}\'s histogram')
-    print(f'HISTOGRAM: {target_user.ht.nodes(data=True)}')
-    print('----------------------------')
-    for res in mts_res:
-        _res_id = [x for x, y in res.graph.nodes(data=True) if y.get('root')]
-        print(f'USER ID: {_res_id[0]}, HISTOGRAM: {res.ht.nodes(data=True)}')
-    print('----------------------------')
-    for res in mts_res2:
-        _res_id = [x for x, y in res.graph.nodes(data=True) if y.get('root')]
-        print(f'USER ID: {_res_id[0]}, HISTOGRAM: {res.ht.nodes(data=True)}')
-    print('|| ---------------------- ||\n')
+    #
+    # print(f'Amount of similar users found for user {username[0]}: {len(mts_res)}')
+    # print(f'User {username[0]}\'s histogram')
+    # print(f'HISTOGRAM: {target_user.ht.nodes(data=True)}')
+    # print('----------------------------')
+    # for res in mts_res:
+    #     _res_id = [x for x, y in res.graph.nodes(data=True) if y.get('root')]
+    #     print(f'USER ID: {_res_id[0]}, HISTOGRAM: {res.ht.nodes(data=True)}')
+    # print('----------------------------')
+    # for res in mts_res2:
+    #     _res_id = [x for x, y in res.graph.nodes(data=True) if y.get('root')]
+    #     print(f'USER ID: {_res_id[0]}, HISTOGRAM: {res.ht.nodes(data=True)}')
+    # print('|| ---------------------- ||\n')
 
     print('|| ------ COMPLETE ------ ||')
     print('Total run time: %s seconds.' % (time.time() - start_time_total))
     print('Amount of users: %s.' % len(tet))
     print('|| ---------------------- ||\n')
+    #username = [x for x, y in target_user.graph.nodes(data=True) if y.get('root')]
     # print(f'Top {top} users:')
     # [print(tet[i].graph.nodes(data=True)) for i in range(top)]
     # print(f'Top {top} users:')
     # [print(test_tet[i].graph.nodes(data=True)) for i in range(top)]
-    # print(f'Top {top} users histogram:')
-    # [print(tet[i].ht.nodes(data=True)) for i in range(top)]
+    print(f'Top {top} users histogram:')
+    [print(tet[i].ht.nodes(data=True)) for i in range(top)]
 
-    # res = 10000000.0
-    # movies = ["",""]
-    # temp_dist = 0.0
-    # for x,y in tet[0].graph.nodes(data=True):
-    #     if type(x) is str and x[0] == 'm':
-    #         for i,j in tet[1].graph.nodes(data=True):
-    #             # print(i)
-    #             if type(i) is str and i[0] == 'm':
-    #                 temp_dist = abs(y['value'] - j['value'])
-    #                 print(temp_dist)
-    #                 if temp_dist < res:
-    #                     # print(temp_dist)
-    #                     res = temp_dist
-    #                     movies[0] = x
-    #                     movies[1] = i
-    #         # print(x)
-    # print("mov1:", movies[0], "mov2:", movies[1], "dist:", res)
-    #             # print(y['value'])
-#run_imdb_stuff()
-    myessss = get_movies(target_user, mts_res, 0.8, 1, 20)
-    print(len(myessss))
-    ids = [x[0] for x in myessss]
-    print(ids)
-    movies = get_movies_from_id(ids)
-    print(len(movies))
-    for title, genres in movies.items():
-        print(f'title: {title} genres: {genres}')
+    # myessss = get_movies(target_user, mts_res, 0.8, 1, 50)
+    #test_movies = get_movies(n2, mts_res2, 0.8, 1, 10)
+    #print(f'myess {myessss}')
+    #print(len(myessss))
+    # ids = [x[0] for x in myessss]
+    #ids2 = [x[0] for x in test_movies]
+    #print(f'ID TRAIN {ids}')
+    #print(f'ID TEST {ids2}')
+    # movies = get_movies_from_id(ids)
+    #movies2 = get_movies_from_id(ids2)
+    #print(len(movies))
+    # for title, genres in movies.items():
+    #     print(f'title: {title} genres: {genres}')
+    # for title, genres in movies2.items():
+    #     print(f'title: {title} genres: {genres}')
     # print(myessss)
     # print(len(myessss))
+    # ta = get_movies_juujiro(n2,50)
+    # print(f'ALL MOVIES: {ta}')
+    # print(hitrate(myessss, ta))
+
+
 run()
 # def movie_search(hist_tree1, hist_tree2):

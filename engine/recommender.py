@@ -1,6 +1,6 @@
 from engine.multiset import *
 from engine.data_setup import *
-
+from collections import defaultdict
 import itertools
 
 def get_movies_from_id(movie_ids):
@@ -198,19 +198,40 @@ def calc_distance(hist_tree1, hist_tree2, spec, root):
     res = sum(dist)
     return res
 
+def movie_dist(p1,p2):
+    return p1 - p2
+
 def get_movies_user(user, top_k_movies, interval1, interval2):
     movies = {}
     for x, y in user.graph.nodes(data=True):
         if type(x) is str and x[0] == 'm':
-            if interval1 <= y['value'] <= interval2:
-                movies[x] = y['value']
+            for n in user.graph.neighbors(x):
+                if type(n) is str and n[0] == 'r':
+                    rat = user.graph.nodes(data=True)[n]['count']
+                    if rat >= 4:
+                        #movies[x] = y['value']
+                        movies[x] = rat
+
+            # if interval1 <= y['value'] <= interval2:
+            #     movies[x] = y['value']
+    mean = get_user_mean_value(user)
+    #sort_movies = sorted(movies.items(), key=lambda e: movie_dist(e[1],mean))
     sort_movies = sorted(movies.items(), key=lambda k: k[1], reverse=True)
-    # print(sort_movies)
-    # res = [i for i in sort_movies if i < top_k_movies]
-    # res = dict(itertools.islice(sort_movies.items(), top_k_movies))
-    res = sort_movies[:top_k_movies]
+    res = sort_movies #[:top_k_movies]
     return res
 
+
+def get_user_mean_value(user):
+    tmp_val = 0.0
+    tmp_count = 0
+    for x, y in user.graph.nodes(data=True):
+        if type(x) is str and x[0] == 'm':
+            tmp_val = tmp_val + y['value']
+            tmp_count = tmp_count + 1
+    if tmp_val == 0 or tmp_count == 0:
+        return 0
+    else:
+        return tmp_val / tmp_count
 
 
 def get_movies(user_hist, other_users_hist, interval1, interval2, top_k_movies):
@@ -220,33 +241,23 @@ def get_movies(user_hist, other_users_hist, interval1, interval2, top_k_movies):
         for i in temp_movies:
             movies.append(i)
     no_duplicates = [list(v) for v in dict(movies).items()]
-        # movies.append([i for i in temp_movies])
-    # sorted(movies)
-    # movies = list(set(movies))
-    # movies1 = [t for t in (set(tuple(i)) for i in movies)]
-    # movies = list(movies)
+    mean = get_user_mean_value(user_hist)
+    # sort_movies = sorted(no_duplicates, key=lambda e: movie_dist(e[1], mean))
     sort_movies = sorted(no_duplicates, key=lambda k: k[1], reverse=True)
-    # res = [i for i in sort_movies if i < top_k_movies]
-    # res = dict(itertools.islice(sort_movies.items(), top_k_movies))
-    res = sort_movies[:top_k_movies]
-    # print("User:", user_hist, "movies: ", [])
-    user_movies = []
-    for x, y in user_hist.graph.nodes(data=True):
-        if type(x) is str and x[0] == 'm':
-            if interval1 <= y['value'] <= interval2:
-                user_movies.append(x)
-    print("Users movies: ", user_movies)
-    print("------------------------------------------------------------------")
-    print("recommended movies:", res)
+    res = sort_movies #[:top_k_movies]
+    # user_movies = []
+    # for x, y in user_hist.graph.nodes(data=True):
+    #     if type(x) is str and x[0] == 'm':
+    #         for n in user_hist.graph.neighbors(x):
+    #             if type(n) is str and n[0] == 'r':
+    #                 rat = user_hist.graph.nodes(data=True)[n]['count']
+    #                 print(n, rat)
+    #                 if rat >= 4.0:
+    #                     movies.append(x)
+    #         # if interval1 <= y['value'] <= interval2:
+    #         #     user_movies.append(x)
     return res
 
-
-
-# def get_movies(user, other_users, spec, root):
-#   user_hist_interval = calc_interval(num_bins)
-#   user_genres = calc_most_occuring_genres_in_movies
-#   for u in other_users:
-#       find movies where the genres between user and u overlap.
 
 def get_siblings(aGraph, aNode):
      try:
@@ -348,3 +359,117 @@ def mt_search(t, g, user_tet, k, spec):
     res = __mt_search(g, root[0], user_tet, k, leaf_nodes, spec, 'user')
     return res
 
+
+def hitrate(topNpredictions, leftoutpredictions):
+    hits = 0
+    total = 0
+    for leftout in leftoutpredictions:
+        hit = False
+        for movieId, predictedRating in topNpredictions:
+            mid = leftout[0]
+            if movieId == mid:
+                hit = True
+        if hit:
+            hits += 1
+        total += 1
+
+    return hits / total
+
+
+def get_movies_juujiro(user, k_movies):
+    movies = {}
+    for x, y in user.graph.nodes(data=True):
+        if type(x) is str and x[0] == 'm':
+            rat = get_rating(user, x)
+            # movies[x] = y['value']
+            movies[x] = rat
+    no_duplicates = [list(v) for v in dict(movies).items()]
+    mean = get_user_mean_value(user)
+    sort_movies = sorted(no_duplicates, key=lambda k: k[1], reverse=True)
+    #sort_movies = sorted(movies.items(), key=lambda e: movie_dist(e[1], mean))
+    # res = sort_movies[:top_k_movies]
+    # sort_movies = sorted(movies.items(), key=lambda k: k[1], reverse=True)
+    res = sort_movies #[:k_movies]
+    return res
+
+
+def get_tet_user(tet,user):
+    for t in tet:
+        username = [x for x, y in t.graph.nodes(data=True) if y.get('root')]
+        if username[0] == user:
+            return t
+
+
+def has_rating(user, movieid):
+    for x, y in user.graph.nodes(data=True):
+        if type(x) is str and x == movieid:
+            for n in user.graph.neighbors(x):
+                if type(n) is str and n[0] == 'r':
+                    rat = user.graph.nodes(data=True)[n]['count']
+                    return True
+    return False
+
+
+def get_rating(user, movieid):
+    for x, y in user.graph.nodes(data=True):
+        if type(x) is str and x == movieid:
+            for n in user.graph.neighbors(x):
+                if type(n) is str and n[0] == 'r':
+                    rat = user.graph.nodes(data=True)[n]['count']
+                    return rat
+    return 0
+
+
+def __recall(predictions, leftout, user, user_leftout, k=5, threshold=3.0):
+    true_pos = 0
+    n_rel = sum((get_rating(user, mov) >= threshold) for (mov, _) in predictions)
+    n_rec_k = sum((est >= threshold) for (_, est) in predictions[:k])
+    n_rel_and_rec_k = sum(((get_rating(user,mov) >= threshold) and (est >= threshold))
+                          for (mov, est) in predictions[:k])
+    precisions = n_rel_and_rec_k / n_rec_k if n_rec_k != 0 else 0
+    recalls = n_rel_and_rec_k / n_rel if n_rel != 0 else 0
+    print(f'n_rel: {n_rel}, n_rec_k: {n_rec_k}, n_rel_and_rec_k: {n_rel_and_rec_k}')
+    print(f'PRECISION :: {precisions}')
+    print(f' RECALL ::  {recalls}')
+    # for mid, val in predictions:
+    #     for movieId, predictedRating in leftout:
+    #         if movieId == mid:
+    #             rat = get_rating(user_leftout, mid)
+    #             print(rat)
+    #             if rat >= 4:
+    #                 true_pos = true_pos + 1
+    # false_pos = len(predictions) - true_pos
+    # false_neg = len(leftout) - true_pos
+    # print(f' TRUE POSITIVE : {true_pos} FALSE POSITIVE : {false_pos} FALSE NEGATIVE {false_neg}')
+    return precisions, recalls
+    # if true_pos == 0:
+    #     return 0, 0
+    # else:
+    #     precision = true_pos / (true_pos+false_pos)
+    #     recalll = true_pos / (true_pos+false_neg)
+    #     return precision, recalll
+
+
+def recall(tet_train, tet_test, metric_tree, mt_search_k, speci_test):
+    tmp = []
+    for user in tet_train:
+        username = [x for x,y in user.graph.nodes(data=True) if y.get('root')]
+        user_leftout = get_tet_user(tet_test,username[0])
+        similar_users = mt_search(tet_train, metric_tree, user, mt_search_k, speci_test)
+        predicted_movies = get_movies(user, similar_users, 0.8, 1, 20)
+        user_test_movies = get_movies_juujiro(user_leftout, 20)
+        tmp.append(__recall(predicted_movies, user_test_movies, user, user_leftout))
+    precision = 0.0
+    precision_count = 0
+    rec = 0.0
+    rec_count = 0
+
+    for x,y in tmp:
+        precision = precision + x
+        rec = rec + y
+        precision_count = precision_count + 1
+        rec_count = rec_count + 1
+    precision_res = precision / precision_count
+    recall_res = rec / rec_count
+    print(tmp)
+    return precision_res,recall_res
