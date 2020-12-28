@@ -8,8 +8,8 @@ spec = [["user,", "movie", "genre", "director", ],
         [("user", "movie"), ("movie", "genre"), ("movie", "director")],
         ["movie","user"]]
 spec2 = [["user,", "movie", "genre", "director", "rating", "award"],
-        [("user", "movie"), ("movie", "director"), ("movie", "rating"), ("director", "award")],
-        ["movie", "user", "director"]]
+        [("user", "movie"), ("movie", "director"), ("movie", "rating")],
+        ["movie", "user"]]
 
 # logistic evaluation function settings
 log_bias = -12
@@ -49,12 +49,14 @@ def run():
     test_graph = generate_bipartite_graph(x_test)
     print("--- %s seconds ---" % (time.time() - start_time), file=f)
 
+    print('Building TET specification...')
     print('Building TET specification...', file=f)
     start_time = time.time()
     speci = tet_specification(spec[0],spec[1],spec[2])
     print("--- %s seconds ---" % (time.time() - start_time), file=f)
 
     print('Generating TET according to graph and specification...', file=f)
+    print('Generating TET according to graph and specification...')
     start_time = time.time()
     tet = generate_tet(training_graph, 'user', speci)
     test_tet = generate_tet(test_graph, 'user', speci)
@@ -63,18 +65,21 @@ def run():
     update_tet(test_tet,x_test)
     print("--- %s seconds ---" % (time.time() - start_time), file=f)
 
+    print('Counting TETs...')
     print('Counting TETs...', file=f)
     start_time = time.time()
     [g.count_tree() for g in tet]
     [g.count_tree() for g in test_tet]
     print("--- %s seconds ---" % (time.time() - start_time), file=f)
 
+    print('Performing Logistic Evaluation on TETs...')
     print('Performing Logistic Evaluation on TETs...', file=f)
     start_time = time.time()
     [g.logistic_eval(log_bias, log_weight) for g in tet]
     [g.logistic_eval(log_bias, log_weight) for g in test_tet]
     print("--- %s seconds ---" % (time.time() - start_time), file=f)
 
+    print('Generating histograms...')
     print('Generating histograms...', file=f)
     start_time = time.time()
     speci_test = tet_specification2(spec2[0], spec2[1], spec2[2], genres)
@@ -82,6 +87,7 @@ def run():
     [g.histogram(speci_test) for g in test_tet]
     print("--- %s seconds ---" % (time.time() - start_time), file=f)
 
+    print('Building Metric Tree')
     print('Building Metric Tree', file=f)
     start_time = time.time()
     mts = mt_build(tet, mt_depth, bucket_max_mt, speci_test)
