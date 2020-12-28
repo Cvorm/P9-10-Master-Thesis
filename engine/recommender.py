@@ -208,7 +208,7 @@ def get_movies_user(user, top_k_movies, interval1, interval2):
             for n in user.graph.neighbors(x):
                 if type(n) is str and n[0] == 'r':
                     rat = user.graph.nodes(data=True)[n]['count']
-                    if rat >= 4:
+                    if rat >= 3.5:
                         #movies[x] = y['value']
                         movies[x] = rat
 
@@ -219,6 +219,14 @@ def get_movies_user(user, top_k_movies, interval1, interval2):
     sort_movies = sorted(movies.items(), key=lambda k: k[1], reverse=True)
     res = sort_movies #[:top_k_movies]
     return res
+
+def get_user_max_hist(user):
+    for x, y in user.ht.nodes(data=True):
+        if x == 'movie':
+            histogram = y['hist']
+            print(histogram)
+    yes = max([(v, i) for i, v in enumerate(histogram[0])])
+    yes2 = (histogram[1][yes[1]],histogram[1][yes[1]+1])
 
 
 def get_user_mean_value(user):
@@ -234,6 +242,13 @@ def get_user_mean_value(user):
         return tmp_val / tmp_count
 
 
+def get_movies_in_user(user):
+    tmp_list = []
+    for x, y in user.graph.nodes(data=True):
+        if type(x) is str and x[0] == 'm':
+            tmp_list.append(x)
+    return tmp_list
+
 def get_movies(user_hist, other_users_hist, interval1, interval2, top_k_movies):
     movies = []
     for u in other_users_hist:
@@ -241,9 +256,13 @@ def get_movies(user_hist, other_users_hist, interval1, interval2, top_k_movies):
         for i in temp_movies:
             movies.append(i)
     no_duplicates = [list(v) for v in dict(movies).items()]
+    mu = get_movies_in_user(user_hist)
+    no_mas = [(x,y) for x,y in no_duplicates if x not in mu]
+    print(f' no duplicates: {len(no_duplicates)}, no_mas : {len(no_mas)}')
+    get_user_max_hist(user_hist)
     mean = get_user_mean_value(user_hist)
     # sort_movies = sorted(no_duplicates, key=lambda e: movie_dist(e[1], mean))
-    sort_movies = sorted(no_duplicates, key=lambda k: k[1], reverse=True)
+    sort_movies = sorted(no_mas, key=lambda k: k[1], reverse=True)
     res = sort_movies #[:top_k_movies]
     # user_movies = []
     # for x, y in user_hist.graph.nodes(data=True):
@@ -420,34 +439,18 @@ def get_rating(user, movieid):
     return 0
 
 
-def __recall(predictions, leftout, user, user_leftout, k=5, threshold=3.0):
-    true_pos = 0
-    n_rel = sum((get_rating(user, mov) >= threshold) for (mov, _) in predictions)
+def __recall(predictions, leftout, user, user_leftout, k=5, threshold=3.5):
+
+    n_rel = sum((get_rating(user_leftout, mov) >= threshold) for (mov, _) in predictions)
     n_rec_k = sum((est >= threshold) for (_, est) in predictions[:k])
-    n_rel_and_rec_k = sum(((get_rating(user,mov) >= threshold) and (est >= threshold))
+    n_rel_and_rec_k = sum(((get_rating(user_leftout,mov) >= threshold) and (est >= threshold))
                           for (mov, est) in predictions[:k])
     precisions = n_rel_and_rec_k / n_rec_k if n_rec_k != 0 else 0
     recalls = n_rel_and_rec_k / n_rel if n_rel != 0 else 0
     print(f'n_rel: {n_rel}, n_rec_k: {n_rec_k}, n_rel_and_rec_k: {n_rel_and_rec_k}')
     print(f'PRECISION :: {precisions}')
     print(f' RECALL ::  {recalls}')
-    # for mid, val in predictions:
-    #     for movieId, predictedRating in leftout:
-    #         if movieId == mid:
-    #             rat = get_rating(user_leftout, mid)
-    #             print(rat)
-    #             if rat >= 4:
-    #                 true_pos = true_pos + 1
-    # false_pos = len(predictions) - true_pos
-    # false_neg = len(leftout) - true_pos
-    # print(f' TRUE POSITIVE : {true_pos} FALSE POSITIVE : {false_pos} FALSE NEGATIVE {false_neg}')
     return precisions, recalls
-    # if true_pos == 0:
-    #     return 0, 0
-    # else:
-    #     precision = true_pos / (true_pos+false_pos)
-    #     recalll = true_pos / (true_pos+false_neg)
-    #     return precision, recalll
 
 
 def recall(tet_train, tet_test, metric_tree, mt_search_k, speci_test):
