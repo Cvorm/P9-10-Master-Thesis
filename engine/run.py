@@ -30,8 +30,8 @@ np.random.seed(1)
 # overall run function, where we run our 'pipeline'
 def run_imdb_stuff():
     run_data()
-    foo = [x for x in updated_actor["actorId"]]
-    update_actor_data(foo)
+    #foo = [x for x in updated_actor["actorId"]]
+    update_actor_data("yo")
 
 
 def run():
@@ -60,6 +60,7 @@ def run():
     start_time = time.time()
     tet = generate_tet(training_graph, 'user', speci)
     test_tet = generate_tet(test_graph, 'user', speci)
+    print('Adding rating and award information to graph...')
     print('Adding rating and award information to graph...', file=f)
     update_tet(tet,x_train)
     update_tet(test_tet,x_test)
@@ -133,6 +134,6 @@ def run():
     [print(tet[i].ht.nodes(data=True)) for i in range(top)]
 
 
-
+#run_imdb_stuff()
 run()
 # def movie_search(hist_tree1, hist_tree2):
