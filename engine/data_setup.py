@@ -2,17 +2,22 @@ import pandas as pd
 import imdb
 from sklearn.model_selection import train_test_split
 moviesDB = imdb.IMDb()
-data = pd.read_csv('../Data/movies.csv')
-ratings = pd.read_csv('../Data/ratings.csv')
+# data = pd.read_csv('../Data/movies.csv')
+# ratings = pd.read_csv('../Data/ratings.csv')
+data = pd.read_csv('movie.csv', converters={'cast': eval})
+ratings = pd.read_csv('ratings1.csv', converters={'cast': eval})
 links = pd.read_csv('../Data/links.csv')
 rdata = pd.DataFrame(columns=['userId', 'movieId', 'rating'])
 adata = pd.DataFrame(columns=['actorId','awards'])
 xdata = pd.DataFrame(columns=['movieId','actors','directors','budget'])
-# updated_data = pd.read_csv('movie.csv', converters={'cast': eval})
-# updated_actor = pd.read_csv('actor_data_small.csv', converters={'awards': eval})
+
 updated_data = pd.read_csv('movie.csv', converters={'cast': eval})
 updated_actor = pd.read_csv('actor_data.csv', converters={'awards': eval})
 
+# ratings = pd.read_csv('../Data2/ratings.dat', sep='::', names=['userId', 'movieId', 'rating','timestamp'], converters={'cast': eval})
+# data = pd.read_csv('../Data2/movies.dat', sep='::', names=['movieId', 'title', 'genres'], converters={'cast': eval})
+# ratings.to_csv('ratings1.csv',index=False)
+# data.to_csv('movie1.csv', index=False)
 
 # function used for updating the movies in movielens dataset by adding data from IMDb
 def update_movie_data():
@@ -37,26 +42,26 @@ def update_movie_data():
             #print(data.at[index, 'director'])
         except:
             print('except')
-        data.at[index, 'director'] = director
+        data.at[index, 'director'] = str(director)
 
-        cast_l = []
-        try:
-            for actor in imovie['cast']:
-                cast_l.append('a' + str(actor.personID))
-                actor_id_l.append(actor.personID)
-        except:
-            print('fail cast')
-        #print(cast_l)
-        data.at[index, 'cast'] = str(cast_l)
-        box_l = []
-        try:
-            temp_list = []
-            for x,y in imovie.get('box office').items():
-                temp_list.append([x,y])
-            box_l = temp_list
-        except:
-            print('fail box office')
-        data.at[index, 'box'] = str(box_l)
+        # cast_l = []
+        # try:
+        #     for actor in imovie['cast']:
+        #         cast_l.append('a' + str(actor.personID))
+        #         actor_id_l.append(actor.personID)
+        # except:
+        #     print('fail cast')
+        # #print(cast_l)
+        # data.at[index, 'cast'] = str(cast_l)
+        # box_l = []
+        # try:
+        #     temp_list = []
+        #     for x,y in imovie.get('box office').items():
+        #         temp_list.append([x,y])
+        #     box_l = temp_list
+        # except:
+        #     print('fail box office')
+        # data.at[index, 'box'] = str(box_l)
 
     data.to_csv('movie.csv',index=False)
     return actor_id_l
@@ -64,7 +69,8 @@ def update_movie_data():
 
 # function used for finding the actors in movielens dataset by adding data from IMDb
 def update_actor_data(actor_list):
-    s = set(actor_list)
+    testd = updated_data['director'].astype(str)
+    s = set(testd)
     ss = list(s)
     adata['actorId'] = ss
     for index, actor in adata.iterrows():
@@ -131,8 +137,8 @@ def format_data():
 
 # runs the necesarry functions from data_setup for recommender.py to function
 def run_data():
-    update_data(False, False)
     format_data()
+    update_data(False, False)
     x_train, x_test = split_data()
     #x_train, x_test = train_test_split(rdata, test_size=0.3)
     return x_train, x_test
