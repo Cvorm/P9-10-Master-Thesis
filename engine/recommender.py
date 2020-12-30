@@ -450,9 +450,9 @@ def __recall(predictions, leftout, user, user_leftout, k=5, threshold=3.5):
                           for (mov, est) in predictions[:k])
     precisions = n_rel_and_rec_k / n_rec_k if n_rec_k != 0 else 0
     recalls = n_rel_and_rec_k / n_rel if n_rel != 0 else 0
-    print(f'n_rel: {n_rel}, n_rec_k: {n_rec_k}, n_rel_and_rec_k: {n_rel_and_rec_k}')
-    print(f'PRECISION :: {precisions}')
-    print(f' RECALL ::  {recalls}')
+    # print(f'n_rel: {n_rel}, n_rec_k: {n_rec_k}, n_rel_and_rec_k: {n_rel_and_rec_k}')
+    # print(f'PRECISION :: {precisions}')
+    # print(f' RECALL ::  {recalls}')
     return precisions, recalls
 
 
@@ -477,5 +477,5 @@ def recall(tet_train, tet_test, metric_tree, mt_search_k, speci_test):
         rec_count = rec_count + 1
     precision_res = precision / precision_count
     recall_res = rec / rec_count
-    print(tmp)
+    # print(tmp)
     return precision_res,recall_res
