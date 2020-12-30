@@ -39,6 +39,7 @@ def run_imdb_stuff():
 
 def run():
     f = open("output.txt", "a")
+    print(f'SETTINGS: num of sim neighbors: {mt_search_k}, num of movies: {k_movies}', file=f)
     print('Running...', file=f)
     start_time_total = time.time()
 
