@@ -15,8 +15,9 @@ from collections import defaultdict
 # x_train, x_test = run_data()
 # print(x_train)
 inp = sys.argv
-k_movies = inp[1]
-
+k_movies = int(inp[1])
+f = open("output.txt", "a")
+print(f'SETTINGS : {k_movies}', file=f)
 def precision_recall_at_k(predictions, k=10, threshold=4):
     """Return precision and recall at k metrics for each user"""
 
@@ -153,12 +154,12 @@ def run_SVD(k):
         precisions1, recalls1 = precision_recall_at_k(predictions1, k, threshold=4)
         precisions2, recalls2 = precision_recall_at_k(predictions2, k, threshold=4)
 
-        print(f' PRECISION SVD : {sum(prec for prec in precisions.values()) / len(precisions)}')
-        print(f' RECALL SVD : {sum(rec for rec in recalls.values()) / len(recalls)}')
-        print(f' PRECISION KNN : {sum(prec for prec in precisions1.values()) / len(precisions1)}')
+        print(f' PRECISION SVD : {sum(prec for prec in precisions.values()) / len(precisions)}', file=f)
+        print(f' RECALL SVD : {sum(rec for rec in recalls.values()) / len(recalls)}', file=f)
+        print(f' PRECISION KNN : {sum(prec for prec in precisions1.values()) / len(precisions1)}', file=f)
         print(f' RECALL KNN : {sum(rec for rec in recalls1.values()) / len(recalls1)}')
-        print(f' PRECISION RAND : {sum(prec for prec in precisions2.values()) / len(precisions2)}')
-        print(f' RECALL RAND : {sum(rec for rec in recalls2.values()) / len(recalls2)}')
+        print(f' PRECISION RAND : {sum(prec for prec in precisions2.values()) / len(precisions2)}', file=f)
+        print(f' RECALL RAND : {sum(rec for rec in recalls2.values()) / len(recalls2)}', file=f)
         # topN_pred = get_top_n(predictions, 10, 4.0)
         # print(topN_pred)
         # for i in topN_pred:
