@@ -192,3 +192,77 @@ def foo(n,g):
     #         rn += 1
     #         print('ELSE')
     #         print(m)
+
+    true_pos = 0
+    for mid, val in predictions:
+        for movieId, predictedRating in leftout:
+            if movieId == mid:
+                rat = get_rating(user_leftout, mid)
+                print(rat)
+                if rat >= 4:
+                    true_pos = true_pos + 1
+    false_pos = len(predictions) - true_pos
+    false_neg = len(leftout) - true_pos
+    print(f' TRUE POSITIVE : {true_pos} FALSE POSITIVE : {false_pos} FALSE NEGATIVE {false_neg}')
+
+    if true_pos == 0:
+        return 0, 0
+    else:
+        precision = true_pos / (true_pos+false_pos)
+        recalll = true_pos / (true_pos+false_neg)
+        return precision, recalll
+
+
+    # myessss = get_movies(target_user, mts_res, 0.8, 1, 50)
+    #test_movies = get_movies(n2, mts_res2, 0.8, 1, 10)
+    #print(f'myess {myessss}')
+    #print(len(myessss))
+    # ids = [x[0] for x in myessss]
+    #ids2 = [x[0] for x in test_movies]
+    #print(f'ID TRAIN {ids}')
+    #print(f'ID TEST {ids2}')
+    # movies = get_movies_from_id(ids)
+    #movies2 = get_movies_from_id(ids2)
+    #print(len(movies))
+    # for title, genres in movies.items():
+    #     print(f'title: {title} genres: {genres}')
+    # for title, genres in movies2.items():
+    #     print(f'title: {title} genres: {genres}')
+    # print(myessss)
+    # print(len(myessss))
+    # ta = get_movies_juujiro(n2,50)
+    # print(f'ALL MOVIES: {ta}')
+    # print(hitrate(myessss, ta))
+
+    # for t1 in test_tet:
+    #     username = [x for x,y in t1.graph.nodes(data=True) if y.get('root')]
+    #     if username[0] == 'u100':
+    #         n1 = t1
+    #
+    # for t2 in tet:
+    #     username = [x for x,y in t2.graph.nodes(data=True) if y.get('root')]
+    #     if username[0] == 'u100':
+    #         n2 = t2
+    # tmpp = []
+    # hitrates = []
+    # for t in tet:
+    #     username = [x for x,y in t.graph.nodes(data=True) if y.get('root')]
+    #     tmpp.append(username[0])
+    #     t2 = get_tet_user(test_tet,username[0])
+    #     mts_res = mt_search(tet, mts, t, mt_search_k, speci_test)
+    #     myessss = get_movies(t, mts_res, 0.8, 1, 100)
+    #     ta = get_movies_juujiro(t2, 20)
+    #     #print(f'ALL MOVIES: {ta}')
+    #     hitrates.append(hitrate(myessss,ta))
+    #     #print(hitrate(myessss, ta))
+    # print(f'tmppp {tmpp}')
+    # print(f'hitrates: {hitrates}')
+    # tmp_val = 0.0
+    # tmp_val_len = 0
+    # for hitz in hitrates:
+    #     tmp_val = tmp_val + hitz
+    #     tmp_val_len = tmp_val_len + 1
+    # tmp_hit = tmp_val / tmp_val_len
+    # print(tmp_val)
+    # print(tmp_val_len)
+    # print(f'over all hitrate: {tmp_hit}')
