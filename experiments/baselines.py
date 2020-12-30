@@ -1,3 +1,5 @@
+import csv
+
 import pandas as pd
 from surprise import Dataset
 from surprise import Reader
@@ -10,7 +12,7 @@ from engine.recommender import *
 from surprise.model_selection import PredefinedKFold
 from surprise import accuracy
 from collections import defaultdict
-import pecanpy as pec
+import pecanpy
 
 # df = pd.read_csv("testtest.csv", low_memory=False)
 # x_train, x_test = run_data()
@@ -142,7 +144,7 @@ def run_SVD():
     for trainset, testset in pkf.split(data):
         algo.fit(trainset)
         predictions = algo.test(testset)
-        precisions, recalls = precision_recall_at_k(predictions, k=10, threshold=4)
+        precisions, recalls = precision_recall_at_k(predictions, k=10, threshold=4.5)
 
 
         print(sum(prec for prec in precisions.values()) / len(precisions))
@@ -173,6 +175,32 @@ def run_SVD():
     # Run 5-fold cross-validation and print results.
     # res = cross_validate(algo, data, measures=['RMSE', 'MAE'], cv=cross_val_num, verbose=True)
     # return res
+def make_edgelist(filename):
+    df = pd.read_csv(filename, names=['head','relation','tail'] ,sep='\t')
+    df = df.drop('relation', 1)
+    edges = list(zip(df['head'],df['tail']))
+    with open('../Data/Cvorm/edgelist.edg', 'w', encoding='utf-8') as f:
+        writer = csv.writer(f, delimiter='\t')
+        for index, row in df.iterrows():
+            writer.writerow((row['head'], row['tail']))
+    # f = open("../Data/Cvorm/edgelist.edg", "w")
+    # for e in edges:
+    #     print(e)
+        # f.writelines(e)
+    # edgelist = list(zip(df['head'],df['tail']))
+    # print(df.head())
+    # print(edgelist)
+    # return edgelist
+    # return df
+
+# def run_node2vec(edgelist):
+    # pec.node2vec(edgelist, '../Data/Cvorm/edgelist_embedding.emb')
+    # pecanpy.node2vec()
+# def make_edg(df, path):
+
+
+# def run_node2vec():
+    # train_edges = make_edgelist("../Data/Cvorm/edges.csv")
 
 # def run_SVD_PlusPlus(cross_val_num):
 #
@@ -187,5 +215,7 @@ def run_SVD():
 #     res = cross_validate(algo, data, measures=['RMSE', 'MAE'], cv=cross_val_num, verbose=True)
 #     return res
 
-yes = run_SVD()
+# yes = run_SVD()
+# run_node2vec("../Data/Cvorm/edgelist.edg")
+# make_edgelist("../Data/Cvorm/edges.csv")
 # print(yes)
