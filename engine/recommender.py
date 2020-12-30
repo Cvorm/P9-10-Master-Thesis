@@ -115,13 +115,16 @@ def __update_tet(t, rating_df):
         rat = rating_df[rating_df.movieId == m].rating.item()
         t.add_node_w_count(f'r{idx}',rat, 'rating')
         t.add_edge((m,f'r{idx}'))
-    # director = [x for x,y in t.graph.nodes(data=True) if y['type'] == 'director']
-    # for idx, d in enumerate(director):
-    #     if type(d) == str:
-    #         award_amount = updated_actor[updated_actor.actorId == d].awards.item()
-    #         if award_amount > 0:
-    #             t.add_node_w_count(f'aw{idx}',award_amount, 'award')
-    #             t.add_edge((d, f'aw{idx}'))
+    director = [x for x,y in t.graph.nodes(data=True) if y['type'] == 'director']
+    for idx, d in enumerate(director):
+        if type(d) == str:
+            award_amount = updated_actor[updated_actor.actorId == d].awards.item()
+            if award_amount > 0:
+                t.add_node_w_count(f'aw{idx}',award_amount, 'award')
+                t.add_edge((d, f'aw{idx}'))
+            else:
+                t.add_node_w_count(f'aw{idx}',0, 'award')
+                t.add_edge((d, f'aw{idx}'))
 
 
 def update_tet(tet_multiset,x_train):
@@ -403,7 +406,7 @@ def get_movies_juujiro(user, k_movies):
             # movies[x] = y['value']
             movies[x] = rat
     no_duplicates = [list(v) for v in dict(movies).items()]
-    mean = get_user_mean_value(user)
+    # mean = get_user_mean_value(user)
     sort_movies = sorted(no_duplicates, key=lambda k: k[1], reverse=True)
     #sort_movies = sorted(movies.items(), key=lambda e: movie_dist(e[1], mean))
     # res = sort_movies[:top_k_movies]
