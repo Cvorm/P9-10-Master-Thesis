@@ -1,6 +1,7 @@
 import pandas as pd
 import imdb
 from sklearn.model_selection import train_test_split
+
 moviesDB = imdb.IMDb()
 # data = pd.read_csv('../Data/movies.csv')
 # ratings = pd.read_csv('../Data/ratings.csv')
@@ -8,6 +9,7 @@ data = pd.read_csv('movie.csv', converters={'cast': eval})
 ratings = pd.read_csv('ratings1.csv', converters={'cast': eval})
 links = pd.read_csv('../Data/links.csv')
 rdata = pd.DataFrame(columns=['userId', 'movieId', 'rating'])
+
 adata = pd.DataFrame(columns=['actorId','awards'])
 xdata = pd.DataFrame(columns=['movieId','actors','directors','budget'])
 
@@ -24,7 +26,7 @@ def update_movie_data():
     actor_id_l = []
     for index, movie in data.iterrows():
         print(f'{index} / {len(data)}')
-        #if index == 5: break
+        # if index == 5: break
         s = str(movie['movieId'])
         sx = s[1:]
         temp = links[links['movieId'] == int(sx)]
@@ -37,9 +39,9 @@ def update_movie_data():
         try:
             director = ""
             for d in imovie['directors']:
-                #print(d['name'])
+                # print(d['name'])
                 director = 'a' + str(d.personID)
-            #print(data.at[index, 'director'])
+            # print(data.at[index, 'director'])
         except:
             print('except')
         data.at[index, 'director'] = str(director)
@@ -63,7 +65,7 @@ def update_movie_data():
         #     print('fail box office')
         # data.at[index, 'box'] = str(box_l)
 
-    data.to_csv('movie.csv',index=False)
+    data.to_csv('movie.csv', index=False)
     return actor_id_l
 
 
@@ -82,8 +84,8 @@ def update_actor_data(actor_list):
         temp_dict = {"Winner": 0, "Nominee": 0}
         try:
             award = moviesDB.get_person_awards(jx)
-            for x,y in award['data'].items():
-                #print(n,m)
+            for x, y in award['data'].items():
+                # print(n,m)
                 for a in y:
                     res = a.get('result')
                     if res == 'Winner':
@@ -95,13 +97,13 @@ def update_actor_data(actor_list):
             adata.at[index, 'awards'] = temp_dict["Winner"]
         except:
             print('fail')
-            adata.at[index,'awards'] = temp_dict["Winner"]
+            adata.at[index, 'awards'] = temp_dict["Winner"]
     print(adata)
-    adata.to_csv('actor_data.csv',index=False)
+    adata.to_csv('actor_data.csv', index=False)
 
 
 # helper function for running the updating functions
-def update_data(movie,actor):
+def update_data(movie, actor):
     if movie:
         actor_list = update_movie_data()
         if actor:
