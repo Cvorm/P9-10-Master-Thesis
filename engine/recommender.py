@@ -201,10 +201,12 @@ def calc_distance(hist_tree1, hist_tree2, spec, root):
     res = sum(dist)
     return res
 
+
 def movie_dist(p1,p2):
     return p1 - p2
 
-def get_movies_user(user, top_k_movies, interval1, interval2):
+
+def get_movies_user(user):
     movies = {}
     for x, y in user.graph.nodes(data=True):
         if type(x) is str and x[0] == 'm':
@@ -222,6 +224,7 @@ def get_movies_user(user, top_k_movies, interval1, interval2):
     sort_movies = sorted(movies.items(), key=lambda k: k[1], reverse=True)
     res = sort_movies #[:top_k_movies]
     return res
+
 
 def get_user_max_hist(user):
     for x, y in user.ht.nodes(data=True):
@@ -252,10 +255,11 @@ def get_movies_in_user(user):
             tmp_list.append(x)
     return tmp_list
 
+
 def get_movies(user_hist, other_users_hist, interval1, interval2, top_k_movies):
     movies = []
     for u in other_users_hist:
-        temp_movies = get_movies_user(u, top_k_movies, interval1, interval2)
+        temp_movies = get_movies_user(u)
         for i in temp_movies:
             movies.append(i)
     no_duplicates = [list(v) for v in dict(movies).items()]
@@ -374,7 +378,7 @@ def __mt_search(g, mn, h, k, leafs, spec, root):
 
 
 # function for searching metric tree
-def mt_search(t, g, user_tet, k, spec):
+def mt_search(g, user_tet, k, spec):
     leaf_nodes = [node for node in g.nodes if
                   (g.in_degree(node) != 0 and g.out_degree(node) == 0)]
     root = [node for node in g.nodes if (g.in_degree(node) == 0 and g.out_degree != 0)]
@@ -398,7 +402,7 @@ def hitrate(topNpredictions, leftoutpredictions):
     return hits / total
 
 
-def get_movies_juujiro(user, k_movies):
+def get_movies_juujiro(user):
     movies = {}
     for x, y in user.graph.nodes(data=True):
         if type(x) is str and x[0] == 'm':
@@ -442,7 +446,7 @@ def get_rating(user, movieid):
     return 0
 
 
-def __recall(predictions, leftout, user, user_leftout, k=5, threshold=3.5):
+def __recall(predictions, user_leftout, k, threshold=3.0):
 
     n_rel = sum((get_rating(user_leftout, mov) >= threshold) for (mov, _) in predictions)
     n_rec_k = sum((est >= threshold) for (_, est) in predictions[:k])
@@ -456,15 +460,15 @@ def __recall(predictions, leftout, user, user_leftout, k=5, threshold=3.5):
     return precisions, recalls
 
 
-def recall(tet_train, tet_test, metric_tree, mt_search_k, speci_test):
+def recall(tet_train, tet_test, metric_tree, mt_search_k, speci_test, k_movies):
     tmp = []
     for user in tet_train:
         username = [x for x,y in user.graph.nodes(data=True) if y.get('root')]
         user_leftout = get_tet_user(tet_test,username[0])
-        similar_users = mt_search(tet_train, metric_tree, user, mt_search_k, speci_test)
+        similar_users = mt_search(metric_tree, user, mt_search_k, speci_test)
         predicted_movies = get_movies(user, similar_users, 0.8, 1, 20)
-        user_test_movies = get_movies_juujiro(user_leftout, 20)
-        tmp.append(__recall(predicted_movies, user_test_movies, user, user_leftout))
+        user_test_movies = get_movies_juujiro(user_leftout)
+        tmp.append(__recall(predicted_movies, user_leftout, k_movies))
     precision = 0.0
     precision_count = 0
     rec = 0.0
