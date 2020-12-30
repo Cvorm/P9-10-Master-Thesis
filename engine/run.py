@@ -12,13 +12,13 @@ spec2 = [["user,", "movie", "genre", "director", "rating", "award"],
         ["movie", "user"]]
 
 # logistic evaluation function settings
-log_bias = -12
-log_weight = 2.0
+log_bias = -6
+log_weight = 1.0
 # histogram settings
 bin_size = 10
 bin_amount = 10
 # metric tree settings
-mt_depth = 7
+mt_depth = 9
 bucket_max_mt = 25
 mt_search_k = 15
 # print settings
