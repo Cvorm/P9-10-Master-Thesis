@@ -256,7 +256,7 @@ def get_movies_in_user(user):
     return tmp_list
 
 
-def get_movies(user_hist, other_users_hist, interval1, interval2, top_k_movies):
+def get_movies(user_hist, other_users_hist):
     movies = []
     for u in other_users_hist:
         temp_movies = get_movies_user(u)
@@ -446,7 +446,7 @@ def get_rating(user, movieid):
     return 0
 
 
-def __recall(predictions, user_leftout, k, threshold=3.0):
+def __recall(predictions, user_leftout, k, threshold=4.0):
 
     n_rel = sum((get_rating(user_leftout, mov) >= threshold) for (mov, _) in predictions)
     n_rec_k = sum((est >= threshold) for (_, est) in predictions[:k])
@@ -466,8 +466,7 @@ def recall(tet_train, tet_test, metric_tree, mt_search_k, speci_test, k_movies):
         username = [x for x,y in user.graph.nodes(data=True) if y.get('root')]
         user_leftout = get_tet_user(tet_test,username[0])
         similar_users = mt_search(metric_tree, user, mt_search_k, speci_test)
-        predicted_movies = get_movies(user, similar_users, 0.8, 1, 20)
-        user_test_movies = get_movies_juujiro(user_leftout)
+        predicted_movies = get_movies(user, similar_users)
         tmp.append(__recall(predicted_movies, user_leftout, k_movies))
     precision = 0.0
     precision_count = 0

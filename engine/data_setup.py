@@ -1,6 +1,5 @@
 import pandas as pd
 import imdb
-from sklearn.model_selection import train_test_split
 
 moviesDB = imdb.IMDb()
 # data = pd.read_csv('../Data/movies.csv')
