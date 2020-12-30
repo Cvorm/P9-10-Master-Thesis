@@ -1,4 +1,5 @@
 import time
+import sys
 from engine.recommender import *
 
 # SETTINGS
@@ -8,9 +9,10 @@ spec = [["user,", "movie", "genre", "director", ],
         [("user", "movie"), ("movie", "genre"), ("movie", "director")],
         ["movie","user"]]
 spec2 = [["user,", "movie", "genre", "director", "rating", "award"],
-        [("user", "movie"), ("movie", "director"), ("movie", "rating")],
-        ["movie", "user"]]
+        [("user", "movie"), ("movie", "director"), ("movie", "rating"), ("director", "award")],
+        ["movie", "user", "director"]]
 
+inp = sys.argv
 # logistic evaluation function settings
 log_bias = -6
 log_weight = 1.0
@@ -18,9 +20,10 @@ log_weight = 1.0
 bin_size = 10
 bin_amount = 10
 # metric tree settings
-mt_depth = 9
+mt_depth = 7
 bucket_max_mt = 25
-mt_search_k = 15
+mt_search_k = int(inp[1])
+k_movies = int(inp[2])
 # print settings
 top = 5
 # seed
@@ -100,7 +103,7 @@ def run():
     print('Searching Metric Tree', file=f)
     start_time = time.time()
 
-    print(f' recall {recall(tet,test_tet, mts, mt_search_k,speci_test)}', file=f)
+    print(f' RESULT: {recall(tet,test_tet, mts, mt_search_k, speci_test, k_movies)}', file=f)
     # target_user = n1    # test_tet[0]
     # mts_res = mt_search(tet, mts, target_user, mt_search_k, speci_test)
     # mts_res2 = mt_search(tet, mts, n2, mt_search_k, speci_test)
