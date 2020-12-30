@@ -1,24 +1,23 @@
 import csv
-
+import sys
 import pandas as pd
-from surprise import Dataset
 from surprise import Reader
 from surprise import SVD
-from surprise import SVDpp
+from surprise import KNNBasic
+from surprise import NormalPredictor
 from surprise import Dataset
-from surprise.model_selection import cross_validate
-from node2vec import Node2Vec
 from engine.recommender import *
 from surprise.model_selection import PredefinedKFold
 from surprise import accuracy
 from collections import defaultdict
-import pecanpy
 
 # df = pd.read_csv("testtest.csv", low_memory=False)
 # x_train, x_test = run_data()
 # print(x_train)
+inp = sys.argv
+k_movies = inp[1]
 
-def precision_recall_at_k(predictions, k=10, threshold=3.5):
+def precision_recall_at_k(predictions, k=10, threshold=4):
     """Return precision and recall at k metrics for each user"""
 
     # First map the predictions to each user.
@@ -72,7 +71,7 @@ def get_top_n(predictions, n, min_rating):
 
 def make_data(data, name):
     files_dir = "C:\\Users\\Darkmaster\\PycharmProjects\\Recommender\\Data\\Cvorm\\"
-    data.to_csv(files_dir + name, header=False, index=False)
+    data.to_csv(name, header=False, index=False)
     # reader = Reader(line_format='user item rating timestamp', sep=',')
     # train_file = files_dir + "training.csv"
     # test_file = files_dir + "testing.csv"
@@ -123,7 +122,7 @@ def hitrate(topNpredictions, leftoutpredictions):
 #
 #     return hits / total
 
-def run_SVD():
+def run_SVD(k):
     files_dir = "C:\\Users\\Darkmaster\\PycharmProjects\\Recommender\\Data\\Cvorm\\"
     x_train, x_test = run_data()
 
@@ -131,8 +130,8 @@ def run_SVD():
     make_data(x_test, "testing.csv")
     reader = Reader(line_format='user item rating', sep=',')
 
-    train_file = files_dir + "training.csv"
-    test_file = files_dir + "testing.csv"
+    train_file = "training.csv"
+    test_file = "testing.csv"
     print(train_file)
 
     folds_files = [(train_file, test_file)]
@@ -140,15 +139,26 @@ def run_SVD():
     data = Dataset.load_from_folds(folds_files, reader=reader)
     pkf = PredefinedKFold()
     algo = SVD()
+    algo1 = KNNBasic()
+    algo2 = NormalPredictor()
 
     for trainset, testset in pkf.split(data):
         algo.fit(trainset)
+        algo1.fit(trainset)
+        algo2.fit(trainset)
         predictions = algo.test(testset)
-        precisions, recalls = precision_recall_at_k(predictions, k=10, threshold=4.5)
+        predictions1 = algo1.test(testset)
+        predictions2 = algo2.test(testset)
+        precisions, recalls = precision_recall_at_k(predictions, k, threshold=4)
+        precisions1, recalls1 = precision_recall_at_k(predictions1, k, threshold=4)
+        precisions2, recalls2 = precision_recall_at_k(predictions2, k, threshold=4)
 
-
-        print(sum(prec for prec in precisions.values()) / len(precisions))
-        print(sum(rec for rec in recalls.values()) / len(recalls))
+        print(f' PRECISION SVD : {sum(prec for prec in precisions.values()) / len(precisions)}')
+        print(f' RECALL SVD : {sum(rec for rec in recalls.values()) / len(recalls)}')
+        print(f' PRECISION KNN : {sum(prec for prec in precisions1.values()) / len(precisions1)}')
+        print(f' RECALL KNN : {sum(rec for rec in recalls1.values()) / len(recalls1)}')
+        print(f' PRECISION RAND : {sum(prec for prec in precisions2.values()) / len(precisions2)}')
+        print(f' RECALL RAND : {sum(rec for rec in recalls2.values()) / len(recalls2)}')
         # topN_pred = get_top_n(predictions, 10, 4.0)
         # print(topN_pred)
         # for i in topN_pred:
@@ -215,7 +225,7 @@ def make_edgelist(filename):
 #     res = cross_validate(algo, data, measures=['RMSE', 'MAE'], cv=cross_val_num, verbose=True)
 #     return res
 
-# yes = run_SVD()
+run_SVD(k_movies)
 # run_node2vec("../Data/Cvorm/edgelist.edg")
 # make_edgelist("../Data/Cvorm/edges.csv")
 # print(yes)
