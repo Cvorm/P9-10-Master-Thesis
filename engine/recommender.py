@@ -114,7 +114,7 @@ def __update_tet(t, rating_df):
     for idx, m in enumerate(movies):
         rat = rating_df[rating_df.movieId == m].rating.item()
         t.add_node_w_count(f'r{idx}',rat, 'rating')
-        t.add_edge((m,f'r{idx}'))
+        t.add_edge((m, f'r{idx}'))
     director = [x for x,y in t.graph.nodes(data=True) if y['type'] == 'director']
     for idx, d in enumerate(director):
         if type(d) == str:
