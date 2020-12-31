@@ -14,8 +14,8 @@ spec2 = [["user,", "movie", "genre", "director", "rating", "award"],
 
 inp = sys.argv
 # logistic evaluation function settings
-log_bias = -5
-log_weight = 1.0
+log_bias = -7
+log_weight = 1
 # histogram settings
 bin_size = 10
 bin_amount = 10
@@ -96,8 +96,8 @@ def run():
     print('Building Metric Tree', file=f)
     start_time = time.time()
     mts = mt_build(tet, mt_depth, bucket_max_mt, speci_test)
-    print(f' MT nodes: {mts.nodes}')
-    print(f' MT edges: {mts.edges}')
+    print(f' MT nodes: {mts.nodes}', file=f)
+    print(f' MT edges: {mts.edges}', file=f)
     # [print(mts[i].graph.nodes(data=True)) for i in range(5)]
     print("--- %s seconds ---" % (time.time() - start_time), file=f)
     #
@@ -136,6 +136,7 @@ def run():
     # [print(test_tet[i].graph.nodes(data=True)) for i in range(top)]
     print(f'Top {top} users histogram:')
     [print(tet[i].ht.nodes(data=True)) for i in range(top)]
+    [print(tet[i].graph.nodes(data=True)) for i in range(top)]
 
 
 #run_imdb_stuff()
