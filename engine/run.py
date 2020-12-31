@@ -14,14 +14,14 @@ spec2 = [["user,", "movie", "genre", "director", "rating", "award"],
 
 inp = sys.argv
 # logistic evaluation function settings
-log_bias = -6
+log_bias = -5
 log_weight = 1.0
 # histogram settings
 bin_size = 10
 bin_amount = 10
 # metric tree settings
-mt_depth = 7
-bucket_max_mt = 25
+mt_depth = int(inp[3])
+bucket_max_mt = 30
 mt_search_k = int(inp[1])
 k_movies = int(inp[2])
 # print settings
@@ -99,7 +99,7 @@ def run():
     print(f' MT nodes: {mts.nodes}')
     print(f' MT edges: {mts.edges}')
     # [print(mts[i].graph.nodes(data=True)) for i in range(5)]
-    print("--- %s seconds ---" % (time.time() - start_time))
+    print("--- %s seconds ---" % (time.time() - start_time), file=f)
     #
     print('Searching Metric Tree', file=f)
     start_time = time.time()

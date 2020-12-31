@@ -122,9 +122,9 @@ def __update_tet(t, rating_df):
             if award_amount > 0:
                 t.add_node_w_count(f'aw{idx}',award_amount, 'award')
                 t.add_edge((d, f'aw{idx}'))
-            else:
-                t.add_node_w_count(f'aw{idx}',0, 'award')
-                t.add_edge((d, f'aw{idx}'))
+            # else:
+            #     t.add_node_w_count(f'aw{idx}',0, 'award')
+            #     t.add_edge((d, f'aw{idx}'))
 
 
 def update_tet(tet_multiset,x_train):
@@ -330,14 +330,14 @@ def __split_data(data, v1, v2, spec, root):
 def __mt_build(g, d_max, b_max, d, data, name, spec, root):
     if not (d == d_max or len(data) <= b_max):
         z1, z2 = __get_random_pair(data, spec, root)
-        data_1, data_2 = __split_data(data,z1,z2, spec, root)
-        __mt_build(g, d_max, b_max, d + 1, data_1, 1, spec, root)
-        __mt_build(g, d_max, b_max, d + 1, data_2, 2, spec, root)
-        g.add_node(f'{d}_{name}', left=f'{d + 1}_1', right=f'{d + 1}_2', z1=z1, z2=z2) #left=data_1, right=data_2
-        g.add_edge(f'{d}_{name}', f'{d + 1}_1')
-        g.add_edge(f'{d}_{name}', f'{d + 1}_2')
+        data_1, data_2 = __split_data(data, z1, z2, spec, root)
+        __mt_build(g, d_max, b_max, d + 1, data_1, f'{name}_l', spec, root) # 1
+        __mt_build(g, d_max, b_max, d + 1, data_2, f'{name}_r', spec, root) # 2
+        g.add_node(f'{name}', left=f'{name}_l', right=f'{name}_r', z1=z1, z2=z2) #left=data_1, right=data_2
+        g.add_edge(f'{name}', f'{name}_l')
+        g.add_edge(f'{name}', f'{name}_r')
     else:
-        g.add_node(f'{d}_{name}', bucket=data)
+        g.add_node(f'{name}', bucket=data)
 
 
 # function for building metric tree
@@ -402,21 +402,21 @@ def hitrate(topNpredictions, leftoutpredictions):
     return hits / total
 
 
-def get_movies_juujiro(user):
-    movies = {}
-    for x, y in user.graph.nodes(data=True):
-        if type(x) is str and x[0] == 'm':
-            rat = get_rating(user, x)
-            # movies[x] = y['value']
-            movies[x] = rat
-    no_duplicates = [list(v) for v in dict(movies).items()]
-    # mean = get_user_mean_value(user)
-    sort_movies = sorted(no_duplicates, key=lambda k: k[1], reverse=True)
-    #sort_movies = sorted(movies.items(), key=lambda e: movie_dist(e[1], mean))
-    # res = sort_movies[:top_k_movies]
-    # sort_movies = sorted(movies.items(), key=lambda k: k[1], reverse=True)
-    res = sort_movies #[:k_movies]
-    return res
+# def get_movies_juujiro(user):
+#     movies = {}
+#     for x, y in user.graph.nodes(data=True):
+#         if type(x) is str and x[0] == 'm':
+#             rat = get_rating(user, x)
+#             # movies[x] = y['value']
+#             movies[x] = rat
+#     no_duplicates = [list(v) for v in dict(movies).items()]
+#     # mean = get_user_mean_value(user)
+#     sort_movies = sorted(no_duplicates, key=lambda k: k[1], reverse=True)
+#     #sort_movies = sorted(movies.items(), key=lambda e: movie_dist(e[1], mean))
+#     # res = sort_movies[:top_k_movies]
+#     # sort_movies = sorted(movies.items(), key=lambda k: k[1], reverse=True)
+#     res = sort_movies #[:k_movies]
+#     return res
 
 
 def get_tet_user(tet,user):
