@@ -252,7 +252,9 @@ def get_movies_in_user(user):
     tmp_list = []
     for x, y in user.graph.nodes(data=True):
         if type(x) is str and x[0] == 'm':
-            tmp_list.append(x)
+            rat = get_rating(user, x)
+            if rat >= 4:
+                tmp_list.append(x)
     return tmp_list
 
 
@@ -265,23 +267,11 @@ def get_movies(user_hist, other_users_hist):
     no_duplicates = [list(v) for v in dict(movies).items()]
     mu = get_movies_in_user(user_hist)
     no_mas = [(x,y) for x,y in no_duplicates if x not in mu]
-    print(f' no duplicates: {len(no_duplicates)}, no_mas : {len(no_mas)}')
-    get_user_max_hist(user_hist)
-    mean = get_user_mean_value(user_hist)
+    # print(f' no duplicates: {len(no_duplicates)}, no_mas : {len(no_mas)}')
+    # mean = get_user_mean_value(user_hist)
     # sort_movies = sorted(no_duplicates, key=lambda e: movie_dist(e[1], mean))
     sort_movies = sorted(no_mas, key=lambda k: k[1], reverse=True)
     res = sort_movies #[:top_k_movies]
-    # user_movies = []
-    # for x, y in user_hist.graph.nodes(data=True):
-    #     if type(x) is str and x[0] == 'm':
-    #         for n in user_hist.graph.neighbors(x):
-    #             if type(n) is str and n[0] == 'r':
-    #                 rat = user_hist.graph.nodes(data=True)[n]['count']
-    #                 print(n, rat)
-    #                 if rat >= 4.0:
-    #                     movies.append(x)
-    #         # if interval1 <= y['value'] <= interval2:
-    #         #     user_movies.append(x)
     return res
 
 
@@ -366,8 +356,10 @@ def __mt_search(g, mn, h, k, leafs, spec, root):
         dist = [__distance(h, b, spec, root) for b in bucket]
         bucket_sorted = [x for _, x in sorted(zip(dist, bucket))]
         if len(bucket_sorted) < k:
+            bucket_sorted.pop(0)
             return bucket_sorted
         else:
+            bucket_sorted.pop(0)
             return bucket_sorted[:k]
     dist1 = __distance(h, g.nodes(data=True)[mn]['z1'], spec, root)
     dist2 = __distance(h, g.nodes(data=True)[mn]['z2'], spec, root)
@@ -382,7 +374,7 @@ def mt_search(g, user_tet, k, spec):
     leaf_nodes = [node for node in g.nodes if
                   (g.in_degree(node) != 0 and g.out_degree(node) == 0)]
     root = [node for node in g.nodes if (g.in_degree(node) == 0 and g.out_degree != 0)]
-    res = __mt_search(g, root[0], user_tet, k, leaf_nodes, spec, 'user')
+    res = __mt_search(g, root[0], user_tet, k + 1, leaf_nodes, spec, 'user')
     return res
 
 
@@ -402,23 +394,6 @@ def hitrate(topNpredictions, leftoutpredictions):
     return hits / total
 
 
-# def get_movies_juujiro(user):
-#     movies = {}
-#     for x, y in user.graph.nodes(data=True):
-#         if type(x) is str and x[0] == 'm':
-#             rat = get_rating(user, x)
-#             # movies[x] = y['value']
-#             movies[x] = rat
-#     no_duplicates = [list(v) for v in dict(movies).items()]
-#     # mean = get_user_mean_value(user)
-#     sort_movies = sorted(no_duplicates, key=lambda k: k[1], reverse=True)
-#     #sort_movies = sorted(movies.items(), key=lambda e: movie_dist(e[1], mean))
-#     # res = sort_movies[:top_k_movies]
-#     # sort_movies = sorted(movies.items(), key=lambda k: k[1], reverse=True)
-#     res = sort_movies #[:k_movies]
-#     return res
-
-
 def get_tet_user(tet,user):
     for t in tet:
         username = [x for x, y in t.graph.nodes(data=True) if y.get('root')]
@@ -431,7 +406,6 @@ def has_rating(user, movieid):
         if type(x) is str and x == movieid:
             for n in user.graph.neighbors(x):
                 if type(n) is str and n[0] == 'r':
-                    rat = user.graph.nodes(data=True)[n]['count']
                     return True
     return False
 
@@ -447,7 +421,6 @@ def get_rating(user, movieid):
 
 
 def __recall(predictions, user_leftout, k, threshold=4.0):
-
     n_rel = sum((get_rating(user_leftout, mov) >= threshold) for (mov, _) in predictions)
     n_rec_k = sum((est >= threshold) for (_, est) in predictions[:k])
     n_rel_and_rec_k = sum(((get_rating(user_leftout,mov) >= threshold) and (est >= threshold))

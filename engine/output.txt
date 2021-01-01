@@ -385,3 +385,90 @@ Total run time: 246.81937551498413 seconds.
 Amount of users: 669.
 || ---------------------- ||
 
+SETTINGS: num of sim neighbors: 1, num of movies: 10
+Running...
+Formatting data...
+Generating graph...
+--- 3.1670408248901367 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Adding rating and award information to graph...
+--- 170.7383050918579 seconds ---
+Counting TETs...
+--- 22.12025785446167 seconds ---
+Performing Logistic Evaluation on TETs...
+--- 23.968162536621094 seconds ---
+Generating histograms...
+--- 6.377093553543091 seconds ---
+Building Metric Tree
+ MT nodes: ['0_l_l', '0_l_r_l', '0_l_r_r_l_l_l', '0_l_r_r_l_l_r_l', '0_l_r_r_l_l_r_r', '0_l_r_r_l_l_r', '0_l_r_r_l_l', '0_l_r_r_l_r', '0_l_r_r_l', '0_l_r_r_r', '0_l_r_r', '0_l_r', '0_l', '0_r_l_l_l', '0_r_l_l_r_l', '0_r_l_l_r_r', '0_r_l_l_r', '0_r_l_l', '0_r_l_r_l_l_l_l', '0_r_l_r_l_l_l_r', '0_r_l_r_l_l_l', '0_r_l_r_l_l_r_l', '0_r_l_r_l_l_r_r', '0_r_l_r_l_l_r', '0_r_l_r_l_l', '0_r_l_r_l_r_l', '0_r_l_r_l_r_r_l', '0_r_l_r_l_r_r_r', '0_r_l_r_l_r_r', '0_r_l_r_l_r', '0_r_l_r_l', '0_r_l_r_r_l_l', '0_r_l_r_r_l_r', '0_r_l_r_r_l', '0_r_l_r_r_r', '0_r_l_r_r', '0_r_l_r', '0_r_l', '0_r_r_l_l_l', '0_r_r_l_l_r_l_l', '0_r_r_l_l_r_l_r', '0_r_r_l_l_r_l', '0_r_r_l_l_r_r_l', '0_r_r_l_l_r_r_r', '0_r_r_l_l_r_r', '0_r_r_l_l_r', '0_r_r_l_l', '0_r_r_l_r_l_l_l', '0_r_r_l_r_l_l_r', '0_r_r_l_r_l_l', '0_r_r_l_r_l_r_l', '0_r_r_l_r_l_r_r', '0_r_r_l_r_l_r', '0_r_r_l_r_l', '0_r_r_l_r_r', '0_r_r_l_r', '0_r_r_l', '0_r_r_r_l_l_l', '0_r_r_r_l_l_r', '0_r_r_r_l_l', '0_r_r_r_l_r', '0_r_r_r_l', '0_r_r_r_r', '0_r_r_r', '0_r_r', '0_r', '0']
+ MT edges: [('0_l_r_r_l_l_r', '0_l_r_r_l_l_r_l'), ('0_l_r_r_l_l_r', '0_l_r_r_l_l_r_r'), ('0_l_r_r_l_l', '0_l_r_r_l_l_l'), ('0_l_r_r_l_l', '0_l_r_r_l_l_r'), ('0_l_r_r_l', '0_l_r_r_l_l'), ('0_l_r_r_l', '0_l_r_r_l_r'), ('0_l_r_r', '0_l_r_r_l'), ('0_l_r_r', '0_l_r_r_r'), ('0_l_r', '0_l_r_l'), ('0_l_r', '0_l_r_r'), ('0_l', '0_l_l'), ('0_l', '0_l_r'), ('0_r_l_l_r', '0_r_l_l_r_l'), ('0_r_l_l_r', '0_r_l_l_r_r'), ('0_r_l_l', '0_r_l_l_l'), ('0_r_l_l', '0_r_l_l_r'), ('0_r_l_r_l_l_l', '0_r_l_r_l_l_l_l'), ('0_r_l_r_l_l_l', '0_r_l_r_l_l_l_r'), ('0_r_l_r_l_l_r', '0_r_l_r_l_l_r_l'), ('0_r_l_r_l_l_r', '0_r_l_r_l_l_r_r'), ('0_r_l_r_l_l', '0_r_l_r_l_l_l'), ('0_r_l_r_l_l', '0_r_l_r_l_l_r'), ('0_r_l_r_l_r_r', '0_r_l_r_l_r_r_l'), ('0_r_l_r_l_r_r', '0_r_l_r_l_r_r_r'), ('0_r_l_r_l_r', '0_r_l_r_l_r_l'), ('0_r_l_r_l_r', '0_r_l_r_l_r_r'), ('0_r_l_r_l', '0_r_l_r_l_l'), ('0_r_l_r_l', '0_r_l_r_l_r'), ('0_r_l_r_r_l', '0_r_l_r_r_l_l'), ('0_r_l_r_r_l', '0_r_l_r_r_l_r'), ('0_r_l_r_r', '0_r_l_r_r_l'), ('0_r_l_r_r', '0_r_l_r_r_r'), ('0_r_l_r', '0_r_l_r_l'), ('0_r_l_r', '0_r_l_r_r'), ('0_r_l', '0_r_l_l'), ('0_r_l', '0_r_l_r'), ('0_r_r_l_l_r_l', '0_r_r_l_l_r_l_l'), ('0_r_r_l_l_r_l', '0_r_r_l_l_r_l_r'), ('0_r_r_l_l_r_r', '0_r_r_l_l_r_r_l'), ('0_r_r_l_l_r_r', '0_r_r_l_l_r_r_r'), ('0_r_r_l_l_r', '0_r_r_l_l_r_l'), ('0_r_r_l_l_r', '0_r_r_l_l_r_r'), ('0_r_r_l_l', '0_r_r_l_l_l'), ('0_r_r_l_l', '0_r_r_l_l_r'), ('0_r_r_l_r_l_l', '0_r_r_l_r_l_l_l'), ('0_r_r_l_r_l_l', '0_r_r_l_r_l_l_r'), ('0_r_r_l_r_l_r', '0_r_r_l_r_l_r_l'), ('0_r_r_l_r_l_r', '0_r_r_l_r_l_r_r'), ('0_r_r_l_r_l', '0_r_r_l_r_l_l'), ('0_r_r_l_r_l', '0_r_r_l_r_l_r'), ('0_r_r_l_r', '0_r_r_l_r_l'), ('0_r_r_l_r', '0_r_r_l_r_r'), ('0_r_r_l', '0_r_r_l_l'), ('0_r_r_l', '0_r_r_l_r'), ('0_r_r_r_l_l', '0_r_r_r_l_l_l'), ('0_r_r_r_l_l', '0_r_r_r_l_l_r'), ('0_r_r_r_l', '0_r_r_r_l_l'), ('0_r_r_r_l', '0_r_r_r_l_r'), ('0_r_r_r', '0_r_r_r_l'), ('0_r_r_r', '0_r_r_r_r'), ('0_r_r', '0_r_r_l'), ('0_r_r', '0_r_r_r'), ('0_r', '0_r_l'), ('0_r', '0_r_r'), ('0', '0_l'), ('0', '0_r')]
+--- 21.181791067123413 seconds ---
+Searching Metric Tree
+ RESULT: (0.05427728613569339, 0.1433500413109237)
+--- 88.5469582080841 seconds ---
+
+|| ------ COMPLETE ------ ||
+Total run time: 336.9546072483063 seconds.
+Amount of users: 678.
+|| ---------------------- ||
+
+SETTINGS: num of sim neighbors: 1, num of movies: 10
+Running...
+Formatting data...
+Generating graph...
+--- 2.6973984241485596 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Adding rating and award information to graph...
+--- 137.0083839893341 seconds ---
+Counting TETs...
+--- 16.762152671813965 seconds ---
+Performing Logistic Evaluation on TETs...
+--- 17.85121178627014 seconds ---
+Generating histograms...
+--- 5.67076849937439 seconds ---
+Building Metric Tree
+ MT nodes: ['0_l_l', '0_l_r_l', '0_l_r_r_l_l_l', '0_l_r_r_l_l_r_l', '0_l_r_r_l_l_r_r', '0_l_r_r_l_l_r', '0_l_r_r_l_l', '0_l_r_r_l_r', '0_l_r_r_l', '0_l_r_r_r', '0_l_r_r', '0_l_r', '0_l', '0_r_l_l_l', '0_r_l_l_r_l', '0_r_l_l_r_r', '0_r_l_l_r', '0_r_l_l', '0_r_l_r_l_l_l_l', '0_r_l_r_l_l_l_r', '0_r_l_r_l_l_l', '0_r_l_r_l_l_r_l', '0_r_l_r_l_l_r_r', '0_r_l_r_l_l_r', '0_r_l_r_l_l', '0_r_l_r_l_r_l', '0_r_l_r_l_r_r_l', '0_r_l_r_l_r_r_r', '0_r_l_r_l_r_r', '0_r_l_r_l_r', '0_r_l_r_l', '0_r_l_r_r_l_l', '0_r_l_r_r_l_r', '0_r_l_r_r_l', '0_r_l_r_r_r', '0_r_l_r_r', '0_r_l_r', '0_r_l', '0_r_r_l_l_l', '0_r_r_l_l_r_l_l', '0_r_r_l_l_r_l_r', '0_r_r_l_l_r_l', '0_r_r_l_l_r_r_l', '0_r_r_l_l_r_r_r', '0_r_r_l_l_r_r', '0_r_r_l_l_r', '0_r_r_l_l', '0_r_r_l_r_l_l_l', '0_r_r_l_r_l_l_r', '0_r_r_l_r_l_l', '0_r_r_l_r_l_r_l', '0_r_r_l_r_l_r_r', '0_r_r_l_r_l_r', '0_r_r_l_r_l', '0_r_r_l_r_r', '0_r_r_l_r', '0_r_r_l', '0_r_r_r_l_l_l', '0_r_r_r_l_l_r', '0_r_r_r_l_l', '0_r_r_r_l_r', '0_r_r_r_l', '0_r_r_r_r', '0_r_r_r', '0_r_r', '0_r', '0']
+ MT edges: [('0_l_r_r_l_l_r', '0_l_r_r_l_l_r_l'), ('0_l_r_r_l_l_r', '0_l_r_r_l_l_r_r'), ('0_l_r_r_l_l', '0_l_r_r_l_l_l'), ('0_l_r_r_l_l', '0_l_r_r_l_l_r'), ('0_l_r_r_l', '0_l_r_r_l_l'), ('0_l_r_r_l', '0_l_r_r_l_r'), ('0_l_r_r', '0_l_r_r_l'), ('0_l_r_r', '0_l_r_r_r'), ('0_l_r', '0_l_r_l'), ('0_l_r', '0_l_r_r'), ('0_l', '0_l_l'), ('0_l', '0_l_r'), ('0_r_l_l_r', '0_r_l_l_r_l'), ('0_r_l_l_r', '0_r_l_l_r_r'), ('0_r_l_l', '0_r_l_l_l'), ('0_r_l_l', '0_r_l_l_r'), ('0_r_l_r_l_l_l', '0_r_l_r_l_l_l_l'), ('0_r_l_r_l_l_l', '0_r_l_r_l_l_l_r'), ('0_r_l_r_l_l_r', '0_r_l_r_l_l_r_l'), ('0_r_l_r_l_l_r', '0_r_l_r_l_l_r_r'), ('0_r_l_r_l_l', '0_r_l_r_l_l_l'), ('0_r_l_r_l_l', '0_r_l_r_l_l_r'), ('0_r_l_r_l_r_r', '0_r_l_r_l_r_r_l'), ('0_r_l_r_l_r_r', '0_r_l_r_l_r_r_r'), ('0_r_l_r_l_r', '0_r_l_r_l_r_l'), ('0_r_l_r_l_r', '0_r_l_r_l_r_r'), ('0_r_l_r_l', '0_r_l_r_l_l'), ('0_r_l_r_l', '0_r_l_r_l_r'), ('0_r_l_r_r_l', '0_r_l_r_r_l_l'), ('0_r_l_r_r_l', '0_r_l_r_r_l_r'), ('0_r_l_r_r', '0_r_l_r_r_l'), ('0_r_l_r_r', '0_r_l_r_r_r'), ('0_r_l_r', '0_r_l_r_l'), ('0_r_l_r', '0_r_l_r_r'), ('0_r_l', '0_r_l_l'), ('0_r_l', '0_r_l_r'), ('0_r_r_l_l_r_l', '0_r_r_l_l_r_l_l'), ('0_r_r_l_l_r_l', '0_r_r_l_l_r_l_r'), ('0_r_r_l_l_r_r', '0_r_r_l_l_r_r_l'), ('0_r_r_l_l_r_r', '0_r_r_l_l_r_r_r'), ('0_r_r_l_l_r', '0_r_r_l_l_r_l'), ('0_r_r_l_l_r', '0_r_r_l_l_r_r'), ('0_r_r_l_l', '0_r_r_l_l_l'), ('0_r_r_l_l', '0_r_r_l_l_r'), ('0_r_r_l_r_l_l', '0_r_r_l_r_l_l_l'), ('0_r_r_l_r_l_l', '0_r_r_l_r_l_l_r'), ('0_r_r_l_r_l_r', '0_r_r_l_r_l_r_l'), ('0_r_r_l_r_l_r', '0_r_r_l_r_l_r_r'), ('0_r_r_l_r_l', '0_r_r_l_r_l_l'), ('0_r_r_l_r_l', '0_r_r_l_r_l_r'), ('0_r_r_l_r', '0_r_r_l_r_l'), ('0_r_r_l_r', '0_r_r_l_r_r'), ('0_r_r_l', '0_r_r_l_l'), ('0_r_r_l', '0_r_r_l_r'), ('0_r_r_r_l_l', '0_r_r_r_l_l_l'), ('0_r_r_r_l_l', '0_r_r_r_l_l_r'), ('0_r_r_r_l', '0_r_r_r_l_l'), ('0_r_r_r_l', '0_r_r_r_l_r'), ('0_r_r_r', '0_r_r_r_l'), ('0_r_r_r', '0_r_r_r_r'), ('0_r_r', '0_r_r_l'), ('0_r_r', '0_r_r_r'), ('0_r', '0_r_l'), ('0_r', '0_r_r'), ('0', '0_l'), ('0', '0_r')]
+--- 18.463205099105835 seconds ---
+Searching Metric Tree
+ RESULT: (0.049115044247787766, 0.1333243144928766)
+--- 75.638680934906 seconds ---
+
+|| ------ COMPLETE ------ ||
+Total run time: 274.84142565727234 seconds.
+Amount of users: 678.
+|| ---------------------- ||
+
+SETTINGS: num of sim neighbors: 1, num of movies: 10
+Running...
+Formatting data...
+Generating graph...
+--- 2.235255002975464 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Adding rating and award information to graph...
+--- 118.67583346366882 seconds ---
+Counting TETs...
+--- 16.896703004837036 seconds ---
+Performing Logistic Evaluation on TETs...
+--- 18.008135318756104 seconds ---
+Generating histograms...
+--- 5.756046533584595 seconds ---
+Building Metric Tree
+ MT nodes: ['0_l_l', '0_l_r_l', '0_l_r_r_l_l_l', '0_l_r_r_l_l_r_l', '0_l_r_r_l_l_r_r', '0_l_r_r_l_l_r', '0_l_r_r_l_l', '0_l_r_r_l_r', '0_l_r_r_l', '0_l_r_r_r', '0_l_r_r', '0_l_r', '0_l', '0_r_l_l_l', '0_r_l_l_r_l', '0_r_l_l_r_r', '0_r_l_l_r', '0_r_l_l', '0_r_l_r_l_l_l_l', '0_r_l_r_l_l_l_r', '0_r_l_r_l_l_l', '0_r_l_r_l_l_r_l', '0_r_l_r_l_l_r_r', '0_r_l_r_l_l_r', '0_r_l_r_l_l', '0_r_l_r_l_r_l', '0_r_l_r_l_r_r_l', '0_r_l_r_l_r_r_r', '0_r_l_r_l_r_r', '0_r_l_r_l_r', '0_r_l_r_l', '0_r_l_r_r_l_l', '0_r_l_r_r_l_r', '0_r_l_r_r_l', '0_r_l_r_r_r', '0_r_l_r_r', '0_r_l_r', '0_r_l', '0_r_r_l_l_l', '0_r_r_l_l_r_l_l', '0_r_r_l_l_r_l_r', '0_r_r_l_l_r_l', '0_r_r_l_l_r_r_l', '0_r_r_l_l_r_r_r', '0_r_r_l_l_r_r', '0_r_r_l_l_r', '0_r_r_l_l', '0_r_r_l_r_l_l_l', '0_r_r_l_r_l_l_r', '0_r_r_l_r_l_l', '0_r_r_l_r_l_r_l', '0_r_r_l_r_l_r_r', '0_r_r_l_r_l_r', '0_r_r_l_r_l', '0_r_r_l_r_r', '0_r_r_l_r', '0_r_r_l', '0_r_r_r_l_l_l', '0_r_r_r_l_l_r', '0_r_r_r_l_l', '0_r_r_r_l_r', '0_r_r_r_l', '0_r_r_r_r', '0_r_r_r', '0_r_r', '0_r', '0']
+ MT edges: [('0_l_r_r_l_l_r', '0_l_r_r_l_l_r_l'), ('0_l_r_r_l_l_r', '0_l_r_r_l_l_r_r'), ('0_l_r_r_l_l', '0_l_r_r_l_l_l'), ('0_l_r_r_l_l', '0_l_r_r_l_l_r'), ('0_l_r_r_l', '0_l_r_r_l_l'), ('0_l_r_r_l', '0_l_r_r_l_r'), ('0_l_r_r', '0_l_r_r_l'), ('0_l_r_r', '0_l_r_r_r'), ('0_l_r', '0_l_r_l'), ('0_l_r', '0_l_r_r'), ('0_l', '0_l_l'), ('0_l', '0_l_r'), ('0_r_l_l_r', '0_r_l_l_r_l'), ('0_r_l_l_r', '0_r_l_l_r_r'), ('0_r_l_l', '0_r_l_l_l'), ('0_r_l_l', '0_r_l_l_r'), ('0_r_l_r_l_l_l', '0_r_l_r_l_l_l_l'), ('0_r_l_r_l_l_l', '0_r_l_r_l_l_l_r'), ('0_r_l_r_l_l_r', '0_r_l_r_l_l_r_l'), ('0_r_l_r_l_l_r', '0_r_l_r_l_l_r_r'), ('0_r_l_r_l_l', '0_r_l_r_l_l_l'), ('0_r_l_r_l_l', '0_r_l_r_l_l_r'), ('0_r_l_r_l_r_r', '0_r_l_r_l_r_r_l'), ('0_r_l_r_l_r_r', '0_r_l_r_l_r_r_r'), ('0_r_l_r_l_r', '0_r_l_r_l_r_l'), ('0_r_l_r_l_r', '0_r_l_r_l_r_r'), ('0_r_l_r_l', '0_r_l_r_l_l'), ('0_r_l_r_l', '0_r_l_r_l_r'), ('0_r_l_r_r_l', '0_r_l_r_r_l_l'), ('0_r_l_r_r_l', '0_r_l_r_r_l_r'), ('0_r_l_r_r', '0_r_l_r_r_l'), ('0_r_l_r_r', '0_r_l_r_r_r'), ('0_r_l_r', '0_r_l_r_l'), ('0_r_l_r', '0_r_l_r_r'), ('0_r_l', '0_r_l_l'), ('0_r_l', '0_r_l_r'), ('0_r_r_l_l_r_l', '0_r_r_l_l_r_l_l'), ('0_r_r_l_l_r_l', '0_r_r_l_l_r_l_r'), ('0_r_r_l_l_r_r', '0_r_r_l_l_r_r_l'), ('0_r_r_l_l_r_r', '0_r_r_l_l_r_r_r'), ('0_r_r_l_l_r', '0_r_r_l_l_r_l'), ('0_r_r_l_l_r', '0_r_r_l_l_r_r'), ('0_r_r_l_l', '0_r_r_l_l_l'), ('0_r_r_l_l', '0_r_r_l_l_r'), ('0_r_r_l_r_l_l', '0_r_r_l_r_l_l_l'), ('0_r_r_l_r_l_l', '0_r_r_l_r_l_l_r'), ('0_r_r_l_r_l_r', '0_r_r_l_r_l_r_l'), ('0_r_r_l_r_l_r', '0_r_r_l_r_l_r_r'), ('0_r_r_l_r_l', '0_r_r_l_r_l_l'), ('0_r_r_l_r_l', '0_r_r_l_r_l_r'), ('0_r_r_l_r', '0_r_r_l_r_l'), ('0_r_r_l_r', '0_r_r_l_r_r'), ('0_r_r_l', '0_r_r_l_l'), ('0_r_r_l', '0_r_r_l_r'), ('0_r_r_r_l_l', '0_r_r_r_l_l_l'), ('0_r_r_r_l_l', '0_r_r_r_l_l_r'), ('0_r_r_r_l', '0_r_r_r_l_l'), ('0_r_r_r_l', '0_r_r_r_l_r'), ('0_r_r_r', '0_r_r_r_l'), ('0_r_r_r', '0_r_r_r_r'), ('0_r_r', '0_r_r_l'), ('0_r_r', '0_r_r_r'), ('0_r', '0_r_l'), ('0_r', '0_r_r'), ('0', '0_l'), ('0', '0_r')]
+--- 18.60121750831604 seconds ---
+Searching Metric Tree
+ RESULT: (0.05427728613569339, 0.1433500413109237)
+--- 74.85096454620361 seconds ---
+
+|| ------ COMPLETE ------ ||
+Total run time: 255.63529062271118 seconds.
+Amount of users: 678.
+|| ---------------------- ||
+
