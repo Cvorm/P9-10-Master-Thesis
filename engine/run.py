@@ -39,7 +39,6 @@ def run_imdb_stuff():
 
 def run():
     f = open("output.txt", "a")
-    print(f'SETTINGS: num of sim neighbors: {mt_search_k}, num of movies: {k_movies}', file=f)
     print('Running...', file=f)
     start_time_total = time.time()
 
@@ -103,13 +102,13 @@ def run():
     #
     print('Searching Metric Tree', file=f)
     start_time = time.time()
-
-    print(f' RESULT: {recall(tet,test_tet, mts, mt_search_k, speci_test, k_movies)}', file=f)
     # target_user = n1    # test_tet[0]
     # mts_res = mt_search(tet, mts, target_user, mt_search_k, speci_test)
     # mts_res2 = mt_search(tet, mts, n2, mt_search_k, speci_test)
     # username = [x for x,y in target_user.graph.nodes(data=True) if y.get('root')]
     print("--- %s seconds ---\n" % (time.time() - start_time), file=f)
+    print(f'SETTINGS: num of sim neighbors: {mt_search_k}, num of movies: {k_movies}', file=f)
+    print(f'RESULT: {recall(tet,test_tet, mts, mt_search_k, speci_test, k_movies)}', file=f)
     #
     # print(f'Amount of similar users found for user {username[0]}: {len(mts_res)}')
     # print(f'User {username[0]}\'s histogram')
