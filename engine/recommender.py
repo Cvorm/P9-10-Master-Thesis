@@ -254,8 +254,8 @@ def get_movies_in_user(user):
     for x, y in user.graph.nodes(data=True):
         if type(x) is str and x[0] == 'm':
             rat = get_rating(user, x)
-            if rat >= 4:
-                tmp_list.append(x)
+#            if rat >= 4:
+            tmp_list.append(x)
     return tmp_list
 
 
@@ -452,7 +452,7 @@ def recall(tet_train, tet_test, metric_tree, mt_search_k, speci_test, k_movies):
         predicted_movies, sim_test = get_movies(user, similar_users)
         sim_counter = sim_counter + 1
         sim_collector = sim_collector + sim_test
-        tmp.append(__recall(predicted_movies[:k_movies], user_leftout, k_movies))
+        tmp.append(__recall(predicted_movies, user_leftout, k_movies))
     precision = 0.0
     precision_count = 0
     rec = 0.0
