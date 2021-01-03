@@ -3,11 +3,12 @@ from engine.data_setup import *
 from collections import defaultdict
 import itertools
 
+
 def get_movies_from_id(movie_ids):
     movies = {}
     # for i in movie_ids:
     for index, movie in data.iterrows():
-        if movie['movieId'] in movie_ids:
+        if movie['movieId'] == movie_ids:
             movies[movie['title']] = movie['genres']
     return movies
     # for i, movie in data.iterrows():
@@ -219,8 +220,8 @@ def get_movies_user(user):
 
             # if interval1 <= y['value'] <= interval2:
             #     movies[x] = y['value']
-    mean = get_user_mean_value(user)
-    #sort_movies = sorted(movies.items(), key=lambda e: movie_dist(e[1],mean))
+    # mean = get_user_mean_value(user)
+    # sort_movies = sorted(movies.items(), key=lambda e: movie_dist(e[1],mean))
     sort_movies = sorted(movies.items(), key=lambda k: k[1], reverse=True)
     res = sort_movies #[:top_k_movies]
     return res
@@ -232,7 +233,7 @@ def get_user_max_hist(user):
             histogram = y['hist']
             print(histogram)
     yes = max([(v, i) for i, v in enumerate(histogram[0])])
-    yes2 = (histogram[1][yes[1]],histogram[1][yes[1]+1])
+    # yes2 = (histogram[1][yes[1]],histogram[1][yes[1]+1])
 
 
 def get_user_mean_value(user):
@@ -267,12 +268,13 @@ def get_movies(user_hist, other_users_hist):
     no_duplicates = [list(v) for v in dict(movies).items()]
     mu = get_movies_in_user(user_hist)
     no_mas = [(x,y) for x,y in no_duplicates if x not in mu]
+    sim_tmp = (len(no_duplicates) - (len(no_mas))) / len(no_duplicates)
     # print(f' no duplicates: {len(no_duplicates)}, no_mas : {len(no_mas)}')
     # mean = get_user_mean_value(user_hist)
     # sort_movies = sorted(no_duplicates, key=lambda e: movie_dist(e[1], mean))
     sort_movies = sorted(no_mas, key=lambda k: k[1], reverse=True)
     res = sort_movies #[:top_k_movies]
-    return res
+    return res, sim_tmp
 
 
 def get_siblings(aGraph, aNode):
@@ -435,17 +437,21 @@ def __recall(predictions, user_leftout, k, threshold=4.0):
 
 def recall(tet_train, tet_test, metric_tree, mt_search_k, speci_test, k_movies):
     tmp = []
+    sim_counter = 0
+    sim_collector = 0.0
     for user in tet_train:
         username = [x for x,y in user.graph.nodes(data=True) if y.get('root')]
         user_leftout = get_tet_user(tet_test,username[0])
         similar_users = mt_search(metric_tree, user, mt_search_k, speci_test)
-        predicted_movies = get_movies(user, similar_users)
-        tmp.append(__recall(predicted_movies, user_leftout, k_movies))
+        predicted_movies, sim_test = get_movies(user, similar_users)
+        sim_counter = sim_counter + 1
+        sim_collector = sim_collector + sim_test
+        tmp.append(__recall(predicted_movies[:k_movies], user_leftout, k_movies))
     precision = 0.0
     precision_count = 0
     rec = 0.0
     rec_count = 0
-
+    sim = {sim_collector/sim_counter}
     for x,y in tmp:
         precision = precision + x
         rec = rec + y
@@ -454,4 +460,12 @@ def recall(tet_train, tet_test, metric_tree, mt_search_k, speci_test, k_movies):
     precision_res = precision / precision_count
     recall_res = rec / rec_count
     # print(tmp)
-    return precision_res,recall_res
+    return precision_res, recall_res, sim
+
+
+def get_movies_juujiro(user):
+    tmp_list = []
+    for x, y in user.graph.nodes(data=True):
+        if type(x) is str and x[0] == 'm':
+            tmp_list.append(x)
+    return tmp_list

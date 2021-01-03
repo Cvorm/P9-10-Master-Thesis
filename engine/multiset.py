@@ -158,7 +158,7 @@ class Multiset:
             nodes = [x for x,y in self.graph.nodes(data=True) if y.get('type') == node]
             for n in nodes:
                 h.append(self.graph.nodes(data=True)[n]['value'])
-        hist, bin_edges = np.histogram(h, bins=[0.0,0.2,0.4,0.6,0.8,1.0]) # [0.0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0]
+        hist, bin_edges = np.histogram(h, bins=[0.0,0.2,0.4,0.6,0.8,1.0]) # [0.0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0] [0.0,0.2,0.4,0.6,0.8,1.0]
         histogram = [list(hist), list(bin_edges)]
         self.ht.nodes(data=True)[node]['hist'] += histogram
         for x in specif.neighbors(node):
@@ -168,7 +168,7 @@ class Multiset:
     def histogram(self, specif):
         leaf_nodes = [node for node in self.graph.nodes if
                       (self.graph.in_degree(node) != 0 and self.graph.out_degree(node) == 0)]
-        root = [x for x, y in self.graph.nodes(data=True) if y.get('root')]
+        # root = [x for x, y in self.graph.nodes(data=True) if y.get('root')]
         r = [x for x in specif.nodes if x == 'user']
         self.__histogram(r[0], leaf_nodes, specif)
 

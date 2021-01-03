@@ -472,3 +472,450 @@ Total run time: 255.63529062271118 seconds.
 Amount of users: 678.
 || ---------------------- ||
 
+Running...
+Formatting data...
+Generating graph...
+--- 2.296125650405884 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Adding rating and award information to graph...
+--- 145.76133012771606 seconds ---
+Counting TETs...
+--- 20.904130458831787 seconds ---
+Performing Logistic Evaluation on TETs...
+--- 24.34295964241028 seconds ---
+Generating histograms...
+--- 7.240937948226929 seconds ---
+Building Metric Tree
+ MT nodes: ['0_l_l_l_l_l_l', '0_l_l_l_l_l_r_l', '0_l_l_l_l_l_r_r', '0_l_l_l_l_l_r', '0_l_l_l_l_l', '0_l_l_l_l_r', '0_l_l_l_l', '0_l_l_l_r_l', '0_l_l_l_r_r_l_l', '0_l_l_l_r_r_l_r', '0_l_l_l_r_r_l', '0_l_l_l_r_r_r_l_l', '0_l_l_l_r_r_r_l_r', '0_l_l_l_r_r_r_l', '0_l_l_l_r_r_r_r', '0_l_l_l_r_r_r', '0_l_l_l_r_r', '0_l_l_l_r', '0_l_l_l', '0_l_l_r_l_l_l_l', '0_l_l_r_l_l_l_r', '0_l_l_r_l_l_l', '0_l_l_r_l_l_r_l', '0_l_l_r_l_l_r_r_l', '0_l_l_r_l_l_r_r_r', '0_l_l_r_l_l_r_r', '0_l_l_r_l_l_r', '0_l_l_r_l_l', '0_l_l_r_l_r', '0_l_l_r_l', '0_l_l_r_r_l_l_l', '0_l_l_r_r_l_l_r_l', '0_l_l_r_r_l_l_r_r_l', '0_l_l_r_r_l_l_r_r_r', '0_l_l_r_r_l_l_r_r', '0_l_l_r_r_l_l_r', '0_l_l_r_r_l_l', '0_l_l_r_r_l_r_l', '0_l_l_r_r_l_r_r', '0_l_l_r_r_l_r', '0_l_l_r_r_l', '0_l_l_r_r_r', '0_l_l_r_r', '0_l_l_r', '0_l_l', '0_l_r_l_l_l_l', '0_l_r_l_l_l_r', '0_l_r_l_l_l', '0_l_r_l_l_r', '0_l_r_l_l', '0_l_r_l_r_l_l', '0_l_r_l_r_l_r', '0_l_r_l_r_l', '0_l_r_l_r_r', '0_l_r_l_r', '0_l_r_l', '0_l_r_r', '0_l_r', '0_l', '0_r_l_l_l', '0_r_l_l_r_l_l', '0_r_l_l_r_l_r', '0_r_l_l_r_l', '0_r_l_l_r_r_l', '0_r_l_l_r_r_r_l', '0_r_l_l_r_r_r_r_l', '0_r_l_l_r_r_r_r_r', '0_r_l_l_r_r_r_r', '0_r_l_l_r_r_r', '0_r_l_l_r_r', '0_r_l_l_r', '0_r_l_l', '0_r_l_r_l_l', '0_r_l_r_l_r', '0_r_l_r_l', '0_r_l_r_r', '0_r_l_r', '0_r_l', '0_r_r_l_l_l', '0_r_r_l_l_r', '0_r_r_l_l', '0_r_r_l_r_l', '0_r_r_l_r_r_l', '0_r_r_l_r_r_r', '0_r_r_l_r_r', '0_r_r_l_r', '0_r_r_l', '0_r_r_r', '0_r_r', '0_r', '0']
+ MT edges: [('0_l_l_l_l_l_r', '0_l_l_l_l_l_r_l'), ('0_l_l_l_l_l_r', '0_l_l_l_l_l_r_r'), ('0_l_l_l_l_l', '0_l_l_l_l_l_l'), ('0_l_l_l_l_l', '0_l_l_l_l_l_r'), ('0_l_l_l_l', '0_l_l_l_l_l'), ('0_l_l_l_l', '0_l_l_l_l_r'), ('0_l_l_l_r_r_l', '0_l_l_l_r_r_l_l'), ('0_l_l_l_r_r_l', '0_l_l_l_r_r_l_r'), ('0_l_l_l_r_r_r_l', '0_l_l_l_r_r_r_l_l'), ('0_l_l_l_r_r_r_l', '0_l_l_l_r_r_r_l_r'), ('0_l_l_l_r_r_r', '0_l_l_l_r_r_r_l'), ('0_l_l_l_r_r_r', '0_l_l_l_r_r_r_r'), ('0_l_l_l_r_r', '0_l_l_l_r_r_l'), ('0_l_l_l_r_r', '0_l_l_l_r_r_r'), ('0_l_l_l_r', '0_l_l_l_r_l'), ('0_l_l_l_r', '0_l_l_l_r_r'), ('0_l_l_l', '0_l_l_l_l'), ('0_l_l_l', '0_l_l_l_r'), ('0_l_l_r_l_l_l', '0_l_l_r_l_l_l_l'), ('0_l_l_r_l_l_l', '0_l_l_r_l_l_l_r'), ('0_l_l_r_l_l_r_r', '0_l_l_r_l_l_r_r_l'), ('0_l_l_r_l_l_r_r', '0_l_l_r_l_l_r_r_r'), ('0_l_l_r_l_l_r', '0_l_l_r_l_l_r_l'), ('0_l_l_r_l_l_r', '0_l_l_r_l_l_r_r'), ('0_l_l_r_l_l', '0_l_l_r_l_l_l'), ('0_l_l_r_l_l', '0_l_l_r_l_l_r'), ('0_l_l_r_l', '0_l_l_r_l_l'), ('0_l_l_r_l', '0_l_l_r_l_r'), ('0_l_l_r_r_l_l_r_r', '0_l_l_r_r_l_l_r_r_l'), ('0_l_l_r_r_l_l_r_r', '0_l_l_r_r_l_l_r_r_r'), ('0_l_l_r_r_l_l_r', '0_l_l_r_r_l_l_r_l'), ('0_l_l_r_r_l_l_r', '0_l_l_r_r_l_l_r_r'), ('0_l_l_r_r_l_l', '0_l_l_r_r_l_l_l'), ('0_l_l_r_r_l_l', '0_l_l_r_r_l_l_r'), ('0_l_l_r_r_l_r', '0_l_l_r_r_l_r_l'), ('0_l_l_r_r_l_r', '0_l_l_r_r_l_r_r'), ('0_l_l_r_r_l', '0_l_l_r_r_l_l'), ('0_l_l_r_r_l', '0_l_l_r_r_l_r'), ('0_l_l_r_r', '0_l_l_r_r_l'), ('0_l_l_r_r', '0_l_l_r_r_r'), ('0_l_l_r', '0_l_l_r_l'), ('0_l_l_r', '0_l_l_r_r'), ('0_l_l', '0_l_l_l'), ('0_l_l', '0_l_l_r'), ('0_l_r_l_l_l', '0_l_r_l_l_l_l'), ('0_l_r_l_l_l', '0_l_r_l_l_l_r'), ('0_l_r_l_l', '0_l_r_l_l_l'), ('0_l_r_l_l', '0_l_r_l_l_r'), ('0_l_r_l_r_l', '0_l_r_l_r_l_l'), ('0_l_r_l_r_l', '0_l_r_l_r_l_r'), ('0_l_r_l_r', '0_l_r_l_r_l'), ('0_l_r_l_r', '0_l_r_l_r_r'), ('0_l_r_l', '0_l_r_l_l'), ('0_l_r_l', '0_l_r_l_r'), ('0_l_r', '0_l_r_l'), ('0_l_r', '0_l_r_r'), ('0_l', '0_l_l'), ('0_l', '0_l_r'), ('0_r_l_l_r_l', '0_r_l_l_r_l_l'), ('0_r_l_l_r_l', '0_r_l_l_r_l_r'), ('0_r_l_l_r_r_r_r', '0_r_l_l_r_r_r_r_l'), ('0_r_l_l_r_r_r_r', '0_r_l_l_r_r_r_r_r'), ('0_r_l_l_r_r_r', '0_r_l_l_r_r_r_l'), ('0_r_l_l_r_r_r', '0_r_l_l_r_r_r_r'), ('0_r_l_l_r_r', '0_r_l_l_r_r_l'), ('0_r_l_l_r_r', '0_r_l_l_r_r_r'), ('0_r_l_l_r', '0_r_l_l_r_l'), ('0_r_l_l_r', '0_r_l_l_r_r'), ('0_r_l_l', '0_r_l_l_l'), ('0_r_l_l', '0_r_l_l_r'), ('0_r_l_r_l', '0_r_l_r_l_l'), ('0_r_l_r_l', '0_r_l_r_l_r'), ('0_r_l_r', '0_r_l_r_l'), ('0_r_l_r', '0_r_l_r_r'), ('0_r_l', '0_r_l_l'), ('0_r_l', '0_r_l_r'), ('0_r_r_l_l', '0_r_r_l_l_l'), ('0_r_r_l_l', '0_r_r_l_l_r'), ('0_r_r_l_r_r', '0_r_r_l_r_r_l'), ('0_r_r_l_r_r', '0_r_r_l_r_r_r'), ('0_r_r_l_r', '0_r_r_l_r_l'), ('0_r_r_l_r', '0_r_r_l_r_r'), ('0_r_r_l', '0_r_r_l_l'), ('0_r_r_l', '0_r_r_l_r'), ('0_r_r', '0_r_r_l'), ('0_r_r', '0_r_r_r'), ('0_r', '0_r_l'), ('0_r', '0_r_r'), ('0', '0_l'), ('0', '0_r')]
+--- 25.583574295043945 seconds ---
+Searching Metric Tree
+--- 0.0 seconds ---
+
+SETTINGS: num of sim neighbors: 3, num of movies: 10
+RESULT: (0.04688279301745649, 0.08185591591248888)
+|| ------ COMPLETE ------ ||
+Total run time: 323.0789065361023 seconds.
+Amount of users: 802.
+|| ---------------------- ||
+
+Running...
+Formatting data...
+Generating graph...
+--- 2.335005283355713 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Adding rating and award information to graph...
+--- 148.75774836540222 seconds ---
+Counting TETs...
+--- 20.44604754447937 seconds ---
+Performing Logistic Evaluation on TETs...
+--- 21.946500301361084 seconds ---
+Generating histograms...
+--- 6.212045431137085 seconds ---
+Building Metric Tree
+ MT nodes: ['0_l_l_l_l_l_l', '0_l_l_l_l_l_r_l', '0_l_l_l_l_l_r_r', '0_l_l_l_l_l_r', '0_l_l_l_l_l', '0_l_l_l_l_r', '0_l_l_l_l', '0_l_l_l_r_l', '0_l_l_l_r_r_l_l', '0_l_l_l_r_r_l_r', '0_l_l_l_r_r_l', '0_l_l_l_r_r_r_l_l', '0_l_l_l_r_r_r_l_r', '0_l_l_l_r_r_r_l', '0_l_l_l_r_r_r_r', '0_l_l_l_r_r_r', '0_l_l_l_r_r', '0_l_l_l_r', '0_l_l_l', '0_l_l_r_l_l_l_l', '0_l_l_r_l_l_l_r', '0_l_l_r_l_l_l', '0_l_l_r_l_l_r_l', '0_l_l_r_l_l_r_r_l', '0_l_l_r_l_l_r_r_r', '0_l_l_r_l_l_r_r', '0_l_l_r_l_l_r', '0_l_l_r_l_l', '0_l_l_r_l_r', '0_l_l_r_l', '0_l_l_r_r_l_l_l', '0_l_l_r_r_l_l_r_l', '0_l_l_r_r_l_l_r_r_l', '0_l_l_r_r_l_l_r_r_r', '0_l_l_r_r_l_l_r_r', '0_l_l_r_r_l_l_r', '0_l_l_r_r_l_l', '0_l_l_r_r_l_r_l', '0_l_l_r_r_l_r_r', '0_l_l_r_r_l_r', '0_l_l_r_r_l', '0_l_l_r_r_r', '0_l_l_r_r', '0_l_l_r', '0_l_l', '0_l_r_l_l_l_l', '0_l_r_l_l_l_r', '0_l_r_l_l_l', '0_l_r_l_l_r', '0_l_r_l_l', '0_l_r_l_r_l_l', '0_l_r_l_r_l_r', '0_l_r_l_r_l', '0_l_r_l_r_r', '0_l_r_l_r', '0_l_r_l', '0_l_r_r', '0_l_r', '0_l', '0_r_l_l_l', '0_r_l_l_r_l_l', '0_r_l_l_r_l_r', '0_r_l_l_r_l', '0_r_l_l_r_r_l', '0_r_l_l_r_r_r_l', '0_r_l_l_r_r_r_r_l', '0_r_l_l_r_r_r_r_r', '0_r_l_l_r_r_r_r', '0_r_l_l_r_r_r', '0_r_l_l_r_r', '0_r_l_l_r', '0_r_l_l', '0_r_l_r_l_l', '0_r_l_r_l_r', '0_r_l_r_l', '0_r_l_r_r', '0_r_l_r', '0_r_l', '0_r_r_l_l_l', '0_r_r_l_l_r', '0_r_r_l_l', '0_r_r_l_r_l', '0_r_r_l_r_r_l', '0_r_r_l_r_r_r', '0_r_r_l_r_r', '0_r_r_l_r', '0_r_r_l', '0_r_r_r', '0_r_r', '0_r', '0']
+ MT edges: [('0_l_l_l_l_l_r', '0_l_l_l_l_l_r_l'), ('0_l_l_l_l_l_r', '0_l_l_l_l_l_r_r'), ('0_l_l_l_l_l', '0_l_l_l_l_l_l'), ('0_l_l_l_l_l', '0_l_l_l_l_l_r'), ('0_l_l_l_l', '0_l_l_l_l_l'), ('0_l_l_l_l', '0_l_l_l_l_r'), ('0_l_l_l_r_r_l', '0_l_l_l_r_r_l_l'), ('0_l_l_l_r_r_l', '0_l_l_l_r_r_l_r'), ('0_l_l_l_r_r_r_l', '0_l_l_l_r_r_r_l_l'), ('0_l_l_l_r_r_r_l', '0_l_l_l_r_r_r_l_r'), ('0_l_l_l_r_r_r', '0_l_l_l_r_r_r_l'), ('0_l_l_l_r_r_r', '0_l_l_l_r_r_r_r'), ('0_l_l_l_r_r', '0_l_l_l_r_r_l'), ('0_l_l_l_r_r', '0_l_l_l_r_r_r'), ('0_l_l_l_r', '0_l_l_l_r_l'), ('0_l_l_l_r', '0_l_l_l_r_r'), ('0_l_l_l', '0_l_l_l_l'), ('0_l_l_l', '0_l_l_l_r'), ('0_l_l_r_l_l_l', '0_l_l_r_l_l_l_l'), ('0_l_l_r_l_l_l', '0_l_l_r_l_l_l_r'), ('0_l_l_r_l_l_r_r', '0_l_l_r_l_l_r_r_l'), ('0_l_l_r_l_l_r_r', '0_l_l_r_l_l_r_r_r'), ('0_l_l_r_l_l_r', '0_l_l_r_l_l_r_l'), ('0_l_l_r_l_l_r', '0_l_l_r_l_l_r_r'), ('0_l_l_r_l_l', '0_l_l_r_l_l_l'), ('0_l_l_r_l_l', '0_l_l_r_l_l_r'), ('0_l_l_r_l', '0_l_l_r_l_l'), ('0_l_l_r_l', '0_l_l_r_l_r'), ('0_l_l_r_r_l_l_r_r', '0_l_l_r_r_l_l_r_r_l'), ('0_l_l_r_r_l_l_r_r', '0_l_l_r_r_l_l_r_r_r'), ('0_l_l_r_r_l_l_r', '0_l_l_r_r_l_l_r_l'), ('0_l_l_r_r_l_l_r', '0_l_l_r_r_l_l_r_r'), ('0_l_l_r_r_l_l', '0_l_l_r_r_l_l_l'), ('0_l_l_r_r_l_l', '0_l_l_r_r_l_l_r'), ('0_l_l_r_r_l_r', '0_l_l_r_r_l_r_l'), ('0_l_l_r_r_l_r', '0_l_l_r_r_l_r_r'), ('0_l_l_r_r_l', '0_l_l_r_r_l_l'), ('0_l_l_r_r_l', '0_l_l_r_r_l_r'), ('0_l_l_r_r', '0_l_l_r_r_l'), ('0_l_l_r_r', '0_l_l_r_r_r'), ('0_l_l_r', '0_l_l_r_l'), ('0_l_l_r', '0_l_l_r_r'), ('0_l_l', '0_l_l_l'), ('0_l_l', '0_l_l_r'), ('0_l_r_l_l_l', '0_l_r_l_l_l_l'), ('0_l_r_l_l_l', '0_l_r_l_l_l_r'), ('0_l_r_l_l', '0_l_r_l_l_l'), ('0_l_r_l_l', '0_l_r_l_l_r'), ('0_l_r_l_r_l', '0_l_r_l_r_l_l'), ('0_l_r_l_r_l', '0_l_r_l_r_l_r'), ('0_l_r_l_r', '0_l_r_l_r_l'), ('0_l_r_l_r', '0_l_r_l_r_r'), ('0_l_r_l', '0_l_r_l_l'), ('0_l_r_l', '0_l_r_l_r'), ('0_l_r', '0_l_r_l'), ('0_l_r', '0_l_r_r'), ('0_l', '0_l_l'), ('0_l', '0_l_r'), ('0_r_l_l_r_l', '0_r_l_l_r_l_l'), ('0_r_l_l_r_l', '0_r_l_l_r_l_r'), ('0_r_l_l_r_r_r_r', '0_r_l_l_r_r_r_r_l'), ('0_r_l_l_r_r_r_r', '0_r_l_l_r_r_r_r_r'), ('0_r_l_l_r_r_r', '0_r_l_l_r_r_r_l'), ('0_r_l_l_r_r_r', '0_r_l_l_r_r_r_r'), ('0_r_l_l_r_r', '0_r_l_l_r_r_l'), ('0_r_l_l_r_r', '0_r_l_l_r_r_r'), ('0_r_l_l_r', '0_r_l_l_r_l'), ('0_r_l_l_r', '0_r_l_l_r_r'), ('0_r_l_l', '0_r_l_l_l'), ('0_r_l_l', '0_r_l_l_r'), ('0_r_l_r_l', '0_r_l_r_l_l'), ('0_r_l_r_l', '0_r_l_r_l_r'), ('0_r_l_r', '0_r_l_r_l'), ('0_r_l_r', '0_r_l_r_r'), ('0_r_l', '0_r_l_l'), ('0_r_l', '0_r_l_r'), ('0_r_r_l_l', '0_r_r_l_l_l'), ('0_r_r_l_l', '0_r_r_l_l_r'), ('0_r_r_l_r_r', '0_r_r_l_r_r_l'), ('0_r_r_l_r_r', '0_r_r_l_r_r_r'), ('0_r_r_l_r', '0_r_r_l_r_l'), ('0_r_r_l_r', '0_r_r_l_r_r'), ('0_r_r_l', '0_r_r_l_l'), ('0_r_r_l', '0_r_r_l_r'), ('0_r_r', '0_r_r_l'), ('0_r_r', '0_r_r_r'), ('0_r', '0_r_l'), ('0_r', '0_r_r'), ('0', '0_l'), ('0', '0_r')]
+--- 22.840216398239136 seconds ---
+Searching Metric Tree
+--- 0.0 seconds ---
+
+SETTINGS: num of sim neighbors: 3, num of movies: 10
+RESULT: (0.04688279301745649, 0.08185591591248888)
+|| ------ COMPLETE ------ ||
+Total run time: 311.0831172466278 seconds.
+Amount of users: 802.
+|| ---------------------- ||
+
+Running...
+Formatting data...
+Generating graph...
+--- 2.2392122745513916 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Adding rating and award information to graph...
+--- 147.4821379184723 seconds ---
+Counting TETs...
+--- 20.235228776931763 seconds ---
+Performing Logistic Evaluation on TETs...
+--- 22.177016258239746 seconds ---
+Generating histograms...
+--- 6.373624801635742 seconds ---
+Building Metric Tree
+ MT nodes: ['0_l_l_l_l_l_l', '0_l_l_l_l_l_r_l', '0_l_l_l_l_l_r_r', '0_l_l_l_l_l_r', '0_l_l_l_l_l', '0_l_l_l_l_r', '0_l_l_l_l', '0_l_l_l_r_l', '0_l_l_l_r_r_l_l', '0_l_l_l_r_r_l_r', '0_l_l_l_r_r_l', '0_l_l_l_r_r_r_l_l', '0_l_l_l_r_r_r_l_r', '0_l_l_l_r_r_r_l', '0_l_l_l_r_r_r_r', '0_l_l_l_r_r_r', '0_l_l_l_r_r', '0_l_l_l_r', '0_l_l_l', '0_l_l_r_l_l_l_l', '0_l_l_r_l_l_l_r', '0_l_l_r_l_l_l', '0_l_l_r_l_l_r_l', '0_l_l_r_l_l_r_r_l', '0_l_l_r_l_l_r_r_r', '0_l_l_r_l_l_r_r', '0_l_l_r_l_l_r', '0_l_l_r_l_l', '0_l_l_r_l_r', '0_l_l_r_l', '0_l_l_r_r_l_l_l', '0_l_l_r_r_l_l_r_l', '0_l_l_r_r_l_l_r_r_l', '0_l_l_r_r_l_l_r_r_r', '0_l_l_r_r_l_l_r_r', '0_l_l_r_r_l_l_r', '0_l_l_r_r_l_l', '0_l_l_r_r_l_r_l', '0_l_l_r_r_l_r_r', '0_l_l_r_r_l_r', '0_l_l_r_r_l', '0_l_l_r_r_r', '0_l_l_r_r', '0_l_l_r', '0_l_l', '0_l_r_l_l_l_l', '0_l_r_l_l_l_r', '0_l_r_l_l_l', '0_l_r_l_l_r', '0_l_r_l_l', '0_l_r_l_r_l_l', '0_l_r_l_r_l_r', '0_l_r_l_r_l', '0_l_r_l_r_r', '0_l_r_l_r', '0_l_r_l', '0_l_r_r', '0_l_r', '0_l', '0_r_l_l_l', '0_r_l_l_r_l_l', '0_r_l_l_r_l_r', '0_r_l_l_r_l', '0_r_l_l_r_r_l', '0_r_l_l_r_r_r_l', '0_r_l_l_r_r_r_r_l', '0_r_l_l_r_r_r_r_r', '0_r_l_l_r_r_r_r', '0_r_l_l_r_r_r', '0_r_l_l_r_r', '0_r_l_l_r', '0_r_l_l', '0_r_l_r_l_l', '0_r_l_r_l_r', '0_r_l_r_l', '0_r_l_r_r', '0_r_l_r', '0_r_l', '0_r_r_l_l_l', '0_r_r_l_l_r', '0_r_r_l_l', '0_r_r_l_r_l', '0_r_r_l_r_r_l', '0_r_r_l_r_r_r', '0_r_r_l_r_r', '0_r_r_l_r', '0_r_r_l', '0_r_r_r', '0_r_r', '0_r', '0']
+ MT edges: [('0_l_l_l_l_l_r', '0_l_l_l_l_l_r_l'), ('0_l_l_l_l_l_r', '0_l_l_l_l_l_r_r'), ('0_l_l_l_l_l', '0_l_l_l_l_l_l'), ('0_l_l_l_l_l', '0_l_l_l_l_l_r'), ('0_l_l_l_l', '0_l_l_l_l_l'), ('0_l_l_l_l', '0_l_l_l_l_r'), ('0_l_l_l_r_r_l', '0_l_l_l_r_r_l_l'), ('0_l_l_l_r_r_l', '0_l_l_l_r_r_l_r'), ('0_l_l_l_r_r_r_l', '0_l_l_l_r_r_r_l_l'), ('0_l_l_l_r_r_r_l', '0_l_l_l_r_r_r_l_r'), ('0_l_l_l_r_r_r', '0_l_l_l_r_r_r_l'), ('0_l_l_l_r_r_r', '0_l_l_l_r_r_r_r'), ('0_l_l_l_r_r', '0_l_l_l_r_r_l'), ('0_l_l_l_r_r', '0_l_l_l_r_r_r'), ('0_l_l_l_r', '0_l_l_l_r_l'), ('0_l_l_l_r', '0_l_l_l_r_r'), ('0_l_l_l', '0_l_l_l_l'), ('0_l_l_l', '0_l_l_l_r'), ('0_l_l_r_l_l_l', '0_l_l_r_l_l_l_l'), ('0_l_l_r_l_l_l', '0_l_l_r_l_l_l_r'), ('0_l_l_r_l_l_r_r', '0_l_l_r_l_l_r_r_l'), ('0_l_l_r_l_l_r_r', '0_l_l_r_l_l_r_r_r'), ('0_l_l_r_l_l_r', '0_l_l_r_l_l_r_l'), ('0_l_l_r_l_l_r', '0_l_l_r_l_l_r_r'), ('0_l_l_r_l_l', '0_l_l_r_l_l_l'), ('0_l_l_r_l_l', '0_l_l_r_l_l_r'), ('0_l_l_r_l', '0_l_l_r_l_l'), ('0_l_l_r_l', '0_l_l_r_l_r'), ('0_l_l_r_r_l_l_r_r', '0_l_l_r_r_l_l_r_r_l'), ('0_l_l_r_r_l_l_r_r', '0_l_l_r_r_l_l_r_r_r'), ('0_l_l_r_r_l_l_r', '0_l_l_r_r_l_l_r_l'), ('0_l_l_r_r_l_l_r', '0_l_l_r_r_l_l_r_r'), ('0_l_l_r_r_l_l', '0_l_l_r_r_l_l_l'), ('0_l_l_r_r_l_l', '0_l_l_r_r_l_l_r'), ('0_l_l_r_r_l_r', '0_l_l_r_r_l_r_l'), ('0_l_l_r_r_l_r', '0_l_l_r_r_l_r_r'), ('0_l_l_r_r_l', '0_l_l_r_r_l_l'), ('0_l_l_r_r_l', '0_l_l_r_r_l_r'), ('0_l_l_r_r', '0_l_l_r_r_l'), ('0_l_l_r_r', '0_l_l_r_r_r'), ('0_l_l_r', '0_l_l_r_l'), ('0_l_l_r', '0_l_l_r_r'), ('0_l_l', '0_l_l_l'), ('0_l_l', '0_l_l_r'), ('0_l_r_l_l_l', '0_l_r_l_l_l_l'), ('0_l_r_l_l_l', '0_l_r_l_l_l_r'), ('0_l_r_l_l', '0_l_r_l_l_l'), ('0_l_r_l_l', '0_l_r_l_l_r'), ('0_l_r_l_r_l', '0_l_r_l_r_l_l'), ('0_l_r_l_r_l', '0_l_r_l_r_l_r'), ('0_l_r_l_r', '0_l_r_l_r_l'), ('0_l_r_l_r', '0_l_r_l_r_r'), ('0_l_r_l', '0_l_r_l_l'), ('0_l_r_l', '0_l_r_l_r'), ('0_l_r', '0_l_r_l'), ('0_l_r', '0_l_r_r'), ('0_l', '0_l_l'), ('0_l', '0_l_r'), ('0_r_l_l_r_l', '0_r_l_l_r_l_l'), ('0_r_l_l_r_l', '0_r_l_l_r_l_r'), ('0_r_l_l_r_r_r_r', '0_r_l_l_r_r_r_r_l'), ('0_r_l_l_r_r_r_r', '0_r_l_l_r_r_r_r_r'), ('0_r_l_l_r_r_r', '0_r_l_l_r_r_r_l'), ('0_r_l_l_r_r_r', '0_r_l_l_r_r_r_r'), ('0_r_l_l_r_r', '0_r_l_l_r_r_l'), ('0_r_l_l_r_r', '0_r_l_l_r_r_r'), ('0_r_l_l_r', '0_r_l_l_r_l'), ('0_r_l_l_r', '0_r_l_l_r_r'), ('0_r_l_l', '0_r_l_l_l'), ('0_r_l_l', '0_r_l_l_r'), ('0_r_l_r_l', '0_r_l_r_l_l'), ('0_r_l_r_l', '0_r_l_r_l_r'), ('0_r_l_r', '0_r_l_r_l'), ('0_r_l_r', '0_r_l_r_r'), ('0_r_l', '0_r_l_l'), ('0_r_l', '0_r_l_r'), ('0_r_r_l_l', '0_r_r_l_l_l'), ('0_r_r_l_l', '0_r_r_l_l_r'), ('0_r_r_l_r_r', '0_r_r_l_r_r_l'), ('0_r_r_l_r_r', '0_r_r_l_r_r_r'), ('0_r_r_l_r', '0_r_r_l_r_l'), ('0_r_r_l_r', '0_r_r_l_r_r'), ('0_r_r_l', '0_r_r_l_l'), ('0_r_r_l', '0_r_r_l_r'), ('0_r_r', '0_r_r_l'), ('0_r_r', '0_r_r_r'), ('0_r', '0_r_l'), ('0_r', '0_r_r'), ('0', '0_l'), ('0', '0_r')]
+--- 23.059383630752563 seconds ---
+Searching Metric Tree
+--- 0.0 seconds ---
+
+SETTINGS: num of sim neighbors: 3, num of movies: 10
+RESULT: (0.04688279301745649, 0.08185591591248888)
+|| ------ COMPLETE ------ ||
+Total run time: 311.96163153648376 seconds.
+Amount of users: 802.
+|| ---------------------- ||
+
+Running...
+Formatting data...
+Generating graph...
+--- 2.234622001647949 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Adding rating and award information to graph...
+--- 147.41381645202637 seconds ---
+Counting TETs...
+--- 20.568930625915527 seconds ---
+Performing Logistic Evaluation on TETs...
+--- 22.801947593688965 seconds ---
+Generating histograms...
+--- 6.479784250259399 seconds ---
+Building Metric Tree
+ MT nodes: ['0_l_l_l_l_l_l', '0_l_l_l_l_l_r_l', '0_l_l_l_l_l_r_r', '0_l_l_l_l_l_r', '0_l_l_l_l_l', '0_l_l_l_l_r', '0_l_l_l_l', '0_l_l_l_r_l', '0_l_l_l_r_r_l_l', '0_l_l_l_r_r_l_r', '0_l_l_l_r_r_l', '0_l_l_l_r_r_r_l_l', '0_l_l_l_r_r_r_l_r', '0_l_l_l_r_r_r_l', '0_l_l_l_r_r_r_r', '0_l_l_l_r_r_r', '0_l_l_l_r_r', '0_l_l_l_r', '0_l_l_l', '0_l_l_r_l_l_l_l', '0_l_l_r_l_l_l_r', '0_l_l_r_l_l_l', '0_l_l_r_l_l_r_l', '0_l_l_r_l_l_r_r_l', '0_l_l_r_l_l_r_r_r', '0_l_l_r_l_l_r_r', '0_l_l_r_l_l_r', '0_l_l_r_l_l', '0_l_l_r_l_r', '0_l_l_r_l', '0_l_l_r_r_l_l_l', '0_l_l_r_r_l_l_r_l', '0_l_l_r_r_l_l_r_r_l', '0_l_l_r_r_l_l_r_r_r', '0_l_l_r_r_l_l_r_r', '0_l_l_r_r_l_l_r', '0_l_l_r_r_l_l', '0_l_l_r_r_l_r_l', '0_l_l_r_r_l_r_r', '0_l_l_r_r_l_r', '0_l_l_r_r_l', '0_l_l_r_r_r', '0_l_l_r_r', '0_l_l_r', '0_l_l', '0_l_r_l_l_l_l', '0_l_r_l_l_l_r', '0_l_r_l_l_l', '0_l_r_l_l_r', '0_l_r_l_l', '0_l_r_l_r_l_l', '0_l_r_l_r_l_r', '0_l_r_l_r_l', '0_l_r_l_r_r', '0_l_r_l_r', '0_l_r_l', '0_l_r_r', '0_l_r', '0_l', '0_r_l_l_l', '0_r_l_l_r_l_l', '0_r_l_l_r_l_r', '0_r_l_l_r_l', '0_r_l_l_r_r_l', '0_r_l_l_r_r_r_l', '0_r_l_l_r_r_r_r_l', '0_r_l_l_r_r_r_r_r', '0_r_l_l_r_r_r_r', '0_r_l_l_r_r_r', '0_r_l_l_r_r', '0_r_l_l_r', '0_r_l_l', '0_r_l_r_l_l', '0_r_l_r_l_r', '0_r_l_r_l', '0_r_l_r_r', '0_r_l_r', '0_r_l', '0_r_r_l_l_l', '0_r_r_l_l_r', '0_r_r_l_l', '0_r_r_l_r_l', '0_r_r_l_r_r_l', '0_r_r_l_r_r_r', '0_r_r_l_r_r', '0_r_r_l_r', '0_r_r_l', '0_r_r_r', '0_r_r', '0_r', '0']
+ MT edges: [('0_l_l_l_l_l_r', '0_l_l_l_l_l_r_l'), ('0_l_l_l_l_l_r', '0_l_l_l_l_l_r_r'), ('0_l_l_l_l_l', '0_l_l_l_l_l_l'), ('0_l_l_l_l_l', '0_l_l_l_l_l_r'), ('0_l_l_l_l', '0_l_l_l_l_l'), ('0_l_l_l_l', '0_l_l_l_l_r'), ('0_l_l_l_r_r_l', '0_l_l_l_r_r_l_l'), ('0_l_l_l_r_r_l', '0_l_l_l_r_r_l_r'), ('0_l_l_l_r_r_r_l', '0_l_l_l_r_r_r_l_l'), ('0_l_l_l_r_r_r_l', '0_l_l_l_r_r_r_l_r'), ('0_l_l_l_r_r_r', '0_l_l_l_r_r_r_l'), ('0_l_l_l_r_r_r', '0_l_l_l_r_r_r_r'), ('0_l_l_l_r_r', '0_l_l_l_r_r_l'), ('0_l_l_l_r_r', '0_l_l_l_r_r_r'), ('0_l_l_l_r', '0_l_l_l_r_l'), ('0_l_l_l_r', '0_l_l_l_r_r'), ('0_l_l_l', '0_l_l_l_l'), ('0_l_l_l', '0_l_l_l_r'), ('0_l_l_r_l_l_l', '0_l_l_r_l_l_l_l'), ('0_l_l_r_l_l_l', '0_l_l_r_l_l_l_r'), ('0_l_l_r_l_l_r_r', '0_l_l_r_l_l_r_r_l'), ('0_l_l_r_l_l_r_r', '0_l_l_r_l_l_r_r_r'), ('0_l_l_r_l_l_r', '0_l_l_r_l_l_r_l'), ('0_l_l_r_l_l_r', '0_l_l_r_l_l_r_r'), ('0_l_l_r_l_l', '0_l_l_r_l_l_l'), ('0_l_l_r_l_l', '0_l_l_r_l_l_r'), ('0_l_l_r_l', '0_l_l_r_l_l'), ('0_l_l_r_l', '0_l_l_r_l_r'), ('0_l_l_r_r_l_l_r_r', '0_l_l_r_r_l_l_r_r_l'), ('0_l_l_r_r_l_l_r_r', '0_l_l_r_r_l_l_r_r_r'), ('0_l_l_r_r_l_l_r', '0_l_l_r_r_l_l_r_l'), ('0_l_l_r_r_l_l_r', '0_l_l_r_r_l_l_r_r'), ('0_l_l_r_r_l_l', '0_l_l_r_r_l_l_l'), ('0_l_l_r_r_l_l', '0_l_l_r_r_l_l_r'), ('0_l_l_r_r_l_r', '0_l_l_r_r_l_r_l'), ('0_l_l_r_r_l_r', '0_l_l_r_r_l_r_r'), ('0_l_l_r_r_l', '0_l_l_r_r_l_l'), ('0_l_l_r_r_l', '0_l_l_r_r_l_r'), ('0_l_l_r_r', '0_l_l_r_r_l'), ('0_l_l_r_r', '0_l_l_r_r_r'), ('0_l_l_r', '0_l_l_r_l'), ('0_l_l_r', '0_l_l_r_r'), ('0_l_l', '0_l_l_l'), ('0_l_l', '0_l_l_r'), ('0_l_r_l_l_l', '0_l_r_l_l_l_l'), ('0_l_r_l_l_l', '0_l_r_l_l_l_r'), ('0_l_r_l_l', '0_l_r_l_l_l'), ('0_l_r_l_l', '0_l_r_l_l_r'), ('0_l_r_l_r_l', '0_l_r_l_r_l_l'), ('0_l_r_l_r_l', '0_l_r_l_r_l_r'), ('0_l_r_l_r', '0_l_r_l_r_l'), ('0_l_r_l_r', '0_l_r_l_r_r'), ('0_l_r_l', '0_l_r_l_l'), ('0_l_r_l', '0_l_r_l_r'), ('0_l_r', '0_l_r_l'), ('0_l_r', '0_l_r_r'), ('0_l', '0_l_l'), ('0_l', '0_l_r'), ('0_r_l_l_r_l', '0_r_l_l_r_l_l'), ('0_r_l_l_r_l', '0_r_l_l_r_l_r'), ('0_r_l_l_r_r_r_r', '0_r_l_l_r_r_r_r_l'), ('0_r_l_l_r_r_r_r', '0_r_l_l_r_r_r_r_r'), ('0_r_l_l_r_r_r', '0_r_l_l_r_r_r_l'), ('0_r_l_l_r_r_r', '0_r_l_l_r_r_r_r'), ('0_r_l_l_r_r', '0_r_l_l_r_r_l'), ('0_r_l_l_r_r', '0_r_l_l_r_r_r'), ('0_r_l_l_r', '0_r_l_l_r_l'), ('0_r_l_l_r', '0_r_l_l_r_r'), ('0_r_l_l', '0_r_l_l_l'), ('0_r_l_l', '0_r_l_l_r'), ('0_r_l_r_l', '0_r_l_r_l_l'), ('0_r_l_r_l', '0_r_l_r_l_r'), ('0_r_l_r', '0_r_l_r_l'), ('0_r_l_r', '0_r_l_r_r'), ('0_r_l', '0_r_l_l'), ('0_r_l', '0_r_l_r'), ('0_r_r_l_l', '0_r_r_l_l_l'), ('0_r_r_l_l', '0_r_r_l_l_r'), ('0_r_r_l_r_r', '0_r_r_l_r_r_l'), ('0_r_r_l_r_r', '0_r_r_l_r_r_r'), ('0_r_r_l_r', '0_r_r_l_r_l'), ('0_r_r_l_r', '0_r_r_l_r_r'), ('0_r_r_l', '0_r_r_l_l'), ('0_r_r_l', '0_r_r_l_r'), ('0_r_r', '0_r_r_l'), ('0_r_r', '0_r_r_r'), ('0_r', '0_r_l'), ('0_r', '0_r_r'), ('0', '0_l'), ('0', '0_r')]
+--- 23.424968004226685 seconds ---
+Searching Metric Tree
+--- 0.0 seconds ---
+
+SETTINGS: num of sim neighbors: 3, num of movies: 10
+RESULT: (0.04688279301745649, 0.08185591591248888)
+|| ------ COMPLETE ------ ||
+Total run time: 315.7915143966675 seconds.
+Amount of users: 802.
+|| ---------------------- ||
+
+Running...
+Formatting data...
+Generating graph...
+--- 2.458477258682251 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Adding rating and award information to graph...
+--- 158.44971561431885 seconds ---
+Counting TETs...
+--- 21.220993757247925 seconds ---
+Performing Logistic Evaluation on TETs...
+--- 24.327667474746704 seconds ---
+Generating histograms...
+--- 7.0118043422698975 seconds ---
+Building Metric Tree
+ MT nodes: ['0_l_l_l_l_l_l', '0_l_l_l_l_l_r_l', '0_l_l_l_l_l_r_r', '0_l_l_l_l_l_r', '0_l_l_l_l_l', '0_l_l_l_l_r', '0_l_l_l_l', '0_l_l_l_r_l', '0_l_l_l_r_r_l_l', '0_l_l_l_r_r_l_r', '0_l_l_l_r_r_l', '0_l_l_l_r_r_r_l_l', '0_l_l_l_r_r_r_l_r', '0_l_l_l_r_r_r_l', '0_l_l_l_r_r_r_r', '0_l_l_l_r_r_r', '0_l_l_l_r_r', '0_l_l_l_r', '0_l_l_l', '0_l_l_r_l_l_l_l', '0_l_l_r_l_l_l_r', '0_l_l_r_l_l_l', '0_l_l_r_l_l_r_l', '0_l_l_r_l_l_r_r_l', '0_l_l_r_l_l_r_r_r', '0_l_l_r_l_l_r_r', '0_l_l_r_l_l_r', '0_l_l_r_l_l', '0_l_l_r_l_r', '0_l_l_r_l', '0_l_l_r_r_l_l_l', '0_l_l_r_r_l_l_r_l', '0_l_l_r_r_l_l_r_r_l', '0_l_l_r_r_l_l_r_r_r', '0_l_l_r_r_l_l_r_r', '0_l_l_r_r_l_l_r', '0_l_l_r_r_l_l', '0_l_l_r_r_l_r_l', '0_l_l_r_r_l_r_r', '0_l_l_r_r_l_r', '0_l_l_r_r_l', '0_l_l_r_r_r', '0_l_l_r_r', '0_l_l_r', '0_l_l', '0_l_r_l_l_l_l', '0_l_r_l_l_l_r', '0_l_r_l_l_l', '0_l_r_l_l_r', '0_l_r_l_l', '0_l_r_l_r_l_l', '0_l_r_l_r_l_r', '0_l_r_l_r_l', '0_l_r_l_r_r', '0_l_r_l_r', '0_l_r_l', '0_l_r_r', '0_l_r', '0_l', '0_r_l_l_l', '0_r_l_l_r_l_l', '0_r_l_l_r_l_r', '0_r_l_l_r_l', '0_r_l_l_r_r_l', '0_r_l_l_r_r_r_l', '0_r_l_l_r_r_r_r_l', '0_r_l_l_r_r_r_r_r', '0_r_l_l_r_r_r_r', '0_r_l_l_r_r_r', '0_r_l_l_r_r', '0_r_l_l_r', '0_r_l_l', '0_r_l_r_l_l', '0_r_l_r_l_r', '0_r_l_r_l', '0_r_l_r_r', '0_r_l_r', '0_r_l', '0_r_r_l_l_l', '0_r_r_l_l_r', '0_r_r_l_l', '0_r_r_l_r_l', '0_r_r_l_r_r_l', '0_r_r_l_r_r_r', '0_r_r_l_r_r', '0_r_r_l_r', '0_r_r_l', '0_r_r_r', '0_r_r', '0_r', '0']
+ MT edges: [('0_l_l_l_l_l_r', '0_l_l_l_l_l_r_l'), ('0_l_l_l_l_l_r', '0_l_l_l_l_l_r_r'), ('0_l_l_l_l_l', '0_l_l_l_l_l_l'), ('0_l_l_l_l_l', '0_l_l_l_l_l_r'), ('0_l_l_l_l', '0_l_l_l_l_l'), ('0_l_l_l_l', '0_l_l_l_l_r'), ('0_l_l_l_r_r_l', '0_l_l_l_r_r_l_l'), ('0_l_l_l_r_r_l', '0_l_l_l_r_r_l_r'), ('0_l_l_l_r_r_r_l', '0_l_l_l_r_r_r_l_l'), ('0_l_l_l_r_r_r_l', '0_l_l_l_r_r_r_l_r'), ('0_l_l_l_r_r_r', '0_l_l_l_r_r_r_l'), ('0_l_l_l_r_r_r', '0_l_l_l_r_r_r_r'), ('0_l_l_l_r_r', '0_l_l_l_r_r_l'), ('0_l_l_l_r_r', '0_l_l_l_r_r_r'), ('0_l_l_l_r', '0_l_l_l_r_l'), ('0_l_l_l_r', '0_l_l_l_r_r'), ('0_l_l_l', '0_l_l_l_l'), ('0_l_l_l', '0_l_l_l_r'), ('0_l_l_r_l_l_l', '0_l_l_r_l_l_l_l'), ('0_l_l_r_l_l_l', '0_l_l_r_l_l_l_r'), ('0_l_l_r_l_l_r_r', '0_l_l_r_l_l_r_r_l'), ('0_l_l_r_l_l_r_r', '0_l_l_r_l_l_r_r_r'), ('0_l_l_r_l_l_r', '0_l_l_r_l_l_r_l'), ('0_l_l_r_l_l_r', '0_l_l_r_l_l_r_r'), ('0_l_l_r_l_l', '0_l_l_r_l_l_l'), ('0_l_l_r_l_l', '0_l_l_r_l_l_r'), ('0_l_l_r_l', '0_l_l_r_l_l'), ('0_l_l_r_l', '0_l_l_r_l_r'), ('0_l_l_r_r_l_l_r_r', '0_l_l_r_r_l_l_r_r_l'), ('0_l_l_r_r_l_l_r_r', '0_l_l_r_r_l_l_r_r_r'), ('0_l_l_r_r_l_l_r', '0_l_l_r_r_l_l_r_l'), ('0_l_l_r_r_l_l_r', '0_l_l_r_r_l_l_r_r'), ('0_l_l_r_r_l_l', '0_l_l_r_r_l_l_l'), ('0_l_l_r_r_l_l', '0_l_l_r_r_l_l_r'), ('0_l_l_r_r_l_r', '0_l_l_r_r_l_r_l'), ('0_l_l_r_r_l_r', '0_l_l_r_r_l_r_r'), ('0_l_l_r_r_l', '0_l_l_r_r_l_l'), ('0_l_l_r_r_l', '0_l_l_r_r_l_r'), ('0_l_l_r_r', '0_l_l_r_r_l'), ('0_l_l_r_r', '0_l_l_r_r_r'), ('0_l_l_r', '0_l_l_r_l'), ('0_l_l_r', '0_l_l_r_r'), ('0_l_l', '0_l_l_l'), ('0_l_l', '0_l_l_r'), ('0_l_r_l_l_l', '0_l_r_l_l_l_l'), ('0_l_r_l_l_l', '0_l_r_l_l_l_r'), ('0_l_r_l_l', '0_l_r_l_l_l'), ('0_l_r_l_l', '0_l_r_l_l_r'), ('0_l_r_l_r_l', '0_l_r_l_r_l_l'), ('0_l_r_l_r_l', '0_l_r_l_r_l_r'), ('0_l_r_l_r', '0_l_r_l_r_l'), ('0_l_r_l_r', '0_l_r_l_r_r'), ('0_l_r_l', '0_l_r_l_l'), ('0_l_r_l', '0_l_r_l_r'), ('0_l_r', '0_l_r_l'), ('0_l_r', '0_l_r_r'), ('0_l', '0_l_l'), ('0_l', '0_l_r'), ('0_r_l_l_r_l', '0_r_l_l_r_l_l'), ('0_r_l_l_r_l', '0_r_l_l_r_l_r'), ('0_r_l_l_r_r_r_r', '0_r_l_l_r_r_r_r_l'), ('0_r_l_l_r_r_r_r', '0_r_l_l_r_r_r_r_r'), ('0_r_l_l_r_r_r', '0_r_l_l_r_r_r_l'), ('0_r_l_l_r_r_r', '0_r_l_l_r_r_r_r'), ('0_r_l_l_r_r', '0_r_l_l_r_r_l'), ('0_r_l_l_r_r', '0_r_l_l_r_r_r'), ('0_r_l_l_r', '0_r_l_l_r_l'), ('0_r_l_l_r', '0_r_l_l_r_r'), ('0_r_l_l', '0_r_l_l_l'), ('0_r_l_l', '0_r_l_l_r'), ('0_r_l_r_l', '0_r_l_r_l_l'), ('0_r_l_r_l', '0_r_l_r_l_r'), ('0_r_l_r', '0_r_l_r_l'), ('0_r_l_r', '0_r_l_r_r'), ('0_r_l', '0_r_l_l'), ('0_r_l', '0_r_l_r'), ('0_r_r_l_l', '0_r_r_l_l_l'), ('0_r_r_l_l', '0_r_r_l_l_r'), ('0_r_r_l_r_r', '0_r_r_l_r_r_l'), ('0_r_r_l_r_r', '0_r_r_l_r_r_r'), ('0_r_r_l_r', '0_r_r_l_r_l'), ('0_r_r_l_r', '0_r_r_l_r_r'), ('0_r_r_l', '0_r_r_l_l'), ('0_r_r_l', '0_r_r_l_r'), ('0_r_r', '0_r_r_l'), ('0_r_r', '0_r_r_r'), ('0_r', '0_r_l'), ('0_r', '0_r_r'), ('0', '0_l'), ('0', '0_r')]
+--- 24.09165048599243 seconds ---
+Searching Metric Tree
+--- 0.0 seconds ---
+
+SETTINGS: num of sim neighbors: 3, num of movies: 10
+RESULT: (0.04688279301745649, 0.08185591591248888)
+|| ------ COMPLETE ------ ||
+Total run time: 332.46566796302795 seconds.
+Amount of users: 802.
+|| ---------------------- ||
+
+Running...
+Formatting data...
+Generating graph...
+--- 2.3514909744262695 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Adding rating and award information to graph...
+--- 149.8741443157196 seconds ---
+Counting TETs...
+--- 20.692641973495483 seconds ---
+Performing Logistic Evaluation on TETs...
+--- 22.621432781219482 seconds ---
+Generating histograms...
+--- 6.533727169036865 seconds ---
+Building Metric Tree
+ MT nodes: ['0_l_l_l_l_l_l', '0_l_l_l_l_l_r_l', '0_l_l_l_l_l_r_r', '0_l_l_l_l_l_r', '0_l_l_l_l_l', '0_l_l_l_l_r', '0_l_l_l_l', '0_l_l_l_r_l', '0_l_l_l_r_r_l_l', '0_l_l_l_r_r_l_r', '0_l_l_l_r_r_l', '0_l_l_l_r_r_r_l_l', '0_l_l_l_r_r_r_l_r', '0_l_l_l_r_r_r_l', '0_l_l_l_r_r_r_r', '0_l_l_l_r_r_r', '0_l_l_l_r_r', '0_l_l_l_r', '0_l_l_l', '0_l_l_r_l_l_l_l', '0_l_l_r_l_l_l_r', '0_l_l_r_l_l_l', '0_l_l_r_l_l_r_l', '0_l_l_r_l_l_r_r_l', '0_l_l_r_l_l_r_r_r', '0_l_l_r_l_l_r_r', '0_l_l_r_l_l_r', '0_l_l_r_l_l', '0_l_l_r_l_r', '0_l_l_r_l', '0_l_l_r_r_l_l_l', '0_l_l_r_r_l_l_r_l', '0_l_l_r_r_l_l_r_r_l', '0_l_l_r_r_l_l_r_r_r', '0_l_l_r_r_l_l_r_r', '0_l_l_r_r_l_l_r', '0_l_l_r_r_l_l', '0_l_l_r_r_l_r_l', '0_l_l_r_r_l_r_r', '0_l_l_r_r_l_r', '0_l_l_r_r_l', '0_l_l_r_r_r', '0_l_l_r_r', '0_l_l_r', '0_l_l', '0_l_r_l_l_l_l', '0_l_r_l_l_l_r', '0_l_r_l_l_l', '0_l_r_l_l_r', '0_l_r_l_l', '0_l_r_l_r_l_l', '0_l_r_l_r_l_r', '0_l_r_l_r_l', '0_l_r_l_r_r', '0_l_r_l_r', '0_l_r_l', '0_l_r_r', '0_l_r', '0_l', '0_r_l_l_l', '0_r_l_l_r_l_l', '0_r_l_l_r_l_r', '0_r_l_l_r_l', '0_r_l_l_r_r_l', '0_r_l_l_r_r_r_l', '0_r_l_l_r_r_r_r_l', '0_r_l_l_r_r_r_r_r', '0_r_l_l_r_r_r_r', '0_r_l_l_r_r_r', '0_r_l_l_r_r', '0_r_l_l_r', '0_r_l_l', '0_r_l_r_l_l', '0_r_l_r_l_r', '0_r_l_r_l', '0_r_l_r_r', '0_r_l_r', '0_r_l', '0_r_r_l_l_l', '0_r_r_l_l_r', '0_r_r_l_l', '0_r_r_l_r_l', '0_r_r_l_r_r_l', '0_r_r_l_r_r_r', '0_r_r_l_r_r', '0_r_r_l_r', '0_r_r_l', '0_r_r_r', '0_r_r', '0_r', '0']
+ MT edges: [('0_l_l_l_l_l_r', '0_l_l_l_l_l_r_l'), ('0_l_l_l_l_l_r', '0_l_l_l_l_l_r_r'), ('0_l_l_l_l_l', '0_l_l_l_l_l_l'), ('0_l_l_l_l_l', '0_l_l_l_l_l_r'), ('0_l_l_l_l', '0_l_l_l_l_l'), ('0_l_l_l_l', '0_l_l_l_l_r'), ('0_l_l_l_r_r_l', '0_l_l_l_r_r_l_l'), ('0_l_l_l_r_r_l', '0_l_l_l_r_r_l_r'), ('0_l_l_l_r_r_r_l', '0_l_l_l_r_r_r_l_l'), ('0_l_l_l_r_r_r_l', '0_l_l_l_r_r_r_l_r'), ('0_l_l_l_r_r_r', '0_l_l_l_r_r_r_l'), ('0_l_l_l_r_r_r', '0_l_l_l_r_r_r_r'), ('0_l_l_l_r_r', '0_l_l_l_r_r_l'), ('0_l_l_l_r_r', '0_l_l_l_r_r_r'), ('0_l_l_l_r', '0_l_l_l_r_l'), ('0_l_l_l_r', '0_l_l_l_r_r'), ('0_l_l_l', '0_l_l_l_l'), ('0_l_l_l', '0_l_l_l_r'), ('0_l_l_r_l_l_l', '0_l_l_r_l_l_l_l'), ('0_l_l_r_l_l_l', '0_l_l_r_l_l_l_r'), ('0_l_l_r_l_l_r_r', '0_l_l_r_l_l_r_r_l'), ('0_l_l_r_l_l_r_r', '0_l_l_r_l_l_r_r_r'), ('0_l_l_r_l_l_r', '0_l_l_r_l_l_r_l'), ('0_l_l_r_l_l_r', '0_l_l_r_l_l_r_r'), ('0_l_l_r_l_l', '0_l_l_r_l_l_l'), ('0_l_l_r_l_l', '0_l_l_r_l_l_r'), ('0_l_l_r_l', '0_l_l_r_l_l'), ('0_l_l_r_l', '0_l_l_r_l_r'), ('0_l_l_r_r_l_l_r_r', '0_l_l_r_r_l_l_r_r_l'), ('0_l_l_r_r_l_l_r_r', '0_l_l_r_r_l_l_r_r_r'), ('0_l_l_r_r_l_l_r', '0_l_l_r_r_l_l_r_l'), ('0_l_l_r_r_l_l_r', '0_l_l_r_r_l_l_r_r'), ('0_l_l_r_r_l_l', '0_l_l_r_r_l_l_l'), ('0_l_l_r_r_l_l', '0_l_l_r_r_l_l_r'), ('0_l_l_r_r_l_r', '0_l_l_r_r_l_r_l'), ('0_l_l_r_r_l_r', '0_l_l_r_r_l_r_r'), ('0_l_l_r_r_l', '0_l_l_r_r_l_l'), ('0_l_l_r_r_l', '0_l_l_r_r_l_r'), ('0_l_l_r_r', '0_l_l_r_r_l'), ('0_l_l_r_r', '0_l_l_r_r_r'), ('0_l_l_r', '0_l_l_r_l'), ('0_l_l_r', '0_l_l_r_r'), ('0_l_l', '0_l_l_l'), ('0_l_l', '0_l_l_r'), ('0_l_r_l_l_l', '0_l_r_l_l_l_l'), ('0_l_r_l_l_l', '0_l_r_l_l_l_r'), ('0_l_r_l_l', '0_l_r_l_l_l'), ('0_l_r_l_l', '0_l_r_l_l_r'), ('0_l_r_l_r_l', '0_l_r_l_r_l_l'), ('0_l_r_l_r_l', '0_l_r_l_r_l_r'), ('0_l_r_l_r', '0_l_r_l_r_l'), ('0_l_r_l_r', '0_l_r_l_r_r'), ('0_l_r_l', '0_l_r_l_l'), ('0_l_r_l', '0_l_r_l_r'), ('0_l_r', '0_l_r_l'), ('0_l_r', '0_l_r_r'), ('0_l', '0_l_l'), ('0_l', '0_l_r'), ('0_r_l_l_r_l', '0_r_l_l_r_l_l'), ('0_r_l_l_r_l', '0_r_l_l_r_l_r'), ('0_r_l_l_r_r_r_r', '0_r_l_l_r_r_r_r_l'), ('0_r_l_l_r_r_r_r', '0_r_l_l_r_r_r_r_r'), ('0_r_l_l_r_r_r', '0_r_l_l_r_r_r_l'), ('0_r_l_l_r_r_r', '0_r_l_l_r_r_r_r'), ('0_r_l_l_r_r', '0_r_l_l_r_r_l'), ('0_r_l_l_r_r', '0_r_l_l_r_r_r'), ('0_r_l_l_r', '0_r_l_l_r_l'), ('0_r_l_l_r', '0_r_l_l_r_r'), ('0_r_l_l', '0_r_l_l_l'), ('0_r_l_l', '0_r_l_l_r'), ('0_r_l_r_l', '0_r_l_r_l_l'), ('0_r_l_r_l', '0_r_l_r_l_r'), ('0_r_l_r', '0_r_l_r_l'), ('0_r_l_r', '0_r_l_r_r'), ('0_r_l', '0_r_l_l'), ('0_r_l', '0_r_l_r'), ('0_r_r_l_l', '0_r_r_l_l_l'), ('0_r_r_l_l', '0_r_r_l_l_r'), ('0_r_r_l_r_r', '0_r_r_l_r_r_l'), ('0_r_r_l_r_r', '0_r_r_l_r_r_r'), ('0_r_r_l_r', '0_r_r_l_r_l'), ('0_r_r_l_r', '0_r_r_l_r_r'), ('0_r_r_l', '0_r_r_l_l'), ('0_r_r_l', '0_r_r_l_r'), ('0_r_r', '0_r_r_l'), ('0_r_r', '0_r_r_r'), ('0_r', '0_r_l'), ('0_r', '0_r_r'), ('0', '0_l'), ('0', '0_r')]
+--- 23.471606731414795 seconds ---
+Searching Metric Tree
+--- 0.0 seconds ---
+
+SETTINGS: num of sim neighbors: 1, num of movies: 10
+RESULT: (0.051870324189526335, 0.1273744753580576)
+|| ------ COMPLETE ------ ||
+Total run time: 312.32153820991516 seconds.
+Amount of users: 802.
+|| ---------------------- ||
+
+Running...
+Formatting data...
+Generating graph...
+--- 2.322000026702881 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Adding rating and award information to graph...
+--- 148.05616354942322 seconds ---
+Counting TETs...
+--- 20.490792989730835 seconds ---
+Performing Logistic Evaluation on TETs...
+--- 22.524045705795288 seconds ---
+Generating histograms...
+--- 6.484563112258911 seconds ---
+Building Metric Tree
+ MT nodes: ['0_l_l_l_l_l_l', '0_l_l_l_l_l_r_l', '0_l_l_l_l_l_r_r', '0_l_l_l_l_l_r', '0_l_l_l_l_l', '0_l_l_l_l_r', '0_l_l_l_l', '0_l_l_l_r_l', '0_l_l_l_r_r_l_l', '0_l_l_l_r_r_l_r', '0_l_l_l_r_r_l', '0_l_l_l_r_r_r_l_l', '0_l_l_l_r_r_r_l_r', '0_l_l_l_r_r_r_l', '0_l_l_l_r_r_r_r', '0_l_l_l_r_r_r', '0_l_l_l_r_r', '0_l_l_l_r', '0_l_l_l', '0_l_l_r_l_l_l_l', '0_l_l_r_l_l_l_r', '0_l_l_r_l_l_l', '0_l_l_r_l_l_r_l', '0_l_l_r_l_l_r_r_l', '0_l_l_r_l_l_r_r_r', '0_l_l_r_l_l_r_r', '0_l_l_r_l_l_r', '0_l_l_r_l_l', '0_l_l_r_l_r', '0_l_l_r_l', '0_l_l_r_r_l_l_l', '0_l_l_r_r_l_l_r_l', '0_l_l_r_r_l_l_r_r_l', '0_l_l_r_r_l_l_r_r_r', '0_l_l_r_r_l_l_r_r', '0_l_l_r_r_l_l_r', '0_l_l_r_r_l_l', '0_l_l_r_r_l_r_l', '0_l_l_r_r_l_r_r', '0_l_l_r_r_l_r', '0_l_l_r_r_l', '0_l_l_r_r_r', '0_l_l_r_r', '0_l_l_r', '0_l_l', '0_l_r_l_l_l_l', '0_l_r_l_l_l_r', '0_l_r_l_l_l', '0_l_r_l_l_r', '0_l_r_l_l', '0_l_r_l_r_l_l', '0_l_r_l_r_l_r', '0_l_r_l_r_l', '0_l_r_l_r_r', '0_l_r_l_r', '0_l_r_l', '0_l_r_r', '0_l_r', '0_l', '0_r_l_l_l', '0_r_l_l_r_l_l', '0_r_l_l_r_l_r', '0_r_l_l_r_l', '0_r_l_l_r_r_l', '0_r_l_l_r_r_r_l', '0_r_l_l_r_r_r_r_l', '0_r_l_l_r_r_r_r_r', '0_r_l_l_r_r_r_r', '0_r_l_l_r_r_r', '0_r_l_l_r_r', '0_r_l_l_r', '0_r_l_l', '0_r_l_r_l_l', '0_r_l_r_l_r', '0_r_l_r_l', '0_r_l_r_r', '0_r_l_r', '0_r_l', '0_r_r_l_l_l', '0_r_r_l_l_r', '0_r_r_l_l', '0_r_r_l_r_l', '0_r_r_l_r_r_l', '0_r_r_l_r_r_r', '0_r_r_l_r_r', '0_r_r_l_r', '0_r_r_l', '0_r_r_r', '0_r_r', '0_r', '0']
+ MT edges: [('0_l_l_l_l_l_r', '0_l_l_l_l_l_r_l'), ('0_l_l_l_l_l_r', '0_l_l_l_l_l_r_r'), ('0_l_l_l_l_l', '0_l_l_l_l_l_l'), ('0_l_l_l_l_l', '0_l_l_l_l_l_r'), ('0_l_l_l_l', '0_l_l_l_l_l'), ('0_l_l_l_l', '0_l_l_l_l_r'), ('0_l_l_l_r_r_l', '0_l_l_l_r_r_l_l'), ('0_l_l_l_r_r_l', '0_l_l_l_r_r_l_r'), ('0_l_l_l_r_r_r_l', '0_l_l_l_r_r_r_l_l'), ('0_l_l_l_r_r_r_l', '0_l_l_l_r_r_r_l_r'), ('0_l_l_l_r_r_r', '0_l_l_l_r_r_r_l'), ('0_l_l_l_r_r_r', '0_l_l_l_r_r_r_r'), ('0_l_l_l_r_r', '0_l_l_l_r_r_l'), ('0_l_l_l_r_r', '0_l_l_l_r_r_r'), ('0_l_l_l_r', '0_l_l_l_r_l'), ('0_l_l_l_r', '0_l_l_l_r_r'), ('0_l_l_l', '0_l_l_l_l'), ('0_l_l_l', '0_l_l_l_r'), ('0_l_l_r_l_l_l', '0_l_l_r_l_l_l_l'), ('0_l_l_r_l_l_l', '0_l_l_r_l_l_l_r'), ('0_l_l_r_l_l_r_r', '0_l_l_r_l_l_r_r_l'), ('0_l_l_r_l_l_r_r', '0_l_l_r_l_l_r_r_r'), ('0_l_l_r_l_l_r', '0_l_l_r_l_l_r_l'), ('0_l_l_r_l_l_r', '0_l_l_r_l_l_r_r'), ('0_l_l_r_l_l', '0_l_l_r_l_l_l'), ('0_l_l_r_l_l', '0_l_l_r_l_l_r'), ('0_l_l_r_l', '0_l_l_r_l_l'), ('0_l_l_r_l', '0_l_l_r_l_r'), ('0_l_l_r_r_l_l_r_r', '0_l_l_r_r_l_l_r_r_l'), ('0_l_l_r_r_l_l_r_r', '0_l_l_r_r_l_l_r_r_r'), ('0_l_l_r_r_l_l_r', '0_l_l_r_r_l_l_r_l'), ('0_l_l_r_r_l_l_r', '0_l_l_r_r_l_l_r_r'), ('0_l_l_r_r_l_l', '0_l_l_r_r_l_l_l'), ('0_l_l_r_r_l_l', '0_l_l_r_r_l_l_r'), ('0_l_l_r_r_l_r', '0_l_l_r_r_l_r_l'), ('0_l_l_r_r_l_r', '0_l_l_r_r_l_r_r'), ('0_l_l_r_r_l', '0_l_l_r_r_l_l'), ('0_l_l_r_r_l', '0_l_l_r_r_l_r'), ('0_l_l_r_r', '0_l_l_r_r_l'), ('0_l_l_r_r', '0_l_l_r_r_r'), ('0_l_l_r', '0_l_l_r_l'), ('0_l_l_r', '0_l_l_r_r'), ('0_l_l', '0_l_l_l'), ('0_l_l', '0_l_l_r'), ('0_l_r_l_l_l', '0_l_r_l_l_l_l'), ('0_l_r_l_l_l', '0_l_r_l_l_l_r'), ('0_l_r_l_l', '0_l_r_l_l_l'), ('0_l_r_l_l', '0_l_r_l_l_r'), ('0_l_r_l_r_l', '0_l_r_l_r_l_l'), ('0_l_r_l_r_l', '0_l_r_l_r_l_r'), ('0_l_r_l_r', '0_l_r_l_r_l'), ('0_l_r_l_r', '0_l_r_l_r_r'), ('0_l_r_l', '0_l_r_l_l'), ('0_l_r_l', '0_l_r_l_r'), ('0_l_r', '0_l_r_l'), ('0_l_r', '0_l_r_r'), ('0_l', '0_l_l'), ('0_l', '0_l_r'), ('0_r_l_l_r_l', '0_r_l_l_r_l_l'), ('0_r_l_l_r_l', '0_r_l_l_r_l_r'), ('0_r_l_l_r_r_r_r', '0_r_l_l_r_r_r_r_l'), ('0_r_l_l_r_r_r_r', '0_r_l_l_r_r_r_r_r'), ('0_r_l_l_r_r_r', '0_r_l_l_r_r_r_l'), ('0_r_l_l_r_r_r', '0_r_l_l_r_r_r_r'), ('0_r_l_l_r_r', '0_r_l_l_r_r_l'), ('0_r_l_l_r_r', '0_r_l_l_r_r_r'), ('0_r_l_l_r', '0_r_l_l_r_l'), ('0_r_l_l_r', '0_r_l_l_r_r'), ('0_r_l_l', '0_r_l_l_l'), ('0_r_l_l', '0_r_l_l_r'), ('0_r_l_r_l', '0_r_l_r_l_l'), ('0_r_l_r_l', '0_r_l_r_l_r'), ('0_r_l_r', '0_r_l_r_l'), ('0_r_l_r', '0_r_l_r_r'), ('0_r_l', '0_r_l_l'), ('0_r_l', '0_r_l_r'), ('0_r_r_l_l', '0_r_r_l_l_l'), ('0_r_r_l_l', '0_r_r_l_l_r'), ('0_r_r_l_r_r', '0_r_r_l_r_r_l'), ('0_r_r_l_r_r', '0_r_r_l_r_r_r'), ('0_r_r_l_r', '0_r_r_l_r_l'), ('0_r_r_l_r', '0_r_r_l_r_r'), ('0_r_r_l', '0_r_r_l_l'), ('0_r_r_l', '0_r_r_l_r'), ('0_r_r', '0_r_r_l'), ('0_r_r', '0_r_r_r'), ('0_r', '0_r_l'), ('0_r', '0_r_r'), ('0', '0_l'), ('0', '0_r')]
+--- 23.190951824188232 seconds ---
+Searching Metric Tree
+--- 0.0 seconds ---
+
+SETTINGS: num of sim neighbors: 1, num of movies: 25
+RESULT: (0.047443789872449287, 0.273775484347815)
+|| ------ COMPLETE ------ ||
+Total run time: 307.6902883052826 seconds.
+Amount of users: 802.
+|| ---------------------- ||
+
+Running...
+Formatting data...
+Generating graph...
+--- 2.4357852935791016 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Adding rating and award information to graph...
+--- 149.71790671348572 seconds ---
+Counting TETs...
+--- 21.071335554122925 seconds ---
+Performing Logistic Evaluation on TETs...
+--- 22.396195650100708 seconds ---
+Generating histograms...
+--- 6.737022161483765 seconds ---
+Building Metric Tree
+ MT nodes: ['0_l_l_l_l_l_l', '0_l_l_l_l_l_r_l', '0_l_l_l_l_l_r_r', '0_l_l_l_l_l_r', '0_l_l_l_l_l', '0_l_l_l_l_r', '0_l_l_l_l', '0_l_l_l_r_l', '0_l_l_l_r_r_l_l', '0_l_l_l_r_r_l_r', '0_l_l_l_r_r_l', '0_l_l_l_r_r_r_l_l', '0_l_l_l_r_r_r_l_r', '0_l_l_l_r_r_r_l', '0_l_l_l_r_r_r_r', '0_l_l_l_r_r_r', '0_l_l_l_r_r', '0_l_l_l_r', '0_l_l_l', '0_l_l_r_l_l_l_l', '0_l_l_r_l_l_l_r', '0_l_l_r_l_l_l', '0_l_l_r_l_l_r_l', '0_l_l_r_l_l_r_r_l', '0_l_l_r_l_l_r_r_r', '0_l_l_r_l_l_r_r', '0_l_l_r_l_l_r', '0_l_l_r_l_l', '0_l_l_r_l_r', '0_l_l_r_l', '0_l_l_r_r_l_l_l', '0_l_l_r_r_l_l_r_l', '0_l_l_r_r_l_l_r_r_l', '0_l_l_r_r_l_l_r_r_r', '0_l_l_r_r_l_l_r_r', '0_l_l_r_r_l_l_r', '0_l_l_r_r_l_l', '0_l_l_r_r_l_r_l', '0_l_l_r_r_l_r_r', '0_l_l_r_r_l_r', '0_l_l_r_r_l', '0_l_l_r_r_r', '0_l_l_r_r', '0_l_l_r', '0_l_l', '0_l_r_l_l_l_l', '0_l_r_l_l_l_r', '0_l_r_l_l_l', '0_l_r_l_l_r', '0_l_r_l_l', '0_l_r_l_r_l_l', '0_l_r_l_r_l_r', '0_l_r_l_r_l', '0_l_r_l_r_r', '0_l_r_l_r', '0_l_r_l', '0_l_r_r', '0_l_r', '0_l', '0_r_l_l_l', '0_r_l_l_r_l_l', '0_r_l_l_r_l_r', '0_r_l_l_r_l', '0_r_l_l_r_r_l', '0_r_l_l_r_r_r_l', '0_r_l_l_r_r_r_r_l', '0_r_l_l_r_r_r_r_r', '0_r_l_l_r_r_r_r', '0_r_l_l_r_r_r', '0_r_l_l_r_r', '0_r_l_l_r', '0_r_l_l', '0_r_l_r_l_l', '0_r_l_r_l_r', '0_r_l_r_l', '0_r_l_r_r', '0_r_l_r', '0_r_l', '0_r_r_l_l_l', '0_r_r_l_l_r', '0_r_r_l_l', '0_r_r_l_r_l', '0_r_r_l_r_r_l', '0_r_r_l_r_r_r', '0_r_r_l_r_r', '0_r_r_l_r', '0_r_r_l', '0_r_r_r', '0_r_r', '0_r', '0']
+ MT edges: [('0_l_l_l_l_l_r', '0_l_l_l_l_l_r_l'), ('0_l_l_l_l_l_r', '0_l_l_l_l_l_r_r'), ('0_l_l_l_l_l', '0_l_l_l_l_l_l'), ('0_l_l_l_l_l', '0_l_l_l_l_l_r'), ('0_l_l_l_l', '0_l_l_l_l_l'), ('0_l_l_l_l', '0_l_l_l_l_r'), ('0_l_l_l_r_r_l', '0_l_l_l_r_r_l_l'), ('0_l_l_l_r_r_l', '0_l_l_l_r_r_l_r'), ('0_l_l_l_r_r_r_l', '0_l_l_l_r_r_r_l_l'), ('0_l_l_l_r_r_r_l', '0_l_l_l_r_r_r_l_r'), ('0_l_l_l_r_r_r', '0_l_l_l_r_r_r_l'), ('0_l_l_l_r_r_r', '0_l_l_l_r_r_r_r'), ('0_l_l_l_r_r', '0_l_l_l_r_r_l'), ('0_l_l_l_r_r', '0_l_l_l_r_r_r'), ('0_l_l_l_r', '0_l_l_l_r_l'), ('0_l_l_l_r', '0_l_l_l_r_r'), ('0_l_l_l', '0_l_l_l_l'), ('0_l_l_l', '0_l_l_l_r'), ('0_l_l_r_l_l_l', '0_l_l_r_l_l_l_l'), ('0_l_l_r_l_l_l', '0_l_l_r_l_l_l_r'), ('0_l_l_r_l_l_r_r', '0_l_l_r_l_l_r_r_l'), ('0_l_l_r_l_l_r_r', '0_l_l_r_l_l_r_r_r'), ('0_l_l_r_l_l_r', '0_l_l_r_l_l_r_l'), ('0_l_l_r_l_l_r', '0_l_l_r_l_l_r_r'), ('0_l_l_r_l_l', '0_l_l_r_l_l_l'), ('0_l_l_r_l_l', '0_l_l_r_l_l_r'), ('0_l_l_r_l', '0_l_l_r_l_l'), ('0_l_l_r_l', '0_l_l_r_l_r'), ('0_l_l_r_r_l_l_r_r', '0_l_l_r_r_l_l_r_r_l'), ('0_l_l_r_r_l_l_r_r', '0_l_l_r_r_l_l_r_r_r'), ('0_l_l_r_r_l_l_r', '0_l_l_r_r_l_l_r_l'), ('0_l_l_r_r_l_l_r', '0_l_l_r_r_l_l_r_r'), ('0_l_l_r_r_l_l', '0_l_l_r_r_l_l_l'), ('0_l_l_r_r_l_l', '0_l_l_r_r_l_l_r'), ('0_l_l_r_r_l_r', '0_l_l_r_r_l_r_l'), ('0_l_l_r_r_l_r', '0_l_l_r_r_l_r_r'), ('0_l_l_r_r_l', '0_l_l_r_r_l_l'), ('0_l_l_r_r_l', '0_l_l_r_r_l_r'), ('0_l_l_r_r', '0_l_l_r_r_l'), ('0_l_l_r_r', '0_l_l_r_r_r'), ('0_l_l_r', '0_l_l_r_l'), ('0_l_l_r', '0_l_l_r_r'), ('0_l_l', '0_l_l_l'), ('0_l_l', '0_l_l_r'), ('0_l_r_l_l_l', '0_l_r_l_l_l_l'), ('0_l_r_l_l_l', '0_l_r_l_l_l_r'), ('0_l_r_l_l', '0_l_r_l_l_l'), ('0_l_r_l_l', '0_l_r_l_l_r'), ('0_l_r_l_r_l', '0_l_r_l_r_l_l'), ('0_l_r_l_r_l', '0_l_r_l_r_l_r'), ('0_l_r_l_r', '0_l_r_l_r_l'), ('0_l_r_l_r', '0_l_r_l_r_r'), ('0_l_r_l', '0_l_r_l_l'), ('0_l_r_l', '0_l_r_l_r'), ('0_l_r', '0_l_r_l'), ('0_l_r', '0_l_r_r'), ('0_l', '0_l_l'), ('0_l', '0_l_r'), ('0_r_l_l_r_l', '0_r_l_l_r_l_l'), ('0_r_l_l_r_l', '0_r_l_l_r_l_r'), ('0_r_l_l_r_r_r_r', '0_r_l_l_r_r_r_r_l'), ('0_r_l_l_r_r_r_r', '0_r_l_l_r_r_r_r_r'), ('0_r_l_l_r_r_r', '0_r_l_l_r_r_r_l'), ('0_r_l_l_r_r_r', '0_r_l_l_r_r_r_r'), ('0_r_l_l_r_r', '0_r_l_l_r_r_l'), ('0_r_l_l_r_r', '0_r_l_l_r_r_r'), ('0_r_l_l_r', '0_r_l_l_r_l'), ('0_r_l_l_r', '0_r_l_l_r_r'), ('0_r_l_l', '0_r_l_l_l'), ('0_r_l_l', '0_r_l_l_r'), ('0_r_l_r_l', '0_r_l_r_l_l'), ('0_r_l_r_l', '0_r_l_r_l_r'), ('0_r_l_r', '0_r_l_r_l'), ('0_r_l_r', '0_r_l_r_r'), ('0_r_l', '0_r_l_l'), ('0_r_l', '0_r_l_r'), ('0_r_r_l_l', '0_r_r_l_l_l'), ('0_r_r_l_l', '0_r_r_l_l_r'), ('0_r_r_l_r_r', '0_r_r_l_r_r_l'), ('0_r_r_l_r_r', '0_r_r_l_r_r_r'), ('0_r_r_l_r', '0_r_r_l_r_l'), ('0_r_r_l_r', '0_r_r_l_r_r'), ('0_r_r_l', '0_r_r_l_l'), ('0_r_r_l', '0_r_r_l_r'), ('0_r_r', '0_r_r_l'), ('0_r_r', '0_r_r_r'), ('0_r', '0_r_l'), ('0_r', '0_r_r'), ('0', '0_l'), ('0', '0_r')]
+--- 23.425172328948975 seconds ---
+Searching Metric Tree
+--- 0.0 seconds ---
+
+SETTINGS: num of sim neighbors: 1, num of movies: 25
+RESULT: (0.04678931085634554, 0.22474776259934398)
+|| ------ COMPLETE ------ ||
+Total run time: 317.4247193336487 seconds.
+Amount of users: 802.
+|| ---------------------- ||
+
+Running...
+Formatting data...
+Generating graph...
+--- 2.400810480117798 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Adding rating and award information to graph...
+--- 149.2564356327057 seconds ---
+Counting TETs...
+--- 20.558805227279663 seconds ---
+Performing Logistic Evaluation on TETs...
+--- 22.694215297698975 seconds ---
+Generating histograms...
+--- 6.584589958190918 seconds ---
+Building Metric Tree
+ MT nodes: ['0_l_l_l_l', '0_l_l_l_r_l_l_l_l', '0_l_l_l_r_l_l_l_r', '0_l_l_l_r_l_l_l', '0_l_l_l_r_l_l_r', '0_l_l_l_r_l_l', '0_l_l_l_r_l_r_l_l_l', '0_l_l_l_r_l_r_l_l_r', '0_l_l_l_r_l_r_l_l', '0_l_l_l_r_l_r_l_r', '0_l_l_l_r_l_r_l', '0_l_l_l_r_l_r_r', '0_l_l_l_r_l_r', '0_l_l_l_r_l', '0_l_l_l_r_r_l', '0_l_l_l_r_r_r_l_l_l_l', '0_l_l_l_r_r_r_l_l_l_r', '0_l_l_l_r_r_r_l_l_l', '0_l_l_l_r_r_r_l_l_r', '0_l_l_l_r_r_r_l_l', '0_l_l_l_r_r_r_l_r', '0_l_l_l_r_r_r_l', '0_l_l_l_r_r_r_r', '0_l_l_l_r_r_r', '0_l_l_l_r_r', '0_l_l_l_r', '0_l_l_l', '0_l_l_r_l_l_l', '0_l_l_r_l_l_r', '0_l_l_r_l_l', '0_l_l_r_l_r_l_l', '0_l_l_r_l_r_l_r_l', '0_l_l_r_l_r_l_r_r', '0_l_l_r_l_r_l_r', '0_l_l_r_l_r_l', '0_l_l_r_l_r_r', '0_l_l_r_l_r', '0_l_l_r_l', '0_l_l_r_r_l_l', '0_l_l_r_r_l_r', '0_l_l_r_r_l', '0_l_l_r_r_r', '0_l_l_r_r', '0_l_l_r', '0_l_l', '0_l_r_l_l', '0_l_r_l_r_l', '0_l_r_l_r_r_l', '0_l_r_l_r_r_r_l', '0_l_r_l_r_r_r_r_l', '0_l_r_l_r_r_r_r_r', '0_l_r_l_r_r_r_r', '0_l_r_l_r_r_r', '0_l_r_l_r_r', '0_l_r_l_r', '0_l_r_l', '0_l_r_r_l', '0_l_r_r_r_l_l', '0_l_r_r_r_l_r', '0_l_r_r_r_l', '0_l_r_r_r_r_l', '0_l_r_r_r_r_r_l', '0_l_r_r_r_r_r_r', '0_l_r_r_r_r_r', '0_l_r_r_r_r', '0_l_r_r_r', '0_l_r_r', '0_l_r', '0_l', '0_r_l_l_l', '0_r_l_l_r', '0_r_l_l', '0_r_l_r_l_l', '0_r_l_r_l_r', '0_r_l_r_l', '0_r_l_r_r', '0_r_l_r', '0_r_l', '0_r_r_l_l_l_l', '0_r_r_l_l_l_r', '0_r_r_l_l_l', '0_r_r_l_l_r', '0_r_r_l_l', '0_r_r_l_r', '0_r_r_l', '0_r_r_r_l_l', '0_r_r_r_l_r_l', '0_r_r_r_l_r_r', '0_r_r_r_l_r', '0_r_r_r_l', '0_r_r_r_r', '0_r_r_r', '0_r_r', '0_r', '0']
+ MT edges: [('0_l_l_l_r_l_l_l', '0_l_l_l_r_l_l_l_l'), ('0_l_l_l_r_l_l_l', '0_l_l_l_r_l_l_l_r'), ('0_l_l_l_r_l_l', '0_l_l_l_r_l_l_l'), ('0_l_l_l_r_l_l', '0_l_l_l_r_l_l_r'), ('0_l_l_l_r_l_r_l_l', '0_l_l_l_r_l_r_l_l_l'), ('0_l_l_l_r_l_r_l_l', '0_l_l_l_r_l_r_l_l_r'), ('0_l_l_l_r_l_r_l', '0_l_l_l_r_l_r_l_l'), ('0_l_l_l_r_l_r_l', '0_l_l_l_r_l_r_l_r'), ('0_l_l_l_r_l_r', '0_l_l_l_r_l_r_l'), ('0_l_l_l_r_l_r', '0_l_l_l_r_l_r_r'), ('0_l_l_l_r_l', '0_l_l_l_r_l_l'), ('0_l_l_l_r_l', '0_l_l_l_r_l_r'), ('0_l_l_l_r_r_r_l_l_l', '0_l_l_l_r_r_r_l_l_l_l'), ('0_l_l_l_r_r_r_l_l_l', '0_l_l_l_r_r_r_l_l_l_r'), ('0_l_l_l_r_r_r_l_l', '0_l_l_l_r_r_r_l_l_l'), ('0_l_l_l_r_r_r_l_l', '0_l_l_l_r_r_r_l_l_r'), ('0_l_l_l_r_r_r_l', '0_l_l_l_r_r_r_l_l'), ('0_l_l_l_r_r_r_l', '0_l_l_l_r_r_r_l_r'), ('0_l_l_l_r_r_r', '0_l_l_l_r_r_r_l'), ('0_l_l_l_r_r_r', '0_l_l_l_r_r_r_r'), ('0_l_l_l_r_r', '0_l_l_l_r_r_l'), ('0_l_l_l_r_r', '0_l_l_l_r_r_r'), ('0_l_l_l_r', '0_l_l_l_r_l'), ('0_l_l_l_r', '0_l_l_l_r_r'), ('0_l_l_l', '0_l_l_l_l'), ('0_l_l_l', '0_l_l_l_r'), ('0_l_l_r_l_l', '0_l_l_r_l_l_l'), ('0_l_l_r_l_l', '0_l_l_r_l_l_r'), ('0_l_l_r_l_r_l_r', '0_l_l_r_l_r_l_r_l'), ('0_l_l_r_l_r_l_r', '0_l_l_r_l_r_l_r_r'), ('0_l_l_r_l_r_l', '0_l_l_r_l_r_l_l'), ('0_l_l_r_l_r_l', '0_l_l_r_l_r_l_r'), ('0_l_l_r_l_r', '0_l_l_r_l_r_l'), ('0_l_l_r_l_r', '0_l_l_r_l_r_r'), ('0_l_l_r_l', '0_l_l_r_l_l'), ('0_l_l_r_l', '0_l_l_r_l_r'), ('0_l_l_r_r_l', '0_l_l_r_r_l_l'), ('0_l_l_r_r_l', '0_l_l_r_r_l_r'), ('0_l_l_r_r', '0_l_l_r_r_l'), ('0_l_l_r_r', '0_l_l_r_r_r'), ('0_l_l_r', '0_l_l_r_l'), ('0_l_l_r', '0_l_l_r_r'), ('0_l_l', '0_l_l_l'), ('0_l_l', '0_l_l_r'), ('0_l_r_l_r_r_r_r', '0_l_r_l_r_r_r_r_l'), ('0_l_r_l_r_r_r_r', '0_l_r_l_r_r_r_r_r'), ('0_l_r_l_r_r_r', '0_l_r_l_r_r_r_l'), ('0_l_r_l_r_r_r', '0_l_r_l_r_r_r_r'), ('0_l_r_l_r_r', '0_l_r_l_r_r_l'), ('0_l_r_l_r_r', '0_l_r_l_r_r_r'), ('0_l_r_l_r', '0_l_r_l_r_l'), ('0_l_r_l_r', '0_l_r_l_r_r'), ('0_l_r_l', '0_l_r_l_l'), ('0_l_r_l', '0_l_r_l_r'), ('0_l_r_r_r_l', '0_l_r_r_r_l_l'), ('0_l_r_r_r_l', '0_l_r_r_r_l_r'), ('0_l_r_r_r_r_r', '0_l_r_r_r_r_r_l'), ('0_l_r_r_r_r_r', '0_l_r_r_r_r_r_r'), ('0_l_r_r_r_r', '0_l_r_r_r_r_l'), ('0_l_r_r_r_r', '0_l_r_r_r_r_r'), ('0_l_r_r_r', '0_l_r_r_r_l'), ('0_l_r_r_r', '0_l_r_r_r_r'), ('0_l_r_r', '0_l_r_r_l'), ('0_l_r_r', '0_l_r_r_r'), ('0_l_r', '0_l_r_l'), ('0_l_r', '0_l_r_r'), ('0_l', '0_l_l'), ('0_l', '0_l_r'), ('0_r_l_l', '0_r_l_l_l'), ('0_r_l_l', '0_r_l_l_r'), ('0_r_l_r_l', '0_r_l_r_l_l'), ('0_r_l_r_l', '0_r_l_r_l_r'), ('0_r_l_r', '0_r_l_r_l'), ('0_r_l_r', '0_r_l_r_r'), ('0_r_l', '0_r_l_l'), ('0_r_l', '0_r_l_r'), ('0_r_r_l_l_l', '0_r_r_l_l_l_l'), ('0_r_r_l_l_l', '0_r_r_l_l_l_r'), ('0_r_r_l_l', '0_r_r_l_l_l'), ('0_r_r_l_l', '0_r_r_l_l_r'), ('0_r_r_l', '0_r_r_l_l'), ('0_r_r_l', '0_r_r_l_r'), ('0_r_r_r_l_r', '0_r_r_r_l_r_l'), ('0_r_r_r_l_r', '0_r_r_r_l_r_r'), ('0_r_r_r_l', '0_r_r_r_l_l'), ('0_r_r_r_l', '0_r_r_r_l_r'), ('0_r_r_r', '0_r_r_r_l'), ('0_r_r_r', '0_r_r_r_r'), ('0_r_r', '0_r_r_l'), ('0_r_r', '0_r_r_r'), ('0_r', '0_r_l'), ('0_r', '0_r_r'), ('0', '0_l'), ('0', '0_r')]
+--- 35.11167049407959 seconds ---
+Searching Metric Tree
+--- 0.0 seconds ---
+
+SETTINGS: num of sim neighbors: 1, num of movies: 10
+RESULT: (0.04675810473815479, 0.12174240435499241, {0.1280552860750481})
+|| ------ COMPLETE ------ ||
+Total run time: 347.66373348236084 seconds.
+Amount of users: 802.
+|| ---------------------- ||
+
+Running...
+Formatting data...
+Generating graph...
+--- 2.560133457183838 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Adding rating and award information to graph...
+--- 146.61745238304138 seconds ---
+Counting TETs...
+--- 20.150670051574707 seconds ---
+Performing Logistic Evaluation on TETs...
+--- 22.0951988697052 seconds ---
+Generating histograms...
+--- 6.4522271156311035 seconds ---
+Building Metric Tree
+ MT nodes: ['0_l_l_l_l', '0_l_l_l_r_l_l_l_l', '0_l_l_l_r_l_l_l_r', '0_l_l_l_r_l_l_l', '0_l_l_l_r_l_l_r', '0_l_l_l_r_l_l', '0_l_l_l_r_l_r_l_l_l', '0_l_l_l_r_l_r_l_l_r', '0_l_l_l_r_l_r_l_l', '0_l_l_l_r_l_r_l_r', '0_l_l_l_r_l_r_l', '0_l_l_l_r_l_r_r', '0_l_l_l_r_l_r', '0_l_l_l_r_l', '0_l_l_l_r_r_l', '0_l_l_l_r_r_r_l_l_l_l', '0_l_l_l_r_r_r_l_l_l_r', '0_l_l_l_r_r_r_l_l_l', '0_l_l_l_r_r_r_l_l_r', '0_l_l_l_r_r_r_l_l', '0_l_l_l_r_r_r_l_r', '0_l_l_l_r_r_r_l', '0_l_l_l_r_r_r_r', '0_l_l_l_r_r_r', '0_l_l_l_r_r', '0_l_l_l_r', '0_l_l_l', '0_l_l_r_l_l_l', '0_l_l_r_l_l_r', '0_l_l_r_l_l', '0_l_l_r_l_r_l_l', '0_l_l_r_l_r_l_r_l', '0_l_l_r_l_r_l_r_r', '0_l_l_r_l_r_l_r', '0_l_l_r_l_r_l', '0_l_l_r_l_r_r', '0_l_l_r_l_r', '0_l_l_r_l', '0_l_l_r_r_l_l', '0_l_l_r_r_l_r', '0_l_l_r_r_l', '0_l_l_r_r_r', '0_l_l_r_r', '0_l_l_r', '0_l_l', '0_l_r_l_l', '0_l_r_l_r_l', '0_l_r_l_r_r_l', '0_l_r_l_r_r_r_l', '0_l_r_l_r_r_r_r_l', '0_l_r_l_r_r_r_r_r', '0_l_r_l_r_r_r_r', '0_l_r_l_r_r_r', '0_l_r_l_r_r', '0_l_r_l_r', '0_l_r_l', '0_l_r_r_l', '0_l_r_r_r_l_l', '0_l_r_r_r_l_r', '0_l_r_r_r_l', '0_l_r_r_r_r_l', '0_l_r_r_r_r_r_l', '0_l_r_r_r_r_r_r', '0_l_r_r_r_r_r', '0_l_r_r_r_r', '0_l_r_r_r', '0_l_r_r', '0_l_r', '0_l', '0_r_l_l_l', '0_r_l_l_r', '0_r_l_l', '0_r_l_r_l_l', '0_r_l_r_l_r', '0_r_l_r_l', '0_r_l_r_r', '0_r_l_r', '0_r_l', '0_r_r_l_l_l_l', '0_r_r_l_l_l_r', '0_r_r_l_l_l', '0_r_r_l_l_r', '0_r_r_l_l', '0_r_r_l_r', '0_r_r_l', '0_r_r_r_l_l', '0_r_r_r_l_r_l', '0_r_r_r_l_r_r', '0_r_r_r_l_r', '0_r_r_r_l', '0_r_r_r_r', '0_r_r_r', '0_r_r', '0_r', '0']
+ MT edges: [('0_l_l_l_r_l_l_l', '0_l_l_l_r_l_l_l_l'), ('0_l_l_l_r_l_l_l', '0_l_l_l_r_l_l_l_r'), ('0_l_l_l_r_l_l', '0_l_l_l_r_l_l_l'), ('0_l_l_l_r_l_l', '0_l_l_l_r_l_l_r'), ('0_l_l_l_r_l_r_l_l', '0_l_l_l_r_l_r_l_l_l'), ('0_l_l_l_r_l_r_l_l', '0_l_l_l_r_l_r_l_l_r'), ('0_l_l_l_r_l_r_l', '0_l_l_l_r_l_r_l_l'), ('0_l_l_l_r_l_r_l', '0_l_l_l_r_l_r_l_r'), ('0_l_l_l_r_l_r', '0_l_l_l_r_l_r_l'), ('0_l_l_l_r_l_r', '0_l_l_l_r_l_r_r'), ('0_l_l_l_r_l', '0_l_l_l_r_l_l'), ('0_l_l_l_r_l', '0_l_l_l_r_l_r'), ('0_l_l_l_r_r_r_l_l_l', '0_l_l_l_r_r_r_l_l_l_l'), ('0_l_l_l_r_r_r_l_l_l', '0_l_l_l_r_r_r_l_l_l_r'), ('0_l_l_l_r_r_r_l_l', '0_l_l_l_r_r_r_l_l_l'), ('0_l_l_l_r_r_r_l_l', '0_l_l_l_r_r_r_l_l_r'), ('0_l_l_l_r_r_r_l', '0_l_l_l_r_r_r_l_l'), ('0_l_l_l_r_r_r_l', '0_l_l_l_r_r_r_l_r'), ('0_l_l_l_r_r_r', '0_l_l_l_r_r_r_l'), ('0_l_l_l_r_r_r', '0_l_l_l_r_r_r_r'), ('0_l_l_l_r_r', '0_l_l_l_r_r_l'), ('0_l_l_l_r_r', '0_l_l_l_r_r_r'), ('0_l_l_l_r', '0_l_l_l_r_l'), ('0_l_l_l_r', '0_l_l_l_r_r'), ('0_l_l_l', '0_l_l_l_l'), ('0_l_l_l', '0_l_l_l_r'), ('0_l_l_r_l_l', '0_l_l_r_l_l_l'), ('0_l_l_r_l_l', '0_l_l_r_l_l_r'), ('0_l_l_r_l_r_l_r', '0_l_l_r_l_r_l_r_l'), ('0_l_l_r_l_r_l_r', '0_l_l_r_l_r_l_r_r'), ('0_l_l_r_l_r_l', '0_l_l_r_l_r_l_l'), ('0_l_l_r_l_r_l', '0_l_l_r_l_r_l_r'), ('0_l_l_r_l_r', '0_l_l_r_l_r_l'), ('0_l_l_r_l_r', '0_l_l_r_l_r_r'), ('0_l_l_r_l', '0_l_l_r_l_l'), ('0_l_l_r_l', '0_l_l_r_l_r'), ('0_l_l_r_r_l', '0_l_l_r_r_l_l'), ('0_l_l_r_r_l', '0_l_l_r_r_l_r'), ('0_l_l_r_r', '0_l_l_r_r_l'), ('0_l_l_r_r', '0_l_l_r_r_r'), ('0_l_l_r', '0_l_l_r_l'), ('0_l_l_r', '0_l_l_r_r'), ('0_l_l', '0_l_l_l'), ('0_l_l', '0_l_l_r'), ('0_l_r_l_r_r_r_r', '0_l_r_l_r_r_r_r_l'), ('0_l_r_l_r_r_r_r', '0_l_r_l_r_r_r_r_r'), ('0_l_r_l_r_r_r', '0_l_r_l_r_r_r_l'), ('0_l_r_l_r_r_r', '0_l_r_l_r_r_r_r'), ('0_l_r_l_r_r', '0_l_r_l_r_r_l'), ('0_l_r_l_r_r', '0_l_r_l_r_r_r'), ('0_l_r_l_r', '0_l_r_l_r_l'), ('0_l_r_l_r', '0_l_r_l_r_r'), ('0_l_r_l', '0_l_r_l_l'), ('0_l_r_l', '0_l_r_l_r'), ('0_l_r_r_r_l', '0_l_r_r_r_l_l'), ('0_l_r_r_r_l', '0_l_r_r_r_l_r'), ('0_l_r_r_r_r_r', '0_l_r_r_r_r_r_l'), ('0_l_r_r_r_r_r', '0_l_r_r_r_r_r_r'), ('0_l_r_r_r_r', '0_l_r_r_r_r_l'), ('0_l_r_r_r_r', '0_l_r_r_r_r_r'), ('0_l_r_r_r', '0_l_r_r_r_l'), ('0_l_r_r_r', '0_l_r_r_r_r'), ('0_l_r_r', '0_l_r_r_l'), ('0_l_r_r', '0_l_r_r_r'), ('0_l_r', '0_l_r_l'), ('0_l_r', '0_l_r_r'), ('0_l', '0_l_l'), ('0_l', '0_l_r'), ('0_r_l_l', '0_r_l_l_l'), ('0_r_l_l', '0_r_l_l_r'), ('0_r_l_r_l', '0_r_l_r_l_l'), ('0_r_l_r_l', '0_r_l_r_l_r'), ('0_r_l_r', '0_r_l_r_l'), ('0_r_l_r', '0_r_l_r_r'), ('0_r_l', '0_r_l_l'), ('0_r_l', '0_r_l_r'), ('0_r_r_l_l_l', '0_r_r_l_l_l_l'), ('0_r_r_l_l_l', '0_r_r_l_l_l_r'), ('0_r_r_l_l', '0_r_r_l_l_l'), ('0_r_r_l_l', '0_r_r_l_l_r'), ('0_r_r_l', '0_r_r_l_l'), ('0_r_r_l', '0_r_r_l_r'), ('0_r_r_r_l_r', '0_r_r_r_l_r_l'), ('0_r_r_r_l_r', '0_r_r_r_l_r_r'), ('0_r_r_r_l', '0_r_r_r_l_l'), ('0_r_r_r_l', '0_r_r_r_l_r'), ('0_r_r_r', '0_r_r_r_l'), ('0_r_r_r', '0_r_r_r_r'), ('0_r_r', '0_r_r_l'), ('0_r_r', '0_r_r_r'), ('0_r', '0_r_l'), ('0_r', '0_r_r'), ('0', '0_l'), ('0', '0_r')]
+--- 34.99922299385071 seconds ---
+Searching Metric Tree
+--- 0.0 seconds ---
+
+SETTINGS: num of sim neighbors: 3, num of movies: 10
+RESULT: (0.04563591022443905, 0.08574988894423155, {0.10936624421796005})
+|| ------ COMPLETE ------ ||
+Total run time: 345.1459324359894 seconds.
+Amount of users: 802.
+|| ---------------------- ||
+
+Running...
+Formatting data...
+Generating graph...
+--- 2.7894721031188965 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Adding rating and award information to graph...
+--- 144.5264928340912 seconds ---
+Counting TETs...
+--- 20.6861469745636 seconds ---
+Performing Logistic Evaluation on TETs...
+--- 22.083205699920654 seconds ---
+Generating histograms...
+--- 6.259180068969727 seconds ---
+Building Metric Tree
+ MT nodes: ['0_l_l_l_l_l_l', '0_l_l_l_l_l_r_l', '0_l_l_l_l_l_r_r', '0_l_l_l_l_l_r', '0_l_l_l_l_l', '0_l_l_l_l_r', '0_l_l_l_l', '0_l_l_l_r_l', '0_l_l_l_r_r_l_l', '0_l_l_l_r_r_l_r', '0_l_l_l_r_r_l', '0_l_l_l_r_r_r_l_l', '0_l_l_l_r_r_r_l_r', '0_l_l_l_r_r_r_l', '0_l_l_l_r_r_r_r', '0_l_l_l_r_r_r', '0_l_l_l_r_r', '0_l_l_l_r', '0_l_l_l', '0_l_l_r_l_l_l_l', '0_l_l_r_l_l_l_r', '0_l_l_r_l_l_l', '0_l_l_r_l_l_r_l', '0_l_l_r_l_l_r_r_l', '0_l_l_r_l_l_r_r_r', '0_l_l_r_l_l_r_r', '0_l_l_r_l_l_r', '0_l_l_r_l_l', '0_l_l_r_l_r', '0_l_l_r_l', '0_l_l_r_r_l_l_l', '0_l_l_r_r_l_l_r_l', '0_l_l_r_r_l_l_r_r_l', '0_l_l_r_r_l_l_r_r_r', '0_l_l_r_r_l_l_r_r', '0_l_l_r_r_l_l_r', '0_l_l_r_r_l_l', '0_l_l_r_r_l_r_l', '0_l_l_r_r_l_r_r', '0_l_l_r_r_l_r', '0_l_l_r_r_l', '0_l_l_r_r_r', '0_l_l_r_r', '0_l_l_r', '0_l_l', '0_l_r_l_l_l_l', '0_l_r_l_l_l_r', '0_l_r_l_l_l', '0_l_r_l_l_r', '0_l_r_l_l', '0_l_r_l_r_l_l', '0_l_r_l_r_l_r', '0_l_r_l_r_l', '0_l_r_l_r_r', '0_l_r_l_r', '0_l_r_l', '0_l_r_r', '0_l_r', '0_l', '0_r_l_l_l', '0_r_l_l_r_l_l', '0_r_l_l_r_l_r', '0_r_l_l_r_l', '0_r_l_l_r_r_l', '0_r_l_l_r_r_r_l', '0_r_l_l_r_r_r_r_l', '0_r_l_l_r_r_r_r_r', '0_r_l_l_r_r_r_r', '0_r_l_l_r_r_r', '0_r_l_l_r_r', '0_r_l_l_r', '0_r_l_l', '0_r_l_r_l_l', '0_r_l_r_l_r', '0_r_l_r_l', '0_r_l_r_r', '0_r_l_r', '0_r_l', '0_r_r_l_l_l', '0_r_r_l_l_r', '0_r_r_l_l', '0_r_r_l_r_l', '0_r_r_l_r_r_l', '0_r_r_l_r_r_r', '0_r_r_l_r_r', '0_r_r_l_r', '0_r_r_l', '0_r_r_r', '0_r_r', '0_r', '0']
+ MT edges: [('0_l_l_l_l_l_r', '0_l_l_l_l_l_r_l'), ('0_l_l_l_l_l_r', '0_l_l_l_l_l_r_r'), ('0_l_l_l_l_l', '0_l_l_l_l_l_l'), ('0_l_l_l_l_l', '0_l_l_l_l_l_r'), ('0_l_l_l_l', '0_l_l_l_l_l'), ('0_l_l_l_l', '0_l_l_l_l_r'), ('0_l_l_l_r_r_l', '0_l_l_l_r_r_l_l'), ('0_l_l_l_r_r_l', '0_l_l_l_r_r_l_r'), ('0_l_l_l_r_r_r_l', '0_l_l_l_r_r_r_l_l'), ('0_l_l_l_r_r_r_l', '0_l_l_l_r_r_r_l_r'), ('0_l_l_l_r_r_r', '0_l_l_l_r_r_r_l'), ('0_l_l_l_r_r_r', '0_l_l_l_r_r_r_r'), ('0_l_l_l_r_r', '0_l_l_l_r_r_l'), ('0_l_l_l_r_r', '0_l_l_l_r_r_r'), ('0_l_l_l_r', '0_l_l_l_r_l'), ('0_l_l_l_r', '0_l_l_l_r_r'), ('0_l_l_l', '0_l_l_l_l'), ('0_l_l_l', '0_l_l_l_r'), ('0_l_l_r_l_l_l', '0_l_l_r_l_l_l_l'), ('0_l_l_r_l_l_l', '0_l_l_r_l_l_l_r'), ('0_l_l_r_l_l_r_r', '0_l_l_r_l_l_r_r_l'), ('0_l_l_r_l_l_r_r', '0_l_l_r_l_l_r_r_r'), ('0_l_l_r_l_l_r', '0_l_l_r_l_l_r_l'), ('0_l_l_r_l_l_r', '0_l_l_r_l_l_r_r'), ('0_l_l_r_l_l', '0_l_l_r_l_l_l'), ('0_l_l_r_l_l', '0_l_l_r_l_l_r'), ('0_l_l_r_l', '0_l_l_r_l_l'), ('0_l_l_r_l', '0_l_l_r_l_r'), ('0_l_l_r_r_l_l_r_r', '0_l_l_r_r_l_l_r_r_l'), ('0_l_l_r_r_l_l_r_r', '0_l_l_r_r_l_l_r_r_r'), ('0_l_l_r_r_l_l_r', '0_l_l_r_r_l_l_r_l'), ('0_l_l_r_r_l_l_r', '0_l_l_r_r_l_l_r_r'), ('0_l_l_r_r_l_l', '0_l_l_r_r_l_l_l'), ('0_l_l_r_r_l_l', '0_l_l_r_r_l_l_r'), ('0_l_l_r_r_l_r', '0_l_l_r_r_l_r_l'), ('0_l_l_r_r_l_r', '0_l_l_r_r_l_r_r'), ('0_l_l_r_r_l', '0_l_l_r_r_l_l'), ('0_l_l_r_r_l', '0_l_l_r_r_l_r'), ('0_l_l_r_r', '0_l_l_r_r_l'), ('0_l_l_r_r', '0_l_l_r_r_r'), ('0_l_l_r', '0_l_l_r_l'), ('0_l_l_r', '0_l_l_r_r'), ('0_l_l', '0_l_l_l'), ('0_l_l', '0_l_l_r'), ('0_l_r_l_l_l', '0_l_r_l_l_l_l'), ('0_l_r_l_l_l', '0_l_r_l_l_l_r'), ('0_l_r_l_l', '0_l_r_l_l_l'), ('0_l_r_l_l', '0_l_r_l_l_r'), ('0_l_r_l_r_l', '0_l_r_l_r_l_l'), ('0_l_r_l_r_l', '0_l_r_l_r_l_r'), ('0_l_r_l_r', '0_l_r_l_r_l'), ('0_l_r_l_r', '0_l_r_l_r_r'), ('0_l_r_l', '0_l_r_l_l'), ('0_l_r_l', '0_l_r_l_r'), ('0_l_r', '0_l_r_l'), ('0_l_r', '0_l_r_r'), ('0_l', '0_l_l'), ('0_l', '0_l_r'), ('0_r_l_l_r_l', '0_r_l_l_r_l_l'), ('0_r_l_l_r_l', '0_r_l_l_r_l_r'), ('0_r_l_l_r_r_r_r', '0_r_l_l_r_r_r_r_l'), ('0_r_l_l_r_r_r_r', '0_r_l_l_r_r_r_r_r'), ('0_r_l_l_r_r_r', '0_r_l_l_r_r_r_l'), ('0_r_l_l_r_r_r', '0_r_l_l_r_r_r_r'), ('0_r_l_l_r_r', '0_r_l_l_r_r_l'), ('0_r_l_l_r_r', '0_r_l_l_r_r_r'), ('0_r_l_l_r', '0_r_l_l_r_l'), ('0_r_l_l_r', '0_r_l_l_r_r'), ('0_r_l_l', '0_r_l_l_l'), ('0_r_l_l', '0_r_l_l_r'), ('0_r_l_r_l', '0_r_l_r_l_l'), ('0_r_l_r_l', '0_r_l_r_l_r'), ('0_r_l_r', '0_r_l_r_l'), ('0_r_l_r', '0_r_l_r_r'), ('0_r_l', '0_r_l_l'), ('0_r_l', '0_r_l_r'), ('0_r_r_l_l', '0_r_r_l_l_l'), ('0_r_r_l_l', '0_r_r_l_l_r'), ('0_r_r_l_r_r', '0_r_r_l_r_r_l'), ('0_r_r_l_r_r', '0_r_r_l_r_r_r'), ('0_r_r_l_r', '0_r_r_l_r_l'), ('0_r_r_l_r', '0_r_r_l_r_r'), ('0_r_r_l', '0_r_r_l_l'), ('0_r_r_l', '0_r_r_l_r'), ('0_r_r', '0_r_r_l'), ('0_r_r', '0_r_r_r'), ('0_r', '0_r_l'), ('0_r', '0_r_r'), ('0', '0_l'), ('0', '0_r')]
+--- 22.447707891464233 seconds ---
+Searching Metric Tree
+Running...
+Formatting data...
+Generating graph...
+--- 2.3402364253997803 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Adding rating and award information to graph...
+--- 143.79244470596313 seconds ---
+Counting TETs...
+--- 20.567524194717407 seconds ---
+Performing Logistic Evaluation on TETs...
+--- 23.496143579483032 seconds ---
+Generating histograms...
+--- 6.3848772048950195 seconds ---
+Building Metric Tree
+ MT nodes: ['0_l_l_l_l_l_l', '0_l_l_l_l_l_r_l', '0_l_l_l_l_l_r_r', '0_l_l_l_l_l_r', '0_l_l_l_l_l', '0_l_l_l_l_r', '0_l_l_l_l', '0_l_l_l_r_l', '0_l_l_l_r_r_l_l', '0_l_l_l_r_r_l_r', '0_l_l_l_r_r_l', '0_l_l_l_r_r_r_l_l', '0_l_l_l_r_r_r_l_r', '0_l_l_l_r_r_r_l', '0_l_l_l_r_r_r_r', '0_l_l_l_r_r_r', '0_l_l_l_r_r', '0_l_l_l_r', '0_l_l_l', '0_l_l_r_l_l_l_l', '0_l_l_r_l_l_l_r', '0_l_l_r_l_l_l', '0_l_l_r_l_l_r_l', '0_l_l_r_l_l_r_r_l', '0_l_l_r_l_l_r_r_r', '0_l_l_r_l_l_r_r', '0_l_l_r_l_l_r', '0_l_l_r_l_l', '0_l_l_r_l_r', '0_l_l_r_l', '0_l_l_r_r_l_l_l', '0_l_l_r_r_l_l_r_l', '0_l_l_r_r_l_l_r_r_l', '0_l_l_r_r_l_l_r_r_r', '0_l_l_r_r_l_l_r_r', '0_l_l_r_r_l_l_r', '0_l_l_r_r_l_l', '0_l_l_r_r_l_r_l', '0_l_l_r_r_l_r_r', '0_l_l_r_r_l_r', '0_l_l_r_r_l', '0_l_l_r_r_r', '0_l_l_r_r', '0_l_l_r', '0_l_l', '0_l_r_l_l_l_l', '0_l_r_l_l_l_r', '0_l_r_l_l_l', '0_l_r_l_l_r', '0_l_r_l_l', '0_l_r_l_r_l_l', '0_l_r_l_r_l_r', '0_l_r_l_r_l', '0_l_r_l_r_r', '0_l_r_l_r', '0_l_r_l', '0_l_r_r', '0_l_r', '0_l', '0_r_l_l_l', '0_r_l_l_r_l_l', '0_r_l_l_r_l_r', '0_r_l_l_r_l', '0_r_l_l_r_r_l', '0_r_l_l_r_r_r_l', '0_r_l_l_r_r_r_r_l', '0_r_l_l_r_r_r_r_r', '0_r_l_l_r_r_r_r', '0_r_l_l_r_r_r', '0_r_l_l_r_r', '0_r_l_l_r', '0_r_l_l', '0_r_l_r_l_l', '0_r_l_r_l_r', '0_r_l_r_l', '0_r_l_r_r', '0_r_l_r', '0_r_l', '0_r_r_l_l_l', '0_r_r_l_l_r', '0_r_r_l_l', '0_r_r_l_r_l', '0_r_r_l_r_r_l', '0_r_r_l_r_r_r', '0_r_r_l_r_r', '0_r_r_l_r', '0_r_r_l', '0_r_r_r', '0_r_r', '0_r', '0']
+ MT edges: [('0_l_l_l_l_l_r', '0_l_l_l_l_l_r_l'), ('0_l_l_l_l_l_r', '0_l_l_l_l_l_r_r'), ('0_l_l_l_l_l', '0_l_l_l_l_l_l'), ('0_l_l_l_l_l', '0_l_l_l_l_l_r'), ('0_l_l_l_l', '0_l_l_l_l_l'), ('0_l_l_l_l', '0_l_l_l_l_r'), ('0_l_l_l_r_r_l', '0_l_l_l_r_r_l_l'), ('0_l_l_l_r_r_l', '0_l_l_l_r_r_l_r'), ('0_l_l_l_r_r_r_l', '0_l_l_l_r_r_r_l_l'), ('0_l_l_l_r_r_r_l', '0_l_l_l_r_r_r_l_r'), ('0_l_l_l_r_r_r', '0_l_l_l_r_r_r_l'), ('0_l_l_l_r_r_r', '0_l_l_l_r_r_r_r'), ('0_l_l_l_r_r', '0_l_l_l_r_r_l'), ('0_l_l_l_r_r', '0_l_l_l_r_r_r'), ('0_l_l_l_r', '0_l_l_l_r_l'), ('0_l_l_l_r', '0_l_l_l_r_r'), ('0_l_l_l', '0_l_l_l_l'), ('0_l_l_l', '0_l_l_l_r'), ('0_l_l_r_l_l_l', '0_l_l_r_l_l_l_l'), ('0_l_l_r_l_l_l', '0_l_l_r_l_l_l_r'), ('0_l_l_r_l_l_r_r', '0_l_l_r_l_l_r_r_l'), ('0_l_l_r_l_l_r_r', '0_l_l_r_l_l_r_r_r'), ('0_l_l_r_l_l_r', '0_l_l_r_l_l_r_l'), ('0_l_l_r_l_l_r', '0_l_l_r_l_l_r_r'), ('0_l_l_r_l_l', '0_l_l_r_l_l_l'), ('0_l_l_r_l_l', '0_l_l_r_l_l_r'), ('0_l_l_r_l', '0_l_l_r_l_l'), ('0_l_l_r_l', '0_l_l_r_l_r'), ('0_l_l_r_r_l_l_r_r', '0_l_l_r_r_l_l_r_r_l'), ('0_l_l_r_r_l_l_r_r', '0_l_l_r_r_l_l_r_r_r'), ('0_l_l_r_r_l_l_r', '0_l_l_r_r_l_l_r_l'), ('0_l_l_r_r_l_l_r', '0_l_l_r_r_l_l_r_r'), ('0_l_l_r_r_l_l', '0_l_l_r_r_l_l_l'), ('0_l_l_r_r_l_l', '0_l_l_r_r_l_l_r'), ('0_l_l_r_r_l_r', '0_l_l_r_r_l_r_l'), ('0_l_l_r_r_l_r', '0_l_l_r_r_l_r_r'), ('0_l_l_r_r_l', '0_l_l_r_r_l_l'), ('0_l_l_r_r_l', '0_l_l_r_r_l_r'), ('0_l_l_r_r', '0_l_l_r_r_l'), ('0_l_l_r_r', '0_l_l_r_r_r'), ('0_l_l_r', '0_l_l_r_l'), ('0_l_l_r', '0_l_l_r_r'), ('0_l_l', '0_l_l_l'), ('0_l_l', '0_l_l_r'), ('0_l_r_l_l_l', '0_l_r_l_l_l_l'), ('0_l_r_l_l_l', '0_l_r_l_l_l_r'), ('0_l_r_l_l', '0_l_r_l_l_l'), ('0_l_r_l_l', '0_l_r_l_l_r'), ('0_l_r_l_r_l', '0_l_r_l_r_l_l'), ('0_l_r_l_r_l', '0_l_r_l_r_l_r'), ('0_l_r_l_r', '0_l_r_l_r_l'), ('0_l_r_l_r', '0_l_r_l_r_r'), ('0_l_r_l', '0_l_r_l_l'), ('0_l_r_l', '0_l_r_l_r'), ('0_l_r', '0_l_r_l'), ('0_l_r', '0_l_r_r'), ('0_l', '0_l_l'), ('0_l', '0_l_r'), ('0_r_l_l_r_l', '0_r_l_l_r_l_l'), ('0_r_l_l_r_l', '0_r_l_l_r_l_r'), ('0_r_l_l_r_r_r_r', '0_r_l_l_r_r_r_r_l'), ('0_r_l_l_r_r_r_r', '0_r_l_l_r_r_r_r_r'), ('0_r_l_l_r_r_r', '0_r_l_l_r_r_r_l'), ('0_r_l_l_r_r_r', '0_r_l_l_r_r_r_r'), ('0_r_l_l_r_r', '0_r_l_l_r_r_l'), ('0_r_l_l_r_r', '0_r_l_l_r_r_r'), ('0_r_l_l_r', '0_r_l_l_r_l'), ('0_r_l_l_r', '0_r_l_l_r_r'), ('0_r_l_l', '0_r_l_l_l'), ('0_r_l_l', '0_r_l_l_r'), ('0_r_l_r_l', '0_r_l_r_l_l'), ('0_r_l_r_l', '0_r_l_r_l_r'), ('0_r_l_r', '0_r_l_r_l'), ('0_r_l_r', '0_r_l_r_r'), ('0_r_l', '0_r_l_l'), ('0_r_l', '0_r_l_r'), ('0_r_r_l_l', '0_r_r_l_l_l'), ('0_r_r_l_l', '0_r_r_l_l_r'), ('0_r_r_l_r_r', '0_r_r_l_r_r_l'), ('0_r_r_l_r_r', '0_r_r_l_r_r_r'), ('0_r_r_l_r', '0_r_r_l_r_l'), ('0_r_r_l_r', '0_r_r_l_r_r'), ('0_r_r_l', '0_r_r_l_l'), ('0_r_r_l', '0_r_r_l_r'), ('0_r_r', '0_r_r_l'), ('0_r_r', '0_r_r_r'), ('0_r', '0_r_l'), ('0_r', '0_r_r'), ('0', '0_l'), ('0', '0_r')]
+--- 23.2865788936615 seconds ---
+Searching Metric Tree
+--- 0.07395529747009277 seconds ---
+
+SETTINGS: num of sim neighbors: 3, num of movies: 10
+RESULT: (0.04688279301745649, 0.08185591591248888, {0.10836638261706982})
+Running...
+Formatting data...
+Generating graph...
+--- 2.506148338317871 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Adding rating and award information to graph...
+--- 147.85089945793152 seconds ---
+Counting TETs...
+--- 20.986510753631592 seconds ---
+Performing Logistic Evaluation on TETs...
+--- 22.666306495666504 seconds ---
+Generating histograms...
+--- 6.476355314254761 seconds ---
+Building Metric Tree
+ MT nodes: ['0_l_l_l_l_l_l', '0_l_l_l_l_l_r_l', '0_l_l_l_l_l_r_r', '0_l_l_l_l_l_r', '0_l_l_l_l_l', '0_l_l_l_l_r', '0_l_l_l_l', '0_l_l_l_r_l', '0_l_l_l_r_r_l_l', '0_l_l_l_r_r_l_r', '0_l_l_l_r_r_l', '0_l_l_l_r_r_r_l_l', '0_l_l_l_r_r_r_l_r', '0_l_l_l_r_r_r_l', '0_l_l_l_r_r_r_r', '0_l_l_l_r_r_r', '0_l_l_l_r_r', '0_l_l_l_r', '0_l_l_l', '0_l_l_r_l_l_l_l', '0_l_l_r_l_l_l_r', '0_l_l_r_l_l_l', '0_l_l_r_l_l_r_l', '0_l_l_r_l_l_r_r_l', '0_l_l_r_l_l_r_r_r', '0_l_l_r_l_l_r_r', '0_l_l_r_l_l_r', '0_l_l_r_l_l', '0_l_l_r_l_r', '0_l_l_r_l', '0_l_l_r_r_l_l_l', '0_l_l_r_r_l_l_r_l', '0_l_l_r_r_l_l_r_r_l', '0_l_l_r_r_l_l_r_r_r', '0_l_l_r_r_l_l_r_r', '0_l_l_r_r_l_l_r', '0_l_l_r_r_l_l', '0_l_l_r_r_l_r_l', '0_l_l_r_r_l_r_r', '0_l_l_r_r_l_r', '0_l_l_r_r_l', '0_l_l_r_r_r', '0_l_l_r_r', '0_l_l_r', '0_l_l', '0_l_r_l_l_l_l', '0_l_r_l_l_l_r', '0_l_r_l_l_l', '0_l_r_l_l_r', '0_l_r_l_l', '0_l_r_l_r_l_l', '0_l_r_l_r_l_r', '0_l_r_l_r_l', '0_l_r_l_r_r', '0_l_r_l_r', '0_l_r_l', '0_l_r_r', '0_l_r', '0_l', '0_r_l_l_l', '0_r_l_l_r_l_l', '0_r_l_l_r_l_r', '0_r_l_l_r_l', '0_r_l_l_r_r_l', '0_r_l_l_r_r_r_l', '0_r_l_l_r_r_r_r_l', '0_r_l_l_r_r_r_r_r', '0_r_l_l_r_r_r_r', '0_r_l_l_r_r_r', '0_r_l_l_r_r', '0_r_l_l_r', '0_r_l_l', '0_r_l_r_l_l', '0_r_l_r_l_r', '0_r_l_r_l', '0_r_l_r_r', '0_r_l_r', '0_r_l', '0_r_r_l_l_l', '0_r_r_l_l_r', '0_r_r_l_l', '0_r_r_l_r_l', '0_r_r_l_r_r_l', '0_r_r_l_r_r_r', '0_r_r_l_r_r', '0_r_r_l_r', '0_r_r_l', '0_r_r_r', '0_r_r', '0_r', '0']
+ MT edges: [('0_l_l_l_l_l_r', '0_l_l_l_l_l_r_l'), ('0_l_l_l_l_l_r', '0_l_l_l_l_l_r_r'), ('0_l_l_l_l_l', '0_l_l_l_l_l_l'), ('0_l_l_l_l_l', '0_l_l_l_l_l_r'), ('0_l_l_l_l', '0_l_l_l_l_l'), ('0_l_l_l_l', '0_l_l_l_l_r'), ('0_l_l_l_r_r_l', '0_l_l_l_r_r_l_l'), ('0_l_l_l_r_r_l', '0_l_l_l_r_r_l_r'), ('0_l_l_l_r_r_r_l', '0_l_l_l_r_r_r_l_l'), ('0_l_l_l_r_r_r_l', '0_l_l_l_r_r_r_l_r'), ('0_l_l_l_r_r_r', '0_l_l_l_r_r_r_l'), ('0_l_l_l_r_r_r', '0_l_l_l_r_r_r_r'), ('0_l_l_l_r_r', '0_l_l_l_r_r_l'), ('0_l_l_l_r_r', '0_l_l_l_r_r_r'), ('0_l_l_l_r', '0_l_l_l_r_l'), ('0_l_l_l_r', '0_l_l_l_r_r'), ('0_l_l_l', '0_l_l_l_l'), ('0_l_l_l', '0_l_l_l_r'), ('0_l_l_r_l_l_l', '0_l_l_r_l_l_l_l'), ('0_l_l_r_l_l_l', '0_l_l_r_l_l_l_r'), ('0_l_l_r_l_l_r_r', '0_l_l_r_l_l_r_r_l'), ('0_l_l_r_l_l_r_r', '0_l_l_r_l_l_r_r_r'), ('0_l_l_r_l_l_r', '0_l_l_r_l_l_r_l'), ('0_l_l_r_l_l_r', '0_l_l_r_l_l_r_r'), ('0_l_l_r_l_l', '0_l_l_r_l_l_l'), ('0_l_l_r_l_l', '0_l_l_r_l_l_r'), ('0_l_l_r_l', '0_l_l_r_l_l'), ('0_l_l_r_l', '0_l_l_r_l_r'), ('0_l_l_r_r_l_l_r_r', '0_l_l_r_r_l_l_r_r_l'), ('0_l_l_r_r_l_l_r_r', '0_l_l_r_r_l_l_r_r_r'), ('0_l_l_r_r_l_l_r', '0_l_l_r_r_l_l_r_l'), ('0_l_l_r_r_l_l_r', '0_l_l_r_r_l_l_r_r'), ('0_l_l_r_r_l_l', '0_l_l_r_r_l_l_l'), ('0_l_l_r_r_l_l', '0_l_l_r_r_l_l_r'), ('0_l_l_r_r_l_r', '0_l_l_r_r_l_r_l'), ('0_l_l_r_r_l_r', '0_l_l_r_r_l_r_r'), ('0_l_l_r_r_l', '0_l_l_r_r_l_l'), ('0_l_l_r_r_l', '0_l_l_r_r_l_r'), ('0_l_l_r_r', '0_l_l_r_r_l'), ('0_l_l_r_r', '0_l_l_r_r_r'), ('0_l_l_r', '0_l_l_r_l'), ('0_l_l_r', '0_l_l_r_r'), ('0_l_l', '0_l_l_l'), ('0_l_l', '0_l_l_r'), ('0_l_r_l_l_l', '0_l_r_l_l_l_l'), ('0_l_r_l_l_l', '0_l_r_l_l_l_r'), ('0_l_r_l_l', '0_l_r_l_l_l'), ('0_l_r_l_l', '0_l_r_l_l_r'), ('0_l_r_l_r_l', '0_l_r_l_r_l_l'), ('0_l_r_l_r_l', '0_l_r_l_r_l_r'), ('0_l_r_l_r', '0_l_r_l_r_l'), ('0_l_r_l_r', '0_l_r_l_r_r'), ('0_l_r_l', '0_l_r_l_l'), ('0_l_r_l', '0_l_r_l_r'), ('0_l_r', '0_l_r_l'), ('0_l_r', '0_l_r_r'), ('0_l', '0_l_l'), ('0_l', '0_l_r'), ('0_r_l_l_r_l', '0_r_l_l_r_l_l'), ('0_r_l_l_r_l', '0_r_l_l_r_l_r'), ('0_r_l_l_r_r_r_r', '0_r_l_l_r_r_r_r_l'), ('0_r_l_l_r_r_r_r', '0_r_l_l_r_r_r_r_r'), ('0_r_l_l_r_r_r', '0_r_l_l_r_r_r_l'), ('0_r_l_l_r_r_r', '0_r_l_l_r_r_r_r'), ('0_r_l_l_r_r', '0_r_l_l_r_r_l'), ('0_r_l_l_r_r', '0_r_l_l_r_r_r'), ('0_r_l_l_r', '0_r_l_l_r_l'), ('0_r_l_l_r', '0_r_l_l_r_r'), ('0_r_l_l', '0_r_l_l_l'), ('0_r_l_l', '0_r_l_l_r'), ('0_r_l_r_l', '0_r_l_r_l_l'), ('0_r_l_r_l', '0_r_l_r_l_r'), ('0_r_l_r', '0_r_l_r_l'), ('0_r_l_r', '0_r_l_r_r'), ('0_r_l', '0_r_l_l'), ('0_r_l', '0_r_l_r'), ('0_r_r_l_l', '0_r_r_l_l_l'), ('0_r_r_l_l', '0_r_r_l_l_r'), ('0_r_r_l_r_r', '0_r_r_l_r_r_l'), ('0_r_r_l_r_r', '0_r_r_l_r_r_r'), ('0_r_r_l_r', '0_r_r_l_r_l'), ('0_r_r_l_r', '0_r_r_l_r_r'), ('0_r_r_l', '0_r_r_l_l'), ('0_r_r_l', '0_r_r_l_r'), ('0_r_r', '0_r_r_l'), ('0_r_r', '0_r_r_r'), ('0_r', '0_r_l'), ('0_r', '0_r_r'), ('0', '0_l'), ('0', '0_r')]
+--- 23.281001091003418 seconds ---
+Searching Metric Tree
+--- 0.07295393943786621 seconds ---
+
+SETTINGS: num of sim neighbors: 3, num of movies: 10
+RESULT: (0.04688279301745649, 0.08185591591248888, {0.10836638261706982})
+|| ------ COMPLETE ------ ||
+Total run time: 313.3729169368744 seconds.
+Amount of users: 802.
+|| ---------------------- ||
+
+Running...
+Formatting data...
+Generating graph...
+--- 2.552943468093872 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Adding rating and award information to graph...
+--- 147.78283286094666 seconds ---
+Counting TETs...
+--- 20.45427703857422 seconds ---
+Performing Logistic Evaluation on TETs...
+--- 22.6200749874115 seconds ---
+Generating histograms...
+--- 6.47285270690918 seconds ---
+Building Metric Tree
+ MT nodes: ['0_l_l_l_l_l_l', '0_l_l_l_l_l_r_l', '0_l_l_l_l_l_r_r', '0_l_l_l_l_l_r', '0_l_l_l_l_l', '0_l_l_l_l_r', '0_l_l_l_l', '0_l_l_l_r_l', '0_l_l_l_r_r_l_l', '0_l_l_l_r_r_l_r', '0_l_l_l_r_r_l', '0_l_l_l_r_r_r_l_l', '0_l_l_l_r_r_r_l_r', '0_l_l_l_r_r_r_l', '0_l_l_l_r_r_r_r', '0_l_l_l_r_r_r', '0_l_l_l_r_r', '0_l_l_l_r', '0_l_l_l', '0_l_l_r_l_l_l_l', '0_l_l_r_l_l_l_r', '0_l_l_r_l_l_l', '0_l_l_r_l_l_r_l', '0_l_l_r_l_l_r_r_l', '0_l_l_r_l_l_r_r_r', '0_l_l_r_l_l_r_r', '0_l_l_r_l_l_r', '0_l_l_r_l_l', '0_l_l_r_l_r', '0_l_l_r_l', '0_l_l_r_r_l_l_l', '0_l_l_r_r_l_l_r_l', '0_l_l_r_r_l_l_r_r_l', '0_l_l_r_r_l_l_r_r_r', '0_l_l_r_r_l_l_r_r', '0_l_l_r_r_l_l_r', '0_l_l_r_r_l_l', '0_l_l_r_r_l_r_l', '0_l_l_r_r_l_r_r', '0_l_l_r_r_l_r', '0_l_l_r_r_l', '0_l_l_r_r_r', '0_l_l_r_r', '0_l_l_r', '0_l_l', '0_l_r_l_l_l_l', '0_l_r_l_l_l_r', '0_l_r_l_l_l', '0_l_r_l_l_r', '0_l_r_l_l', '0_l_r_l_r_l_l', '0_l_r_l_r_l_r', '0_l_r_l_r_l', '0_l_r_l_r_r', '0_l_r_l_r', '0_l_r_l', '0_l_r_r', '0_l_r', '0_l', '0_r_l_l_l', '0_r_l_l_r_l_l', '0_r_l_l_r_l_r', '0_r_l_l_r_l', '0_r_l_l_r_r_l', '0_r_l_l_r_r_r_l', '0_r_l_l_r_r_r_r_l', '0_r_l_l_r_r_r_r_r', '0_r_l_l_r_r_r_r', '0_r_l_l_r_r_r', '0_r_l_l_r_r', '0_r_l_l_r', '0_r_l_l', '0_r_l_r_l_l', '0_r_l_r_l_r', '0_r_l_r_l', '0_r_l_r_r', '0_r_l_r', '0_r_l', '0_r_r_l_l_l', '0_r_r_l_l_r', '0_r_r_l_l', '0_r_r_l_r_l', '0_r_r_l_r_r_l', '0_r_r_l_r_r_r', '0_r_r_l_r_r', '0_r_r_l_r', '0_r_r_l', '0_r_r_r', '0_r_r', '0_r', '0']
+ MT edges: [('0_l_l_l_l_l_r', '0_l_l_l_l_l_r_l'), ('0_l_l_l_l_l_r', '0_l_l_l_l_l_r_r'), ('0_l_l_l_l_l', '0_l_l_l_l_l_l'), ('0_l_l_l_l_l', '0_l_l_l_l_l_r'), ('0_l_l_l_l', '0_l_l_l_l_l'), ('0_l_l_l_l', '0_l_l_l_l_r'), ('0_l_l_l_r_r_l', '0_l_l_l_r_r_l_l'), ('0_l_l_l_r_r_l', '0_l_l_l_r_r_l_r'), ('0_l_l_l_r_r_r_l', '0_l_l_l_r_r_r_l_l'), ('0_l_l_l_r_r_r_l', '0_l_l_l_r_r_r_l_r'), ('0_l_l_l_r_r_r', '0_l_l_l_r_r_r_l'), ('0_l_l_l_r_r_r', '0_l_l_l_r_r_r_r'), ('0_l_l_l_r_r', '0_l_l_l_r_r_l'), ('0_l_l_l_r_r', '0_l_l_l_r_r_r'), ('0_l_l_l_r', '0_l_l_l_r_l'), ('0_l_l_l_r', '0_l_l_l_r_r'), ('0_l_l_l', '0_l_l_l_l'), ('0_l_l_l', '0_l_l_l_r'), ('0_l_l_r_l_l_l', '0_l_l_r_l_l_l_l'), ('0_l_l_r_l_l_l', '0_l_l_r_l_l_l_r'), ('0_l_l_r_l_l_r_r', '0_l_l_r_l_l_r_r_l'), ('0_l_l_r_l_l_r_r', '0_l_l_r_l_l_r_r_r'), ('0_l_l_r_l_l_r', '0_l_l_r_l_l_r_l'), ('0_l_l_r_l_l_r', '0_l_l_r_l_l_r_r'), ('0_l_l_r_l_l', '0_l_l_r_l_l_l'), ('0_l_l_r_l_l', '0_l_l_r_l_l_r'), ('0_l_l_r_l', '0_l_l_r_l_l'), ('0_l_l_r_l', '0_l_l_r_l_r'), ('0_l_l_r_r_l_l_r_r', '0_l_l_r_r_l_l_r_r_l'), ('0_l_l_r_r_l_l_r_r', '0_l_l_r_r_l_l_r_r_r'), ('0_l_l_r_r_l_l_r', '0_l_l_r_r_l_l_r_l'), ('0_l_l_r_r_l_l_r', '0_l_l_r_r_l_l_r_r'), ('0_l_l_r_r_l_l', '0_l_l_r_r_l_l_l'), ('0_l_l_r_r_l_l', '0_l_l_r_r_l_l_r'), ('0_l_l_r_r_l_r', '0_l_l_r_r_l_r_l'), ('0_l_l_r_r_l_r', '0_l_l_r_r_l_r_r'), ('0_l_l_r_r_l', '0_l_l_r_r_l_l'), ('0_l_l_r_r_l', '0_l_l_r_r_l_r'), ('0_l_l_r_r', '0_l_l_r_r_l'), ('0_l_l_r_r', '0_l_l_r_r_r'), ('0_l_l_r', '0_l_l_r_l'), ('0_l_l_r', '0_l_l_r_r'), ('0_l_l', '0_l_l_l'), ('0_l_l', '0_l_l_r'), ('0_l_r_l_l_l', '0_l_r_l_l_l_l'), ('0_l_r_l_l_l', '0_l_r_l_l_l_r'), ('0_l_r_l_l', '0_l_r_l_l_l'), ('0_l_r_l_l', '0_l_r_l_l_r'), ('0_l_r_l_r_l', '0_l_r_l_r_l_l'), ('0_l_r_l_r_l', '0_l_r_l_r_l_r'), ('0_l_r_l_r', '0_l_r_l_r_l'), ('0_l_r_l_r', '0_l_r_l_r_r'), ('0_l_r_l', '0_l_r_l_l'), ('0_l_r_l', '0_l_r_l_r'), ('0_l_r', '0_l_r_l'), ('0_l_r', '0_l_r_r'), ('0_l', '0_l_l'), ('0_l', '0_l_r'), ('0_r_l_l_r_l', '0_r_l_l_r_l_l'), ('0_r_l_l_r_l', '0_r_l_l_r_l_r'), ('0_r_l_l_r_r_r_r', '0_r_l_l_r_r_r_r_l'), ('0_r_l_l_r_r_r_r', '0_r_l_l_r_r_r_r_r'), ('0_r_l_l_r_r_r', '0_r_l_l_r_r_r_l'), ('0_r_l_l_r_r_r', '0_r_l_l_r_r_r_r'), ('0_r_l_l_r_r', '0_r_l_l_r_r_l'), ('0_r_l_l_r_r', '0_r_l_l_r_r_r'), ('0_r_l_l_r', '0_r_l_l_r_l'), ('0_r_l_l_r', '0_r_l_l_r_r'), ('0_r_l_l', '0_r_l_l_l'), ('0_r_l_l', '0_r_l_l_r'), ('0_r_l_r_l', '0_r_l_r_l_l'), ('0_r_l_r_l', '0_r_l_r_l_r'), ('0_r_l_r', '0_r_l_r_l'), ('0_r_l_r', '0_r_l_r_r'), ('0_r_l', '0_r_l_l'), ('0_r_l', '0_r_l_r'), ('0_r_r_l_l', '0_r_r_l_l_l'), ('0_r_r_l_l', '0_r_r_l_l_r'), ('0_r_r_l_r_r', '0_r_r_l_r_r_l'), ('0_r_r_l_r_r', '0_r_r_l_r_r_r'), ('0_r_r_l_r', '0_r_r_l_r_l'), ('0_r_r_l_r', '0_r_r_l_r_r'), ('0_r_r_l', '0_r_r_l_l'), ('0_r_r_l', '0_r_r_l_r'), ('0_r_r', '0_r_r_l'), ('0_r_r', '0_r_r_r'), ('0_r', '0_r_l'), ('0_r', '0_r_r'), ('0', '0_l'), ('0', '0_r')]
+--- 23.366134643554688 seconds ---
+Searching Metric Tree
+--- 4.247838973999023 seconds ---
+
+SETTINGS: num of sim neighbors: 3, num of movies: 10
+RESULT: (0.04688279301745649, 0.3104738154613466, {0.10836638261706982})
+|| ------ COMPLETE ------ ||
+Total run time: 311.42717361450195 seconds.
+Amount of users: 802.
+|| ---------------------- ||
+
+Running...
+Formatting data...
+Generating graph...
+--- 2.5227622985839844 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Adding rating and award information to graph...
+--- 153.02674269676208 seconds ---
+Counting TETs...
+--- 20.83449363708496 seconds ---
+Performing Logistic Evaluation on TETs...
+--- 22.872804403305054 seconds ---
+Generating histograms...
+--- 6.645488023757935 seconds ---
+Building Metric Tree
+ MT nodes: ['0_l_l_l_l_l_l', '0_l_l_l_l_l_r_l', '0_l_l_l_l_l_r_r', '0_l_l_l_l_l_r', '0_l_l_l_l_l', '0_l_l_l_l_r', '0_l_l_l_l', '0_l_l_l_r_l', '0_l_l_l_r_r_l_l', '0_l_l_l_r_r_l_r', '0_l_l_l_r_r_l', '0_l_l_l_r_r_r_l_l', '0_l_l_l_r_r_r_l_r', '0_l_l_l_r_r_r_l', '0_l_l_l_r_r_r_r', '0_l_l_l_r_r_r', '0_l_l_l_r_r', '0_l_l_l_r', '0_l_l_l', '0_l_l_r_l_l_l_l', '0_l_l_r_l_l_l_r', '0_l_l_r_l_l_l', '0_l_l_r_l_l_r_l', '0_l_l_r_l_l_r_r_l', '0_l_l_r_l_l_r_r_r', '0_l_l_r_l_l_r_r', '0_l_l_r_l_l_r', '0_l_l_r_l_l', '0_l_l_r_l_r', '0_l_l_r_l', '0_l_l_r_r_l_l_l', '0_l_l_r_r_l_l_r_l', '0_l_l_r_r_l_l_r_r_l', '0_l_l_r_r_l_l_r_r_r', '0_l_l_r_r_l_l_r_r', '0_l_l_r_r_l_l_r', '0_l_l_r_r_l_l', '0_l_l_r_r_l_r_l', '0_l_l_r_r_l_r_r', '0_l_l_r_r_l_r', '0_l_l_r_r_l', '0_l_l_r_r_r', '0_l_l_r_r', '0_l_l_r', '0_l_l', '0_l_r_l_l_l_l', '0_l_r_l_l_l_r', '0_l_r_l_l_l', '0_l_r_l_l_r', '0_l_r_l_l', '0_l_r_l_r_l_l', '0_l_r_l_r_l_r', '0_l_r_l_r_l', '0_l_r_l_r_r', '0_l_r_l_r', '0_l_r_l', '0_l_r_r', '0_l_r', '0_l', '0_r_l_l_l', '0_r_l_l_r_l_l', '0_r_l_l_r_l_r', '0_r_l_l_r_l', '0_r_l_l_r_r_l', '0_r_l_l_r_r_r_l', '0_r_l_l_r_r_r_r_l', '0_r_l_l_r_r_r_r_r', '0_r_l_l_r_r_r_r', '0_r_l_l_r_r_r', '0_r_l_l_r_r', '0_r_l_l_r', '0_r_l_l', '0_r_l_r_l_l', '0_r_l_r_l_r', '0_r_l_r_l', '0_r_l_r_r', '0_r_l_r', '0_r_l', '0_r_r_l_l_l', '0_r_r_l_l_r', '0_r_r_l_l', '0_r_r_l_r_l', '0_r_r_l_r_r_l', '0_r_r_l_r_r_r', '0_r_r_l_r_r', '0_r_r_l_r', '0_r_r_l', '0_r_r_r', '0_r_r', '0_r', '0']
+ MT edges: [('0_l_l_l_l_l_r', '0_l_l_l_l_l_r_l'), ('0_l_l_l_l_l_r', '0_l_l_l_l_l_r_r'), ('0_l_l_l_l_l', '0_l_l_l_l_l_l'), ('0_l_l_l_l_l', '0_l_l_l_l_l_r'), ('0_l_l_l_l', '0_l_l_l_l_l'), ('0_l_l_l_l', '0_l_l_l_l_r'), ('0_l_l_l_r_r_l', '0_l_l_l_r_r_l_l'), ('0_l_l_l_r_r_l', '0_l_l_l_r_r_l_r'), ('0_l_l_l_r_r_r_l', '0_l_l_l_r_r_r_l_l'), ('0_l_l_l_r_r_r_l', '0_l_l_l_r_r_r_l_r'), ('0_l_l_l_r_r_r', '0_l_l_l_r_r_r_l'), ('0_l_l_l_r_r_r', '0_l_l_l_r_r_r_r'), ('0_l_l_l_r_r', '0_l_l_l_r_r_l'), ('0_l_l_l_r_r', '0_l_l_l_r_r_r'), ('0_l_l_l_r', '0_l_l_l_r_l'), ('0_l_l_l_r', '0_l_l_l_r_r'), ('0_l_l_l', '0_l_l_l_l'), ('0_l_l_l', '0_l_l_l_r'), ('0_l_l_r_l_l_l', '0_l_l_r_l_l_l_l'), ('0_l_l_r_l_l_l', '0_l_l_r_l_l_l_r'), ('0_l_l_r_l_l_r_r', '0_l_l_r_l_l_r_r_l'), ('0_l_l_r_l_l_r_r', '0_l_l_r_l_l_r_r_r'), ('0_l_l_r_l_l_r', '0_l_l_r_l_l_r_l'), ('0_l_l_r_l_l_r', '0_l_l_r_l_l_r_r'), ('0_l_l_r_l_l', '0_l_l_r_l_l_l'), ('0_l_l_r_l_l', '0_l_l_r_l_l_r'), ('0_l_l_r_l', '0_l_l_r_l_l'), ('0_l_l_r_l', '0_l_l_r_l_r'), ('0_l_l_r_r_l_l_r_r', '0_l_l_r_r_l_l_r_r_l'), ('0_l_l_r_r_l_l_r_r', '0_l_l_r_r_l_l_r_r_r'), ('0_l_l_r_r_l_l_r', '0_l_l_r_r_l_l_r_l'), ('0_l_l_r_r_l_l_r', '0_l_l_r_r_l_l_r_r'), ('0_l_l_r_r_l_l', '0_l_l_r_r_l_l_l'), ('0_l_l_r_r_l_l', '0_l_l_r_r_l_l_r'), ('0_l_l_r_r_l_r', '0_l_l_r_r_l_r_l'), ('0_l_l_r_r_l_r', '0_l_l_r_r_l_r_r'), ('0_l_l_r_r_l', '0_l_l_r_r_l_l'), ('0_l_l_r_r_l', '0_l_l_r_r_l_r'), ('0_l_l_r_r', '0_l_l_r_r_l'), ('0_l_l_r_r', '0_l_l_r_r_r'), ('0_l_l_r', '0_l_l_r_l'), ('0_l_l_r', '0_l_l_r_r'), ('0_l_l', '0_l_l_l'), ('0_l_l', '0_l_l_r'), ('0_l_r_l_l_l', '0_l_r_l_l_l_l'), ('0_l_r_l_l_l', '0_l_r_l_l_l_r'), ('0_l_r_l_l', '0_l_r_l_l_l'), ('0_l_r_l_l', '0_l_r_l_l_r'), ('0_l_r_l_r_l', '0_l_r_l_r_l_l'), ('0_l_r_l_r_l', '0_l_r_l_r_l_r'), ('0_l_r_l_r', '0_l_r_l_r_l'), ('0_l_r_l_r', '0_l_r_l_r_r'), ('0_l_r_l', '0_l_r_l_l'), ('0_l_r_l', '0_l_r_l_r'), ('0_l_r', '0_l_r_l'), ('0_l_r', '0_l_r_r'), ('0_l', '0_l_l'), ('0_l', '0_l_r'), ('0_r_l_l_r_l', '0_r_l_l_r_l_l'), ('0_r_l_l_r_l', '0_r_l_l_r_l_r'), ('0_r_l_l_r_r_r_r', '0_r_l_l_r_r_r_r_l'), ('0_r_l_l_r_r_r_r', '0_r_l_l_r_r_r_r_r'), ('0_r_l_l_r_r_r', '0_r_l_l_r_r_r_l'), ('0_r_l_l_r_r_r', '0_r_l_l_r_r_r_r'), ('0_r_l_l_r_r', '0_r_l_l_r_r_l'), ('0_r_l_l_r_r', '0_r_l_l_r_r_r'), ('0_r_l_l_r', '0_r_l_l_r_l'), ('0_r_l_l_r', '0_r_l_l_r_r'), ('0_r_l_l', '0_r_l_l_l'), ('0_r_l_l', '0_r_l_l_r'), ('0_r_l_r_l', '0_r_l_r_l_l'), ('0_r_l_r_l', '0_r_l_r_l_r'), ('0_r_l_r', '0_r_l_r_l'), ('0_r_l_r', '0_r_l_r_r'), ('0_r_l', '0_r_l_l'), ('0_r_l', '0_r_l_r'), ('0_r_r_l_l', '0_r_r_l_l_l'), ('0_r_r_l_l', '0_r_r_l_l_r'), ('0_r_r_l_r_r', '0_r_r_l_r_r_l'), ('0_r_r_l_r_r', '0_r_r_l_r_r_r'), ('0_r_r_l_r', '0_r_r_l_r_l'), ('0_r_r_l_r', '0_r_r_l_r_r'), ('0_r_r_l', '0_r_r_l_l'), ('0_r_r_l', '0_r_r_l_r'), ('0_r_r', '0_r_r_l'), ('0_r_r', '0_r_r_r'), ('0_r', '0_r_l'), ('0_r', '0_r_r'), ('0', '0_l'), ('0', '0_r')]
+--- 24.190200328826904 seconds ---
+Searching Metric Tree
+SEEN
+{'Hustler, The (1961)': ['Drama']}
+{'Star Wars: Episode VI - Return of the Jedi (1983)': ['Action', 'Adventure', 'Romance', 'Sci-Fi', 'War']}
+{'Star Wars: Episode IV - A New Hope (1977)': ['Action', 'Adventure', 'Fantasy', 'Sci-Fi']}
+{'Saving Private Ryan (1998)': ['Action', 'Drama', 'War']}
+{'Jurassic Park (1993)': ['Action', 'Adventure', 'Sci-Fi']}
+{'Star Wars: Episode V - The Empire Strikes Back (1980)': ['Action', 'Adventure', 'Drama', 'Sci-Fi', 'War']}
+{'Raiders of the Lost Ark (1981)': ['Action', 'Adventure']}
+{'E.T. the Extra-Terrestrial (1982)': ["Children's", 'Drama', 'Fantasy', 'Sci-Fi']}
+{'King Kong (1933)': ['Action', 'Adventure', 'Horror']}
+{'Jaws (1975)': ['Action', 'Horror']}
+{'Predator (1987)': ['Action', 'Sci-Fi', 'Thriller']}
+{'Good, The Bad and The Ugly, The (1966)': ['Action', 'Western']}
+{'Run Lola Run (Lola rennt) (1998)': ['Action', 'Crime', 'Romance']}
+{'Goldfinger (1964)': ['Action']}
+PREDICTION
+{'Highlander (1986)': ['Action', 'Adventure']}
+{'Matrix, The (1999)': ['Action', 'Sci-Fi', 'Thriller']}
+{'I Saw What You Did (1965)': ['Thriller']}
+{'Fugitive, The (1993)': ['Action', 'Thriller']}
+{'Lethal Weapon (1987)': ['Action', 'Comedy', 'Crime', 'Drama']}
+{'Star Wars: Episode VI - Return of the Jedi (1983)': ['Action', 'Adventure', 'Romance', 'Sci-Fi', 'War']}
+{'Full Metal Jacket (1987)': ['Action', 'Drama', 'War']}
+{'Total Recall (1990)': ['Action', 'Adventure', 'Sci-Fi', 'Thriller']}
+{'Hunt for Red October, The (1990)': ['Action', 'Thriller']}
+{'Rock, The (1996)': ['Action', 'Adventure', 'Thriller']}
+--- 10.575455904006958 seconds ---
+
+SETTINGS: num of sim neighbors: 3, num of movies: 10
+RESULT: (0.04688279301745649, 0.3104738154613466, {0.10836638261706982})
+|| ------ COMPLETE ------ ||
+Total run time: 325.60174918174744 seconds.
+Amount of users: 802.
+|| ---------------------- ||
+
