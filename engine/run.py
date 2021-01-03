@@ -102,8 +102,15 @@ def run():
     #
     print('Searching Metric Tree', file=f)
     start_time = time.time()
-    # target_user = n1    # test_tet[0]
-    # mts_res = mt_search(tet, mts, target_user, mt_search_k, speci_test)
+    target_user = tet[3]    # test_tet[0]
+    mts_res = mt_search(mts, target_user, mt_search_k, speci_test)
+    predicted_movies, sim_test = get_movies(target_user, mts_res)
+    seen_movies = get_movies_juujiro(target_user)
+    print('SEEN',file=f)
+    [print(get_movies_from_id(m),file=f) for m in seen_movies]
+    print('PREDICTION',file=f)
+    [print(get_movies_from_id(m[0]),file=f) for m in predicted_movies[:k_movies]]
+
     # mts_res2 = mt_search(tet, mts, n2, mt_search_k, speci_test)
     # username = [x for x,y in target_user.graph.nodes(data=True) if y.get('root')]
     print("--- %s seconds ---\n" % (time.time() - start_time), file=f)
@@ -122,7 +129,7 @@ def run():
     #     _res_id = [x for x, y in res.graph.nodes(data=True) if y.get('root')]
     #     print(f'USER ID: {_res_id[0]}, HISTOGRAM: {res.ht.nodes(data=True)}')
     # print('|| ---------------------- ||\n')
-
+    #get_movies_from_id()
     print('|| ------ COMPLETE ------ ||', file=f)
     print('Total run time: %s seconds.' % (time.time() - start_time_total), file=f)
     print('Amount of users: %s.' % len(tet), file=f)
