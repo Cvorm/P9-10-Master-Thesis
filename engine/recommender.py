@@ -268,7 +268,13 @@ def get_movies(user_hist, other_users_hist):
     no_duplicates = [list(v) for v in dict(movies).items()]
     mu = get_movies_in_user(user_hist)
     no_mas = [(x,y) for x,y in no_duplicates if x not in mu]
-    sim_tmp = (len(no_duplicates) - (len(no_mas))) / len(no_duplicates)
+    tmp_val = len(no_duplicates) - len(no_mas)
+    if tmp_val == 0:
+        sim_tmp = 1
+    elif len(no_duplicates) == 0:
+        sim_tmp = 0
+    else:
+        sim_tmp = tmp_val / len(no_duplicates)  # if len(no_duplicates) != 0 else
     # print(f' no duplicates: {len(no_duplicates)}, no_mas : {len(no_mas)}')
     # mean = get_user_mean_value(user_hist)
     # sort_movies = sorted(no_duplicates, key=lambda e: movie_dist(e[1], mean))
