@@ -919,3 +919,58 @@ Total run time: 325.60174918174744 seconds.
 Amount of users: 802.
 || ---------------------- ||
 
+Running...
+Formatting data...
+Generating graph...
+--- 2.41446852684021 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Adding rating and award information to graph...
+--- 124.9842414855957 seconds ---
+Counting TETs...
+--- 17.755664825439453 seconds ---
+Performing Logistic Evaluation on TETs...
+--- 18.874897718429565 seconds ---
+Generating histograms...
+--- 5.884841203689575 seconds ---
+Building Metric Tree
+ MT nodes: ['0_l_l_l_l', '0_l_l_l_r', '0_l_l_l', '0_l_l_r_l_l_l', '0_l_l_r_l_l_r_l', '0_l_l_r_l_l_r_r', '0_l_l_r_l_l_r', '0_l_l_r_l_l', '0_l_l_r_l_r', '0_l_l_r_l', '0_l_l_r_r', '0_l_l_r', '0_l_l', '0_l_r_l', '0_l_r_r_l', '0_l_r_r_r', '0_l_r_r', '0_l_r', '0_l', '0_r_l_l_l', '0_r_l_l_r_l', '0_r_l_l_r_r_l_l_l_l_l', '0_r_l_l_r_r_l_l_l_l_r', '0_r_l_l_r_r_l_l_l_l', '0_r_l_l_r_r_l_l_l_r', '0_r_l_l_r_r_l_l_l', '0_r_l_l_r_r_l_l_r', '0_r_l_l_r_r_l_l', '0_r_l_l_r_r_l_r', '0_r_l_l_r_r_l', '0_r_l_l_r_r_r', '0_r_l_l_r_r', '0_r_l_l_r', '0_r_l_l', '0_r_l_r_l_l', '0_r_l_r_l_r_l', '0_r_l_r_l_r_r_l_l', '0_r_l_r_l_r_r_l_r', '0_r_l_r_l_r_r_l', '0_r_l_r_l_r_r_r', '0_r_l_r_l_r_r', '0_r_l_r_l_r', '0_r_l_r_l', '0_r_l_r_r_l_l_l', '0_r_l_r_r_l_l_r', '0_r_l_r_r_l_l', '0_r_l_r_r_l_r_l', '0_r_l_r_r_l_r_r_l', '0_r_l_r_r_l_r_r_r_l', '0_r_l_r_r_l_r_r_r_r', '0_r_l_r_r_l_r_r_r', '0_r_l_r_r_l_r_r', '0_r_l_r_r_l_r', '0_r_l_r_r_l', '0_r_l_r_r_r_l_l', '0_r_l_r_r_r_l_r_l', '0_r_l_r_r_r_l_r_r_l', '0_r_l_r_r_r_l_r_r_r_l', '0_r_l_r_r_r_l_r_r_r_r', '0_r_l_r_r_r_l_r_r_r', '0_r_l_r_r_r_l_r_r', '0_r_l_r_r_r_l_r', '0_r_l_r_r_r_l', '0_r_l_r_r_r_r_l', '0_r_l_r_r_r_r_r', '0_r_l_r_r_r_r', '0_r_l_r_r_r', '0_r_l_r_r', '0_r_l_r', '0_r_l', '0_r_r_l_l_l', '0_r_r_l_l_r_l', '0_r_r_l_l_r_r', '0_r_r_l_l_r', '0_r_r_l_l', '0_r_r_l_r_l', '0_r_r_l_r_r_l', '0_r_r_l_r_r_r', '0_r_r_l_r_r', '0_r_r_l_r', '0_r_r_l', '0_r_r_r', '0_r_r', '0_r', '0']
+ MT edges: [('0_l_l_l', '0_l_l_l_l'), ('0_l_l_l', '0_l_l_l_r'), ('0_l_l_r_l_l_r', '0_l_l_r_l_l_r_l'), ('0_l_l_r_l_l_r', '0_l_l_r_l_l_r_r'), ('0_l_l_r_l_l', '0_l_l_r_l_l_l'), ('0_l_l_r_l_l', '0_l_l_r_l_l_r'), ('0_l_l_r_l', '0_l_l_r_l_l'), ('0_l_l_r_l', '0_l_l_r_l_r'), ('0_l_l_r', '0_l_l_r_l'), ('0_l_l_r', '0_l_l_r_r'), ('0_l_l', '0_l_l_l'), ('0_l_l', '0_l_l_r'), ('0_l_r_r', '0_l_r_r_l'), ('0_l_r_r', '0_l_r_r_r'), ('0_l_r', '0_l_r_l'), ('0_l_r', '0_l_r_r'), ('0_l', '0_l_l'), ('0_l', '0_l_r'), ('0_r_l_l_r_r_l_l_l_l', '0_r_l_l_r_r_l_l_l_l_l'), ('0_r_l_l_r_r_l_l_l_l', '0_r_l_l_r_r_l_l_l_l_r'), ('0_r_l_l_r_r_l_l_l', '0_r_l_l_r_r_l_l_l_l'), ('0_r_l_l_r_r_l_l_l', '0_r_l_l_r_r_l_l_l_r'), ('0_r_l_l_r_r_l_l', '0_r_l_l_r_r_l_l_l'), ('0_r_l_l_r_r_l_l', '0_r_l_l_r_r_l_l_r'), ('0_r_l_l_r_r_l', '0_r_l_l_r_r_l_l'), ('0_r_l_l_r_r_l', '0_r_l_l_r_r_l_r'), ('0_r_l_l_r_r', '0_r_l_l_r_r_l'), ('0_r_l_l_r_r', '0_r_l_l_r_r_r'), ('0_r_l_l_r', '0_r_l_l_r_l'), ('0_r_l_l_r', '0_r_l_l_r_r'), ('0_r_l_l', '0_r_l_l_l'), ('0_r_l_l', '0_r_l_l_r'), ('0_r_l_r_l_r_r_l', '0_r_l_r_l_r_r_l_l'), ('0_r_l_r_l_r_r_l', '0_r_l_r_l_r_r_l_r'), ('0_r_l_r_l_r_r', '0_r_l_r_l_r_r_l'), ('0_r_l_r_l_r_r', '0_r_l_r_l_r_r_r'), ('0_r_l_r_l_r', '0_r_l_r_l_r_l'), ('0_r_l_r_l_r', '0_r_l_r_l_r_r'), ('0_r_l_r_l', '0_r_l_r_l_l'), ('0_r_l_r_l', '0_r_l_r_l_r'), ('0_r_l_r_r_l_l', '0_r_l_r_r_l_l_l'), ('0_r_l_r_r_l_l', '0_r_l_r_r_l_l_r'), ('0_r_l_r_r_l_r_r_r', '0_r_l_r_r_l_r_r_r_l'), ('0_r_l_r_r_l_r_r_r', '0_r_l_r_r_l_r_r_r_r'), ('0_r_l_r_r_l_r_r', '0_r_l_r_r_l_r_r_l'), ('0_r_l_r_r_l_r_r', '0_r_l_r_r_l_r_r_r'), ('0_r_l_r_r_l_r', '0_r_l_r_r_l_r_l'), ('0_r_l_r_r_l_r', '0_r_l_r_r_l_r_r'), ('0_r_l_r_r_l', '0_r_l_r_r_l_l'), ('0_r_l_r_r_l', '0_r_l_r_r_l_r'), ('0_r_l_r_r_r_l_r_r_r', '0_r_l_r_r_r_l_r_r_r_l'), ('0_r_l_r_r_r_l_r_r_r', '0_r_l_r_r_r_l_r_r_r_r'), ('0_r_l_r_r_r_l_r_r', '0_r_l_r_r_r_l_r_r_l'), ('0_r_l_r_r_r_l_r_r', '0_r_l_r_r_r_l_r_r_r'), ('0_r_l_r_r_r_l_r', '0_r_l_r_r_r_l_r_l'), ('0_r_l_r_r_r_l_r', '0_r_l_r_r_r_l_r_r'), ('0_r_l_r_r_r_l', '0_r_l_r_r_r_l_l'), ('0_r_l_r_r_r_l', '0_r_l_r_r_r_l_r'), ('0_r_l_r_r_r_r', '0_r_l_r_r_r_r_l'), ('0_r_l_r_r_r_r', '0_r_l_r_r_r_r_r'), ('0_r_l_r_r_r', '0_r_l_r_r_r_l'), ('0_r_l_r_r_r', '0_r_l_r_r_r_r'), ('0_r_l_r_r', '0_r_l_r_r_l'), ('0_r_l_r_r', '0_r_l_r_r_r'), ('0_r_l_r', '0_r_l_r_l'), ('0_r_l_r', '0_r_l_r_r'), ('0_r_l', '0_r_l_l'), ('0_r_l', '0_r_l_r'), ('0_r_r_l_l_r', '0_r_r_l_l_r_l'), ('0_r_r_l_l_r', '0_r_r_l_l_r_r'), ('0_r_r_l_l', '0_r_r_l_l_l'), ('0_r_r_l_l', '0_r_r_l_l_r'), ('0_r_r_l_r_r', '0_r_r_l_r_r_l'), ('0_r_r_l_r_r', '0_r_r_l_r_r_r'), ('0_r_r_l_r', '0_r_r_l_r_l'), ('0_r_r_l_r', '0_r_r_l_r_r'), ('0_r_r_l', '0_r_r_l_l'), ('0_r_r_l', '0_r_r_l_r'), ('0_r_r', '0_r_r_l'), ('0_r_r', '0_r_r_r'), ('0_r', '0_r_l'), ('0_r', '0_r_r'), ('0', '0_l'), ('0', '0_r')]
+--- 22.41902494430542 seconds ---
+Searching Metric Tree
+SEEN
+{'Hustler, The (1961)': ['Drama']}
+{'Star Wars: Episode VI - Return of the Jedi (1983)': ['Action', 'Adventure', 'Romance', 'Sci-Fi', 'War']}
+{'Star Wars: Episode IV - A New Hope (1977)': ['Action', 'Adventure', 'Fantasy', 'Sci-Fi']}
+{'Saving Private Ryan (1998)': ['Action', 'Drama', 'War']}
+{'Jurassic Park (1993)': ['Action', 'Adventure', 'Sci-Fi']}
+{'Star Wars: Episode V - The Empire Strikes Back (1980)': ['Action', 'Adventure', 'Drama', 'Sci-Fi', 'War']}
+{'Raiders of the Lost Ark (1981)': ['Action', 'Adventure']}
+{'E.T. the Extra-Terrestrial (1982)': ["Children's", 'Drama', 'Fantasy', 'Sci-Fi']}
+{'King Kong (1933)': ['Action', 'Adventure', 'Horror']}
+{'Jaws (1975)': ['Action', 'Horror']}
+{'Predator (1987)': ['Action', 'Sci-Fi', 'Thriller']}
+{'Good, The Bad and The Ugly, The (1966)': ['Action', 'Western']}
+{'Run Lola Run (Lola rennt) (1998)': ['Action', 'Crime', 'Romance']}
+{'Goldfinger (1964)': ['Action']}
+PREDICTION
+{'Star Wars: Episode V - The Empire Strikes Back (1980)': ['Action', 'Adventure', 'Drama', 'Sci-Fi', 'War']}
+{'Highlander (1986)': ['Action', 'Adventure']}
+{'Braveheart (1995)': ['Action', 'Drama', 'War']}
+{'Matrix, The (1999)': ['Action', 'Sci-Fi', 'Thriller']}
+{'Die Hard (1988)': ['Action', 'Thriller']}
+{'I Saw What You Did (1965)': ['Thriller']}
+{'Fugitive, The (1993)': ['Action', 'Thriller']}
+{'Lethal Weapon (1987)': ['Action', 'Comedy', 'Crime', 'Drama']}
+{'Star Wars: Episode VI - Return of the Jedi (1983)': ['Action', 'Adventure', 'Romance', 'Sci-Fi', 'War']}
+{'Full Metal Jacket (1987)': ['Action', 'Drama', 'War']}
+--- 9.82080864906311 seconds ---
+
+SETTINGS: num of sim neighbors: 1, num of movies: 10
+RESULT: (0.050496453900709365, 0.3333333333333333, {0.1992228549884511})
+|| ------ COMPLETE ------ ||
+Total run time: 273.4114489555359 seconds.
+Amount of users: 705.
+|| ---------------------- ||
+
