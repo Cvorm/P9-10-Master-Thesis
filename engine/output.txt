@@ -3696,3 +3696,100 @@ Total run time: 206.56361293792725 seconds.
 Amount of users: 461.
 || ---------------------- ||
 
+Running...
+Formatting data...
+Generating graph...
+--- 2.0927212238311768 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Adding rating and award information to graph...
+--- 107.25410079956055 seconds ---
+Counting TETs...
+--- 1.5498268604278564 seconds ---
+Performing Logistic Evaluation on TETs...
+--- 5.655662298202515 seconds ---
+Generating histograms...
+--- 4.217413902282715 seconds ---
+Building Metric Tree
+ MT nodes: ['0_l_l_l_l_l', '0_l_l_l_l_r_l_l', '0_l_l_l_l_r_l_r', '0_l_l_l_l_r_l', '0_l_l_l_l_r_r_l', '0_l_l_l_l_r_r_r_l', '0_l_l_l_l_r_r_r_r_l_l', '0_l_l_l_l_r_r_r_r_l_r', '0_l_l_l_l_r_r_r_r_l', '0_l_l_l_l_r_r_r_r_r', '0_l_l_l_l_r_r_r_r', '0_l_l_l_l_r_r_r', '0_l_l_l_l_r_r', '0_l_l_l_l_r', '0_l_l_l_l', '0_l_l_l_r', '0_l_l_l', '0_l_l_r_l_l', '0_l_l_r_l_r', '0_l_l_r_l', '0_l_l_r_r_l_l', '0_l_l_r_r_l_r_l', '0_l_l_r_r_l_r_r', '0_l_l_r_r_l_r', '0_l_l_r_r_l', '0_l_l_r_r_r_l', '0_l_l_r_r_r_r_l', '0_l_l_r_r_r_r_r', '0_l_l_r_r_r_r', '0_l_l_r_r_r', '0_l_l_r_r', '0_l_l_r', '0_l_l', '0_l_r_l_l', '0_l_r_l_r', '0_l_r_l', '0_l_r_r_l_l_l', '0_l_r_r_l_l_r_l', '0_l_r_r_l_l_r_r', '0_l_r_r_l_l_r', '0_l_r_r_l_l', '0_l_r_r_l_r', '0_l_r_r_l', '0_l_r_r_r', '0_l_r_r', '0_l_r', '0_l', '0_r_l_l', '0_r_l_r_l_l', '0_r_l_r_l_r', '0_r_l_r_l', '0_r_l_r_r', '0_r_l_r', '0_r_l', '0_r_r_l', '0_r_r_r', '0_r_r', '0_r', '0']
+ MT edges: [('0_l_l_l_l_r_l', '0_l_l_l_l_r_l_l'), ('0_l_l_l_l_r_l', '0_l_l_l_l_r_l_r'), ('0_l_l_l_l_r_r_r_r_l', '0_l_l_l_l_r_r_r_r_l_l'), ('0_l_l_l_l_r_r_r_r_l', '0_l_l_l_l_r_r_r_r_l_r'), ('0_l_l_l_l_r_r_r_r', '0_l_l_l_l_r_r_r_r_l'), ('0_l_l_l_l_r_r_r_r', '0_l_l_l_l_r_r_r_r_r'), ('0_l_l_l_l_r_r_r', '0_l_l_l_l_r_r_r_l'), ('0_l_l_l_l_r_r_r', '0_l_l_l_l_r_r_r_r'), ('0_l_l_l_l_r_r', '0_l_l_l_l_r_r_l'), ('0_l_l_l_l_r_r', '0_l_l_l_l_r_r_r'), ('0_l_l_l_l_r', '0_l_l_l_l_r_l'), ('0_l_l_l_l_r', '0_l_l_l_l_r_r'), ('0_l_l_l_l', '0_l_l_l_l_l'), ('0_l_l_l_l', '0_l_l_l_l_r'), ('0_l_l_l', '0_l_l_l_l'), ('0_l_l_l', '0_l_l_l_r'), ('0_l_l_r_l', '0_l_l_r_l_l'), ('0_l_l_r_l', '0_l_l_r_l_r'), ('0_l_l_r_r_l_r', '0_l_l_r_r_l_r_l'), ('0_l_l_r_r_l_r', '0_l_l_r_r_l_r_r'), ('0_l_l_r_r_l', '0_l_l_r_r_l_l'), ('0_l_l_r_r_l', '0_l_l_r_r_l_r'), ('0_l_l_r_r_r_r', '0_l_l_r_r_r_r_l'), ('0_l_l_r_r_r_r', '0_l_l_r_r_r_r_r'), ('0_l_l_r_r_r', '0_l_l_r_r_r_l'), ('0_l_l_r_r_r', '0_l_l_r_r_r_r'), ('0_l_l_r_r', '0_l_l_r_r_l'), ('0_l_l_r_r', '0_l_l_r_r_r'), ('0_l_l_r', '0_l_l_r_l'), ('0_l_l_r', '0_l_l_r_r'), ('0_l_l', '0_l_l_l'), ('0_l_l', '0_l_l_r'), ('0_l_r_l', '0_l_r_l_l'), ('0_l_r_l', '0_l_r_l_r'), ('0_l_r_r_l_l_r', '0_l_r_r_l_l_r_l'), ('0_l_r_r_l_l_r', '0_l_r_r_l_l_r_r'), ('0_l_r_r_l_l', '0_l_r_r_l_l_l'), ('0_l_r_r_l_l', '0_l_r_r_l_l_r'), ('0_l_r_r_l', '0_l_r_r_l_l'), ('0_l_r_r_l', '0_l_r_r_l_r'), ('0_l_r_r', '0_l_r_r_l'), ('0_l_r_r', '0_l_r_r_r'), ('0_l_r', '0_l_r_l'), ('0_l_r', '0_l_r_r'), ('0_l', '0_l_l'), ('0_l', '0_l_r'), ('0_r_l_r_l', '0_r_l_r_l_l'), ('0_r_l_r_l', '0_r_l_r_l_r'), ('0_r_l_r', '0_r_l_r_l'), ('0_r_l_r', '0_r_l_r_r'), ('0_r_l', '0_r_l_l'), ('0_r_l', '0_r_l_r'), ('0_r_r', '0_r_r_l'), ('0_r_r', '0_r_r_r'), ('0_r', '0_r_l'), ('0_r', '0_r_r'), ('0', '0_l'), ('0', '0_r')]
+--- 19.44307541847229 seconds ---
+Searching Metric Tree
+SEEN
+{'Fistful of Dollars, A (1964)': ['Action', 'Western']}
+{'Alien (1979)': ['Action', 'Horror', 'Sci-Fi', 'Thriller']}
+{'Die Hard (1988)': ['Action', 'Thriller']}
+{'Rocky (1976)': ['Action', 'Drama']}
+{'Thelma & Louise (1991)': ['Action', 'Drama']}
+{'Mad Max (1979)': ['Action', 'Sci-Fi']}
+{'Terminator, The (1984)': ['Action', 'Sci-Fi', 'Thriller']}
+PREDICTION
+{'Fantasia 2000 (1999)': ['Animation', "Children's", 'Musical']}
+{'Rocky Horror Picture Show, The (1975)': ['Comedy', 'Horror', 'Musical', 'Sci-Fi']}
+{'American Beauty (1999)': ['Comedy', 'Drama']}
+{'Airplane! (1980)': ['Comedy']}
+{'Chicken Run (2000)': ['Animation', "Children's", 'Comedy']}
+{'Jurassic Park (1993)': ['Action', 'Adventure', 'Sci-Fi']}
+{'Somewhere in Time (1980)': ['Drama', 'Romance']}
+{'Hard-Boiled (Lashou shentan) (1992)': ['Action', 'Crime']}
+{'Out of Sight (1998)': ['Action', 'Crime', 'Romance']}
+{'Boat, The (Das Boot) (1981)': ['Action', 'Drama', 'War']}
+--- 6.764894247055054 seconds ---
+
+SETTINGS: num of sim neighbors: 1, num of movies: 10
+RESULT: (0.1093579051206172, 0.26102898513093503, {0.361635336101261})
+|| ------ COMPLETE ------ ||
+Total run time: 210.89320302009583 seconds.
+Amount of users: 531.
+|| ---------------------- ||
+
+Running...
+Formatting data...
+Generating graph...
+--- 2.1149837970733643 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Adding rating and award information to graph...
+--- 115.07825756072998 seconds ---
+Counting TETs...
+--- 1.583982229232788 seconds ---
+Performing Logistic Evaluation on TETs...
+--- 5.764729976654053 seconds ---
+Generating histograms...
+--- 4.466545104980469 seconds ---
+Building Metric Tree
+ MT nodes: ['0_l_l_l_l_l', '0_l_l_l_l_r_l_l', '0_l_l_l_l_r_l_r', '0_l_l_l_l_r_l', '0_l_l_l_l_r_r_l', '0_l_l_l_l_r_r_r_l', '0_l_l_l_l_r_r_r_r_l_l', '0_l_l_l_l_r_r_r_r_l_r', '0_l_l_l_l_r_r_r_r_l', '0_l_l_l_l_r_r_r_r_r', '0_l_l_l_l_r_r_r_r', '0_l_l_l_l_r_r_r', '0_l_l_l_l_r_r', '0_l_l_l_l_r', '0_l_l_l_l', '0_l_l_l_r', '0_l_l_l', '0_l_l_r_l_l', '0_l_l_r_l_r', '0_l_l_r_l', '0_l_l_r_r_l_l', '0_l_l_r_r_l_r_l', '0_l_l_r_r_l_r_r', '0_l_l_r_r_l_r', '0_l_l_r_r_l', '0_l_l_r_r_r_l', '0_l_l_r_r_r_r_l', '0_l_l_r_r_r_r_r', '0_l_l_r_r_r_r', '0_l_l_r_r_r', '0_l_l_r_r', '0_l_l_r', '0_l_l', '0_l_r_l_l', '0_l_r_l_r', '0_l_r_l', '0_l_r_r_l_l_l', '0_l_r_r_l_l_r_l', '0_l_r_r_l_l_r_r', '0_l_r_r_l_l_r', '0_l_r_r_l_l', '0_l_r_r_l_r', '0_l_r_r_l', '0_l_r_r_r', '0_l_r_r', '0_l_r', '0_l', '0_r_l_l', '0_r_l_r_l_l', '0_r_l_r_l_r', '0_r_l_r_l', '0_r_l_r_r', '0_r_l_r', '0_r_l', '0_r_r_l', '0_r_r_r', '0_r_r', '0_r', '0']
+ MT edges: [('0_l_l_l_l_r_l', '0_l_l_l_l_r_l_l'), ('0_l_l_l_l_r_l', '0_l_l_l_l_r_l_r'), ('0_l_l_l_l_r_r_r_r_l', '0_l_l_l_l_r_r_r_r_l_l'), ('0_l_l_l_l_r_r_r_r_l', '0_l_l_l_l_r_r_r_r_l_r'), ('0_l_l_l_l_r_r_r_r', '0_l_l_l_l_r_r_r_r_l'), ('0_l_l_l_l_r_r_r_r', '0_l_l_l_l_r_r_r_r_r'), ('0_l_l_l_l_r_r_r', '0_l_l_l_l_r_r_r_l'), ('0_l_l_l_l_r_r_r', '0_l_l_l_l_r_r_r_r'), ('0_l_l_l_l_r_r', '0_l_l_l_l_r_r_l'), ('0_l_l_l_l_r_r', '0_l_l_l_l_r_r_r'), ('0_l_l_l_l_r', '0_l_l_l_l_r_l'), ('0_l_l_l_l_r', '0_l_l_l_l_r_r'), ('0_l_l_l_l', '0_l_l_l_l_l'), ('0_l_l_l_l', '0_l_l_l_l_r'), ('0_l_l_l', '0_l_l_l_l'), ('0_l_l_l', '0_l_l_l_r'), ('0_l_l_r_l', '0_l_l_r_l_l'), ('0_l_l_r_l', '0_l_l_r_l_r'), ('0_l_l_r_r_l_r', '0_l_l_r_r_l_r_l'), ('0_l_l_r_r_l_r', '0_l_l_r_r_l_r_r'), ('0_l_l_r_r_l', '0_l_l_r_r_l_l'), ('0_l_l_r_r_l', '0_l_l_r_r_l_r'), ('0_l_l_r_r_r_r', '0_l_l_r_r_r_r_l'), ('0_l_l_r_r_r_r', '0_l_l_r_r_r_r_r'), ('0_l_l_r_r_r', '0_l_l_r_r_r_l'), ('0_l_l_r_r_r', '0_l_l_r_r_r_r'), ('0_l_l_r_r', '0_l_l_r_r_l'), ('0_l_l_r_r', '0_l_l_r_r_r'), ('0_l_l_r', '0_l_l_r_l'), ('0_l_l_r', '0_l_l_r_r'), ('0_l_l', '0_l_l_l'), ('0_l_l', '0_l_l_r'), ('0_l_r_l', '0_l_r_l_l'), ('0_l_r_l', '0_l_r_l_r'), ('0_l_r_r_l_l_r', '0_l_r_r_l_l_r_l'), ('0_l_r_r_l_l_r', '0_l_r_r_l_l_r_r'), ('0_l_r_r_l_l', '0_l_r_r_l_l_l'), ('0_l_r_r_l_l', '0_l_r_r_l_l_r'), ('0_l_r_r_l', '0_l_r_r_l_l'), ('0_l_r_r_l', '0_l_r_r_l_r'), ('0_l_r_r', '0_l_r_r_l'), ('0_l_r_r', '0_l_r_r_r'), ('0_l_r', '0_l_r_l'), ('0_l_r', '0_l_r_r'), ('0_l', '0_l_l'), ('0_l', '0_l_r'), ('0_r_l_r_l', '0_r_l_r_l_l'), ('0_r_l_r_l', '0_r_l_r_l_r'), ('0_r_l_r', '0_r_l_r_l'), ('0_r_l_r', '0_r_l_r_r'), ('0_r_l', '0_r_l_l'), ('0_r_l', '0_r_l_r'), ('0_r_r', '0_r_r_l'), ('0_r_r', '0_r_r_r'), ('0_r', '0_r_l'), ('0_r', '0_r_r'), ('0', '0_l'), ('0', '0_r')]
+--- 20.402785539627075 seconds ---
+Searching Metric Tree
+SEEN
+{'Fistful of Dollars, A (1964)': ['Action', 'Western']}
+{'Alien (1979)': ['Action', 'Horror', 'Sci-Fi', 'Thriller']}
+{'Die Hard (1988)': ['Action', 'Thriller']}
+{'Rocky (1976)': ['Action', 'Drama']}
+{'Thelma & Louise (1991)': ['Action', 'Drama']}
+{'Mad Max (1979)': ['Action', 'Sci-Fi']}
+{'Terminator, The (1984)': ['Action', 'Sci-Fi', 'Thriller']}
+PREDICTION
+{'Fantasia 2000 (1999)': ['Animation', "Children's", 'Musical']}
+{'Rocky Horror Picture Show, The (1975)': ['Comedy', 'Horror', 'Musical', 'Sci-Fi']}
+{'American Beauty (1999)': ['Comedy', 'Drama']}
+{'Airplane! (1980)': ['Comedy']}
+{'Chicken Run (2000)': ['Animation', "Children's", 'Comedy']}
+{'Jurassic Park (1993)': ['Action', 'Adventure', 'Sci-Fi']}
+{'Somewhere in Time (1980)': ['Drama', 'Romance']}
+{'Hard-Boiled (Lashou shentan) (1992)': ['Action', 'Crime']}
+{'Out of Sight (1998)': ['Action', 'Crime', 'Romance']}
+{'Boat, The (Das Boot) (1981)': ['Action', 'Drama', 'War']}
+{'Doctor Dolittle (1967)': ['Adventure', 'Musical']}
+--- 7.494993686676025 seconds ---
+
+SETTINGS: num of sim neighbors: 1, num of movies: 25
+RESULT: (0.10210457609339897, 0.48401156849041244, {0.361635336101261})
+|| ------ COMPLETE ------ ||
+Total run time: 221.8004653453827 seconds.
+Amount of users: 531.
+|| ---------------------- ||
+
