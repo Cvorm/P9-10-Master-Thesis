@@ -533,8 +533,7 @@ def get_rating(user, movieid):
 #     return 0
 
 
-
-def __recall(predictions, user_leftout, k, threshold=3):
+def __recall(predictions, user_leftout, k, threshold=4):
     n_rel = sum((get_rating(user_leftout, mov) >= threshold) for (mov, _) in predictions)
     n_rec_k = sum((est >= threshold) for (_, est) in predictions[:k])
     n_rel_and_rec_k = sum(((get_rating(user_leftout,mov) >= threshold) and (est >= threshold))
