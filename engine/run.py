@@ -12,18 +12,26 @@ spec2 = [["user,", "movie", "genre", "director", "rating", "award"],
         [("user", "movie"), ("movie", "director"), ("movie", "rating"), ("director", "award")],
         ["movie", "user", "director"]]
 
+spec3 = [["user", "rated_high", "rated_low", "genre_h", "genre_l"],
+         [("user", "rated_high"), ("user", "rated_low"), ("rated_high", "genre_h"), ("rated_low", "genre_l")],
+         ["user"]]
+
+spec4 = [["user", "rated_high", "rated_low", "genre_h", "genre_l"],
+         [("user", "rated_high"), ("user", "rated_low")],
+         ["user"]]
+
 inp = sys.argv
 # logistic evaluation function settings
-log_bias = -7
+log_bias = -2
 log_weight = 1
 # histogram settings
 bin_size = 10
 bin_amount = 10
 # metric tree settings
-mt_depth = int(inp[3])
+mt_depth = 7 # int(inp[3])
 bucket_max_mt = 30
-mt_search_k = int(inp[1])
-k_movies = int(inp[2])
+mt_search_k = 1 #int(inp[1])
+k_movies = 25 #int(inp[2])
 # print settings
 top = 5
 # seed
@@ -56,17 +64,22 @@ def run():
     print('Building TET specification...', file=f)
     start_time = time.time()
     speci = tet_specification(spec[0],spec[1],spec[2])
+    speci2 = tet_specification(spec3[0],spec3[1],spec3[2])
+    # tet3 = create_tet(training_graph, speci2)
+    # tet3_test = create_tet(test_graph, speci2)
     print("--- %s seconds ---" % (time.time() - start_time), file=f)
 
     print('Generating TET according to graph and specification...', file=f)
     print('Generating TET according to graph and specification...')
     start_time = time.time()
-    tet = generate_tet(training_graph, 'user', speci)
-    test_tet = generate_tet(test_graph, 'user', speci)
+    tet = create_tet(training_graph, speci2, 'user', x_test)
+    test_tet = create_tet(test_graph, speci2, 'user', x_train)
+    # tet = generate_tet(training_graph, 'user', speci)
+    # test_tet = generate_tet(test_graph, 'user', speci)
     print('Adding rating and award information to graph...')
     print('Adding rating and award information to graph...', file=f)
-    update_tet(tet,x_train)
-    update_tet(test_tet,x_test)
+    # update_tet(tet,x_train)
+    # update_tet(test_tet,x_test)
     print("--- %s seconds ---" % (time.time() - start_time), file=f)
 
     print('Counting TETs...')
@@ -82,19 +95,21 @@ def run():
     [g.logistic_eval(log_bias, log_weight) for g in tet]
     [g.logistic_eval(log_bias, log_weight) for g in test_tet]
     print("--- %s seconds ---" % (time.time() - start_time), file=f)
-
+    [print(tet[i].graph.nodes(data=True)) for i in range(top)]
     print('Generating histograms...')
     print('Generating histograms...', file=f)
     start_time = time.time()
-    speci_test = tet_specification2(spec2[0], spec2[1], spec2[2], genres)
+    # speci_test = tet_specification2(spec2[0], spec2[1], spec2[2], genres)
+    speci_test = tet_specification2(spec4[0], spec4[1], spec4[2], genres)
     [g.histogram(speci_test) for g in tet]
     [g.histogram(speci_test) for g in test_tet]
     print("--- %s seconds ---" % (time.time() - start_time), file=f)
+    [print(tet[i].ht.nodes(data=True)) for i in range(top)]
 
     print('Building Metric Tree')
     print('Building Metric Tree', file=f)
     start_time = time.time()
-    mts = mt_build(tet, mt_depth, bucket_max_mt, speci_test)
+    mts = mt_build(tet, mt_depth, bucket_max_mt, speci_test) # speci_test
     print(f' MT nodes: {mts.nodes}', file=f)
     print(f' MT edges: {mts.edges}', file=f)
     # [print(mts[i].graph.nodes(data=True)) for i in range(5)]

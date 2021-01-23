@@ -4,6 +4,57 @@ from collections import defaultdict
 import itertools
 
 
+
+def create_tet(graph, spec, root, dat):
+    roots = [n for n, info in graph.nodes(data=True) if info.get(f'{root}')]
+    complete = []
+    for r in roots:
+        ms = Multiset()  # here we instantiate our TETs
+        complete.append(__create_tet(graph, r, spec, ms, dat))
+    print(complete[0].graph.nodes(data=True))
+    return complete
+
+
+def __create_tet(graph, user, tet_spec, ms, dat):
+    nodes = [n[-1] for n in dfs_edges(tet_spec, source="user")]
+    ms.add_root(user, 1)
+    user_ratings = dat[dat['userId'] == user]
+    user_ratings_high = user_ratings[user_ratings['rating'] > 3]
+    user_ratings_low = user_ratings[user_ratings['rating'] <= 3]
+    user_movie_high = [data[data['movieId'] == m] for m in user_ratings_high['movieId'] for mm in data['movieId'] if m == mm]
+    user_movie_low = [data[data['movieId'] == m] for m in user_ratings_low['movieId'] for mm in data['movieId'] if
+                       m == mm]
+    for node in nodes:
+        if node == "rated_low":
+            for y, x in user_ratings_low.iterrows():
+                ms.add_node_test(str(x['movieId']), 1, 'rated_low', int(x['rating']))
+                ms.add_edge((user, str(x['movieId'])))
+            # for x in user_movie_low:
+            #     ms.add_node_w_count(str(x['movieId'].item()), 1, 'rated_low')
+            #     ms.add_edge((user, str(x['movieId'].item())))
+        elif node == "rated_high":
+            for y, x in user_ratings_high.iterrows():
+                ms.add_node_test(str(x['movieId']), 1, 'rated_high', int(x['rating']))
+                ms.add_edge((user, str(x['movieId'])))
+            # for x in user_movie_high:
+            #     ms.add_node_w_count(str(x['movieId'].item()), 1, 'rated_high')
+            #     ms.add_edge((user, str(x['movieId'].item())))
+        elif node == "genre_l":
+            for x in user_movie_low:
+                genres = x['genres']
+                for genre in genres:
+                    for g in genre:
+                        ms.add_node_w_count(g, 1, 'genre')
+                        ms.add_edge((str(x['movieId'].item()), g))
+        elif node == "genre_h":
+            for x in user_movie_high:
+                genres = x['genres']
+                for genre in genres:
+                    for g in genre:
+                        ms.add_node_w_count(g, 1, 'genre')
+                        ms.add_edge((str(x['movieId'].item()), g))
+    return ms
+
 def get_movies_from_id(movie_ids):
     movies = {}
     # for i in movie_ids:
@@ -61,14 +112,26 @@ def tet_specification2(nodes, edges, freevars,genres):
     g = nx.DiGraph()
     for n in nodes:
         if n in freevars:
-            g.add_node(n, type=n, free=True)
-        elif n == 'genre':
+            if n == 'rated_high':
+                g.add_node(n,type='rated_high', free=True) # movie
+            elif n == 'rated_low':
+                g.add_node(n, type='rated_high', free=True)
+            else:
+                g.add_node(n, type=n, free=True)
+        elif n == 'genre_l' or 'genre_h':
+            print('im here')
             for genre in genres:
-                g.add_node(genre,type=n,free=False)
+                print(genre)
+                g.add_node(genre,type='genre',free=False)
+        elif n == 'rated_high':
+            g.add_node(n, type='rated_high', free=False)
+        elif n == 'rated_low':
+            g.add_node(n, type='rated_low', free=False)
         else:
             g.add_node(n, type=n, free=False)
     for genre in genres:
-        g.add_edge('movie',genre)
+        g.add_edge('rated_high',genre)
+        g.add_edge('rated_low', genre)
     g.add_edges_from(edges)
     return g
 
@@ -197,7 +260,7 @@ def calc_distance(hist_tree1, hist_tree2, spec, root):
         curr_node_hist1 = hist_tree1[y]['hist']
         curr_node_hist2 = hist_tree2[y]['hist']
         num_siblings = get_siblings(spec, y) + 1
-        temp_dist = 1/num_siblings * distance_c_emd(curr_node_hist1[0], curr_node_hist2[0])
+        temp_dist = 1/num_siblings * distance_c_emd(curr_node_hist1[0], curr_node_hist2[0]) #1/num_siblings
         dist.append(temp_dist)
     res = sum(dist)
     return res
@@ -211,12 +274,15 @@ def get_movies_user(user):
     movies = {}
     for x, y in user.graph.nodes(data=True):
         if type(x) is str and x[0] == 'm':
-            for n in user.graph.neighbors(x):
-                if type(n) is str and n[0] == 'r':
-                    rat = user.graph.nodes(data=True)[n]['count']
-                    if rat >= 3.5:
-                        #movies[x] = y['value']
-                        movies[x] = rat
+            if y.get('type') == 'rated_high':
+                rat = y['rating']
+                movies[x] = rat
+            # for n in user.graph.neighbors(x):
+            #     if type(n) is str and n[0] == 'r':
+            #         rat = user.graph.nodes(data=True)[n]['count']
+            #         if rat >= 3.5:
+            #             #movies[x] = y['value']
+            #             movies[x] = rat
 
             # if interval1 <= y['value'] <= interval2:
             #     movies[x] = y['value']
@@ -253,8 +319,8 @@ def get_movies_in_user(user):
     tmp_list = []
     for x, y in user.graph.nodes(data=True):
         if type(x) is str and x[0] == 'm':
-            rat = get_rating(user, x)
-#            if rat >= 4:
+            # rat = get_rating(user, x)
+            # if rat >= 4:
             tmp_list.append(x)
     return tmp_list
 
@@ -280,6 +346,7 @@ def get_movies(user_hist, other_users_hist):
     # sort_movies = sorted(no_duplicates, key=lambda e: movie_dist(e[1], mean))
     sort_movies = sorted(no_mas, key=lambda k: k[1], reverse=True)
     res = sort_movies #[:top_k_movies]
+    print(res)
     return res, sim_tmp
 
 
@@ -362,7 +429,9 @@ def __mt_search(g, mn, h, k, leafs, spec, root):
     if mn in leafs:
         bucket = g.nodes(data=True)[mn]['bucket']
         dist = [__distance(h, b, spec, root) for b in bucket]
-        bucket_sorted = [x for _, x in sorted(zip(dist, bucket))]
+        # bucket_sorted = [x for _, x in sorted(zip(dist, bucket))]
+        bucket_sorted = [x for _, x in sorted(zip(dist, bucket), key=lambda pair: pair[0])]
+        print(bucket_sorted)
         if len(bucket_sorted) < k:
             bucket_sorted.pop(0)
             return bucket_sorted
@@ -418,26 +487,63 @@ def has_rating(user, movieid):
     return False
 
 
+# def get_rating(user, movieid):
+#     for x, y in user.graph.nodes(data=True):
+#         if type(x) is str and x == movieid:
+#             if y['type'] == 'rated_high':
+#                 print(f"rating: {y['rating']}")
+#                 return y['rating']
+#             # for n in user.graph.neighbors(x):
+#             #     if type(n) is str and n[0] == 'r':
+#             #         rat = user.graph.nodes(data=True)[n]['count']
+#             #         return rat
+#     return 0
+
+# def get_rating(user, movieid):
+#     for x, y in user.graph.nodes(data=True):
+#         if type(x) is str and x == movieid:
+#             for n in user.graph.neighbors(x):
+#                 if type(n) is str and n[0] == 'r':
+#                     rat = user.graph.nodes(data=True)[n]['count']
+#                     return rat
+#     return 0
+
 def get_rating(user, movieid):
     for x, y in user.graph.nodes(data=True):
         if type(x) is str and x == movieid:
-            for n in user.graph.neighbors(x):
-                if type(n) is str and n[0] == 'r':
-                    rat = user.graph.nodes(data=True)[n]['count']
-                    return rat
+            print('im here')
+            rat = y['rating']
+            print(rat)
+            return rat
     return 0
 
 
-def __recall(predictions, user_leftout, k, threshold=4.0):
+# def get_rating(user, movieid):
+#     root = [x for x, y in user.graph.nodes(data=True) if y.get('root')]
+#     user_ratings = rdata[rdata['userId'] == root[0]]
+#     for x, y in user_ratings.iterrows():
+#         # print(f'mooovie {y["movieId"]}, {movieid}')
+#         if str(y['movieId']) == str(movieid):
+#             print(y['rating'])
+#             rat = y['rating']
+#             return rat
+#     #     [print(f' YES {x}') for x in user_ratings['movieId'] if x == movieid] # ]
+#     # [print(f' NO {x}') for x in user_ratings.loc[x, 'movieid'] == movieid]
+#     # test2 = [x['rating'] for x in user_ratings['movieId'] if x == movieid]
+#     return 0
+
+
+
+def __recall(predictions, user_leftout, k, threshold=3):
     n_rel = sum((get_rating(user_leftout, mov) >= threshold) for (mov, _) in predictions)
     n_rec_k = sum((est >= threshold) for (_, est) in predictions[:k])
     n_rel_and_rec_k = sum(((get_rating(user_leftout,mov) >= threshold) and (est >= threshold))
                           for (mov, est) in predictions[:k])
     precisions = n_rel_and_rec_k / n_rec_k if n_rec_k != 0 else 0
     recalls = n_rel_and_rec_k / n_rel if n_rel != 0 else 0
-    # print(f'n_rel: {n_rel}, n_rec_k: {n_rec_k}, n_rel_and_rec_k: {n_rel_and_rec_k}')
-    # print(f'PRECISION :: {precisions}')
-    # print(f' RECALL ::  {recalls}')
+    print(f'n_rel: {n_rel}, n_rec_k: {n_rec_k}, n_rel_and_rec_k: {n_rel_and_rec_k}')
+    print(f'PRECISION :: {precisions}')
+    print(f' RECALL ::  {recalls}')
     return precisions, recalls
 
 
