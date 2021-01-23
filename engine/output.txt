@@ -1163,3 +1163,2536 @@ Total run time: 289.64631152153015 seconds.
 Amount of users: 706.
 || ---------------------- ||
 
+Running...
+Formatting data...
+Generating graph...
+--- 2.3285751342773438 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Adding rating and award information to graph...
+--- 130.30929279327393 seconds ---
+Counting TETs...
+--- 18.585259675979614 seconds ---
+Performing Logistic Evaluation on TETs...
+--- 20.278531789779663 seconds ---
+Generating histograms...
+--- 6.172667026519775 seconds ---
+Building Metric Tree
+ MT nodes: ['0_l_l_l_l', '0_l_l_l_r', '0_l_l_l', '0_l_l_r_l_l', '0_l_l_r_l_r_l', '0_l_l_r_l_r_r_l_l', '0_l_l_r_l_r_r_l_r_l', '0_l_l_r_l_r_r_l_r_r', '0_l_l_r_l_r_r_l_r', '0_l_l_r_l_r_r_l', '0_l_l_r_l_r_r_r', '0_l_l_r_l_r_r', '0_l_l_r_l_r', '0_l_l_r_l', '0_l_l_r_r_l', '0_l_l_r_r_r_l_l_l', '0_l_l_r_r_r_l_l_r', '0_l_l_r_r_r_l_l', '0_l_l_r_r_r_l_r', '0_l_l_r_r_r_l', '0_l_l_r_r_r_r', '0_l_l_r_r_r', '0_l_l_r_r', '0_l_l_r', '0_l_l', '0_l_r_l_l_l', '0_l_r_l_l_r', '0_l_r_l_l', '0_l_r_l_r_l_l', '0_l_r_l_r_l_r', '0_l_r_l_r_l', '0_l_r_l_r_r', '0_l_r_l_r', '0_l_r_l', '0_l_r_r_l_l', '0_l_r_r_l_r_l', '0_l_r_r_l_r_r_l', '0_l_r_r_l_r_r_r', '0_l_r_r_l_r_r', '0_l_r_r_l_r', '0_l_r_r_l', '0_l_r_r_r_l_l_l_l_l', '0_l_r_r_r_l_l_l_l_r', '0_l_r_r_r_l_l_l_l', '0_l_r_r_r_l_l_l_r', '0_l_r_r_r_l_l_l', '0_l_r_r_r_l_l_r', '0_l_r_r_r_l_l', '0_l_r_r_r_l_r', '0_l_r_r_r_l', '0_l_r_r_r_r', '0_l_r_r_r', '0_l_r_r', '0_l_r', '0_l', '0_r_l_l_l_l_l', '0_r_l_l_l_l_r', '0_r_l_l_l_l', '0_r_l_l_l_r', '0_r_l_l_l', '0_r_l_l_r_l_l_l', '0_r_l_l_r_l_l_r', '0_r_l_l_r_l_l', '0_r_l_l_r_l_r', '0_r_l_l_r_l', '0_r_l_l_r_r', '0_r_l_l_r', '0_r_l_l', '0_r_l_r_l_l', '0_r_l_r_l_r_l_l', '0_r_l_r_l_r_l_r', '0_r_l_r_l_r_l', '0_r_l_r_l_r_r', '0_r_l_r_l_r', '0_r_l_r_l', '0_r_l_r_r_l', '0_r_l_r_r_r_l_l', '0_r_l_r_r_r_l_r', '0_r_l_r_r_r_l', '0_r_l_r_r_r_r', '0_r_l_r_r_r', '0_r_l_r_r', '0_r_l_r', '0_r_l', '0_r_r_l_l', '0_r_r_l_r', '0_r_r_l', '0_r_r_r_l_l', '0_r_r_r_l_r_l', '0_r_r_r_l_r_r', '0_r_r_r_l_r', '0_r_r_r_l', '0_r_r_r_r', '0_r_r_r', '0_r_r', '0_r', '0']
+ MT edges: [('0_l_l_l', '0_l_l_l_l'), ('0_l_l_l', '0_l_l_l_r'), ('0_l_l_r_l_r_r_l_r', '0_l_l_r_l_r_r_l_r_l'), ('0_l_l_r_l_r_r_l_r', '0_l_l_r_l_r_r_l_r_r'), ('0_l_l_r_l_r_r_l', '0_l_l_r_l_r_r_l_l'), ('0_l_l_r_l_r_r_l', '0_l_l_r_l_r_r_l_r'), ('0_l_l_r_l_r_r', '0_l_l_r_l_r_r_l'), ('0_l_l_r_l_r_r', '0_l_l_r_l_r_r_r'), ('0_l_l_r_l_r', '0_l_l_r_l_r_l'), ('0_l_l_r_l_r', '0_l_l_r_l_r_r'), ('0_l_l_r_l', '0_l_l_r_l_l'), ('0_l_l_r_l', '0_l_l_r_l_r'), ('0_l_l_r_r_r_l_l', '0_l_l_r_r_r_l_l_l'), ('0_l_l_r_r_r_l_l', '0_l_l_r_r_r_l_l_r'), ('0_l_l_r_r_r_l', '0_l_l_r_r_r_l_l'), ('0_l_l_r_r_r_l', '0_l_l_r_r_r_l_r'), ('0_l_l_r_r_r', '0_l_l_r_r_r_l'), ('0_l_l_r_r_r', '0_l_l_r_r_r_r'), ('0_l_l_r_r', '0_l_l_r_r_l'), ('0_l_l_r_r', '0_l_l_r_r_r'), ('0_l_l_r', '0_l_l_r_l'), ('0_l_l_r', '0_l_l_r_r'), ('0_l_l', '0_l_l_l'), ('0_l_l', '0_l_l_r'), ('0_l_r_l_l', '0_l_r_l_l_l'), ('0_l_r_l_l', '0_l_r_l_l_r'), ('0_l_r_l_r_l', '0_l_r_l_r_l_l'), ('0_l_r_l_r_l', '0_l_r_l_r_l_r'), ('0_l_r_l_r', '0_l_r_l_r_l'), ('0_l_r_l_r', '0_l_r_l_r_r'), ('0_l_r_l', '0_l_r_l_l'), ('0_l_r_l', '0_l_r_l_r'), ('0_l_r_r_l_r_r', '0_l_r_r_l_r_r_l'), ('0_l_r_r_l_r_r', '0_l_r_r_l_r_r_r'), ('0_l_r_r_l_r', '0_l_r_r_l_r_l'), ('0_l_r_r_l_r', '0_l_r_r_l_r_r'), ('0_l_r_r_l', '0_l_r_r_l_l'), ('0_l_r_r_l', '0_l_r_r_l_r'), ('0_l_r_r_r_l_l_l_l', '0_l_r_r_r_l_l_l_l_l'), ('0_l_r_r_r_l_l_l_l', '0_l_r_r_r_l_l_l_l_r'), ('0_l_r_r_r_l_l_l', '0_l_r_r_r_l_l_l_l'), ('0_l_r_r_r_l_l_l', '0_l_r_r_r_l_l_l_r'), ('0_l_r_r_r_l_l', '0_l_r_r_r_l_l_l'), ('0_l_r_r_r_l_l', '0_l_r_r_r_l_l_r'), ('0_l_r_r_r_l', '0_l_r_r_r_l_l'), ('0_l_r_r_r_l', '0_l_r_r_r_l_r'), ('0_l_r_r_r', '0_l_r_r_r_l'), ('0_l_r_r_r', '0_l_r_r_r_r'), ('0_l_r_r', '0_l_r_r_l'), ('0_l_r_r', '0_l_r_r_r'), ('0_l_r', '0_l_r_l'), ('0_l_r', '0_l_r_r'), ('0_l', '0_l_l'), ('0_l', '0_l_r'), ('0_r_l_l_l_l', '0_r_l_l_l_l_l'), ('0_r_l_l_l_l', '0_r_l_l_l_l_r'), ('0_r_l_l_l', '0_r_l_l_l_l'), ('0_r_l_l_l', '0_r_l_l_l_r'), ('0_r_l_l_r_l_l', '0_r_l_l_r_l_l_l'), ('0_r_l_l_r_l_l', '0_r_l_l_r_l_l_r'), ('0_r_l_l_r_l', '0_r_l_l_r_l_l'), ('0_r_l_l_r_l', '0_r_l_l_r_l_r'), ('0_r_l_l_r', '0_r_l_l_r_l'), ('0_r_l_l_r', '0_r_l_l_r_r'), ('0_r_l_l', '0_r_l_l_l'), ('0_r_l_l', '0_r_l_l_r'), ('0_r_l_r_l_r_l', '0_r_l_r_l_r_l_l'), ('0_r_l_r_l_r_l', '0_r_l_r_l_r_l_r'), ('0_r_l_r_l_r', '0_r_l_r_l_r_l'), ('0_r_l_r_l_r', '0_r_l_r_l_r_r'), ('0_r_l_r_l', '0_r_l_r_l_l'), ('0_r_l_r_l', '0_r_l_r_l_r'), ('0_r_l_r_r_r_l', '0_r_l_r_r_r_l_l'), ('0_r_l_r_r_r_l', '0_r_l_r_r_r_l_r'), ('0_r_l_r_r_r', '0_r_l_r_r_r_l'), ('0_r_l_r_r_r', '0_r_l_r_r_r_r'), ('0_r_l_r_r', '0_r_l_r_r_l'), ('0_r_l_r_r', '0_r_l_r_r_r'), ('0_r_l_r', '0_r_l_r_l'), ('0_r_l_r', '0_r_l_r_r'), ('0_r_l', '0_r_l_l'), ('0_r_l', '0_r_l_r'), ('0_r_r_l', '0_r_r_l_l'), ('0_r_r_l', '0_r_r_l_r'), ('0_r_r_r_l_r', '0_r_r_r_l_r_l'), ('0_r_r_r_l_r', '0_r_r_r_l_r_r'), ('0_r_r_r_l', '0_r_r_r_l_l'), ('0_r_r_r_l', '0_r_r_r_l_r'), ('0_r_r_r', '0_r_r_r_l'), ('0_r_r_r', '0_r_r_r_r'), ('0_r_r', '0_r_r_l'), ('0_r_r', '0_r_r_r'), ('0_r', '0_r_l'), ('0_r', '0_r_r'), ('0', '0_l'), ('0', '0_r')]
+--- 21.945046424865723 seconds ---
+Searching Metric Tree
+SEEN
+{'Hustler, The (1961)': ['Drama']}
+{'Star Wars: Episode VI - Return of the Jedi (1983)': ['Action', 'Adventure', 'Romance', 'Sci-Fi', 'War']}
+{'Star Wars: Episode IV - A New Hope (1977)': ['Action', 'Adventure', 'Fantasy', 'Sci-Fi']}
+{'Saving Private Ryan (1998)': ['Action', 'Drama', 'War']}
+{'Jurassic Park (1993)': ['Action', 'Adventure', 'Sci-Fi']}
+{'Star Wars: Episode V - The Empire Strikes Back (1980)': ['Action', 'Adventure', 'Drama', 'Sci-Fi', 'War']}
+{'Raiders of the Lost Ark (1981)': ['Action', 'Adventure']}
+{'E.T. the Extra-Terrestrial (1982)': ["Children's", 'Drama', 'Fantasy', 'Sci-Fi']}
+{'King Kong (1933)': ['Action', 'Adventure', 'Horror']}
+{'Jaws (1975)': ['Action', 'Horror']}
+{'Predator (1987)': ['Action', 'Sci-Fi', 'Thriller']}
+{'Good, The Bad and The Ugly, The (1966)': ['Action', 'Western']}
+{'Run Lola Run (Lola rennt) (1998)': ['Action', 'Crime', 'Romance']}
+{'Goldfinger (1964)': ['Action']}
+PREDICTION
+{'Silence of the Lambs, The (1991)': ['Drama', 'Thriller']}
+{'Cape Fear (1991)': ['Thriller']}
+{'Sling Blade (1996)': ['Drama', 'Thriller']}
+{'Green Mile, The (1999)': ['Drama', 'Thriller']}
+{'Gattaca (1997)': ['Drama', 'Sci-Fi', 'Thriller']}
+{'Matrix, The (1999)': ['Action', 'Sci-Fi', 'Thriller']}
+{"Jacob's Ladder (1990)": ['Horror', 'Mystery', 'Thriller']}
+{'Powder (1995)': ['Drama', 'Sci-Fi']}
+{'Sixth Sense, The (1999)': ['Thriller']}
+{'Thomas Crown Affair, The (1999)': ['Action', 'Thriller']}
+--- 10.116835117340088 seconds ---
+
+SETTINGS: num of sim neighbors: 1, num of movies: 10
+RESULT: (0.04846368715083809, 0.1204953531465458, {0.21861993209771768})
+|| ------ COMPLETE ------ ||
+Total run time: 282.1976275444031 seconds.
+Amount of users: 716.
+|| ---------------------- ||
+
+Running...
+Formatting data...
+Generating graph...
+--- 2.2641429901123047 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Adding rating and award information to graph...
+--- 127.21233296394348 seconds ---
+Counting TETs...
+--- 17.987793922424316 seconds ---
+Performing Logistic Evaluation on TETs...
+--- 20.046212434768677 seconds ---
+Generating histograms...
+--- 6.004491806030273 seconds ---
+Building Metric Tree
+ MT nodes: ['0_l_l_l_l_l', '0_l_l_l_l_r_l', '0_l_l_l_l_r_r_l', '0_l_l_l_l_r_r_r', '0_l_l_l_l_r_r', '0_l_l_l_l_r', '0_l_l_l_l', '0_l_l_l_r_l_l_l_l', '0_l_l_l_r_l_l_l_r_l', '0_l_l_l_r_l_l_l_r_r_l', '0_l_l_l_r_l_l_l_r_r_r_l_l', '0_l_l_l_r_l_l_l_r_r_r_l_r', '0_l_l_l_r_l_l_l_r_r_r_l', '0_l_l_l_r_l_l_l_r_r_r_r', '0_l_l_l_r_l_l_l_r_r_r', '0_l_l_l_r_l_l_l_r_r', '0_l_l_l_r_l_l_l_r', '0_l_l_l_r_l_l_l', '0_l_l_l_r_l_l_r', '0_l_l_l_r_l_l', '0_l_l_l_r_l_r_l', '0_l_l_l_r_l_r_r', '0_l_l_l_r_l_r', '0_l_l_l_r_l', '0_l_l_l_r_r_l_l', '0_l_l_l_r_r_l_r', '0_l_l_l_r_r_l', '0_l_l_l_r_r_r', '0_l_l_l_r_r', '0_l_l_l_r', '0_l_l_l', '0_l_l_r_l_l', '0_l_l_r_l_r_l', '0_l_l_r_l_r_r_l', '0_l_l_r_l_r_r_r', '0_l_l_r_l_r_r', '0_l_l_r_l_r', '0_l_l_r_l', '0_l_l_r_r_l', '0_l_l_r_r_r_l', '0_l_l_r_r_r_r', '0_l_l_r_r_r', '0_l_l_r_r', '0_l_l_r', '0_l_l', '0_l_r_l_l_l_l', '0_l_r_l_l_l_r', '0_l_r_l_l_l', '0_l_r_l_l_r', '0_l_r_l_l', '0_l_r_l_r_l_l', '0_l_r_l_r_l_r', '0_l_r_l_r_l', '0_l_r_l_r_r', '0_l_r_l_r', '0_l_r_l', '0_l_r_r_l', '0_l_r_r_r', '0_l_r_r', '0_l_r', '0_l', '0_r_l_l_l', '0_r_l_l_r', '0_r_l_l', '0_r_l_r', '0_r_l', '0_r_r_l_l', '0_r_r_l_r', '0_r_r_l', '0_r_r_r_l', '0_r_r_r_r_l', '0_r_r_r_r_r', '0_r_r_r_r', '0_r_r_r', '0_r_r', '0_r', '0']
+ MT edges: [('0_l_l_l_l_r_r', '0_l_l_l_l_r_r_l'), ('0_l_l_l_l_r_r', '0_l_l_l_l_r_r_r'), ('0_l_l_l_l_r', '0_l_l_l_l_r_l'), ('0_l_l_l_l_r', '0_l_l_l_l_r_r'), ('0_l_l_l_l', '0_l_l_l_l_l'), ('0_l_l_l_l', '0_l_l_l_l_r'), ('0_l_l_l_r_l_l_l_r_r_r_l', '0_l_l_l_r_l_l_l_r_r_r_l_l'), ('0_l_l_l_r_l_l_l_r_r_r_l', '0_l_l_l_r_l_l_l_r_r_r_l_r'), ('0_l_l_l_r_l_l_l_r_r_r', '0_l_l_l_r_l_l_l_r_r_r_l'), ('0_l_l_l_r_l_l_l_r_r_r', '0_l_l_l_r_l_l_l_r_r_r_r'), ('0_l_l_l_r_l_l_l_r_r', '0_l_l_l_r_l_l_l_r_r_l'), ('0_l_l_l_r_l_l_l_r_r', '0_l_l_l_r_l_l_l_r_r_r'), ('0_l_l_l_r_l_l_l_r', '0_l_l_l_r_l_l_l_r_l'), ('0_l_l_l_r_l_l_l_r', '0_l_l_l_r_l_l_l_r_r'), ('0_l_l_l_r_l_l_l', '0_l_l_l_r_l_l_l_l'), ('0_l_l_l_r_l_l_l', '0_l_l_l_r_l_l_l_r'), ('0_l_l_l_r_l_l', '0_l_l_l_r_l_l_l'), ('0_l_l_l_r_l_l', '0_l_l_l_r_l_l_r'), ('0_l_l_l_r_l_r', '0_l_l_l_r_l_r_l'), ('0_l_l_l_r_l_r', '0_l_l_l_r_l_r_r'), ('0_l_l_l_r_l', '0_l_l_l_r_l_l'), ('0_l_l_l_r_l', '0_l_l_l_r_l_r'), ('0_l_l_l_r_r_l', '0_l_l_l_r_r_l_l'), ('0_l_l_l_r_r_l', '0_l_l_l_r_r_l_r'), ('0_l_l_l_r_r', '0_l_l_l_r_r_l'), ('0_l_l_l_r_r', '0_l_l_l_r_r_r'), ('0_l_l_l_r', '0_l_l_l_r_l'), ('0_l_l_l_r', '0_l_l_l_r_r'), ('0_l_l_l', '0_l_l_l_l'), ('0_l_l_l', '0_l_l_l_r'), ('0_l_l_r_l_r_r', '0_l_l_r_l_r_r_l'), ('0_l_l_r_l_r_r', '0_l_l_r_l_r_r_r'), ('0_l_l_r_l_r', '0_l_l_r_l_r_l'), ('0_l_l_r_l_r', '0_l_l_r_l_r_r'), ('0_l_l_r_l', '0_l_l_r_l_l'), ('0_l_l_r_l', '0_l_l_r_l_r'), ('0_l_l_r_r_r', '0_l_l_r_r_r_l'), ('0_l_l_r_r_r', '0_l_l_r_r_r_r'), ('0_l_l_r_r', '0_l_l_r_r_l'), ('0_l_l_r_r', '0_l_l_r_r_r'), ('0_l_l_r', '0_l_l_r_l'), ('0_l_l_r', '0_l_l_r_r'), ('0_l_l', '0_l_l_l'), ('0_l_l', '0_l_l_r'), ('0_l_r_l_l_l', '0_l_r_l_l_l_l'), ('0_l_r_l_l_l', '0_l_r_l_l_l_r'), ('0_l_r_l_l', '0_l_r_l_l_l'), ('0_l_r_l_l', '0_l_r_l_l_r'), ('0_l_r_l_r_l', '0_l_r_l_r_l_l'), ('0_l_r_l_r_l', '0_l_r_l_r_l_r'), ('0_l_r_l_r', '0_l_r_l_r_l'), ('0_l_r_l_r', '0_l_r_l_r_r'), ('0_l_r_l', '0_l_r_l_l'), ('0_l_r_l', '0_l_r_l_r'), ('0_l_r_r', '0_l_r_r_l'), ('0_l_r_r', '0_l_r_r_r'), ('0_l_r', '0_l_r_l'), ('0_l_r', '0_l_r_r'), ('0_l', '0_l_l'), ('0_l', '0_l_r'), ('0_r_l_l', '0_r_l_l_l'), ('0_r_l_l', '0_r_l_l_r'), ('0_r_l', '0_r_l_l'), ('0_r_l', '0_r_l_r'), ('0_r_r_l', '0_r_r_l_l'), ('0_r_r_l', '0_r_r_l_r'), ('0_r_r_r_r', '0_r_r_r_r_l'), ('0_r_r_r_r', '0_r_r_r_r_r'), ('0_r_r_r', '0_r_r_r_l'), ('0_r_r_r', '0_r_r_r_r'), ('0_r_r', '0_r_r_l'), ('0_r_r', '0_r_r_r'), ('0_r', '0_r_l'), ('0_r', '0_r_r'), ('0', '0_l'), ('0', '0_r')]
+--- 20.230484008789062 seconds ---
+Searching Metric Tree
+SEEN
+{'Hustler, The (1961)': ['Drama']}
+{'Star Wars: Episode VI - Return of the Jedi (1983)': ['Action', 'Adventure', 'Romance', 'Sci-Fi', 'War']}
+{'Star Wars: Episode IV - A New Hope (1977)': ['Action', 'Adventure', 'Fantasy', 'Sci-Fi']}
+{'Saving Private Ryan (1998)': ['Action', 'Drama', 'War']}
+{'Jurassic Park (1993)': ['Action', 'Adventure', 'Sci-Fi']}
+{'Star Wars: Episode V - The Empire Strikes Back (1980)': ['Action', 'Adventure', 'Drama', 'Sci-Fi', 'War']}
+{'Raiders of the Lost Ark (1981)': ['Action', 'Adventure']}
+{'E.T. the Extra-Terrestrial (1982)': ["Children's", 'Drama', 'Fantasy', 'Sci-Fi']}
+{'King Kong (1933)': ['Action', 'Adventure', 'Horror']}
+{'Jaws (1975)': ['Action', 'Horror']}
+{'Predator (1987)': ['Action', 'Sci-Fi', 'Thriller']}
+{'Good, The Bad and The Ugly, The (1966)': ['Action', 'Western']}
+{'Run Lola Run (Lola rennt) (1998)': ['Action', 'Crime', 'Romance']}
+{'Goldfinger (1964)': ['Action']}
+PREDICTION
+{'Princess Bride, The (1987)': ['Action', 'Adventure', 'Comedy', 'Romance']}
+{'Indiana Jones and the Last Crusade (1989)': ['Action', 'Adventure']}
+{'Office Space (1999)': ['Comedy', 'Romance']}
+{'Braveheart (1995)': ['Action', 'Drama', 'War']}
+{'Matrix, The (1999)': ['Action', 'Sci-Fi', 'Thriller']}
+{'Suicide Kings (1997)': ['Crime', 'Drama']}
+{'Gladiator (2000)': ['Action', 'Drama']}
+{'Aliens (1986)': ['Action', 'Sci-Fi', 'Thriller', 'War']}
+{'Alien (1979)': ['Action', 'Horror', 'Sci-Fi', 'Thriller']}
+{'Army of Darkness (1993)': ['Action', 'Adventure', 'Comedy', 'Horror', 'Sci-Fi']}
+--- 9.716618061065674 seconds ---
+
+SETTINGS: num of sim neighbors: 1, num of movies: 10
+RESULT: (0.05321229050279349, 0.13578377370642256, {0.21491225654173396})
+|| ------ COMPLETE ------ ||
+Total run time: 278.32929515838623 seconds.
+Amount of users: 716.
+|| ---------------------- ||
+
+Running...
+Formatting data...
+Generating graph...
+--- 2.103706121444702 seconds ---
+Building TET specification...
+Running...
+Formatting data...
+Generating graph...
+--- 2.075711488723755 seconds ---
+Building TET specification...
+Running...
+Formatting data...
+Generating graph...
+--- 2.137687921524048 seconds ---
+Building TET specification...
+Running...
+Formatting data...
+Generating graph...
+--- 2.2326784133911133 seconds ---
+Building TET specification...
+Running...
+Formatting data...
+Generating graph...
+--- 2.154675245285034 seconds ---
+Building TET specification...
+Running...
+Formatting data...
+Generating graph...
+--- 2.1496784687042236 seconds ---
+Building TET specification...
+Running...
+Formatting data...
+Generating graph...
+--- 2.2136390209198 seconds ---
+Building TET specification...
+Running...
+Formatting data...
+Generating graph...
+--- 2.1126956939697266 seconds ---
+Building TET specification...
+Running...
+Formatting data...
+Generating graph...
+--- 2.158734083175659 seconds ---
+Building TET specification...
+Running...
+Formatting data...
+Generating graph...
+--- 2.147679567337036 seconds ---
+Building TET specification...
+Running...
+Formatting data...
+Generating graph...
+--- 2.2886059284210205 seconds ---
+Building TET specification...
+Running...
+Formatting data...
+Generating graph...
+--- 2.2166287899017334 seconds ---
+Building TET specification...
+Running...
+Formatting data...
+Generating graph...
+--- 2.2446365356445312 seconds ---
+Building TET specification...
+Running...
+Formatting data...
+Generating graph...
+--- 2.1976583003997803 seconds ---
+Building TET specification...
+Running...
+Formatting data...
+Generating graph...
+--- 2.2146377563476562 seconds ---
+Building TET specification...
+Running...
+Formatting data...
+Generating graph...
+--- 2.203653335571289 seconds ---
+Building TET specification...
+Running...
+Formatting data...
+Generating graph...
+--- 2.278599739074707 seconds ---
+Building TET specification...
+Running...
+Formatting data...
+Generating graph...
+--- 2.2875819206237793 seconds ---
+Building TET specification...
+Running...
+Formatting data...
+Generating graph...
+--- 2.190640687942505 seconds ---
+Building TET specification...
+Running...
+Formatting data...
+Generating graph...
+--- 2.198697805404663 seconds ---
+Building TET specification...
+Running...
+Formatting data...
+Generating graph...
+--- 2.1117100715637207 seconds ---
+Building TET specification...
+Running...
+Formatting data...
+Generating graph...
+--- 2.181652069091797 seconds ---
+Building TET specification...
+Running...
+Formatting data...
+Generating graph...
+--- 2.1117024421691895 seconds ---
+Building TET specification...
+Running...
+Formatting data...
+Generating graph...
+--- 2.1256983280181885 seconds ---
+Building TET specification...
+Running...
+Formatting data...
+Generating graph...
+--- 2.220688819885254 seconds ---
+Building TET specification...
+Running...
+Formatting data...
+Generating graph...
+--- 2.2166383266448975 seconds ---
+Building TET specification...
+Running...
+Formatting data...
+Generating graph...
+--- 2.1776623725891113 seconds ---
+Building TET specification...
+Running...
+Formatting data...
+Generating graph...
+--- 2.2056379318237305 seconds ---
+Building TET specification...
+Running...
+Formatting data...
+Generating graph...
+--- 2.2186288833618164 seconds ---
+Building TET specification...
+Running...
+Formatting data...
+Generating graph...
+--- 2.209634780883789 seconds ---
+Building TET specification...
+Running...
+Formatting data...
+Generating graph...
+--- 2.207648277282715 seconds ---
+Building TET specification...
+Running...
+Formatting data...
+Generating graph...
+--- 2.2696125507354736 seconds ---
+Building TET specification...
+Running...
+Formatting data...
+Generating graph...
+--- 2.2605979442596436 seconds ---
+Building TET specification...
+Running...
+Formatting data...
+Generating graph...
+--- 2.2046518325805664 seconds ---
+Building TET specification...
+Running...
+Formatting data...
+Generating graph...
+--- 2.2865939140319824 seconds ---
+Building TET specification...
+Running...
+Formatting data...
+Generating graph...
+--- 2.4784796237945557 seconds ---
+Building TET specification...
+Running...
+Formatting data...
+Generating graph...
+--- 2.122694969177246 seconds ---
+Building TET specification...
+Running...
+Formatting data...
+Generating graph...
+--- 2.172666072845459 seconds ---
+Building TET specification...
+Running...
+Formatting data...
+Generating graph...
+--- 2.209641695022583 seconds ---
+Building TET specification...
+Running...
+Formatting data...
+Generating graph...
+--- 2.180659532546997 seconds ---
+Building TET specification...
+Running...
+Formatting data...
+Generating graph...
+--- 2.1456894874572754 seconds ---
+Building TET specification...
+Running...
+Formatting data...
+Generating graph...
+--- 2.116699695587158 seconds ---
+Building TET specification...
+Running...
+Formatting data...
+Generating graph...
+--- 2.2895939350128174 seconds ---
+Building TET specification...
+Running...
+Formatting data...
+Generating graph...
+--- 2.14167857170105 seconds ---
+Building TET specification...
+Running...
+Formatting data...
+Generating graph...
+--- 2.2106401920318604 seconds ---
+Building TET specification...
+Running...
+Formatting data...
+Generating graph...
+--- 2.2266793251037598 seconds ---
+Building TET specification...
+--- 317.81076407432556 seconds ---
+Generating TET according to graph and specification...
+Adding rating and award information to graph...
+--- 321.3515384197235 seconds ---
+Counting TETs...
+--- 3.3974521160125732 seconds ---
+Performing Logistic Evaluation on TETs...
+--- 15.196614742279053 seconds ---
+Generating histograms...
+--- 5.078345775604248 seconds ---
+Building Metric Tree
+Running...
+Formatting data...
+Generating graph...
+--- 2.203704357147217 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Adding rating and award information to graph...
+--- 271.411616563797 seconds ---
+Counting TETs...
+--- 3.3941354751586914 seconds ---
+Performing Logistic Evaluation on TETs...
+--- 15.030515432357788 seconds ---
+Generating histograms...
+--- 4.899326324462891 seconds ---
+Building Metric Tree
+ MT nodes: ['0_l_l_l', '0_l_l_r', '0_l_l', '0_l_r_l', '0_l_r_r', '0_l_r', '0_l', '0_r_l_l', '0_r_l_r', '0_r_l', '0_r_r_l', '0_r_r_r', '0_r_r', '0_r', '0']
+ MT edges: [('0_l_l', '0_l_l_l'), ('0_l_l', '0_l_l_r'), ('0_l_r', '0_l_r_l'), ('0_l_r', '0_l_r_r'), ('0_l', '0_l_l'), ('0_l', '0_l_r'), ('0_r_l', '0_r_l_l'), ('0_r_l', '0_r_l_r'), ('0_r_r', '0_r_r_l'), ('0_r_r', '0_r_r_r'), ('0_r', '0_r_l'), ('0_r', '0_r_r'), ('0', '0_l'), ('0', '0_r')]
+--- 1.569699764251709 seconds ---
+Searching Metric Tree
+Running...
+Formatting data...
+Generating graph...
+--- 2.2537734508514404 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Adding rating and award information to graph...
+--- 181.92230939865112 seconds ---
+Counting TETs...
+--- 2.3616769313812256 seconds ---
+Performing Logistic Evaluation on TETs...
+--- 10.27539873123169 seconds ---
+Generating histograms...
+--- 3.5702829360961914 seconds ---
+Building Metric Tree
+ MT nodes: ['0_l_l', '0_l_r_l', '0_l_r_r', '0_l_r', '0_l', '0_r_l_l', '0_r_l_r', '0_r_l', '0_r_r_l', '0_r_r_r', '0_r_r', '0_r', '0']
+ MT edges: [('0_l_r', '0_l_r_l'), ('0_l_r', '0_l_r_r'), ('0_l', '0_l_l'), ('0_l', '0_l_r'), ('0_r_l', '0_r_l_l'), ('0_r_l', '0_r_l_r'), ('0_r_r', '0_r_r_l'), ('0_r_r', '0_r_r_r'), ('0_r', '0_r_l'), ('0_r', '0_r_r'), ('0', '0_l'), ('0', '0_r')]
+--- 1.0783822536468506 seconds ---
+Searching Metric Tree
+Running...
+Formatting data...
+Generating graph...
+--- 2.3748691082000732 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Adding rating and award information to graph...
+--- 173.94891047477722 seconds ---
+Counting TETs...
+--- 2.203277587890625 seconds ---
+Performing Logistic Evaluation on TETs...
+--- 9.854106664657593 seconds ---
+Generating histograms...
+--- 3.249589443206787 seconds ---
+Building Metric Tree
+ MT nodes: ['0_l_l', '0_l_r_l', '0_l_r_r', '0_l_r', '0_l', '0_r_l_l', '0_r_l_r', '0_r_l', '0_r_r_l', '0_r_r_r', '0_r_r', '0_r', '0']
+ MT edges: [('0_l_r', '0_l_r_l'), ('0_l_r', '0_l_r_r'), ('0_l', '0_l_l'), ('0_l', '0_l_r'), ('0_r_l', '0_r_l_l'), ('0_r_l', '0_r_l_r'), ('0_r_r', '0_r_r_l'), ('0_r_r', '0_r_r_r'), ('0_r', '0_r_l'), ('0_r', '0_r_r'), ('0', '0_l'), ('0', '0_r')]
+--- 0.9974856376647949 seconds ---
+Searching Metric Tree
+Running...
+Formatting data...
+Generating graph...
+--- 2.1696579456329346 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Adding rating and award information to graph...
+--- 177.62454557418823 seconds ---
+Counting TETs...
+--- 2.227552652359009 seconds ---
+Performing Logistic Evaluation on TETs...
+--- 10.317138910293579 seconds ---
+Generating histograms...
+--- 3.4583752155303955 seconds ---
+Building Metric Tree
+ MT nodes: ['0_l_l', '0_l_r_l', '0_l_r_r', '0_l_r', '0_l', '0_r_l_l', '0_r_l_r', '0_r_l', '0_r_r_l', '0_r_r_r', '0_r_r', '0_r', '0']
+ MT edges: [('0_l_r', '0_l_r_l'), ('0_l_r', '0_l_r_r'), ('0_l', '0_l_l'), ('0_l', '0_l_r'), ('0_r_l', '0_r_l_l'), ('0_r_l', '0_r_l_r'), ('0_r_r', '0_r_r_l'), ('0_r_r', '0_r_r_r'), ('0_r', '0_r_l'), ('0_r', '0_r_r'), ('0', '0_l'), ('0', '0_r')]
+--- 1.038947582244873 seconds ---
+Searching Metric Tree
+Running...
+Formatting data...
+Generating graph...
+--- 2.237611770629883 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Adding rating and award information to graph...
+--- 178.60050058364868 seconds ---
+Counting TETs...
+--- 2.3470189571380615 seconds ---
+Performing Logistic Evaluation on TETs...
+--- 10.716798543930054 seconds ---
+Generating histograms...
+--- 3.4428746700286865 seconds ---
+Building Metric Tree
+ MT nodes: ['0_l_l', '0_l_r_l', '0_l_r_r', '0_l_r', '0_l', '0_r_l_l', '0_r_l_r', '0_r_l', '0_r_r_l', '0_r_r_r', '0_r_r', '0_r', '0']
+ MT edges: [('0_l_r', '0_l_r_l'), ('0_l_r', '0_l_r_r'), ('0_l', '0_l_l'), ('0_l', '0_l_r'), ('0_r_l', '0_r_l_l'), ('0_r_l', '0_r_l_r'), ('0_r_r', '0_r_r_l'), ('0_r_r', '0_r_r_r'), ('0_r', '0_r_l'), ('0_r', '0_r_r'), ('0', '0_l'), ('0', '0_r')]
+--- 1.06243896484375 seconds ---
+Searching Metric Tree
+Running...
+Formatting data...
+Generating graph...
+--- 2.5873303413391113 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Adding rating and award information to graph...
+--- 180.750638961792 seconds ---
+Counting TETs...
+--- 2.453721284866333 seconds ---
+Performing Logistic Evaluation on TETs...
+--- 10.49226450920105 seconds ---
+Generating histograms...
+--- 3.5637905597686768 seconds ---
+Building Metric Tree
+ MT nodes: ['0_l_l', '0_l_r_l', '0_l_r_r', '0_l_r', '0_l', '0_r_l_l', '0_r_l_r', '0_r_l', '0_r_r_l', '0_r_r_r', '0_r_r', '0_r', '0']
+ MT edges: [('0_l_r', '0_l_r_l'), ('0_l_r', '0_l_r_r'), ('0_l', '0_l_l'), ('0_l', '0_l_r'), ('0_r_l', '0_r_l_l'), ('0_r_l', '0_r_l_r'), ('0_r_r', '0_r_r_l'), ('0_r_r', '0_r_r_r'), ('0_r', '0_r_l'), ('0_r', '0_r_r'), ('0', '0_l'), ('0', '0_r')]
+--- 1.0383968353271484 seconds ---
+Searching Metric Tree
+Running...
+Formatting data...
+Generating graph...
+--- 2.2406156063079834 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Adding rating and award information to graph...
+--- 180.74364137649536 seconds ---
+Counting TETs...
+--- 2.299870729446411 seconds ---
+Performing Logistic Evaluation on TETs...
+--- 9.980111837387085 seconds ---
+Generating histograms...
+--- 3.2172000408172607 seconds ---
+Building Metric Tree
+ MT nodes: ['0_l_l', '0_l_r_l', '0_l_r_r', '0_l_r', '0_l', '0_r_l_l', '0_r_l_r', '0_r_l', '0_r_r_l', '0_r_r_r', '0_r_r', '0_r', '0']
+ MT edges: [('0_l_r', '0_l_r_l'), ('0_l_r', '0_l_r_r'), ('0_l', '0_l_l'), ('0_l', '0_l_r'), ('0_r_l', '0_r_l_l'), ('0_r_l', '0_r_l_r'), ('0_r_r', '0_r_r_l'), ('0_r_r', '0_r_r_r'), ('0_r', '0_r_l'), ('0_r', '0_r_r'), ('0', '0_l'), ('0', '0_r')]
+--- 0.9760046005249023 seconds ---
+Searching Metric Tree
+SEEN
+{'Hustler, The (1961)': ['Drama']}
+{'Fistful of Dollars, A (1964)': ['Action', 'Western']}
+{'Alien (1979)': ['Action', 'Horror', 'Sci-Fi', 'Thriller']}
+{'Die Hard (1988)': ['Action', 'Thriller']}
+{'Star Wars: Episode IV - A New Hope (1977)': ['Action', 'Adventure', 'Fantasy', 'Sci-Fi']}
+{'Saving Private Ryan (1998)': ['Action', 'Drama', 'War']}
+{'Jurassic Park (1993)': ['Action', 'Adventure', 'Sci-Fi']}
+{'Raiders of the Lost Ark (1981)': ['Action', 'Adventure']}
+{'Rocky (1976)': ['Action', 'Drama']}
+{'E.T. the Extra-Terrestrial (1982)': ["Children's", 'Drama', 'Fantasy', 'Sci-Fi']}
+{'Thelma & Louise (1991)': ['Action', 'Drama']}
+{'Mad Max (1979)': ['Action', 'Sci-Fi']}
+{'King Kong (1933)': ['Action', 'Adventure', 'Horror']}
+{'Jaws (1975)': ['Action', 'Horror']}
+{'Good, The Bad and The Ugly, The (1966)': ['Action', 'Western']}
+{'Run Lola Run (Lola rennt) (1998)': ['Action', 'Crime', 'Romance']}
+{'Goldfinger (1964)': ['Action']}
+{'Terminator, The (1984)': ['Action', 'Sci-Fi', 'Thriller']}
+{'Star Wars: Episode VI - Return of the Jedi (1983)': ['Action', 'Adventure', 'Romance', 'Sci-Fi', 'War']}
+{'Star Wars: Episode V - The Empire Strikes Back (1980)': ['Action', 'Adventure', 'Drama', 'Sci-Fi', 'War']}
+{'Predator (1987)': ['Action', 'Sci-Fi', 'Thriller']}
+PREDICTION
+--- 8.933152198791504 seconds ---
+
+SETTINGS: num of sim neighbors: 1, num of movies: 10
+RESULT: (0.0, 0.0, {1.0})
+|| ------ COMPLETE ------ ||
+Total run time: 243.6953785419464 seconds.
+Amount of users: 461.
+|| ---------------------- ||
+
+Running...
+Formatting data...
+Generating graph...
+--- 2.0087645053863525 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Adding rating and award information to graph...
+--- 177.59790968894958 seconds ---
+Counting TETs...
+--- 2.6831459999084473 seconds ---
+Performing Logistic Evaluation on TETs...
+--- 9.843798160552979 seconds ---
+Generating histograms...
+--- 2.9411911964416504 seconds ---
+Building Metric Tree
+ MT nodes: ['0_l_l_l', '0_l_l_r', '0_l_l', '0_l_r_l', '0_l_r_r', '0_l_r', '0_l', '0_r_l_l', '0_r_l_r', '0_r_l', '0_r_r_l', '0_r_r_r', '0_r_r', '0_r', '0']
+ MT edges: [('0_l_l', '0_l_l_l'), ('0_l_l', '0_l_l_r'), ('0_l_r', '0_l_r_l'), ('0_l_r', '0_l_r_r'), ('0_l', '0_l_l'), ('0_l', '0_l_r'), ('0_r_l', '0_r_l_l'), ('0_r_l', '0_r_l_r'), ('0_r_r', '0_r_r_l'), ('0_r_r', '0_r_r_r'), ('0_r', '0_r_l'), ('0_r', '0_r_r'), ('0', '0_l'), ('0', '0_r')]
+--- 1.0633463859558105 seconds ---
+Searching Metric Tree
+SEEN
+{'Hustler, The (1961)': ['Drama']}
+{'Fistful of Dollars, A (1964)': ['Action', 'Western']}
+{'Alien (1979)': ['Action', 'Horror', 'Sci-Fi', 'Thriller']}
+{'Die Hard (1988)': ['Action', 'Thriller']}
+{'Star Wars: Episode IV - A New Hope (1977)': ['Action', 'Adventure', 'Fantasy', 'Sci-Fi']}
+{'Saving Private Ryan (1998)': ['Action', 'Drama', 'War']}
+{'Jurassic Park (1993)': ['Action', 'Adventure', 'Sci-Fi']}
+{'Raiders of the Lost Ark (1981)': ['Action', 'Adventure']}
+{'Rocky (1976)': ['Action', 'Drama']}
+{'E.T. the Extra-Terrestrial (1982)': ["Children's", 'Drama', 'Fantasy', 'Sci-Fi']}
+{'Thelma & Louise (1991)': ['Action', 'Drama']}
+{'Mad Max (1979)': ['Action', 'Sci-Fi']}
+{'King Kong (1933)': ['Action', 'Adventure', 'Horror']}
+{'Jaws (1975)': ['Action', 'Horror']}
+{'Good, The Bad and The Ugly, The (1966)': ['Action', 'Western']}
+{'Run Lola Run (Lola rennt) (1998)': ['Action', 'Crime', 'Romance']}
+{'Goldfinger (1964)': ['Action']}
+{'Terminator, The (1984)': ['Action', 'Sci-Fi', 'Thriller']}
+{'Star Wars: Episode VI - Return of the Jedi (1983)': ['Action', 'Adventure', 'Romance', 'Sci-Fi', 'War']}
+{'Star Wars: Episode V - The Empire Strikes Back (1980)': ['Action', 'Adventure', 'Drama', 'Sci-Fi', 'War']}
+{'Predator (1987)': ['Action', 'Sci-Fi', 'Thriller']}
+PREDICTION
+--- 9.153536796569824 seconds ---
+
+SETTINGS: num of sim neighbors: 1, num of movies: 10
+RESULT: (0.0, 0.0, {1.0})
+|| ------ COMPLETE ------ ||
+Total run time: 232.2711203098297 seconds.
+Amount of users: 461.
+|| ---------------------- ||
+
+Running...
+Formatting data...
+Generating graph...
+--- 2.050743341445923 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Adding rating and award information to graph...
+--- 177.46379780769348 seconds ---
+Counting TETs...
+--- 2.711151599884033 seconds ---
+Performing Logistic Evaluation on TETs...
+--- 10.00152587890625 seconds ---
+Generating histograms...
+--- 3.119891405105591 seconds ---
+Building Metric Tree
+ MT nodes: ['0_l_l', '0_l_r_l', '0_l_r_r', '0_l_r', '0_l', '0_r_l_l', '0_r_l_r', '0_r_l', '0_r_r_l', '0_r_r_r', '0_r_r', '0_r', '0']
+ MT edges: [('0_l_r', '0_l_r_l'), ('0_l_r', '0_l_r_r'), ('0_l', '0_l_l'), ('0_l', '0_l_r'), ('0_r_l', '0_r_l_l'), ('0_r_l', '0_r_l_r'), ('0_r_r', '0_r_r_l'), ('0_r_r', '0_r_r_r'), ('0_r', '0_r_l'), ('0_r', '0_r_r'), ('0', '0_l'), ('0', '0_r')]
+--- 1.0026423931121826 seconds ---
+Searching Metric Tree
+SEEN
+{'Hustler, The (1961)': ['Drama']}
+{'Fistful of Dollars, A (1964)': ['Action', 'Western']}
+{'Alien (1979)': ['Action', 'Horror', 'Sci-Fi', 'Thriller']}
+{'Die Hard (1988)': ['Action', 'Thriller']}
+{'Star Wars: Episode IV - A New Hope (1977)': ['Action', 'Adventure', 'Fantasy', 'Sci-Fi']}
+{'Saving Private Ryan (1998)': ['Action', 'Drama', 'War']}
+{'Jurassic Park (1993)': ['Action', 'Adventure', 'Sci-Fi']}
+{'Raiders of the Lost Ark (1981)': ['Action', 'Adventure']}
+{'Rocky (1976)': ['Action', 'Drama']}
+{'E.T. the Extra-Terrestrial (1982)': ["Children's", 'Drama', 'Fantasy', 'Sci-Fi']}
+{'Thelma & Louise (1991)': ['Action', 'Drama']}
+{'Mad Max (1979)': ['Action', 'Sci-Fi']}
+{'King Kong (1933)': ['Action', 'Adventure', 'Horror']}
+{'Jaws (1975)': ['Action', 'Horror']}
+{'Good, The Bad and The Ugly, The (1966)': ['Action', 'Western']}
+{'Run Lola Run (Lola rennt) (1998)': ['Action', 'Crime', 'Romance']}
+{'Goldfinger (1964)': ['Action']}
+{'Terminator, The (1984)': ['Action', 'Sci-Fi', 'Thriller']}
+{'Star Wars: Episode VI - Return of the Jedi (1983)': ['Action', 'Adventure', 'Romance', 'Sci-Fi', 'War']}
+{'Star Wars: Episode V - The Empire Strikes Back (1980)': ['Action', 'Adventure', 'Drama', 'Sci-Fi', 'War']}
+{'Predator (1987)': ['Action', 'Sci-Fi', 'Thriller']}
+PREDICTION
+--- 9.168315649032593 seconds ---
+
+SETTINGS: num of sim neighbors: 1, num of movies: 10
+RESULT: (0.0, 0.0, {1.0})
+|| ------ COMPLETE ------ ||
+Total run time: 240.2811152935028 seconds.
+Amount of users: 461.
+|| ---------------------- ||
+
+Running...
+Formatting data...
+Generating graph...
+--- 2.316575527191162 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Adding rating and award information to graph...
+--- 173.88176488876343 seconds ---
+Counting TETs...
+--- 2.715721607208252 seconds ---
+Performing Logistic Evaluation on TETs...
+--- 10.19366455078125 seconds ---
+Generating histograms...
+--- 3.0648865699768066 seconds ---
+Building Metric Tree
+ MT nodes: ['0_l_l', '0_l_r_l', '0_l_r_r', '0_l_r', '0_l', '0_r_l_l', '0_r_l_r', '0_r_l', '0_r_r_l', '0_r_r_r', '0_r_r', '0_r', '0']
+ MT edges: [('0_l_r', '0_l_r_l'), ('0_l_r', '0_l_r_r'), ('0_l', '0_l_l'), ('0_l', '0_l_r'), ('0_r_l', '0_r_l_l'), ('0_r_l', '0_r_l_r'), ('0_r_r', '0_r_r_l'), ('0_r_r', '0_r_r_r'), ('0_r', '0_r_l'), ('0_r', '0_r_r'), ('0', '0_l'), ('0', '0_r')]
+--- 1.0746278762817383 seconds ---
+Searching Metric Tree
+SEEN
+{'Hustler, The (1961)': ['Drama']}
+{'Fistful of Dollars, A (1964)': ['Action', 'Western']}
+{'Alien (1979)': ['Action', 'Horror', 'Sci-Fi', 'Thriller']}
+{'Die Hard (1988)': ['Action', 'Thriller']}
+{'Star Wars: Episode IV - A New Hope (1977)': ['Action', 'Adventure', 'Fantasy', 'Sci-Fi']}
+{'Saving Private Ryan (1998)': ['Action', 'Drama', 'War']}
+{'Jurassic Park (1993)': ['Action', 'Adventure', 'Sci-Fi']}
+{'Raiders of the Lost Ark (1981)': ['Action', 'Adventure']}
+{'Rocky (1976)': ['Action', 'Drama']}
+{'E.T. the Extra-Terrestrial (1982)': ["Children's", 'Drama', 'Fantasy', 'Sci-Fi']}
+{'Thelma & Louise (1991)': ['Action', 'Drama']}
+{'Mad Max (1979)': ['Action', 'Sci-Fi']}
+{'King Kong (1933)': ['Action', 'Adventure', 'Horror']}
+{'Jaws (1975)': ['Action', 'Horror']}
+{'Good, The Bad and The Ugly, The (1966)': ['Action', 'Western']}
+{'Run Lola Run (Lola rennt) (1998)': ['Action', 'Crime', 'Romance']}
+{'Goldfinger (1964)': ['Action']}
+{'Terminator, The (1984)': ['Action', 'Sci-Fi', 'Thriller']}
+{'Star Wars: Episode VI - Return of the Jedi (1983)': ['Action', 'Adventure', 'Romance', 'Sci-Fi', 'War']}
+{'Star Wars: Episode V - The Empire Strikes Back (1980)': ['Action', 'Adventure', 'Drama', 'Sci-Fi', 'War']}
+{'Predator (1987)': ['Action', 'Sci-Fi', 'Thriller']}
+PREDICTION
+--- 9.140987157821655 seconds ---
+
+SETTINGS: num of sim neighbors: 1, num of movies: 10
+RESULT: (0.0, 0.0, {1.0})
+|| ------ COMPLETE ------ ||
+Total run time: 230.44193840026855 seconds.
+Amount of users: 461.
+|| ---------------------- ||
+
+Running...
+Formatting data...
+Generating graph...
+--- 2.234625816345215 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Adding rating and award information to graph...
+--- 177.69015741348267 seconds ---
+Counting TETs...
+--- 2.684126138687134 seconds ---
+Performing Logistic Evaluation on TETs...
+--- 10.013283491134644 seconds ---
+Generating histograms...
+--- 3.022081136703491 seconds ---
+Building Metric Tree
+ MT nodes: ['0_l_l', '0_l_r_l', '0_l_r_r', '0_l_r', '0_l', '0_r_l_l', '0_r_l_r', '0_r_l', '0_r_r_l', '0_r_r_r', '0_r_r', '0_r', '0']
+ MT edges: [('0_l_r', '0_l_r_l'), ('0_l_r', '0_l_r_r'), ('0_l', '0_l_l'), ('0_l', '0_l_r'), ('0_r_l', '0_r_l_l'), ('0_r_l', '0_r_l_r'), ('0_r_r', '0_r_r_l'), ('0_r_r', '0_r_r_r'), ('0_r', '0_r_l'), ('0_r', '0_r_r'), ('0', '0_l'), ('0', '0_r')]
+--- 0.9760317802429199 seconds ---
+Searching Metric Tree
+SEEN
+{'Hustler, The (1961)': ['Drama']}
+{'Fistful of Dollars, A (1964)': ['Action', 'Western']}
+{'Alien (1979)': ['Action', 'Horror', 'Sci-Fi', 'Thriller']}
+{'Die Hard (1988)': ['Action', 'Thriller']}
+{'Star Wars: Episode IV - A New Hope (1977)': ['Action', 'Adventure', 'Fantasy', 'Sci-Fi']}
+{'Saving Private Ryan (1998)': ['Action', 'Drama', 'War']}
+{'Jurassic Park (1993)': ['Action', 'Adventure', 'Sci-Fi']}
+{'Raiders of the Lost Ark (1981)': ['Action', 'Adventure']}
+{'Rocky (1976)': ['Action', 'Drama']}
+{'E.T. the Extra-Terrestrial (1982)': ["Children's", 'Drama', 'Fantasy', 'Sci-Fi']}
+{'Thelma & Louise (1991)': ['Action', 'Drama']}
+{'Mad Max (1979)': ['Action', 'Sci-Fi']}
+{'King Kong (1933)': ['Action', 'Adventure', 'Horror']}
+{'Jaws (1975)': ['Action', 'Horror']}
+{'Good, The Bad and The Ugly, The (1966)': ['Action', 'Western']}
+{'Run Lola Run (Lola rennt) (1998)': ['Action', 'Crime', 'Romance']}
+{'Goldfinger (1964)': ['Action']}
+{'Terminator, The (1984)': ['Action', 'Sci-Fi', 'Thriller']}
+{'Star Wars: Episode VI - Return of the Jedi (1983)': ['Action', 'Adventure', 'Romance', 'Sci-Fi', 'War']}
+{'Star Wars: Episode V - The Empire Strikes Back (1980)': ['Action', 'Adventure', 'Drama', 'Sci-Fi', 'War']}
+{'Predator (1987)': ['Action', 'Sci-Fi', 'Thriller']}
+PREDICTION
+{'Bone Collector, The (1999)': ['Thriller']}
+{'Murder at 1600 (1997)': ['Mystery', 'Thriller']}
+{'Die Hard 2 (1990)': ['Action', 'Thriller']}
+{'Absolute Power (1997)': ['Mystery', 'Thriller']}
+{'Saint, The (1997)': ['Action', 'Romance', 'Thriller']}
+{'Relic, The (1997)': ['Horror']}
+{'Christmas Vacation (1989)': ['Comedy']}
+{'Lake Placid (1999)': ['Horror', 'Thriller']}
+{'Die Hard: With a Vengeance (1995)': ['Action', 'Thriller']}
+{'American President, The (1995)': ['Comedy', 'Drama', 'Romance']}
+--- 12.876286506652832 seconds ---
+
+SETTINGS: num of sim neighbors: 1, num of movies: 10
+RESULT: (0.0, 0.0, {0.2016676327248656})
+|| ------ COMPLETE ------ ||
+Total run time: 241.67260646820068 seconds.
+Amount of users: 461.
+|| ---------------------- ||
+
+Running...
+Formatting data...
+Generating graph...
+--- 2.0936996936798096 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Adding rating and award information to graph...
+--- 166.3339340686798 seconds ---
+Counting TETs...
+--- 2.5754165649414062 seconds ---
+Performing Logistic Evaluation on TETs...
+--- 9.371239185333252 seconds ---
+Generating histograms...
+--- 2.825308084487915 seconds ---
+Building Metric Tree
+ MT nodes: ['0_l_l', '0_l_r_l', '0_l_r_r', '0_l_r', '0_l', '0_r_l_l', '0_r_l_r', '0_r_l', '0_r_r_l', '0_r_r_r', '0_r_r', '0_r', '0']
+ MT edges: [('0_l_r', '0_l_r_l'), ('0_l_r', '0_l_r_r'), ('0_l', '0_l_l'), ('0_l', '0_l_r'), ('0_r_l', '0_r_l_l'), ('0_r_l', '0_r_l_r'), ('0_r_r', '0_r_r_l'), ('0_r_r', '0_r_r_r'), ('0_r', '0_r_l'), ('0_r', '0_r_r'), ('0', '0_l'), ('0', '0_r')]
+--- 0.924424409866333 seconds ---
+Searching Metric Tree
+SEEN
+{'Hustler, The (1961)': ['Drama']}
+{'Fistful of Dollars, A (1964)': ['Action', 'Western']}
+{'Alien (1979)': ['Action', 'Horror', 'Sci-Fi', 'Thriller']}
+{'Die Hard (1988)': ['Action', 'Thriller']}
+{'Star Wars: Episode IV - A New Hope (1977)': ['Action', 'Adventure', 'Fantasy', 'Sci-Fi']}
+{'Saving Private Ryan (1998)': ['Action', 'Drama', 'War']}
+{'Jurassic Park (1993)': ['Action', 'Adventure', 'Sci-Fi']}
+{'Raiders of the Lost Ark (1981)': ['Action', 'Adventure']}
+{'Rocky (1976)': ['Action', 'Drama']}
+{'E.T. the Extra-Terrestrial (1982)': ["Children's", 'Drama', 'Fantasy', 'Sci-Fi']}
+{'Thelma & Louise (1991)': ['Action', 'Drama']}
+{'Mad Max (1979)': ['Action', 'Sci-Fi']}
+{'King Kong (1933)': ['Action', 'Adventure', 'Horror']}
+{'Jaws (1975)': ['Action', 'Horror']}
+{'Good, The Bad and The Ugly, The (1966)': ['Action', 'Western']}
+{'Run Lola Run (Lola rennt) (1998)': ['Action', 'Crime', 'Romance']}
+{'Goldfinger (1964)': ['Action']}
+{'Terminator, The (1984)': ['Action', 'Sci-Fi', 'Thriller']}
+{'Star Wars: Episode VI - Return of the Jedi (1983)': ['Action', 'Adventure', 'Romance', 'Sci-Fi', 'War']}
+{'Star Wars: Episode V - The Empire Strikes Back (1980)': ['Action', 'Adventure', 'Drama', 'Sci-Fi', 'War']}
+{'Predator (1987)': ['Action', 'Sci-Fi', 'Thriller']}
+PREDICTION
+{'Bone Collector, The (1999)': ['Thriller']}
+{'Murder at 1600 (1997)': ['Mystery', 'Thriller']}
+{'Die Hard 2 (1990)': ['Action', 'Thriller']}
+{'Absolute Power (1997)': ['Mystery', 'Thriller']}
+{'Saint, The (1997)': ['Action', 'Romance', 'Thriller']}
+{'Relic, The (1997)': ['Horror']}
+{'Christmas Vacation (1989)': ['Comedy']}
+{'Lake Placid (1999)': ['Horror', 'Thriller']}
+{'Die Hard: With a Vengeance (1995)': ['Action', 'Thriller']}
+{'American President, The (1995)': ['Comedy', 'Drama', 'Romance']}
+--- 12.421850442886353 seconds ---
+
+SETTINGS: num of sim neighbors: 1, num of movies: 10
+RESULT: (0.0, 0.0, {0.2016676327248656})
+|| ------ COMPLETE ------ ||
+Total run time: 222.36913776397705 seconds.
+Amount of users: 461.
+|| ---------------------- ||
+
+Running...
+Formatting data...
+Generating graph...
+--- 2.0227582454681396 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Running...
+Formatting data...
+Generating graph...
+--- 2.0097646713256836 seconds ---
+Building TET specification...
+--- 0.0009987354278564453 seconds ---
+Generating TET according to graph and specification...
+Running...
+Formatting data...
+Generating graph...
+--- 2.005774974822998 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Running...
+Formatting data...
+Generating graph...
+--- 2.0717263221740723 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Running...
+Formatting data...
+Generating graph...
+--- 2.0567355155944824 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Running...
+Formatting data...
+Generating graph...
+--- 2.0758159160614014 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Running...
+Formatting data...
+Generating graph...
+--- 2.1047472953796387 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Adding rating and award information to graph...
+--- 187.1547930240631 seconds ---
+Counting TETs...
+--- 2.9801580905914307 seconds ---
+Performing Logistic Evaluation on TETs...
+--- 10.690725088119507 seconds ---
+Generating histograms...
+--- 3.287628412246704 seconds ---
+Building Metric Tree
+ MT nodes: ['0_l_l', '0_l_r_l', '0_l_r_r', '0_l_r', '0_l', '0_r_l_l', '0_r_l_r', '0_r_l', '0_r_r_l', '0_r_r_r', '0_r_r', '0_r', '0']
+ MT edges: [('0_l_r', '0_l_r_l'), ('0_l_r', '0_l_r_r'), ('0_l', '0_l_l'), ('0_l', '0_l_r'), ('0_r_l', '0_r_l_l'), ('0_r_l', '0_r_l_r'), ('0_r_r', '0_r_r_l'), ('0_r_r', '0_r_r_r'), ('0_r', '0_r_l'), ('0_r', '0_r_r'), ('0', '0_l'), ('0', '0_r')]
+--- 1.055114507675171 seconds ---
+Searching Metric Tree
+SEEN
+{'Hustler, The (1961)': ['Drama']}
+{'Fistful of Dollars, A (1964)': ['Action', 'Western']}
+{'Alien (1979)': ['Action', 'Horror', 'Sci-Fi', 'Thriller']}
+{'Die Hard (1988)': ['Action', 'Thriller']}
+{'Star Wars: Episode IV - A New Hope (1977)': ['Action', 'Adventure', 'Fantasy', 'Sci-Fi']}
+{'Saving Private Ryan (1998)': ['Action', 'Drama', 'War']}
+{'Jurassic Park (1993)': ['Action', 'Adventure', 'Sci-Fi']}
+{'Raiders of the Lost Ark (1981)': ['Action', 'Adventure']}
+{'Rocky (1976)': ['Action', 'Drama']}
+{'E.T. the Extra-Terrestrial (1982)': ["Children's", 'Drama', 'Fantasy', 'Sci-Fi']}
+{'Thelma & Louise (1991)': ['Action', 'Drama']}
+{'Mad Max (1979)': ['Action', 'Sci-Fi']}
+{'King Kong (1933)': ['Action', 'Adventure', 'Horror']}
+{'Jaws (1975)': ['Action', 'Horror']}
+{'Good, The Bad and The Ugly, The (1966)': ['Action', 'Western']}
+{'Run Lola Run (Lola rennt) (1998)': ['Action', 'Crime', 'Romance']}
+{'Goldfinger (1964)': ['Action']}
+{'Terminator, The (1984)': ['Action', 'Sci-Fi', 'Thriller']}
+{'Star Wars: Episode VI - Return of the Jedi (1983)': ['Action', 'Adventure', 'Romance', 'Sci-Fi', 'War']}
+{'Star Wars: Episode V - The Empire Strikes Back (1980)': ['Action', 'Adventure', 'Drama', 'Sci-Fi', 'War']}
+{'Predator (1987)': ['Action', 'Sci-Fi', 'Thriller']}
+PREDICTION
+{'Bone Collector, The (1999)': ['Thriller']}
+{'Murder at 1600 (1997)': ['Mystery', 'Thriller']}
+{'Die Hard 2 (1990)': ['Action', 'Thriller']}
+{'Absolute Power (1997)': ['Mystery', 'Thriller']}
+{'Saint, The (1997)': ['Action', 'Romance', 'Thriller']}
+{'Relic, The (1997)': ['Horror']}
+{'Christmas Vacation (1989)': ['Comedy']}
+{'Lake Placid (1999)': ['Horror', 'Thriller']}
+{'Die Hard: With a Vengeance (1995)': ['Action', 'Thriller']}
+{'American President, The (1995)': ['Comedy', 'Drama', 'Romance']}
+--- 13.703108310699463 seconds ---
+
+SETTINGS: num of sim neighbors: 1, num of movies: 10
+Running...
+Formatting data...
+Generating graph...
+--- 2.5010814666748047 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Adding rating and award information to graph...
+--- 190.87306213378906 seconds ---
+Counting TETs...
+--- 2.933753728866577 seconds ---
+Performing Logistic Evaluation on TETs...
+--- 10.819460153579712 seconds ---
+Generating histograms...
+--- 3.2886428833007812 seconds ---
+Building Metric Tree
+ MT nodes: ['0_l_l', '0_l_r_l', '0_l_r_r', '0_l_r', '0_l', '0_r_l_l', '0_r_l_r', '0_r_l', '0_r_r_l', '0_r_r_r', '0_r_r', '0_r', '0']
+ MT edges: [('0_l_r', '0_l_r_l'), ('0_l_r', '0_l_r_r'), ('0_l', '0_l_l'), ('0_l', '0_l_r'), ('0_r_l', '0_r_l_l'), ('0_r_l', '0_r_l_r'), ('0_r_r', '0_r_r_l'), ('0_r_r', '0_r_r_r'), ('0_r', '0_r_l'), ('0_r', '0_r_r'), ('0', '0_l'), ('0', '0_r')]
+--- 1.1033527851104736 seconds ---
+Searching Metric Tree
+SEEN
+{'Hustler, The (1961)': ['Drama']}
+{'Fistful of Dollars, A (1964)': ['Action', 'Western']}
+{'Alien (1979)': ['Action', 'Horror', 'Sci-Fi', 'Thriller']}
+{'Die Hard (1988)': ['Action', 'Thriller']}
+{'Star Wars: Episode IV - A New Hope (1977)': ['Action', 'Adventure', 'Fantasy', 'Sci-Fi']}
+{'Saving Private Ryan (1998)': ['Action', 'Drama', 'War']}
+{'Jurassic Park (1993)': ['Action', 'Adventure', 'Sci-Fi']}
+{'Raiders of the Lost Ark (1981)': ['Action', 'Adventure']}
+{'Rocky (1976)': ['Action', 'Drama']}
+{'E.T. the Extra-Terrestrial (1982)': ["Children's", 'Drama', 'Fantasy', 'Sci-Fi']}
+{'Thelma & Louise (1991)': ['Action', 'Drama']}
+{'Mad Max (1979)': ['Action', 'Sci-Fi']}
+{'King Kong (1933)': ['Action', 'Adventure', 'Horror']}
+{'Jaws (1975)': ['Action', 'Horror']}
+{'Good, The Bad and The Ugly, The (1966)': ['Action', 'Western']}
+{'Run Lola Run (Lola rennt) (1998)': ['Action', 'Crime', 'Romance']}
+{'Goldfinger (1964)': ['Action']}
+{'Terminator, The (1984)': ['Action', 'Sci-Fi', 'Thriller']}
+{'Star Wars: Episode VI - Return of the Jedi (1983)': ['Action', 'Adventure', 'Romance', 'Sci-Fi', 'War']}
+{'Star Wars: Episode V - The Empire Strikes Back (1980)': ['Action', 'Adventure', 'Drama', 'Sci-Fi', 'War']}
+{'Predator (1987)': ['Action', 'Sci-Fi', 'Thriller']}
+PREDICTION
+{'Bone Collector, The (1999)': ['Thriller']}
+{'Murder at 1600 (1997)': ['Mystery', 'Thriller']}
+{'Die Hard 2 (1990)': ['Action', 'Thriller']}
+{'Absolute Power (1997)': ['Mystery', 'Thriller']}
+{'Saint, The (1997)': ['Action', 'Romance', 'Thriller']}
+{'Relic, The (1997)': ['Horror']}
+{'Christmas Vacation (1989)': ['Comedy']}
+{'Lake Placid (1999)': ['Horror', 'Thriller']}
+{'Die Hard: With a Vengeance (1995)': ['Action', 'Thriller']}
+{'American President, The (1995)': ['Comedy', 'Drama', 'Romance']}
+--- 14.310667991638184 seconds ---
+
+SETTINGS: num of sim neighbors: 1, num of movies: 10
+Running...
+Formatting data...
+Generating graph...
+--- 2.3650784492492676 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Adding rating and award information to graph...
+--- 190.07337164878845 seconds ---
+Counting TETs...
+--- 3.13147234916687 seconds ---
+Performing Logistic Evaluation on TETs...
+--- 10.84369421005249 seconds ---
+Generating histograms...
+--- 3.351130485534668 seconds ---
+Building Metric Tree
+ MT nodes: ['0_l_l', '0_l_r_l', '0_l_r_r', '0_l_r', '0_l', '0_r_l_l', '0_r_l_r', '0_r_l', '0_r_r_l', '0_r_r_r', '0_r_r', '0_r', '0']
+ MT edges: [('0_l_r', '0_l_r_l'), ('0_l_r', '0_l_r_r'), ('0_l', '0_l_l'), ('0_l', '0_l_r'), ('0_r_l', '0_r_l_l'), ('0_r_l', '0_r_l_r'), ('0_r_r', '0_r_r_l'), ('0_r_r', '0_r_r_r'), ('0_r', '0_r_l'), ('0_r', '0_r_r'), ('0', '0_l'), ('0', '0_r')]
+--- 1.082003116607666 seconds ---
+Searching Metric Tree
+SEEN
+{'Hustler, The (1961)': ['Drama']}
+{'Fistful of Dollars, A (1964)': ['Action', 'Western']}
+{'Alien (1979)': ['Action', 'Horror', 'Sci-Fi', 'Thriller']}
+{'Die Hard (1988)': ['Action', 'Thriller']}
+{'Star Wars: Episode IV - A New Hope (1977)': ['Action', 'Adventure', 'Fantasy', 'Sci-Fi']}
+{'Saving Private Ryan (1998)': ['Action', 'Drama', 'War']}
+{'Jurassic Park (1993)': ['Action', 'Adventure', 'Sci-Fi']}
+{'Raiders of the Lost Ark (1981)': ['Action', 'Adventure']}
+{'Rocky (1976)': ['Action', 'Drama']}
+{'E.T. the Extra-Terrestrial (1982)': ["Children's", 'Drama', 'Fantasy', 'Sci-Fi']}
+{'Thelma & Louise (1991)': ['Action', 'Drama']}
+{'Mad Max (1979)': ['Action', 'Sci-Fi']}
+{'King Kong (1933)': ['Action', 'Adventure', 'Horror']}
+{'Jaws (1975)': ['Action', 'Horror']}
+{'Good, The Bad and The Ugly, The (1966)': ['Action', 'Western']}
+{'Run Lola Run (Lola rennt) (1998)': ['Action', 'Crime', 'Romance']}
+{'Goldfinger (1964)': ['Action']}
+{'Terminator, The (1984)': ['Action', 'Sci-Fi', 'Thriller']}
+{'Star Wars: Episode VI - Return of the Jedi (1983)': ['Action', 'Adventure', 'Romance', 'Sci-Fi', 'War']}
+{'Star Wars: Episode V - The Empire Strikes Back (1980)': ['Action', 'Adventure', 'Drama', 'Sci-Fi', 'War']}
+{'Predator (1987)': ['Action', 'Sci-Fi', 'Thriller']}
+PREDICTION
+{'Bone Collector, The (1999)': ['Thriller']}
+{'Murder at 1600 (1997)': ['Mystery', 'Thriller']}
+{'Die Hard 2 (1990)': ['Action', 'Thriller']}
+{'Absolute Power (1997)': ['Mystery', 'Thriller']}
+{'Saint, The (1997)': ['Action', 'Romance', 'Thriller']}
+{'Relic, The (1997)': ['Horror']}
+{'Christmas Vacation (1989)': ['Comedy']}
+{'Lake Placid (1999)': ['Horror', 'Thriller']}
+{'Die Hard: With a Vengeance (1995)': ['Action', 'Thriller']}
+{'American President, The (1995)': ['Comedy', 'Drama', 'Romance']}
+--- 14.179025173187256 seconds ---
+
+SETTINGS: num of sim neighbors: 1, num of movies: 10
+Running...
+Formatting data...
+Generating graph...
+--- 2.541438102722168 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Adding rating and award information to graph...
+--- 182.92982292175293 seconds ---
+Counting TETs...
+--- 2.6801908016204834 seconds ---
+Performing Logistic Evaluation on TETs...
+--- 9.857092142105103 seconds ---
+Generating histograms...
+--- 2.8181302547454834 seconds ---
+Building Metric Tree
+ MT nodes: ['0_l_l', '0_l_r_l', '0_l_r_r', '0_l_r', '0_l', '0_r_l_l', '0_r_l_r', '0_r_l', '0_r_r_l', '0_r_r_r', '0_r_r', '0_r', '0']
+ MT edges: [('0_l_r', '0_l_r_l'), ('0_l_r', '0_l_r_r'), ('0_l', '0_l_l'), ('0_l', '0_l_r'), ('0_r_l', '0_r_l_l'), ('0_r_l', '0_r_l_r'), ('0_r_r', '0_r_r_l'), ('0_r_r', '0_r_r_r'), ('0_r', '0_r_l'), ('0_r', '0_r_r'), ('0', '0_l'), ('0', '0_r')]
+--- 0.968034029006958 seconds ---
+Searching Metric Tree
+SEEN
+{'Hustler, The (1961)': ['Drama']}
+{'Fistful of Dollars, A (1964)': ['Action', 'Western']}
+{'Alien (1979)': ['Action', 'Horror', 'Sci-Fi', 'Thriller']}
+{'Die Hard (1988)': ['Action', 'Thriller']}
+{'Star Wars: Episode IV - A New Hope (1977)': ['Action', 'Adventure', 'Fantasy', 'Sci-Fi']}
+{'Saving Private Ryan (1998)': ['Action', 'Drama', 'War']}
+{'Jurassic Park (1993)': ['Action', 'Adventure', 'Sci-Fi']}
+{'Raiders of the Lost Ark (1981)': ['Action', 'Adventure']}
+{'Rocky (1976)': ['Action', 'Drama']}
+{'E.T. the Extra-Terrestrial (1982)': ["Children's", 'Drama', 'Fantasy', 'Sci-Fi']}
+{'Thelma & Louise (1991)': ['Action', 'Drama']}
+{'Mad Max (1979)': ['Action', 'Sci-Fi']}
+{'King Kong (1933)': ['Action', 'Adventure', 'Horror']}
+{'Jaws (1975)': ['Action', 'Horror']}
+{'Good, The Bad and The Ugly, The (1966)': ['Action', 'Western']}
+{'Run Lola Run (Lola rennt) (1998)': ['Action', 'Crime', 'Romance']}
+{'Goldfinger (1964)': ['Action']}
+{'Terminator, The (1984)': ['Action', 'Sci-Fi', 'Thriller']}
+{'Star Wars: Episode VI - Return of the Jedi (1983)': ['Action', 'Adventure', 'Romance', 'Sci-Fi', 'War']}
+{'Star Wars: Episode V - The Empire Strikes Back (1980)': ['Action', 'Adventure', 'Drama', 'Sci-Fi', 'War']}
+{'Predator (1987)': ['Action', 'Sci-Fi', 'Thriller']}
+PREDICTION
+{'Bone Collector, The (1999)': ['Thriller']}
+{'Murder at 1600 (1997)': ['Mystery', 'Thriller']}
+{'Die Hard 2 (1990)': ['Action', 'Thriller']}
+{'Absolute Power (1997)': ['Mystery', 'Thriller']}
+{'Saint, The (1997)': ['Action', 'Romance', 'Thriller']}
+{'Relic, The (1997)': ['Horror']}
+{'Christmas Vacation (1989)': ['Comedy']}
+{'Lake Placid (1999)': ['Horror', 'Thriller']}
+{'Die Hard: With a Vengeance (1995)': ['Action', 'Thriller']}
+{'American President, The (1995)': ['Comedy', 'Drama', 'Romance']}
+--- 13.534002542495728 seconds ---
+
+SETTINGS: num of sim neighbors: 1, num of movies: 10
+Running...
+Formatting data...
+Generating graph...
+--- 2.169720411300659 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Adding rating and award information to graph...
+--- 174.4003622531891 seconds ---
+Counting TETs...
+--- 2.7704460620880127 seconds ---
+Performing Logistic Evaluation on TETs...
+--- 10.097368955612183 seconds ---
+Generating histograms...
+--- 2.9376325607299805 seconds ---
+Building Metric Tree
+ MT nodes: ['0_l_l', '0_l_r_l', '0_l_r_r', '0_l_r', '0_l', '0_r_l_l', '0_r_l_r', '0_r_l', '0_r_r_l', '0_r_r_r', '0_r_r', '0_r', '0']
+ MT edges: [('0_l_r', '0_l_r_l'), ('0_l_r', '0_l_r_r'), ('0_l', '0_l_l'), ('0_l', '0_l_r'), ('0_r_l', '0_r_l_l'), ('0_r_l', '0_r_l_r'), ('0_r_r', '0_r_r_l'), ('0_r_r', '0_r_r_r'), ('0_r', '0_r_l'), ('0_r', '0_r_r'), ('0', '0_l'), ('0', '0_r')]
+--- 0.9763891696929932 seconds ---
+Searching Metric Tree
+SEEN
+{'Hustler, The (1961)': ['Drama']}
+{'Fistful of Dollars, A (1964)': ['Action', 'Western']}
+{'Alien (1979)': ['Action', 'Horror', 'Sci-Fi', 'Thriller']}
+{'Die Hard (1988)': ['Action', 'Thriller']}
+{'Star Wars: Episode IV - A New Hope (1977)': ['Action', 'Adventure', 'Fantasy', 'Sci-Fi']}
+{'Saving Private Ryan (1998)': ['Action', 'Drama', 'War']}
+{'Jurassic Park (1993)': ['Action', 'Adventure', 'Sci-Fi']}
+{'Raiders of the Lost Ark (1981)': ['Action', 'Adventure']}
+{'Rocky (1976)': ['Action', 'Drama']}
+{'E.T. the Extra-Terrestrial (1982)': ["Children's", 'Drama', 'Fantasy', 'Sci-Fi']}
+{'Thelma & Louise (1991)': ['Action', 'Drama']}
+{'Mad Max (1979)': ['Action', 'Sci-Fi']}
+{'King Kong (1933)': ['Action', 'Adventure', 'Horror']}
+{'Jaws (1975)': ['Action', 'Horror']}
+{'Good, The Bad and The Ugly, The (1966)': ['Action', 'Western']}
+{'Run Lola Run (Lola rennt) (1998)': ['Action', 'Crime', 'Romance']}
+{'Goldfinger (1964)': ['Action']}
+{'Terminator, The (1984)': ['Action', 'Sci-Fi', 'Thriller']}
+{'Star Wars: Episode VI - Return of the Jedi (1983)': ['Action', 'Adventure', 'Romance', 'Sci-Fi', 'War']}
+{'Star Wars: Episode V - The Empire Strikes Back (1980)': ['Action', 'Adventure', 'Drama', 'Sci-Fi', 'War']}
+{'Predator (1987)': ['Action', 'Sci-Fi', 'Thriller']}
+PREDICTION
+{'Bone Collector, The (1999)': ['Thriller']}
+{'Murder at 1600 (1997)': ['Mystery', 'Thriller']}
+{'Die Hard 2 (1990)': ['Action', 'Thriller']}
+{'Absolute Power (1997)': ['Mystery', 'Thriller']}
+{'Saint, The (1997)': ['Action', 'Romance', 'Thriller']}
+{'Relic, The (1997)': ['Horror']}
+{'Christmas Vacation (1989)': ['Comedy']}
+{'Lake Placid (1999)': ['Horror', 'Thriller']}
+{'Die Hard: With a Vengeance (1995)': ['Action', 'Thriller']}
+{'American President, The (1995)': ['Comedy', 'Drama', 'Romance']}
+--- 13.427512407302856 seconds ---
+
+SETTINGS: num of sim neighbors: 1, num of movies: 10
+Running...
+Formatting data...
+Generating graph...
+--- 2.458488702774048 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Adding rating and award information to graph...
+--- 199.06621384620667 seconds ---
+Counting TETs...
+--- 2.799334764480591 seconds ---
+Performing Logistic Evaluation on TETs...
+--- 10.564399242401123 seconds ---
+Generating histograms...
+--- 4.176941871643066 seconds ---
+Building Metric Tree
+ MT nodes: ['0_l_l', '0_l_r_l', '0_l_r_r', '0_l_r', '0_l', '0_r_l_l_l_l_l_l', '0_r_l_l_l_l_l_r', '0_r_l_l_l_l_l', '0_r_l_l_l_l_r_l', '0_r_l_l_l_l_r_r', '0_r_l_l_l_l_r', '0_r_l_l_l_l', '0_r_l_l_l_r', '0_r_l_l_l', '0_r_l_l_r_l_l', '0_r_l_l_r_l_r', '0_r_l_l_r_l', '0_r_l_l_r_r', '0_r_l_l_r', '0_r_l_l', '0_r_l_r_l_l', '0_r_l_r_l_r', '0_r_l_r_l', '0_r_l_r_r_l_l_l', '0_r_l_r_r_l_l_r', '0_r_l_r_r_l_l', '0_r_l_r_r_l_r', '0_r_l_r_r_l', '0_r_l_r_r_r', '0_r_l_r_r', '0_r_l_r', '0_r_l', '0_r_r_l_l_l', '0_r_r_l_l_r', '0_r_r_l_l', '0_r_r_l_r_l', '0_r_r_l_r_r', '0_r_r_l_r', '0_r_r_l', '0_r_r_r_l', '0_r_r_r_r_l', '0_r_r_r_r_r_l', '0_r_r_r_r_r_r', '0_r_r_r_r_r', '0_r_r_r_r', '0_r_r_r', '0_r_r', '0_r', '0']
+ MT edges: [('0_l_r', '0_l_r_l'), ('0_l_r', '0_l_r_r'), ('0_l', '0_l_l'), ('0_l', '0_l_r'), ('0_r_l_l_l_l_l', '0_r_l_l_l_l_l_l'), ('0_r_l_l_l_l_l', '0_r_l_l_l_l_l_r'), ('0_r_l_l_l_l_r', '0_r_l_l_l_l_r_l'), ('0_r_l_l_l_l_r', '0_r_l_l_l_l_r_r'), ('0_r_l_l_l_l', '0_r_l_l_l_l_l'), ('0_r_l_l_l_l', '0_r_l_l_l_l_r'), ('0_r_l_l_l', '0_r_l_l_l_l'), ('0_r_l_l_l', '0_r_l_l_l_r'), ('0_r_l_l_r_l', '0_r_l_l_r_l_l'), ('0_r_l_l_r_l', '0_r_l_l_r_l_r'), ('0_r_l_l_r', '0_r_l_l_r_l'), ('0_r_l_l_r', '0_r_l_l_r_r'), ('0_r_l_l', '0_r_l_l_l'), ('0_r_l_l', '0_r_l_l_r'), ('0_r_l_r_l', '0_r_l_r_l_l'), ('0_r_l_r_l', '0_r_l_r_l_r'), ('0_r_l_r_r_l_l', '0_r_l_r_r_l_l_l'), ('0_r_l_r_r_l_l', '0_r_l_r_r_l_l_r'), ('0_r_l_r_r_l', '0_r_l_r_r_l_l'), ('0_r_l_r_r_l', '0_r_l_r_r_l_r'), ('0_r_l_r_r', '0_r_l_r_r_l'), ('0_r_l_r_r', '0_r_l_r_r_r'), ('0_r_l_r', '0_r_l_r_l'), ('0_r_l_r', '0_r_l_r_r'), ('0_r_l', '0_r_l_l'), ('0_r_l', '0_r_l_r'), ('0_r_r_l_l', '0_r_r_l_l_l'), ('0_r_r_l_l', '0_r_r_l_l_r'), ('0_r_r_l_r', '0_r_r_l_r_l'), ('0_r_r_l_r', '0_r_r_l_r_r'), ('0_r_r_l', '0_r_r_l_l'), ('0_r_r_l', '0_r_r_l_r'), ('0_r_r_r_r_r', '0_r_r_r_r_r_l'), ('0_r_r_r_r_r', '0_r_r_r_r_r_r'), ('0_r_r_r_r', '0_r_r_r_r_l'), ('0_r_r_r_r', '0_r_r_r_r_r'), ('0_r_r_r', '0_r_r_r_l'), ('0_r_r_r', '0_r_r_r_r'), ('0_r_r', '0_r_r_l'), ('0_r_r', '0_r_r_r'), ('0_r', '0_r_l'), ('0_r', '0_r_r'), ('0', '0_l'), ('0', '0_r')]
+--- 1.9763917922973633 seconds ---
+Searching Metric Tree
+SEEN
+{'Hustler, The (1961)': ['Drama']}
+{'Fistful of Dollars, A (1964)': ['Action', 'Western']}
+{'Alien (1979)': ['Action', 'Horror', 'Sci-Fi', 'Thriller']}
+{'Die Hard (1988)': ['Action', 'Thriller']}
+{'Star Wars: Episode IV - A New Hope (1977)': ['Action', 'Adventure', 'Fantasy', 'Sci-Fi']}
+{'Saving Private Ryan (1998)': ['Action', 'Drama', 'War']}
+{'Jurassic Park (1993)': ['Action', 'Adventure', 'Sci-Fi']}
+{'Raiders of the Lost Ark (1981)': ['Action', 'Adventure']}
+{'Rocky (1976)': ['Action', 'Drama']}
+{'E.T. the Extra-Terrestrial (1982)': ["Children's", 'Drama', 'Fantasy', 'Sci-Fi']}
+{'Thelma & Louise (1991)': ['Action', 'Drama']}
+{'Mad Max (1979)': ['Action', 'Sci-Fi']}
+{'King Kong (1933)': ['Action', 'Adventure', 'Horror']}
+{'Jaws (1975)': ['Action', 'Horror']}
+{'Good, The Bad and The Ugly, The (1966)': ['Action', 'Western']}
+{'Run Lola Run (Lola rennt) (1998)': ['Action', 'Crime', 'Romance']}
+{'Goldfinger (1964)': ['Action']}
+{'Terminator, The (1984)': ['Action', 'Sci-Fi', 'Thriller']}
+{'Star Wars: Episode VI - Return of the Jedi (1983)': ['Action', 'Adventure', 'Romance', 'Sci-Fi', 'War']}
+{'Star Wars: Episode V - The Empire Strikes Back (1980)': ['Action', 'Adventure', 'Drama', 'Sci-Fi', 'War']}
+{'Predator (1987)': ['Action', 'Sci-Fi', 'Thriller']}
+PREDICTION
+{'Bone Collector, The (1999)': ['Thriller']}
+{'Murder at 1600 (1997)': ['Mystery', 'Thriller']}
+{'Die Hard 2 (1990)': ['Action', 'Thriller']}
+{'Absolute Power (1997)': ['Mystery', 'Thriller']}
+{'Saint, The (1997)': ['Action', 'Romance', 'Thriller']}
+{'Relic, The (1997)': ['Horror']}
+{'Christmas Vacation (1989)': ['Comedy']}
+{'Lake Placid (1999)': ['Horror', 'Thriller']}
+{'Die Hard: With a Vengeance (1995)': ['Action', 'Thriller']}
+{'American President, The (1995)': ['Comedy', 'Drama', 'Romance']}
+--- 13.957803010940552 seconds ---
+
+SETTINGS: num of sim neighbors: 1, num of movies: 10
+RESULT: (0.0, 0.0, {0.2051970513240213})
+|| ------ COMPLETE ------ ||
+Total run time: 1931.4515318870544 seconds.
+Amount of users: 461.
+|| ---------------------- ||
+
+Running...
+Formatting data...
+Generating graph...
+--- 1.9707810878753662 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Running...
+Formatting data...
+Generating graph...
+--- 1.9707956314086914 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Running...
+Formatting data...
+Generating graph...
+--- 2.0057597160339355 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Running...
+Formatting data...
+Generating graph...
+--- 2.0007641315460205 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Running...
+Formatting data...
+Generating graph...
+--- 2.0177645683288574 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Running...
+Formatting data...
+Generating graph...
+--- 1.9817886352539062 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Running...
+Formatting data...
+Generating graph...
+--- 2.0207505226135254 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Adding rating and award information to graph...
+--- 186.01281595230103 seconds ---
+Counting TETs...
+--- 1.483088731765747 seconds ---
+Performing Logistic Evaluation on TETs...
+--- 5.8644020557403564 seconds ---
+Generating histograms...
+--- 2.705324172973633 seconds ---
+Building Metric Tree
+ MT nodes: ['0_l_l', '0_l_r_l', '0_l_r_r_l', '0_l_r_r_r_l', '0_l_r_r_r_r', '0_l_r_r_r', '0_l_r_r', '0_l_r', '0_l', '0_r_l_l_l', '0_r_l_l_r', '0_r_l_l', '0_r_l_r_l_l', '0_r_l_r_l_r_l', '0_r_l_r_l_r_r_l', '0_r_l_r_l_r_r_r', '0_r_l_r_l_r_r', '0_r_l_r_l_r', '0_r_l_r_l', '0_r_l_r_r', '0_r_l_r', '0_r_l', '0_r_r_l_l_l', '0_r_r_l_l_r_l', '0_r_r_l_l_r_r_l', '0_r_r_l_l_r_r_r', '0_r_r_l_l_r_r', '0_r_r_l_l_r', '0_r_r_l_l', '0_r_r_l_r', '0_r_r_l', '0_r_r_r_l', '0_r_r_r_r_l', '0_r_r_r_r_r_l_l', '0_r_r_r_r_r_l_r', '0_r_r_r_r_r_l', '0_r_r_r_r_r_r_l', '0_r_r_r_r_r_r_r', '0_r_r_r_r_r_r', '0_r_r_r_r_r', '0_r_r_r_r', '0_r_r_r', '0_r_r', '0_r', '0']
+ MT edges: [('0_l_r_r_r', '0_l_r_r_r_l'), ('0_l_r_r_r', '0_l_r_r_r_r'), ('0_l_r_r', '0_l_r_r_l'), ('0_l_r_r', '0_l_r_r_r'), ('0_l_r', '0_l_r_l'), ('0_l_r', '0_l_r_r'), ('0_l', '0_l_l'), ('0_l', '0_l_r'), ('0_r_l_l', '0_r_l_l_l'), ('0_r_l_l', '0_r_l_l_r'), ('0_r_l_r_l_r_r', '0_r_l_r_l_r_r_l'), ('0_r_l_r_l_r_r', '0_r_l_r_l_r_r_r'), ('0_r_l_r_l_r', '0_r_l_r_l_r_l'), ('0_r_l_r_l_r', '0_r_l_r_l_r_r'), ('0_r_l_r_l', '0_r_l_r_l_l'), ('0_r_l_r_l', '0_r_l_r_l_r'), ('0_r_l_r', '0_r_l_r_l'), ('0_r_l_r', '0_r_l_r_r'), ('0_r_l', '0_r_l_l'), ('0_r_l', '0_r_l_r'), ('0_r_r_l_l_r_r', '0_r_r_l_l_r_r_l'), ('0_r_r_l_l_r_r', '0_r_r_l_l_r_r_r'), ('0_r_r_l_l_r', '0_r_r_l_l_r_l'), ('0_r_r_l_l_r', '0_r_r_l_l_r_r'), ('0_r_r_l_l', '0_r_r_l_l_l'), ('0_r_r_l_l', '0_r_r_l_l_r'), ('0_r_r_l', '0_r_r_l_l'), ('0_r_r_l', '0_r_r_l_r'), ('0_r_r_r_r_r_l', '0_r_r_r_r_r_l_l'), ('0_r_r_r_r_r_l', '0_r_r_r_r_r_l_r'), ('0_r_r_r_r_r_r', '0_r_r_r_r_r_r_l'), ('0_r_r_r_r_r_r', '0_r_r_r_r_r_r_r'), ('0_r_r_r_r_r', '0_r_r_r_r_r_l'), ('0_r_r_r_r_r', '0_r_r_r_r_r_r'), ('0_r_r_r_r', '0_r_r_r_r_l'), ('0_r_r_r_r', '0_r_r_r_r_r'), ('0_r_r_r', '0_r_r_r_l'), ('0_r_r_r', '0_r_r_r_r'), ('0_r_r', '0_r_r_l'), ('0_r_r', '0_r_r_r'), ('0_r', '0_r_l'), ('0_r', '0_r_r'), ('0', '0_l'), ('0', '0_r')]
+--- 2.217602014541626 seconds ---
+Searching Metric Tree
+Running...
+Formatting data...
+Generating graph...
+--- 2.0287599563598633 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Adding rating and award information to graph...
+--- 188.7408685684204 seconds ---
+Counting TETs...
+--- 1.3651759624481201 seconds ---
+Performing Logistic Evaluation on TETs...
+--- 5.668504238128662 seconds ---
+Generating histograms...
+--- 2.683338165283203 seconds ---
+Building Metric Tree
+ MT nodes: ['0_l_l', '0_l_r_l', '0_l_r_r_l', '0_l_r_r_r_l', '0_l_r_r_r_r', '0_l_r_r_r', '0_l_r_r', '0_l_r', '0_l', '0_r_l_l_l', '0_r_l_l_r', '0_r_l_l', '0_r_l_r_l_l', '0_r_l_r_l_r_l', '0_r_l_r_l_r_r_l', '0_r_l_r_l_r_r_r', '0_r_l_r_l_r_r', '0_r_l_r_l_r', '0_r_l_r_l', '0_r_l_r_r', '0_r_l_r', '0_r_l', '0_r_r_l_l_l', '0_r_r_l_l_r_l', '0_r_r_l_l_r_r_l', '0_r_r_l_l_r_r_r', '0_r_r_l_l_r_r', '0_r_r_l_l_r', '0_r_r_l_l', '0_r_r_l_r', '0_r_r_l', '0_r_r_r_l', '0_r_r_r_r_l', '0_r_r_r_r_r_l_l', '0_r_r_r_r_r_l_r', '0_r_r_r_r_r_l', '0_r_r_r_r_r_r_l', '0_r_r_r_r_r_r_r', '0_r_r_r_r_r_r', '0_r_r_r_r_r', '0_r_r_r_r', '0_r_r_r', '0_r_r', '0_r', '0']
+ MT edges: [('0_l_r_r_r', '0_l_r_r_r_l'), ('0_l_r_r_r', '0_l_r_r_r_r'), ('0_l_r_r', '0_l_r_r_l'), ('0_l_r_r', '0_l_r_r_r'), ('0_l_r', '0_l_r_l'), ('0_l_r', '0_l_r_r'), ('0_l', '0_l_l'), ('0_l', '0_l_r'), ('0_r_l_l', '0_r_l_l_l'), ('0_r_l_l', '0_r_l_l_r'), ('0_r_l_r_l_r_r', '0_r_l_r_l_r_r_l'), ('0_r_l_r_l_r_r', '0_r_l_r_l_r_r_r'), ('0_r_l_r_l_r', '0_r_l_r_l_r_l'), ('0_r_l_r_l_r', '0_r_l_r_l_r_r'), ('0_r_l_r_l', '0_r_l_r_l_l'), ('0_r_l_r_l', '0_r_l_r_l_r'), ('0_r_l_r', '0_r_l_r_l'), ('0_r_l_r', '0_r_l_r_r'), ('0_r_l', '0_r_l_l'), ('0_r_l', '0_r_l_r'), ('0_r_r_l_l_r_r', '0_r_r_l_l_r_r_l'), ('0_r_r_l_l_r_r', '0_r_r_l_l_r_r_r'), ('0_r_r_l_l_r', '0_r_r_l_l_r_l'), ('0_r_r_l_l_r', '0_r_r_l_l_r_r'), ('0_r_r_l_l', '0_r_r_l_l_l'), ('0_r_r_l_l', '0_r_r_l_l_r'), ('0_r_r_l', '0_r_r_l_l'), ('0_r_r_l', '0_r_r_l_r'), ('0_r_r_r_r_r_l', '0_r_r_r_r_r_l_l'), ('0_r_r_r_r_r_l', '0_r_r_r_r_r_l_r'), ('0_r_r_r_r_r_r', '0_r_r_r_r_r_r_l'), ('0_r_r_r_r_r_r', '0_r_r_r_r_r_r_r'), ('0_r_r_r_r_r', '0_r_r_r_r_r_l'), ('0_r_r_r_r_r', '0_r_r_r_r_r_r'), ('0_r_r_r_r', '0_r_r_r_r_l'), ('0_r_r_r_r', '0_r_r_r_r_r'), ('0_r_r_r', '0_r_r_r_l'), ('0_r_r_r', '0_r_r_r_r'), ('0_r_r', '0_r_r_l'), ('0_r_r', '0_r_r_r'), ('0_r', '0_r_l'), ('0_r', '0_r_r'), ('0', '0_l'), ('0', '0_r')]
+--- 1.327186107635498 seconds ---
+Searching Metric Tree
+SEEN
+{'Hustler, The (1961)': ['Drama']}
+{'Fistful of Dollars, A (1964)': ['Action', 'Western']}
+{'Alien (1979)': ['Action', 'Horror', 'Sci-Fi', 'Thriller']}
+{'Die Hard (1988)': ['Action', 'Thriller']}
+{'Star Wars: Episode IV - A New Hope (1977)': ['Action', 'Adventure', 'Fantasy', 'Sci-Fi']}
+{'Saving Private Ryan (1998)': ['Action', 'Drama', 'War']}
+{'Jurassic Park (1993)': ['Action', 'Adventure', 'Sci-Fi']}
+{'Raiders of the Lost Ark (1981)': ['Action', 'Adventure']}
+{'Rocky (1976)': ['Action', 'Drama']}
+{'E.T. the Extra-Terrestrial (1982)': ["Children's", 'Drama', 'Fantasy', 'Sci-Fi']}
+{'Thelma & Louise (1991)': ['Action', 'Drama']}
+{'Mad Max (1979)': ['Action', 'Sci-Fi']}
+{'King Kong (1933)': ['Action', 'Adventure', 'Horror']}
+{'Jaws (1975)': ['Action', 'Horror']}
+{'Good, The Bad and The Ugly, The (1966)': ['Action', 'Western']}
+{'Run Lola Run (Lola rennt) (1998)': ['Action', 'Crime', 'Romance']}
+{'Goldfinger (1964)': ['Action']}
+{'Terminator, The (1984)': ['Action', 'Sci-Fi', 'Thriller']}
+{'Star Wars: Episode VI - Return of the Jedi (1983)': ['Action', 'Adventure', 'Romance', 'Sci-Fi', 'War']}
+{'Star Wars: Episode V - The Empire Strikes Back (1980)': ['Action', 'Adventure', 'Drama', 'Sci-Fi', 'War']}
+{'Predator (1987)': ['Action', 'Sci-Fi', 'Thriller']}
+PREDICTION
+{'Nikita (La Femme Nikita) (1990)': ['Thriller']}
+{'Bridge on the River Kwai, The (1957)': ['Drama', 'War']}
+{"She's the One (1996)": ['Comedy', 'Romance']}
+{'Fantasia (1940)': ['Animation', "Children's", 'Musical']}
+{"Rosemary's Baby (1968)": ['Horror', 'Thriller']}
+{'Room with a View, A (1986)': ['Drama', 'Romance']}
+{'Fantasia 2000 (1999)': ['Animation', "Children's", 'Musical']}
+{'Rules of Engagement (2000)': ['Drama', 'Thriller']}
+{'Legends of the Fall (1994)': ['Drama', 'Romance', 'War', 'Western']}
+{'Shanghai Noon (2000)': ['Action']}
+--- 11.888689756393433 seconds ---
+
+SETTINGS: num of sim neighbors: 1, num of movies: 10
+RESULT: (0.0, 0.0, {0.24030025723400583})
+|| ------ COMPLETE ------ ||
+Total run time: 226.62198996543884 seconds.
+Amount of users: 461.
+|| ---------------------- ||
+
+Running...
+Formatting data...
+Generating graph...
+--- 2.014752149581909 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Adding rating and award information to graph...
+--- 188.25440406799316 seconds ---
+Counting TETs...
+--- 1.4181160926818848 seconds ---
+Performing Logistic Evaluation on TETs...
+--- 5.810441255569458 seconds ---
+Generating histograms...
+--- 2.622394323348999 seconds ---
+Building Metric Tree
+ MT nodes: ['0_l_l', '0_l_r_l', '0_l_r_r_l', '0_l_r_r_r_l', '0_l_r_r_r_r', '0_l_r_r_r', '0_l_r_r', '0_l_r', '0_l', '0_r_l_l_l', '0_r_l_l_r', '0_r_l_l', '0_r_l_r_l_l', '0_r_l_r_l_r_l', '0_r_l_r_l_r_r_l', '0_r_l_r_l_r_r_r', '0_r_l_r_l_r_r', '0_r_l_r_l_r', '0_r_l_r_l', '0_r_l_r_r', '0_r_l_r', '0_r_l', '0_r_r_l_l_l', '0_r_r_l_l_r_l', '0_r_r_l_l_r_r_l', '0_r_r_l_l_r_r_r', '0_r_r_l_l_r_r', '0_r_r_l_l_r', '0_r_r_l_l', '0_r_r_l_r', '0_r_r_l', '0_r_r_r_l', '0_r_r_r_r_l', '0_r_r_r_r_r_l_l', '0_r_r_r_r_r_l_r', '0_r_r_r_r_r_l', '0_r_r_r_r_r_r_l', '0_r_r_r_r_r_r_r', '0_r_r_r_r_r_r', '0_r_r_r_r_r', '0_r_r_r_r', '0_r_r_r', '0_r_r', '0_r', '0']
+ MT edges: [('0_l_r_r_r', '0_l_r_r_r_l'), ('0_l_r_r_r', '0_l_r_r_r_r'), ('0_l_r_r', '0_l_r_r_l'), ('0_l_r_r', '0_l_r_r_r'), ('0_l_r', '0_l_r_l'), ('0_l_r', '0_l_r_r'), ('0_l', '0_l_l'), ('0_l', '0_l_r'), ('0_r_l_l', '0_r_l_l_l'), ('0_r_l_l', '0_r_l_l_r'), ('0_r_l_r_l_r_r', '0_r_l_r_l_r_r_l'), ('0_r_l_r_l_r_r', '0_r_l_r_l_r_r_r'), ('0_r_l_r_l_r', '0_r_l_r_l_r_l'), ('0_r_l_r_l_r', '0_r_l_r_l_r_r'), ('0_r_l_r_l', '0_r_l_r_l_l'), ('0_r_l_r_l', '0_r_l_r_l_r'), ('0_r_l_r', '0_r_l_r_l'), ('0_r_l_r', '0_r_l_r_r'), ('0_r_l', '0_r_l_l'), ('0_r_l', '0_r_l_r'), ('0_r_r_l_l_r_r', '0_r_r_l_l_r_r_l'), ('0_r_r_l_l_r_r', '0_r_r_l_l_r_r_r'), ('0_r_r_l_l_r', '0_r_r_l_l_r_l'), ('0_r_r_l_l_r', '0_r_r_l_l_r_r'), ('0_r_r_l_l', '0_r_r_l_l_l'), ('0_r_r_l_l', '0_r_r_l_l_r'), ('0_r_r_l', '0_r_r_l_l'), ('0_r_r_l', '0_r_r_l_r'), ('0_r_r_r_r_r_l', '0_r_r_r_r_r_l_l'), ('0_r_r_r_r_r_l', '0_r_r_r_r_r_l_r'), ('0_r_r_r_r_r_r', '0_r_r_r_r_r_r_l'), ('0_r_r_r_r_r_r', '0_r_r_r_r_r_r_r'), ('0_r_r_r_r_r', '0_r_r_r_r_r_l'), ('0_r_r_r_r_r', '0_r_r_r_r_r_r'), ('0_r_r_r_r', '0_r_r_r_r_l'), ('0_r_r_r_r', '0_r_r_r_r_r'), ('0_r_r_r', '0_r_r_r_l'), ('0_r_r_r', '0_r_r_r_r'), ('0_r_r', '0_r_r_l'), ('0_r_r', '0_r_r_r'), ('0_r', '0_r_l'), ('0_r', '0_r_r'), ('0', '0_l'), ('0', '0_r')]
+--- 1.3836700916290283 seconds ---
+Searching Metric Tree
+SEEN
+{'Hustler, The (1961)': ['Drama']}
+{'Fistful of Dollars, A (1964)': ['Action', 'Western']}
+{'Alien (1979)': ['Action', 'Horror', 'Sci-Fi', 'Thriller']}
+{'Die Hard (1988)': ['Action', 'Thriller']}
+{'Star Wars: Episode IV - A New Hope (1977)': ['Action', 'Adventure', 'Fantasy', 'Sci-Fi']}
+{'Saving Private Ryan (1998)': ['Action', 'Drama', 'War']}
+{'Jurassic Park (1993)': ['Action', 'Adventure', 'Sci-Fi']}
+{'Raiders of the Lost Ark (1981)': ['Action', 'Adventure']}
+{'Rocky (1976)': ['Action', 'Drama']}
+{'E.T. the Extra-Terrestrial (1982)': ["Children's", 'Drama', 'Fantasy', 'Sci-Fi']}
+{'Thelma & Louise (1991)': ['Action', 'Drama']}
+{'Mad Max (1979)': ['Action', 'Sci-Fi']}
+{'King Kong (1933)': ['Action', 'Adventure', 'Horror']}
+{'Jaws (1975)': ['Action', 'Horror']}
+{'Good, The Bad and The Ugly, The (1966)': ['Action', 'Western']}
+{'Run Lola Run (Lola rennt) (1998)': ['Action', 'Crime', 'Romance']}
+{'Goldfinger (1964)': ['Action']}
+{'Terminator, The (1984)': ['Action', 'Sci-Fi', 'Thriller']}
+{'Star Wars: Episode VI - Return of the Jedi (1983)': ['Action', 'Adventure', 'Romance', 'Sci-Fi', 'War']}
+{'Star Wars: Episode V - The Empire Strikes Back (1980)': ['Action', 'Adventure', 'Drama', 'Sci-Fi', 'War']}
+{'Predator (1987)': ['Action', 'Sci-Fi', 'Thriller']}
+PREDICTION
+{'Nikita (La Femme Nikita) (1990)': ['Thriller']}
+{'Bridge on the River Kwai, The (1957)': ['Drama', 'War']}
+{"She's the One (1996)": ['Comedy', 'Romance']}
+{'Fantasia (1940)': ['Animation', "Children's", 'Musical']}
+{"Rosemary's Baby (1968)": ['Horror', 'Thriller']}
+{'Room with a View, A (1986)': ['Drama', 'Romance']}
+{'Fantasia 2000 (1999)': ['Animation', "Children's", 'Musical']}
+{'Rules of Engagement (2000)': ['Drama', 'Thriller']}
+{'Legends of the Fall (1994)': ['Drama', 'Romance', 'War', 'Western']}
+{'Shanghai Noon (2000)': ['Action']}
+{'U-571 (2000)': ['Action', 'Thriller']}
+{'It Could Happen to You (1994)': ['Drama', 'Romance']}
+{'American Beauty (1999)': ['Comedy', 'Drama']}
+{'Chicken Run (2000)': ['Animation', "Children's", 'Comedy']}
+{'Patriot, The (2000)': ['Action', 'Drama', 'War']}
+{'Aladdin (1992)': ['Animation', "Children's", 'Comedy', 'Musical']}
+{'Toy Story (1995)': ['Animation', "Children's", 'Comedy']}
+{'Toy Story 2 (1999)': ['Animation', "Children's", 'Comedy']}
+{'Pleasantville (1998)': ['Comedy']}
+{'Gone with the Wind (1939)': ['Drama', 'Romance', 'War']}
+{'Tin Cup (1996)': ['Comedy', 'Romance']}
+{'Air Force One (1997)': ['Action', 'Thriller']}
+{"Bug's Life, A (1998)": ['Animation', "Children's", 'Comedy']}
+{'Patch Adams (1998)': ['Comedy', 'Drama']}
+{'Men in Black (1997)': ['Action', 'Adventure', 'Comedy', 'Sci-Fi']}
+--- 18.624555587768555 seconds ---
+
+SETTINGS: num of sim neighbors: 3, num of movies: 25
+RESULT: (0.0, 0.0, {0.18957541138032186})
+|| ------ COMPLETE ------ ||
+Total run time: 235.59871006011963 seconds.
+Amount of users: 461.
+|| ---------------------- ||
+
+Running...
+Formatting data...
+Generating graph...
+--- 2.072713613510132 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Adding rating and award information to graph...
+--- 190.29239797592163 seconds ---
+Counting TETs...
+--- 1.4592957496643066 seconds ---
+Performing Logistic Evaluation on TETs...
+--- 5.936383485794067 seconds ---
+Generating histograms...
+--- 2.72662353515625 seconds ---
+Building Metric Tree
+ MT nodes: ['0_l_l', '0_l_r_l', '0_l_r_r_l', '0_l_r_r_r_l', '0_l_r_r_r_r', '0_l_r_r_r', '0_l_r_r', '0_l_r', '0_l', '0_r_l_l_l', '0_r_l_l_r', '0_r_l_l', '0_r_l_r_l_l', '0_r_l_r_l_r_l', '0_r_l_r_l_r_r_l', '0_r_l_r_l_r_r_r', '0_r_l_r_l_r_r', '0_r_l_r_l_r', '0_r_l_r_l', '0_r_l_r_r', '0_r_l_r', '0_r_l', '0_r_r_l_l_l', '0_r_r_l_l_r_l', '0_r_r_l_l_r_r_l', '0_r_r_l_l_r_r_r', '0_r_r_l_l_r_r', '0_r_r_l_l_r', '0_r_r_l_l', '0_r_r_l_r', '0_r_r_l', '0_r_r_r_l', '0_r_r_r_r_l', '0_r_r_r_r_r_l_l', '0_r_r_r_r_r_l_r', '0_r_r_r_r_r_l', '0_r_r_r_r_r_r_l', '0_r_r_r_r_r_r_r', '0_r_r_r_r_r_r', '0_r_r_r_r_r', '0_r_r_r_r', '0_r_r_r', '0_r_r', '0_r', '0']
+ MT edges: [('0_l_r_r_r', '0_l_r_r_r_l'), ('0_l_r_r_r', '0_l_r_r_r_r'), ('0_l_r_r', '0_l_r_r_l'), ('0_l_r_r', '0_l_r_r_r'), ('0_l_r', '0_l_r_l'), ('0_l_r', '0_l_r_r'), ('0_l', '0_l_l'), ('0_l', '0_l_r'), ('0_r_l_l', '0_r_l_l_l'), ('0_r_l_l', '0_r_l_l_r'), ('0_r_l_r_l_r_r', '0_r_l_r_l_r_r_l'), ('0_r_l_r_l_r_r', '0_r_l_r_l_r_r_r'), ('0_r_l_r_l_r', '0_r_l_r_l_r_l'), ('0_r_l_r_l_r', '0_r_l_r_l_r_r'), ('0_r_l_r_l', '0_r_l_r_l_l'), ('0_r_l_r_l', '0_r_l_r_l_r'), ('0_r_l_r', '0_r_l_r_l'), ('0_r_l_r', '0_r_l_r_r'), ('0_r_l', '0_r_l_l'), ('0_r_l', '0_r_l_r'), ('0_r_r_l_l_r_r', '0_r_r_l_l_r_r_l'), ('0_r_r_l_l_r_r', '0_r_r_l_l_r_r_r'), ('0_r_r_l_l_r', '0_r_r_l_l_r_l'), ('0_r_r_l_l_r', '0_r_r_l_l_r_r'), ('0_r_r_l_l', '0_r_r_l_l_l'), ('0_r_r_l_l', '0_r_r_l_l_r'), ('0_r_r_l', '0_r_r_l_l'), ('0_r_r_l', '0_r_r_l_r'), ('0_r_r_r_r_r_l', '0_r_r_r_r_r_l_l'), ('0_r_r_r_r_r_l', '0_r_r_r_r_r_l_r'), ('0_r_r_r_r_r_r', '0_r_r_r_r_r_r_l'), ('0_r_r_r_r_r_r', '0_r_r_r_r_r_r_r'), ('0_r_r_r_r_r', '0_r_r_r_r_r_l'), ('0_r_r_r_r_r', '0_r_r_r_r_r_r'), ('0_r_r_r_r', '0_r_r_r_r_l'), ('0_r_r_r_r', '0_r_r_r_r_r'), ('0_r_r_r', '0_r_r_r_l'), ('0_r_r_r', '0_r_r_r_r'), ('0_r_r', '0_r_r_l'), ('0_r_r', '0_r_r_r'), ('0_r', '0_r_l'), ('0_r', '0_r_r'), ('0', '0_l'), ('0', '0_r')]
+--- 1.426187515258789 seconds ---
+Searching Metric Tree
+SEEN
+{'Hustler, The (1961)': ['Drama']}
+{'Fistful of Dollars, A (1964)': ['Action', 'Western']}
+{'Alien (1979)': ['Action', 'Horror', 'Sci-Fi', 'Thriller']}
+{'Die Hard (1988)': ['Action', 'Thriller']}
+{'Star Wars: Episode IV - A New Hope (1977)': ['Action', 'Adventure', 'Fantasy', 'Sci-Fi']}
+{'Saving Private Ryan (1998)': ['Action', 'Drama', 'War']}
+{'Jurassic Park (1993)': ['Action', 'Adventure', 'Sci-Fi']}
+{'Raiders of the Lost Ark (1981)': ['Action', 'Adventure']}
+{'Rocky (1976)': ['Action', 'Drama']}
+{'E.T. the Extra-Terrestrial (1982)': ["Children's", 'Drama', 'Fantasy', 'Sci-Fi']}
+{'Thelma & Louise (1991)': ['Action', 'Drama']}
+{'Mad Max (1979)': ['Action', 'Sci-Fi']}
+{'King Kong (1933)': ['Action', 'Adventure', 'Horror']}
+{'Jaws (1975)': ['Action', 'Horror']}
+{'Good, The Bad and The Ugly, The (1966)': ['Action', 'Western']}
+{'Run Lola Run (Lola rennt) (1998)': ['Action', 'Crime', 'Romance']}
+{'Goldfinger (1964)': ['Action']}
+{'Terminator, The (1984)': ['Action', 'Sci-Fi', 'Thriller']}
+{'Star Wars: Episode VI - Return of the Jedi (1983)': ['Action', 'Adventure', 'Romance', 'Sci-Fi', 'War']}
+{'Star Wars: Episode V - The Empire Strikes Back (1980)': ['Action', 'Adventure', 'Drama', 'Sci-Fi', 'War']}
+{'Predator (1987)': ['Action', 'Sci-Fi', 'Thriller']}
+PREDICTION
+{'Nikita (La Femme Nikita) (1990)': ['Thriller']}
+{'Bridge on the River Kwai, The (1957)': ['Drama', 'War']}
+{"She's the One (1996)": ['Comedy', 'Romance']}
+{'Fantasia (1940)': ['Animation', "Children's", 'Musical']}
+{"Rosemary's Baby (1968)": ['Horror', 'Thriller']}
+{'Room with a View, A (1986)': ['Drama', 'Romance']}
+{'Fantasia 2000 (1999)': ['Animation', "Children's", 'Musical']}
+{'Rules of Engagement (2000)': ['Drama', 'Thriller']}
+{'Legends of the Fall (1994)': ['Drama', 'Romance', 'War', 'Western']}
+{'Shanghai Noon (2000)': ['Action']}
+{'U-571 (2000)': ['Action', 'Thriller']}
+{'It Could Happen to You (1994)': ['Drama', 'Romance']}
+{'American Beauty (1999)': ['Comedy', 'Drama']}
+{'Chicken Run (2000)': ['Animation', "Children's", 'Comedy']}
+{'Patriot, The (2000)': ['Action', 'Drama', 'War']}
+{'Aladdin (1992)': ['Animation', "Children's", 'Comedy', 'Musical']}
+{'Toy Story (1995)': ['Animation', "Children's", 'Comedy']}
+{'Toy Story 2 (1999)': ['Animation', "Children's", 'Comedy']}
+{'Pleasantville (1998)': ['Comedy']}
+{'Gone with the Wind (1939)': ['Drama', 'Romance', 'War']}
+{'Tin Cup (1996)': ['Comedy', 'Romance']}
+{'Air Force One (1997)': ['Action', 'Thriller']}
+{"Bug's Life, A (1998)": ['Animation', "Children's", 'Comedy']}
+{'Patch Adams (1998)': ['Comedy', 'Drama']}
+{'Men in Black (1997)': ['Action', 'Adventure', 'Comedy', 'Sci-Fi']}
+--- 19.27923059463501 seconds ---
+
+SETTINGS: num of sim neighbors: 3, num of movies: 25
+RESULT: (0.0, 0.0, {0.18957541138032186})
+|| ------ COMPLETE ------ ||
+Total run time: 246.51828122138977 seconds.
+Amount of users: 461.
+|| ---------------------- ||
+
+Running...
+Formatting data...
+Generating graph...
+--- 2.284595489501953 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Adding rating and award information to graph...
+--- 196.77495694160461 seconds ---
+Counting TETs...
+--- 1.5154855251312256 seconds ---
+Performing Logistic Evaluation on TETs...
+--- 6.428070545196533 seconds ---
+Generating histograms...
+--- 2.9953577518463135 seconds ---
+Building Metric Tree
+ MT nodes: ['0_l_l', '0_l_r_l', '0_l_r_r_l', '0_l_r_r_r_l', '0_l_r_r_r_r', '0_l_r_r_r', '0_l_r_r', '0_l_r', '0_l', '0_r_l_l_l', '0_r_l_l_r', '0_r_l_l', '0_r_l_r_l_l', '0_r_l_r_l_r_l', '0_r_l_r_l_r_r_l', '0_r_l_r_l_r_r_r', '0_r_l_r_l_r_r', '0_r_l_r_l_r', '0_r_l_r_l', '0_r_l_r_r', '0_r_l_r', '0_r_l', '0_r_r_l_l_l', '0_r_r_l_l_r_l', '0_r_r_l_l_r_r_l', '0_r_r_l_l_r_r_r', '0_r_r_l_l_r_r', '0_r_r_l_l_r', '0_r_r_l_l', '0_r_r_l_r', '0_r_r_l', '0_r_r_r_l', '0_r_r_r_r_l', '0_r_r_r_r_r_l_l', '0_r_r_r_r_r_l_r', '0_r_r_r_r_r_l', '0_r_r_r_r_r_r_l', '0_r_r_r_r_r_r_r', '0_r_r_r_r_r_r', '0_r_r_r_r_r', '0_r_r_r_r', '0_r_r_r', '0_r_r', '0_r', '0']
+ MT edges: [('0_l_r_r_r', '0_l_r_r_r_l'), ('0_l_r_r_r', '0_l_r_r_r_r'), ('0_l_r_r', '0_l_r_r_l'), ('0_l_r_r', '0_l_r_r_r'), ('0_l_r', '0_l_r_l'), ('0_l_r', '0_l_r_r'), ('0_l', '0_l_l'), ('0_l', '0_l_r'), ('0_r_l_l', '0_r_l_l_l'), ('0_r_l_l', '0_r_l_l_r'), ('0_r_l_r_l_r_r', '0_r_l_r_l_r_r_l'), ('0_r_l_r_l_r_r', '0_r_l_r_l_r_r_r'), ('0_r_l_r_l_r', '0_r_l_r_l_r_l'), ('0_r_l_r_l_r', '0_r_l_r_l_r_r'), ('0_r_l_r_l', '0_r_l_r_l_l'), ('0_r_l_r_l', '0_r_l_r_l_r'), ('0_r_l_r', '0_r_l_r_l'), ('0_r_l_r', '0_r_l_r_r'), ('0_r_l', '0_r_l_l'), ('0_r_l', '0_r_l_r'), ('0_r_r_l_l_r_r', '0_r_r_l_l_r_r_l'), ('0_r_r_l_l_r_r', '0_r_r_l_l_r_r_r'), ('0_r_r_l_l_r', '0_r_r_l_l_r_l'), ('0_r_r_l_l_r', '0_r_r_l_l_r_r'), ('0_r_r_l_l', '0_r_r_l_l_l'), ('0_r_r_l_l', '0_r_r_l_l_r'), ('0_r_r_l', '0_r_r_l_l'), ('0_r_r_l', '0_r_r_l_r'), ('0_r_r_r_r_r_l', '0_r_r_r_r_r_l_l'), ('0_r_r_r_r_r_l', '0_r_r_r_r_r_l_r'), ('0_r_r_r_r_r_r', '0_r_r_r_r_r_r_l'), ('0_r_r_r_r_r_r', '0_r_r_r_r_r_r_r'), ('0_r_r_r_r_r', '0_r_r_r_r_r_l'), ('0_r_r_r_r_r', '0_r_r_r_r_r_r'), ('0_r_r_r_r', '0_r_r_r_r_l'), ('0_r_r_r_r', '0_r_r_r_r_r'), ('0_r_r_r', '0_r_r_r_l'), ('0_r_r_r', '0_r_r_r_r'), ('0_r_r', '0_r_r_l'), ('0_r_r', '0_r_r_r'), ('0_r', '0_r_l'), ('0_r', '0_r_r'), ('0', '0_l'), ('0', '0_r')]
+--- 1.4493927955627441 seconds ---
+Searching Metric Tree
+SEEN
+{'Hustler, The (1961)': ['Drama']}
+{'Fistful of Dollars, A (1964)': ['Action', 'Western']}
+{'Alien (1979)': ['Action', 'Horror', 'Sci-Fi', 'Thriller']}
+{'Die Hard (1988)': ['Action', 'Thriller']}
+{'Star Wars: Episode IV - A New Hope (1977)': ['Action', 'Adventure', 'Fantasy', 'Sci-Fi']}
+{'Saving Private Ryan (1998)': ['Action', 'Drama', 'War']}
+{'Jurassic Park (1993)': ['Action', 'Adventure', 'Sci-Fi']}
+{'Raiders of the Lost Ark (1981)': ['Action', 'Adventure']}
+{'Rocky (1976)': ['Action', 'Drama']}
+{'E.T. the Extra-Terrestrial (1982)': ["Children's", 'Drama', 'Fantasy', 'Sci-Fi']}
+{'Thelma & Louise (1991)': ['Action', 'Drama']}
+{'Mad Max (1979)': ['Action', 'Sci-Fi']}
+{'King Kong (1933)': ['Action', 'Adventure', 'Horror']}
+{'Jaws (1975)': ['Action', 'Horror']}
+{'Good, The Bad and The Ugly, The (1966)': ['Action', 'Western']}
+{'Run Lola Run (Lola rennt) (1998)': ['Action', 'Crime', 'Romance']}
+{'Goldfinger (1964)': ['Action']}
+{'Terminator, The (1984)': ['Action', 'Sci-Fi', 'Thriller']}
+{'Star Wars: Episode VI - Return of the Jedi (1983)': ['Action', 'Adventure', 'Romance', 'Sci-Fi', 'War']}
+{'Star Wars: Episode V - The Empire Strikes Back (1980)': ['Action', 'Adventure', 'Drama', 'Sci-Fi', 'War']}
+{'Predator (1987)': ['Action', 'Sci-Fi', 'Thriller']}
+PREDICTION
+{'Nikita (La Femme Nikita) (1990)': ['Thriller']}
+{'Bridge on the River Kwai, The (1957)': ['Drama', 'War']}
+{"She's the One (1996)": ['Comedy', 'Romance']}
+{'Fantasia (1940)': ['Animation', "Children's", 'Musical']}
+{"Rosemary's Baby (1968)": ['Horror', 'Thriller']}
+{'Room with a View, A (1986)': ['Drama', 'Romance']}
+{'Fantasia 2000 (1999)': ['Animation', "Children's", 'Musical']}
+{'Rules of Engagement (2000)': ['Drama', 'Thriller']}
+{'Legends of the Fall (1994)': ['Drama', 'Romance', 'War', 'Western']}
+{'Shanghai Noon (2000)': ['Action']}
+{'U-571 (2000)': ['Action', 'Thriller']}
+{'It Could Happen to You (1994)': ['Drama', 'Romance']}
+{'American Beauty (1999)': ['Comedy', 'Drama']}
+{'Chicken Run (2000)': ['Animation', "Children's", 'Comedy']}
+{'Patriot, The (2000)': ['Action', 'Drama', 'War']}
+{'Aladdin (1992)': ['Animation', "Children's", 'Comedy', 'Musical']}
+{'Toy Story (1995)': ['Animation', "Children's", 'Comedy']}
+{'Toy Story 2 (1999)': ['Animation', "Children's", 'Comedy']}
+{'Pleasantville (1998)': ['Comedy']}
+{'Gone with the Wind (1939)': ['Drama', 'Romance', 'War']}
+{'Tin Cup (1996)': ['Comedy', 'Romance']}
+{'Air Force One (1997)': ['Action', 'Thriller']}
+{"Bug's Life, A (1998)": ['Animation', "Children's", 'Comedy']}
+{'Patch Adams (1998)': ['Comedy', 'Drama']}
+{'Men in Black (1997)': ['Action', 'Adventure', 'Comedy', 'Sci-Fi']}
+{'Braveheart (1995)': ['Action', 'Drama', 'War']}
+{"Midsummer Night's Dream, A (1999)": ['Comedy', 'Fantasy']}
+{'Sliding Doors (1998)': ['Drama', 'Romance']}
+{'Don Juan DeMarco (1995)': ['Comedy', 'Drama', 'Romance']}
+{'American President, The (1995)': ['Comedy', 'Drama', 'Romance']}
+{'That Thing You Do! (1996)': ['Comedy']}
+{'Dave (1993)': ['Comedy', 'Romance']}
+{'Chinatown (1974)': ['Film-Noir', 'Mystery', 'Thriller']}
+{'Great Escape, The (1963)': ['Adventure', 'War']}
+{'Manchurian Candidate, The (1962)': ['Film-Noir', 'Thriller']}
+{'Big Sleep, The (1946)': ['Film-Noir', 'Mystery']}
+{'Casablanca (1942)': ['Drama', 'Romance', 'War']}
+{'Godfather, The (1972)': ['Action', 'Crime', 'Drama']}
+{'Ghost and Mrs. Muir, The (1947)': ['Drama', 'Romance']}
+{'Taxi Driver (1976)': ['Drama', 'Thriller']}
+{'Wide Awake (1998)': ["Children's", 'Comedy', 'Drama']}
+{'Double Indemnity (1944)': ['Crime', 'Film-Noir']}
+{'Goofy Movie, A (1995)': ['Animation', "Children's", 'Comedy', 'Romance']}
+{'Long Walk Home, The (1990)': ['Drama']}
+{'River Wild, The (1994)': ['Action', 'Thriller']}
+{'Lawrence of Arabia (1962)': ['Adventure', 'War']}
+{'Misérables, Les (1995)': ['Drama', 'Musical']}
+{'Seven Samurai (The Magnificent Seven) (Shichinin no samurai) (1954)': ['Action', 'Drama']}
+{'Crimes and Misdemeanors (1989)': ['Comedy']}
+{'Terminator 2: Judgment Day (1991)': ['Action', 'Sci-Fi', 'Thriller']}
+{'Independence Day (ID4) (1996)': ['Action', 'Sci-Fi', 'War']}
+{'Starship Troopers (1997)': ['Action', 'Adventure', 'Sci-Fi', 'War']}
+{'Mulan (1998)': ['Animation', "Children's"]}
+{'Matrix, The (1999)': ['Action', 'Sci-Fi', 'Thriller']}
+{'Desperado (1995)': ['Action', 'Romance', 'Thriller']}
+{'Thomas Crown Affair, The (1999)': ['Action', 'Thriller']}
+{'Total Recall (1990)': ['Action', 'Adventure', 'Sci-Fi', 'Thriller']}
+{'Long Kiss Goodnight, The (1996)': ['Action', 'Thriller']}
+{'Demolition Man (1993)': ['Action', 'Sci-Fi']}
+{'True Lies (1994)': ['Action', 'Adventure', 'Comedy', 'Romance']}
+{'Double Jeopardy (1999)': ['Action', 'Thriller']}
+{'Fight Club (1999)': ['Drama']}
+{'Boat, The (Das Boot) (1981)': ['Action', 'Drama', 'War']}
+--- 36.16890239715576 seconds ---
+
+SETTINGS: num of sim neighbors: 3, num of movies: 100
+RESULT: (0.0, 0.0, {0.18957541138032186})
+|| ------ COMPLETE ------ ||
+Total run time: 274.3720028400421 seconds.
+Amount of users: 461.
+|| ---------------------- ||
+
+Running...
+Formatting data...
+Generating graph...
+--- 2.3615481853485107 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Adding rating and award information to graph...
+--- 201.36990904808044 seconds ---
+Counting TETs...
+--- 1.5816726684570312 seconds ---
+Performing Logistic Evaluation on TETs...
+--- 6.5149548053741455 seconds ---
+Generating histograms...
+--- 3.1482701301574707 seconds ---
+Building Metric Tree
+ MT nodes: ['0_l_l', '0_l_r_l', '0_l_r_r_l', '0_l_r_r_r_l', '0_l_r_r_r_r', '0_l_r_r_r', '0_l_r_r', '0_l_r', '0_l', '0_r_l_l_l', '0_r_l_l_r', '0_r_l_l', '0_r_l_r_l_l', '0_r_l_r_l_r_l', '0_r_l_r_l_r_r_l', '0_r_l_r_l_r_r_r', '0_r_l_r_l_r_r', '0_r_l_r_l_r', '0_r_l_r_l', '0_r_l_r_r', '0_r_l_r', '0_r_l', '0_r_r_l_l_l', '0_r_r_l_l_r_l', '0_r_r_l_l_r_r_l', '0_r_r_l_l_r_r_r', '0_r_r_l_l_r_r', '0_r_r_l_l_r', '0_r_r_l_l', '0_r_r_l_r', '0_r_r_l', '0_r_r_r_l', '0_r_r_r_r_l', '0_r_r_r_r_r_l_l', '0_r_r_r_r_r_l_r', '0_r_r_r_r_r_l', '0_r_r_r_r_r_r_l', '0_r_r_r_r_r_r_r', '0_r_r_r_r_r_r', '0_r_r_r_r_r', '0_r_r_r_r', '0_r_r_r', '0_r_r', '0_r', '0']
+ MT edges: [('0_l_r_r_r', '0_l_r_r_r_l'), ('0_l_r_r_r', '0_l_r_r_r_r'), ('0_l_r_r', '0_l_r_r_l'), ('0_l_r_r', '0_l_r_r_r'), ('0_l_r', '0_l_r_l'), ('0_l_r', '0_l_r_r'), ('0_l', '0_l_l'), ('0_l', '0_l_r'), ('0_r_l_l', '0_r_l_l_l'), ('0_r_l_l', '0_r_l_l_r'), ('0_r_l_r_l_r_r', '0_r_l_r_l_r_r_l'), ('0_r_l_r_l_r_r', '0_r_l_r_l_r_r_r'), ('0_r_l_r_l_r', '0_r_l_r_l_r_l'), ('0_r_l_r_l_r', '0_r_l_r_l_r_r'), ('0_r_l_r_l', '0_r_l_r_l_l'), ('0_r_l_r_l', '0_r_l_r_l_r'), ('0_r_l_r', '0_r_l_r_l'), ('0_r_l_r', '0_r_l_r_r'), ('0_r_l', '0_r_l_l'), ('0_r_l', '0_r_l_r'), ('0_r_r_l_l_r_r', '0_r_r_l_l_r_r_l'), ('0_r_r_l_l_r_r', '0_r_r_l_l_r_r_r'), ('0_r_r_l_l_r', '0_r_r_l_l_r_l'), ('0_r_r_l_l_r', '0_r_r_l_l_r_r'), ('0_r_r_l_l', '0_r_r_l_l_l'), ('0_r_r_l_l', '0_r_r_l_l_r'), ('0_r_r_l', '0_r_r_l_l'), ('0_r_r_l', '0_r_r_l_r'), ('0_r_r_r_r_r_l', '0_r_r_r_r_r_l_l'), ('0_r_r_r_r_r_l', '0_r_r_r_r_r_l_r'), ('0_r_r_r_r_r_r', '0_r_r_r_r_r_r_l'), ('0_r_r_r_r_r_r', '0_r_r_r_r_r_r_r'), ('0_r_r_r_r_r', '0_r_r_r_r_r_l'), ('0_r_r_r_r_r', '0_r_r_r_r_r_r'), ('0_r_r_r_r', '0_r_r_r_r_l'), ('0_r_r_r_r', '0_r_r_r_r_r'), ('0_r_r_r', '0_r_r_r_l'), ('0_r_r_r', '0_r_r_r_r'), ('0_r_r', '0_r_r_l'), ('0_r_r', '0_r_r_r'), ('0_r', '0_r_l'), ('0_r', '0_r_r'), ('0', '0_l'), ('0', '0_r')]
+--- 1.5617406368255615 seconds ---
+Searching Metric Tree
+SEEN
+{'Hustler, The (1961)': ['Drama']}
+{'Fistful of Dollars, A (1964)': ['Action', 'Western']}
+{'Alien (1979)': ['Action', 'Horror', 'Sci-Fi', 'Thriller']}
+{'Die Hard (1988)': ['Action', 'Thriller']}
+{'Star Wars: Episode IV - A New Hope (1977)': ['Action', 'Adventure', 'Fantasy', 'Sci-Fi']}
+{'Saving Private Ryan (1998)': ['Action', 'Drama', 'War']}
+{'Jurassic Park (1993)': ['Action', 'Adventure', 'Sci-Fi']}
+{'Raiders of the Lost Ark (1981)': ['Action', 'Adventure']}
+{'Rocky (1976)': ['Action', 'Drama']}
+{'E.T. the Extra-Terrestrial (1982)': ["Children's", 'Drama', 'Fantasy', 'Sci-Fi']}
+{'Thelma & Louise (1991)': ['Action', 'Drama']}
+{'Mad Max (1979)': ['Action', 'Sci-Fi']}
+{'King Kong (1933)': ['Action', 'Adventure', 'Horror']}
+{'Jaws (1975)': ['Action', 'Horror']}
+{'Good, The Bad and The Ugly, The (1966)': ['Action', 'Western']}
+{'Run Lola Run (Lola rennt) (1998)': ['Action', 'Crime', 'Romance']}
+{'Goldfinger (1964)': ['Action']}
+{'Terminator, The (1984)': ['Action', 'Sci-Fi', 'Thriller']}
+{'Star Wars: Episode VI - Return of the Jedi (1983)': ['Action', 'Adventure', 'Romance', 'Sci-Fi', 'War']}
+{'Star Wars: Episode V - The Empire Strikes Back (1980)': ['Action', 'Adventure', 'Drama', 'Sci-Fi', 'War']}
+{'Predator (1987)': ['Action', 'Sci-Fi', 'Thriller']}
+PREDICTION
+{'Nikita (La Femme Nikita) (1990)': ['Thriller']}
+{'Bridge on the River Kwai, The (1957)': ['Drama', 'War']}
+{"Rosemary's Baby (1968)": ['Horror', 'Thriller']}
+{'Legends of the Fall (1994)': ['Drama', 'Romance', 'War', 'Western']}
+{'American Beauty (1999)': ['Comedy', 'Drama']}
+{'Patriot, The (2000)': ['Action', 'Drama', 'War']}
+{'Aladdin (1992)': ['Animation', "Children's", 'Comedy', 'Musical']}
+{'Toy Story (1995)': ['Animation', "Children's", 'Comedy']}
+{'Toy Story 2 (1999)': ['Animation', "Children's", 'Comedy']}
+{'Air Force One (1997)': ['Action', 'Thriller']}
+{"Bug's Life, A (1998)": ['Animation', "Children's", 'Comedy']}
+{'Patch Adams (1998)': ['Comedy', 'Drama']}
+{'Braveheart (1995)': ['Action', 'Drama', 'War']}
+{'Don Juan DeMarco (1995)': ['Comedy', 'Drama', 'Romance']}
+{'Chinatown (1974)': ['Film-Noir', 'Mystery', 'Thriller']}
+{'Great Escape, The (1963)': ['Adventure', 'War']}
+{'Godfather, The (1972)': ['Action', 'Crime', 'Drama']}
+{'Taxi Driver (1976)': ['Drama', 'Thriller']}
+{'Wide Awake (1998)': ["Children's", 'Comedy', 'Drama']}
+{'Long Walk Home, The (1990)': ['Drama']}
+{'River Wild, The (1994)': ['Action', 'Thriller']}
+{'Matrix, The (1999)': ['Action', 'Sci-Fi', 'Thriller']}
+{'Fight Club (1999)': ['Drama']}
+{"She's the One (1996)": ['Comedy', 'Romance']}
+{'Fantasia (1940)': ['Animation', "Children's", 'Musical']}
+{'Room with a View, A (1986)': ['Drama', 'Romance']}
+{'Fantasia 2000 (1999)': ['Animation', "Children's", 'Musical']}
+{'Rules of Engagement (2000)': ['Drama', 'Thriller']}
+{'Shanghai Noon (2000)': ['Action']}
+{'U-571 (2000)': ['Action', 'Thriller']}
+{'It Could Happen to You (1994)': ['Drama', 'Romance']}
+{'Chicken Run (2000)': ['Animation', "Children's", 'Comedy']}
+{'Pleasantville (1998)': ['Comedy']}
+{'Gone with the Wind (1939)': ['Drama', 'Romance', 'War']}
+{'Tin Cup (1996)': ['Comedy', 'Romance']}
+{'Men in Black (1997)': ['Action', 'Adventure', 'Comedy', 'Sci-Fi']}
+{"Midsummer Night's Dream, A (1999)": ['Comedy', 'Fantasy']}
+{'Sliding Doors (1998)': ['Drama', 'Romance']}
+{'American President, The (1995)': ['Comedy', 'Drama', 'Romance']}
+{'That Thing You Do! (1996)': ['Comedy']}
+{'Dave (1993)': ['Comedy', 'Romance']}
+{'Manchurian Candidate, The (1962)': ['Film-Noir', 'Thriller']}
+{'Big Sleep, The (1946)': ['Film-Noir', 'Mystery']}
+{'Casablanca (1942)': ['Drama', 'Romance', 'War']}
+{'Ghost and Mrs. Muir, The (1947)': ['Drama', 'Romance']}
+{'Double Indemnity (1944)': ['Crime', 'Film-Noir']}
+{'Goofy Movie, A (1995)': ['Animation', "Children's", 'Comedy', 'Romance']}
+{'Lawrence of Arabia (1962)': ['Adventure', 'War']}
+{'Misérables, Les (1995)': ['Drama', 'Musical']}
+{'Seven Samurai (The Magnificent Seven) (Shichinin no samurai) (1954)': ['Action', 'Drama']}
+{'Crimes and Misdemeanors (1989)': ['Comedy']}
+{'Terminator 2: Judgment Day (1991)': ['Action', 'Sci-Fi', 'Thriller']}
+{'Independence Day (ID4) (1996)': ['Action', 'Sci-Fi', 'War']}
+{'Starship Troopers (1997)': ['Action', 'Adventure', 'Sci-Fi', 'War']}
+{'Mulan (1998)': ['Animation', "Children's"]}
+{'Desperado (1995)': ['Action', 'Romance', 'Thriller']}
+{'Thomas Crown Affair, The (1999)': ['Action', 'Thriller']}
+{'Total Recall (1990)': ['Action', 'Adventure', 'Sci-Fi', 'Thriller']}
+{'Long Kiss Goodnight, The (1996)': ['Action', 'Thriller']}
+{'Demolition Man (1993)': ['Action', 'Sci-Fi']}
+{'True Lies (1994)': ['Action', 'Adventure', 'Comedy', 'Romance']}
+{'Double Jeopardy (1999)': ['Action', 'Thriller']}
+{'Boat, The (Das Boot) (1981)': ['Action', 'Drama', 'War']}
+--- 36.67258167266846 seconds ---
+
+SETTINGS: num of sim neighbors: 3, num of movies: 100
+Running...
+Formatting data...
+Generating graph...
+--- 2.290283679962158 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Adding rating and award information to graph...
+--- 200.80301761627197 seconds ---
+Counting TETs...
+--- 1.4740972518920898 seconds ---
+Performing Logistic Evaluation on TETs...
+--- 6.25094199180603 seconds ---
+Generating histograms...
+--- 2.915571928024292 seconds ---
+Building Metric Tree
+ MT nodes: ['0_l_l', '0_l_r_l', '0_l_r_r_l', '0_l_r_r_r_l', '0_l_r_r_r_r', '0_l_r_r_r', '0_l_r_r', '0_l_r', '0_l', '0_r_l_l_l', '0_r_l_l_r', '0_r_l_l', '0_r_l_r_l_l', '0_r_l_r_l_r_l', '0_r_l_r_l_r_r_l', '0_r_l_r_l_r_r_r', '0_r_l_r_l_r_r', '0_r_l_r_l_r', '0_r_l_r_l', '0_r_l_r_r', '0_r_l_r', '0_r_l', '0_r_r_l_l_l', '0_r_r_l_l_r_l', '0_r_r_l_l_r_r_l', '0_r_r_l_l_r_r_r', '0_r_r_l_l_r_r', '0_r_r_l_l_r', '0_r_r_l_l', '0_r_r_l_r', '0_r_r_l', '0_r_r_r_l', '0_r_r_r_r_l', '0_r_r_r_r_r_l_l', '0_r_r_r_r_r_l_r', '0_r_r_r_r_r_l', '0_r_r_r_r_r_r_l', '0_r_r_r_r_r_r_r', '0_r_r_r_r_r_r', '0_r_r_r_r_r', '0_r_r_r_r', '0_r_r_r', '0_r_r', '0_r', '0']
+ MT edges: [('0_l_r_r_r', '0_l_r_r_r_l'), ('0_l_r_r_r', '0_l_r_r_r_r'), ('0_l_r_r', '0_l_r_r_l'), ('0_l_r_r', '0_l_r_r_r'), ('0_l_r', '0_l_r_l'), ('0_l_r', '0_l_r_r'), ('0_l', '0_l_l'), ('0_l', '0_l_r'), ('0_r_l_l', '0_r_l_l_l'), ('0_r_l_l', '0_r_l_l_r'), ('0_r_l_r_l_r_r', '0_r_l_r_l_r_r_l'), ('0_r_l_r_l_r_r', '0_r_l_r_l_r_r_r'), ('0_r_l_r_l_r', '0_r_l_r_l_r_l'), ('0_r_l_r_l_r', '0_r_l_r_l_r_r'), ('0_r_l_r_l', '0_r_l_r_l_l'), ('0_r_l_r_l', '0_r_l_r_l_r'), ('0_r_l_r', '0_r_l_r_l'), ('0_r_l_r', '0_r_l_r_r'), ('0_r_l', '0_r_l_l'), ('0_r_l', '0_r_l_r'), ('0_r_r_l_l_r_r', '0_r_r_l_l_r_r_l'), ('0_r_r_l_l_r_r', '0_r_r_l_l_r_r_r'), ('0_r_r_l_l_r', '0_r_r_l_l_r_l'), ('0_r_r_l_l_r', '0_r_r_l_l_r_r'), ('0_r_r_l_l', '0_r_r_l_l_l'), ('0_r_r_l_l', '0_r_r_l_l_r'), ('0_r_r_l', '0_r_r_l_l'), ('0_r_r_l', '0_r_r_l_r'), ('0_r_r_r_r_r_l', '0_r_r_r_r_r_l_l'), ('0_r_r_r_r_r_l', '0_r_r_r_r_r_l_r'), ('0_r_r_r_r_r_r', '0_r_r_r_r_r_r_l'), ('0_r_r_r_r_r_r', '0_r_r_r_r_r_r_r'), ('0_r_r_r_r_r', '0_r_r_r_r_r_l'), ('0_r_r_r_r_r', '0_r_r_r_r_r_r'), ('0_r_r_r_r', '0_r_r_r_r_l'), ('0_r_r_r_r', '0_r_r_r_r_r'), ('0_r_r_r', '0_r_r_r_l'), ('0_r_r_r', '0_r_r_r_r'), ('0_r_r', '0_r_r_l'), ('0_r_r', '0_r_r_r'), ('0_r', '0_r_l'), ('0_r', '0_r_r'), ('0', '0_l'), ('0', '0_r')]
+--- 1.4611115455627441 seconds ---
+Searching Metric Tree
+SEEN
+{'Hustler, The (1961)': ['Drama']}
+{'Fistful of Dollars, A (1964)': ['Action', 'Western']}
+{'Alien (1979)': ['Action', 'Horror', 'Sci-Fi', 'Thriller']}
+{'Die Hard (1988)': ['Action', 'Thriller']}
+{'Star Wars: Episode IV - A New Hope (1977)': ['Action', 'Adventure', 'Fantasy', 'Sci-Fi']}
+{'Saving Private Ryan (1998)': ['Action', 'Drama', 'War']}
+{'Jurassic Park (1993)': ['Action', 'Adventure', 'Sci-Fi']}
+{'Raiders of the Lost Ark (1981)': ['Action', 'Adventure']}
+{'Rocky (1976)': ['Action', 'Drama']}
+{'E.T. the Extra-Terrestrial (1982)': ["Children's", 'Drama', 'Fantasy', 'Sci-Fi']}
+{'Thelma & Louise (1991)': ['Action', 'Drama']}
+{'Mad Max (1979)': ['Action', 'Sci-Fi']}
+{'King Kong (1933)': ['Action', 'Adventure', 'Horror']}
+{'Jaws (1975)': ['Action', 'Horror']}
+{'Good, The Bad and The Ugly, The (1966)': ['Action', 'Western']}
+{'Run Lola Run (Lola rennt) (1998)': ['Action', 'Crime', 'Romance']}
+{'Goldfinger (1964)': ['Action']}
+{'Terminator, The (1984)': ['Action', 'Sci-Fi', 'Thriller']}
+{'Star Wars: Episode VI - Return of the Jedi (1983)': ['Action', 'Adventure', 'Romance', 'Sci-Fi', 'War']}
+{'Star Wars: Episode V - The Empire Strikes Back (1980)': ['Action', 'Adventure', 'Drama', 'Sci-Fi', 'War']}
+{'Predator (1987)': ['Action', 'Sci-Fi', 'Thriller']}
+PREDICTION
+{'Nikita (La Femme Nikita) (1990)': ['Thriller']}
+{'Bridge on the River Kwai, The (1957)': ['Drama', 'War']}
+{"Rosemary's Baby (1968)": ['Horror', 'Thriller']}
+{'Legends of the Fall (1994)': ['Drama', 'Romance', 'War', 'Western']}
+{'American Beauty (1999)': ['Comedy', 'Drama']}
+{'Patriot, The (2000)': ['Action', 'Drama', 'War']}
+{'Aladdin (1992)': ['Animation', "Children's", 'Comedy', 'Musical']}
+{'Toy Story (1995)': ['Animation', "Children's", 'Comedy']}
+{'Toy Story 2 (1999)': ['Animation', "Children's", 'Comedy']}
+{'Air Force One (1997)': ['Action', 'Thriller']}
+{"Bug's Life, A (1998)": ['Animation', "Children's", 'Comedy']}
+{'Patch Adams (1998)': ['Comedy', 'Drama']}
+{'Braveheart (1995)': ['Action', 'Drama', 'War']}
+{'Don Juan DeMarco (1995)': ['Comedy', 'Drama', 'Romance']}
+{'Chinatown (1974)': ['Film-Noir', 'Mystery', 'Thriller']}
+{'Great Escape, The (1963)': ['Adventure', 'War']}
+{'Godfather, The (1972)': ['Action', 'Crime', 'Drama']}
+{'Taxi Driver (1976)': ['Drama', 'Thriller']}
+{'Wide Awake (1998)': ["Children's", 'Comedy', 'Drama']}
+{'Long Walk Home, The (1990)': ['Drama']}
+{'River Wild, The (1994)': ['Action', 'Thriller']}
+{'Matrix, The (1999)': ['Action', 'Sci-Fi', 'Thriller']}
+{'Fight Club (1999)': ['Drama']}
+{"She's the One (1996)": ['Comedy', 'Romance']}
+{'Fantasia (1940)': ['Animation', "Children's", 'Musical']}
+{'Room with a View, A (1986)': ['Drama', 'Romance']}
+{'Fantasia 2000 (1999)': ['Animation', "Children's", 'Musical']}
+{'Rules of Engagement (2000)': ['Drama', 'Thriller']}
+{'Shanghai Noon (2000)': ['Action']}
+{'U-571 (2000)': ['Action', 'Thriller']}
+{'It Could Happen to You (1994)': ['Drama', 'Romance']}
+{'Chicken Run (2000)': ['Animation', "Children's", 'Comedy']}
+{'Pleasantville (1998)': ['Comedy']}
+{'Gone with the Wind (1939)': ['Drama', 'Romance', 'War']}
+{'Tin Cup (1996)': ['Comedy', 'Romance']}
+{'Men in Black (1997)': ['Action', 'Adventure', 'Comedy', 'Sci-Fi']}
+{"Midsummer Night's Dream, A (1999)": ['Comedy', 'Fantasy']}
+{'Sliding Doors (1998)': ['Drama', 'Romance']}
+{'American President, The (1995)': ['Comedy', 'Drama', 'Romance']}
+{'That Thing You Do! (1996)': ['Comedy']}
+{'Dave (1993)': ['Comedy', 'Romance']}
+{'Manchurian Candidate, The (1962)': ['Film-Noir', 'Thriller']}
+{'Big Sleep, The (1946)': ['Film-Noir', 'Mystery']}
+{'Casablanca (1942)': ['Drama', 'Romance', 'War']}
+{'Ghost and Mrs. Muir, The (1947)': ['Drama', 'Romance']}
+{'Double Indemnity (1944)': ['Crime', 'Film-Noir']}
+{'Goofy Movie, A (1995)': ['Animation', "Children's", 'Comedy', 'Romance']}
+{'Lawrence of Arabia (1962)': ['Adventure', 'War']}
+{'Misérables, Les (1995)': ['Drama', 'Musical']}
+{'Seven Samurai (The Magnificent Seven) (Shichinin no samurai) (1954)': ['Action', 'Drama']}
+{'Crimes and Misdemeanors (1989)': ['Comedy']}
+{'Terminator 2: Judgment Day (1991)': ['Action', 'Sci-Fi', 'Thriller']}
+{'Independence Day (ID4) (1996)': ['Action', 'Sci-Fi', 'War']}
+{'Starship Troopers (1997)': ['Action', 'Adventure', 'Sci-Fi', 'War']}
+{'Mulan (1998)': ['Animation', "Children's"]}
+{'Desperado (1995)': ['Action', 'Romance', 'Thriller']}
+{'Thomas Crown Affair, The (1999)': ['Action', 'Thriller']}
+{'Total Recall (1990)': ['Action', 'Adventure', 'Sci-Fi', 'Thriller']}
+{'Long Kiss Goodnight, The (1996)': ['Action', 'Thriller']}
+{'Demolition Man (1993)': ['Action', 'Sci-Fi']}
+{'True Lies (1994)': ['Action', 'Adventure', 'Comedy', 'Romance']}
+{'Double Jeopardy (1999)': ['Action', 'Thriller']}
+{'Boat, The (Das Boot) (1981)': ['Action', 'Drama', 'War']}
+--- 35.72640919685364 seconds ---
+
+SETTINGS: num of sim neighbors: 3, num of movies: 100
+RESULT: (0.0, 0.0, {0.18957541138032186})
+|| ------ COMPLETE ------ ||
+Total run time: 278.11985898017883 seconds.
+Amount of users: 461.
+|| ---------------------- ||
+
+Running...
+Formatting data...
+Generating graph...
+--- 2.05173921585083 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Adding rating and award information to graph...
+--- 194.80216574668884 seconds ---
+Counting TETs...
+--- 2.7994158267974854 seconds ---
+Performing Logistic Evaluation on TETs...
+--- 10.187911748886108 seconds ---
+Generating histograms...
+--- 2.926204204559326 seconds ---
+Building Metric Tree
+ MT nodes: ['0_l_l', '0_l_r_l', '0_l_r_r', '0_l_r', '0_l', '0_r_l_l_l_l_l_l', '0_r_l_l_l_l_l_r', '0_r_l_l_l_l_l', '0_r_l_l_l_l_r_l', '0_r_l_l_l_l_r_r', '0_r_l_l_l_l_r', '0_r_l_l_l_l', '0_r_l_l_l_r', '0_r_l_l_l', '0_r_l_l_r_l_l', '0_r_l_l_r_l_r', '0_r_l_l_r_l', '0_r_l_l_r_r', '0_r_l_l_r', '0_r_l_l', '0_r_l_r_l_l', '0_r_l_r_l_r', '0_r_l_r_l', '0_r_l_r_r_l_l_l', '0_r_l_r_r_l_l_r', '0_r_l_r_r_l_l', '0_r_l_r_r_l_r', '0_r_l_r_r_l', '0_r_l_r_r_r', '0_r_l_r_r', '0_r_l_r', '0_r_l', '0_r_r_l_l_l', '0_r_r_l_l_r', '0_r_r_l_l', '0_r_r_l_r_l', '0_r_r_l_r_r', '0_r_r_l_r', '0_r_r_l', '0_r_r_r_l', '0_r_r_r_r_l', '0_r_r_r_r_r_l', '0_r_r_r_r_r_r', '0_r_r_r_r_r', '0_r_r_r_r', '0_r_r_r', '0_r_r', '0_r', '0']
+ MT edges: [('0_l_r', '0_l_r_l'), ('0_l_r', '0_l_r_r'), ('0_l', '0_l_l'), ('0_l', '0_l_r'), ('0_r_l_l_l_l_l', '0_r_l_l_l_l_l_l'), ('0_r_l_l_l_l_l', '0_r_l_l_l_l_l_r'), ('0_r_l_l_l_l_r', '0_r_l_l_l_l_r_l'), ('0_r_l_l_l_l_r', '0_r_l_l_l_l_r_r'), ('0_r_l_l_l_l', '0_r_l_l_l_l_l'), ('0_r_l_l_l_l', '0_r_l_l_l_l_r'), ('0_r_l_l_l', '0_r_l_l_l_l'), ('0_r_l_l_l', '0_r_l_l_l_r'), ('0_r_l_l_r_l', '0_r_l_l_r_l_l'), ('0_r_l_l_r_l', '0_r_l_l_r_l_r'), ('0_r_l_l_r', '0_r_l_l_r_l'), ('0_r_l_l_r', '0_r_l_l_r_r'), ('0_r_l_l', '0_r_l_l_l'), ('0_r_l_l', '0_r_l_l_r'), ('0_r_l_r_l', '0_r_l_r_l_l'), ('0_r_l_r_l', '0_r_l_r_l_r'), ('0_r_l_r_r_l_l', '0_r_l_r_r_l_l_l'), ('0_r_l_r_r_l_l', '0_r_l_r_r_l_l_r'), ('0_r_l_r_r_l', '0_r_l_r_r_l_l'), ('0_r_l_r_r_l', '0_r_l_r_r_l_r'), ('0_r_l_r_r', '0_r_l_r_r_l'), ('0_r_l_r_r', '0_r_l_r_r_r'), ('0_r_l_r', '0_r_l_r_l'), ('0_r_l_r', '0_r_l_r_r'), ('0_r_l', '0_r_l_l'), ('0_r_l', '0_r_l_r'), ('0_r_r_l_l', '0_r_r_l_l_l'), ('0_r_r_l_l', '0_r_r_l_l_r'), ('0_r_r_l_r', '0_r_r_l_r_l'), ('0_r_r_l_r', '0_r_r_l_r_r'), ('0_r_r_l', '0_r_r_l_l'), ('0_r_r_l', '0_r_r_l_r'), ('0_r_r_r_r_r', '0_r_r_r_r_r_l'), ('0_r_r_r_r_r', '0_r_r_r_r_r_r'), ('0_r_r_r_r', '0_r_r_r_r_l'), ('0_r_r_r_r', '0_r_r_r_r_r'), ('0_r_r_r', '0_r_r_r_l'), ('0_r_r_r', '0_r_r_r_r'), ('0_r_r', '0_r_r_l'), ('0_r_r', '0_r_r_r'), ('0_r', '0_r_l'), ('0_r', '0_r_r'), ('0', '0_l'), ('0', '0_r')]
+--- 1.9969704151153564 seconds ---
+Searching Metric Tree
+SEEN
+{'Hustler, The (1961)': ['Drama']}
+{'Fistful of Dollars, A (1964)': ['Action', 'Western']}
+{'Alien (1979)': ['Action', 'Horror', 'Sci-Fi', 'Thriller']}
+{'Die Hard (1988)': ['Action', 'Thriller']}
+{'Star Wars: Episode IV - A New Hope (1977)': ['Action', 'Adventure', 'Fantasy', 'Sci-Fi']}
+{'Saving Private Ryan (1998)': ['Action', 'Drama', 'War']}
+{'Jurassic Park (1993)': ['Action', 'Adventure', 'Sci-Fi']}
+{'Raiders of the Lost Ark (1981)': ['Action', 'Adventure']}
+{'Rocky (1976)': ['Action', 'Drama']}
+{'E.T. the Extra-Terrestrial (1982)': ["Children's", 'Drama', 'Fantasy', 'Sci-Fi']}
+{'Thelma & Louise (1991)': ['Action', 'Drama']}
+{'Mad Max (1979)': ['Action', 'Sci-Fi']}
+{'King Kong (1933)': ['Action', 'Adventure', 'Horror']}
+{'Jaws (1975)': ['Action', 'Horror']}
+{'Good, The Bad and The Ugly, The (1966)': ['Action', 'Western']}
+{'Run Lola Run (Lola rennt) (1998)': ['Action', 'Crime', 'Romance']}
+{'Goldfinger (1964)': ['Action']}
+{'Terminator, The (1984)': ['Action', 'Sci-Fi', 'Thriller']}
+{'Star Wars: Episode VI - Return of the Jedi (1983)': ['Action', 'Adventure', 'Romance', 'Sci-Fi', 'War']}
+{'Star Wars: Episode V - The Empire Strikes Back (1980)': ['Action', 'Adventure', 'Drama', 'Sci-Fi', 'War']}
+{'Predator (1987)': ['Action', 'Sci-Fi', 'Thriller']}
+PREDICTION
+{'Bone Collector, The (1999)': ['Thriller']}
+{'Die Hard 2 (1990)': ['Action', 'Thriller']}
+{'Absolute Power (1997)': ['Mystery', 'Thriller']}
+{'Christmas Vacation (1989)': ['Comedy']}
+{'Die Hard: With a Vengeance (1995)': ['Action', 'Thriller']}
+{'American President, The (1995)': ['Comedy', 'Drama', 'Romance']}
+{'Sixth Sense, The (1999)': ['Thriller']}
+{'True Lies (1994)': ['Action', 'Adventure', 'Comedy', 'Romance']}
+{'Doctor Zhivago (1965)': ['Drama', 'Romance', 'War']}
+{'Say Anything... (1989)': ['Comedy', 'Drama', 'Romance']}
+{'Gone with the Wind (1939)': ['Drama', 'Romance', 'War']}
+{'Witness (1985)': ['Drama', 'Romance', 'Thriller']}
+{'West Side Story (1961)': ['Musical', 'Romance']}
+{'Piano, The (1993)': ['Drama', 'Romance']}
+{'Fabulous Baker Boys, The (1989)': ['Drama', 'Romance']}
+{'Glory (1989)': ['Action', 'Drama', 'War']}
+{'Cinema Paradiso (1988)': ['Comedy', 'Drama', 'Romance']}
+{'Some Like It Hot (1959)': ['Comedy', 'Crime']}
+{'Wizard of Oz, The (1939)': ['Adventure', "Children's", 'Drama', 'Musical']}
+{'American Beauty (1999)': ['Comedy', 'Drama']}
+{'Butch Cassidy and the Sundance Kid (1969)': ['Action', 'Comedy', 'Western']}
+{'Cat Ballou (1965)': ['Comedy', 'Western']}
+{'Godfather, The (1972)': ['Action', 'Crime', 'Drama']}
+{'Shakespeare in Love (1998)': ['Comedy', 'Romance']}
+{'Mary Poppins (1964)': ["Children's", 'Comedy', 'Musical']}
+{'Grifters, The (1990)': ['Crime', 'Drama', 'Film-Noir']}
+{'Some Folks Call It a Sling Blade (1993)': ['Drama', 'Thriller']}
+{'Sling Blade (1996)': ['Drama', 'Thriller']}
+{'Liberty Heights (1999)': ['Drama']}
+{'Washington Square (1997)': ['Drama']}
+{'Babe (1995)': ["Children's", 'Comedy', 'Drama']}
+{'Murder at 1600 (1997)': ['Mystery', 'Thriller']}
+{'Saint, The (1997)': ['Action', 'Romance', 'Thriller']}
+{'Relic, The (1997)': ['Horror']}
+{'Lake Placid (1999)': ['Horror', 'Thriller']}
+{'U-571 (2000)': ['Action', 'Thriller']}
+{'Pagemaster, The (1994)': ['Action', 'Adventure', 'Animation', "Children's", 'Fantasy']}
+{'Flight of the Navigator (1986)': ['Adventure', "Children's", 'Sci-Fi']}
+{'Annie Hall (1977)': ['Comedy', 'Romance']}
+{'Strictly Ballroom (1992)': ['Comedy', 'Romance']}
+{'Atlantic City (1980)': ['Crime', 'Drama', 'Romance']}
+{'Groundhog Day (1993)': ['Comedy', 'Romance']}
+{'Back to the Future (1985)': ['Comedy', 'Sci-Fi']}
+{'My Fair Lady (1964)': ['Musical', 'Romance']}
+{'Bound (1996)': ['Crime', 'Drama', 'Romance', 'Thriller']}
+{'Brassed Off (1996)': ['Comedy', 'Drama', 'Romance']}
+{'Shop Around the Corner, The (1940)': ['Comedy', 'Romance']}
+{'Taxi Driver (1976)': ['Drama', 'Thriller']}
+{"She's Gotta Have It (1986)": ['Comedy', 'Romance']}
+{'Like Water for Chocolate (Como agua para chocolate) (1992)': ['Drama', 'Romance']}
+{'Breaker Morant (1980)': ['Drama', 'War']}
+{'Indochine (1992)': ['Drama', 'Romance']}
+{'Much Ado About Nothing (1993)': ['Comedy', 'Romance']}
+{'Graduate, The (1967)': ['Drama', 'Romance']}
+{'Treasure of the Sierra Madre, The (1948)': ['Adventure']}
+{'It Happened One Night (1934)': ['Comedy']}
+{'Romancing the Stone (1984)': ['Action', 'Adventure', 'Comedy', 'Romance']}
+{'Moonstruck (1987)': ['Comedy']}
+{'His Girl Friday (1940)': ['Comedy']}
+{'Bringing Up Baby (1938)': ['Comedy']}
+{'African Queen, The (1951)': ['Action', 'Adventure', 'Romance', 'War']}
+{'Titanic (1997)': ['Drama', 'Romance']}
+{'American Graffiti (1973)': ['Comedy', 'Drama']}
+{'Adventures of Priscilla, Queen of the Desert, The (1994)': ['Comedy', 'Drama']}
+{'Cape Fear (1991)': ['Thriller']}
+{'Fatal Attraction (1987)': ['Thriller']}
+{'My Cousin Vinny (1992)': ['Comedy']}
+{'Backdraft (1991)': ['Action', 'Drama']}
+{"Breakfast at Tiffany's (1961)": ['Drama', 'Romance']}
+{'End of the Affair, The (1999)': ['Drama']}
+{'Amistad (1997)': ['Drama']}
+{'Boiler Room (2000)': ['Drama']}
+{'Limey, The (1999)': ['Action', 'Crime', 'Drama']}
+{"Schindler's List (1993)": ['Drama', 'War']}
+{'Secret Garden, The (1993)': ["Children's", 'Drama']}
+{'GoodFellas (1990)': ['Crime', 'Drama']}
+{'Crying Game, The (1992)': ['Drama', 'Romance', 'War']}
+--- 42.93464159965515 seconds ---
+
+SETTINGS: num of sim neighbors: 3, num of movies: 100
+RESULT: (0.0, 0.0, {0.17136894788349014})
+|| ------ COMPLETE ------ ||
+Total run time: 276.2942268848419 seconds.
+Amount of users: 461.
+|| ---------------------- ||
+
+Running...
+Formatting data...
+Generating graph...
+--- 2.2317724227905273 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Adding rating and award information to graph...
+--- 194.0815405845642 seconds ---
+Counting TETs...
+--- 2.758183717727661 seconds ---
+Performing Logistic Evaluation on TETs...
+--- 10.176036834716797 seconds ---
+Generating histograms...
+--- 2.8780581951141357 seconds ---
+Building Metric Tree
+ MT nodes: ['0_l_l', '0_l_r_l', '0_l_r_r_l', '0_l_r_r_r_l', '0_l_r_r_r_r', '0_l_r_r_r', '0_l_r_r', '0_l_r', '0_l', '0_r_l_l_l_l', '0_r_l_l_l_r', '0_r_l_l_l', '0_r_l_l_r_l', '0_r_l_l_r_r', '0_r_l_l_r', '0_r_l_l', '0_r_l_r_l', '0_r_l_r_r', '0_r_l_r', '0_r_l', '0_r_r_l_l_l', '0_r_r_l_l_r_l', '0_r_r_l_l_r_r_l', '0_r_r_l_l_r_r_r', '0_r_r_l_l_r_r', '0_r_r_l_l_r', '0_r_r_l_l', '0_r_r_l_r', '0_r_r_l', '0_r_r_r_l_l_l', '0_r_r_r_l_l_r', '0_r_r_r_l_l', '0_r_r_r_l_r_l', '0_r_r_r_l_r_r', '0_r_r_r_l_r', '0_r_r_r_l', '0_r_r_r_r_l', '0_r_r_r_r_r_l', '0_r_r_r_r_r_r_l', '0_r_r_r_r_r_r_r', '0_r_r_r_r_r_r', '0_r_r_r_r_r', '0_r_r_r_r', '0_r_r_r', '0_r_r', '0_r', '0']
+ MT edges: [('0_l_r_r_r', '0_l_r_r_r_l'), ('0_l_r_r_r', '0_l_r_r_r_r'), ('0_l_r_r', '0_l_r_r_l'), ('0_l_r_r', '0_l_r_r_r'), ('0_l_r', '0_l_r_l'), ('0_l_r', '0_l_r_r'), ('0_l', '0_l_l'), ('0_l', '0_l_r'), ('0_r_l_l_l', '0_r_l_l_l_l'), ('0_r_l_l_l', '0_r_l_l_l_r'), ('0_r_l_l_r', '0_r_l_l_r_l'), ('0_r_l_l_r', '0_r_l_l_r_r'), ('0_r_l_l', '0_r_l_l_l'), ('0_r_l_l', '0_r_l_l_r'), ('0_r_l_r', '0_r_l_r_l'), ('0_r_l_r', '0_r_l_r_r'), ('0_r_l', '0_r_l_l'), ('0_r_l', '0_r_l_r'), ('0_r_r_l_l_r_r', '0_r_r_l_l_r_r_l'), ('0_r_r_l_l_r_r', '0_r_r_l_l_r_r_r'), ('0_r_r_l_l_r', '0_r_r_l_l_r_l'), ('0_r_r_l_l_r', '0_r_r_l_l_r_r'), ('0_r_r_l_l', '0_r_r_l_l_l'), ('0_r_r_l_l', '0_r_r_l_l_r'), ('0_r_r_l', '0_r_r_l_l'), ('0_r_r_l', '0_r_r_l_r'), ('0_r_r_r_l_l', '0_r_r_r_l_l_l'), ('0_r_r_r_l_l', '0_r_r_r_l_l_r'), ('0_r_r_r_l_r', '0_r_r_r_l_r_l'), ('0_r_r_r_l_r', '0_r_r_r_l_r_r'), ('0_r_r_r_l', '0_r_r_r_l_l'), ('0_r_r_r_l', '0_r_r_r_l_r'), ('0_r_r_r_r_r_r', '0_r_r_r_r_r_r_l'), ('0_r_r_r_r_r_r', '0_r_r_r_r_r_r_r'), ('0_r_r_r_r_r', '0_r_r_r_r_r_l'), ('0_r_r_r_r_r', '0_r_r_r_r_r_r'), ('0_r_r_r_r', '0_r_r_r_r_l'), ('0_r_r_r_r', '0_r_r_r_r_r'), ('0_r_r_r', '0_r_r_r_l'), ('0_r_r_r', '0_r_r_r_r'), ('0_r_r', '0_r_r_l'), ('0_r_r', '0_r_r_r'), ('0_r', '0_r_l'), ('0_r', '0_r_r'), ('0', '0_l'), ('0', '0_r')]
+--- 1.8509342670440674 seconds ---
+Searching Metric Tree
+SEEN
+{'Hustler, The (1961)': ['Drama']}
+{'Fistful of Dollars, A (1964)': ['Action', 'Western']}
+{'Alien (1979)': ['Action', 'Horror', 'Sci-Fi', 'Thriller']}
+{'Die Hard (1988)': ['Action', 'Thriller']}
+{'Star Wars: Episode IV - A New Hope (1977)': ['Action', 'Adventure', 'Fantasy', 'Sci-Fi']}
+{'Saving Private Ryan (1998)': ['Action', 'Drama', 'War']}
+{'Jurassic Park (1993)': ['Action', 'Adventure', 'Sci-Fi']}
+{'Raiders of the Lost Ark (1981)': ['Action', 'Adventure']}
+{'Rocky (1976)': ['Action', 'Drama']}
+{'E.T. the Extra-Terrestrial (1982)': ["Children's", 'Drama', 'Fantasy', 'Sci-Fi']}
+{'Thelma & Louise (1991)': ['Action', 'Drama']}
+{'Mad Max (1979)': ['Action', 'Sci-Fi']}
+{'King Kong (1933)': ['Action', 'Adventure', 'Horror']}
+{'Jaws (1975)': ['Action', 'Horror']}
+{'Good, The Bad and The Ugly, The (1966)': ['Action', 'Western']}
+{'Run Lola Run (Lola rennt) (1998)': ['Action', 'Crime', 'Romance']}
+{'Goldfinger (1964)': ['Action']}
+{'Terminator, The (1984)': ['Action', 'Sci-Fi', 'Thriller']}
+{'Star Wars: Episode VI - Return of the Jedi (1983)': ['Action', 'Adventure', 'Romance', 'Sci-Fi', 'War']}
+{'Star Wars: Episode V - The Empire Strikes Back (1980)': ['Action', 'Adventure', 'Drama', 'Sci-Fi', 'War']}
+{'Predator (1987)': ['Action', 'Sci-Fi', 'Thriller']}
+PREDICTION
+{'Mission: Impossible (1996)': ['Action', 'Adventure', 'Mystery']}
+{'Good Will Hunting (1997)': ['Drama']}
+{'Breakfast Club, The (1985)': ['Comedy', 'Drama']}
+{'Indiana Jones and the Temple of Doom (1984)': ['Action', 'Adventure']}
+{'Dead Poets Society (1989)': ['Drama']}
+{'Sixth Sense, The (1999)': ['Thriller']}
+{'Bone Collector, The (1999)': ['Thriller']}
+{'Die Hard 2 (1990)': ['Action', 'Thriller']}
+{'Absolute Power (1997)': ['Mystery', 'Thriller']}
+{'Christmas Vacation (1989)': ['Comedy']}
+{'Die Hard: With a Vengeance (1995)': ['Action', 'Thriller']}
+{'American President, The (1995)': ['Comedy', 'Drama', 'Romance']}
+{'True Lies (1994)': ['Action', 'Adventure', 'Comedy', 'Romance']}
+{'Secret of NIMH, The (1982)': ['Animation', "Children's"]}
+{'Snow White and the Seven Dwarfs (1937)': ['Animation', "Children's", 'Musical']}
+{'Akira (1988)': ['Adventure', 'Animation', 'Sci-Fi', 'Thriller']}
+{'Night of the Living Dead (1968)': ['Horror', 'Sci-Fi']}
+{"Ferris Bueller's Day Off (1986)": ['Comedy']}
+{'Yellow Submarine (1968)': ['Animation', 'Musical']}
+{'Wrong Trousers, The (1993)': ['Animation', 'Comedy']}
+{'Toy Story (1995)': ['Animation', "Children's", 'Comedy']}
+{'Toy Story 2 (1999)': ['Animation', "Children's", 'Comedy']}
+{'Stand by Me (1986)': ['Adventure', 'Comedy', 'Drama']}
+{'Sixteen Candles (1984)': ['Comedy']}
+{"Bug's Life, A (1998)": ['Animation', "Children's", 'Comedy']}
+{'Flamingo Kid, The (1984)': ['Comedy', 'Drama']}
+{'Ghostbusters (1984)': ['Comedy', 'Horror']}
+{'Airplane! (1980)': ['Comedy']}
+{'Willy Wonka and the Chocolate Factory (1971)': ['Adventure', "Children's", 'Comedy', 'Fantasy']}
+{'Indiana Jones and the Last Crusade (1989)': ['Action', 'Adventure']}
+{'Bicentennial Man (1999)': ['Comedy', 'Drama', 'Sci-Fi']}
+{'Titanic (1997)': ['Drama', 'Romance']}
+{'Mission: Impossible 2 (2000)': ['Action', 'Thriller']}
+{'Pulp Fiction (1994)': ['Crime', 'Drama']}
+{"Schindler's List (1993)": ['Drama', 'War']}
+{'Murder at 1600 (1997)': ['Mystery', 'Thriller']}
+{'Saint, The (1997)': ['Action', 'Romance', 'Thriller']}
+{'Relic, The (1997)': ['Horror']}
+{'Lake Placid (1999)': ['Horror', 'Thriller']}
+{'U-571 (2000)': ['Action', 'Thriller']}
+{'Pagemaster, The (1994)': ['Action', 'Adventure', 'Animation', "Children's", 'Fantasy']}
+{'Flight of the Navigator (1986)': ['Adventure', "Children's", 'Sci-Fi']}
+{'Who Framed Roger Rabbit? (1988)': ['Adventure', 'Animation', 'Film-Noir']}
+{'Dead Again (1991)': ['Mystery', 'Romance', 'Thriller']}
+{'Chicken Run (2000)': ['Animation', "Children's", 'Comedy']}
+{'Beauty and the Beast (1991)': ['Animation', "Children's", 'Musical']}
+{'Back to the Future (1985)': ['Comedy', 'Sci-Fi']}
+{'Rugrats Movie, The (1998)': ['Animation', "Children's", 'Comedy']}
+{'American Graffiti (1973)': ['Comedy', 'Drama']}
+{'Grumpy Old Men (1993)': ['Comedy']}
+{'Heart and Souls (1993)': ['Comedy', 'Fantasy']}
+{'Hope Floats (1998)': ['Comedy', 'Drama', 'Romance']}
+{'Live Nude Girls (1995)': ['Comedy']}
+--- 31.99174737930298 seconds ---
+
+SETTINGS: num of sim neighbors: 3, num of movies: 100
+RESULT: (0.0, 0.0, {0.16966234177256934})
+|| ------ COMPLETE ------ ||
+Total run time: 264.81683254241943 seconds.
+Amount of users: 461.
+|| ---------------------- ||
+
+Running...
+Formatting data...
+Generating graph...
+--- 2.086731433868408 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Adding rating and award information to graph...
+--- 190.0918653011322 seconds ---
+Counting TETs...
+--- 2.6373469829559326 seconds ---
+Performing Logistic Evaluation on TETs...
+--- 9.726446866989136 seconds ---
+Generating histograms...
+Running...
+Formatting data...
+Generating graph...
+--- 2.1706535816192627 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Adding rating and award information to graph...
+--- 187.17853665351868 seconds ---
+Counting TETs...
+--- 2.656647205352783 seconds ---
+Performing Logistic Evaluation on TETs...
+--- 9.877558469772339 seconds ---
+Generating histograms...
+Running...
+Formatting data...
+Generating graph...
+--- 2.469717025756836 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Adding rating and award information to graph...
+--- 207.9698576927185 seconds ---
+Counting TETs...
+--- 2.9002928733825684 seconds ---
+Performing Logistic Evaluation on TETs...
+--- 10.83736276626587 seconds ---
+Generating histograms...
+Running...
+Formatting data...
+Generating graph...
+--- 2.2865819931030273 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Adding rating and award information to graph...
+--- 206.5016803741455 seconds ---
+Counting TETs...
+--- 2.896622896194458 seconds ---
+Performing Logistic Evaluation on TETs...
+--- 10.594362497329712 seconds ---
+Generating histograms...
+--- 1.658482551574707 seconds ---
+Building Metric Tree
+ MT nodes: ['0_l_l', '0_l_r_l', '0_l_r_r_l', '0_l_r_r_r_l', '0_l_r_r_r_r', '0_l_r_r_r', '0_l_r_r', '0_l_r', '0_l', '0_r_l_l_l_l', '0_r_l_l_l_r', '0_r_l_l_l', '0_r_l_l_r_l', '0_r_l_l_r_r', '0_r_l_l_r', '0_r_l_l', '0_r_l_r_l', '0_r_l_r_r', '0_r_l_r', '0_r_l', '0_r_r_l_l_l', '0_r_r_l_l_r_l', '0_r_r_l_l_r_r_l', '0_r_r_l_l_r_r_r', '0_r_r_l_l_r_r', '0_r_r_l_l_r', '0_r_r_l_l', '0_r_r_l_r', '0_r_r_l', '0_r_r_r_l_l_l', '0_r_r_r_l_l_r', '0_r_r_r_l_l', '0_r_r_r_l_r_l', '0_r_r_r_l_r_r', '0_r_r_r_l_r', '0_r_r_r_l', '0_r_r_r_r_l', '0_r_r_r_r_r_l', '0_r_r_r_r_r_r_l', '0_r_r_r_r_r_r_r', '0_r_r_r_r_r_r', '0_r_r_r_r_r', '0_r_r_r_r', '0_r_r_r', '0_r_r', '0_r', '0']
+ MT edges: [('0_l_r_r_r', '0_l_r_r_r_l'), ('0_l_r_r_r', '0_l_r_r_r_r'), ('0_l_r_r', '0_l_r_r_l'), ('0_l_r_r', '0_l_r_r_r'), ('0_l_r', '0_l_r_l'), ('0_l_r', '0_l_r_r'), ('0_l', '0_l_l'), ('0_l', '0_l_r'), ('0_r_l_l_l', '0_r_l_l_l_l'), ('0_r_l_l_l', '0_r_l_l_l_r'), ('0_r_l_l_r', '0_r_l_l_r_l'), ('0_r_l_l_r', '0_r_l_l_r_r'), ('0_r_l_l', '0_r_l_l_l'), ('0_r_l_l', '0_r_l_l_r'), ('0_r_l_r', '0_r_l_r_l'), ('0_r_l_r', '0_r_l_r_r'), ('0_r_l', '0_r_l_l'), ('0_r_l', '0_r_l_r'), ('0_r_r_l_l_r_r', '0_r_r_l_l_r_r_l'), ('0_r_r_l_l_r_r', '0_r_r_l_l_r_r_r'), ('0_r_r_l_l_r', '0_r_r_l_l_r_l'), ('0_r_r_l_l_r', '0_r_r_l_l_r_r'), ('0_r_r_l_l', '0_r_r_l_l_l'), ('0_r_r_l_l', '0_r_r_l_l_r'), ('0_r_r_l', '0_r_r_l_l'), ('0_r_r_l', '0_r_r_l_r'), ('0_r_r_r_l_l', '0_r_r_r_l_l_l'), ('0_r_r_r_l_l', '0_r_r_r_l_l_r'), ('0_r_r_r_l_r', '0_r_r_r_l_r_l'), ('0_r_r_r_l_r', '0_r_r_r_l_r_r'), ('0_r_r_r_l', '0_r_r_r_l_l'), ('0_r_r_r_l', '0_r_r_r_l_r'), ('0_r_r_r_r_r_r', '0_r_r_r_r_r_r_l'), ('0_r_r_r_r_r_r', '0_r_r_r_r_r_r_r'), ('0_r_r_r_r_r', '0_r_r_r_r_r_l'), ('0_r_r_r_r_r', '0_r_r_r_r_r_r'), ('0_r_r_r_r', '0_r_r_r_r_l'), ('0_r_r_r_r', '0_r_r_r_r_r'), ('0_r_r_r', '0_r_r_r_l'), ('0_r_r_r', '0_r_r_r_r'), ('0_r_r', '0_r_r_l'), ('0_r_r', '0_r_r_r'), ('0_r', '0_r_l'), ('0_r', '0_r_r'), ('0', '0_l'), ('0', '0_r')]
+--- 1.9829425811767578 seconds ---
+Searching Metric Tree
+SEEN
+{'Hustler, The (1961)': ['Drama']}
+{'Fistful of Dollars, A (1964)': ['Action', 'Western']}
+{'Alien (1979)': ['Action', 'Horror', 'Sci-Fi', 'Thriller']}
+{'Die Hard (1988)': ['Action', 'Thriller']}
+{'Star Wars: Episode IV - A New Hope (1977)': ['Action', 'Adventure', 'Fantasy', 'Sci-Fi']}
+{'Saving Private Ryan (1998)': ['Action', 'Drama', 'War']}
+{'Jurassic Park (1993)': ['Action', 'Adventure', 'Sci-Fi']}
+{'Raiders of the Lost Ark (1981)': ['Action', 'Adventure']}
+{'Rocky (1976)': ['Action', 'Drama']}
+{'E.T. the Extra-Terrestrial (1982)': ["Children's", 'Drama', 'Fantasy', 'Sci-Fi']}
+{'Thelma & Louise (1991)': ['Action', 'Drama']}
+{'Mad Max (1979)': ['Action', 'Sci-Fi']}
+{'King Kong (1933)': ['Action', 'Adventure', 'Horror']}
+{'Jaws (1975)': ['Action', 'Horror']}
+{'Good, The Bad and The Ugly, The (1966)': ['Action', 'Western']}
+{'Run Lola Run (Lola rennt) (1998)': ['Action', 'Crime', 'Romance']}
+{'Goldfinger (1964)': ['Action']}
+{'Terminator, The (1984)': ['Action', 'Sci-Fi', 'Thriller']}
+{'Star Wars: Episode VI - Return of the Jedi (1983)': ['Action', 'Adventure', 'Romance', 'Sci-Fi', 'War']}
+{'Star Wars: Episode V - The Empire Strikes Back (1980)': ['Action', 'Adventure', 'Drama', 'Sci-Fi', 'War']}
+{'Predator (1987)': ['Action', 'Sci-Fi', 'Thriller']}
+PREDICTION
+{'Mission: Impossible (1996)': ['Action', 'Adventure', 'Mystery']}
+{'Good Will Hunting (1997)': ['Drama']}
+{'Breakfast Club, The (1985)': ['Comedy', 'Drama']}
+{'Indiana Jones and the Temple of Doom (1984)': ['Action', 'Adventure']}
+{'Dead Poets Society (1989)': ['Drama']}
+{'Sixth Sense, The (1999)': ['Thriller']}
+{'Bone Collector, The (1999)': ['Thriller']}
+{'Die Hard 2 (1990)': ['Action', 'Thriller']}
+{'Absolute Power (1997)': ['Mystery', 'Thriller']}
+{'Christmas Vacation (1989)': ['Comedy']}
+{'Die Hard: With a Vengeance (1995)': ['Action', 'Thriller']}
+{'American President, The (1995)': ['Comedy', 'Drama', 'Romance']}
+{'True Lies (1994)': ['Action', 'Adventure', 'Comedy', 'Romance']}
+{'Secret of NIMH, The (1982)': ['Animation', "Children's"]}
+{'Snow White and the Seven Dwarfs (1937)': ['Animation', "Children's", 'Musical']}
+{'Akira (1988)': ['Adventure', 'Animation', 'Sci-Fi', 'Thriller']}
+{'Night of the Living Dead (1968)': ['Horror', 'Sci-Fi']}
+{"Ferris Bueller's Day Off (1986)": ['Comedy']}
+{'Yellow Submarine (1968)': ['Animation', 'Musical']}
+{'Wrong Trousers, The (1993)': ['Animation', 'Comedy']}
+{'Toy Story (1995)': ['Animation', "Children's", 'Comedy']}
+{'Toy Story 2 (1999)': ['Animation', "Children's", 'Comedy']}
+{'Stand by Me (1986)': ['Adventure', 'Comedy', 'Drama']}
+{'Sixteen Candles (1984)': ['Comedy']}
+{"Bug's Life, A (1998)": ['Animation', "Children's", 'Comedy']}
+{'Flamingo Kid, The (1984)': ['Comedy', 'Drama']}
+{'Ghostbusters (1984)': ['Comedy', 'Horror']}
+{'Airplane! (1980)': ['Comedy']}
+{'Willy Wonka and the Chocolate Factory (1971)': ['Adventure', "Children's", 'Comedy', 'Fantasy']}
+{'Indiana Jones and the Last Crusade (1989)': ['Action', 'Adventure']}
+{'Bicentennial Man (1999)': ['Comedy', 'Drama', 'Sci-Fi']}
+{'Titanic (1997)': ['Drama', 'Romance']}
+{'Mission: Impossible 2 (2000)': ['Action', 'Thriller']}
+{'Pulp Fiction (1994)': ['Crime', 'Drama']}
+{"Schindler's List (1993)": ['Drama', 'War']}
+{'Murder at 1600 (1997)': ['Mystery', 'Thriller']}
+{'Saint, The (1997)': ['Action', 'Romance', 'Thriller']}
+{'Relic, The (1997)': ['Horror']}
+{'Lake Placid (1999)': ['Horror', 'Thriller']}
+{'U-571 (2000)': ['Action', 'Thriller']}
+{'Pagemaster, The (1994)': ['Action', 'Adventure', 'Animation', "Children's", 'Fantasy']}
+{'Flight of the Navigator (1986)': ['Adventure', "Children's", 'Sci-Fi']}
+{'Who Framed Roger Rabbit? (1988)': ['Adventure', 'Animation', 'Film-Noir']}
+{'Dead Again (1991)': ['Mystery', 'Romance', 'Thriller']}
+{'Chicken Run (2000)': ['Animation', "Children's", 'Comedy']}
+{'Beauty and the Beast (1991)': ['Animation', "Children's", 'Musical']}
+{'Back to the Future (1985)': ['Comedy', 'Sci-Fi']}
+{'Rugrats Movie, The (1998)': ['Animation', "Children's", 'Comedy']}
+{'American Graffiti (1973)': ['Comedy', 'Drama']}
+{'Grumpy Old Men (1993)': ['Comedy']}
+{'Heart and Souls (1993)': ['Comedy', 'Fantasy']}
+{'Hope Floats (1998)': ['Comedy', 'Drama', 'Romance']}
+{'Live Nude Girls (1995)': ['Comedy']}
+--- 35.51391363143921 seconds ---
+
+SETTINGS: num of sim neighbors: 3, num of movies: 100
+RESULT: (0.0, 0.0, {0.16966234177256934})
+|| ------ COMPLETE ------ ||
+Total run time: 281.42682814598083 seconds.
+Amount of users: 461.
+|| ---------------------- ||
+
+Running...
+Formatting data...
+Generating graph...
+--- 2.0851211547851562 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Adding rating and award information to graph...
+--- 197.8164987564087 seconds ---
+Counting TETs...
+--- 2.9518086910247803 seconds ---
+Performing Logistic Evaluation on TETs...
+--- 10.624572515487671 seconds ---
+Generating histograms...
+--- 5.376327037811279 seconds ---
+Building Metric Tree
+ MT nodes: ['0_l_l', '0_l_r_l', '0_l_r_r_l', '0_l_r_r_r_l', '0_l_r_r_r_r_l', '0_l_r_r_r_r_r', '0_l_r_r_r_r', '0_l_r_r_r', '0_l_r_r', '0_l_r', '0_l', '0_r_l_l_l_l', '0_r_l_l_l_r', '0_r_l_l_l', '0_r_l_l_r', '0_r_l_l', '0_r_l_r_l_l_l', '0_r_l_r_l_l_r_l', '0_r_l_r_l_l_r_r', '0_r_l_r_l_l_r', '0_r_l_r_l_l', '0_r_l_r_l_r_l_l', '0_r_l_r_l_r_l_r', '0_r_l_r_l_r_l', '0_r_l_r_l_r_r', '0_r_l_r_l_r', '0_r_l_r_l', '0_r_l_r_r_l', '0_r_l_r_r_r_l', '0_r_l_r_r_r_r', '0_r_l_r_r_r', '0_r_l_r_r', '0_r_l_r', '0_r_l', '0_r_r_l_l', '0_r_r_l_r', '0_r_r_l', '0_r_r_r_l_l_l', '0_r_r_r_l_l_r_l', '0_r_r_r_l_l_r_r', '0_r_r_r_l_l_r', '0_r_r_r_l_l', '0_r_r_r_l_r', '0_r_r_r_l', '0_r_r_r_r', '0_r_r_r', '0_r_r', '0_r', '0']
+ MT edges: [('0_l_r_r_r_r', '0_l_r_r_r_r_l'), ('0_l_r_r_r_r', '0_l_r_r_r_r_r'), ('0_l_r_r_r', '0_l_r_r_r_l'), ('0_l_r_r_r', '0_l_r_r_r_r'), ('0_l_r_r', '0_l_r_r_l'), ('0_l_r_r', '0_l_r_r_r'), ('0_l_r', '0_l_r_l'), ('0_l_r', '0_l_r_r'), ('0_l', '0_l_l'), ('0_l', '0_l_r'), ('0_r_l_l_l', '0_r_l_l_l_l'), ('0_r_l_l_l', '0_r_l_l_l_r'), ('0_r_l_l', '0_r_l_l_l'), ('0_r_l_l', '0_r_l_l_r'), ('0_r_l_r_l_l_r', '0_r_l_r_l_l_r_l'), ('0_r_l_r_l_l_r', '0_r_l_r_l_l_r_r'), ('0_r_l_r_l_l', '0_r_l_r_l_l_l'), ('0_r_l_r_l_l', '0_r_l_r_l_l_r'), ('0_r_l_r_l_r_l', '0_r_l_r_l_r_l_l'), ('0_r_l_r_l_r_l', '0_r_l_r_l_r_l_r'), ('0_r_l_r_l_r', '0_r_l_r_l_r_l'), ('0_r_l_r_l_r', '0_r_l_r_l_r_r'), ('0_r_l_r_l', '0_r_l_r_l_l'), ('0_r_l_r_l', '0_r_l_r_l_r'), ('0_r_l_r_r_r', '0_r_l_r_r_r_l'), ('0_r_l_r_r_r', '0_r_l_r_r_r_r'), ('0_r_l_r_r', '0_r_l_r_r_l'), ('0_r_l_r_r', '0_r_l_r_r_r'), ('0_r_l_r', '0_r_l_r_l'), ('0_r_l_r', '0_r_l_r_r'), ('0_r_l', '0_r_l_l'), ('0_r_l', '0_r_l_r'), ('0_r_r_l', '0_r_r_l_l'), ('0_r_r_l', '0_r_r_l_r'), ('0_r_r_r_l_l_r', '0_r_r_r_l_l_r_l'), ('0_r_r_r_l_l_r', '0_r_r_r_l_l_r_r'), ('0_r_r_r_l_l', '0_r_r_r_l_l_l'), ('0_r_r_r_l_l', '0_r_r_r_l_l_r'), ('0_r_r_r_l', '0_r_r_r_l_l'), ('0_r_r_r_l', '0_r_r_r_l_r'), ('0_r_r_r', '0_r_r_r_l'), ('0_r_r_r', '0_r_r_r_r'), ('0_r_r', '0_r_r_l'), ('0_r_r', '0_r_r_r'), ('0_r', '0_r_l'), ('0_r', '0_r_r'), ('0', '0_l'), ('0', '0_r')]
+--- 23.79088258743286 seconds ---
+Searching Metric Tree
+SEEN
+{'Hustler, The (1961)': ['Drama']}
+{'Fistful of Dollars, A (1964)': ['Action', 'Western']}
+{'Alien (1979)': ['Action', 'Horror', 'Sci-Fi', 'Thriller']}
+{'Die Hard (1988)': ['Action', 'Thriller']}
+{'Star Wars: Episode IV - A New Hope (1977)': ['Action', 'Adventure', 'Fantasy', 'Sci-Fi']}
+{'Saving Private Ryan (1998)': ['Action', 'Drama', 'War']}
+{'Jurassic Park (1993)': ['Action', 'Adventure', 'Sci-Fi']}
+{'Raiders of the Lost Ark (1981)': ['Action', 'Adventure']}
+{'Rocky (1976)': ['Action', 'Drama']}
+{'E.T. the Extra-Terrestrial (1982)': ["Children's", 'Drama', 'Fantasy', 'Sci-Fi']}
+{'Thelma & Louise (1991)': ['Action', 'Drama']}
+{'Mad Max (1979)': ['Action', 'Sci-Fi']}
+{'King Kong (1933)': ['Action', 'Adventure', 'Horror']}
+{'Jaws (1975)': ['Action', 'Horror']}
+{'Good, The Bad and The Ugly, The (1966)': ['Action', 'Western']}
+{'Run Lola Run (Lola rennt) (1998)': ['Action', 'Crime', 'Romance']}
+{'Goldfinger (1964)': ['Action']}
+{'Terminator, The (1984)': ['Action', 'Sci-Fi', 'Thriller']}
+{'Star Wars: Episode VI - Return of the Jedi (1983)': ['Action', 'Adventure', 'Romance', 'Sci-Fi', 'War']}
+{'Star Wars: Episode V - The Empire Strikes Back (1980)': ['Action', 'Adventure', 'Drama', 'Sci-Fi', 'War']}
+{'Predator (1987)': ['Action', 'Sci-Fi', 'Thriller']}
+PREDICTION
+{'Mission: Impossible (1996)': ['Action', 'Adventure', 'Mystery']}
+{'Good Will Hunting (1997)': ['Drama']}
+{'Breakfast Club, The (1985)': ['Comedy', 'Drama']}
+{'Indiana Jones and the Temple of Doom (1984)': ['Action', 'Adventure']}
+{'Dead Poets Society (1989)': ['Drama']}
+{'Brothers McMullen, The (1995)': ['Comedy']}
+{'American Beauty (1999)': ['Comedy', 'Drama']}
+{"Rosemary's Baby (1968)": ['Horror', 'Thriller']}
+{'Chicken Run (2000)': ['Animation', "Children's", 'Comedy']}
+{'Nikita (La Femme Nikita) (1990)': ['Thriller']}
+{'Bridge on the River Kwai, The (1957)': ['Drama', 'War']}
+{'Fantasia (1940)': ['Animation', "Children's", 'Musical']}
+{'Sandpiper, The (1965)': ['Drama', 'Romance']}
+{'Fantasia 2000 (1999)': ['Animation', "Children's", 'Musical']}
+{'Escape from the Planet of the Apes (1971)': ['Action', 'Sci-Fi']}
+{'Rocky Horror Picture Show, The (1975)': ['Comedy', 'Horror', 'Musical', 'Sci-Fi']}
+{'Airplane! (1980)': ['Comedy']}
+{'From Russia with Love (1963)': ['Action']}
+{'Shakespeare in Love (1998)': ['Comedy', 'Romance']}
+{"Boys Don't Cry (1999)": ['Drama']}
+{'Thomas Crown Affair, The (1999)': ['Action', 'Thriller']}
+{'Fight Club (1999)': ['Drama']}
+{'Indiana Jones and the Last Crusade (1989)': ['Action', 'Adventure']}
+{'Bicentennial Man (1999)': ['Comedy', 'Drama', 'Sci-Fi']}
+{'Titanic (1997)': ['Drama', 'Romance']}
+{'Mission: Impossible 2 (2000)': ['Action', 'Thriller']}
+{'Sixth Sense, The (1999)': ['Thriller']}
+{'Pulp Fiction (1994)': ['Crime', 'Drama']}
+{"Schindler's List (1993)": ['Drama', 'War']}
+{'X-Men (2000)': ['Action', 'Sci-Fi']}
+{"She's the One (1996)": ['Comedy', 'Romance']}
+{'Santa Claus: The Movie (1985)': ['Adventure', "Children's", 'Fantasy']}
+{'Last Man Standing (1996)': ['Action', 'Drama', 'Western']}
+{'Rules of Engagement (2000)': ['Drama', 'Thriller']}
+{'East is East (1999)': ['Comedy']}
+{'High Fidelity (2000)': ['Comedy']}
+{'U-571 (2000)': ['Action', 'Thriller']}
+{'Doctor Dolittle (1967)': ['Adventure', 'Musical']}
+{'Toys (1992)': ['Action', 'Comedy', 'Fantasy']}
+{'Tin Cup (1996)': ['Comedy', 'Romance']}
+{'Daddy Long Legs (1919)': ['Comedy']}
+{'Mummy, The (1999)': ['Action', 'Adventure', 'Horror', 'Thriller']}
+{"General's Daughter, The (1999)": ['Drama', 'Thriller']}
+{'Stigmata (1999)': ['Thriller']}
+{'Dave (1993)': ['Comedy', 'Romance']}
+{'Never Been Kissed (1999)': ['Comedy', 'Romance']}
+--- 32.33970236778259 seconds ---
+
+SETTINGS: num of sim neighbors: 3, num of movies: 100
+RESULT: (0.0, 0.0, {0.18576502553279275})
+|| ------ COMPLETE ------ ||
+Total run time: 357.0430517196655 seconds.
+Amount of users: 461.
+|| ---------------------- ||
+
+Running...
+Formatting data...
+Generating graph...
+--- 2.3334858417510986 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Adding rating and award information to graph...
+--- 202.37393975257874 seconds ---
+Counting TETs...
+--- 3.208540916442871 seconds ---
+Performing Logistic Evaluation on TETs...
+--- 10.426293134689331 seconds ---
+Generating histograms...
+--- 4.527357578277588 seconds ---
+Building Metric Tree
+ MT nodes: ['0_l_l', '0_l_r_l', '0_l_r_r_l', '0_l_r_r_r_l', '0_l_r_r_r_r_l', '0_l_r_r_r_r_r', '0_l_r_r_r_r', '0_l_r_r_r', '0_l_r_r', '0_l_r', '0_l', '0_r_l_l_l_l', '0_r_l_l_l_r', '0_r_l_l_l', '0_r_l_l_r', '0_r_l_l', '0_r_l_r_l_l_l', '0_r_l_r_l_l_r_l', '0_r_l_r_l_l_r_r', '0_r_l_r_l_l_r', '0_r_l_r_l_l', '0_r_l_r_l_r_l_l', '0_r_l_r_l_r_l_r', '0_r_l_r_l_r_l', '0_r_l_r_l_r_r', '0_r_l_r_l_r', '0_r_l_r_l', '0_r_l_r_r_l', '0_r_l_r_r_r_l', '0_r_l_r_r_r_r', '0_r_l_r_r_r', '0_r_l_r_r', '0_r_l_r', '0_r_l', '0_r_r_l_l', '0_r_r_l_r', '0_r_r_l', '0_r_r_r_l_l_l', '0_r_r_r_l_l_r_l', '0_r_r_r_l_l_r_r', '0_r_r_r_l_l_r', '0_r_r_r_l_l', '0_r_r_r_l_r', '0_r_r_r_l', '0_r_r_r_r', '0_r_r_r', '0_r_r', '0_r', '0']
+ MT edges: [('0_l_r_r_r_r', '0_l_r_r_r_r_l'), ('0_l_r_r_r_r', '0_l_r_r_r_r_r'), ('0_l_r_r_r', '0_l_r_r_r_l'), ('0_l_r_r_r', '0_l_r_r_r_r'), ('0_l_r_r', '0_l_r_r_l'), ('0_l_r_r', '0_l_r_r_r'), ('0_l_r', '0_l_r_l'), ('0_l_r', '0_l_r_r'), ('0_l', '0_l_l'), ('0_l', '0_l_r'), ('0_r_l_l_l', '0_r_l_l_l_l'), ('0_r_l_l_l', '0_r_l_l_l_r'), ('0_r_l_l', '0_r_l_l_l'), ('0_r_l_l', '0_r_l_l_r'), ('0_r_l_r_l_l_r', '0_r_l_r_l_l_r_l'), ('0_r_l_r_l_l_r', '0_r_l_r_l_l_r_r'), ('0_r_l_r_l_l', '0_r_l_r_l_l_l'), ('0_r_l_r_l_l', '0_r_l_r_l_l_r'), ('0_r_l_r_l_r_l', '0_r_l_r_l_r_l_l'), ('0_r_l_r_l_r_l', '0_r_l_r_l_r_l_r'), ('0_r_l_r_l_r', '0_r_l_r_l_r_l'), ('0_r_l_r_l_r', '0_r_l_r_l_r_r'), ('0_r_l_r_l', '0_r_l_r_l_l'), ('0_r_l_r_l', '0_r_l_r_l_r'), ('0_r_l_r_r_r', '0_r_l_r_r_r_l'), ('0_r_l_r_r_r', '0_r_l_r_r_r_r'), ('0_r_l_r_r', '0_r_l_r_r_l'), ('0_r_l_r_r', '0_r_l_r_r_r'), ('0_r_l_r', '0_r_l_r_l'), ('0_r_l_r', '0_r_l_r_r'), ('0_r_l', '0_r_l_l'), ('0_r_l', '0_r_l_r'), ('0_r_r_l', '0_r_r_l_l'), ('0_r_r_l', '0_r_r_l_r'), ('0_r_r_r_l_l_r', '0_r_r_r_l_l_r_l'), ('0_r_r_r_l_l_r', '0_r_r_r_l_l_r_r'), ('0_r_r_r_l_l', '0_r_r_r_l_l_l'), ('0_r_r_r_l_l', '0_r_r_r_l_l_r'), ('0_r_r_r_l', '0_r_r_r_l_l'), ('0_r_r_r_l', '0_r_r_r_l_r'), ('0_r_r_r', '0_r_r_r_l'), ('0_r_r_r', '0_r_r_r_r'), ('0_r_r', '0_r_r_l'), ('0_r_r', '0_r_r_r'), ('0_r', '0_r_l'), ('0_r', '0_r_r'), ('0', '0_l'), ('0', '0_r')]
+--- 21.68991208076477 seconds ---
+Searching Metric Tree
+SEEN
+{'Hustler, The (1961)': ['Drama']}
+{'Fistful of Dollars, A (1964)': ['Action', 'Western']}
+{'Alien (1979)': ['Action', 'Horror', 'Sci-Fi', 'Thriller']}
+{'Die Hard (1988)': ['Action', 'Thriller']}
+{'Star Wars: Episode IV - A New Hope (1977)': ['Action', 'Adventure', 'Fantasy', 'Sci-Fi']}
+{'Saving Private Ryan (1998)': ['Action', 'Drama', 'War']}
+{'Jurassic Park (1993)': ['Action', 'Adventure', 'Sci-Fi']}
+{'Raiders of the Lost Ark (1981)': ['Action', 'Adventure']}
+{'Rocky (1976)': ['Action', 'Drama']}
+{'E.T. the Extra-Terrestrial (1982)': ["Children's", 'Drama', 'Fantasy', 'Sci-Fi']}
+{'Thelma & Louise (1991)': ['Action', 'Drama']}
+{'Mad Max (1979)': ['Action', 'Sci-Fi']}
+{'King Kong (1933)': ['Action', 'Adventure', 'Horror']}
+{'Jaws (1975)': ['Action', 'Horror']}
+{'Good, The Bad and The Ugly, The (1966)': ['Action', 'Western']}
+{'Run Lola Run (Lola rennt) (1998)': ['Action', 'Crime', 'Romance']}
+{'Goldfinger (1964)': ['Action']}
+{'Terminator, The (1984)': ['Action', 'Sci-Fi', 'Thriller']}
+{'Star Wars: Episode VI - Return of the Jedi (1983)': ['Action', 'Adventure', 'Romance', 'Sci-Fi', 'War']}
+{'Star Wars: Episode V - The Empire Strikes Back (1980)': ['Action', 'Adventure', 'Drama', 'Sci-Fi', 'War']}
+{'Predator (1987)': ['Action', 'Sci-Fi', 'Thriller']}
+PREDICTION
+{'Mission: Impossible (1996)': ['Action', 'Adventure', 'Mystery']}
+{'Good Will Hunting (1997)': ['Drama']}
+{'Indiana Jones and the Temple of Doom (1984)': ['Action', 'Adventure']}
+{'Dead Poets Society (1989)': ['Drama']}
+{'Brothers McMullen, The (1995)': ['Comedy']}
+{"Rosemary's Baby (1968)": ['Horror', 'Thriller']}
+{'Nikita (La Femme Nikita) (1990)': ['Thriller']}
+{'Bridge on the River Kwai, The (1957)': ['Drama', 'War']}
+{'Fantasia (1940)': ['Animation', "Children's", 'Musical']}
+{'Sandpiper, The (1965)': ['Drama', 'Romance']}
+{'Fantasia 2000 (1999)': ['Animation', "Children's", 'Musical']}
+{'Escape from the Planet of the Apes (1971)': ['Action', 'Sci-Fi']}
+{'Airplane! (1980)': ['Comedy']}
+{'From Russia with Love (1963)': ['Action']}
+{"Boys Don't Cry (1999)": ['Drama']}
+{'Thomas Crown Affair, The (1999)': ['Action', 'Thriller']}
+{'Fight Club (1999)': ['Drama']}
+{'Cross of Iron (1977)': ['War']}
+{"Kelly's Heroes (1970)": ['Action', 'Comedy', 'War']}
+{'Meet the Parents (2000)': ['Comedy']}
+{'Young Frankenstein (1974)': ['Comedy', 'Horror']}
+{'Little Mermaid, The (1989)': ['Animation', "Children's", 'Comedy', 'Musical', 'Romance']}
+{'Real Genius (1985)': ['Comedy']}
+{'Grease (1978)': ['Comedy', 'Musical', 'Romance']}
+{'Raising Arizona (1987)': ['Comedy']}
+{'All About My Mother (Todo Sobre Mi Madre) (1999)': ['Comedy', 'Drama']}
+{'Fletch (1985)': ['Comedy']}
+{'Happy Gilmore (1996)': ['Comedy']}
+{"Wayne's World (1992)": ['Comedy']}
+{'American Pie (1999)': ['Comedy']}
+{'Christmas Story, A (1983)': ['Comedy', 'Drama']}
+{'Muppet Movie, The (1979)': ["Children's", 'Comedy']}
+{'Mallrats (1995)': ['Comedy']}
+{'Caddyshack (1980)': ['Comedy']}
+{'Mary Poppins (1964)': ["Children's", 'Comedy', 'Musical']}
+{'Reality Bites (1994)': ['Comedy', 'Drama']}
+{'Vacation (1983)': ['Comedy']}
+{'Blazing Saddles (1974)': ['Comedy', 'Western']}
+{'Swingers (1996)': ['Comedy', 'Drama']}
+{'Monty Python and the Holy Grail (1974)': ['Comedy']}
+{'Fish Called Wanda, A (1988)': ['Comedy']}
+{'L.A. Story (1991)': ['Comedy', 'Romance']}
+{'When Harry Met Sally... (1989)': ['Comedy', 'Romance']}
+{'Man with Two Brains, The (1983)': ['Comedy']}
+{'Cool Hand Luke (1967)': ['Comedy', 'Drama']}
+{'This Is Spinal Tap (1984)': ['Comedy', 'Drama', 'Musical']}
+{'Fast Times at Ridgemont High (1982)': ['Comedy']}
+{"You've Got Mail (1998)": ['Comedy', 'Romance']}
+{'Butch Cassidy and the Sundance Kid (1969)': ['Action', 'Comedy', 'Western']}
+{'Diner (1982)': ['Comedy', 'Drama']}
+--- 31.77098298072815 seconds ---
+
+SETTINGS: num of sim neighbors: 10, num of movies: 50
+RESULT: (0.0, 0.0, {0.13899487578389824})
+|| ------ COMPLETE ------ ||
+Total run time: 363.07068037986755 seconds.
+Amount of users: 461.
+|| ---------------------- ||
+
+Running...
+Formatting data...
+Generating graph...
+--- 2.307180404663086 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Adding rating and award information to graph...
+--- 99.75659394264221 seconds ---
+Counting TETs...
+--- 1.4641308784484863 seconds ---
+Performing Logistic Evaluation on TETs...
+--- 5.4667041301727295 seconds ---
+Generating histograms...
+--- 3.9609901905059814 seconds ---
+Building Metric Tree
+ MT nodes: ['0_l_l_l', '0_l_l_r_l_l', '0_l_l_r_l_r', '0_l_l_r_l', '0_l_l_r_r', '0_l_l_r', '0_l_l', '0_l_r', '0_l', '0_r_l_l_l_l', '0_r_l_l_l_r', '0_r_l_l_l', '0_r_l_l_r_l', '0_r_l_l_r_r_l', '0_r_l_l_r_r_r_l', '0_r_l_l_r_r_r_r', '0_r_l_l_r_r_r', '0_r_l_l_r_r', '0_r_l_l_r', '0_r_l_l', '0_r_l_r_l', '0_r_l_r_r', '0_r_l_r', '0_r_l', '0_r_r_l_l_l_l', '0_r_r_l_l_l_r', '0_r_r_l_l_l', '0_r_r_l_l_r', '0_r_r_l_l', '0_r_r_l_r', '0_r_r_l', '0_r_r_r_l_l_l', '0_r_r_r_l_l_r', '0_r_r_r_l_l', '0_r_r_r_l_r_l_l', '0_r_r_r_l_r_l_r', '0_r_r_r_l_r_l', '0_r_r_r_l_r_r', '0_r_r_r_l_r', '0_r_r_r_l', '0_r_r_r_r_l_l', '0_r_r_r_r_l_r', '0_r_r_r_r_l', '0_r_r_r_r_r_l', '0_r_r_r_r_r_r', '0_r_r_r_r_r', '0_r_r_r_r', '0_r_r_r', '0_r_r', '0_r', '0']
+ MT edges: [('0_l_l_r_l', '0_l_l_r_l_l'), ('0_l_l_r_l', '0_l_l_r_l_r'), ('0_l_l_r', '0_l_l_r_l'), ('0_l_l_r', '0_l_l_r_r'), ('0_l_l', '0_l_l_l'), ('0_l_l', '0_l_l_r'), ('0_l', '0_l_l'), ('0_l', '0_l_r'), ('0_r_l_l_l', '0_r_l_l_l_l'), ('0_r_l_l_l', '0_r_l_l_l_r'), ('0_r_l_l_r_r_r', '0_r_l_l_r_r_r_l'), ('0_r_l_l_r_r_r', '0_r_l_l_r_r_r_r'), ('0_r_l_l_r_r', '0_r_l_l_r_r_l'), ('0_r_l_l_r_r', '0_r_l_l_r_r_r'), ('0_r_l_l_r', '0_r_l_l_r_l'), ('0_r_l_l_r', '0_r_l_l_r_r'), ('0_r_l_l', '0_r_l_l_l'), ('0_r_l_l', '0_r_l_l_r'), ('0_r_l_r', '0_r_l_r_l'), ('0_r_l_r', '0_r_l_r_r'), ('0_r_l', '0_r_l_l'), ('0_r_l', '0_r_l_r'), ('0_r_r_l_l_l', '0_r_r_l_l_l_l'), ('0_r_r_l_l_l', '0_r_r_l_l_l_r'), ('0_r_r_l_l', '0_r_r_l_l_l'), ('0_r_r_l_l', '0_r_r_l_l_r'), ('0_r_r_l', '0_r_r_l_l'), ('0_r_r_l', '0_r_r_l_r'), ('0_r_r_r_l_l', '0_r_r_r_l_l_l'), ('0_r_r_r_l_l', '0_r_r_r_l_l_r'), ('0_r_r_r_l_r_l', '0_r_r_r_l_r_l_l'), ('0_r_r_r_l_r_l', '0_r_r_r_l_r_l_r'), ('0_r_r_r_l_r', '0_r_r_r_l_r_l'), ('0_r_r_r_l_r', '0_r_r_r_l_r_r'), ('0_r_r_r_l', '0_r_r_r_l_l'), ('0_r_r_r_l', '0_r_r_r_l_r'), ('0_r_r_r_r_l', '0_r_r_r_r_l_l'), ('0_r_r_r_r_l', '0_r_r_r_r_l_r'), ('0_r_r_r_r_r', '0_r_r_r_r_r_l'), ('0_r_r_r_r_r', '0_r_r_r_r_r_r'), ('0_r_r_r_r', '0_r_r_r_r_l'), ('0_r_r_r_r', '0_r_r_r_r_r'), ('0_r_r_r', '0_r_r_r_l'), ('0_r_r_r', '0_r_r_r_r'), ('0_r_r', '0_r_r_l'), ('0_r_r', '0_r_r_r'), ('0_r', '0_r_l'), ('0_r', '0_r_r'), ('0', '0_l'), ('0', '0_r')]
+--- 18.65727663040161 seconds ---
+Searching Metric Tree
+SEEN
+{'Fistful of Dollars, A (1964)': ['Action', 'Western']}
+{'Alien (1979)': ['Action', 'Horror', 'Sci-Fi', 'Thriller']}
+{'Die Hard (1988)': ['Action', 'Thriller']}
+{'Rocky (1976)': ['Action', 'Drama']}
+{'Thelma & Louise (1991)': ['Action', 'Drama']}
+{'Mad Max (1979)': ['Action', 'Sci-Fi']}
+{'Terminator, The (1984)': ['Action', 'Sci-Fi', 'Thriller']}
+PREDICTION
+{'Groundhog Day (1993)': ['Comedy', 'Romance']}
+{'Young Frankenstein (1974)': ['Comedy', 'Horror']}
+{'Midnight Run (1988)': ['Action', 'Adventure', 'Comedy', 'Crime']}
+{'Casablanca (1942)': ['Drama', 'Romance', 'War']}
+{'Gone with the Wind (1939)': ['Drama', 'Romance', 'War']}
+{'Commitments, The (1991)': ['Comedy', 'Drama']}
+{'African Queen, The (1951)': ['Action', 'Adventure', 'Romance', 'War']}
+{'Philadelphia Story, The (1940)': ['Comedy', 'Romance']}
+{'Get Shorty (1995)': ['Action', 'Comedy', 'Drama']}
+{'Airplane! (1980)': ['Comedy']}
+{'When Harry Met Sally... (1989)': ['Comedy', 'Romance']}
+{'Much Ado About Nothing (1993)': ['Comedy', 'Romance']}
+{'Somewhere in Time (1980)': ['Drama', 'Romance']}
+{'Mission to Mars (2000)': ['Sci-Fi']}
+{'Skulls, The (2000)': ['Thriller']}
+{'Frequency (2000)': ['Drama', 'Thriller']}
+{'Exorcist, The (1973)': ['Horror']}
+{'Patriot, The (2000)': ['Action', 'Drama', 'War']}
+{'In the Line of Fire (1993)': ['Action', 'Thriller']}
+{'Central Station (Central do Brasil) (1998)': ['Drama']}
+{'8MM (1999)': ['Thriller']}
+{'Galaxy Quest (1999)': ['Adventure', 'Comedy', 'Sci-Fi']}
+{'Lord of the Flies (1963)': ['Adventure', 'Drama', 'Thriller']}
+{'Instinct (1999)': ['Drama', 'Thriller']}
+{'Sleepwalkers (1992)': ['Horror']}
+{'House on Haunted Hill, The (1999)': ['Horror']}
+{"Blood For Dracula (Andy Warhol's Dracula) (1974)": ['Horror']}
+{'Haunting, The (1999)': ['Horror', 'Thriller']}
+{'Howling II: Your Sister Is a Werewolf (1985)': ['Horror']}
+{'Carnosaur (1993)': ['Horror', 'Sci-Fi']}
+{'Hunt for Red October, The (1990)': ['Action', 'Thriller']}
+{'Man with the Golden Gun, The (1974)': ['Action']}
+{'Lethal Weapon (1987)': ['Action', 'Comedy', 'Crime', 'Drama']}
+{'Mask of Zorro, The (1998)': ['Action', 'Adventure', 'Romance']}
+{'Jurassic Park (1993)': ['Action', 'Adventure', 'Sci-Fi']}
+{'From Russia with Love (1963)': ['Action']}
+{'To Be or Not to Be (1942)': ['Comedy', 'Drama', 'War']}
+{'Outlaw Josey Wales, The (1976)': ['Western']}
+{'Invasion of the Body Snatchers (1956)': ['Horror', 'Sci-Fi']}
+{'Best Years of Our Lives, The (1946)': ['Drama', 'War']}
+{'GoodFellas (1990)': ['Crime', 'Drama']}
+{'Magnum Force (1973)': ['Western']}
+{'Seven Samurai (The Magnificent Seven) (Shichinin no samurai) (1954)': ['Action', 'Drama']}
+{'Man Who Would Be King, The (1975)': ['Adventure']}
+{'Ghost (1990)': ['Comedy', 'Romance', 'Thriller']}
+{'Pretty Woman (1990)': ['Comedy', 'Romance']}
+{'I.Q. (1994)': ['Comedy', 'Romance']}
+{'Notting Hill (1999)': ['Comedy', 'Romance']}
+{'Grease (1978)': ['Comedy', 'Musical', 'Romance']}
+{'Top Gun (1986)': ['Action', 'Romance']}
+--- 25.856422424316406 seconds ---
+
+SETTINGS: num of sim neighbors: 10, num of movies: 50
+RESULT: (0.12403450563367144, 0.42796004580220454, {0.11176966354985844})
+|| ------ COMPLETE ------ ||
+Total run time: 224.56749629974365 seconds.
+Amount of users: 461.
+|| ---------------------- ||
+
+Running...
+Formatting data...
+Generating graph...
+--- 2.310465097427368 seconds ---
+Building TET specification...
+--- 0.0 seconds ---
+Generating TET according to graph and specification...
+Adding rating and award information to graph...
+--- 101.66792607307434 seconds ---
+Counting TETs...
+--- 1.471064805984497 seconds ---
+Performing Logistic Evaluation on TETs...
+--- 5.454075813293457 seconds ---
+Generating histograms...
+--- 3.915040969848633 seconds ---
+Building Metric Tree
+ MT nodes: ['0_l_l_l', '0_l_l_r_l_l', '0_l_l_r_l_r', '0_l_l_r_l', '0_l_l_r_r', '0_l_l_r', '0_l_l', '0_l_r', '0_l', '0_r_l_l_l_l', '0_r_l_l_l_r', '0_r_l_l_l', '0_r_l_l_r_l', '0_r_l_l_r_r_l', '0_r_l_l_r_r_r_l', '0_r_l_l_r_r_r_r', '0_r_l_l_r_r_r', '0_r_l_l_r_r', '0_r_l_l_r', '0_r_l_l', '0_r_l_r_l', '0_r_l_r_r', '0_r_l_r', '0_r_l', '0_r_r_l_l_l_l', '0_r_r_l_l_l_r', '0_r_r_l_l_l', '0_r_r_l_l_r', '0_r_r_l_l', '0_r_r_l_r', '0_r_r_l', '0_r_r_r_l_l_l', '0_r_r_r_l_l_r', '0_r_r_r_l_l', '0_r_r_r_l_r_l_l', '0_r_r_r_l_r_l_r', '0_r_r_r_l_r_l', '0_r_r_r_l_r_r', '0_r_r_r_l_r', '0_r_r_r_l', '0_r_r_r_r_l_l', '0_r_r_r_r_l_r', '0_r_r_r_r_l', '0_r_r_r_r_r_l', '0_r_r_r_r_r_r', '0_r_r_r_r_r', '0_r_r_r_r', '0_r_r_r', '0_r_r', '0_r', '0']
+ MT edges: [('0_l_l_r_l', '0_l_l_r_l_l'), ('0_l_l_r_l', '0_l_l_r_l_r'), ('0_l_l_r', '0_l_l_r_l'), ('0_l_l_r', '0_l_l_r_r'), ('0_l_l', '0_l_l_l'), ('0_l_l', '0_l_l_r'), ('0_l', '0_l_l'), ('0_l', '0_l_r'), ('0_r_l_l_l', '0_r_l_l_l_l'), ('0_r_l_l_l', '0_r_l_l_l_r'), ('0_r_l_l_r_r_r', '0_r_l_l_r_r_r_l'), ('0_r_l_l_r_r_r', '0_r_l_l_r_r_r_r'), ('0_r_l_l_r_r', '0_r_l_l_r_r_l'), ('0_r_l_l_r_r', '0_r_l_l_r_r_r'), ('0_r_l_l_r', '0_r_l_l_r_l'), ('0_r_l_l_r', '0_r_l_l_r_r'), ('0_r_l_l', '0_r_l_l_l'), ('0_r_l_l', '0_r_l_l_r'), ('0_r_l_r', '0_r_l_r_l'), ('0_r_l_r', '0_r_l_r_r'), ('0_r_l', '0_r_l_l'), ('0_r_l', '0_r_l_r'), ('0_r_r_l_l_l', '0_r_r_l_l_l_l'), ('0_r_r_l_l_l', '0_r_r_l_l_l_r'), ('0_r_r_l_l', '0_r_r_l_l_l'), ('0_r_r_l_l', '0_r_r_l_l_r'), ('0_r_r_l', '0_r_r_l_l'), ('0_r_r_l', '0_r_r_l_r'), ('0_r_r_r_l_l', '0_r_r_r_l_l_l'), ('0_r_r_r_l_l', '0_r_r_r_l_l_r'), ('0_r_r_r_l_r_l', '0_r_r_r_l_r_l_l'), ('0_r_r_r_l_r_l', '0_r_r_r_l_r_l_r'), ('0_r_r_r_l_r', '0_r_r_r_l_r_l'), ('0_r_r_r_l_r', '0_r_r_r_l_r_r'), ('0_r_r_r_l', '0_r_r_r_l_l'), ('0_r_r_r_l', '0_r_r_r_l_r'), ('0_r_r_r_r_l', '0_r_r_r_r_l_l'), ('0_r_r_r_r_l', '0_r_r_r_r_l_r'), ('0_r_r_r_r_r', '0_r_r_r_r_r_l'), ('0_r_r_r_r_r', '0_r_r_r_r_r_r'), ('0_r_r_r_r', '0_r_r_r_r_l'), ('0_r_r_r_r', '0_r_r_r_r_r'), ('0_r_r_r', '0_r_r_r_l'), ('0_r_r_r', '0_r_r_r_r'), ('0_r_r', '0_r_r_l'), ('0_r_r', '0_r_r_r'), ('0_r', '0_r_l'), ('0_r', '0_r_r'), ('0', '0_l'), ('0', '0_r')]
+--- 18.712759971618652 seconds ---
+Searching Metric Tree
+SEEN
+{'Fistful of Dollars, A (1964)': ['Action', 'Western']}
+{'Alien (1979)': ['Action', 'Horror', 'Sci-Fi', 'Thriller']}
+{'Die Hard (1988)': ['Action', 'Thriller']}
+{'Rocky (1976)': ['Action', 'Drama']}
+{'Thelma & Louise (1991)': ['Action', 'Drama']}
+{'Mad Max (1979)': ['Action', 'Sci-Fi']}
+{'Terminator, The (1984)': ['Action', 'Sci-Fi', 'Thriller']}
+PREDICTION
+{'Groundhog Day (1993)': ['Comedy', 'Romance']}
+{'Young Frankenstein (1974)': ['Comedy', 'Horror']}
+{'Midnight Run (1988)': ['Action', 'Adventure', 'Comedy', 'Crime']}
+{'Casablanca (1942)': ['Drama', 'Romance', 'War']}
+{'Gone with the Wind (1939)': ['Drama', 'Romance', 'War']}
+{'Commitments, The (1991)': ['Comedy', 'Drama']}
+{'African Queen, The (1951)': ['Action', 'Adventure', 'Romance', 'War']}
+{'Philadelphia Story, The (1940)': ['Comedy', 'Romance']}
+{'Get Shorty (1995)': ['Action', 'Comedy', 'Drama']}
+{'Airplane! (1980)': ['Comedy']}
+{'When Harry Met Sally... (1989)': ['Comedy', 'Romance']}
+{'Much Ado About Nothing (1993)': ['Comedy', 'Romance']}
+{'Somewhere in Time (1980)': ['Drama', 'Romance']}
+{'Pitch Black (2000)': ['Action', 'Sci-Fi']}
+{'Mission to Mars (2000)': ['Sci-Fi']}
+{'Skulls, The (2000)': ['Thriller']}
+{'Election (1999)': ['Comedy']}
+{'Swingers (1996)': ['Comedy', 'Drama']}
+{'Lost World: Jurassic Park, The (1997)': ['Action', 'Adventure', 'Sci-Fi', 'Thriller']}
+{'Hideaway (1995)': ['Thriller']}
+{'Hellraiser: Bloodline (1996)': ['Action', 'Horror', 'Sci-Fi']}
+{'Hellbound: Hellraiser II (1988)': ['Horror']}
+--- 12.926655769348145 seconds ---
+
+SETTINGS: num of sim neighbors: 1, num of movies: 25
+RESULT: (0.12883800027528894, 0.5169376767512005, {0.3504558710754259})
+|| ------ COMPLETE ------ ||
+Total run time: 206.56361293792725 seconds.
+Amount of users: 461.
+|| ---------------------- ||
+

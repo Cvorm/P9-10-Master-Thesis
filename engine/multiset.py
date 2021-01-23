@@ -20,6 +20,10 @@ class Multiset:
         if not self.graph.has_node(node):
             self.graph.add_node(node, count=c, mult=0, weight=0, value=0, hist=[], type=t)
 
+    def add_node_test(self, node, c, t, r):
+        if not self.graph.has_node(node):
+            self.graph.add_node(node, count=c, mult=0, weight=0, value=0, hist=[], type=t, rating=r)
+
     def add_node(self, node):
         self.graph.add_node(node, count=0, mult=0, weight=0, value=0, hist=[])
 
@@ -155,7 +159,7 @@ class Multiset:
                     h.append(1)
             except: pass
         else:
-            nodes = [x for x,y in self.graph.nodes(data=True) if y.get('type') == node]
+            nodes = [x for x,y in self.graph.nodes(data=True) if y.get('type') == node] # specif.nodes(data=True)[node]['type']
             for n in nodes:
                 h.append(self.graph.nodes(data=True)[n]['value'])
         hist, bin_edges = np.histogram(h, bins=[0.0,0.2,0.4,0.6,0.8,1.0]) # [0.0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0] [0.0,0.2,0.4,0.6,0.8,1.0]
