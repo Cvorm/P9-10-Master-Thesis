@@ -28,10 +28,10 @@ log_weight = 1
 bin_size = 10
 bin_amount = 10
 # metric tree settings
-mt_depth = 7 # int(inp[3])
+mt_depth = int(inp[3])
 bucket_max_mt = 30
-mt_search_k = 1 #int(inp[1])
-k_movies = 25 #int(inp[2])
+mt_search_k = int(inp[1])
+k_movies = int(inp[2])
 # print settings
 top = 5
 # seed
