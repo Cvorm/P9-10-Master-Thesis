@@ -96,9 +96,12 @@ def run():
     [g.histogram(speci_test) for g in tet]
     [g.histogram(speci_test) for g in test_tet]
 
-    # calc_similarity(tet, speci_test)
-    # item_item_sim(tet, speci_test)
-    interaction_matrix(tet)
+    # print('Calculating user-user sim. matrix...')
+    # user_user_sim(tet, speci_test)
+    print('Calculating item-item sim. matrix...')
+    item_item_sim(tet, speci_test)
+    # print('Calculating user-item interaction matrix...')
+    # interaction_matrix(tet)
 
     print("--- %s seconds ---" % (time.time() - start_time), file=f)
     print("++++++++++++++++++++++++++++++++++++done++++++++++++++++++++++++++++++++++++")
