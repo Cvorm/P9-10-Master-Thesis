@@ -151,17 +151,17 @@ class Multiset:
     def __histogram(self, node, leafs, specif):
         self.ht.add_node(node, hist=[])
         h = []
-        if node in ['Action', 'Adventure', 'Animation', 'Children', 'Comedy', 'Crime', 'Documentary', 'Drama', 'Fantasy', 'Film-Noir', 'Horror', 'IMAX', 'Musical', 'Mystery', 'Romance', 'Sci-Fi', 'Thriller', 'War', 'Western']:
-            tmp = self.graph.in_degree(node)
-            try:
-                d = int(tmp)
-                for n in range(d):
-                    h.append(1)
-            except: pass
-        else:
-            nodes = [x for x,y in self.graph.nodes(data=True) if y.get('type') == node] # specif.nodes(data=True)[node]['type']
-            for n in nodes:
-                h.append(self.graph.nodes(data=True)[n]['value'])
+        # if node in ['Action', 'Adventure', 'Animation', 'Children', 'Comedy', 'Crime', 'Documentary', 'Drama', 'Fantasy', 'Film-Noir', 'Horror', 'IMAX', 'Musical', 'Mystery', 'Romance', 'Sci-Fi', 'Thriller', 'War', 'Western']:
+        #     tmp = self.graph.in_degree(node)
+        #     try:
+        #         d = int(tmp)
+        #         for n in range(d):
+        #             h.append(1)
+        #     except: pass
+        # else:
+        nodes = [x for x,y in self.graph.nodes(data=True) if y.get('type') == specif.nodes(data=True)[node]['type']] # specif.nodes(data=True)[node]['type']
+        for n in nodes:
+            h.append(self.graph.nodes(data=True)[n]['value'])
         hist, bin_edges = np.histogram(h, bins=[0.0,0.2,0.4,0.6,0.8,1.0]) # [0.0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0] [0.0,0.2,0.4,0.6,0.8,1.0]
         histogram = [list(hist), list(bin_edges)]
         self.ht.nodes(data=True)[node]['hist'] += histogram
