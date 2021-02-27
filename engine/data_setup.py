@@ -140,7 +140,7 @@ def split_data():
     # myes = (ranks / counts) > 0.8
     df['new_col'] = (ranks / counts) > 0.70
     # print(myes)
-    print(df.head())
+    # print(df.head())
     train = df.loc[df['new_col'] == False]
     test = df.loc[df['new_col'] == True]
 
@@ -158,6 +158,7 @@ def format_data():
     rdata['timestamp'] = ratings['timestamp']
     data['genres'] = [str(m).split("|") for m in data.genres]
     # data['movieId'] = 'm' + data['movieId'].astype(str)
+
 
 
 # runs the necesarry functions from data_setup for recommender.py to function
