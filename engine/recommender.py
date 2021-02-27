@@ -2,70 +2,69 @@ from engine.multiset import *
 from engine.data_setup import *
 from collections import defaultdict
 import itertools
+import ast
 
 
-
-def create_tet(graph, spec, root, dat):
-    roots = [n for n, info in graph.nodes(data=True) if info.get(f'{root}')]
+def create_movie_tet(spec, dat):
+    roots = np.unique(dat.userId)
+    # roots = [n for n, info in graph.nodes(data=True) if info.get(f'{root}')]
     complete = []
     for r in roots:
         ms = Multiset()  # here we instantiate our TETs
-        complete.append(__create_tet(graph, r, spec, ms, dat))
-    print(complete[0].graph.nodes(data=True))
+        complete.append(__create_movie_tet(r, spec, ms, dat))
     return complete
 
 
-def __create_tet(graph, user, tet_spec, ms, dat):
+def __create_movie_tet(user, tet_spec, ms, dat):
     nodes = [n[-1] for n in dfs_edges(tet_spec, source="user")]
     ms.add_root(user, 1)
     user_ratings = dat[dat['userId'] == user]
-    user_ratings_high = user_ratings[user_ratings['rating'] > 3]
-    user_ratings_low = user_ratings[user_ratings['rating'] <= 3]
-    user_movie_high = [data[data['movieId'] == m] for m in user_ratings_high['movieId'] for mm in data['movieId'] if m == mm]
-    user_movie_low = [data[data['movieId'] == m] for m in user_ratings_low['movieId'] for mm in data['movieId'] if
-                       m == mm]
+    user_movie = data[data.movieId.isin(user_ratings['movieId'])]
+    user_director = updated_actor[updated_actor.actorId.isin(user_movie['director'])]
     for node in nodes:
-        if node == "rated_low":
-            for y, x in user_ratings_low.iterrows():
-                ms.add_node_test(str(x['movieId']), 1, 'rated_low', int(x['rating']))
+        if node == 'has_rated':
+            for y,x in user_ratings.iterrows():
+                ms.add_node_w_count(str(x['movieId']), 1, 'has_rated')
                 ms.add_edge((user, str(x['movieId'])))
-            # for x in user_movie_low:
-            #     ms.add_node_w_count(str(x['movieId'].item()), 1, 'rated_low')
-            #     ms.add_edge((user, str(x['movieId'].item())))
-        elif node == "rated_high":
-            for y, x in user_ratings_high.iterrows():
-                ms.add_node_test(str(x['movieId']), 1, 'rated_high', int(x['rating']))
+        elif node == 'has_user_rating':
+            for y, x in user_ratings.iterrows():
+                ms.add_node_w_count(f'ur{y}', int(x['rating']), 'has_user_rating')
+                ms.add_edge((str(x['movieId']), f'ur{y}'))
+        elif node == 'has_imdb_rating':
+            for y, x in user_movie.iterrows():
+                ms.add_node_w_count(f'ir{y}', float(x['rating']), 'has_imdb_rating')
+                ms.add_edge((str(x['movieId']), f'ir{y}'))
+        elif node == 'has_director':
+            for y, x in user_movie.iterrows():
+                ms.add_node_w_count(str(x['director']), 1, 'has_director')
+                ms.add_edge((str(x['movieId']), str(x['director'])))
+        elif node == 'has_genres':
+            for y, x in user_movie.iterrows():
+                tmp = x['genres'][0]
+                tmp = ast.literal_eval(tmp)
+                tmp_count = len(tmp)
+                ms.add_node_w_count(f'hg{y}', int(tmp_count), 'has_genres')
                 ms.add_edge((user, str(x['movieId'])))
-            # for x in user_movie_high:
-            #     ms.add_node_w_count(str(x['movieId'].item()), 1, 'rated_high')
-            #     ms.add_edge((user, str(x['movieId'].item())))
-        elif node == "genre_l":
-            for x in user_movie_low:
-                genres = x['genres']
-                for genre in genres:
-                    for g in genre:
-                        ms.add_node_w_count(g, 1, 'genre')
-                        ms.add_edge((str(x['movieId'].item()), g))
-        elif node == "genre_h":
-            for x in user_movie_high:
-                genres = x['genres']
-                for genre in genres:
-                    for g in genre:
-                        ms.add_node_w_count(g, 1, 'genre')
-                        ms.add_edge((str(x['movieId'].item()), g))
+                for genre in tmp:
+                    ms.add_node_w_count(f'g{y}', 1, str(genre))
+                    ms.add_edge((f'hg{y}', f'g{y}'))
+        elif node == 'has_awards':
+            for y, x in user_director.iterrows():
+                ms.add_node_w_count(f'a{y}', int(x['awards']), 'has_awards')
+                ms.add_edge((str(x['actorId']), f'a{y}'))
+        elif node == 'has_nominations':
+            for y, x in user_director.iterrows():
+                ms.add_node_w_count(f'n{y}', int(x['nominations']), 'has_nominations')
+                ms.add_edge((str(x['actorId']), f'n{y}'))
     return ms
+
 
 def get_movies_from_id(movie_ids):
     movies = {}
-    # for i in movie_ids:
     for index, movie in data.iterrows():
         if movie['movieId'] == movie_ids:
             movies[movie['title']] = movie['genres']
     return movies
-    # for i, movie in data.iterrows():
-    #     if movie['movieId'] ==
-    #     movies[movie['title']] = movie['genres']
-    #     # df.loc[df['column_name'] == some_value]
 
 
 def get_genres():
@@ -79,116 +78,13 @@ def get_genres():
     return final_list
 
 
-# creates an overall directed bipartite graph used for constructing TETs
-def generate_bipartite_graph(x_data):
-    B = nx.DiGraph()
-    print(x_data)
-    B.add_nodes_from(x_data.userId, bipartite=0, user=True, free=True, type='user')
-    B.add_nodes_from(updated_data.movieId, bipartite=1, movie=True, free=True, type='movie')
-    B.add_nodes_from(updated_data.director, bipartite=1, director=True, free=True, type='director')
-    for index,row in updated_data.iterrows():
-        B.add_edge(row['movieId'], row['director'])
-    B.add_edges_from([(uId, mId) for (uId, mId) in x_data[['userId', 'movieId']].to_numpy()])
-    for index, movie in data.iterrows():
-        for genre in movie['genres']:
-            B.add_node(genre, bipartite=1, genre=True, free=False, type='genre')
-            B.add_edge(movie['movieId'], genre)
-    return B
-
-
 # function used for loading and creating a tet-specification
-def tet_specification(nodes, edges, freevars):
+def tet_specification(nodes, edges):
     g = nx.DiGraph()
     for n in nodes:
-        if n in freevars:
-            g.add_node(n, type=n, free=True)
-        else:
-            g.add_node(n, type=n, free=False)
+            g.add_node(n, type=n)
     g.add_edges_from(edges)
     return g
-
-
-def tet_specification2(nodes, edges, freevars,genres):
-    g = nx.DiGraph()
-    for n in nodes:
-        if n in freevars:
-            if n == 'rated_high':
-                g.add_node(n,type='rated_high', free=True) # movie
-            elif n == 'rated_low':
-                g.add_node(n, type='rated_high', free=True)
-            else:
-                g.add_node(n, type=n, free=True)
-        elif n == 'genre_l' or 'genre_h':
-            print('im here')
-            for genre in genres:
-                print(genre)
-                g.add_node(genre,type='genre',free=False)
-        elif n == 'rated_high':
-            g.add_node(n, type='rated_high', free=False)
-        elif n == 'rated_low':
-            g.add_node(n, type='rated_low', free=False)
-        else:
-            g.add_node(n, type=n, free=False)
-    for genre in genres:
-        g.add_edge('rated_high',genre)
-        g.add_edge('rated_low', genre)
-    g.add_edges_from(edges)
-    return g
-
-
-# function used to generate our TETs for each user (root) based on the overall graph, and our specification
-def generate_tet(graph, root, spec):
-    roots = [n for n, info in graph.nodes(data=True) if info.get(f'{root}')]
-    complete = []
-    for r in roots:
-        complete.append(__generate_tet(graph, r, spec))
-    return complete
-
-
-# private helper function used to generate TETs
-def __generate_tet(graph, user, spec):
-    nodes = [n[-1] for n in dfs_edges(spec, source="user")]
-    ms = Multiset()     # here we instantiate our TETs
-    ms.add_root(user, len(graph.out_edges(user)))
-    subgraph = [n for n in graph.neighbors(user) if n[0] == f'{nodes[0][0]}']
-    for i in subgraph:
-        nodess = [n for n in dfs_edges(graph, source=i)]    # perform DFS and loop over the pairs and add nodes to TET
-        for x in nodess:
-            if len(graph.out_edges(x[0])) > 0:
-                type = graph.nodes(data=True)[x[0]].get('type')
-                if graph.nodes(data=True)[x[0]].get('free'):
-                    ms.add_node_w_freevar(x[0],1, type) #len(graph.out_edges(x[0]))
-                else:
-                    ms.add_node_w_count(x[0],1, type) #len((graph.out_edges(x[0])))
-            if len(graph.out_edges(x[1])) == 0:
-                type = graph.nodes(data=True)[x[1]].get('type')
-                # if type == 'genre':
-                #     ms.add_node_w_cross(x[1],type,graph.nodes(data=True)[x[1]]['cross'])
-                # else:
-                ms.add_node_w_count(x[1], 1, type)
-        for (k, l) in nodess:
-            ms.add_edge((k, l))
-    for (e1, e2) in graph.edges(user):
-        ms.add_edge((e1, e2))
-    return ms
-
-
-def __update_tet(t, rating_df):
-    movies = [x for x,y in t.graph.nodes(data=True) if y['type'] == 'movie']
-    for idx, m in enumerate(movies):
-        rat = rating_df[rating_df.movieId == m].rating.item()
-        t.add_node_w_count(f'r{idx}',rat, 'rating')
-        t.add_edge((m, f'r{idx}'))
-    director = [x for x,y in t.graph.nodes(data=True) if y['type'] == 'director']
-    for idx, d in enumerate(director):
-        if type(d) == str:
-            award_amount = updated_actor[updated_actor.actorId == d].awards.item()
-            if award_amount > 0:
-                t.add_node_w_count(f'aw{idx}',award_amount, 'award')
-                t.add_edge((d, f'aw{idx}'))
-            # else:
-            #     t.add_node_w_count(f'aw{idx}',0, 'award')
-            #     t.add_edge((d, f'aw{idx}'))
 
 
 def update_tet(tet_multiset,x_train):
@@ -274,45 +170,13 @@ def get_movies_user(user):
     movies = {}
     for x, y in user.graph.nodes(data=True):
         if type(x) is str and x[0] == 'm':
-            if y.get('type') == 'rated_high':
-                rat = y['rating']
-                movies[x] = rat
-            # for n in user.graph.neighbors(x):
-            #     if type(n) is str and n[0] == 'r':
-            #         rat = user.graph.nodes(data=True)[n]['count']
-            #         if rat >= 3.5:
-            #             #movies[x] = y['value']
-            #             movies[x] = rat
-
-            # if interval1 <= y['value'] <= interval2:
-            #     movies[x] = y['value']
-    # mean = get_user_mean_value(user)
-    # sort_movies = sorted(movies.items(), key=lambda e: movie_dist(e[1],mean))
+            for n in user.graph.neighbors(x):
+                if type(n) is str and n[:2] == 'ur': #user.graph[n].get['type'] == 'has_user_rating':
+                    rat = user.graph.nodes(data=True)[n]['count']
+                    movies[x] = rat
     sort_movies = sorted(movies.items(), key=lambda k: k[1], reverse=True)
     res = sort_movies #[:top_k_movies]
     return res
-
-
-def get_user_max_hist(user):
-    for x, y in user.ht.nodes(data=True):
-        if x == 'movie':
-            histogram = y['hist']
-            print(histogram)
-    yes = max([(v, i) for i, v in enumerate(histogram[0])])
-    # yes2 = (histogram[1][yes[1]],histogram[1][yes[1]+1])
-
-
-def get_user_mean_value(user):
-    tmp_val = 0.0
-    tmp_count = 0
-    for x, y in user.graph.nodes(data=True):
-        if type(x) is str and x[0] == 'm':
-            tmp_val = tmp_val + y['value']
-            tmp_count = tmp_count + 1
-    if tmp_val == 0 or tmp_count == 0:
-        return 0
-    else:
-        return tmp_val / tmp_count
 
 
 def get_movies_in_user(user):
@@ -341,12 +205,8 @@ def get_movies(user_hist, other_users_hist):
         sim_tmp = 0
     else:
         sim_tmp = tmp_val / len(no_duplicates)  # if len(no_duplicates) != 0 else
-    # print(f' no duplicates: {len(no_duplicates)}, no_mas : {len(no_mas)}')
-    # mean = get_user_mean_value(user_hist)
-    # sort_movies = sorted(no_duplicates, key=lambda e: movie_dist(e[1], mean))
     sort_movies = sorted(no_mas, key=lambda k: k[1], reverse=True)
     res = sort_movies #[:top_k_movies]
-    print(res)
     return res, sim_tmp
 
 
@@ -431,7 +291,6 @@ def __mt_search(g, mn, h, k, leafs, spec, root):
         dist = [__distance(h, b, spec, root) for b in bucket]
         # bucket_sorted = [x for _, x in sorted(zip(dist, bucket))]
         bucket_sorted = [x for _, x in sorted(zip(dist, bucket), key=lambda pair: pair[0])]
-        print(bucket_sorted)
         if len(bucket_sorted) < k:
             bucket_sorted.pop(0)
             return bucket_sorted
@@ -478,59 +337,14 @@ def get_tet_user(tet,user):
             return t
 
 
-def has_rating(user, movieid):
-    for x, y in user.graph.nodes(data=True):
-        if type(x) is str and x == movieid:
-            for n in user.graph.neighbors(x):
-                if type(n) is str and n[0] == 'r':
-                    return True
-    return False
-
-
-# def get_rating(user, movieid):
-#     for x, y in user.graph.nodes(data=True):
-#         if type(x) is str and x == movieid:
-#             if y['type'] == 'rated_high':
-#                 print(f"rating: {y['rating']}")
-#                 return y['rating']
-#             # for n in user.graph.neighbors(x):
-#             #     if type(n) is str and n[0] == 'r':
-#             #         rat = user.graph.nodes(data=True)[n]['count']
-#             #         return rat
-#     return 0
-
-# def get_rating(user, movieid):
-#     for x, y in user.graph.nodes(data=True):
-#         if type(x) is str and x == movieid:
-#             for n in user.graph.neighbors(x):
-#                 if type(n) is str and n[0] == 'r':
-#                     rat = user.graph.nodes(data=True)[n]['count']
-#                     return rat
-#     return 0
-
 def get_rating(user, movieid):
     for x, y in user.graph.nodes(data=True):
         if type(x) is str and x == movieid:
-            print('im here')
-            rat = y['rating']
-            print(rat)
-            return rat
+            for n in user.graph.neighbors(x):
+                if type(n) is str and n[:2] == 'ur': #user.graph[n].get['type'] == 'has_user_rating':
+                    rat = user.graph.nodes(data=True)[n]['count']
+                    return rat
     return 0
-
-
-# def get_rating(user, movieid):
-#     root = [x for x, y in user.graph.nodes(data=True) if y.get('root')]
-#     user_ratings = rdata[rdata['userId'] == root[0]]
-#     for x, y in user_ratings.iterrows():
-#         # print(f'mooovie {y["movieId"]}, {movieid}')
-#         if str(y['movieId']) == str(movieid):
-#             print(y['rating'])
-#             rat = y['rating']
-#             return rat
-#     #     [print(f' YES {x}') for x in user_ratings['movieId'] if x == movieid] # ]
-#     # [print(f' NO {x}') for x in user_ratings.loc[x, 'movieid'] == movieid]
-#     # test2 = [x['rating'] for x in user_ratings['movieId'] if x == movieid]
-#     return 0
 
 
 def __recall(predictions, user_leftout, k, threshold=4):
@@ -540,20 +354,20 @@ def __recall(predictions, user_leftout, k, threshold=4):
                           for (mov, est) in predictions[:k])
     precisions = n_rel_and_rec_k / n_rec_k if n_rec_k != 0 else 0
     recalls = n_rel_and_rec_k / n_rel if n_rel != 0 else 0
-    print(f'n_rel: {n_rel}, n_rec_k: {n_rec_k}, n_rel_and_rec_k: {n_rel_and_rec_k}')
-    print(f'PRECISION :: {precisions}')
-    print(f' RECALL ::  {recalls}')
+    # print(f'n_rel: {n_rel}, n_rec_k: {n_rec_k}, n_rel_and_rec_k: {n_rel_and_rec_k}')
+    # print(f'PRECISION :: {precisions}')
+    # print(f' RECALL ::  {recalls}')
     return precisions, recalls
 
 
-def recall(tet_train, tet_test, metric_tree, mt_search_k, speci_test, k_movies):
+def recall(tet_train, tet_test, metric_tree, mt_search_k, spec, k_movies):
     tmp = []
     sim_counter = 0
     sim_collector = 0.0
     for user in tet_train:
         username = [x for x,y in user.graph.nodes(data=True) if y.get('root')]
         user_leftout = get_tet_user(tet_test,username[0])
-        similar_users = mt_search(metric_tree, user, mt_search_k, speci_test)
+        similar_users = mt_search(metric_tree, user, mt_search_k, spec)
         predicted_movies, sim_test = get_movies(user, similar_users)
         sim_counter = sim_counter + 1
         sim_collector = sim_collector + sim_test
