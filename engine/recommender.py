@@ -151,6 +151,7 @@ def __normalize_list(list):
 
 def calc_distance(hist_tree1, hist_tree2, spec, root):
     spec_nodes = [n for n in edge_dfs(spec, source=root)]
+    # print(spec_nodes)
     dist = []
     for x,y in spec_nodes:
         curr_node_hist1 = hist_tree1[y]['hist']
@@ -211,6 +212,8 @@ def get_movies(user_hist, other_users_hist):
 
 
 def get_siblings(aGraph, aNode):
+     # print(aGraph.nodes())
+     # print(aNode)
      try:
         parentEdge = [(u, v, d) for u, v, d in aGraph.edges(data=True) if v == aNode]
         # print(parentEdge)
