@@ -10,53 +10,47 @@ from engine.recommender import *
 from surprise.model_selection import PredefinedKFold
 from surprise import accuracy
 from collections import defaultdict
-
+np.random.seed(1)
 # df = pd.read_csv("testtest.csv", low_memory=False)
 # x_train, x_test = run_data()
 # print(x_train)
 inp = sys.argv
-k_movies = 50 #int(inp[1])
+k_movies = 1000 #int(inp[1])
 f = open("output.txt", "a")
 print(f'SETTINGS : {k_movies}', file=f)
-def precision_recall_at_k(predictions, k=10, threshold=4):
-    """Return precision and recall at k metrics for each user"""
 
+
+def precision_recall_at_k(predictions, k, threshold=2):
+    """Return precision and recall at k metrics for each user"""
     # First map the predictions to each user.
     user_est_true = defaultdict(list)
     for uid, _, true_r, est, _ in predictions:
         user_est_true[uid].append((est, true_r))
-
     precisions = dict()
     recalls = dict()
     for uid, user_ratings in user_est_true.items():
-
         # Sort user ratings by estimated value
         user_ratings.sort(key=lambda x: x[0], reverse=True)
-
         # Number of relevant items
         n_rel = sum((true_r >= threshold) for (_, true_r) in user_ratings)
         # n_rel = sum(true_r for (_, true_r) in user_ratings)
-
         # Number of recommended items in top k
         n_rec_k = sum((est >= threshold) for (est, _) in user_ratings[:k])
-
         # Number of relevant and recommended items in top k
         n_rel_and_rec_k = sum(((true_r >= threshold) and (est >= threshold))
                               for (est, true_r) in user_ratings[:k])
+        print(f'USER RATING LENGTH: {user_ratings[:k]}')
         # n_rel_and_rec_k = sum((true_r  and (est >= threshold))
         #                       for (est, true_r) in user_ratings[:k])
-
         # Precision@K: Proportion of recommended items that are relevant
         # When n_rec_k is 0, Precision is undefined. We here set it to 0.
-
         precisions[uid] = n_rel_and_rec_k / n_rec_k if n_rec_k != 0 else 0
-
         # Recall@K: Proportion of relevant items that are recommended
         # When n_rel is 0, Recall is undefined. We here set it to 0.
-
         recalls[uid] = n_rel_and_rec_k / n_rel if n_rel != 0 else 0
-
+        print(f' n_rel {n_rel}, n_rec_k {n_rec_k}, n_rel_and_rec_k {n_rel_and_rec_k}')
     return precisions, recalls
+
 
 def get_top_n(predictions, n, min_rating):
     topN = defaultdict(list)
@@ -69,6 +63,7 @@ def get_top_n(predictions, n, min_rating):
         topN[userID] = ratings[:n]
 
     return topN
+
 
 def make_data(data, name):
     files_dir = "C:\\Users\\Darkmaster\\PycharmProjects\\Recommender\\Data\\Cvorm\\"
@@ -123,43 +118,58 @@ def hitrate(topNpredictions, leftoutpredictions):
 #
 #     return hits / total
 
+
 def run_SVD(k):
-    files_dir = "C:\\Users\\Darkmaster\\PycharmProjects\\Recommender\\Data\\Cvorm\\"
+    # files_dir = "C:\\Users\\Darkmaster\\PycharmProjects\\Recommender\\Data\\Cvorm\\"
     x_train, x_test = run_data()
+    #
+    # make_data(x_train, "training.csv")
+    # make_data(x_test, "testing.csv")
+    # reader = Reader(line_format='user item rating timestamp', sep=',')
+    # train_file = "training.csv"
+    # test_file = "testing.csv"
+    # print(train_file)
+    #
+    # folds_files = [(train_file, test_file)]
+    # print(folds_files)
+    # data2 = Dataset.load_from_folds(folds_files, reader=reader)
 
-    make_data(x_train, "training.csv")
-    make_data(x_test, "testing.csv")
-    reader = Reader(line_format='user item rating', sep=',')
-
-    train_file = "training.csv"
-    test_file = "testing.csv"
-    print(train_file)
-
-    folds_files = [(train_file, test_file)]
-    print(folds_files)
-    data = Dataset.load_from_folds(folds_files, reader=reader)
-    pkf = PredefinedKFold()
+    reader = Reader(rating_scale=(1, 5))
+    data_train = Dataset.load_from_df(x_train[['userId', 'movieId', 'rating']], reader)
+    data_test = Dataset.load_from_df(x_test[['userId', 'movieId', 'rating']], reader)
+    data_train = data_train.build_full_trainset()
+    data_test = data_test.build_full_trainset()
+    data_testset = data_test.build_testset()
+    # data_tst = data_test.build_anti_testset()
+    print('HERE')
+    # pkf = PredefinedKFold()
     algo = SVD()
     algo1 = KNNBasic()
     algo2 = NormalPredictor()
 
-    for trainset, testset in pkf.split(data):
-        algo.fit(trainset)
-        algo1.fit(trainset)
-        algo2.fit(trainset)
-        predictions = algo.test(testset)
-        predictions1 = algo1.test(testset)
-        predictions2 = algo2.test(testset)
-        precisions, recalls = precision_recall_at_k(predictions, k, threshold=4)
-        precisions1, recalls1 = precision_recall_at_k(predictions1, k, threshold=4)
-        precisions2, recalls2 = precision_recall_at_k(predictions2, k, threshold=4)
-
-        print(f' PRECISION SVD : {sum(prec for prec in precisions.values()) / len(precisions)}', file=f)
-        print(f' RECALL SVD : {sum(rec for rec in recalls.values()) / len(recalls)}', file=f)
-        print(f' PRECISION KNN : {sum(prec for prec in precisions1.values()) / len(precisions1)}', file=f)
-        print(f' RECALL KNN : {sum(rec for rec in recalls1.values()) / len(recalls1)}', file=f)
-        print(f' PRECISION RAND : {sum(prec for prec in precisions2.values()) / len(precisions2)}', file=f)
-        print(f' RECALL RAND : {sum(rec for rec in recalls2.values()) / len(recalls2)}', file=f)
+    algo.fit(data_train)
+    pr = algo.test(data_testset)
+    print(len(pr))
+    precisions, recalls = precision_recall_at_k(pr, k, threshold=4)
+    print(f' PRECISION SVD : {sum(prec for prec in precisions.values()) / len(precisions)}')
+    print(f' RECALL SVD : {sum(rec for rec in recalls.values()) / len(recalls)}')
+    # for trainset, testset in pkf.split(data2):
+    #     algo.fit(trainset)
+    #     algo1.fit(trainset)
+    #     algo2.fit(trainset)
+    #     predictions = algo.test(testset)
+    #     predictions1 = algo1.test(testset)
+    #     predictions2 = algo2.test(testset)
+    #     precisions, recalls = precision_recall_at_k(predictions, k, threshold=4.0)
+    #     precisions1, recalls1 = precision_recall_at_k(predictions1, k, threshold=4.0)
+    #     precisions2, recalls2 = precision_recall_at_k(predictions2, k, threshold=4.0)
+    #
+    #     print(f' PRECISION SVD : {sum(prec for prec in precisions.values()) / len(precisions)}', file=f)
+    #     print(f' RECALL SVD : {sum(rec for rec in recalls.values()) / len(recalls)}', file=f)
+    #     print(f' PRECISION KNN : {sum(prec for prec in precisions1.values()) / len(precisions1)}', file=f)
+    #     print(f' RECALL KNN : {sum(rec for rec in recalls1.values()) / len(recalls1)}', file=f)
+    #     print(f' PRECISION RAND : {sum(prec for prec in precisions2.values()) / len(precisions2)}', file=f)
+    #     print(f' RECALL RAND : {sum(rec for rec in recalls2.values()) / len(recalls2)}', file=f)
         # topN_pred = get_top_n(predictions, 10, 4.0)
         # print(topN_pred)
         # for i in topN_pred:
