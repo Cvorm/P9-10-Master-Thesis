@@ -44,7 +44,7 @@ def __create_movie_tet(user, tet_spec, ms, dat):
                 tmp = ast.literal_eval(tmp)
                 tmp_count = len(tmp)
                 ms.add_node_w_count(f'hg{y}', int(tmp_count), 'has_genres')
-                ms.add_edge((user, str(x['movieId'])))
+                ms.add_edge((str(x['movieId']), f'hg{y}'))
                 for idx, genre in enumerate(tmp):
                     ms.add_node_w_count(f'g{y}{idx}', 1, str(genre))
                     ms.add_edge((f'hg{y}', f'g{y}{idx}'))
@@ -87,9 +87,3 @@ def tet_specification(nodes, edges):
     return g
 
 
-def get_movies_juujiro(user):
-    tmp_list = []
-    for x, y in user.graph.nodes(data=True):
-        if type(x) is str and x[0] == 'm':
-            tmp_list.append(x)
-    return tmp_list
