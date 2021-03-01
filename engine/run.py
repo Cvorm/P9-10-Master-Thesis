@@ -1,6 +1,9 @@
 import time
 import sys
+
+from engine.matrix_fac import *
 from engine.recommender import *
+from engine.evaluation import *
 
 # tet specification settings: [nodes],[edges], [free variables]
 specification_movie = [["user", "has_rated", "has_genres", "has_votes", "has_imdb_rating", "has_user_rating", "has_director", "has_awards", "has_nominations",
@@ -14,12 +17,6 @@ specification_movie = [["user", "has_rated", "has_genres", "has_votes", "has_imd
                         ("has_genres", "Horror"),  ("has_genres", "IMAX"), ("has_genres", "Musical"),  ("has_genres", "Mystery"),  ("has_genres", "Romance"),
                         ("has_genres", "Sci-Fi"),  ("has_genres", "Thriller"), ("has_genres", "War"),  ("has_genres", "Western")]]
 
-specification = [["user", "rated_high", "rated_low", "genre_h", "genre_l"],
-         [("user", "rated_high"), ("user", "rated_low"), ("rated_high", "genre_h"), ("rated_low", "genre_l")]]
-
-spec4 = [["user", "rated_high", "rated_low", "genre_h", "genre_l"],
-         [("user", "rated_high"), ("user", "rated_low")]]
-
 # SETTINGS
 inp = sys.argv
 # logistic evaluation function settings
@@ -29,10 +26,12 @@ log_weight = 1.5
 bin_size = 10
 bin_amount = 10
 # metric tree settings
+
 mt_depth = 12 # int(inp[3])
 bucket_max_mt = 30
 mt_search_k = 3 # int(inp[1])
 k_movies = 25 # int(inp[2])
+
 # print settings
 top = 5
 # seed
@@ -53,13 +52,11 @@ def run():
 
     print('Formatting data...', file=f)
     x_train, x_test = run_data()
+    print("------------------------------")
+    print(x_train)
+    print(x_test)
+    print("------------------------------")
     genres = get_genres()
-
-    # print('Generating graph...', file=f)
-    # start_time = time.time()
-    # training_graph = generate_bipartite_graph(x_train)
-    # test_graph = generate_bipartite_graph(x_test)
-    # print("--- %s seconds ---" % (time.time() - start_time), file=f)
 
     print('Building TET specification...')
     print('Building TET specification...', file=f)
@@ -96,6 +93,7 @@ def run():
     print('Generating histograms...')
     print('Generating histograms...', file=f)
     start_time = time.time()
+
     # spec_hist = tet_specification2(spec4[0], spec4[1], genres)
     [g.histogram(spec) for g in tet]
     [g.histogram(spec) for g in test_tet]
