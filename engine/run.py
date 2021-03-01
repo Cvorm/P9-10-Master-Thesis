@@ -105,7 +105,7 @@ def run():
     target_user = tet[3]    # test_tet[0]
     mts_res = mt_search(mts, target_user, mt_search_k, spec)
     predicted_movies, sim_test = get_movies(target_user, mts_res)
-    seen_movies = get_movies_juujiro(target_user)
+    seen_movies = get_movies_in_user(target_user)
 
 
     print('SEEN',file=f)

@@ -17,8 +17,6 @@ def get_movies_in_user(user):
     tmp_list = []
     for x, y in user.graph.nodes(data=True):
         if type(x) is str and x[0] == 'm':
-            # rat = get_rating(user, x)
-            # if rat >= 4:
             tmp_list.append(x)
     return tmp_list
 
