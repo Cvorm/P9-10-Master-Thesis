@@ -5,15 +5,15 @@ import re
 moviesDB = imdb.IMDb()
 # data = pd.read_csv('../Data/movies.csv')
 # ratings = pd.read_csv('../Data/ratings.csv')
-data = pd.read_csv('movie_new.csv', converters={'cast': eval})
-ratings = pd.read_csv('ratings1.csv', converters={'cast': eval})
+data = pd.read_csv('../Data/movie_new.csv', converters={'cast': eval})
+ratings = pd.read_csv('../Data/ratings_100k.csv', converters={'cast': eval})
 links = pd.read_csv('../Data/links.csv')
 rdata = pd.DataFrame(columns=['userId', 'movieId', 'rating'])
 
 adata = pd.DataFrame(columns=['actorId','awards'])
 
-updated_data = pd.read_csv('movie_new.csv', converters={'cast': eval})
-updated_actor = pd.read_csv('actor_data_new.csv', converters={'cast': eval}) # 'awards': eval, 'nominations': eval
+updated_data = pd.read_csv('../Data/movie_new.csv', converters={'cast': eval})
+updated_actor = pd.read_csv('../Data/actor_data_new.csv', converters={'cast': eval}) # 'awards': eval, 'nominations': eval
 
 # ratings = pd.read_csv('../Data2/ratings.dat', sep='::', names=['userId', 'movieId', 'rating','timestamp'], converters={'cast': eval})
 # data = pd.read_csv('../Data2/movies.dat', sep='::', names=['movieId', 'title', 'genres'], converters={'cast': eval})
