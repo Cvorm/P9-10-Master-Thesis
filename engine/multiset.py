@@ -14,24 +14,17 @@ class Multiset:
         self.ht = ht
 
     def add_root(self, node, c):
-        self.graph.add_node(node, count=c, mult=[], root=True, weight=0, value=0, hist=[], free=True, type='user', user=node)
+        self.graph.add_node(node, count=c, mult=[], root=True, value=0, hist=[], free=True, type='user', user=node)
 
     def add_node_w_count(self, node, c, t):
         if not self.graph.has_node(node):
-            self.graph.add_node(node, count=c, mult=0, weight=0, value=0, hist=[], type=t)
-
-    def add_node_test(self, node, c, t, r):
-        if not self.graph.has_node(node):
-            self.graph.add_node(node, count=c, mult=0, weight=0, value=0, hist=[], type=t, rating=r)
+            self.graph.add_node(node, count=c, mult=0, value=0, type=t)
 
     def add_node(self, node):
-        self.graph.add_node(node, count=0, mult=0, weight=0, value=0, hist=[])
+        self.graph.add_node(node, count=0, mult=0, value=0, hist=[])
 
     def add_nodes(self, node):
-        self.graph.add_nodes_from(node, count=0, mult=0, weight=0, value=0, hist=[])
-
-    def add_node_w_freevar(self, node, c, t):
-        self.graph.add_node(node, count=c, mult=[], weight=0, value=0, hist=[],free=True, type=t)
+        self.graph.add_nodes_from(node, count=0, mult=0, value=0)
 
     def add_edge(self, edge):
         (v1, v2) = edge
@@ -120,10 +113,7 @@ class Multiset:
 
     # function for performing logistic evaluation
     def __logistic_eval(self, node, bias, weight, leafs):
-        edges = list(self.graph.out_edges(node))
-        [self.__set_weight(e, weight) for e in edges]
         if not node in leafs:
-            self.__set_weight(node, bias)
             for n in self.graph.neighbors(node):
                 self.__logistic_eval(n, bias, weight, leafs)
             value_list = [self.graph.nodes(data=True)[n]['value'] for n in self.graph.neighbors(node)]  # .count(1)
@@ -134,9 +124,7 @@ class Multiset:
             v_b = bias + (weight * temp_count)
             v = self.__sigmoid(v_b)
             self.graph.nodes(data=True)[node]['value'] = v
-
         if node in leafs:
-            self.__set_weight(node, 1)
             self.graph.nodes(data=True)[node]['value'] = self.graph.nodes(data=True)[node]['count']
 
     # call function for logistic evaluation
@@ -151,14 +139,6 @@ class Multiset:
     def __histogram(self, node, leafs, specif):
         self.ht.add_node(node, hist=[])
         h = []
-        # if node in ['Action', 'Adventure', 'Animation', 'Children', 'Comedy', 'Crime', 'Documentary', 'Drama', 'Fantasy', 'Film-Noir', 'Horror', 'IMAX', 'Musical', 'Mystery', 'Romance', 'Sci-Fi', 'Thriller', 'War', 'Western']:
-        #     tmp = self.graph.in_degree(node)
-        #     try:
-        #         d = int(tmp)
-        #         for n in range(d):
-        #             h.append(1)
-        #     except: pass
-        # else:
         nodes = [x for x,y in self.graph.nodes(data=True) if y.get('type') == specif.nodes(data=True)[node]['type']] # specif.nodes(data=True)[node]['type']
         for n in nodes:
             h.append(self.graph.nodes(data=True)[n]['value'])

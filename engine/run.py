@@ -3,6 +3,7 @@ import sys
 
 from engine.matrix_fac import *
 from engine.recommender import *
+from engine.evaluation import *
 
 # tet specification settings: [nodes],[edges], [free variables]
 specification_movie = [["user", "has_rated", "has_genres", "has_votes", "has_imdb_rating", "has_user_rating", "has_director", "has_awards", "has_nominations",
@@ -15,12 +16,6 @@ specification_movie = [["user", "has_rated", "has_genres", "has_votes", "has_imd
                         ("has_genres", "Crime"),  ("has_genres", "Documentary"), ("has_genres", "Drama"),  ("has_genres", "Fantasy"),  ("has_genres", "Film-Noir"),
                         ("has_genres", "Horror"),  ("has_genres", "IMAX"), ("has_genres", "Musical"),  ("has_genres", "Mystery"),  ("has_genres", "Romance"),
                         ("has_genres", "Sci-Fi"),  ("has_genres", "Thriller"), ("has_genres", "War"),  ("has_genres", "Western")]]
-
-specification = [["user", "rated_high", "rated_low", "genre_h", "genre_l"],
-         [("user", "rated_high"), ("user", "rated_low"), ("rated_high", "genre_h"), ("rated_low", "genre_l")]]
-
-spec4 = [["user", "rated_high", "rated_low", "genre_h", "genre_l"],
-         [("user", "rated_high"), ("user", "rated_low")]]
 
 # SETTINGS
 inp = sys.argv
@@ -62,12 +57,6 @@ def run():
     print(x_test)
     print("------------------------------")
     genres = get_genres()
-
-    # print('Generating graph...', file=f)
-    # start_time = time.time()
-    # training_graph = generate_bipartite_graph(x_train)
-    # test_graph = generate_bipartite_graph(x_test)
-    # print("--- %s seconds ---" % (time.time() - start_time), file=f)
 
     print('Building TET specification...')
     print('Building TET specification...', file=f)
