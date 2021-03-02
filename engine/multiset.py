@@ -16,6 +16,9 @@ class Multiset:
     def add_root(self, node, c):
         self.graph.add_node(node, count=c, mult=[], root=True, value=0, hist=[], free=True, type='user', user=node)
 
+    def add_root_movie(self, node, c):
+        self.graph.add_node(node, count=c, mult=[], root=True, value=0, hist=[], free=True, type='movie', user=node)
+
     def add_node_w_count(self, node, c, t):
         if not self.graph.has_node(node):
             self.graph.add_node(node, count=c, mult=0, value=0, type=t)
@@ -154,6 +157,13 @@ class Multiset:
                       (self.graph.in_degree(node) != 0 and self.graph.out_degree(node) == 0)]
         # root = [x for x, y in self.graph.nodes(data=True) if y.get('root')]
         r = [x for x in specif.nodes if x == 'user']
+        self.__histogram(r[0], leaf_nodes, specif)
+
+    def histogram2(self, specif):
+        leaf_nodes = [node for node in self.graph.nodes if
+                      (self.graph.in_degree(node) != 0 and self.graph.out_degree(node) == 0)]
+        # root = [x for x, y in self.graph.nodes(data=True) if y.get('root')]
+        r = [x for x in specif.nodes if x == 'movie']
         self.__histogram(r[0], leaf_nodes, specif)
 
     @staticmethod

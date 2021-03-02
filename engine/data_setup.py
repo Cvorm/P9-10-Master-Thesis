@@ -6,7 +6,7 @@ moviesDB = imdb.IMDb()
 # data = pd.read_csv('../Data/movies.csv')
 # ratings = pd.read_csv('../Data/ratings.csv')
 data = pd.read_csv('../Data/movie_new.csv', converters={'cast': eval})
-ratings = pd.read_csv('../Data/ratings_100k.csv', converters={'cast': eval})
+ratings = pd.read_csv('../Data/ratings25.csv', converters={'cast': eval})
 links = pd.read_csv('../Data/links.csv')
 rdata = pd.DataFrame(columns=['userId', 'movieId', 'rating'])
 
