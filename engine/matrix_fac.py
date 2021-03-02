@@ -59,32 +59,44 @@ def user_user_sim(tet, spec):
     # print(speci_test)
     values = []
     users = []
+    # tets = [x for x in tet]
+    # sorted_tets = sort_tets(tet)
+    # for x in sorted_tets:
+    #     print(x.get_histogram())
+    sorted_tets = []
     for x in tet:
         user = [x for x, y in x.graph.nodes(data=True) if y.get('root')]
         users.append(user[0])
 
-    user_user = pd.DataFrame(index=users, columns=users).fillna(0.0)
+    sorted_users = sort_users(users)
+    print(sorted_users)
+    # for x in sorted_users:
+    #     sorted_tets.append(get_tet_user(tet, x))
+    sorted_tets = sort_tets(tet)
+
+
+    user_user = pd.DataFrame(index=sorted_users, columns=sorted_users).fillna(0.0)
     print(user_user.head(5))
     # print(users)
     # print(users)
 
-    for i, y in enumerate(tet):
+    for i, y in enumerate(sorted_tets):
         # print(i.get_histogram())
         # print(i.graph.nodes(data=True).)
         # print(i.graph.nodes(data=True))
         # user1 = [x for x, y in i.graph.nodes(data=True) if y.get('root')]
         # print(values)
-        for j, z in enumerate(tet):
-            if users[i] == users[j]:
+        for j, z in enumerate(sorted_tets):
+            if sorted_users[i] == sorted_users[j]:
                 # values.append(1)
-                user_user[users[i]][users[j]] = 1
-                print(users[i], users[j])
+                user_user[sorted_users[i]][sorted_users[j]] = 1
+                print(sorted_users[i], sorted_users[j])
                 break
             else:
                 myes = y.get_histogram()
                 myes2 = z.get_histogram()
                 dist = calc_distance(myes, myes2, spec, 'user')
-                user_user[users[i]][users[j]] = dist
+                user_user[sorted_users[i]][sorted_users[j]] = dist
                 # values.append(dist)
 
     user_user.to_csv("user_user_matrix.csv", sep='\t')
@@ -93,18 +105,64 @@ def user_user_sim(tet, spec):
 def func(element):
     return int(element.split("m")[1])
 
+def func_2(element):
+    return int(element.split("u")[1])
+
+def func_get_user(element):
+        user = [x for x, y in element.graph.nodes(data=True) if y.get('root')]
+        myes = user[0]
+        # print(myes)
+        return int(myes.split("u")[1])
 
 def sort_items(items):
     sortlist = sorted(items, key=func)
     return sortlist
 
+def sort_users(users):
+    sortlist = sorted(users, key=func_2)
+    return sortlist
+
+def sort_tets(tets):
+    sortlist = sorted(tets, key=func_get_user)
+    return sortlist
 def item_item_sim(tet, spec):
-    for x in tet:
-        print(x.get_histogram())
+    for t in tet:
+        # for x, y in t.graph.nodes(data=True):
+            print(t.ht.nodes(data=True))
+    # tet[i].ht.nodes(data=True)) for i in range(top)]
+        # print("yes")
+        # print(t.get_histogram())
+
+    # attributes = {}
+    # for t in tet:
+    #     for x, y in t.graph.nodes(data=True):
+    #         attributes[x] = y
+    #
+    # for t in tet:
+    #     for x, y in t.graph.nodes(data=True):
+    #         # print(x, y)
+    #         if y.get('type') == 'has_rated':
+    #             # print(f'has genres {y["count"]}, node {x}')
+    #             print(x)
+    #             # for lul in t.graph.neighbors(x):
+    #             for n in descendants(t.get_graph(),x):
+    #                  print("--" + n, attributes[n])
+
+
+
+        # print(attributes)
+                    # for k in n:
+                    #     print(k)
+        # print(x.get_histogram())
+        # nodesssss = [n for n in edge_dfs(x.graph.nodes(data=True), source=root)]
         # for j in x.graph.nodes(data=True):
-        #     print(j)
-            # if type(j) is str and j[0] == 'm':
+            # if type(j[0]) is str and j[0][0] == 'm':
             #     print(j)
+                # print(j)
+            #     print(j[0][0])
+            # print(j)
+            # if type(j) is str and j[0] == 'm':
+            #     print("matwawwmatasfddsffds")
         # for x, y in user.graph.nodes(data=True):
         #     if type(x) is str and x[0] == 'm':
         # print(x.graph.nodes(data=True))
