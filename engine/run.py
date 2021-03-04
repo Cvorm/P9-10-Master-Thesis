@@ -3,12 +3,12 @@ import sys
 from engine.recommender import *
 from engine.evaluation import *
 
-# tet specification settings: [nodes],[edges], [free variables]
-specification_movie = [["user", "has_rated", "has_genres", "has_votes", "has_imdb_rating", "has_user_rating", "has_director", "has_awards", "has_nominations",
+# tet specification settings: [[nodes],[edges]]
+specification_movie = [["user", "has_rated", "has_genres", "has_imdb_rating", "has_user_rating", "has_votes", "has_director", "has_awards", "has_nominations",
                         'Action', 'Adventure', 'Animation', 'Children', 'Comedy', 'Crime', 'Documentary', 'Drama', 'Fantasy', 'Film-Noir',
                         'Horror', 'IMAX', 'Musical', 'Mystery', 'Romance', 'Sci-Fi', 'Thriller', 'War', 'Western'],
-                       [("user", "has_rated"), ("has_rated", "has_genres"), ("has_rated", "has_votes"), ("has_rated", "has_imdb_rating"), ("has_rated", "has_user_rating"),
-                        ("has_rated", "has_director"),
+                       [("user", "has_rated"), ("has_rated", "has_genres"), ("has_rated", "has_imdb_rating"), ("has_rated", "has_user_rating"),
+                        ("has_rated", "has_votes"), ("has_rated", "has_director"),
                         ("has_director", "has_awards"), ("has_director", "has_nominations"),
                         ("has_genres", "Action"),  ("has_genres", "Adventure"), ("has_genres", "Animation"),  ("has_genres", "Children"),  ("has_genres", "Comedy"),
                         ("has_genres", "Crime"),  ("has_genres", "Documentary"), ("has_genres", "Drama"),  ("has_genres", "Fantasy"),  ("has_genres", "Film-Noir"),
@@ -18,16 +18,16 @@ specification_movie = [["user", "has_rated", "has_genres", "has_votes", "has_imd
 # SETTINGS
 inp = sys.argv
 # logistic evaluation function settings
-log_bias = -16
-log_weight = 1.5
+log_bias = 0
+log_weight = 1
 # histogram settings
 bin_size = 10
 bin_amount = 10
 # metric tree settings
 mt_depth = 12 # int(inp[3])
 bucket_max_mt = 30
-mt_search_k = 3 # int(inp[1])
-k_movies = 25 # int(inp[2])
+mt_search_k = 1 # int(inp[1])
+k_movies = 10 # int(inp[2])
 # print settings
 top = 5
 # seed
@@ -35,12 +35,6 @@ np.random.seed(1)
 
 
 # overall run function, where we run our 'pipeline'
-def run_imdb_stuff():
-    run_data()
-    #foo = [x for x in updated_actor["actorId"]]
-    update_actor_data("yo")
-
-
 def run():
     f = open("output.txt", "a")
     print('Running...', file=f)
@@ -48,29 +42,26 @@ def run():
 
     print('Formatting data...', file=f)
     x_train, x_test = run_data()
-    genres = get_genres()
-
+    print(updated_actor)
     print('Building TET specification...')
     print('Building TET specification...', file=f)
     start_time = time.time()
-    # spec = tet_specification(specification[0], specification[1])
     spec = tet_specification(specification_movie[0], specification_movie[1])
     print("--- %s seconds ---" % (time.time() - start_time), file=f)
 
-    print('Generating TET according to graph and specification...', file=f)
-    print('Generating TET according to graph and specification...')
+    print('Generating TETs according to specification...', file=f)
+    print('Generating TETs according to specification...')
     start_time = time.time()
-    tet = create_movie_tet(spec, x_train)
-    # tet = create_tet(spec, x_train)
-    test_tet = create_movie_tet(spec, x_test)
+    tet = create_user_movie_tet(spec, x_train)
+    test_tet = create_user_movie_tet(spec, x_test)
     print("--- %s seconds ---" % (time.time() - start_time), file=f)
 
-    print('Counting TETs...')
-    print('Counting TETs...', file=f)
-    start_time = time.time()
-    [g.count_tree() for g in tet]
-    [g.count_tree() for g in test_tet]
-    print("--- %s seconds ---" % (time.time() - start_time), file=f)
+    # print('Counting TETs...')
+    # print('Counting TETs...', file=f)
+    # start_time = time.time()
+    # [g.count_tree() for g in tet]
+    # [g.count_tree() for g in test_tet]
+    # print("--- %s seconds ---" % (time.time() - start_time), file=f)
 
     print('Performing Logistic Evaluation on TETs...')
     print('Performing Logistic Evaluation on TETs...', file=f)
@@ -79,51 +70,48 @@ def run():
     [g.logistic_eval(log_bias, log_weight) for g in test_tet]
     print("--- %s seconds ---" % (time.time() - start_time), file=f)
 
-    [print(tet[i].graph.nodes(data=True)) for i in range(top)]
+    # [print(tet[i].graph.nodes(data=True)) for i in range(top)]
 
-
-    print('Generating histograms...')
+    print('Generating histograms and building histogram trees...')
     print('Generating histograms...', file=f)
     start_time = time.time()
-    # spec_hist = tet_specification2(spec4[0], spec4[1], genres)
-    [g.histogram(spec) for g in tet]
-    [g.histogram(spec) for g in test_tet]
+    [g.histogram(spec, 'user') for g in tet]
+    [g.histogram(spec, 'user') for g in test_tet]
     print("--- %s seconds ---" % (time.time() - start_time), file=f)
-    [print(tet[i].ht.nodes(data=True)) for i in range(top)]
+    # [print(tet[i].ht.nodes(data=True)) for i in range(top)]
 
-    print('Building Metric Tree')
-    print('Building Metric Tree', file=f)
+    print('Building Metric Tree...')
+    print('Building Metric Tree...', file=f)
     start_time = time.time()
     mts = mt_build(tet, mt_depth, bucket_max_mt, spec)
     print(f' MT nodes: {mts.nodes}', file=f)
     print(f' MT edges: {mts.edges}', file=f)
     print("--- %s seconds ---" % (time.time() - start_time), file=f)
 
-
-    print('Searching Metric Tree', file=f)
-    start_time = time.time()
-    target_user = tet[3]    # test_tet[0]
-    mts_res = mt_search(mts, target_user, mt_search_k, spec)
-    predicted_movies, sim_test = get_movies(target_user, mts_res)
-    seen_movies = get_movies_in_user(target_user)
-
-
-    print('SEEN',file=f)
-    [print(get_movies_from_id(m),file=f) for m in seen_movies]
-    print('PREDICTION',file=f)
-    [print(get_movies_from_id(m[0]),file=f) for m in predicted_movies[:k_movies]]
-    print("--- %s seconds ---\n" % (time.time() - start_time), file=f)
+    # print('Searching Metric Tree...', file=f)
+    # start_time = time.time()
+    # target_user = tet[3]    # test_tet[0]
+    # mts_res = mt_search(mts, target_user, mt_search_k, spec)
+    # predicted_movies, sim_test = get_movies(target_user, mts_res)
+    # seen_movies = get_movies_in_user(target_user)
+    #
+    # print('SEEN',file=f)
+    # [print(get_movies_from_id(m),file=f) for m in seen_movies]
+    # print('PREDICTION',file=f)
+    # [print(get_movies_from_id(m[0]),file=f) for m in predicted_movies[:k_movies]]
+    # print("--- %s seconds ---\n" % (time.time() - start_time), file=f)
     print(f'SETTINGS: num of sim neighbors: {mt_search_k}, num of movies: {k_movies}', file=f)
     print(f'RESULT: {recall(tet,test_tet, mts, mt_search_k, spec, k_movies)}', file=f)
+
     print('|| ------ COMPLETE ------ ||', file=f)
     print('Total run time: %s seconds.' % (time.time() - start_time_total), file=f)
     print('Amount of users: %s.' % len(tet), file=f)
+    print(f'Evaluation: {recall(tet, test_tet, mts, mt_search_k, spec, k_movies)}')
     print('|| ---------------------- ||\n', file=f)
-    f.close()
     print(f'Top {top} users histogram:')
     [print(tet[i].ht.nodes(data=True)) for i in range(top)]
     [print(tet[i].graph.nodes(data=True)) for i in range(top)]
+    f.close()
 
 
-#run_imdb_stuff()
 run()

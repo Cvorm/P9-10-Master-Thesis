@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 import imdb
 import re
 
@@ -9,16 +10,15 @@ data = pd.read_csv('../Data/movie_new.csv', converters={'cast': eval})
 ratings = pd.read_csv('../Data/ratings_100k.csv', converters={'cast': eval})
 links = pd.read_csv('../Data/links.csv')
 rdata = pd.DataFrame(columns=['userId', 'movieId', 'rating'])
-
 adata = pd.DataFrame(columns=['actorId','awards'])
 
-updated_data = pd.read_csv('../Data/movie_new.csv', converters={'cast': eval})
+# updated_data = pd.read_csv('../Data/movie_new.csv', converters={'cast': eval})
 updated_actor = pd.read_csv('../Data/actor_data_new.csv', converters={'cast': eval}) # 'awards': eval, 'nominations': eval
-
 # ratings = pd.read_csv('../Data2/ratings.dat', sep='::', names=['userId', 'movieId', 'rating','timestamp'], converters={'cast': eval})
 # data = pd.read_csv('../Data2/movies.dat', sep='::', names=['movieId', 'title', 'genres'], converters={'cast': eval})
 # ratings.to_csv('ratings1.csv',index=False)
 # data.to_csv('movie1.csv', index=False)
+
 
 # function used for updating the movies in movielens dataset by adding data from IMDb
 def update_movie_data():
@@ -94,7 +94,7 @@ def update_movie_data():
 # function used for finding the actors in movielens dataset by adding data from IMDb
 def update_actor_data(actor_list):
     #testd = actor_list
-    testd = updated_data['director'].astype(str)
+    testd = data['director'].astype(str)
     s = set(testd)
     ss = list(s)
     adata['actorId'] = ss
@@ -160,11 +160,25 @@ def format_data():
     # data['movieId'] = 'm' + data['movieId'].astype(str)
 
 
-# runs the necesarry functions from data_setup for recommender.py to function
+# function for normalizing data, returns a normalized dataframe
+def __normalize_data(data):
+    return (data - np.min(data)) / (np.max(data) - np.min(data))
+
+
+# function that normalizes some MovieLens features
+def normalize_all_data():
+    data['votes'] = __normalize_data(data['votes'])
+    data['rating'] = __normalize_data(data['rating'])
+    updated_actor['awards'] = __normalize_data(updated_actor['awards'])
+    updated_actor['nominations'] = __normalize_data(updated_actor['nominations'])
+
+
+# runs the necessary functions from data_setup for recommender.py to function
 def run_data():
     format_data()
     update_data(False, False)
     x_train, x_test = split_data()
+    normalize_all_data()
     #x_train, x_test = train_test_split(rdata, test_size=0.3)
     return x_train, x_test
 
