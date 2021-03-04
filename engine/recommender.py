@@ -1,26 +1,28 @@
 from engine.multiset import *
 from engine.data_setup import *
-from collections import defaultdict
-import itertools
 import ast
 
 
-def create_movie_tet(spec, dat):
+# call function for creating user TETs for MovieLens
+def create_user_movie_tet(spec, dat):
     roots = np.unique(dat.userId)
     # roots = [n for n, info in graph.nodes(data=True) if info.get(f'{root}')]
     complete = []
     for r in roots:
         ms = Multiset()  # here we instantiate our TETs
-        complete.append(__create_movie_tet(r, spec, ms, dat))
+        complete.append(__create_user_movie_tet(r, spec, ms, dat))
     return complete
 
 
-def __create_movie_tet(user, tet_spec, ms, dat):
+# function that handles the construction of a TET for a user for MovieLens
+def __create_user_movie_tet(user, tet_spec, ms, dat):
     nodes = [n[-1] for n in dfs_edges(tet_spec, source="user")]
     ms.add_root(user, 1)
     user_ratings = dat[dat['userId'] == user]
     user_movie = data[data.movieId.isin(user_ratings['movieId'])]
+    user_movie['rating'] = user_movie['rating'].fillna(0).astype(int)
     user_director = updated_actor[updated_actor.actorId.isin(user_movie['director'])]
+
     for node in nodes:
         if node == 'has_rated':
             for y,x in user_ratings.iterrows():
@@ -28,12 +30,18 @@ def __create_movie_tet(user, tet_spec, ms, dat):
                 ms.add_edge((user, str(x['movieId'])))
         elif node == 'has_user_rating':
             for y, x in user_ratings.iterrows():
-                ms.add_node_w_count(f'ur{y}', int(x['rating']), 'has_user_rating')
+                rat = int(x['rating']) * 0.2
+                ms.add_node_w_count_w_val(f'ur{y}', rat, int(x['rating']), 'has_user_rating')
                 ms.add_edge((str(x['movieId']), f'ur{y}'))
         elif node == 'has_imdb_rating':
             for y, x in user_movie.iterrows():
+                # rat = int(x['rating']) * 0.1
                 ms.add_node_w_count(f'ir{y}', float(x['rating']), 'has_imdb_rating')
                 ms.add_edge((str(x['movieId']), f'ir{y}'))
+        elif node == 'has_votes':
+            for y, x in user_movie.iterrows():
+                ms.add_node_w_count(f'hv{y}', float(x['votes']), 'has_votes')
+                ms.add_edge((str(x['movieId']), f'hv{y}'))
         elif node == 'has_director':
             for y, x in user_movie.iterrows():
                 ms.add_node_w_count(str(x['director']), 1, 'has_director')
@@ -67,6 +75,7 @@ def get_movies_from_id(movie_ids):
     return movies
 
 
+# function that returns the total list of genres for all movies
 def get_genres():
     l = []
     for index, movie in data.iterrows():
