@@ -39,7 +39,7 @@ def average(lst):
     return sum(lst) / len(lst)
 
 
-def get_toes(user_hist, other_users_hist):
+def get_similarity(user_hist, other_users_hist):
     usersims = []
     mu = get_movies_in_user(user_hist)
     for u in other_users_hist:
