@@ -115,7 +115,7 @@ def run():
     mts_res = mt_search(mts, target_user, mt_search_k, spec)
     predicted_movies = get_movies(target_user, mts_res)
     seen_movies = get_movies_in_user(target_user)
-    sim_test = get_toes(target_user, mts_res)
+    sim_test = get_similarity(target_user, mts_res)
     print(sim_test)
 
     print('SEEN',file=f)
