@@ -1,18 +1,21 @@
 from engine.metric_tree import *
 
+
+# returns a sorted list of a users movies based on rating
 def get_movies_user(user):
     movies = {}
     for x, y in user.graph.nodes(data=True):
         if type(x) is str and x[0] == 'm':
             for n in user.graph.neighbors(x):
                 if type(n) is str and n[:2] == 'ur': #user.graph[n].get['type'] == 'has_user_rating':
-                    rat = user.graph.nodes(data=True)[n]['count']
+                    rat = user.graph.nodes(data=True)[n]['mult']
                     movies[x] = rat
     sort_movies = sorted(movies.items(), key=lambda k: k[1], reverse=True)
     res = sort_movies #[:top_k_movies]
     return res
 
 
+# returns a list of all movies for a user
 def get_movies_in_user(user):
     tmp_list = []
     for x, y in user.graph.nodes(data=True):
@@ -21,6 +24,7 @@ def get_movies_in_user(user):
     return tmp_list
 
 
+# returns a list of movies from other similar users, sorted based on rating
 def get_movies(user_hist, other_users_hist):
     movies = []
     for u in other_users_hist:
@@ -62,6 +66,7 @@ def get_similarity(user_hist, other_users_hist):
     saverage = average(usersims)
     return saverage
 
+# returns a TET for an user
 def get_tet_user(tet,user):
     for t in tet:
         username = [x for x, y in t.graph.nodes(data=True) if y.get('root')]
@@ -69,16 +74,18 @@ def get_tet_user(tet,user):
             return t
 
 
+# return the rating for a movie
 def get_rating(user, movieid):
     for x, y in user.graph.nodes(data=True):
         if type(x) is str and x == movieid:
             for n in user.graph.neighbors(x):
                 if type(n) is str and n[:2] == 'ur': #user.graph[n].get['type'] == 'has_user_rating':
-                    rat = user.graph.nodes(data=True)[n]['count']
+                    rat = user.graph.nodes(data=True)[n]['mult']
                     return rat
     return 0
 
 
+# evaluation function, returns precision and recall for 1 user
 def __recall(predictions, user_leftout, k, threshold=4):
     n_rel = sum((get_rating(user_leftout, mov) >= threshold) for (mov, _) in predictions)
     n_rec_k = sum((est >= threshold) for (_, est) in predictions[:k])
@@ -92,6 +99,7 @@ def __recall(predictions, user_leftout, k, threshold=4):
     return precisions, recalls
 
 
+# evaluation call function, iterates through all users and returns average precision and recall
 def recall(tet_train, tet_test, metric_tree, mt_search_k, spec, k_movies):
     tmp = []
     # sim_counter = 0
@@ -118,11 +126,3 @@ def recall(tet_train, tet_test, metric_tree, mt_search_k, spec, k_movies):
     recall_res = rec / rec_count
     # print(tmp)
     return precision_res, recall_res
-
-
-def get_movies_juujiro(user):
-    tmp_list = []
-    for x, y in user.graph.nodes(data=True):
-        if type(x) is str and x[0] == 'm':
-            tmp_list.append(x)
-    return tmp_list
