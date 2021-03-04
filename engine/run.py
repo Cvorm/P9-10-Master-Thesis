@@ -87,7 +87,7 @@ def run():
     [g.logistic_eval(log_bias, log_weight) for g in test_tet]
     print("--- %s seconds ---" % (time.time() - start_time), file=f)
 
-    [print(tet[i].graph.nodes(data=True)) for i in range(top)]
+    # [print(tet[i].graph.nodes(data=True)) for i in range(top)]
 
 
     print('Generating histograms...')
@@ -98,7 +98,7 @@ def run():
     [g.histogram(spec) for g in tet]
     [g.histogram(spec) for g in test_tet]
     print("--- %s seconds ---" % (time.time() - start_time), file=f)
-    [print(tet[i].ht.nodes(data=True)) for i in range(top)]
+    # [print(tet[i].ht.nodes(data=True)) for i in range(top)]
 
     print('Building Metric Tree')
     print('Building Metric Tree', file=f)
@@ -113,9 +113,10 @@ def run():
     start_time = time.time()
     target_user = tet[3]    # test_tet[0]
     mts_res = mt_search(mts, target_user, mt_search_k, spec)
-    predicted_movies, sim_test = get_movies(target_user, mts_res)
+    predicted_movies = get_movies(target_user, mts_res)
     seen_movies = get_movies_in_user(target_user)
-
+    sim_test = get_toes(target_user, mts_res)
+    print(sim_test)
 
     print('SEEN',file=f)
     [print(get_movies_from_id(m),file=f) for m in seen_movies]
@@ -131,7 +132,7 @@ def run():
     f.close()
     print(f'Top {top} users histogram:')
     [print(tet[i].ht.nodes(data=True)) for i in range(top)]
-    [print(tet[i].graph.nodes(data=True)) for i in range(top)]
+    # [print(tet[i].graph.nodes(data=True)) for i in range(top)]
 
 
 #run_imdb_stuff()
