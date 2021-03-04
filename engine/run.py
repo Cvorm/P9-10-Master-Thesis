@@ -1,5 +1,7 @@
 import time
 import sys
+
+from engine.matrix_fac import *
 from engine.recommender import *
 from engine.evaluation import *
 
@@ -24,10 +26,12 @@ log_weight = 1
 bin_size = 10
 bin_amount = 10
 # metric tree settings
+
 mt_depth = 12 # int(inp[3])
 bucket_max_mt = 30
 mt_search_k = 1 # int(inp[1])
 k_movies = 10 # int(inp[2])
+
 # print settings
 top = 5
 # seed
@@ -42,7 +46,6 @@ def run():
 
     print('Formatting data...', file=f)
     x_train, x_test = run_data()
-    print(updated_actor)
     print('Building TET specification...')
     print('Building TET specification...', file=f)
     start_time = time.time()
@@ -75,6 +78,7 @@ def run():
     print('Generating histograms and building histogram trees...')
     print('Generating histograms...', file=f)
     start_time = time.time()
+
     [g.histogram(spec, 'user') for g in tet]
     [g.histogram(spec, 'user') for g in test_tet]
     print("--- %s seconds ---" % (time.time() - start_time), file=f)
@@ -88,18 +92,20 @@ def run():
     print(f' MT edges: {mts.edges}', file=f)
     print("--- %s seconds ---" % (time.time() - start_time), file=f)
 
-    # print('Searching Metric Tree...', file=f)
-    # start_time = time.time()
-    # target_user = tet[3]    # test_tet[0]
-    # mts_res = mt_search(mts, target_user, mt_search_k, spec)
-    # predicted_movies, sim_test = get_movies(target_user, mts_res)
-    # seen_movies = get_movies_in_user(target_user)
-    #
-    # print('SEEN',file=f)
-    # [print(get_movies_from_id(m),file=f) for m in seen_movies]
-    # print('PREDICTION',file=f)
-    # [print(get_movies_from_id(m[0]),file=f) for m in predicted_movies[:k_movies]]
-    # print("--- %s seconds ---\n" % (time.time() - start_time), file=f)
+    print('Searching Metric Tree', file=f)
+    start_time = time.time()
+    target_user = tet[3]    # test_tet[0]
+    mts_res = mt_search(mts, target_user, mt_search_k, spec)
+    predicted_movies = get_movies(target_user, mts_res)
+    seen_movies = get_movies_in_user(target_user)
+    sim_test = get_similarity(target_user, mts_res)
+    print(sim_test)
+
+    print('SEEN',file=f)
+    [print(get_movies_from_id(m),file=f) for m in seen_movies]
+    print('PREDICTION',file=f)
+    [print(get_movies_from_id(m[0]),file=f) for m in predicted_movies[:k_movies]]
+    print("--- %s seconds ---\n" % (time.time() - start_time), file=f)
     print(f'SETTINGS: num of sim neighbors: {mt_search_k}, num of movies: {k_movies}', file=f)
     print(f'RESULT: {recall(tet,test_tet, mts, mt_search_k, spec, k_movies)}', file=f)
 

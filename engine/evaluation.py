@@ -34,17 +34,37 @@ def get_movies(user_hist, other_users_hist):
     no_duplicates = [list(v) for v in dict(movies).items()]
     mu = get_movies_in_user(user_hist)
     no_mas = [(x,y) for x,y in no_duplicates if x not in mu]
-    tmp_val = len(no_duplicates) - len(no_mas)
-    if tmp_val == 0:
-        sim_tmp = 1
-    elif len(no_duplicates) == 0:
-        sim_tmp = 0
-    else:
-        sim_tmp = tmp_val / len(no_duplicates)  # if len(no_duplicates) != 0 else
     sort_movies = sorted(no_mas, key=lambda k: k[1], reverse=True)
     res = sort_movies #[:top_k_movies]
-    return res, sim_tmp
+    return res
 
+
+def average(lst):
+    return sum(lst) / len(lst)
+
+
+def get_similarity(user_hist, other_users_hist):
+    usersims = []
+    mu = get_movies_in_user(user_hist)
+    for u in other_users_hist:
+        temp_movies = get_movies_user(u)
+        movies = []
+        for i in temp_movies:
+            movies.append(i)
+        # no_duplicates = [list(v) for v in dict(movies).items()]
+        no_mas = [(x, y) for x, y in movies if x not in mu]
+        tmp_val = len(movies) - len(no_mas)
+        if tmp_val == 0:
+            sim_tmp = 1
+        elif len(movies) == 0:
+            sim_tmp = 0
+        else:
+            sim_tmp = tmp_val / len(movies)
+        # print(sim_tmp)
+        usersims.append(sim_tmp)
+
+    saverage = average(usersims)
+    return saverage
 
 # returns a TET for an user
 def get_tet_user(tet,user):
@@ -82,21 +102,21 @@ def __recall(predictions, user_leftout, k, threshold=4):
 # evaluation call function, iterates through all users and returns average precision and recall
 def recall(tet_train, tet_test, metric_tree, mt_search_k, spec, k_movies):
     tmp = []
-    sim_counter = 0
-    sim_collector = 0.0
+    # sim_counter = 0
+    # sim_collector = 0.0
     for user in tet_train:
         username = [x for x,y in user.graph.nodes(data=True) if y.get('root')]
         user_leftout = get_tet_user(tet_test,username[0])
         similar_users = mt_search(metric_tree, user, mt_search_k, spec)
-        predicted_movies, sim_test = get_movies(user, similar_users)
-        sim_counter = sim_counter + 1
-        sim_collector = sim_collector + sim_test
+        predicted_movies = get_movies(user, similar_users)
+        # sim_counter = sim_counter + 1
+        # sim_collector = sim_collector + sim_test
         tmp.append(__recall(predicted_movies, user_leftout, k_movies))
     precision = 0.0
     precision_count = 0
     rec = 0.0
     rec_count = 0
-    sim = {sim_collector/sim_counter}
+    # sim = {sim_collector/sim_counter}
     for x,y in tmp:
         precision = precision + x
         rec = rec + y
@@ -105,4 +125,4 @@ def recall(tet_train, tet_test, metric_tree, mt_search_k, spec, k_movies):
     precision_res = precision / precision_count
     recall_res = rec / rec_count
     # print(tmp)
-    return precision_res, recall_res, sim
+    return precision_res, recall_res
