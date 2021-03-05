@@ -1,7 +1,6 @@
 import time
 import sys
 
-from engine.matrix_fac import *
 from engine.recommender import *
 from engine.evaluation import *
 
@@ -93,26 +92,32 @@ def run():
     print("--- %s seconds ---" % (time.time() - start_time), file=f)
 
     print('Searching Metric Tree', file=f)
-    start_time = time.time()
-    target_user = tet[3]    # test_tet[0]
-    mts_res = mt_search(mts, target_user, mt_search_k, spec)
-    predicted_movies = get_movies(target_user, mts_res)
-    seen_movies = get_movies_in_user(target_user)
-    sim_test = get_similarity(target_user, mts_res)
-    print(sim_test)
+    # start_time = time.time()
+    # target_user = tet[3]    # test_tet[0]
+    # mts_res = mt_search(mts, target_user, mt_search_k, spec)
+    # predicted_movies = get_movies(target_user, mts_res)
+    # seen_movies = get_movies_in_user(target_user)
+    # sim_test = get_similarity(target_user, mts_res)
+    # print(sim_test)
 
-    print('SEEN',file=f)
-    [print(get_movies_from_id(m),file=f) for m in seen_movies]
-    print('PREDICTION',file=f)
-    [print(get_movies_from_id(m[0]),file=f) for m in predicted_movies[:k_movies]]
-    print("--- %s seconds ---\n" % (time.time() - start_time), file=f)
-    print(f'SETTINGS: num of sim neighbors: {mt_search_k}, num of movies: {k_movies}', file=f)
-    print(f'RESULT: {recall(tet,test_tet, mts, mt_search_k, spec, k_movies)}', file=f)
+    movie_dict = create_movie_rec_dict(tet, test_tet, mts, mt_search_k, spec)
+    precisions, recalls = precision_recall_at_k(movie_dict, k_movies)
+    print(sum(prec for prec in precisions.values()) / len(precisions))
+    print(sum(rec for rec in recalls.values()) / len(recalls))
+
+
+    # print('SEEN',file=f)
+    # [print(get_movies_from_id(m),file=f) for m in seen_movies]
+    # print('PREDICTION',file=f)
+    # [print(get_movies_from_id(m[0]),file=f) for m in predicted_movies[:k_movies]]
+    # print("--- %s seconds ---\n" % (time.time() - start_time), file=f)
+    # print(f'SETTINGS: num of sim neighbors: {mt_search_k}, num of movies: {k_movies}', file=f)
+    # print(f'RESULT: {recall(tet,test_tet, mts, mt_search_k, spec, k_movies)}', file=f)
 
     print('|| ------ COMPLETE ------ ||', file=f)
     print('Total run time: %s seconds.' % (time.time() - start_time_total), file=f)
     print('Amount of users: %s.' % len(tet), file=f)
-    print(f'Evaluation: {recall(tet, test_tet, mts, mt_search_k, spec, k_movies)}')
+    # print(f'Evaluation: {recall(tet, test_tet, mts, mt_search_k, spec, k_movies)}')
     print('|| ---------------------- ||\n', file=f)
     print(f'Top {top} users histogram:')
     [print(tet[i].ht.nodes(data=True)) for i in range(top)]
