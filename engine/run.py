@@ -1,9 +1,6 @@
 import time
 import sys
-
-from engine.recommender import *
-from engine.evaluation import *
-
+from experiments.baselines import *
 # tet specification settings: [[nodes],[edges]]
 specification_movie = [["user", "has_rated", "has_genres", "has_imdb_rating", "has_user_rating", "has_votes", "has_director", "has_awards", "has_nominations",
                         'Action', 'Adventure', 'Animation', 'Children', 'Comedy', 'Crime', 'Documentary', 'Drama', 'Fantasy', 'Film-Noir',
@@ -19,8 +16,8 @@ specification_movie = [["user", "has_rated", "has_genres", "has_imdb_rating", "h
 # SETTINGS
 inp = sys.argv
 # logistic evaluation function settings
-log_bias = 0
-log_weight = 1
+log_bias = -2
+log_weight = 1.5
 # histogram settings
 bin_size = 10
 bin_amount = 10
@@ -28,13 +25,22 @@ bin_amount = 10
 
 mt_depth = 12 # int(inp[3])
 bucket_max_mt = 30
-mt_search_k = 1 # int(inp[1])
-k_movies = 10 # int(inp[2])
+mt_search_k = 3 # int(inp[1])
+k_movies = 25 # int(inp[2])
 
 # print settings
 top = 5
 # seed
 np.random.seed(1)
+def run_baselines():
+    print('Running baselines...')
+    x_train, x_test = run_data()
+    print('Running SVD...')
+    run_SVD(x_train, x_test, k_movies)
+    print('Running KNN...')
+    run_KNN(x_train, x_test, k_movies)
+    print('Running Normal Predictor...')
+    run_NORMPRED(x_train, x_test, k_movies)
 
 
 # overall run function, where we run our 'pipeline'
@@ -58,21 +64,12 @@ def run():
     test_tet = create_user_movie_tet(spec, x_test)
     print("--- %s seconds ---" % (time.time() - start_time), file=f)
 
-    # print('Counting TETs...')
-    # print('Counting TETs...', file=f)
-    # start_time = time.time()
-    # [g.count_tree() for g in tet]
-    # [g.count_tree() for g in test_tet]
-    # print("--- %s seconds ---" % (time.time() - start_time), file=f)
-
     print('Performing Logistic Evaluation on TETs...')
     print('Performing Logistic Evaluation on TETs...', file=f)
     start_time = time.time()
     [g.logistic_eval(log_bias, log_weight) for g in tet]
     [g.logistic_eval(log_bias, log_weight) for g in test_tet]
     print("--- %s seconds ---" % (time.time() - start_time), file=f)
-
-    # [print(tet[i].graph.nodes(data=True)) for i in range(top)]
 
     print('Generating histograms and building histogram trees...')
     print('Generating histograms...', file=f)
@@ -81,7 +78,6 @@ def run():
     [g.histogram(spec, 'user') for g in tet]
     [g.histogram(spec, 'user') for g in test_tet]
     print("--- %s seconds ---" % (time.time() - start_time), file=f)
-    # [print(tet[i].ht.nodes(data=True)) for i in range(top)]
 
     print('Building Metric Tree...')
     print('Building Metric Tree...', file=f)
@@ -91,7 +87,6 @@ def run():
     print(f' MT edges: {mts.edges}', file=f)
     print("--- %s seconds ---" % (time.time() - start_time), file=f)
 
-    print('Searching Metric Tree', file=f)
     # start_time = time.time()
     # target_user = tet[3]    # test_tet[0]
     # mts_res = mt_search(mts, target_user, mt_search_k, spec)
@@ -99,11 +94,11 @@ def run():
     # seen_movies = get_movies_in_user(target_user)
     # sim_test = get_similarity(target_user, mts_res)
     # print(sim_test)
-
-    movie_dict = create_movie_rec_dict(tet, test_tet, mts, mt_search_k, spec)
+    print('Evaluating model...')
+    movie_dict, sim_score = create_movie_rec_dict(tet, test_tet, mts, mt_search_k, spec)
     precisions, recalls = precision_recall_at_k(movie_dict, k_movies)
-    print(sum(prec for prec in precisions.values()) / len(precisions))
-    print(sum(rec for rec in recalls.values()) / len(recalls))
+    print(f' PRECISION COUNT: {sum(prec for prec in precisions.values()) / len(precisions)}')
+    print(f' RECALL COUNT: {sum(rec for rec in recalls.values()) / len(recalls)}')
 
 
     # print('SEEN',file=f)
@@ -117,6 +112,7 @@ def run():
     print('|| ------ COMPLETE ------ ||', file=f)
     print('Total run time: %s seconds.' % (time.time() - start_time_total), file=f)
     print('Amount of users: %s.' % len(tet), file=f)
+    print(f'Overall user similarity: {sim_score}')
     # print(f'Evaluation: {recall(tet, test_tet, mts, mt_search_k, spec, k_movies)}')
     print('|| ---------------------- ||\n', file=f)
     print(f'Top {top} users histogram:')
@@ -126,3 +122,4 @@ def run():
 
 
 run()
+run_baselines()
