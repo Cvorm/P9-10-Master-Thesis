@@ -48,7 +48,7 @@ def __create_user_movie_tet(user, tet_spec, ms, dat):
                 ms.add_edge((str(x['movieId']), str(x['director'])))
         elif node == 'has_genres':
             for y, x in user_movie.iterrows():
-                tmp = x['genres'][0]
+                tmp = x['genres']
                 tmp = ast.literal_eval(tmp)
                 tmp_count = len(tmp)
                 ms.add_node_w_count(f'hg{y}', int(tmp_count), 'has_genres')
