@@ -4,6 +4,7 @@ import sys
 from engine.matrix_fac import *
 from engine.recommender import *
 from engine.evaluation import *
+from engine.crossing import *
 
 # tet specification settings: [[nodes],[edges]]
 specification_movie = [["user", "has_rated", "has_genres", "has_imdb_rating", "has_user_rating", "has_votes", "has_director", "has_awards", "has_nominations",
@@ -16,6 +17,7 @@ specification_movie = [["user", "has_rated", "has_genres", "has_imdb_rating", "h
                         ("has_genres", "Crime"),  ("has_genres", "Documentary"), ("has_genres", "Drama"),  ("has_genres", "Fantasy"),  ("has_genres", "Film-Noir"),
                         ("has_genres", "Horror"),  ("has_genres", "IMAX"), ("has_genres", "Musical"),  ("has_genres", "Mystery"),  ("has_genres", "Romance"),
                         ("has_genres", "Sci-Fi"),  ("has_genres", "Thriller"), ("has_genres", "War"),  ("has_genres", "Western")]]
+
 
 # SETTINGS
 inp = sys.argv
@@ -55,8 +57,8 @@ def run():
     print('Generating TETs according to specification...', file=f)
     print('Generating TETs according to specification...')
     start_time = time.time()
-    tet = create_user_movie_tet(spec, x_train)
-    test_tet = create_user_movie_tet(spec, x_test)
+    # tet = create_user_movie_tet(spec, x_train)
+    # test_tet = create_user_movie_tet(spec, x_test)
     print("--- %s seconds ---" % (time.time() - start_time), file=f)
 
     # print('Counting TETs...')
@@ -69,8 +71,9 @@ def run():
     print('Performing Logistic Evaluation on TETs...')
     print('Performing Logistic Evaluation on TETs...', file=f)
     start_time = time.time()
-    [g.logistic_eval(log_bias, log_weight) for g in tet]
-    [g.logistic_eval(log_bias, log_weight) for g in test_tet]
+    # [g.logistic_eval(log_bias, log_weight) for g in tet]
+    # [g.logistic_eval(log_bias, log_weight) for g in test_tet]
+    [g.logistic_eval(log_bias, log_weight) for g in booktet]
     print("--- %s seconds ---" % (time.time() - start_time), file=f)
 
     # [print(tet[i].graph.nodes(data=True)) for i in range(top)]
@@ -79,22 +82,25 @@ def run():
     print('Generating histograms...', file=f)
     start_time = time.time()
 
-    [g.histogram(spec, 'user') for g in tet]
-    [g.histogram(spec, 'user') for g in test_tet]
+    # [g.histogram(spec, 'user') for g in tet]
+    # [g.histogram(spec, 'user') for g in test_tet]
+    [g.histogram(spec, 'user') for g in booktet]
     print("--- %s seconds ---" % (time.time() - start_time), file=f)
     # [print(tet[i].ht.nodes(data=True)) for i in range(top)]
 
     print('Building Metric Tree...')
     print('Building Metric Tree...', file=f)
     start_time = time.time()
-    mts = mt_build(tet, mt_depth, bucket_max_mt, spec)
+    # mts = mt_build(tet, mt_depth, bucket_max_mt, spec)
+    mts = mt_build(booktet, mt_depth, bucket_max_mt, spec)
     print(f' MT nodes: {mts.nodes}', file=f)
     print(f' MT edges: {mts.edges}', file=f)
     print("--- %s seconds ---" % (time.time() - start_time), file=f)
 
     print('Searching Metric Tree', file=f)
     start_time = time.time()
-    target_user = tet[3]    # test_tet[0]
+    # target_user = tet[3]    # test_tet[0]
+    target_user = booktet[3]  # test_tet[0]
     mts_res = mt_search(mts, target_user, mt_search_k, spec)
     predicted_movies = get_movies(target_user, mts_res)
     seen_movies = get_movies_in_user(target_user)
@@ -107,16 +113,19 @@ def run():
     [print(get_movies_from_id(m[0]),file=f) for m in predicted_movies[:k_movies]]
     print("--- %s seconds ---\n" % (time.time() - start_time), file=f)
     print(f'SETTINGS: num of sim neighbors: {mt_search_k}, num of movies: {k_movies}', file=f)
-    print(f'RESULT: {recall(tet,test_tet, mts, mt_search_k, spec, k_movies)}', file=f)
+    # print(f'RESULT: {recall(tet,test_tet, mts, mt_search_k, spec, k_movies)}', file=f)
+    print(f'RESULT: {recall(booktet,booktet, mts, mt_search_k, spec, k_movies)}', file=f)
 
     print('|| ------ COMPLETE ------ ||', file=f)
     print('Total run time: %s seconds.' % (time.time() - start_time_total), file=f)
-    print('Amount of users: %s.' % len(tet), file=f)
-    print(f'Evaluation: {recall(tet, test_tet, mts, mt_search_k, spec, k_movies)}')
+    # print('Amount of users: %s.' % len(tet), file=f)
+    print('Amount of users: %s.' % len(booktet), file=f)
+    # print(f'Evaluation: {recall(tet, test_tet, mts, mt_search_k, spec, k_movies)}')
+    print(f'Evaluation: {recall(booktet, booktet, mts, mt_search_k, spec, k_movies)}')
     print('|| ---------------------- ||\n', file=f)
     print(f'Top {top} users histogram:')
-    [print(tet[i].ht.nodes(data=True)) for i in range(top)]
-    [print(tet[i].graph.nodes(data=True)) for i in range(top)]
+    [print(booktet[i].ht.nodes(data=True)) for i in range(top)]
+    [print(booktet[i].graph.nodes(data=True)) for i in range(top)]
     f.close()
 
 

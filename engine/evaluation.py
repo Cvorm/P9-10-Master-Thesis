@@ -51,6 +51,7 @@ def get_similarity(user_hist, other_users_hist):
         movies = []
         for i in temp_movies:
             movies.append(i)
+        print(movies)
         # no_duplicates = [list(v) for v in dict(movies).items()]
         no_mas = [(x, y) for x, y in movies if x not in mu]
         tmp_val = len(movies) - len(no_mas)
@@ -60,7 +61,8 @@ def get_similarity(user_hist, other_users_hist):
             sim_tmp = 0
         else:
             sim_tmp = tmp_val / len(movies)
-        # print(sim_tmp)
+
+        print(sim_tmp)
         usersims.append(sim_tmp)
 
     saverage = average(usersims)
