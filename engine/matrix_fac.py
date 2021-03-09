@@ -5,7 +5,7 @@ import itertools
 import pandas as pd
 
 from engine.recommender import *
-from engine.recommender import __distance
+# from engine.recommender import __distance
 
 # spec2 = [["user,", "movie", "genre", "director", "rating", "award"],
 #         [("user", "movie"), ("movie", "director"), ("movie", "rating"), ("director", "award")],

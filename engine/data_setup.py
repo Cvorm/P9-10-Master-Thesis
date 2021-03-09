@@ -7,10 +7,20 @@ moviesDB = imdb.IMDb()
 # data = pd.read_csv('../Data/movies.csv')
 # ratings = pd.read_csv('../Data/ratings.csv')
 data = pd.read_csv('../Data/movie_new.csv', converters={'cast': eval})
-ratings = pd.read_csv('../Data/ratings_100k.csv', converters={'cast': eval})
+movieratings = pd.read_csv('../Data/ratings25.csv', converters={'cast': eval})
 links = pd.read_csv('../Data/links.csv')
 rdata = pd.DataFrame(columns=['userId', 'movieId', 'rating'])
 adata = pd.DataFrame(columns=['actorId','awards'])
+
+
+books = pd.read_csv('../Data/BX-Books.csv', sep=';', error_bad_lines=False, encoding="latin-1")
+books.columns = ["ISBN", "BookTitle","BookAuthor", "YearOfPublication", "Publisher", "ImageURLS", "ImageURLM", "ImageURLL"]
+
+users = pd.read_csv('../Data/BX-Users - Kopi.csv', sep=';', error_bad_lines=False, encoding="latin-1")
+users.columns = ["UserID","Location","Age"]
+
+bookratings = pd.read_csv('../Data/BX-Book-Ratings2.csv', sep=';', error_bad_lines=False, encoding="latin-1")
+bookratings.columns = ["UserID", "ISBN", "BookRating"]
 
 # updated_data = pd.read_csv('../Data/movie_new.csv', converters={'cast': eval})
 updated_actor = pd.read_csv('../Data/actor_data_new.csv', converters={'cast': eval}) # 'awards': eval, 'nominations': eval
@@ -18,6 +28,10 @@ updated_actor = pd.read_csv('../Data/actor_data_new.csv', converters={'cast': ev
 # data = pd.read_csv('../Data2/movies.dat', sep='::', names=['movieId', 'title', 'genres'], converters={'cast': eval})
 # ratings.to_csv('ratings1.csv',index=False)
 # data.to_csv('movie1.csv', index=False)
+
+# ass = pd.read_csv('../Data/BX-Books.csv', converters={'cast': eval})
+# ass1 = pd.read_csv('../Data/BX-Users.csv', converters={'cast': eval})
+# ass2 = pd.read_csv('../Data/BX-Book-Ratings.csv', converters={'cast': eval})
 
 
 # function used for updating the movies in movielens dataset by adding data from IMDb
@@ -152,10 +166,10 @@ def split_data():
 
 # formats data
 def format_data():
-    rdata['userId'] = 'u' + ratings['userId'].astype(str)
-    rdata['movieId'] = 'm' + ratings['movieId'].astype(str)
-    rdata['rating'] = ratings['rating']
-    rdata['timestamp'] = ratings['timestamp']
+    rdata['userId'] = 'u' + movieratings['userId'].astype(str)
+    rdata['movieId'] = 'm' + movieratings['movieId'].astype(str)
+    rdata['rating'] = movieratings['rating']
+    rdata['timestamp'] = movieratings['timestamp']
     data['genres'] = [str(m).split("|") for m in data.genres]
     # data['movieId'] = 'm' + data['movieId'].astype(str)
 
@@ -173,6 +187,10 @@ def normalize_all_data():
     updated_actor['nominations'] = __normalize_data(updated_actor['nominations'])
 
 
+def normalize_book_data():
+    users['Age'] = __normalize_data(users['Age'])
+    bookratings['BookRating'] = __normalize_data(bookratings['BookRating'])
+
 # runs the necessary functions from data_setup for recommender.py to function
 def run_data():
     format_data()
@@ -186,3 +204,14 @@ def run_data():
 
     # train.to_csv(r'C:\Users\Darkmaster\PycharmProjects\Recommender\Data\Cvorm\training.csv', header=False, index=False)
     # test.to_csv(r'C:\Users\Darkmaster\PycharmProjects\Recommender\Data\Cvorm\testing.csv', header=False, index=False)
+
+
+print(np.min(data.votes))
+print(np.max(data.votes))
+print(np.min(data.rating))
+print(np.max(data.rating))
+
+print(np.min(updated_actor.awards))
+print(np.min(updated_actor.nominations))
+print(np.max(updated_actor.awards))
+print(np.max(updated_actor.nominations))
