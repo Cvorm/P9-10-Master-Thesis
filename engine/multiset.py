@@ -53,53 +53,53 @@ class Multiset:
         return flat_list
 
     # helper function for counting the tree
-    def __count_tree(self, curr_node, leafs):
-        if curr_node in leafs:  # if our current node is a leaf, then the count is simply the count
-            self.graph.nodes(data=True)[curr_node]['mult'] = self.graph.nodes(data=True)[curr_node]['count']
-        elif self.graph.nodes(data=True)[curr_node].get('free'):    # if our current node is a free variable, then we calculate the count of counts
-            succesors = list(self.graph.successors(curr_node))
-            ls = []
-            ls2 = []
-            for s in succesors:
-                self.__count_tree(s, leafs)
-                ls.append(self.graph.nodes(data=True)[s]['mult'])
-                if self.graph.nodes(data=True)[s]['type'] == 'genre':
-                    ls2.append(s)
-                else:
-                    ls2.append(self.graph.nodes(data=True)[s]['type'])
-            types = set(ls2)
-            res = dict.fromkeys(types, 0)
-            if not any(isinstance(i, list) for i in ls):    # if we are dealing we a list of list of count
-                for s in succesors:
-                    for t in types:
-                        if self.graph.nodes(data=True)[s]['type'] == t:
-                            res[t] += self.graph.nodes(data=True)[s]['count']
-                        elif self.graph.nodes(data=True)[s]['type'] == 'genre':
-                            if t == s:
-                                res[t] += 1
-                for x in res.items():
-                    self.graph.nodes(data=True)[curr_node]['mult'] += [x]
-            else:
-                res = {}
-                for x in ls:
-                    if x == 0:
-                        # print(f'x: {x}')
-                        # print(f'ls: {ls}')
-                        continue
-                    res[tuple(x)] = 0
-                    for j in ls:
-                        if x == j:
-                            #print(f'X: {x} J: {j}')
-                            res[tuple(x)] += 1
-                for x in res.items():
-                    self.graph.nodes(data=True)[curr_node]['mult'] += [x]
+    # def __count_tree(self, curr_node, leafs):
+    #     if curr_node in leafs:  # if our current node is a leaf, then the count is simply the count
+    #         self.graph.nodes(data=True)[curr_node]['mult'] = self.graph.nodes(data=True)[curr_node]['count']
+    #     elif self.graph.nodes(data=True)[curr_node].get('free'):    # if our current node is a free variable, then we calculate the count of counts
+    #         succesors = list(self.graph.successors(curr_node))
+    #         ls = []
+    #         ls2 = []
+    #         for s in succesors:
+    #             self.__count_tree(s, leafs)
+    #             ls.append(self.graph.nodes(data=True)[s]['mult'])
+    #             if self.graph.nodes(data=True)[s]['type'] == 'genre':
+    #                 ls2.append(s)
+    #             else:
+    #                 ls2.append(self.graph.nodes(data=True)[s]['type'])
+    #         types = set(ls2)
+    #         res = dict.fromkeys(types, 0)
+    #         if not any(isinstance(i, list) for i in ls):    # if we are dealing we a list of list of count
+    #             for s in succesors:
+    #                 for t in types:
+    #                     if self.graph.nodes(data=True)[s]['type'] == t:
+    #                         res[t] += self.graph.nodes(data=True)[s]['count']
+    #                     elif self.graph.nodes(data=True)[s]['type'] == 'genre':
+    #                         if t == s:
+    #                             res[t] += 1
+    #             for x in res.items():
+    #                 self.graph.nodes(data=True)[curr_node]['mult'] += [x]
+    #         else:
+    #             res = {}
+    #             for x in ls:
+    #                 if x == 0:
+    #                     # print(f'x: {x}')
+    #                     # print(f'ls: {ls}')
+    #                     continue
+    #                 res[tuple(x)] = 0
+    #                 for j in ls:
+    #                     if x == j:
+    #                         #print(f'X: {x} J: {j}')
+    #                         res[tuple(x)] += 1
+    #             for x in res.items():
+    #                 self.graph.nodes(data=True)[curr_node]['mult'] += [x]
 
     # call function for counting the tree
-    def count_tree(self):
-        root = [x for x, y in self.graph.nodes(data=True) if y.get('root')]
-        leaf_nodes = [node for node in self.graph.nodes if
-                      (self.graph.in_degree(node) != 0 and self.graph.out_degree(node) == 0)]
-        self.__count_tree(root[0], leaf_nodes)
+    # def count_tree(self):
+    #     root = [x for x, y in self.graph.nodes(data=True) if y.get('root')]
+    #     leaf_nodes = [node for node in self.graph.nodes if
+    #                   (self.graph.in_degree(node) != 0 and self.graph.out_degree(node) == 0)]
+    #     self.__count_tree(root[0], leaf_nodes)
 
     def __sigmoid(self, x):
         return 1 / (1 + math.exp(-x))

@@ -4,30 +4,21 @@ import imdb
 import re
 
 moviesDB = imdb.IMDb()
-# data = pd.read_csv('../Data/movies.csv')
-# ratings = pd.read_csv('../Data/ratings.csv')
 data = pd.read_csv('../Data/movie_new.csv', converters={'cast': eval})
 movieratings = pd.read_csv('../Data/ratings25.csv', converters={'cast': eval})
 links = pd.read_csv('../Data/links.csv')
 rdata = pd.DataFrame(columns=['userId', 'movieId', 'rating'])
 adata = pd.DataFrame(columns=['actorId','awards'])
-
-
 books = pd.read_csv('../Data/BX-Books.csv', sep=';', error_bad_lines=False, encoding="latin-1")
 books.columns = ["ISBN", "BookTitle","BookAuthor", "YearOfPublication", "Publisher", "ImageURLS", "ImageURLM", "ImageURLL"]
-
 users = pd.read_csv('../Data/BX-Users - Kopi.csv', sep=';', error_bad_lines=False, encoding="latin-1")
 users.columns = ["UserID","Location","Age"]
-
 bookratings = pd.read_csv('../Data/BX-Book-Ratings2.csv', sep=';', error_bad_lines=False, encoding="latin-1")
 bookratings.columns = ["UserID", "ISBN", "BookRating"]
 
 # updated_data = pd.read_csv('../Data/movie_new.csv', converters={'cast': eval})
+
 updated_actor = pd.read_csv('../Data/actor_data_new.csv', converters={'cast': eval}) # 'awards': eval, 'nominations': eval
-# ratings = pd.read_csv('../Data2/ratings.dat', sep='::', names=['userId', 'movieId', 'rating','timestamp'], converters={'cast': eval})
-# data = pd.read_csv('../Data2/movies.dat', sep='::', names=['movieId', 'title', 'genres'], converters={'cast': eval})
-# ratings.to_csv('ratings1.csv',index=False)
-# data.to_csv('movie1.csv', index=False)
 
 # ass = pd.read_csv('../Data/BX-Books.csv', converters={'cast': eval})
 # ass1 = pd.read_csv('../Data/BX-Users.csv', converters={'cast': eval})
@@ -147,12 +138,13 @@ def update_data(movie, actor):
             update_actor_data(actor_list)
 
 
+# returns split dataset, training and test
 def split_data():
     df = rdata
     ranks = df.groupby('userId')['timestamp'].rank(method='first')
     counts = df['userId'].map(df.groupby('userId')['timestamp'].apply(len))
     # myes = (ranks / counts) > 0.8
-    df['new_col'] = (ranks / counts) > 0.70
+    df['new_col'] = (ranks / counts) > 0.70  # percentage
     # print(myes)
     # print(df.head())
     train = df.loc[df['new_col'] == False]
@@ -166,11 +158,12 @@ def split_data():
 
 # formats data
 def format_data():
-    rdata['userId'] = 'u' + movieratings['userId'].astype(str)
-    rdata['movieId'] = 'm' + movieratings['movieId'].astype(str)
-    rdata['rating'] = movieratings['rating']
-    rdata['timestamp'] = movieratings['timestamp']
-    data['genres'] = [str(m).split("|") for m in data.genres]
+    rdata['userId'] = 'u' + ratings['userId'].astype(str)
+    rdata['movieId'] = 'm' + ratings['movieId'].astype(str)
+    rdata['rating'] = ratings['rating']
+    rdata['timestamp'] = ratings['timestamp']
+    # data['genres'] = [str(m).split("|") for m in data.genres] # dont uncomment this PLEASE, unless for testing purposes
+
     # data['movieId'] = 'm' + data['movieId'].astype(str)
 
 
@@ -195,23 +188,20 @@ def normalize_book_data():
 def run_data():
     format_data()
     update_data(False, False)
-    x_train, x_test = split_data()
+    print(f'Coverage of data: {coverage(data)}')
     normalize_all_data()
-    #x_train, x_test = train_test_split(rdata, test_size=0.3)
+    x_train, x_test = split_data()
     return x_train, x_test
 
 
+# returns the coverage of each feature in the data set
+def coverage(dat):
+    tmp = dict()  # pd.DataFrame(columns=dat.columns)
+    for column in dat:
+        tmp_count = 0
+        for entry in data[column]:
+            if entry == 0 or pd.isna(entry):
+                tmp_count = tmp_count + 1
+        tmp[column] = (len(dat[column]) - tmp_count) / len(dat[column]) if tmp_count != 0 else 1
+    return tmp
 
-    # train.to_csv(r'C:\Users\Darkmaster\PycharmProjects\Recommender\Data\Cvorm\training.csv', header=False, index=False)
-    # test.to_csv(r'C:\Users\Darkmaster\PycharmProjects\Recommender\Data\Cvorm\testing.csv', header=False, index=False)
-
-
-print(np.min(data.votes))
-print(np.max(data.votes))
-print(np.min(data.rating))
-print(np.max(data.rating))
-
-print(np.min(updated_actor.awards))
-print(np.min(updated_actor.nominations))
-print(np.max(updated_actor.awards))
-print(np.max(updated_actor.nominations))
