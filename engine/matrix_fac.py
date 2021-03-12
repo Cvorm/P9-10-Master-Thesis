@@ -1,10 +1,14 @@
 from engine.multiset import *
 from engine.data_setup import *
 from engine.distance import *
+from engine.evaluation import *
 from collections import defaultdict
 import itertools
 import pandas as pd
+# from pymf import *
+# import pymf
 from functools import partial
+from sklearn.decomposition import NMF
 
 from engine.recommender import *
 # from engine.recommender import __distance
@@ -151,7 +155,7 @@ def item_item_sim(tet, spec):
         # print(movie)
         movies.append(movie[0])
     sorted_movies = sort_items(movies)
-    print(sorted_movies)
+    # print(sorted_movies)
     sorted_tets = sort_items_prefix(tet, "m")
 
     item_item = pd.DataFrame(index=sorted_movies, columns=sorted_movies).fillna(0.0)
@@ -307,6 +311,59 @@ def interaction_matrix(tet):
     # mu = get_movies_in_user(user_hist)
     # no_mas = [(x,y) for x,y in no_duplicates if x not in mu]
     # tmp_val = len(no_duplicates) - len(no_mas)
+
+def user_item_rating_matrix(tet):
+    users = []
+    for x in tet:
+        user = [x for x, y in x.graph.nodes(data=True) if y.get('root')]
+        users.append(user[0])
+
+    total_movies = []
+    for x in tet:
+        movies = get_movies_in_user(x)
+        for i in movies:
+            total_movies.append(i)
+    # print(total_movies)
+
+    # no_duplicates = list(set(total_movies))
+    # no_duplicates = [list(v) for v in dict(total_movies).items()]
+    no_duplicates = list(set(total_movies))
+    print(users)
+    sorted_users = sort_users(users)
+    sorted_items = sort_items(no_duplicates)
+
+    user_item = pd.DataFrame(index=sorted_users, columns=sorted_items).fillna(0)
+    # print(user_item.head(5))
+
+    for i, y in enumerate(tet):
+        movies = get_movies_in_user(y)
+        for j in movies:
+            user_item[j][sorted_users[i]] = get_rating(y, j)
+            # print(users[i], j)
+
+    user_item.to_csv("user_item_rating_matrix.csv", sep='\t')
+
+def non_neg_matrix_fac(matrix):
+    df = pd.read_csv(matrix, sep='\t', index_col=0)
+    # print(df.head())
+    ranks = len(df.index)
+    model = NMF(n_components=ranks, init='random', max_iter=100)
+    W = model.fit_transform(df)
+    H = model.components_
+    print(H)
+    print(W)
+    # new = model.transform(df)
+    ndf = np.dot(W,H)
+    for i in ndf:
+        print(i)
+
+    # print(ndf)
+    # "requires=['cvxopt', 'numpy', 'scipy']"
+    # ranks = len(matrix.index)
+    # nnmf = pymf.NMF(matrix, num_bases=ranks)
+    # nnmf.factorize()
+
+non_neg_matrix_fac("user_item_rating_matrix.csv")
 # myesss = sort_items(["m1000", "m900", "m714", "m1300"])
 # print(myesss)
 

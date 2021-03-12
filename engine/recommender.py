@@ -18,7 +18,7 @@ def __create_movie_tet(movie, tet_spec, ms, dataframe, source):
     nodes = [n[-1] for n in dfs_edges(tet_spec, source=source)]
     ms.add_root_movie(movie, 1)
     this_movie = data[data['movieId'] == movie]
-    print(this_movie.head())
+    # print(this_movie.head())
     user_director = updated_actor[updated_actor.actorId.isin(this_movie['director'])]
     # print(user_director)
     for node in nodes:
