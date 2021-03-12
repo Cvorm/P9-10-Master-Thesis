@@ -129,7 +129,8 @@ def run():
     print("--- %s seconds ---" % (time.time() - start_time), file=f)
     [print(tet[i].ht.nodes(data=True)) for i in range(top)]
     # user_user_sim(tet, spec)
-    item_item_sim(movie_tet, spec2)
+    # item_item_sim(movie_tet, spec2)
+    user_item_rating_matrix(tet)
     # print('Building Metric Tree')
     # print('Building Metric Tree', file=f)
     # start_time = time.time()
