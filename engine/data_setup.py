@@ -4,14 +4,17 @@ import imdb
 import re
 
 moviesDB = imdb.IMDb()
-data = pd.read_csv('../Data/movie_new.csv', converters={'cast': eval})
+data = pd.read_csv('../Data/movie_new.csv', converters={'cast': eval}, thousands=',')
 ratings = pd.read_csv('../Data/ratings_100k.csv', converters={'cast': eval})
 links = pd.read_csv('../Data/links.csv')
 rdata = pd.DataFrame(columns=['userId', 'movieId', 'rating'])
 adata = pd.DataFrame(columns=['actorId','awards'])
 updated_actor = pd.read_csv('../Data/actor_data_new.csv', converters={'cast': eval}) # 'awards': eval, 'nominations': eval
 
-
+data['rating'] = data['rating'].fillna(0).astype(float)
+data['votes'] = data['votes'].fillna(0).astype(float)
+data['budget'] = data['budget'].fillna(0).astype(float)
+data['gross'] = data['gross'].fillna(0).astype(float)
 # function used for updating the movies in movielens dataset by adding data from IMDb
 def update_movie_data():
     actor_id_l = []
@@ -162,6 +165,8 @@ def __normalize_data(data):
 def normalize_all_data():
     data['votes'] = __normalize_data(data['votes'])
     data['rating'] = __normalize_data(data['rating'])
+    data['gross'] = __normalize_data(data['gross'])
+    data['budget'] = __normalize_data(data['budget'])
     updated_actor['awards'] = __normalize_data(updated_actor['awards'])
     updated_actor['nominations'] = __normalize_data(updated_actor['nominations'])
 
