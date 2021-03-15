@@ -69,7 +69,7 @@ def get_similarity(user_hist, other_users_hist):
 
 
 # returns a TET for an user
-def get_tet_user(tet,user):
+def get_tet_user(tet, user):
     for t in tet:
         username = [x for x, y in t.graph.nodes(data=True) if y.get('root')]
         if username[0] == user:
