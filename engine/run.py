@@ -4,20 +4,22 @@ from experiments.baselines import *
 # tet specification settings: [[nodes],[edges]]
 specification_movie = [["user", "has_rated", "has_genres", "has_imdb_rating", "has_user_rating", "has_votes", "has_director", "has_awards", "has_nominations",
                         'Action', 'Adventure', 'Animation', 'Children', 'Comedy', 'Crime', 'Documentary', 'Drama', 'Fantasy', 'Film-Noir',
-                        'Horror', 'IMAX', 'Musical', 'Mystery', 'Romance', 'Sci-Fi', 'Thriller', 'War', 'Western'],
+                        'Horror', 'IMAX', 'Musical', 'Mystery', 'Romance', 'Sci-Fi', 'Thriller', 'War', 'Western',
+                        ],
                        [("user", "has_rated"), ("has_rated", "has_genres"), ("has_rated", "has_imdb_rating"), ("has_rated", "has_user_rating"),
                         ("has_rated", "has_votes"), ("has_rated", "has_director"),
                         ("has_director", "has_awards"), ("has_director", "has_nominations"),
                         ("has_genres", "Action"),  ("has_genres", "Adventure"), ("has_genres", "Animation"),  ("has_genres", "Children"),  ("has_genres", "Comedy"),
                         ("has_genres", "Crime"),  ("has_genres", "Documentary"), ("has_genres", "Drama"),  ("has_genres", "Fantasy"),  ("has_genres", "Film-Noir"),
                         ("has_genres", "Horror"),  ("has_genres", "IMAX"), ("has_genres", "Musical"),  ("has_genres", "Mystery"),  ("has_genres", "Romance"),
-                        ("has_genres", "Sci-Fi"),  ("has_genres", "Thriller"), ("has_genres", "War"),  ("has_genres", "Western")]]
-
+                        ("has_genres", "Sci-Fi"),  ("has_genres", "Thriller"), ("has_genres", "War"),  ("has_genres", "Western")]
+                       ]
+# "has_budget", "has_gross" ("has_rated", "has_budget"), ("has_rated", "has_gross"),
 # SETTINGS
 inp = sys.argv
 # logistic evaluation function settings
-log_bias = -2
-log_weight = 1.5
+log_bias = -5
+log_weight = 2
 # histogram settings
 bin_size = 10
 bin_amount = 10
@@ -25,8 +27,8 @@ bin_amount = 10
 
 mt_depth = 12 # int(inp[3])
 bucket_max_mt = 30
-mt_search_k = 3 # int(inp[1])
-k_movies = 25 # int(inp[2])
+mt_search_k = 30 # int(inp[1])
+k_movies = 10 # int(inp[2])
 
 # print settings
 top = 5

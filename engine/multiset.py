@@ -126,6 +126,10 @@ class Multiset:
             #print(f'NODE: {node}')
             v_b = bias + (weight * temp_count)
             v = self.__sigmoid(v_b)
+            # if self.graph.nodes(data=True)[node].get('root'):
+            #     print(temp_count)
+            #     print(f'v_b: {v_b}, res= {v}')
+
             #print(f'v_b: {v_b}, res= {v}')
             self.graph.nodes(data=True)[node]['value'] = v
         if node in leafs:

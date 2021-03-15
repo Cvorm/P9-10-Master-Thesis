@@ -20,12 +20,15 @@ def __create_user_movie_tet(user, tet_spec, ms, dat):
     ms.add_root(user, 1)
     user_ratings = dat[dat['userId'] == user]
     user_movie = data[data.movieId.isin(user_ratings['movieId'])]
-    user_movie['rating'] = user_movie['rating'].fillna(0).astype(int)
+    # user_movie['rating'] = user_movie['rating'].fillna(0).astype(float)
+    # user_movie['votes'] = user_movie['votes'].fillna(0).astype(float)
+    # user_movie['budget'] = user_movie['budget'].fillna(0).astype(float)
+    # user_movie['gross'] = user_movie['gross'].fillna(0).astype(float)
     user_director = updated_actor[updated_actor.actorId.isin(user_movie['director'])]
 
     for node in nodes:
         if node == 'has_rated':
-            for y,x in user_ratings.iterrows():
+            for y, x in user_ratings.iterrows():
                 ms.add_node_w_count(str(x['movieId']), 1, 'has_rated')
                 ms.add_edge((user, str(x['movieId'])))
         elif node == 'has_user_rating':
@@ -35,7 +38,6 @@ def __create_user_movie_tet(user, tet_spec, ms, dat):
                 ms.add_edge((str(x['movieId']), f'ur{y}'))
         elif node == 'has_imdb_rating':
             for y, x in user_movie.iterrows():
-                # rat = int(x['rating']) * 0.1
                 ms.add_node_w_count(f'ir{y}', float(x['rating']), 'has_imdb_rating')
                 ms.add_edge((str(x['movieId']), f'ir{y}'))
         elif node == 'has_votes':
@@ -64,6 +66,14 @@ def __create_user_movie_tet(user, tet_spec, ms, dat):
             for y, x in user_director.iterrows():
                 ms.add_node_w_count(f'n{y}', int(x['nominations']), 'has_nominations')
                 ms.add_edge((str(x['actorId']), f'n{y}'))
+        elif node == 'has_budget':
+            for y, x in user_movie.iterrows():
+                ms.add_node_w_count(f'hb{y}', float(x['budget']), 'has_budget')
+                ms.add_edge((str(x['movieId']), f'hb{y}'))
+        elif node == 'has_gross':
+            for y, x in user_movie.iterrows():
+                ms.add_node_w_count(f'hgr{y}', float(x['gross']), 'has_gross')
+                ms.add_edge((str(x['movieId']), f'hgr{y}'))
     return ms
 
 
