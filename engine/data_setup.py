@@ -2,19 +2,31 @@ import pandas as pd
 import numpy as np
 import imdb
 import re
+from sklearn.model_selection import train_test_split, GroupShuffleSplit
 
 moviesDB = imdb.IMDb()
-data = pd.read_csv('../Data/movie_new.csv', converters={'cast': eval}, thousands=',')
-ratings = pd.read_csv('../Data/ratings_100k.csv', converters={'cast': eval})
+
+data = pd.read_csv('../Data/movie_new.csv', converters={'cast': eval})
+movieratings = pd.read_csv('../Data/ratingsg.csv', converters={'cast': eval})
 links = pd.read_csv('../Data/links.csv')
 rdata = pd.DataFrame(columns=['userId', 'movieId', 'rating'])
 adata = pd.DataFrame(columns=['actorId','awards'])
+books = pd.read_csv('../Data/BX-Books.csv', sep=';', error_bad_lines=False, encoding="latin-1")
+books.columns = ["ISBN", "BookTitle","BookAuthor", "YearOfPublication", "Publisher", "ImageURLS", "ImageURLM", "ImageURLL"]
+users = pd.read_csv('../Data/BX-Users - Kopi.csv', sep=';', error_bad_lines=False, encoding="latin-1")
+users.columns = ["UserID","Location","Age"]
+bookratings = pd.read_csv('../Data/BX-Book-Ratings2.csv', sep=';', error_bad_lines=False, encoding="latin-1")
+bookratings.columns = ["UserID", "ISBN", "BookRating"]
+
+# updated_data = pd.read_csv('../Data/movie_new.csv', converters={'cast': eval})
+
 updated_actor = pd.read_csv('../Data/actor_data_new.csv', converters={'cast': eval}) # 'awards': eval, 'nominations': eval
 
 data['rating'] = data['rating'].fillna(0).astype(float)
 data['votes'] = data['votes'].fillna(0).astype(float)
 data['budget'] = data['budget'].fillna(0).astype(float)
 data['gross'] = data['gross'].fillna(0).astype(float)
+
 # function used for updating the movies in movielens dataset by adding data from IMDb
 def update_movie_data():
     actor_id_l = []
@@ -148,11 +160,14 @@ def split_data():
 
 # formats data
 def format_data():
-    rdata['userId'] = 'u' + ratings['userId'].astype(str)
-    rdata['movieId'] = 'm' + ratings['movieId'].astype(str)
-    rdata['rating'] = ratings['rating']
-    rdata['timestamp'] = ratings['timestamp']
+    rdata['userId'] = 'u' + movieratings['userId'].astype(str)
+    rdata['movieId'] = 'm' + movieratings['movieId'].astype(str)
+    rdata['rating'] = movieratings['rating']
+    rdata['timestamp'] = movieratings['timestamp']
+    bookratings['UserID'] = 'u' + bookratings['UserID'].astype(str)
+    users['UserID'] = 'u' + users['UserID'].astype(str)
     # data['genres'] = [str(m).split("|") for m in data.genres] # dont uncomment this PLEASE, unless for testing purposes
+
     # data['movieId'] = 'm' + data['movieId'].astype(str)
 
 
@@ -171,6 +186,11 @@ def normalize_all_data():
     updated_actor['nominations'] = __normalize_data(updated_actor['nominations'])
 
 
+def normalize_book_data():
+    users['Age'] = __normalize_data(users['Age'])
+    bookratings['BookRating'] = __normalize_data(bookratings['BookRating'])
+
+
 # runs the necessary functions from data_setup for recommender.py to function
 def run_data():
     format_data()
@@ -180,6 +200,25 @@ def run_data():
     x_train, x_test = split_data()
     return x_train, x_test
 
+
+def cholo(train, test):
+    lst = []
+    for n in train:
+        n_username = [x for x, y in n.graph.nodes(data=True) if y.get('root')]
+        for m in test:
+            m_username = [x for x, y in m.graph.nodes(data=True) if y.get('root')]
+            if n_username == m_username:
+                lst.append(n)
+    return lst
+
+def run_book_data():
+    X = bookratings
+    # print(y)
+    x_train, x_test = train_test_split(X, test_size=0.2)
+    # next(GroupShuffleSplit(test_size=.20, n_splits=2, random_state=7).split(bookratings, groups=bookratings['UserID']))
+    # train_inds, test_inds
+
+    return x_train, x_test
 
 # returns the coverage of each feature in the data set
 def coverage(dat):
