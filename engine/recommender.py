@@ -3,7 +3,56 @@ from engine.data_setup import *
 import ast
 
 
+def create_user_book_tet(spec, dat):
+    print('colons')
+    print(dat.columns)
+    roots = np.unique(dat.UserID)
+    complete = []
+    for r in roots:
+        ms = Multiset()  # here we instantiate our TETs
+        complete.append(__create_user_book_tet(r, spec, ms, dat))
+    return complete
 # call function for creating user TETs for MovieLens
+
+
+def __create_user_book_tet(user, tet_spec, ms, dat):
+    nodes = [n[-1] for n in dfs_edges(tet_spec, source="user")]
+    ms.add_root(user, 1)
+    user_ratings = dat[dat['UserID'] == user]
+    user_info = users[users['UserID'] == user]
+    user_book = [books.ISBN.isin(user_ratings['ISBN'])]
+    # user_book['BookRating'] = user_book['BookRating'].fillna(0).astype(int)
+
+    for node in nodes:
+        if node == 'has_rated':
+            for y,x in user_ratings.iterrows():
+                ms.add_node_w_count(str(x['ISBN']), 1, 'has_rated')
+                ms.add_edge((user, str(x['ISBN'])))
+        elif node == 'rating':
+            for y, x in user_ratings.iterrows():
+                rat = int(x['BookRating']) * 0.1
+                ms.add_node_w_count_w_val(f'ur{y}', rat, int(x['BookRating']), 'rating')
+                ms.add_edge((str(x['ISBN']), f'ur{y}'))
+        elif node == 'location':
+            for y, x in user_info.iterrows():
+                tmp = x['country']
+                # print(tmp)
+                ms.add_node_w_count(f'hl{y}', 1, 'location')
+                ms.add_edge((str(x['UserID']), f'hl{y}'))
+                if not tmp == None:
+                    for idx, country in enumerate(tmp):
+                        ms.add_node_w_count(f'l{y}{idx}', 1, str(country))
+                        ms.add_edge((f'hl{y}', f'l{y}{idx}'))
+        elif node == 'age':
+            for y, x in user_info.iterrows():
+                ag = int(x['Age']) * 0.0111
+                ms.add_node_w_count(f'a{y}', ag, 'age')
+                ms.add_edge((user, f'a{y}'))
+    return ms
+
+
+
+
 def create_user_movie_tet(spec, dat):
     roots = np.unique(dat.userId)
     # roots = [n for n, info in graph.nodes(data=True) if info.get(f'{root}')]
