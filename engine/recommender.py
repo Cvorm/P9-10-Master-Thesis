@@ -2,7 +2,10 @@ from engine.multiset import *
 from engine.data_setup import *
 import ast
 
+
 def create_user_book_tet(spec, dat):
+    print('colons')
+    print(dat.columns)
     roots = np.unique(dat.UserID)
     complete = []
     for r in roots:
@@ -10,6 +13,7 @@ def create_user_book_tet(spec, dat):
         complete.append(__create_user_book_tet(r, spec, ms, dat))
     return complete
 # call function for creating user TETs for MovieLens
+
 
 def __create_user_book_tet(user, tet_spec, ms, dat):
     nodes = [n[-1] for n in dfs_edges(tet_spec, source="user")]
@@ -42,8 +46,8 @@ def __create_user_book_tet(user, tet_spec, ms, dat):
         elif node == 'age':
             for y, x in user_info.iterrows():
                 ag = int(x['Age']) * 0.0111
-                ms.add_node_w_count_w_val(f'ur{y}', ag, int(x['Age']), 'age')
-                ms.add_edge((str(x['Age']), f'ur{y}'))
+                ms.add_node_w_count(f'a{y}', ag, 'age')
+                ms.add_edge((user, f'a{y}'))
     return ms
 
 

@@ -62,6 +62,9 @@ users['state'] = location['state']
 users['country'] = location['country']
 
 users.drop(["Location", "city", "state"],axis=1,inplace=True)
+# users.loc[(users.country == None)] = 'usa'
+users["country"].fillna(method ='ffill', inplace = True)
+
 # users['country'] = users['country'].astype('|S80')
 # [s.strip('.') for s in users.country]
 # books.country = pd.books.country.to_string(books.country, errors='coerce')
@@ -109,5 +112,4 @@ tetspecification.append(tetedges)
 print(tetspecification)
 book_spec = tet_specification(tetspecification[0], tetspecification[1])
 # for c in uniquelist:
-booktet = create_user_book_tet(book_spec, bookratings)
-print('hej')
+
