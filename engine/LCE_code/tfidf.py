@@ -25,7 +25,7 @@ import scipy.sparse
 def tfidf(x_train, x_test):
     idf = np.divide(x_train.shape[0], (sum(x_train > 0) + np.spacing(1)))
     # IDF = spdiags(idf', 0, size(idf,2), size(idf,2));
-    IDF = sp.sparse.diags(idf, 0, idf.shape[1], idf.shape[1])
+    IDF = sp.sparse.spdiags(idf, 0, idf.shape[1], idf.shape[1])
     x_train = x_train * IDF
     x_train = L2_norm_row(x_train)
 
@@ -34,6 +34,5 @@ def tfidf(x_train, x_test):
 
     return x_train, x_test
 
-def L2_norm_row(x):
-    xnorm = sp.sparse.diags(np.array([1 / (np.sqrt(np.sum(x * x, 2))), 0, x.shape[0], x.shape[0]])) @ x
-    return xnorm
+def L2_norm_row(X):
+    return sp.sparse.spdiags(1. / (np.sqrt(sum(X * X, 2)) + eps), 0, len(X), len(X)) * X
