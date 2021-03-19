@@ -14,6 +14,19 @@ def get_movies_user(user):
     res = sort_movies #[:top_k_movies]
     return res
 
+def get_books_user(user):
+    movies = {}
+    for x, y in user.graph.nodes(data=True):
+        # if type(x) is str and x[0] == 'm':
+        if y.get('type') == 'has_rated':
+            for n in user.graph.neighbors(x):
+                if type(n) is str and n[:2] == 'ur': #user.graph[n].get['type'] == 'has_user_rating':
+                    rat = user.graph.nodes(data=True)[n]['mult']
+                    movies[x] = rat
+    sort_movies = sorted(movies.items(), key=lambda k: k[1], reverse=True)
+    res = sort_movies #[:top_k_movies]
+    return res
+
 
 # returns a list of all movies for a user
 def get_movies_in_user(user):
@@ -21,6 +34,16 @@ def get_movies_in_user(user):
     for x, y in user.graph.nodes(data=True):
         if type(x) is str and x[0] == 'm':
             tmp_list.append(x)
+    return tmp_list
+
+
+def get_books_in_user(user):
+    tmp_list = []
+    for x, y in user.graph.nodes(data=True):
+        # if type(x) is str and x[:4] == 'ISBN':
+        if y.get('type') == 'has_rated':
+            tmp_list.append(x)
+            print('succes')
     return tmp_list
 
 
@@ -39,8 +62,22 @@ def get_movies(user_hist, other_users_hist):
     return res
 
 
+def get_books(user_hist, other_users_hist):
+    movies = []
+    for u in other_users_hist:
+        temp_movies = get_books_user(u)
+        for i in temp_movies:
+            movies.append(i)
+    no_duplicates = [list(v) for v in dict(movies).items()]
+    mu = get_books_in_user(user_hist)
+    no_mas = [(x,y) for x,y in no_duplicates if x not in mu]
+    sort_movies = sorted(no_mas, key=lambda k: k[1], reverse=True)
+    res = sort_movies #[:top_k_movies]
+    return res
+
+
 def average(lst):
-    return sum(lst) / len(lst)
+    return sum(lst) / len(lst) if len(lst) != 0 else 0
 
 
 def get_similarity(user_hist, other_users_hist):
@@ -51,6 +88,7 @@ def get_similarity(user_hist, other_users_hist):
         movies = []
         for i in temp_movies:
             movies.append(i)
+        # print(movies)
         # no_duplicates = [list(v) for v in dict(movies).items()]
         no_mas = [(x, y) for x, y in movies if x not in mu]
         tmp_val = len(movies) - len(no_mas)
@@ -60,6 +98,7 @@ def get_similarity(user_hist, other_users_hist):
             sim_tmp = 0
         else:
             sim_tmp = tmp_val / len(movies)
+
         # print(sim_tmp)
         usersims.append(sim_tmp)
 
@@ -86,6 +125,16 @@ def get_rating(user, movieid):
     return 0
 
 
+def get_book_rating(user, movieid):
+    for x, y in user.graph.nodes(data=True):
+        if type(x) is str and x == movieid:
+            for n in user.graph.neighbors(x):
+                if type(n) is str and n[:2] == 'ur': #user.graph[n].get['type'] == 'has_user_rating':
+                    rat = user.graph.nodes(data=True)[n]['mult']
+                    return rat
+    return 0
+
+
 def create_movie_rec_dict(tet_train, tet_test, metric_tree, mt_search_k, spec):
     user_est_true = defaultdict(list)
     sim_score = 0.0
@@ -100,6 +149,7 @@ def create_movie_rec_dict(tet_train, tet_test, metric_tree, mt_search_k, spec):
         sim_score = sim_score + get_similarity(tet, similar_users)
     sim_score = sim_score / len(tet_train)
     return user_est_true, sim_score
+
 
 
 def get_movie_actual_and_pred(tet_train, tet_test, metric_tree, mt_search_k, spec):
