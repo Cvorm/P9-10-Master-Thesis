@@ -3,9 +3,7 @@ import numpy as np
 import imdb
 import re
 from sklearn.model_selection import train_test_split, GroupShuffleSplit
-
 moviesDB = imdb.IMDb()
-
 data = pd.read_csv('../Data/movie_new.csv', converters={'cast': eval})
 movieratings = pd.read_csv('../Data/ratingsg.csv', converters={'cast': eval})
 links = pd.read_csv('../Data/links.csv')
@@ -28,6 +26,15 @@ data['budget'] = data['budget'].fillna(0).astype(float)
 data['gross'] = data['gross'].fillna(0).astype(float)
 
 # function used for updating the movies in movielens dataset by adding data from IMDb
+
+
+def data_test():
+    format_data()
+    normalize_all_data()
+    x_train, x_test = train_test_split(rdata, test_size=0.2)
+    return x_train, x_test
+
+
 def update_movie_data():
     actor_id_l = []
     for index, movie in data.iterrows():

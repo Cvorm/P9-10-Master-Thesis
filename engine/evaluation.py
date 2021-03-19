@@ -1,7 +1,6 @@
 from engine.metric_tree import *
 from collections import defaultdict
-
-
+from typing import List
 # returns a sorted list of a users movies based on rating
 def get_movies_user(user):
     movies = {}
@@ -152,20 +151,42 @@ def create_movie_rec_dict(tet_train, tet_test, metric_tree, mt_search_k, spec):
     return user_est_true, sim_score
 
 
-def create_book_rec_dict(tet_train, tet_test, metric_tree, mt_search_k, spec):
-    user_est_true = defaultdict(list)
-    sim_score = 0.0
+
+def get_movie_actual_and_pred(tet_train, tet_test, metric_tree, mt_search_k, spec):
+    user = []
     for tet in tet_train:
+        act_est = defaultdict(list)
         username = [x for x,y in tet.graph.nodes(data=True) if y.get('root')]
         user_leftout = get_tet_user(tet_test, username[0])
         similar_users = mt_search(metric_tree, tet, mt_search_k, spec)
-        predicted_movies = get_books(tet, similar_users)
-        for mid, est in predicted_movies:
-            true_r = get_rating(user_leftout, mid)
-            user_est_true[username[0]].append((est, true_r))
-        sim_score = sim_score + get_similarity(tet, similar_users)
-    sim_score = sim_score / len(tet_train)
-    return user_est_true, sim_score
+        predicted_movies = get_movies(tet, similar_users)
+        actual = get_movies_in_user(user_leftout)
+        act_est['actual'].append(actual)
+        yo = foo(predicted_movies)
+        act_est['pred'].append(yo)
+        user.append(act_est)
+
+    return user
+
+def format_model_third(tet_train, tet_test, metric_tree, mt_search_k, spec):
+    predicted = []
+    actual = []
+    for tet in tet_train:
+        username = [x for x, y in tet.graph.nodes(data=True) if y.get('root')]
+        user_leftout = get_tet_user(tet_test, username[0])
+        similar_users = mt_search(metric_tree, tet, mt_search_k, spec)
+        predicted_movies = get_movies(tet, similar_users)
+        act = get_movies_in_user(user_leftout)
+        actual.append(act)
+        yo = foo(predicted_movies)
+        predicted.append(yo)
+    return predicted, actual
+
+def foo(predicted):
+    l = []
+    for (x,y) in predicted:
+        l.append(x)
+    return l
 
 
 def precision_recall_at_k(user_est_true, k, threshold=4):
@@ -183,3 +204,91 @@ def precision_recall_at_k(user_est_true, k, threshold=4):
     return precisions, recalls
 
 
+def yallah(habi, k):
+    r_sum = 0
+    for x, y in habi.items():
+        r = apk(y['actual'][0], y['prediction'][0], k)
+        # print(f'precision {r}')
+        r_sum += r
+    return r_sum / len(habi) if len(habi) != 0 else 0
+
+def yallah2(habi, k):
+    r_sum = 0
+    for x in habi:
+        r = apk(x['actual'], x['prediction'], k)
+        # print(f'precision {r}')
+        r_sum += r
+    return r_sum / len(habi) if len(habi) != 0 else 0
+
+
+def apk(actual, predicted, k):
+    pred = predicted
+    act = actual
+    if len(pred) > k:
+        pred = pred[:k]
+    score = 0.0
+    num_hits = 0.0
+    for i,p in enumerate(pred):
+        if p in act and p not in pred[:i]:
+            num_hits += 1.0
+            score += num_hits / (i+1.0)
+    if not act:
+        print('NOT ACTUAL')
+        return 0.0
+    return score / min(len(act), k)
+
+
+def cholo(train, test):
+    lst = []
+    for n in train:
+        n_username = [x for x,y in n.graph.nodes(data=True) if y.get('root')]
+        for m in test:
+            m_username = [x for x, y in m.graph.nodes(data=True) if y.get('root')]
+            if n_username == m_username:
+                lst.append(n)
+    return lst
+
+def recommender_precision(predicted: List[list], actual: List[list]) -> int:
+    """
+    Computes the precision of each user's list of recommendations, and averages precision over all users.
+    ----------
+    actual : a list of lists
+        Actual items to be predicted
+        example: [['A', 'B', 'X'], ['A', 'B', 'Y']]
+    predicted : a list of lists
+        Ordered predictions
+        example: [['X', 'Y', 'Z'], ['X', 'Y', 'Z']]
+    Returns:
+    -------
+        precision: int
+    """
+    def calc_precision(predicted, actual):
+        prec = [value for value in predicted if value in actual]
+        prec = np.round(float(len(prec)) / float(len(predicted)), 4)
+        return prec
+
+    precision = np.mean(list(map(calc_precision, predicted, actual)))
+    return precision
+
+
+def recommender_recall(predicted: List[list], actual: List[list]) -> int:
+    """
+    Computes the recall of each user's list of recommendations, and averages precision over all users.
+    ----------
+    actual : a list of lists
+        Actual items to be predicted
+        example: [['A', 'B', 'X'], ['A', 'B', 'Y']]
+    predicted : a list of lists
+        Ordered predictions
+        example: [['X', 'Y', 'Z'], ['X', 'Y', 'Z']]
+    Returns:
+    -------
+        recall: int
+    """
+    def calc_recall(predicted, actual):
+        reca = [value for value in predicted if value in actual]
+        reca = np.round(float(len(reca)) / float(len(actual)), 4)
+        return reca
+
+    recall = np.mean(list(map(calc_recall, predicted, actual)))
+    return recall
