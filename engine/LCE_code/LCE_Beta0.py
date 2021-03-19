@@ -7,6 +7,7 @@ import scipy.sparse
 import random
 def LCE(Xs, Xu, A, k, alpha, beta, lamb, epsilon, maxiter, verbose=True):
 
+    # np.random.seed(354)
     n = Xs.shape[0]
     v1 = Xs.shape[1]
     v2 = Xu.shape[1]
@@ -68,7 +69,7 @@ def LCE(Xs, Xu, A, k, alpha, beta, lamb, epsilon, maxiter, verbose=True):
 
         Obj = tr1 + tr2 + tr3 + tr4
         ObjHist.append(Obj)
-
+        print(itNum)
         if itNum > 1:
             delta = abs(ObjHist[-1] - ObjHist[-2])
             if verbose:
@@ -135,6 +136,10 @@ def LCE_Beta0(xs, xu, k, alpha, lambdaaa, epsilon, maxiter, verbose):
 
     return w, hs, hu, objhistory
 
-def tr(a,b):
-    trab = np.sum(np.sum(a * b))
-    return trab
+def tr(A,B):
+    "Calculate the trace between A and B"
+    x = np.multiply(A, B)
+    return (x.sum(axis=0)).sum(axis=0)
+
+    # trab = np.sum(np.sum(a * b))
+    # return trab

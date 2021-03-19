@@ -153,10 +153,19 @@ maxiter = 10
 verbose = True
 beta = 0.05
 
-# lul = pd.read_csv("../LCE_code/LCE_data/A.csv")
+lul = pd.read_csv("../LCE_code/LCE_data/AAAAAAAAAAAAAA.csv")
+lul.loc[len(lul)] = 0
+lul = lul.shift()
+lul.loc[0] = 0
+lul.columns = range(lul.shape[1])
+lul.to_numpy()
+# lul.append(pd.Series(name='0'), ignore_index=True)
+# lul.index = lul.index + 1
 # aaaa = scipy.sparse.csr_matrix(lul.values).toarray()
+# a = construct_A(xs_train, 1, True)
 a = construct_A(xs_train, 1, True)
-a = a.toarray()
+# a = a.toarray()
+# np.fill_diagonal(a, 0)
 w, hu, hs, objhistory = LCE(xs_train,  L2_norm_row(xu_train), a, k, alpha, beta, lambdaa, epsilon, maxiter, verbose)
 
 # w_test = xs_test / hs
