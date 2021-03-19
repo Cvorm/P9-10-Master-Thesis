@@ -1,5 +1,6 @@
 import time
 import sys
+from sklearn.metrics import precision_score
 from experiments.baselines import *
 # tet specification settings: [[nodes],[edges]]
 specification_movie = [["user", "has_rated", "has_genres", "has_imdb_rating", "has_user_rating", "has_votes", "has_director", "has_awards", "has_nominations",
@@ -26,23 +27,25 @@ bin_amount = 10
 # metric tree settings
 
 mt_depth = 12 # int(inp[3])
-bucket_max_mt = 30
-mt_search_k = 30 # int(inp[1])
-k_movies = 10 # int(inp[2])
+bucket_max_mt = 25
+mt_search_k = 1 # int(inp[1])
+k_movies = 5 # int(inp[2])
 
 # print settings
 top = 5
 # seed
 np.random.seed(1)
+
+
 def run_baselines():
     print('Running baselines...')
-    x_train, x_test = run_data()
-    print('Running SVD...')
-    run_SVD(x_train, x_test, k_movies)
+    x_train, x_test = run_data() #data_test()
+    # print('Running SVD...')
+    # run_SVD(x_train, x_test, k_movies)
     print('Running KNN...')
     run_KNN(x_train, x_test, k_movies)
-    print('Running Normal Predictor...')
-    run_NORMPRED(x_train, x_test, k_movies)
+    # print('Running Normal Predictor...')
+    # run_NORMPRED(x_train, x_test, k_movies)
 
 
 # overall run function, where we run our 'pipeline'
@@ -52,7 +55,7 @@ def run():
     start_time_total = time.time()
 
     print('Formatting data...', file=f)
-    x_train, x_test = run_data()
+    x_train, x_test = data_test() #run_data()
     print('Building TET specification...')
     print('Building TET specification...', file=f)
     start_time = time.time()
@@ -63,7 +66,12 @@ def run():
     print('Generating TETs according to specification...')
     start_time = time.time()
     tet = create_user_movie_tet(spec, x_train)
+    print(tet)
     test_tet = create_user_movie_tet(spec, x_test)
+    print(f'Training length: {len(tet)}, Test length: {len(test_tet)}')
+    tet = cholo(tet,test_tet)
+    print(tet)
+    print(f'Length new TET {len(tet)}')
     print("--- %s seconds ---" % (time.time() - start_time), file=f)
 
     print('Performing Logistic Evaluation on TETs...')
@@ -80,7 +88,8 @@ def run():
     [g.histogram(spec, 'user') for g in tet]
     [g.histogram(spec, 'user') for g in test_tet]
     print("--- %s seconds ---" % (time.time() - start_time), file=f)
-
+    [print(tet[i].ht.nodes(data=True)) for i in range(top)]
+    [print(tet[i].graph.nodes(data=True)) for i in range(top)]
     print('Building Metric Tree...')
     print('Building Metric Tree...', file=f)
     start_time = time.time()
@@ -89,27 +98,16 @@ def run():
     print(f' MT edges: {mts.edges}', file=f)
     print("--- %s seconds ---" % (time.time() - start_time), file=f)
 
-    # start_time = time.time()
-    # target_user = tet[3]    # test_tet[0]
-    # mts_res = mt_search(mts, target_user, mt_search_k, spec)
-    # predicted_movies = get_movies(target_user, mts_res)
-    # seen_movies = get_movies_in_user(target_user)
-    # sim_test = get_similarity(target_user, mts_res)
-    # print(sim_test)
     print('Evaluating model...')
+    movie_true = get_movie_actual_and_pred(tet, test_tet, mts, mt_search_k, spec)
+    predicted, actual = format_model_third(tet, test_tet, mts, mt_search_k, spec)
+    print(f'Alternative Precision {recommender_precision(predicted, actual)}')
+    print(f'Alternative Recall {recommender_recall(predicted, actual)}')
+    print(f'APK {yallah2(movie_true, k_movies)}')
     movie_dict, sim_score = create_movie_rec_dict(tet, test_tet, mts, mt_search_k, spec)
     precisions, recalls = precision_recall_at_k(movie_dict, k_movies)
     print(f' PRECISION COUNT: {sum(prec for prec in precisions.values()) / len(precisions)}')
     print(f' RECALL COUNT: {sum(rec for rec in recalls.values()) / len(recalls)}')
-
-
-    # print('SEEN',file=f)
-    # [print(get_movies_from_id(m),file=f) for m in seen_movies]
-    # print('PREDICTION',file=f)
-    # [print(get_movies_from_id(m[0]),file=f) for m in predicted_movies[:k_movies]]
-    # print("--- %s seconds ---\n" % (time.time() - start_time), file=f)
-    # print(f'SETTINGS: num of sim neighbors: {mt_search_k}, num of movies: {k_movies}', file=f)
-    # print(f'RESULT: {recall(tet,test_tet, mts, mt_search_k, spec, k_movies)}', file=f)
 
     print('|| ------ COMPLETE ------ ||', file=f)
     print('Total run time: %s seconds.' % (time.time() - start_time_total), file=f)
