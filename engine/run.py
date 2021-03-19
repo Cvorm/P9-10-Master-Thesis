@@ -1,9 +1,5 @@
 import time
 import sys
-# from engine.matrix_fac import *
-# from engine.recommender import *
-# from engine.evaluation import *
-from engine.crossing import *
 from experiments.baselines import *
 
 # tet specification settings: [[nodes],[edges]]
@@ -33,24 +29,26 @@ bin_amount = 10
 
 
 mt_depth = 12 # int(inp[3])
-bucket_max_mt = 30
-mt_search_k = 30 # int(inp[1])
-k_movies = 10 # int(inp[2])
+bucket_max_mt = 25
+mt_search_k = 1 # int(inp[1])
+k_movies = 5 # int(inp[2])
 
 
 # print settings
 top = 5
 # seed
 np.random.seed(1)
+
+
 def run_baselines():
     print('Running baselines...')
-    x_train, x_test = run_data()
-    print('Running SVD...')
-    run_SVD(x_train, x_test, k_movies)
+    x_train, x_test = run_data() #data_test()
+    # print('Running SVD...')
+    # run_SVD(x_train, x_test, k_movies)
     print('Running KNN...')
     run_KNN(x_train, x_test, k_movies)
-    print('Running Normal Predictor...')
-    run_NORMPRED(x_train, x_test, k_movies)
+    # print('Running Normal Predictor...')
+    # run_NORMPRED(x_train, x_test, k_movies)
 
 
 # overall run function, where we run our 'pipeline'
@@ -61,9 +59,8 @@ def run():
     start_time_total = time.time()
 
     print('Formatting data...', file=f)
-    # x_train, x_test = run_data()
+    x_train, x_test = data_test() #run_data()
     b_train, b_test = run_book_data()
-    print('ass')
     print('Building TET specification...')
     print('Building TET specification...', file=f)
     start_time = time.time()
@@ -73,6 +70,15 @@ def run():
     print('Generating TETs according to specification...', file=f)
     print('Generating TETs according to specification...')
     start_time = time.time()
+
+    tet = create_user_movie_tet(spec, x_train)
+    print(tet)
+    test_tet = create_user_movie_tet(spec, x_test)
+    print(f'Training length: {len(tet)}, Test length: {len(test_tet)}')
+    tet = cholo(tet,test_tet)
+    print(tet)
+    print(f'Length new TET {len(tet)}')
+
     # tet = create_user_movie_tet(spec, x_train)
     # test_tet = create_user_movie_tet(spec, x_test)
     book_tet = create_user_book_tet(book_spec, b_train)
@@ -80,7 +86,6 @@ def run():
     print(f'Training length: {len(book_tet)}, Test length: {len(book_test_tet)}')
     book_tet = cholo(book_tet, book_test_tet)
     print(f'Length new TET {len(book_tet)}')
-
 
     print("--- %s seconds ---" % (time.time() - start_time), file=f)
 
@@ -102,6 +107,9 @@ def run():
     [g.histogram(book_spec, 'user') for g in book_tet]
     [g.histogram(book_spec, 'user') for g in book_test_tet]
     print("--- %s seconds ---" % (time.time() - start_time), file=f)
+    [print(tet[i].ht.nodes(data=True)) for i in range(top)]
+    [print(tet[i].graph.nodes(data=True)) for i in range(top)]
+
     [print(book_tet[i].ht.nodes(data=True)) for i in range(top)]
     [print(book_tet[i].graph.nodes(data=True)) for i in range(top)]
 
@@ -115,18 +123,14 @@ def run():
     # print("--- %s seconds ---" % (time.time() - start_time), file=f)
 
 
-    # start_time = time.time()
-    # target_user = tet[3]    # test_tet[0]
-    # mts_res = mt_search(mts, target_user, mt_search_k, spec)
-    # predicted_movies = get_movies(target_user, mts_res)
-    # seen_movies = get_movies_in_user(target_user)
-    # sim_test = get_similarity(target_user, mts_res)
-    # print(sim_test)
     print('Evaluating model...')
-    # movie_dict, sim_score = create_movie_rec_dict(tet, test_tet, mts, mt_search_k, spec)
-    # precisions, recalls = precision_recall_at_k(movie_dict, k_movies)
-    # print(f' PRECISION COUNT: {sum(prec for prec in precisions.values()) / len(precisions)}')
-    # print(f' RECALL COUNT: {sum(rec for rec in recalls.values()) / len(recalls)}')
+    movie_true = get_movie_actual_and_pred(tet, test_tet, mts, mt_search_k, spec)
+    predicted, actual = format_model_third(tet, test_tet, mts, mt_search_k, spec)
+    print(f'Alternative Precision {recommender_precision(predicted, actual)}')
+    print(f'Alternative Recall {recommender_recall(predicted, actual)}')
+    print(f'APK {yallah2(movie_true, k_movies)}')
+    movie_dict, sim_score = create_movie_rec_dict(tet, test_tet, mts, mt_search_k, spec)
+    precisions, recalls = precision_recall_at_k(movie_dict, k_movies)
 
     print('eabuelaube book bmodles')
     print(f'{len(book_tet), len(book_test_tet)}')
@@ -135,15 +139,6 @@ def run():
     precisions, recalls = precision_recall_at_k(book_dict, k_movies)
     print(f' PRECISION COUNT: {sum(prec for prec in precisions.values()) / len(precisions)}')
     print(f' RECALL COUNT: {sum(rec for rec in recalls.values()) / len(recalls)}')
-
-
-    # print('SEEN',file=f)
-    # [print(get_movies_from_id(m),file=f) for m in seen_movies]
-    # print('PREDICTION',file=f)
-    # [print(get_movies_from_id(m[0]),file=f) for m in predicted_movies[:k_movies]]
-    # print("--- %s seconds ---\n" % (time.time() - start_time), file=f)
-    # print(f'SETTINGS: num of sim neighbors: {mt_search_k}, num of movies: {k_movies}', file=f)
-    # print(f'RESULT: {recall(tet,test_tet, mts, mt_search_k, spec, k_movies)}', file=f)
 
     print('|| ------ COMPLETE ------ ||', file=f)
     print('Total run time: %s seconds.' % (time.time() - start_time_total), file=f)
