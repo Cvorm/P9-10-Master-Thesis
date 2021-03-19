@@ -5,7 +5,7 @@ import pandas as pd
 import scipy as sp
 import scipy.sparse
 import random
-def LCE(Xs, Xu, A, k=15, alpha=0.1, beta=0.05, lamb=0.001, epsilon=0.01, maxiter=150, verbose=True):
+def LCE(Xs, Xu, A, k, alpha, beta, lamb, epsilon, maxiter, verbose=True):
 
     n = Xs.shape[0]
     v1 = Xs.shape[1]

@@ -5,6 +5,8 @@ import pandas as pd
 import scipy as sp
 import scipy.sparse
 from sklearn.neighbors import NearestNeighbors
+from sklearn.neighbors import kneighbors_graph
+from DEMO import *
 
 def sparse(i, j, v, m, n):
     """
@@ -24,13 +26,19 @@ def sparse(i, j, v, m, n):
     """
     return scipy.sparse.csr_matrix((v, (i, j)), shape=(m, n))
 
-def construct_A(X, k, binary=False):
+# def construct_A(X, k, binary):
+#
+#     nbrs = NearestNeighbors(n_neighbors=1 + k).fit(X)
+#     if binary:
+#         return nbrs.kneighbors_graph(X)
+#     else:
+#         return nbrs.kneighbors_graph(X, mode='distance')
+#         # no_duplicates = [list(v) for v in dict(movies).items()]
+#         # a = [x for x in a]
+#         # [] = 1
 
-    nbrs = NearestNeighbors(n_neighbors=1 + k).fit(X)
-    if binary:
-        return nbrs.kneighbors_graph(X)
-    else:
-        return nbrs.kneighbors_graph(X, mode='distance')
-        # no_duplicates = [list(v) for v in dict(movies).items()]
-        # a = [x for x in a]
-        # [] = 1
+def construct_A(X, k, binary):
+    n = X.shape[0]
+    X = L2_norm_row(X)
+    S = X.dot(X.conj().T)
+

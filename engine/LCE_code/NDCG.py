@@ -7,7 +7,7 @@ import scipy.sparse
 
 def NDCG(p,y):
     n, m = np.shape(p)
-    num_rel = np.sum(y,2)
+    num_rel = np.sum(y, axis=1)
     void, idx = np.argsort(-p, kind='quicksort')
     result = 0
     denominator = np.array([1, 1/math.log(m[2:m], 2)])
