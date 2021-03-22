@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
-from engine.data_setup import *
-from recommender import *
+# from engine.data_setup import *
+from engine.recommender import *
 
 # print(books.shape)
 # print(users.shape)
