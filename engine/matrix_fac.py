@@ -363,7 +363,7 @@ def non_neg_matrix_fac(matrix):
     # nnmf = pymf.NMF(matrix, num_bases=ranks)
     # nnmf.factorize()
 
-non_neg_matrix_fac("user_item_rating_matrix.csv")
+# non_neg_matrix_fac("user_item_rating_matrix.csv")
 # myesss = sort_items(["m1000", "m900", "m714", "m1300"])
 # print(myesss)
 

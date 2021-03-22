@@ -3,6 +3,53 @@ from engine.data_setup import *
 import ast
 pd.set_option('display.max_columns', None)
 
+#matrix
+def create_movie_tet(spec, dataframe, source):
+    roots = np.unique(dataframe.movieId)
+    complete = []
+    for r in roots:
+        ms = Multiset()
+        complete.append(__create_movie_tet(r, spec, ms, source))
+    return complete
+
+
+#matrix
+def __create_movie_tet(movie, tet_spec, ms, source):
+    nodes = [n[-1] for n in dfs_edges(tet_spec, source=source)]
+    ms.add_root_movie(movie, 1)
+    this_movie = data[data['movieId'] == movie]
+    # print(this_movie.head())
+    user_director = updated_actor[updated_actor.actorId.isin(this_movie['director'])]
+    # print(user_director)
+    for node in nodes:
+        if node == 'has_imdb_rating':
+            # print(this_movie.iloc[0]['rating'])
+            ms.add_node_w_count(f'ir{this_movie["movieId"]}', this_movie['rating'], 'has_imdb_rating')
+            ms.add_edge((str(this_movie['movieId']), f'ir{this_movie["movieId"]}'))
+        elif node == 'has_director':
+            ms.add_node_w_count(str(this_movie['director']), 1, 'has_director')
+            ms.add_edge((str(this_movie['movieId']), str(this_movie['director'])))
+        elif node == 'has_genres':
+            for y, x in this_movie.iterrows():
+                tmp = x['genres']
+                tmp = ast.literal_eval(tmp)
+                tmp_count = len(tmp)
+                ms.add_node_w_count(f'hg{y}', int(tmp_count), 'has_genres')
+                ms.add_edge((str(x['movieId']), f'hg{y}'))
+                for idx, genre in enumerate(tmp):
+                    ms.add_node_w_count(f'g{y}{idx}', 1, str(genre))
+                    ms.add_edge((f'hg{y}', f'g{y}{idx}'))
+        elif node == 'has_awards':
+                ms.add_node_w_count(f'a{this_movie["movieId"]}', user_director['awards'], 'has_awards')
+                ms.add_edge((str(user_director['actorId']), f'a{this_movie["movieId"]}'))
+        elif node == 'has_nominations':
+                ms.add_node_w_count(f'n{this_movie["movieId"]}', user_director['nominations'], 'has_nominations')
+                ms.add_edge((str(user_director['actorId']), f'n{this_movie["movieId"]}'))
+        elif node == 'has_votes':
+            ms.add_node_w_count(f'hv{this_movie["movieId"]}', this_movie['votes'], 'has_votes')
+            ms.add_edge((str(this_movie['movieId']), f'hv{this_movie["movieId"]}'))
+    return ms
+
 
 def create_user_book_tet(spec, dat):
     print('colons')
