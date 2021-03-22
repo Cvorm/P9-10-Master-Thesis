@@ -1,7 +1,8 @@
 import time
 import sys
 from experiments.baselines import *
-
+from engine.matrix_fac import *
+from engine.recommender import *
 # tet specification settings: [[nodes],[edges]]
 specification_movie = [["user", "has_rated", "has_genres", "has_imdb_rating", "has_user_rating", "has_votes", "has_director", "has_awards", "has_nominations",
                         'Action', 'Adventure', 'Animation', 'Children', 'Comedy', 'Crime', 'Documentary', 'Drama', 'Fantasy', 'Film-Noir',
@@ -13,8 +14,20 @@ specification_movie = [["user", "has_rated", "has_genres", "has_imdb_rating", "h
                         ("has_genres", "Action"),  ("has_genres", "Adventure"), ("has_genres", "Animation"),  ("has_genres", "Children"),  ("has_genres", "Comedy"),
                         ("has_genres", "Crime"),  ("has_genres", "Documentary"), ("has_genres", "Drama"),  ("has_genres", "Fantasy"),  ("has_genres", "Film-Noir"),
                         ("has_genres", "Horror"),  ("has_genres", "IMAX"), ("has_genres", "Musical"),  ("has_genres", "Mystery"),  ("has_genres", "Romance"),
-                        ("has_genres", "Sci-Fi"),  ("has_genres", "Thriller"), ("has_genres", "War"),  ("has_genres", "Western")]
-                       ]
+
+                        ("has_genres", "Sci-Fi"),  ("has_genres", "Thriller"), ("has_genres", "War"),  ("has_genres", "Western")]]
+
+specification_moviessss = [["movie", "has_genres", "has_votes", "has_imdb_rating", "has_user_rating", "has_director", "has_awards", "has_nominations",
+                        'Action', 'Adventure', 'Animation', 'Children', 'Comedy', 'Crime', 'Documentary', 'Drama', 'Fantasy', 'Film-Noir',
+                        'Horror', 'IMAX', 'Musical', 'Mystery', 'Romance', 'Sci-Fi', 'Thriller', 'War', 'Western'],
+                       [("movie", "has_genres"), ("movie", "has_votes"), ("movie", "has_imdb_rating"), ("movie", "has_user_rating"),
+                        ("movie", "has_director"),
+                        ("has_director", "has_awards"), ("has_director", "has_nominations"),
+                        ("has_genres", "Action"),  ("has_genres", "Adventure"), ("has_genres", "Animation"),  ("has_genres", "Children"),  ("has_genres", "Comedy"),
+                        ("has_genres", "Crime"),  ("has_genres", "Documentary"), ("has_genres", "Drama"),  ("has_genres", "Fantasy"),  ("has_genres", "Film-Noir"),
+                        ("has_genres", "Horror"),  ("has_genres", "IMAX"), ("has_genres", "Musical"),  ("has_genres", "Mystery"),  ("has_genres", "Romance"),
+                        ("has_genres", "Sci-Fi"),  ("has_genres", "Thriller"), ("has_genres", "War"),  ("has_genres", "Western")]]
+
 # "has_budget", "has_gross" ("has_rated", "has_budget"), ("has_rated", "has_gross"),
 # SETTINGS
 inp = sys.argv
@@ -59,7 +72,28 @@ def run():
     start_time_total = time.time()
 
     print('Formatting data...', file=f)
-    x_train, x_test = data_test() #run_data()
+
+    x_train, x_test = data_test() #run_data()X
+    print("------------------------------")
+    print(x_train)
+    print(x_test)
+    print("------------------------------")
+    genres = get_genres()
+
+    # print('Generating graph...', file=f)
+    # start_time = time.time()
+    # training_graph = generate_bipartite_graph(x_train)
+    # test_graph = generate_bipartite_graph(x_test)
+    # print("--- %s seconds ---" % (time.time() - start_time), file=f)
+
+    print('Building TET specification...')
+    print('Building TET specification...', file=f)
+    start_time = time.time()
+    # spec = tet_specification(specification[0], specification[1])
+    spec = tet_specification(specification_movie[0], specification_movie[1])
+    spec2 = tet_specification(specification_moviessss[0], specification_moviessss[1])
+
+    
     b_train, b_test = run_book_data()
     print('Building TET specification...')
     print('Building TET specification...', file=f)
@@ -70,6 +104,19 @@ def run():
     print('Generating TETs according to specification...', file=f)
     print('Generating TETs according to specification...')
     start_time = time.time()
+    tet = create_user_tet(spec, x_train)
+    # tet = create_tet(spec, x_train)
+    test_tet = create_user_tet(spec, x_test)
+    movie_tet = create_movie_tet(spec2, x_train, "movie")
+    # movies_tet = create_movie_tet(spec2, x_train, "movie")
+    print("--- %s seconds ---" % (time.time() - start_time), file=f)
+
+    print('Counting TETs...')
+    print('Counting TETs...', file=f)
+    start_time = time.time()
+    [g.count_tree() for g in tet]
+    [g.count_tree() for g in test_tet]
+    [g.count_tree() for g in movie_tet]
 
     tet = create_user_movie_tet(spec, x_train)
     print(tet)
@@ -92,6 +139,9 @@ def run():
     print('Performing Logistic Evaluation on TETs...')
     print('Performing Logistic Evaluation on TETs...', file=f)
     start_time = time.time()
+    [g.logistic_eval(log_bias, log_weight) for g in tet]
+    [g.logistic_eval(log_bias, log_weight) for g in test_tet]
+    [g.logistic_eval(log_bias, log_weight) for g in movie_tet]
     # [g.logistic_eval(log_bias, log_weight) for g in tet]
     # [g.logistic_eval(log_bias, log_weight) for g in test_tet]
     [g.logistic_eval(log_bias, log_weight) for g in book_tet]
@@ -102,8 +152,12 @@ def run():
     print('Generating histograms...', file=f)
     start_time = time.time()
 
-    # [g.histogram(spec, 'user') for g in tet]
-    # [g.histogram(spec, 'user') for g in test_tet]
+    [g.histogram(spec) for g in tet]
+    [g.histogram(spec) for g in test_tet]
+    [g.histogram2(spec2) for g in movie_tet]
+    print("--- %s seconds ---" % (time.time() - start_time), file=f)
+    [print(tet[i].ht.nodes(data=True)) for i in range(top)]
+    user_item_rating_matrix(tet)
     [g.histogram(book_spec, 'user') for g in book_tet]
     [g.histogram(book_spec, 'user') for g in book_test_tet]
     print("--- %s seconds ---" % (time.time() - start_time), file=f)

@@ -1,6 +1,7 @@
 from engine.multiset import *
 from engine.data_setup import *
 import ast
+pd.set_option('display.max_columns', None)
 
 
 def create_user_book_tet(spec, dat):
@@ -102,9 +103,11 @@ def __create_user_movie_tet(user, tet_spec, ms, dat):
                 tmp = x['genres']
                 tmp = ast.literal_eval(tmp)
                 tmp_count = len(tmp)
+                # print(y, tmp_count)
                 ms.add_node_w_count(f'hg{y}', int(tmp_count), 'has_genres')
                 ms.add_edge((str(x['movieId']), f'hg{y}'))
                 for idx, genre in enumerate(tmp):
+                    # print(idx, genre)
                     ms.add_node_w_count(f'g{y}{idx}', 1, str(genre))
                     ms.add_edge((f'hg{y}', f'g{y}{idx}'))
         elif node == 'has_awards':
