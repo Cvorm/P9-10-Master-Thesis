@@ -1,0 +1,801 @@
+"User-ID";"Location";"Age"
+"1";"nyc, new york, usa";NULL
+"2";"stockton, california, usa";"18"
+"3";"moscow, yukon territory, russia";NULL
+"4";"porto, v.n.gaia, portugal";"17"
+"5";"farnborough, hants, united kingdom";NULL
+"6";"santa monica, california, usa";"61"
+"7";"washington, dc, usa";NULL
+"8";"timmins, ontario, canada";NULL
+"9";"germantown, tennessee, usa";NULL
+"10";"albacete, wisconsin, spain";"26"
+"11";"melbourne, victoria, australia";"14"
+"12";"fort bragg, california, usa";NULL
+"13";"barcelona, barcelona, spain";"26"
+"14";"mediapolis, iowa, usa";NULL
+"15";"calgary, alberta, canada";NULL
+"16";"albuquerque, new mexico, usa";NULL
+"17";"chesapeake, virginia, usa";NULL
+"18";"rio de janeiro, rio de janeiro, brazil";"25"
+"19";"weston, ,";"14"
+"20";"langhorne, pennsylvania, usa";"19"
+"21";"ferrol / spain, alabama, spain";"46"
+"22";"erfurt, thueringen, germany";NULL
+"23";"philadelphia, pennsylvania, usa";NULL
+"24";"cologne, nrw, germany";"19"
+"25";"oakland, california, usa";"55"
+"26";"bellevue, washington, usa";NULL
+"27";"chicago, illinois, usa";"32"
+"28";"freiburg, baden-wuerttemberg, germany";"24"
+"29";"cuernavaca, alabama, mexico";"19"
+"30";"anchorage, alaska, usa";"24"
+"31";"shanghai, n/a, china";"20"
+"32";"portland, oregon, usa";NULL
+"33";"costa mesa, california, usa";"34"
+"34";"london, england, united kingdom";NULL
+"35";"grafton, wisconsin, usa";"17"
+"36";"montreal, quebec, canada";"24"
+"37";"san sebastian, n/a, spain";"23"
+"38";"viterbo, lazio, italy";"34"
+"39";"cary, north carolina, usa";NULL
+"40";"tonawanda, new york, usa";"32"
+"41";"santee, california, usa";"14"
+"42";"appleton, wisconsin, usa";"17"
+"43";"m�xico, m�xico city, distrito federal";NULL
+"44";"black mountain, north carolina, usa";"51"
+"45";"berlin, n/a, germany";NULL
+"46";"heidelberg, baden-wuerttemberg, germany";"31"
+"47";"vicenza, veneto, italy";"21"
+"48";"chicago, illinois, usa";NULL
+"49";"rome, rome, italy";NULL
+"50";"london, england, united kingdom";"17"
+"51";"renton, washington, usa";"34"
+"52";"braunschweig, niedersachsen, germany";NULL
+"53";"tacoma, washington, usa";NULL
+"54";"eubank, kentucky, usa";"44"
+"55";"calgary, alberta, canada";NULL
+"56";"cheyenne, wyoming, usa";"24"
+"57";"roma, lazio, italy";NULL
+"58";"edmonton, alberta, canada";NULL
+"59";"asheville, north carolina, usa";"23"
+"60";"trieste, friuli venezia giulia, italy";NULL
+"61";"winfield, alabama, usa";"30"
+"62";"kennewick, washington, usa";NULL
+"63";"nyack, new york, usa";"57"
+"64";"lyon, rhone, france";"32"
+"65";"n/a, n/a, australia";NULL
+"66";"warman, saskatchewan, canada";"30"
+"67";"framingham, massachusetts, usa";"43"
+"68";"montreal, quebec, canada";NULL
+"69";"vancouver, british columbia, canada";NULL
+"70";"rochester, new york, usa";"44"
+"71";"toronto, ontario, canada";"24"
+"72";"gloucester, england, united kingdom";"34"
+"73";"wentzville, missouri, usa";NULL
+"74";"amsterdam, n/a, netherlands";"30"
+"75";"long beach, california, usa";"37"
+"76";"charleston, south carolina, usa";NULL
+"77";"vancouver, british columbia, canada";NULL
+"78";"oakland, california, usa";"18"
+"79";"ottawa, ontario, canada";"20"
+"80";"etobicoke, ontario, canada";NULL
+"81";"santa cruz, california, usa";NULL
+"82";"del mar, california, usa";NULL
+"83";"eugene, oregon, usa";NULL
+"84";"san diago, california, usa";NULL
+"85";"london, england, united kingdom";"41"
+"86";"los angeles, california, usa";NULL
+"87";"richardson, texas, usa";NULL
+"88";"fayetteville, georgia, usa";NULL
+"89";"plano, texas, usa";"54"
+"90";"powhatan, virginia, usa";"42"
+"91";"toronto/newmarket, ,";NULL
+"92";"castellar del valles, barcelona, spain";"20"
+"93";"eden, wisconsin, usa";"50"
+"94";"tehran, tehran, iraq";"39"
+"95";"grand island, new york, usa";NULL
+"96";"helsinki, alaska, finland";NULL
+"97";"mechanicsburg, pennsylvania, usa";NULL
+"98";"pukekohe, auckland, new zealand";"19"
+"99";"franktown, colorado, usa";"42"
+"100";"madrid, n/a, spain";"44"
+"101";"nagpur, idaho, india";"26"
+"102";"barcelona, n/a, spain";NULL
+"103";"litchfield park, arizona, usa";"53"
+"104";"foxboro, massachusetts, usa";"47"
+"105";"hull, england, united kingdom";"36"
+"106";"rome, georgia, usa";NULL
+"107";"lethbridge, alberta, canada";NULL
+"108";"claremore, oklahoma, usa";NULL
+"109";"muncie, indiana, usa";"20"
+"110";"peoira, illinois, usa";NULL
+"111";"avintes, v.n. gaia, portugal";"25"
+"112";"mexico city, d.f., mexico";"32"
+"113";"san francisco, california, usa";NULL
+"114";"ligonier, pennsylvania, usa";"57"
+"115";"canton, ohio, usa";NULL
+"116";"burien, washington, usa";NULL
+"117";"ann arbor, michigan, usa";"57"
+"118";"kronberg, hessen, ghana";"28"
+"119";"huntington, vermont, usa";"35"
+"120";"villeneuve d`ascq, nord, france";"13"
+"121";"rochester, minnesota, usa";NULL
+"122";"charlotte, north carolina, usa";NULL
+"123";"ann arbor, michigan, usa";"24"
+"124";"papillion, nebraska, usa";"58"
+"125";"lansing, michigan, usa";"49"
+"126";"eindhoven, noord-brabant, netherlands";"24"
+"127";"geneva, ge, switzerland";"28"
+"128";"allison park, pennsylvania, usa";NULL
+"129";"bloomington, minnesota, usa";"47"
+"130";"roma, lazio, italy";NULL
+"131";"chapel hill, north carolina, usa";NULL
+"132";"silver spring, maryland, usa";"38"
+"133";"jacksonville, florida, usa";"45"
+"134";"canberra, australian capital territory, australia";NULL
+"135";"berkshire, new york, usa";NULL
+"136";"sacramento, california, usa";NULL
+"137";"vancouver, british columbia, canada";NULL
+"138";"santa, california, usa";"28"
+"139";"baltimore, maryland, usa";"35"
+"140";"kappelrodeck, baden-wuerttemberg, germany";"24"
+"141";"darien, new york, usa";NULL
+"142";"derby, kansas, usa";NULL
+"143";"san francisco, california, usa";"26"
+"144";"cape girardeau, missouri, usa";"62"
+"145";"inverness, scotland, united kingdom";NULL
+"146";"la, california, usa";NULL
+"147";"west haverstraw, new york, usa";NULL
+"148";"essex, england, united kingdom";"63"
+"149";"ljubljana, n/a, slovenia";NULL
+"150";"mashhad, islam, iran";"25"
+"151";"darwin, northern territory, australia";NULL
+"152";"enschede, overijssel, netherlands";"26"
+"153";"lille, nord of france, france";"24"
+"154";"saskatoon, saskatchewan, canada";NULL
+"155";"lion, abruzzo, peru";NULL
+"156";"sarajevo, n/a, bosnia and herzegovina";"20"
+"157";"legnano, lombardia, italy";"36"
+"158";"nufringen, baden-wuerttemberg, germany";"38"
+"159";"plymouth, minnesota, usa";NULL
+"160";"almada, n/a, portugal";"20"
+"161";"lisboa, lisboa, portugal";"27"
+"162";"newark, delaware, usa";NULL
+"163";"carlsbad, california, vietnam";NULL
+"164";"tuxtla gutierrez, chiapas, mexico";"33"
+"165";"olympia, washington, usa";"62"
+"166";"bacchus marsh, victoria, australia";"20"
+"167";"helena, montana, usa";NULL
+"168";"sunnyvale, california, usa";"44"
+"169";"arlington, virginia, usa";NULL
+"170";"roswell, georgia, usa";NULL
+"171";"ita�, s�o paulo, brazil";"29"
+"172";"rio de janeiro, rio de janeiro, brazil";"66"
+"173";"ames, iowa, usa";NULL
+"174";"kandy, central, sri lanka";"31"
+"175";"porto, n/a, portugal";NULL
+"176";"london, london, united kingdom";"34"
+"177";"amsterdam, n/a, netherlands";"46"
+"178";"rexford, new york, usa";"28"
+"179";"wazirabad, punjab, pakistan";NULL
+"180";"copenhagen n, n/a, denmark";NULL
+"181";"karachi, sindh, pakistan";NULL
+"182";"buitenpost, frysl�n, netherlands";"36"
+"183";"porto, porto, portugal";"27"
+"184";"seattle, washington, usa";NULL
+"185";"baton rouge, louisiana, usa";"17"
+"186";"jacksonville, north carolina, usa";NULL
+"187";"mcas futenma fpo ap okinawa, n/a, usa";"29"
+"188";"portland, oregon, usa";"17"
+"189";"blankenberge, n/a, belgium";"31"
+"190";"wezembeek-oppem, brussels, belgium";"33"
+"191";"berlin, berlin, germany";"40"
+"192";"sunnyvale, california, usa";NULL
+"193";"mumbai, maharashtra, india";"23"
+"194";"lake forest, illinois, usa";NULL
+"195";"chandler, arizona, usa";"23"
+"196";"subang jaya, selangor darul ehsan, malaysia";"33"
+"197";"brantford, ontario, canada";NULL
+"198";"augsburg, bayern, germany";"21"
+"199";"austin, texas, usa";"38"
+"200";"aberdeen, scotland, united kingdom";"27"
+"201";"sharjah, sharjah, u.a.e";NULL
+"202";"ottawa, ontario, canada";"28"
+"203";"charleston, south carolina, usa";NULL
+"204";"turner, oregon, usa";"15"
+"205";"istanbul, victoria, turkey";"23"
+"206";"versailles, ile de france, france";"60"
+"207";"west bend, wisconsin, usa";NULL
+"208";"bremen, bremen, germany";NULL
+"209";"pj, selangor, malaysia";"21"
+"210";"albany, new york, usa";"54"
+"211";"lleida, lleida, spain";"21"
+"212";"manila, n/a, philippines";"21"
+"213";"gainesville, florida, usa";NULL
+"214";"longmont, colorado, usa";"27"
+"215";"port alberni, british columbia, canada";"20"
+"216";"barcelona, georgia, spain";"42"
+"217";"spencer, massachusetts, usa";NULL
+"218";"hyderabad, alabama, india";"41"
+"219";"bismark, sachsen-anhalt, greece";NULL
+"220";"bogota, bogota, colombia";"0"
+"221";"palm beach, florida, usa";"79"
+"222";"kingston, massachusetts, usa";NULL
+"223";"wazirabad, punjab, pakistan";NULL
+"224";"strafford, missouri, usa";NULL
+"225";"elgin, texas, usa";NULL
+"226";"new york, new york, usa";NULL
+"227";"high wycombe, bucks, united kingdom";NULL
+"228";"ann arbor, michigan, usa";"41"
+"229";"delhi, delhi, india";"22"
+"230";"ny, new york, usa";NULL
+"231";"mumbai, maharashtra, india";NULL
+"232";"mumbai, maharashtra, india";"16"
+"233";"tampere, pirkanmaa, finland";NULL
+"234";"joensuu, n/a, finland";"25"
+"235";"oeiras, lisboa, portugal";"22"
+"236";"s. pasadena, california, usa";NULL
+"237";"plymouth, minnesota, usa";"27"
+"238";"guildford, surrey, united kingdom";"23"
+"239";"fort worth, texas, usa";NULL
+"240";"brisbane, queensland, australia";"20"
+"241";"auburn, alabama, usa";NULL
+"242";"neuffen, baden-wuerttemberg, germany";"37"
+"243";"arden hills, minnesota, usa";NULL
+"244";"college station, texas, usa";NULL
+"245";"lajolla, california, usa";"31"
+"246";"tananger, rogaland, norway";"16"
+"247";"zografou, athens, greece";"23"
+"248";"chilliwack, british columbia, canada";"15"
+"249";"amsterdam, noord-holland, netherlands";"29"
+"250";"minneapolis, minnesota, usa";"25"
+"251";"valladolid, castilla y le�n, spain";"54"
+"252";"13001 safat, kuwait, kuwait";"65"
+"253";"milano, lombardia, italy";"28"
+"254";"minneapolis, minnesota, usa";"24"
+"255";"antofagasta, alabama, chile";"32"
+"256";"boston, massachusetts, usa";NULL
+"257";"quit, quit, quit";NULL
+"258";"ljk, lkj, lj";NULL
+"259";"jacksonville, north carolina, usa";"45"
+"260";"chisholm, minnesota, usa";"51"
+"261";"lonsee, baden-wuerttemberg, germany";"45"
+"262";"rockford, illinois, usa";"28"
+"263";"houston, texas, usa";NULL
+"264";"taipei, n/a, taiwan";"23"
+"265";"tianjin, n/a, china";"24"
+"266";"kalgary, alberta, canada";NULL
+"267";"cleveland, ohio, usa";"29"
+"268";"�rhus, \"n/a\", denmark";NULL
+"269";"aarhus, jylland, denmark";NULL
+"270";"tawern, rheinland-pfalz, germany";NULL
+"271";"karachi, pakistan, pakistan";"22"
+"272";"walla walla, washington, usa";"20"
+"273";"snohomish, washington, usa";NULL
+"274";"bologna, emilia romagna, italy";"26"
+"275";"calgary, alberta, canada";NULL
+"276";"hillsboro, oregon, usa";NULL
+"277";"dubbo, new south wales, australia";"15"
+"278";"chicago, illinois, usa";"21"
+"279";"berkshire, england, united kingdom";NULL
+"280";"yakima, washington, usa";NULL
+"281";"dresden, sachsen, germany";"31"
+"282";"victoria, british columbia, canada";NULL
+"283";"gig harbor, washington, usa";NULL
+"284";"barcelona, barcelona, spain";"35"
+"285";"cambridge, cambridgeshire, united kingdom";NULL
+"286";"seattle, washington, usa";"17"
+"287";"gardena, california, usa";NULL
+"288";"hallowell, maine, usa";"19"
+"289";"tampa, florida, usa";"15"
+"290";"ravenna, ohio, usa";NULL
+"291";"ft. collins, colorado, usa";NULL
+"292";"tucson, arizona, usa";"22"
+"293";"winnipeg, manitoba, canada";"25"
+"294";"poway, california, usa";NULL
+"295";"lanham, maryland, usa";"28"
+"296";"lleida, lleida, spain";"21"
+"297";"daly city, california, usa";"27"
+"298";"oakland, california, usa";NULL
+"299";"paris, paris, france";"42"
+"300";"newport news, virginia, usa";NULL
+"301";"walled lake, michigan, usa";"32"
+"302";"capitola, california, usa";"53"
+"303";"poway, california, usa";NULL
+"304";"kailua, hawaii, usa";"24"
+"305";"poway, california, usa";NULL
+"306";"boston, massachusetts, usa";NULL
+"307";"koski, uusimaa, finland";"27"
+"308";"getxo, yukon territory, espa�a";"53"
+"309";"london, england, united kingdom";"30"
+"310";"barcelona, n/a, spain";"26"
+"311";"ridderkerk, n/a, netherlands";"34"
+"312";"lk, jlk,";NULL
+"313";"rutherford, new jersey, usa";NULL
+"314";"�rhus, n/a, denmark";"28"
+"315";"stockholm, stockholm, sweden";NULL
+"316";"kyle, saskatchewan, canada";"23"
+"317";"tyner, north carolina, usa";"41"
+"318";"berlin, n/a,";NULL
+"319";"1407 k�benhavn k, n/a, denmark";"32"
+"320";"minneapolis, minnesota, usa";"37"
+"321";"liaquat pur, punjab, pakistan";"24"
+"322";"bergen, yukon territory, norway";NULL
+"323";"seattle, washington, usa";"23"
+"324";"valencia, bukidnon, philippines";NULL
+"325";"z�rich, mittelland, switzerland";NULL
+"326";"parkville, missouri, usa";NULL
+"327";"dallas, texas, usa";NULL
+"328";"moscow, idaho, usa";"33"
+"329";"sanghar, sindh, pakistan";"21"
+"330";"quezon city, n/a, philippines";NULL
+"331";"buenos aires, buenos aires, argentina";"60"
+"332";"lake oswego, oregon, usa";"59"
+"333";"barcelona, alberta, spain";"23"
+"334";"jyv�skyl�, n/a, finland";"27"
+"335";"modena, emilia romagna, italy";"27"
+"336";"bilbao, vizcaya, spain";"27"
+"337";"m�laga, n/a, spain";"17"
+"338";"minneapolis, minnesota, usa";NULL
+"339";"tampere, pirkanmaa, finland";"20"
+"340";"cebu, cebu, philippines";"15"
+"341";"ormesson, ile de france, france";"50"
+"342";"sokoto, niedersachsen, nigeria";"28"
+"343";"mesa, arizona, usa";NULL
+"344";"leicester, england, united kingdom";"25"
+"345";"columbia, tennessee, usa";"27"
+"346";"montreal, quebec, canada";"29"
+"347";"montreal, quebec, canada";"34"
+"348";"berkeley, california, usa";NULL
+"349";"s�nderborg, n/a, denmark";NULL
+"350";"siena, toscana, italy";NULL
+"351";"ankara, turkey, turkey";NULL
+"352";"windsor, connecticut, usa";"28"
+"353";"madrid, n/a, spain";"41"
+"354";"belo horizonte, minas gerais, brazil";NULL
+"355";"london, uk, london";NULL
+"356";"leesburg, virginia, usa";NULL
+"357";"newcastle upon  tyne, england, united kingdom";"29"
+"358";"burbank, california, usa";NULL
+"359";"springville, california, usa";NULL
+"360";"barcelona, barcelona, spain";"33"
+"361";"premi� de dalt, barcelona, spain";"25"
+"362";"thunder bay, ontario, canada";"63"
+"363";"uhingen, baden-wuerttemberg, germany";NULL
+"364";"aveiro, beira litoral, portugal";NULL
+"365";"milano, europe, italy";NULL
+"366";"sofia, alberta, bulgaria";NULL
+"367";"culver city, california, usa";"45"
+"368";"west point, virginia, usa";"35"
+"369";"lenexa, kansas, usa";NULL
+"370";"sacramento, california, usa";NULL
+"371";"los barriles, b.c.s., mexico";NULL
+"372";"bamberg, bayern, germany";"22"
+"373";"vienna, vienna, austria";NULL
+"374";"braunschweig, niedersachsen, germany";"45"
+"375";"leipzig, sachsen, germany";"28"
+"376";"fishers, indiana, usa";"35"
+"377";"kuala lumpur, klang, malaysia";NULL
+"378";"nice, california, usa";"57"
+"379";"vancouver, british columbia, canada";"47"
+"380";"amarillo, texas, usa";NULL
+"381";"fort lauderdale, florida, usa";NULL
+"382";"kansas city, kansas, usa";NULL
+"383";"carmichael, california, usa";NULL
+"384";"bucuresti, n/a, romania";"23"
+"385";"paris, n/a, france";NULL
+"386";"karaj, tehran, iran";"20"
+"387";"charity, missouri, usa";"17"
+"388";"nashville, tennessee, usa";"35"
+"389";"barcelona, catalunya, spain";"22"
+"390";"chapmanville, west virginia, usa";"48"
+"391";"waco, texas, usa";NULL
+"392";"barcelona, catalunya, spain";"44"
+"393";"brighton, east sussex, united kingdom";"24"
+"394";"lonodn, calabria, united kingdom";"25"
+"395";"madrid, n/a, spain";"24"
+"396";"jakobsberg, stockholm, sweden";NULL
+"397";"almada, almada, portugal";"50"
+"398";"wanganui, wellington region, new zealand";NULL
+"399";"abuja, fct abuja, nigeria";"41"
+"400";"st. louis, missouri, usa";NULL
+"401";"la plata, buenos aires, argentina";"28"
+"402";"manchester, england, united kingdom";"19"
+"403";"romeo, michigan, usa";NULL
+"404";"chicago, illinois, usa";"37"
+"405";"berlin, berlin, germany";NULL
+"406";"madrid, madrid, spain";"37"
+"407";"lahore, punjab, pakistan";NULL
+"408";"mountain view, california, usa";"17"
+"409";"almada, almada, portugal";"50"
+"410";"york, yorkshire, united kingdom";"40"
+"411";"defiance, ohio, usa";"27"
+"412";"indianapolis, indiana, usa";NULL
+"413";"naperville, illinois, usa";"17"
+"414";"portland, oregon, usa";"34"
+"415";"gilbert, arizona, usa";NULL
+"416";"warrington, pennsylvania, usa";"31"
+"417";"downers grove, illinois, usa";NULL
+"418";"baltimore, maryland, usa";NULL
+"419";"grove city, pennsylvania, usa";"14"
+"420";"canberra, australian capital territory, australia";"14"
+"421";"sioux city, iowa, usa";"47"
+"422";"edmonton, alberta, canada";"23"
+"423";"kenilworth, england, united kingdom";NULL
+"424";"portland, oregon, usa";"29"
+"425";"calgary, alberta, canada";"32"
+"426";"san francisco, california, usa";NULL
+"427";"townsville, queensland, australia";NULL
+"428";"cleveland, ohio, usa";NULL
+"429";"brockport, new york, usa";"25"
+"430";"silver spring, maryland, usa";NULL
+"431";"ridgway, pennsylvania, usa";"40"
+"432";"kansas city, missouri, usa";NULL
+"433";"smock, pennsylvania, usa";"48"
+"434";"dallas, texas, usa";NULL
+"435";"naples, florida, usa";NULL
+"436";"ivanhoe, melbourne, victoria, australia";"53"
+"437";"sault ste. marie, ontario, canada";NULL
+"438";"rome, lazio, italy";"34"
+"439";"tiburon, california, usa";NULL
+"440";"brookfield, wisconsin, usa";"16"
+"441";"spokane, washington, usa";NULL
+"442";"london, n/a, united kingdom";"24"
+"443";"lawrenceburg, indiana, usa";"47"
+"444";"sweet home, oregon, usa";"40"
+"445";"archdale, north carolina, usa";NULL
+"446";"chevy chase, dc, usa";NULL
+"447";"medford, new jersey, usa";NULL
+"448";"batavia, new york, usa";"22"
+"449";"metamora, illinois, usa";NULL
+"450";"napoli, campania, italy";"31"
+"451";"bismarck, north dakota, usa";"33"
+"452";"louisville, kentucky, usa";NULL
+"453";"charleston, west virginia, usa";NULL
+"454";"norwich, norfolk, united kingdom";"50"
+"455";"calgary, alberta, canada";"54"
+"456";"norridgewock, maine, usa";"31"
+"457";"esher, england, united kingdom";"62"
+"458";"kenniwick, washington, usa";"17"
+"459";"east moline, illinois, usa";"37"
+"460";"roma, italy, italy";NULL
+"461";"singapore, n/a, singapore";"15"
+"462";"brookside, new jersey, usa";"18"
+"463";"rouse hill, new south wales, australia";"20"
+"464";"dahanu, maharashtra, india";"24"
+"465";"charleston, west virginia, usa";NULL
+"466";"saint paul, minnesota, usa";NULL
+"467";"livingston, new jersey, usa";NULL
+"468";"whittier, california, usa";NULL
+"469";"corona, california, usa";"18"
+"470";"indianapolis, indiana, usa";"0"
+"471";"melbourne, victoria, australia";"31"
+"472";"livingston, new jersey, usa";NULL
+"473";"makati city, luzon, philippines";"25"
+"474";"arlington, texas, usa";NULL
+"475";"vancouver, british columbia, canada";"34"
+"476";"rome, new york, usa";NULL
+"477";"charlottesville, virginia, usa";"45"
+"478";"albuquerque, new mexico, usa";"13"
+"479";"iowa city, iowa, usa";NULL
+"480";"wanamassa, new jersey, usa";"62"
+"481";"canyon country, california, usa";NULL
+"482";"valencia, california, usa";"46"
+"483";"shelton, washington, usa";"72"
+"484";"clarkston, michigan, usa";"17"
+"485";"las vegas, nevada, usa";"51"
+"486";"portland, oregon, usa";"31"
+"487";"houston, texas, usa";NULL
+"488";"boston, massachusetts, usa";"25"
+"489";"cape girardeau, missouri, usa";NULL
+"490";"milwaukee, wisconsin, usa";NULL
+"491";"windsor, ontario, canada";"26"
+"492";"chicago, illinois, usa";"60"
+"493";"manhattan, kansas, usa";"29"
+"494";"parry sound, ontario, canada";NULL
+"495";"nashville, tennessee, usa";NULL
+"496";"west salem, wisconsin, usa";"51"
+"497";"susquehanna, pennsylvania, usa";"51"
+"498";"charleston, south carolina, usa";"29"
+"499";"la verne, california, usa";"62"
+"500";"san antonio, texas, usa";"17"
+"501";"richmond, virginia, usa";NULL
+"502";"dearborn, michigan, usa";"47"
+"503";"el centro, california, usa";"40"
+"504";"tularosa, new mexico, usa";"29"
+"505";"washington, dc, usa";"51"
+"506";"ottawa, ontario, canada";NULL
+"507";"dumas, arkansas, usa";NULL
+"508";"portland, oregon, usa";"29"
+"509";"greensboro, north carolina, usa";NULL
+"510";"portland, oregon, usa";NULL
+"511";"berkeley, california, usa";NULL
+"512";"winter springs, florida, usa";"58"
+"513";"savannah, georgia, usa";NULL
+"514";"bonney lake, washington, usa";"30"
+"515";"bourbonnais, illinois, usa";"24"
+"516";"seattle, washington, usa";NULL
+"517";"grinnell, iowa, usa";"22"
+"518";"melbourne, victoria, australia";NULL
+"519";"sheffield, england, united kingdom";"23"
+"520";"humble, texas, usa";NULL
+"521";"jefferson city, missouri, usa";NULL
+"522";"red deer, alberta, canada";NULL
+"523";"bozeman, montana, usa";"19"
+"524";"valentine, new south wales, australia";"37"
+"525";"issy les moulineaux, ile de france, france";"29"
+"526";"hamburg, hamburg, germany";"35"
+"527";"mainz, rheinland-pfalz, germany";"22"
+"528";"singapore, alabama, singapore";"16"
+"529";"new york, new york, usa";"28"
+"530";"moab, utah, usa";"47"
+"531";"st. augustine, florida, usa";"56"
+"532";"cordoba, argentina, argentina";"53"
+"533";"london, england, united kingdom";"31"
+"534";"rosharon, texas, usa";"59"
+"535";"sfgsdfg, calabria, italy";NULL
+"536";"hcm, hcm, vietnam";"20"
+"537";"davis, california,";NULL
+"538";"perryville, missouri, usa";"26"
+"539";"saint louis, missouri, usa";NULL
+"540";"watertown, south dakota, usa";"67"
+"541";"brooklyn, new york, usa";"45"
+"542";"fort worth, texas, usa";NULL
+"543";"hanoi, hanoi, vietnam";"27"
+"544";"england, england, united kingdom";NULL
+"545";"pomona, missouri, usa";NULL
+"546";"firenze, toscana, italy";"51"
+"547";"presque isle, maine, usa";NULL
+"548";"lynn haven, florida, usa";NULL
+"549";"mansfield, pennsylvania, usa";NULL
+"550";"karachi, sindh, pakistan";NULL
+"551";"kolkata, victoria, india";"19"
+"552";"united states, california, usa";NULL
+"553";"nyk�bing sj�lland, n/a, denmark";"16"
+"554";"angra heroismo, yukon territory, portugal";NULL
+"555";"teramo, abruzzo, italy";"36"
+"556";"port charlotte, florida, usa";"31"
+"557";"oceanside, colorado, usa";"49"
+"558";"burnaby, ,";NULL
+"559";"pulaski, virginia, usa";NULL
+"560";"napoleonville, louisiana, usa";NULL
+"561";"shrewsbury, pennsylvania, usa";"35"
+"562";"adfdaf, australian capital territory, albania";"0"
+"563";"amsterdam, new york, usa";NULL
+"564";"franksville, wisconsin, usa";"15"
+"565";"franklin, tennessee, usa";"48"
+"566";"springfield, illinois, usa";NULL
+"567";"spokane, washington, usa";NULL
+"568";"alexandria, alexandria, egypt";NULL
+"569";"lahore, punjab, pakistan";"28"
+"570";"grand rapids, michigan, usa";NULL
+"571";"diemen, n/a, netherlands";"23"
+"572";"gabes, gabes, tunisia";"23"
+"573";"cairo, connecticut, egypt";"31"
+"574";"terrassa, catalunya, spain";"33"
+"575";"gaia, douro litoral, portugal";"23"
+"576";"bern, prince edward island, switzerland";"35"
+"577";"andimeshk, khozestan, iran";NULL
+"578";"parksville, british columbia, canada";NULL
+"579";"tiruchirapalli, n/a, india";"29"
+"580";"logro�o, la rioja, spain";"22"
+"581";"zaragoza, arag�n, spain";"45"
+"582";"adelaide, south australia, australia";"56"
+"583";"tashkent, uzbekistan, uzbekistan";"19"
+"584";"doha, doha, qatar";"23"
+"585";"milano, lombardia, italy";NULL
+"586";"kuala-lumpur, selangor, malaysia";"26"
+"587";"bologna, bologna, italy";NULL
+"588";"roseville, minnesota, usa";"60"
+"589";"gassino torinese, piemonte, italy";NULL
+"590";"m�nster, n/a, germany";NULL
+"591";"miami beach, florida, usa";"42"
+"592";"boston, massachusetts, usa";NULL
+"593";"port hawkesbury, nova scotia, canada";"28"
+"594";"london, england, united kingdom";NULL
+"595";"hollywood, florida, usa";"17"
+"596";"san francisco, california, usa";"49"
+"597";"astoria, new york, usa";"43"
+"598";"raqqa, raqqa, syria";"34"
+"599";"north plainfield, new jersey, usa";"36"
+"600";"tehran, tehran, iran";"20"
+"601";"grande prairie, alberta, canada";NULL
+"602";"forest grove, oregon, usa";"23"
+"603";"bielefeld, nordrhein-westfalen, germany";NULL
+"604";"knox, indiana, usa";"42"
+"605";"manheim, pennsylvania, usa";NULL
+"606";"elbert, colorado, usa";NULL
+"607";"beijing, beijing, china";"31"
+"608";"somerville, massachusetts, usa";"30"
+"609";"madrid, madrid, spain";"34"
+"610";"valencia, n/a, spain";"19"
+"611";"solbiate, lombardia, italy";"24"
+"612";"oak park, illinois, usa";"20"
+"613";"ankara, n/a, turkey";"1"
+"614";"montecassiano, marche, italy";"28"
+"615";"parede, lisboa, portugal";"29"
+"616";"fremont, california, usa";"34"
+"617";"porto, n/a, portugal";"54"
+"618";"providence, rhode island, usa";NULL
+"619";"long beach, mississippi, usa";NULL
+"620";"toronto, ontario, canada";"45"
+"621";"segovia, n/a, spain";"48"
+"622";"salvador, bahia, brazil";"23"
+"623";"buenos aires, buenos aires, argentina";NULL
+"624";"amsterdam, noord-holland, netherlands";NULL
+"625";"marseille, provence, france";"41"
+"626";"graz, steiermark, austria";"41"
+"627";"pittsburgh, pennsylvania, usa";NULL
+"628";"berlin, berlin, germany";NULL
+"629";"kiel, schleswig-holstein, germany";"44"
+"630";"paris, n/a, france";"33"
+"631";"fort collins, colorado, usa";NULL
+"632";"rochester, minnesota, usa";"15"
+"633";"k�ln, nordrhein-westfalen, germany";NULL
+"634";"d�sseldorf, nordrhein-westfalen, germany";"50"
+"635";"toronto, ontario, canada";"24"
+"636";"durham, north carolina, usa";NULL
+"637";"singapore, singapore, singapore";"20"
+"638";"san diego, california, usa";"20"
+"639";"washington dc, virginia, usa";NULL
+"640";"scotch village, nova scotia, canada";NULL
+"641";"portland, oregon, usa";NULL
+"642";"houston, texas, usa";"37"
+"643";"grenoble, rhone-alpes, france";"23"
+"644";"garden city, michigan, usa";NULL
+"645";"ottawa, ontario, canada";NULL
+"646";"cardiff, wales, united kingdom";"21"
+"647";"perth, western australia, australia";"35"
+"648";"kamloops, british columbia, canada";NULL
+"649";"san diego, california, usa";NULL
+"650";"santa cruz, california, usa";NULL
+"651";"interlachen, florida, usa";"26"
+"652";"slippery rock, pennsylvania, usa";NULL
+"653";"bristol, wales, united kingdom";NULL
+"654";"ottawa, ontario, canada";"30"
+"655";"monroe, north carolina, usa";"58"
+"656";"feilding, manawatu, new zealand";NULL
+"657";"chattanooga, tennessee, usa";NULL
+"658";"jasper, georgia, usa";"61"
+"659";"simcoe, ontario, canada";NULL
+"660";"ny, new york, usa";NULL
+"661";"zweibr�cken, rheinland-pfalz, germany";"22"
+"662";"high prairie, alberta, canada";"21"
+"663";"vigo, galicia, spain";"49"
+"664";"alicante, alicante, spain";"26"
+"665";"link�ping, �sterg�tland, sweden";NULL
+"666";"gurgaon, n/a, india";NULL
+"667";"gurgaon, haryana, india";NULL
+"668";"nasik, maharashtra, india";"27"
+"669";"kannur, kerala, india";"24"
+"670";"ernakulam, kerala, india";NULL
+"671";"jeddah, jeddah, saudi arabia";"1"
+"672";"calcutta, west bengal, india";NULL
+"673";"varanasi, uttar pradesh, india";"23"
+"674";"pune, pune, india";NULL
+"675";"solapur, maine, india";NULL
+"676";"london, abruzzo, italy";"31"
+"677";"baton rouge, louisiana, usa";"27"
+"678";"yabulu, queensland, australia";NULL
+"679";"oregon city, oregon, usa";"65"
+"680";"edgewood, maryland, usa";"28"
+"681";"banda aceh, nad, indonesia";"20"
+"682";"smyrna, georgia, usa";"44"
+"683";"union, illinois, usa";"28"
+"684";"atlanta, georgia, usa";"44"
+"685";"stevens point, wisconsin, usa";"21"
+"686";"lahore, isl, pakistan";NULL
+"687";"montemor-o-novo, alberta, romania";"35"
+"688";"beacon hill, new south wales, australia";"14"
+"689";"paris, n/a, france";"22"
+"690";"lake oswego, oregon, usa";"80"
+"691";"london, greater london, united kingdom";"25"
+"692";"ottawa, kansas, usa";"44"
+"693";"alexandria, virginia, usa";"58"
+"694";"indianapolis, indiana, usa";NULL
+"695";"alphen aan den rijn, zuid holland, netherlands";NULL
+"696";"windsor, ontario, canada";"13"
+"697";"montreal, quebec, canada";NULL
+"698";"palo alto, california, usa";NULL
+"699";"norwich, england, united kingdom";NULL
+"700";"georgetown, n/a, malaysia";"16"
+"701";"mountain view, california, usa";"31"
+"702";"mount joy, pennsylvania, usa";"53"
+"703";"pascagoula, mississippi, usa";"52"
+"704";"south milwaukee, wisconsin, usa";NULL
+"705";"asti, piemonte, italy";NULL
+"706";"los angeles, california, usa";NULL
+"707";"san antonio, texas, usa";NULL
+"708";"duluth, minnesota, usa";NULL
+"709";"roanoke, virginia, usa";"14"
+"710";"piracicaba, s�o paulo, brazil";"42"
+"711";"oxford, england, united kingdom";"27"
+"712";"pratteln, baselland, switzerland";"29"
+"713";"abingdon, n/a, united kingdom";"49"
+"714";"austin, texas, usa";NULL
+"715";"northport, alabama, usa";NULL
+"716";"mexico, df, mexico";"34"
+"717";"spring hill, florida, usa";NULL
+"718";"lanham, maryland, usa";"30"
+"719";"mississauga, ontario, canada";"52"
+"720";"washington dc, dc, usa";"16"
+"721";"atascadero, california, usa";NULL
+"722";"longwood, florida, usa";"66"
+"723";"columbia falls, montana, usa";NULL
+"724";"jamestown, california, usa";NULL
+"725";"aveiro, aveiro, portugal";"24"
+"726";"eatontown, new jersey, usa";"31"
+"727";"lisboa, n/a, portugal";"40"
+"728";"welsh, louisiana, usa";NULL
+"729";"st.adolphe, manitoba, canada";NULL
+"730";"albuquerque, new mexico,";"69"
+"731";"lansdale, pennsylvania, usa";NULL
+"732";"bangalore, karnataka, india";NULL
+"733";"timaru, south canterbury, new zealand";"53"
+"734";"berlin, berlin, germany";NULL
+"735";"cortland, new york, usa";"29"
+"736";"trebur, hessen, germany";"34"
+"737";"albuquerque, new mexico, usa";NULL
+"738";"murrells inlet, south carolina, usa";NULL
+"739";"oakdale, minnesota, usa";"55"
+"740";"new canaan, connecticut, usa";NULL
+"741";"novinger, missouri, usa";"16"
+"742";"st. paul, minnesota, usa";NULL
+"743";"moraga, california, usa";NULL
+"744";"ocala, florida, usa";"48"
+"745";"frankfurt, hessen, germany";"25"
+"746";"longmont, colorado, usa";"36"
+"747";"san bernardino, california, usa";NULL
+"748";"ourense, ourense, spain";"14"
+"749";"washington, dc, usa";NULL
+"750";"zurich, zurich, switzerland";"36"
+"751";"zaragoza, aragon, spain";"41"
+"752";"lake charles, louisiana, usa";NULL
+"753";"stockton, california, usa";NULL
+"754";"leverkusen, nordrhein-westfalen, germany";"33"
+"755";"guangzhou, asd, china";"24"
+"756";"scranton, pennsylvania, usa";NULL
+"757";"philadelphia, pennsylvania, usa";"29"
+"758";"duesseldorf, n/a, germany";NULL
+"759";"primm springs, tennessee, usa";NULL
+"760";"santa rosa, california, usa";NULL
+"761";"fuzhou, fujian, china";"30"
+"762";"lisbon, n/a, portugal";"23"
+"763";"oakland, california, usa";NULL
+"764";"eau claire, wisconsin, usa";"28"
+"765";"york, pennsylvania, usa";NULL
+"766";"matthews, north carolina, usa";"52"
+"767";"omaha, nebr,";"43"
+"768";"athens, athens, greece";NULL
+"769";"birmingham, alabama, usa";NULL
+"770";"tehran, tehran, iran";NULL
+"771";"ft. sill, oklahoma, usa";"38"
+"772";"braga, braga, portugal";"27"
+"773";"khartoum, khartoum, sudan";"52"
+"774";"wentzville, missouri, usa";"16"
+"775";"jeddah, jeddah, saudi arabia";"28"
+"776";"auckland, n/a, new zealand";"23"
+"777";"portland, ,";"13"
+"778";"bradenton, florida, usa";NULL
+"779";"halifax, nova scotia, canada";NULL
+"780";"woodland hills, california, usa";NULL
+"781";"london, england, united kingdom";"20"
+"782";"hallandale, florida, usa";"57"
+"783";"manchester center, vermont, usa";NULL
+"784";"franklin, massachusetts, usa";"39"
+"785";"burbank, california, usa";NULL
+"786";"panhandle, texas, usa";"48"
+"787";"ridgefield park, new jersey, usa";NULL
+"788";"milwaukee, wisconsin, usa";NULL
+"789";"pepperell, ,";"15"
+"790";"chilliwack, british columbia, canada";NULL
+"791";"sunnyvale, california, usa";NULL
+"792";"fishkill, new york, usa";"44"
+"793";"columbus, ohio, usa";NULL
+"794";"chico, california, usa";"47"
+"795";"edinburg, texas, usa";NULL
+"796";"levttown, new york, usa";NULL
+"797";"mystic, connecticut, usa";NULL
+"798";"ashland, pennsylvania, usa";NULL
+"799";"albuquerque, new mexico, usa";NULL
+"800";"fort worth, texas, usa";NULL

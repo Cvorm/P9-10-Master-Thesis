@@ -1,107 +1,106 @@
 from engine.multiset import *
 from engine.data_setup import *
-from collections import defaultdict
-import itertools
 import ast
 pd.set_option('display.max_columns', None)
 
 
-def create_movie_tet(spec, dataframe, source):
-    roots = np.unique(dataframe.movieId)
+def create_user_book_tet(spec, dat):
+    print('colons')
+    print(dat.columns)
+    roots = np.unique(dat.UserID)
     complete = []
     for r in roots:
-        ms = Multiset()
-        complete.append(__create_movie_tet(r, spec, ms, dataframe, source))
+        ms = Multiset()  # here we instantiate our TETs
+        complete.append(__create_user_book_tet(r, spec, ms, dat))
     return complete
+# call function for creating user TETs for MovieLens
 
-def __create_movie_tet(movie, tet_spec, ms, dataframe, source):
-    nodes = [n[-1] for n in dfs_edges(tet_spec, source=source)]
-    ms.add_root_movie(movie, 1)
-    this_movie = data[data['movieId'] == movie]
-    # print(this_movie.head())
-    user_director = updated_actor[updated_actor.actorId.isin(this_movie['director'])]
-    # print(user_director)
+
+def __create_user_book_tet(user, tet_spec, ms, dat):
+    nodes = [n[-1] for n in dfs_edges(tet_spec, source="user")]
+    ms.add_root(user, 1)
+    user_ratings = dat[dat['UserID'] == user]
+    user_info = users[users['UserID'] == user]
+    user_book = [books.ISBN.isin(user_ratings['ISBN'])]
+    # user_book['BookRating'] = user_book['BookRating'].fillna(0).astype(int)
+
     for node in nodes:
-        if node == 'has_imdb_rating':
-            # print(this_movie.iloc[0]['rating'])
-            ms.add_node_w_count(f'ir{this_movie["movieId"]}', float(this_movie['rating']), 'has_imdb_rating')
-            ms.add_edge((str(this_movie['movieId']), f'ir{this_movie["movieId"]}'))
-        elif node == 'has_director':
-            ms.add_node_w_count(str(this_movie['director']), 1, 'has_director')
-            ms.add_edge((str(this_movie['movieId']), str(this_movie['director'])))
-        elif node == 'has_genres':
-            for y, x in this_movie.iterrows():
-                # tmp = y['genres'][0]
-                tmp = x['genres'][0]
-                tmp = ast.literal_eval(tmp)
-                tmp_count = len(tmp)
-                # print("++", y, tmp_count)
-                ms.add_node_w_count(f'hg{y}', int(tmp_count), 'has_genres')
-                ms.add_edge((str(x['movieId']), f'hg{y}'))
-                for idx, genre in enumerate(tmp):
-                    # print(idx, genre)
-                    ms.add_node_w_count(f'g{y}{idx}', 1, str(genre))
-                    ms.add_edge((f'hg{y}', f'g{y}{idx}'))
+        if node == 'has_rated':
+            for y,x in user_ratings.iterrows():
+                ms.add_node_w_count(str(x['ISBN']), 1, 'has_rated')
+                ms.add_edge((user, str(x['ISBN'])))
+        elif node == 'rating':
+            for y, x in user_ratings.iterrows():
+                rat = int(x['BookRating']) * 0.1
+                ms.add_node_w_count_w_val(f'ur{y}', rat, int(x['BookRating']), 'rating')
+                ms.add_edge((str(x['ISBN']), f'ur{y}'))
+        elif node == 'location':
+            for y, x in user_info.iterrows():
+                tmp = x['country']
                 # print(tmp)
-                # yes = str(tmp[0])
-                # print(tmp)
-                # tmp = ast.literal_eval(tmp)
-                # tmp_count = len(tmp)
-                # # print(tmp_count)
-                # ms.add_node_w_count(f'hg{this_movie}', int(tmp_count), 'has_genres')
-                # ms.add_edge((str(this_movie['movieId']), f'hg{this_movie}'))
-                # for idx, genre in enumerate(tmp):
-                #     ms.add_node_w_count(f'g{this_movie}{idx}', 1, str(genre))
-                #     ms.add_edge((f'hg{this_movie}', f'g{this_movie}{idx}'))
-        elif node == 'has_awards':
-                ms.add_node_w_count(f'a{this_movie["movieId"]}', int(user_director['awards']), 'has_awards')
-                ms.add_edge((str(user_director['actorId']), f'a{this_movie["movieId"]}'))
-        elif node == 'has_nominations':
-                ms.add_node_w_count(f'n{this_movie["movieId"]}', int(user_director['nominations']), 'has_nominations')
-                ms.add_edge((str(user_director['actorId']), f'n{this_movie["movieId"]}'))
-        elif node == 'has_votes':
-            ms.add_node_w_count(f'hv{this_movie["movieId"]}', int(this_movie['votes']), 'has_votes')
-            ms.add_edge((str(this_movie['movieId']), f'hv{this_movie["movieId"]}'))
-
-
+                ms.add_node_w_count(f'hl{y}', 1, 'location')
+                ms.add_edge((str(x['UserID']), f'hl{y}'))
+                if not tmp == None:
+                    for idx, country in enumerate(tmp):
+                        ms.add_node_w_count(f'l{y}{idx}', 1, str(country))
+                        ms.add_edge((f'hl{y}', f'l{y}{idx}'))
+        elif node == 'age':
+            for y, x in user_info.iterrows():
+                ag = int(x['Age']) * 0.0111
+                ms.add_node_w_count(f'a{y}', ag, 'age')
+                ms.add_edge((user, f'a{y}'))
     return ms
 
-def create_user_tet(spec, dat):
+
+
+
+def create_user_movie_tet(spec, dat):
     roots = np.unique(dat.userId)
     # roots = [n for n, info in graph.nodes(data=True) if info.get(f'{root}')]
     complete = []
     for r in roots:
         ms = Multiset()  # here we instantiate our TETs
-        complete.append(__create_user_tet(r, spec, ms, dat))
+        complete.append(__create_user_movie_tet(r, spec, ms, dat))
     return complete
 
 
-def __create_user_tet(user, tet_spec, ms, dat):
+# function that handles the construction of a TET for a user for MovieLens
+def __create_user_movie_tet(user, tet_spec, ms, dat):
     nodes = [n[-1] for n in dfs_edges(tet_spec, source="user")]
     ms.add_root(user, 1)
     user_ratings = dat[dat['userId'] == user]
     user_movie = data[data.movieId.isin(user_ratings['movieId'])]
+    # user_movie['rating'] = user_movie['rating'].fillna(0).astype(float)
+    # user_movie['votes'] = user_movie['votes'].fillna(0).astype(float)
+    # user_movie['budget'] = user_movie['budget'].fillna(0).astype(float)
+    # user_movie['gross'] = user_movie['gross'].fillna(0).astype(float)
     user_director = updated_actor[updated_actor.actorId.isin(user_movie['director'])]
+
     for node in nodes:
         if node == 'has_rated':
-            for y,x in user_ratings.iterrows():
+            for y, x in user_ratings.iterrows():
                 ms.add_node_w_count(str(x['movieId']), 1, 'has_rated')
                 ms.add_edge((user, str(x['movieId'])))
         elif node == 'has_user_rating':
             for y, x in user_ratings.iterrows():
-                ms.add_node_w_count(f'ur{y}', int(x['rating']), 'has_user_rating')
+                rat = int(x['rating']) * 0.2
+                ms.add_node_w_count_w_val(f'ur{y}', rat, int(x['rating']), 'has_user_rating')
                 ms.add_edge((str(x['movieId']), f'ur{y}'))
         elif node == 'has_imdb_rating':
             for y, x in user_movie.iterrows():
                 ms.add_node_w_count(f'ir{y}', float(x['rating']), 'has_imdb_rating')
                 ms.add_edge((str(x['movieId']), f'ir{y}'))
+        elif node == 'has_votes':
+            for y, x in user_movie.iterrows():
+                ms.add_node_w_count(f'hv{y}', float(x['votes']), 'has_votes')
+                ms.add_edge((str(x['movieId']), f'hv{y}'))
         elif node == 'has_director':
             for y, x in user_movie.iterrows():
                 ms.add_node_w_count(str(x['director']), 1, 'has_director')
                 ms.add_edge((str(x['movieId']), str(x['director'])))
         elif node == 'has_genres':
             for y, x in user_movie.iterrows():
-                tmp = x['genres'][0]
+                tmp = x['genres']
                 tmp = ast.literal_eval(tmp)
                 tmp_count = len(tmp)
                 # print(y, tmp_count)
@@ -119,6 +118,14 @@ def __create_user_tet(user, tet_spec, ms, dat):
             for y, x in user_director.iterrows():
                 ms.add_node_w_count(f'n{y}', int(x['nominations']), 'has_nominations')
                 ms.add_edge((str(x['actorId']), f'n{y}'))
+        elif node == 'has_budget':
+            for y, x in user_movie.iterrows():
+                ms.add_node_w_count(f'hb{y}', float(x['budget']), 'has_budget')
+                ms.add_edge((str(x['movieId']), f'hb{y}'))
+        elif node == 'has_gross':
+            for y, x in user_movie.iterrows():
+                ms.add_node_w_count(f'hgr{y}', float(x['gross']), 'has_gross')
+                ms.add_edge((str(x['movieId']), f'hgr{y}'))
     return ms
 
 
@@ -130,6 +137,7 @@ def get_movies_from_id(movie_ids):
     return movies
 
 
+# function that returns the total list of genres for all movies
 def get_genres():
     l = []
     for index, movie in data.iterrows():
