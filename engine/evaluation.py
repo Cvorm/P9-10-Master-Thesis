@@ -151,6 +151,21 @@ def create_movie_rec_dict(tet_train, tet_test, metric_tree, mt_search_k, spec):
     return user_est_true, sim_score
 
 
+def create_book_rec_dict(tet_train, tet_test, metric_tree, mt_search_k, spec):
+    user_est_true = defaultdict(list)
+    sim_score = 0.0
+    for tet in tet_train:
+        username = [x for x,y in tet.graph.nodes(data=True) if y.get('root')]
+        user_leftout = get_tet_user(tet_test, username[0])
+        similar_users = mt_search(metric_tree, tet, mt_search_k, spec)
+        predicted_movies = get_books(tet, similar_users)
+        for mid, est in predicted_movies:
+            true_r = get_rating(user_leftout, mid)
+            user_est_true[username[0]].append((est, true_r))
+        sim_score = sim_score + get_similarity(tet, similar_users)
+    sim_score = sim_score / len(tet_train)
+    return user_est_true, sim_score
+
 
 def get_movie_actual_and_pred(tet_train, tet_test, metric_tree, mt_search_k, spec):
     user = []
