@@ -33,54 +33,9 @@ def construct_A(X, k, binary):
         return nbrs.kneighbors_graph(X)
     else:
         return nbrs.kneighbors_graph(X, mode='distance')
-#         # no_duplicates = [list(v) for v in dict(movies).items()]
-#         # a = [x for x in a]
-#         # [] = 1
+
 
 def L2_norm_row(X):
     return sp.sparse.spdiags(1. / (np.sqrt(np.sum(X * X, axis=1)) + eps), 0, len(X), len(X)).dot(X)
 
 
-# def construct_A(X, k, binary):
-#     n = X.shape[0]
-#     X = L2_norm_row(X)
-#     S = X.dot(X.conj().T)
-#
-#     vals = np.sort(S, axis=1)
-#     inds = np.argsort(S, kind='quicksort', axis=1)
-#
-#     vals = vals[:, 1: (k + 1)]
-#     inds = vals[:, 1: (k + 1)]
-#
-#     vec = [x for x in range(n)]
-#     myes = np.tile(vec, (1, k))
-#     myes = myes.conj().T
-#     # R = [np.tile(vec, (1, k)).conj.T, inds[:], vals[:]]
-#     R = array([myes, inds[:], vals[:]])
-#     A = sparse(R[:, 1], R[:, 2], R[:, 3], n, n)
-#     A = np.maximum(A, A.conj().T)
-#
-#     if binary:
-#         A[A > 0] = 1
-#     return A
-#
-#     # [vals, inds] = sort(S, 2, 'descend');
-#     # vals = vals(:, 2: (k + 1));
-#     # inds = inds(:, 2: (k + 1));
-#     #
-#     # R = [repmat(1:n, 1, k)', inds(:), vals(:)];
-#     # A = sparse(R(:, 1), R(:, 2), R(:, 3), n, n);
-#     # A = max(A, A
-#     # ');
-#     #
-#     # if binary,
-#     # A(A > 0) = 1;
-#     # end
-#     #
-#     # end
-#
-#     # nbrs = NearestNeighbors(n_neighbors=1 + k).fit(S)
-#     # if binary:
-#     #     return nbrs.kneighbors_graph(S)
-#     # else:
-#     #     return nbrs.kneighbors_graph(S, mode='distance')
