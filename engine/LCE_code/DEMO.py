@@ -18,7 +18,7 @@ def L2_norm_row(X):
     return sp.sparse.spdiags(1. / (np.sqrt(np.sum(X * X, axis=1)) + eps), 0, len(X), len(X)).dot(X)
 
 def tfidf(x_train, x_test):
-    "Calculate the erm frequency–inverse document frequency fro the train and test sets"
+    "Calculate the term frequency–inverse document frequency fro the train and test sets"
     idf = np.log(np.divide(x_train.shape[0], sum(x_train > 0) + eps))
     idf = idf.reshape(idf.shape[0], 1)
     IDF = sp.sparse.spdiags(idf.conj().T, 0, idf.shape[0], idf.shape[0]).toarray()
@@ -85,8 +85,8 @@ train_time = train_time.reshape(train_time.shape[0], 1)
 
 
 test_time = np.where(np.sum(T[:, 12], axis=1))
-test_time  = np.asarray(test_time[0])
-test_time  = test_time.reshape(test_time.shape[0], 1)
+test_time = np.asarray(test_time[0])
+test_time = test_time.reshape(test_time.shape[0], 1)
 
 vocab = [x for x in range(nw)] #1d vector
 vocab = np.array(vocab)
@@ -127,19 +127,7 @@ beta = 0.05
 
 "Constructing the adjacency matrix"
 
-lul = pd.read_csv("../LCE_code/LCE_data/AAAAAAAAAAAAAA.csv")
-lul.loc[len(lul)] = 0
-lul = lul.shift()
-lul.loc[0] = 0
-lul.columns = range(lul.shape[1])
-lul.to_numpy()
-# lul.append(pd.Series(name='0'), ignore_index=True)
-# lul.index = lul.index + 1
-# aaaa = scipy.sparse.csr_matrix(lul.values).toarray()
-# a = construct_A(xs_train, 1, True)
 a = construct_A(xs_train, 1, True)
-# a = a.toarray()
-# np.fill_diagonal(a, 0)
 w, hu, hs, objhistory = LCE(xs_train,  L2_norm_row(xu_train), a, k, alpha, beta, lambdaa, epsilon, maxiter, verbose)
 
 
