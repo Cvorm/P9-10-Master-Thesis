@@ -106,7 +106,7 @@ def user_user_sim(tet, spec):
                 # values.append(dist)
 
     user_user.to_csv("user_user_matrix.csv", sep='\t')
-
+    # return user_user
 
 def func(element):
     # print(element)
@@ -161,17 +161,25 @@ def item_item_sim(tet, spec):
     item_item = pd.DataFrame(index=sorted_movies, columns=sorted_movies).fillna(0.0)
 
     for i, y in enumerate(sorted_tets):
+        # print(i)
+        # if i == 10:
+        #     item_item.to_csv("item_item_matrixxxx.csv", sep='\t')
+        #     break
         for j, z in enumerate(sorted_tets):
             if sorted_movies[i] == sorted_movies[j]:
-                item_item[sorted_movies[i]][sorted_movies[j]] = 1
+                # hist1 = y.get_histogram()
+                # hist2 = z.get_histogram()
+                # dist = calc_distance(hist1, hist2, spec, 'movie')
+                item_item[sorted_movies[i]][sorted_movies[j]] = 0.0  #They have distance 0 i.e they are the same
                 break
             else:
-                hist1 = y.get_histogram()
-                hist2 = z.get_histogram()
-                dist = calc_distance(hist1, hist2, spec, 'movie')
+                hist11 = y.get_histogram()
+                hist22 = z.get_histogram()
+                dist = calc_distance(hist11, hist22, spec, 'movie')
                 item_item[sorted_movies[i]][sorted_movies[j]] = dist
 
-    item_item.to_csv("item_item_matrix.csv", sep='\t')
+    item_item.to_csv("item_item_matrix_peter.csv", sep='\t')
+    # return item_item
     #
     #     for i, y in enumerate(sorted_tets):
     #         # print(i.get_histogram())
@@ -291,9 +299,10 @@ def interaction_matrix(tet):
     # no_duplicates = [list(v) for v in dict(total_movies).items()]
     no_duplicates = list(set(total_movies))
     sorted_items = sort_items(no_duplicates)
+    sorted_users = sort_users(users)
 
-    user_item = pd.DataFrame(index=users, columns=sorted_items).fillna(0)
-    print(user_item.head(5))
+    user_item = pd.DataFrame(index=sorted_users, columns=sorted_items).fillna(0)
+    # print(user_item.head(5))
 
     for i, y in enumerate(tet):
         movies = get_movies_in_user(y)
@@ -301,7 +310,10 @@ def interaction_matrix(tet):
             user_item[j][users[i]] = 1
             # print(users[i], j)
 
-    user_item.to_csv("user_item_matrix.csv", sep='\t')
+    trans = user_item.T
+    trans.to_csv("user_item_matrix_peter.csv", sep='\t')
+    # user_item.to_csv("user_item_matrix.csv", sep='\t')
+    # return user_item
     # movies = []
     # for u in other_users_hist:
     #     temp_movies = get_movies_user(u)
@@ -341,6 +353,7 @@ def user_item_rating_matrix(tet):
             user_item[j][sorted_users[i]] = get_rating(y, j)
             # print(users[i], j)
 
+    # return user_item
     user_item.to_csv("user_item_rating_matrix.csv", sep='\t')
 
 def non_neg_matrix_fac(matrix):
