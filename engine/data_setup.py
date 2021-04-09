@@ -5,7 +5,7 @@ import re
 from sklearn.model_selection import train_test_split, GroupShuffleSplit
 moviesDB = imdb.IMDb()
 data = pd.read_csv('../Data/movie_new.csv', converters={'cast': eval}, thousands=',')
-movieratings = pd.read_csv('../Data/ratingsg.csv', converters={'cast': eval})
+movieratings = pd.read_csv('../Data/ratings_50k.csv', converters={'cast': eval})
 links = pd.read_csv('../Data/links.csv')
 rdata = pd.DataFrame(columns=['userId', 'movieId', 'rating'])
 adata = pd.DataFrame(columns=['actorId','awards'])

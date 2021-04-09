@@ -1,6 +1,6 @@
 import time
 import sys
-from experiments.baselines import *
+# from experiments.baselines import *
 from engine.matrix_fac import *
 from engine.crossing import *
 
@@ -116,30 +116,33 @@ def run_movie():
     [print(tet[i].ht.nodes(data=True)) for i in range(top)]
     [print(tet[i].graph.nodes(data=True)) for i in range(top)]
 
-    print('Building Metric Tree...')
-    print('Building Metric Tree...', file=f)
-    start_time = time.time()
-    mts = mt_build(tet, mt_depth, bucket_max_mt, spec)
-    print("--- %s seconds ---" % (time.time() - start_time), file=f)
+    item_item_sim(movie_tet, spec2)
+    interaction_matrix(tet)
 
-
-    print('Evaluating model...')
-    movie_true = get_movie_actual_and_pred(tet, test_tet, mts, mt_search_k, spec)
-    predicted, actual = format_model_third(tet, test_tet, mts, mt_search_k, spec)
-    print(f'Alternative Precision {recommender_precision(predicted, actual)}')
-    print(f'Alternative Recall {recommender_recall(predicted, actual)}')
-    print(f'APK {yallah2(movie_true, k_movies)}')
-    movie_dict, sim_score = create_movie_rec_dict(tet, test_tet, mts, mt_search_k, spec)
-    precisions, recalls = precision_recall_at_k(movie_dict, k_movies)
-    print(f' PRECISION COUNT: {sum(prec for prec in precisions.values()) / len(precisions)}')
-    print(f' RECALL COUNT: {sum(rec for rec in recalls.values()) / len(recalls)}')
-
-    print('|| ------ COMPLETE ------ ||', file=f)
-    print('Total run time: %s seconds.' % (time.time() - start_time_total), file=f)
-    print('|| ---------------------- ||\n', file=f)
-    print(f'Top {top} users histogram:')
-    [print(tet[i].ht.nodes(data=True)) for i in range(top)]
-    [print(tet[i].graph.nodes(data=True)) for i in range(top)]
+    # print('Building Metric Tree...')
+    # print('Building Metric Tree...', file=f)
+    # start_time = time.time()
+    # mts = mt_build(tet, mt_depth, bucket_max_mt, spec)
+    # print("--- %s seconds ---" % (time.time() - start_time), file=f)
+    #
+    #
+    # print('Evaluating model...')
+    # movie_true = get_movie_actual_and_pred(tet, test_tet, mts, mt_search_k, spec)
+    # predicted, actual = format_model_third(tet, test_tet, mts, mt_search_k, spec)
+    # print(f'Alternative Precision {recommender_precision(predicted, actual)}')
+    # print(f'Alternative Recall {recommender_recall(predicted, actual)}')
+    # print(f'APK {yallah2(movie_true, k_movies)}')
+    # movie_dict, sim_score = create_movie_rec_dict(tet, test_tet, mts, mt_search_k, spec)
+    # precisions, recalls = precision_recall_at_k(movie_dict, k_movies)
+    # print(f' PRECISION COUNT: {sum(prec for prec in precisions.values()) / len(precisions)}')
+    # print(f' RECALL COUNT: {sum(rec for rec in recalls.values()) / len(recalls)}')
+    #
+    # print('|| ------ COMPLETE ------ ||', file=f)
+    # print('Total run time: %s seconds.' % (time.time() - start_time_total), file=f)
+    # print('|| ---------------------- ||\n', file=f)
+    # print(f'Top {top} users histogram:')
+    # [print(tet[i].ht.nodes(data=True)) for i in range(top)]
+    # [print(tet[i].graph.nodes(data=True)) for i in range(top)]
     f.close()
 
 
@@ -215,6 +218,6 @@ def run_book():
     f.close()
 
 
-run_book()
-# run_movie()
-run_baselines()
+# run_book()
+run_movie()
+# run_baselines()
