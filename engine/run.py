@@ -78,7 +78,8 @@ def run_movie():
     print(x_train)
     print(x_test)
     print("------------------------------")
-
+    frames = [x_train, x_test]
+    complete = pd.concat(frames)
     print('Building TET specification...')
     print('Building TET specification...', file=f)
     start_time = time.time()
@@ -92,7 +93,8 @@ def run_movie():
     start_time = time.time()
     tet = create_user_movie_tet(spec, x_train)
     test_tet = create_user_movie_tet(spec, x_test)
-    movie_tet = create_movie_tet(spec2, x_train, "movie")
+    movie_tet = create_movie_tet(spec2, complete, "movie")
+    # movie_tet_test = create_movie_tet(spec2, x_test, "movie")
     print("--- %s seconds ---" % (time.time() - start_time), file=f)
 
     print('Performing Logistic Evaluation on TETs...')
@@ -101,6 +103,7 @@ def run_movie():
     [g.logistic_eval(log_bias, log_weight) for g in tet]
     [g.logistic_eval(log_bias, log_weight) for g in test_tet]
     [g.logistic_eval(log_bias, log_weight) for g in movie_tet]
+    # [g.logistic_eval(log_bias, log_weight) for g in movie_tet_test]
     print("--- %s seconds ---" % (time.time() - start_time), file=f)
 
     print('Generating histograms and building histogram trees...')
@@ -110,6 +113,7 @@ def run_movie():
     [g.histogram(spec, 'user') for g in tet]
     [g.histogram(spec, 'user') for g in test_tet]
     [g.histogram(spec2, 'movie') for g in movie_tet]
+    # [g.histogram(spec2, 'movie') for g in movie_tet_test]
     print("--- %s seconds ---" % (time.time() - start_time), file=f)
     [print(tet[i].ht.nodes(data=True)) for i in range(top)]
     print("--- %s seconds ---" % (time.time() - start_time), file=f)
@@ -117,8 +121,9 @@ def run_movie():
     [print(tet[i].graph.nodes(data=True)) for i in range(top)]
 
     item_item_sim(movie_tet, spec2)
-    interaction_matrix(tet)
-
+    # interaction_matrix(tet)
+    # user_item_rating_matrix(tet)
+    #
     # print('Building Metric Tree...')
     # print('Building Metric Tree...', file=f)
     # start_time = time.time()
@@ -143,7 +148,7 @@ def run_movie():
     # print(f'Top {top} users histogram:')
     # [print(tet[i].ht.nodes(data=True)) for i in range(top)]
     # [print(tet[i].graph.nodes(data=True)) for i in range(top)]
-    f.close()
+    # f.close()
 
 
 def run_book():

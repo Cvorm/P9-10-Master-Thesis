@@ -2,7 +2,11 @@ import pandas as pd
 import numpy as np
 import imdb
 import re
+from collections import defaultdict
+import itertools
+from functools import partial
 from sklearn.model_selection import train_test_split, GroupShuffleSplit
+
 moviesDB = imdb.IMDb()
 data = pd.read_csv('../Data/movie_new.csv', converters={'cast': eval}, thousands=',')
 movieratings = pd.read_csv('../Data/ratings_50k.csv', converters={'cast': eval})
@@ -237,4 +241,61 @@ def coverage(dat):
                 tmp_count = tmp_count + 1
         tmp[column] = (len(dat[column]) - tmp_count) / len(dat[column]) if tmp_count != 0 else 1
     return tmp
+
+def format_data_matrix():
+    format_data()
+    movies = list(set(rdata['movieId'].tolist()))
+    users = list(set(rdata['userId'].tolist()))
+    sorted_movies = sort_items(movies)
+    sorted_users = sort_users(users)
+    user_item = pd.DataFrame(index=sorted_movies, columns=sorted_users).fillna(0)
+
+    for index, row in rdata.iterrows():
+        user_item[row['userId']][row['movieId']] = row['rating']
+    # print(user_item)
+    user_item.to_csv("user_item_ny.csv", sep='\t')
+    # list(set(total_movies))
+
+def func(element):
+    # print(element)
+    return int(element.split("m")[1])
+
+def func_2(element):
+    return int(element.split("u")[1])
+
+def func_get_user(element):
+        user = [x for x, y in element.graph.nodes(data=True) if y.get('root')]
+        myes = user[0]
+        # print(myes)
+        return int(myes.split("u")[1])
+
+def sort_items_prefix(items, prefixx):
+    # print(items)
+    sortlist = sorted(items, key=partial(func_get_root, prefix=prefixx))
+    return sortlist
+
+def func_get_root(element, prefix):
+    # print(element)
+    item = [x for x, y in element.graph.nodes(data=True) if y.get('root')]
+    # if len(item) >= 1:
+    myes = item[0]
+    # else:
+    #     myes = item
+    # print(myes)
+    return int(myes.split(prefix)[1])
+
+def sort_items(items):
+    sortlist = sorted(items, key=func)
+    return sortlist
+
+def sort_users(users):
+    sortlist = sorted(users, key=func_2)
+    return sortlist
+
+def sort_tets(tets):
+    sortlist = sorted(tets, key=func_get_user)
+    return sortlist
+
+format_data_matrix()
+
 

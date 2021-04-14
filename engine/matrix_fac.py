@@ -154,12 +154,18 @@ def item_item_sim(tet, spec):
         movie = [x for x, y in t.graph.nodes(data=True) if y.get('root')]
         # print(movie)
         movies.append(movie[0])
+    # for t in test_tet:
+    #     movie = [x for x, y in t.graph.nodes(data=True) if y.get('root')]
+    #     # print(movie)
+    #     movies.append(movie[0])
+
     sorted_movies = sort_items(movies)
     # print(sorted_movies)
     sorted_tets = sort_items_prefix(tet, "m")
 
     item_item = pd.DataFrame(index=sorted_movies, columns=sorted_movies).fillna(0.0)
-
+    print(item_item.shape)
+    exit(0)
     for i, y in enumerate(sorted_tets):
         # print(i)
         # if i == 10:
@@ -178,7 +184,7 @@ def item_item_sim(tet, spec):
                 dist = calc_distance(hist11, hist22, spec, 'movie')
                 item_item[sorted_movies[i]][sorted_movies[j]] = dist
 
-    item_item.to_csv("item_item_matrix_peter.csv", sep='\t')
+    item_item.to_csv("item_item_matrix_peter_correct.csv", sep='\t')
     # return item_item
     #
     #     for i, y in enumerate(sorted_tets):
@@ -287,6 +293,7 @@ def interaction_matrix(tet):
     for x in tet:
         user = [x for x, y in x.graph.nodes(data=True) if y.get('root')]
         users.append(user[0])
+    print(users)
 
     total_movies = []
     for x in tet:
@@ -300,18 +307,21 @@ def interaction_matrix(tet):
     no_duplicates = list(set(total_movies))
     sorted_items = sort_items(no_duplicates)
     sorted_users = sort_users(users)
+    sorted_tets = sort_tets(tet)
 
     user_item = pd.DataFrame(index=sorted_users, columns=sorted_items).fillna(0)
     # print(user_item.head(5))
 
-    for i, y in enumerate(tet):
+    for i, y in enumerate(sorted_tets):
         movies = get_movies_in_user(y)
+        user = [x for x, z in y.graph.nodes(data=True) if z.get('root')]
+        print(user[0], movies)
         for j in movies:
-            user_item[j][users[i]] = 1
+            user_item[j][sorted_users[i]] = 1
             # print(users[i], j)
 
     trans = user_item.T
-    trans.to_csv("user_item_matrix_peter.csv", sep='\t')
+    trans.to_csv("user_item_matrix_peterr_ratings.csv", sep='\t')
     # user_item.to_csv("user_item_matrix.csv", sep='\t')
     # return user_item
     # movies = []
@@ -354,7 +364,8 @@ def user_item_rating_matrix(tet):
             # print(users[i], j)
 
     # return user_item
-    user_item.to_csv("user_item_rating_matrix.csv", sep='\t')
+    trans = user_item.T
+    trans.to_csv("user_item_matrix_peterr_ratings.csv", sep='\t')
 
 def non_neg_matrix_fac(matrix):
     df = pd.read_csv(matrix, sep='\t', index_col=0)
