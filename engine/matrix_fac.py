@@ -165,7 +165,7 @@ def item_item_sim(tet, spec):
 
     item_item = pd.DataFrame(index=sorted_movies, columns=sorted_movies).fillna(0.0)
     print(item_item.shape)
-    exit(0)
+    # exit(0)
     for i, y in enumerate(sorted_tets):
         # print(i)
         # if i == 10:
