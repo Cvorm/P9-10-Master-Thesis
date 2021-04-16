@@ -73,8 +73,8 @@ res_apk = []
 # "######################################################################"
 
 "########################## TRAIN-TEST-SPLIT ##########################"
-X1_train, X1_test = train_test_split(item_item, test_size=0.2)
-X2_train, X2_test = train_test_split(user_item, test_size=0.2)
+X1_train, X1_test = train_test_split(item_item, test_size=0.2, random_state=1)
+X2_train, X2_test = train_test_split(user_item, test_size=0.2, random_state=1)
 
 rows1, cols1, numpy1 = get_rows_cols_numpy_from_df(X1_train)
 rows2, cols2, numpy2 = get_rows_cols_numpy_from_df(X2_train)
@@ -98,7 +98,7 @@ xu_test_list.append(numpy4)
 print(len(xu_train_list), len(xu_test_list), len(xi_train_list), len(xi_test_list))
 
 prec_rec_at = 10
-k = 1000
+k = 500
 alpha = 0.5
 lambdaa = 0.5
 epsilon = 0.001
