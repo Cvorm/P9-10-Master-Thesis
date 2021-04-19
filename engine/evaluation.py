@@ -307,3 +307,40 @@ def recommender_recall(predicted: List[list], actual: List[list]) -> int:
 
     recall = np.mean(list(map(calc_recall, predicted, actual)))
     return recall
+
+
+def __novelty(user_predictions, user_seen, item, users, k):
+    count_recommended = 0
+    count_no_interaction = 0
+    for u, rating in user_predictions.items():
+        rating.sort(key=lambda x: x[1], reverse=True)
+        if item in (items[0] for items in rating[:k]):
+            count_recommended += 1
+        if item not in user_seen[u]:
+            count_no_interaction += 1
+    novel = 1 - (count_recommended / count_no_interaction)
+    # print(f'len of list: {len(user_predictions[u])}')
+    # print(f'Recommended count: {count_recommended}')
+    # print(f'No interaction count: {count_no_interaction}')
+    # print(f'Intermediate Novelty score for {item}: {novel}')
+    novel2 = 1 - (count_recommended / len(users))
+    return novel
+
+
+def novelty(predicted, items, ratings, k_items):
+    sum = 0
+    count = 0
+    users = np.unique(ratings.userId)
+    predictions = defaultdict(list)
+    user_seen = dict()
+    for uid, iid, _, est, _ in predicted:
+        predictions[uid].append((iid, est))
+    for u in users:
+        # u_predictions = [m[1] for m in predicted if m[0] == u]
+        u_seen = [r[1] for r in ratings if r[0] == u]
+        # user_predicitons[u] = u_predictions
+        user_seen[u] = u_seen
+    for i in items.iterrows():
+        sum += __novelty(predictions, user_seen, i[1]['movieId'], users, k_items)
+        count += 1
+    return sum / count
