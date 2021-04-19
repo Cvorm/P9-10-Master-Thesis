@@ -1,6 +1,6 @@
 import time
 import sys
-from experiments.baselines import *
+# from experiments.baselines import *
 from engine.matrix_fac import *
 from engine.crossing import *
 
@@ -78,7 +78,8 @@ def run_movie():
     print(x_train)
     print(x_test)
     print("------------------------------")
-
+    frames = [x_train, x_test]
+    complete = pd.concat(frames)
     print('Building TET specification...')
     print('Building TET specification...', file=f)
     start_time = time.time()
@@ -92,7 +93,8 @@ def run_movie():
     start_time = time.time()
     tet = create_user_movie_tet(spec, x_train)
     test_tet = create_user_movie_tet(spec, x_test)
-    movie_tet = create_movie_tet(spec2, x_train, "movie")
+    movie_tet = create_movie_tet(spec2, complete, "movie")
+    # movie_tet_test = create_movie_tet(spec2, x_test, "movie")
     print("--- %s seconds ---" % (time.time() - start_time), file=f)
 
     print('Performing Logistic Evaluation on TETs...')
@@ -101,6 +103,7 @@ def run_movie():
     [g.logistic_eval(log_bias, log_weight) for g in tet]
     [g.logistic_eval(log_bias, log_weight) for g in test_tet]
     [g.logistic_eval(log_bias, log_weight) for g in movie_tet]
+    # [g.logistic_eval(log_bias, log_weight) for g in movie_tet_test]
     print("--- %s seconds ---" % (time.time() - start_time), file=f)
 
     print('Generating histograms and building histogram trees...')
@@ -110,37 +113,42 @@ def run_movie():
     [g.histogram(spec, 'user') for g in tet]
     [g.histogram(spec, 'user') for g in test_tet]
     [g.histogram(spec2, 'movie') for g in movie_tet]
+    # [g.histogram(spec2, 'movie') for g in movie_tet_test]
     print("--- %s seconds ---" % (time.time() - start_time), file=f)
     [print(tet[i].ht.nodes(data=True)) for i in range(top)]
     print("--- %s seconds ---" % (time.time() - start_time), file=f)
     [print(tet[i].ht.nodes(data=True)) for i in range(top)]
     [print(tet[i].graph.nodes(data=True)) for i in range(top)]
 
-    print('Building Metric Tree...')
-    print('Building Metric Tree...', file=f)
-    start_time = time.time()
-    mts = mt_build(tet, mt_depth, bucket_max_mt, spec)
-    print("--- %s seconds ---" % (time.time() - start_time), file=f)
-
-
-    print('Evaluating model...')
-    movie_true = get_movie_actual_and_pred(tet, test_tet, mts, mt_search_k, spec)
-    predicted, actual = format_model_third(tet, test_tet, mts, mt_search_k, spec)
-    print(f'Alternative Precision {recommender_precision(predicted, actual)}')
-    print(f'Alternative Recall {recommender_recall(predicted, actual)}')
-    print(f'APK {yallah2(movie_true, k_movies)}')
-    movie_dict, sim_score = create_movie_rec_dict(tet, test_tet, mts, mt_search_k, spec)
-    precisions, recalls = precision_recall_at_k(movie_dict, k_movies)
-    print(f' PRECISION COUNT: {sum(prec for prec in precisions.values()) / len(precisions)}')
-    print(f' RECALL COUNT: {sum(rec for rec in recalls.values()) / len(recalls)}')
-
-    print('|| ------ COMPLETE ------ ||', file=f)
-    print('Total run time: %s seconds.' % (time.time() - start_time_total), file=f)
-    print('|| ---------------------- ||\n', file=f)
-    print(f'Top {top} users histogram:')
-    [print(tet[i].ht.nodes(data=True)) for i in range(top)]
-    [print(tet[i].graph.nodes(data=True)) for i in range(top)]
-    f.close()
+    item_item_sim(movie_tet, spec2)
+    # interaction_matrix(tet)
+    # user_item_rating_matrix(tet)
+    #
+    # print('Building Metric Tree...')
+    # print('Building Metric Tree...', file=f)
+    # start_time = time.time()
+    # mts = mt_build(tet, mt_depth, bucket_max_mt, spec)
+    # print("--- %s seconds ---" % (time.time() - start_time), file=f)
+    #
+    #
+    # print('Evaluating model...')
+    # movie_true = get_movie_actual_and_pred(tet, test_tet, mts, mt_search_k, spec)
+    # predicted, actual = format_model_third(tet, test_tet, mts, mt_search_k, spec)
+    # print(f'Alternative Precision {recommender_precision(predicted, actual)}')
+    # print(f'Alternative Recall {recommender_recall(predicted, actual)}')
+    # print(f'APK {yallah2(movie_true, k_movies)}')
+    # movie_dict, sim_score = create_movie_rec_dict(tet, test_tet, mts, mt_search_k, spec)
+    # precisions, recalls = precision_recall_at_k(movie_dict, k_movies)
+    # print(f' PRECISION COUNT: {sum(prec for prec in precisions.values()) / len(precisions)}')
+    # print(f' RECALL COUNT: {sum(rec for rec in recalls.values()) / len(recalls)}')
+    #
+    # print('|| ------ COMPLETE ------ ||', file=f)
+    # print('Total run time: %s seconds.' % (time.time() - start_time_total), file=f)
+    # print('|| ---------------------- ||\n', file=f)
+    # print(f'Top {top} users histogram:')
+    # [print(tet[i].ht.nodes(data=True)) for i in range(top)]
+    # [print(tet[i].graph.nodes(data=True)) for i in range(top)]
+    # f.close()
 
 
 def run_book():
@@ -215,6 +223,6 @@ def run_book():
     f.close()
 
 
-run_book()
-# run_movie()
-run_baselines()
+# run_book()
+run_movie()
+# run_baselines()

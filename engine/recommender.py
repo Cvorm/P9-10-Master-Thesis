@@ -1,7 +1,7 @@
 from engine.multiset import *
 from engine.data_setup import *
 import ast
-pd.set_option('display.max_columns', None)
+# pd.set_option('display.max_columns', None)
 
 #matrix
 def create_movie_tet(spec, dataframe, source):
