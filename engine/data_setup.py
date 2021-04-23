@@ -203,11 +203,12 @@ def normalize_book_data():
 
 
 # runs the necessary functions from data_setup for recommender.py to function
-def run_data():
+def run_data(normalize=True):
     format_data()
     update_data(False, False)
     print(f'Coverage of data: {coverage(data)}')
-    normalize_all_data()
+    if normalize == True:
+        normalize_all_data()
     x_train, x_test = split_data()
     return x_train, x_test
 
@@ -244,11 +245,11 @@ def coverage(dat):
 
 def format_data_matrix():
     format_data()
-    movies = list(set(rdata['movieId'].tolist()))
+    movies = np.unique(data.movieId)
     users = list(set(rdata['userId'].tolist()))
     sorted_movies = sort_items(movies)
     sorted_users = sort_users(users)
-    user_item = pd.DataFrame(index=sorted_movies, columns=sorted_users).fillna(0)
+    user_item = pd.DataFrame(index=movies, columns=sorted_users).fillna(0)
 
     for index, row in rdata.iterrows():
         user_item[row['userId']][row['movieId']] = row['rating']
@@ -296,6 +297,6 @@ def sort_tets(tets):
     sortlist = sorted(tets, key=func_get_user)
     return sortlist
 
-format_data_matrix()
+# format_data_matrix()
 
 
