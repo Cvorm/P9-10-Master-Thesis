@@ -3,6 +3,7 @@ import sys
 # from experiments.baselines import *
 from engine.matrix_fac import *
 from engine.crossing import *
+import pickle
 
 # tet specification settings: [[nodes],[edges]]
 specification_movie = [["user", "has_rated", "has_genres", "has_imdb_rating", "has_user_rating", "has_votes", "has_director", "has_awards", "has_nominations",
@@ -120,7 +121,12 @@ def run_movie():
     [print(tet[i].ht.nodes(data=True)) for i in range(top)]
     [print(tet[i].graph.nodes(data=True)) for i in range(top)]
 
-    item_item_sim(movie_tet, spec2)
+    # item_item_sim(movie_tet, spec2)
+    # muyeyeye = parrallel_df_item_item(movie_tet, spec2, 8)
+    filehandler = open("movie_tets.obj", "wb")
+    pickle.dump(movie_tet, filehandler)
+    filehandler.close()
+    print("dhdhdfh")
     # interaction_matrix(tet)
     # user_item_rating_matrix(tet)
     #

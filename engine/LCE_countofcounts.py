@@ -16,7 +16,7 @@ item_item = pd.read_csv("../engine/item_item_matrix_peterrrrrrrr_correct_mirrore
 user_item = pd.read_csv("../engine/user_item_ny.csv", sep='\t', index_col=0, low_memory=False)
 
 print(item_item.shape, user_item.shape)
-# exit(0)
+exit(0)
 # user_item = user_item.values
 # user_user = user_user.to_numpy()
 # print(user_user)
@@ -107,12 +107,12 @@ for training, testing in kf.split(user_item):
 # "######################################################################"
 # print(len(xu_train_list), len(xu_test_list), len(xi_train_list), len(xi_test_list))
 
-prec_rec_at = 10
+prec_rec_at = 50
 k = 500
 alpha = 0.5
 lambdaa = 0.5
 epsilon = 0.001
-maxiter = 20
+maxiter = 500
 verbose = True
 beta = 0.0 #graph reguralization
 # beta = 0.05

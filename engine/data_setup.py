@@ -296,6 +296,6 @@ def sort_tets(tets):
     sortlist = sorted(tets, key=func_get_user)
     return sortlist
 
-format_data_matrix()
+# format_data_matrix()
 
 
