@@ -54,6 +54,9 @@ def f(movie_element, tet_dict, list_movies, spec):
         lul2 = hist2.get_histogram()
         # arr[i] = calc_distance(lul, lul2, spec, 'movie')
         list_res.append(calc_distance(lul, lul2, spec, 'movie'))
+
+    tuple = (movie_element, list_res)
+    return tuple
     # print(movies)
     # print(movie_element, tet_dict[movie_element])
     # print(movie_element)
@@ -100,5 +103,9 @@ if __name__ == '__main__':
 
     num_movies = len(tet_dict)
     print(num_movies)
-    pool = Pool(mp.cpu_count())
+    pool = Pool(mp.cpu_count()-1)
     results = (pool.map(partial(f, tet_dict=tet_dict, list_movies=list_movies, spec=spec2), list_movies))
+
+    filehandler = open("Matrix_lists.obj", "wb")
+    pickle.dump(results, filehandler)
+    filehandler.close()
