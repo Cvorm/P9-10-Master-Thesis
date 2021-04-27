@@ -173,7 +173,8 @@ for xu_train, xu_test, xi_train, xi_test in zip(xu_train_list_kf, xu_test_list_k
         del pred_list[m-1]
     precision = recommender_precision(pred_list, test_list)
     recall = recommender_recall(pred_list, test_list)
-    nov = novelty(pred_df, list_of_items, rating_df, prec_rec_at)
+    users = rating_df.columns.tolist()
+    nov = novelty(pred_df, rating_df, list_of_items, users, prec_rec_at)
     print(precision, recall, nov)
     nov_list.append(nov)
     prec_list.append(precision)

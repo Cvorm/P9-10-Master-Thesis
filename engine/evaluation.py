@@ -309,6 +309,18 @@ def recommender_recall(predicted: List[list], actual: List[list]) -> int:
     return recall
 
 
+def __novelty2(user_predictions, user_seen, item, users, k):
+    count_recommended = 0
+    count_no_interaction = 0
+    for u, rating in user_predictions.items():
+        if item in rating:
+            count_recommended += 1
+        if item not in user_seen:
+            count_no_interaction += 1
+    novel = 1 - (count_recommended / count_no_interaction)
+    return novel
+
+
 def __novelty(user_predictions, user_seen, item, users, k):
     count_recommended = 0
     count_no_interaction = 0
@@ -331,10 +343,10 @@ def __novelty(user_predictions, user_seen, item, users, k):
     return novel
 
 
-def novelty(predicted, items, ratings, k_items):
+def novelty(predicted, ratings, items, users, k_items):
     sum = 0
     count = 0
-    users = ratings.columns.tolist()
+    # users = ratings.columns.tolist()
     # ratings = ratings.transpose()
     predictions = defaultdict(list)
     user_seen = dict()
@@ -345,5 +357,14 @@ def novelty(predicted, items, ratings, k_items):
         user_seen[u] = u_seen
     for i in items: #columns.tolist():
         sum += __novelty(predictions, user_seen, i, users, k_items)
+        count += 1
+    return sum / count
+
+
+def novelty2(predicted, seen, items, users, k_items):
+    sum = 0
+    count = 0
+    for i in items:
+        sum += __novelty2(predicted, seen, i, users, k_items)
         count += 1
     return sum / count

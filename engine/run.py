@@ -228,7 +228,14 @@ def run_book():
     [print(book_tet[i].graph.nodes(data=True)) for i in range(top)]
     f.close()
 
+def run_mymedialite(k):
+    predictions, actual, seen, lst, items, user_list = eval_medialite(k_movies)
+    print(f'MyMediaLite Novelty: {novelty2(lst, seen, items, user_list, k)}')
+    print(f'MyMediaLite Precision: {recommender_precision(predictions, actual)}')
+    print(f'MyMediaLite Recall: {recommender_recall(predictions, actual)}')
 
 # run_book()
-run_movie()
+#run_movie()
 # run_baselines()
+#run_data_mymedialite()
+run_mymedialite(k_movies)
