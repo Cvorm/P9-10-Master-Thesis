@@ -5,8 +5,8 @@ import pandas as pd
 import scipy as sp
 import scipy.sparse
 import scipy.io
-from construct_A import *
-from LCE_Beta0 import *
+from engine.LCE_code.construct_A import *
+from engine.LCE_code.LCE_Beta0 import *
 import sklearn as sk
 # import tfidf
 import h5py
@@ -16,6 +16,7 @@ eps = 7. / 3 - 4. / 3 - 1
 def L2_norm_row(X):
     "Normalize each row of the matrix."
     return sp.sparse.spdiags(1. / (np.sqrt(np.sum(X * X, axis=1)) + eps), 0, len(X), len(X)).dot(X)
+
 
 def tfidf(x_train, x_test):
     "Calculate the term frequency–inverse document frequency fro the train and test sets"

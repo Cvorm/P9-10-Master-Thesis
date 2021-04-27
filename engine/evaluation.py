@@ -309,6 +309,18 @@ def recommender_recall(predicted: List[list], actual: List[list]) -> int:
     return recall
 
 
+def __novelty2(user_predictions, user_seen, item, users, k):
+    count_recommended = 0
+    count_no_interaction = 0
+    for u, rating in user_predictions.items():
+        if item in rating:
+            count_recommended += 1
+        if item not in user_seen:
+            count_no_interaction += 1
+    novel = 1 - (count_recommended / count_no_interaction)
+    return novel
+
+
 def __novelty(user_predictions, user_seen, item, users, k):
     count_recommended = 0
     count_no_interaction = 0
@@ -316,9 +328,13 @@ def __novelty(user_predictions, user_seen, item, users, k):
         rating.sort(key=lambda x: x[1], reverse=True)
         if item in (items[0] for items in rating[:k]):
             count_recommended += 1
+           #print('hit')
         if item not in user_seen[u]:
             count_no_interaction += 1
+            # print('HIT')
     novel = 1 - (count_recommended / count_no_interaction)
+    #if novel != 1:
+        #print(f'intermdiate novel {novel}')
     # print(f'len of list: {len(user_predictions[u])}')
     # print(f'Recommended count: {count_recommended}')
     # print(f'No interaction count: {count_no_interaction}')
@@ -327,20 +343,28 @@ def __novelty(user_predictions, user_seen, item, users, k):
     return novel
 
 
-def novelty(predicted, items, ratings, k_items):
+def novelty(predicted, ratings, items, users, k_items):
     sum = 0
     count = 0
-    users = np.unique(ratings.userId)
+    # users = ratings.columns.tolist()
+    # ratings = ratings.transpose()
     predictions = defaultdict(list)
     user_seen = dict()
-    for uid, iid, _, est, _ in predicted:
-        predictions[uid].append((iid, est))
     for u in users:
-        # u_predictions = [m[1] for m in predicted if m[0] == u]
-        u_seen = [r[1] for r in ratings if r[0] == u]
-        # user_predicitons[u] = u_predictions
+        for z in predicted[u].iteritems():
+            predictions[u].append((z[0], z[1]))
+        u_seen = [x[0] for x in ratings[u].iteritems() if x[1] > 0]
         user_seen[u] = u_seen
-    for i in items.iterrows():
-        sum += __novelty(predictions, user_seen, i[1]['movieId'], users, k_items)
+    for i in items: #columns.tolist():
+        sum += __novelty(predictions, user_seen, i, users, k_items)
+        count += 1
+    return sum / count
+
+
+def novelty2(predicted, seen, items, users, k_items):
+    sum = 0
+    count = 0
+    for i in items:
+        sum += __novelty2(predicted, seen, i, users, k_items)
         count += 1
     return sum / count

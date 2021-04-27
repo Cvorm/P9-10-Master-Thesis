@@ -28,6 +28,10 @@ specification_moviessss = [["movie", "has_genres", "has_votes", "has_imdb_rating
                         ("has_genres", "Horror"),  ("has_genres", "IMAX"), ("has_genres", "Musical"),  ("has_genres", "Mystery"),  ("has_genres", "Romance"),
                         ("has_genres", "Sci-Fi"),  ("has_genres", "Thriller"), ("has_genres", "War"),  ("has_genres", "Western")]]
 
+feature_specification = ['Action', 'Adventure', 'Animation', 'Children', 'Comedy', 'Crime', 'Documentary',
+                         'Drama', 'Fantasy', 'Film-Noir', 'Horror', 'IMAX', 'Musical', 'Mystery', 'Romance',
+                         'Sci-Fi', 'Thriller', 'War', 'Western', 'rating', 'director', 'votes', 'budget', 'gross']
+
 # "has_budget", "has_gross" ("has_rated", "has_budget"), ("has_rated", "has_gross"),
 # SETTINGS
 inp = sys.argv
@@ -73,7 +77,7 @@ def run_movie():
 
     print('Formatting data...', file=f)
 
-    x_train, x_test = run_data()
+    x_train, x_test = run_data(normalize=False)
     print("------------------------------")
     print(x_train)
     print(x_test)
@@ -87,7 +91,9 @@ def run_movie():
     spec2 = tet_specification(specification_moviessss[0], specification_moviessss[1])
     print("--- %s seconds ---" % (time.time() - start_time), file=f)
 
-
+    matrix = data[['genres','rating','director','votes','budget','gross']].to_numpy()
+    print('MATRIX')
+    item_feature_matrix()
     print('Generating TETs according to specification...', file=f)
     print('Generating TETs according to specification...')
     start_time = time.time()
@@ -120,7 +126,7 @@ def run_movie():
     [print(tet[i].ht.nodes(data=True)) for i in range(top)]
     [print(tet[i].graph.nodes(data=True)) for i in range(top)]
 
-    item_item_sim(movie_tet, spec2)
+    #item_item_sim(movie_tet, spec2)
     # interaction_matrix(tet)
     # user_item_rating_matrix(tet)
     #
@@ -222,7 +228,14 @@ def run_book():
     [print(book_tet[i].graph.nodes(data=True)) for i in range(top)]
     f.close()
 
+def run_mymedialite(k):
+    predictions, actual, seen, lst, items, user_list = eval_medialite(k_movies)
+    print(f'MyMediaLite Novelty: {novelty2(lst, seen, items, user_list, k)}')
+    print(f'MyMediaLite Precision: {recommender_precision(predictions, actual)}')
+    print(f'MyMediaLite Recall: {recommender_recall(predictions, actual)}')
 
 # run_book()
-run_movie()
+#run_movie()
 # run_baselines()
+#run_data_mymedialite()
+run_mymedialite(k_movies)

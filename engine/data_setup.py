@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import imdb
 import re
+import ast
 from collections import defaultdict
 import itertools
 from functools import partial
@@ -29,7 +30,47 @@ data['votes'] = data['votes'].fillna(0).astype(float)
 data['budget'] = data['budget'].fillna(0).astype(float)
 data['gross'] = data['gross'].fillna(0).astype(float)
 
+
 # function used for updating the movies in movielens dataset by adding data from IMDb
+
+
+def eval_medialite(k):
+    inp = pd.read_csv('../Data/random_prediction.csv', sep='\t', header=None)
+    test_mymedia = pd.read_csv('../Data/test_mymedialite.csv', sep='\t', names=['userId', 'movieId', 'rating', 'timestamp'])
+    train_mymedia = pd.read_csv('../Data/train_mymedialite.csv', sep='\t', names=['userId', 'movieId', 'rating', 'timestamp'])
+    train_mymedia['userId'] = 'u' + train_mymedia['userId'].astype(str)
+    test_mymedia['userId'] = 'u' + test_mymedia['userId'].astype(str)
+    print('STEP 0')
+    lst = defaultdict(list)
+    pre = defaultdict(list)
+    pred_list = []
+    actual_list = []
+    seen_list = defaultdict(list)
+    for idx, val in inp.iterrows():
+        uid = 'u' + str(val[0])
+        res = val[1]
+        res = ast.literal_eval(res.replace("[","{").replace("]", "}"))
+        lst[uid] = res
+    print('STEP 1')
+    for x in lst.keys():
+        tmp = dict(sorted(lst[x].items(), key=lambda item: item[1], reverse=True))
+        tmp_k = list(tmp.keys())[:k]
+        pred_list.append(tmp_k)
+        tmp_actual = test_mymedia.loc[test_mymedia['userId'] == x] # [y['movieId'] for z, y in test_mymedia.iterrows() if y['userId'] == x]
+        tmp_actual = [(y['movieId']) for z, y in tmp_actual.iterrows()]
+        actual_list.append(list(tmp_actual))
+        pre[x] = tmp_k
+        tmp_seen = train_mymedia.loc[train_mymedia['userId'] == x]
+        tmp_seen2 = []
+        for z, y in tmp_seen.iterrows():
+            tmp_seen2.append(y['movieId'])
+        seen_list[x] = tmp_seen2
+        #seen_list[x] == [y['movieId'] for z, y in tmp_seen.iterrows()]
+
+    print('STEP 2')
+    items = np.unique(train_mymedia.movieId)
+    user = np.unique(train_mymedia.userId)
+    return pred_list, actual_list, seen_list, pre, items, user
 
 
 def data_test():
@@ -152,12 +193,11 @@ def update_data(movie, actor):
 
 
 # returns split dataset, training and test
-def split_data():
-    df = rdata
+def split_data(df):
     ranks = df.groupby('userId')['timestamp'].rank(method='first')
     counts = df['userId'].map(df.groupby('userId')['timestamp'].apply(len))
     # myes = (ranks / counts) > 0.8
-    df['new_col'] = (ranks / counts) > 0.70  # percentage
+    df['new_col'] = (ranks / counts) > 0.80  # percentage
     # print(myes)
     # print(df.head())
     train = df.loc[df['new_col'] == False]
@@ -203,14 +243,27 @@ def normalize_book_data():
 
 
 # runs the necessary functions from data_setup for recommender.py to function
-def run_data():
+def run_data(normalize=True):
     format_data()
     update_data(False, False)
     print(f'Coverage of data: {coverage(data)}')
-    normalize_all_data()
+    if normalize == True:
+        normalize_all_data()
     x_train, x_test = split_data()
     return x_train, x_test
 
+def run_data_mymedialite():
+    rdata['userId'] = movieratings['userId'][1:].astype(str)
+    rdata['movieId'] = movieratings['movieId'][1:].astype(str)
+    rdata['rating'] = movieratings['rating']
+    rdata['timestamp'] = movieratings['timestamp']
+    users['UserID'] = users['UserID'][1:].astype(str)
+
+    movies = pd.read_csv('../Data/movies.csv', converters={'cast': eval})
+    x_train, x_test = split_data(rdata)
+    x_train.to_csv('train_mymedialite.csv', sep='\t', header=False, index=False)
+    x_test.to_csv('test_mymedialite.csv', sep='\t', header=False, index=False)
+    movies.to_csv('movies_mymedialite.dat', sep='\t', header=False, index=False)
 
 def cholo(train, test):
     lst = []
@@ -244,11 +297,11 @@ def coverage(dat):
 
 def format_data_matrix():
     format_data()
-    movies = list(set(rdata['movieId'].tolist()))
+    movies = np.unique(data.movieId)
     users = list(set(rdata['userId'].tolist()))
     sorted_movies = sort_items(movies)
     sorted_users = sort_users(users)
-    user_item = pd.DataFrame(index=sorted_movies, columns=sorted_users).fillna(0)
+    user_item = pd.DataFrame(index=movies, columns=sorted_users).fillna(0)
 
     for index, row in rdata.iterrows():
         user_item[row['userId']][row['movieId']] = row['rating']
@@ -296,6 +349,6 @@ def sort_tets(tets):
     sortlist = sorted(tets, key=func_get_user)
     return sortlist
 
-format_data_matrix()
+# format_data_matrix()
 
 

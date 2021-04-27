@@ -1,8 +1,8 @@
-from matrix_fac import *
-from LCE_code import *
-from LCE_code.construct_A import *
-from LCE_code.LCE_Beta0 import *
-from evaluation import *
+from engine.matrix_fac import *
+from engine.LCE_code import *
+from engine.LCE_code.construct_A import *
+from engine.LCE_code.LCE_Beta0 import *
+from engine.evaluation import *
 import pandas as pd
 from sklearn.model_selection import KFold
 from sklearn.model_selection import train_test_split
@@ -11,11 +11,17 @@ import sklearn as sk
 # user_user = pd.read_csv("../engine/user_user_matrix.csv", sep='\t', index_col=0, low_memory=False, dtype=float)
 # user_user = pd.read_csv("../engine/user_user_matrix.csv", sep='\t', index_col=0)
 item_item = pd.read_csv("../engine/item_item_matrix_peterrrrrrrr_correct_mirrored.csv", sep='\t', index_col=0, low_memory=False)
+#item_item = pd.read_csv("../engine/item_feature_matrix.csv", sep='\t', index_col=0, low_memory=False)
 # user_item = pd.read_csv("../engine/user_item_matrix_peter.csv", sep='\t', index_col=0)
 # user_item = pd.read_csv("../engine/user_item_matrix_peterr_ratings.csv", sep='\t', index_col=0)
 user_item = pd.read_csv("../engine/user_item_ny.csv", sep='\t', index_col=0, low_memory=False)
-
-print(item_item.shape, user_item.shape)
+list_of_items = [x[0] for x in item_item.iterrows()]
+# print(item_feature)
+print(user_item)
+# print(item_item.shape, user_item.shape)
+# print(item_feature.shape)
+print(user_item.shape)
+print(item_item.shape)
 # exit(0)
 # user_item = user_item.values
 # user_user = user_user.to_numpy()
@@ -39,6 +45,7 @@ def rows_cols_numpy_to_df(rows, cols, numpy):
 
 kf = KFold(n_splits=5)
 kf.get_n_splits(item_item)
+# kf.get_n_splits(item_feature) #item_feature
 xu_train_list = []
 xu_test_list = []
 xi_train_list = []
@@ -59,20 +66,22 @@ xi_test_list_kf = []
 #     X_train.to_csv(f'item_item_rating_matrix{len(X_train)}.csv', sep='\t')
 #     # print(X_train, X_test)
 "########################## CROSS-VALIDATION ##########################"
-for training, testing in kf.split(item_item):
-    X1_train, X1_test = item_item.iloc[training], item_item.iloc[testing]
-    rows_train, cols_train, numpy_train = get_rows_cols_numpy_from_df(X1_train)
-    rows_test, cols_test, numpy_test = get_rows_cols_numpy_from_df(X1_test)
-    xi_train_list_kf.append((rows_train, cols_train, numpy_train))
-    xi_test_list_kf.append((rows_test, cols_test, numpy_test))
+def cross_validation(user, item):
+    for training, testing in kf.split(item):
+        X1_train, X1_test = item.iloc[training], item.iloc[testing]
+        rows_train, cols_train, numpy_train = get_rows_cols_numpy_from_df(X1_train)
+        rows_test, cols_test, numpy_test = get_rows_cols_numpy_from_df(X1_test)
+        xi_train_list_kf.append((rows_train, cols_train, numpy_train))
+        xi_test_list_kf.append((rows_test, cols_test, numpy_test))
 
-for training, testing in kf.split(user_item):
-    X2_train, X2_test = user_item.iloc[training], user_item.iloc[testing]
-    rows_train, cols_train, numpy_train = get_rows_cols_numpy_from_df(X2_train)
-    rows_test, cols_test, numpy_test = get_rows_cols_numpy_from_df(X2_test)
-    xu_train_list_kf.append((rows_train, cols_train, numpy_train))
-    xu_test_list_kf.append((rows_test, cols_test, numpy_test))
+    for training, testing in kf.split(user):
+        X2_train, X2_test = user.iloc[training], user.iloc[testing]
+        rows_train, cols_train, numpy_train = get_rows_cols_numpy_from_df(X2_train)
+        rows_test, cols_test, numpy_test = get_rows_cols_numpy_from_df(X2_test)
+        xu_train_list_kf.append((rows_train, cols_train, numpy_train))
+        xu_test_list_kf.append((rows_test, cols_test, numpy_test))
 
+cross_validation(user_item, item_item)
 #     xi_train_list.append(X1_train.to_numpy())
 #     xi_test_list.append(X1_test.to_numpy())
 #
@@ -133,12 +142,14 @@ for xu_train, xu_test, xi_train, xi_test in zip(xu_train_list_kf, xu_test_list_k
     w_test[w_test < 0] = 0
     pred = np.dot(w_test, hu)
     pred_list = []
+    nov_list = []
     test_list = []
     missing = []
 
     pred_df = rows_cols_numpy_to_df(xu_test[0], xu_test[1], pred)
     xu_test_df = rows_cols_numpy_to_df(xu_test[0], xu_test[1], xu_test[2])
-
+    rating_df = rows_cols_numpy_to_df(xu_train[0], xu_train[1], xu_train[2])
+    item_df = rows_cols_numpy_to_df(xi_train[0], xi_train[1], xi_train[2])
     for column in pred_df:
         user = pred_df[column]
         sorted = user.sort_values(ascending=False)
@@ -162,10 +173,13 @@ for xu_train, xu_test, xi_train, xi_test in zip(xu_train_list_kf, xu_test_list_k
         del pred_list[m-1]
     precision = recommender_precision(pred_list, test_list)
     recall = recommender_recall(pred_list, test_list)
-    print(precision, recall)
+    users = rating_df.columns.tolist()
+    nov = novelty(pred_df, rating_df, list_of_items, users, prec_rec_at)
+    print(precision, recall, nov)
+    nov_list.append(nov)
     prec_list.append(precision)
     rec_list.append(recall)
-
+print(f'average novelty: {sum(nov_list) / len(nov_list)}')
 print("average precision:", sum(prec_list) / len(prec_list))
 print("average recall", sum(rec_list) / len(rec_list))
 "############################################################################################################"
