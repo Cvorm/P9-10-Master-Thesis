@@ -16,7 +16,6 @@ item_item = pd.read_csv("../engine/item_item_matrix_peterrrrrrrr_correct_mirrore
 user_item = pd.read_csv("../engine/user_item_ny.csv", sep='\t', index_col=0, low_memory=False)
 
 print(item_item.shape, user_item.shape)
-exit(0)
 # user_item = user_item.values
 # user_user = user_user.to_numpy()
 # print(user_user)

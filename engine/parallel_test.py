@@ -109,3 +109,23 @@ if __name__ == '__main__':
     filehandler = open("Matrix_lists.obj", "wb")
     pickle.dump(results, filehandler)
     filehandler.close()
+
+    file = open("C:\\Users\\caspe\\PycharmProjects\\P9-10-Master-Thesis\\engine\\Matrix_lists.obj", 'rb')
+    tet = pickle.load(file)
+    file.close()
+
+    data = [x[1] for x in tet]
+    movies = []
+    for x in tet:
+        movies.append(x[0])
+
+    df = pd.DataFrame(data=data, index=movies, columns=movies).fillna(0)
+    cols = df.columns.values.tolist()
+    rows = list(df.index)
+
+    X = df.to_numpy()
+    X = X + X.T - np.diag(np.diag(X))
+    # # print(X)
+    #
+    mirrored = pd.DataFrame(data=X, index=rows, columns=cols)
+    mirrored.to_csv("TEST_TEST_TEST_TEST_TEST.csv", sep='\t')
