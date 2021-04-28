@@ -279,7 +279,8 @@ def recommender_precision(predicted: List[list], actual: List[list]) -> int:
     """
     def calc_precision(predicted, actual):
         prec = [value for value in predicted if value in actual]
-        prec = np.round(float(len(prec)) / float(len(predicted)), 4)
+        temp = float(len(predicted))
+        prec = np.round(float(len(prec)) / temp if temp != 0 else 0, 4)
         return prec
 
     precision = np.mean(list(map(calc_precision, predicted, actual)))
@@ -302,7 +303,8 @@ def recommender_recall(predicted: List[list], actual: List[list]) -> int:
     """
     def calc_recall(predicted, actual):
         reca = [value for value in predicted if value in actual]
-        reca = np.round(float(len(reca)) / float(len(actual)), 4)
+        temp = float(len(actual))
+        reca = np.round(float(len(reca)) / temp if temp != 0 else 0, 4)
         return reca
 
     recall = np.mean(list(map(calc_recall, predicted, actual)))
