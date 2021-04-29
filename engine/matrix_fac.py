@@ -662,3 +662,25 @@ def non_neg_matrix_fac(matrix):
 
 # df_user_user = pd.DataFrame
 # def user_user_sim():
+
+def item_feature_matrix():
+    items = np.unique(data.movieId)
+    tmp_dat = data.drop(['genres', 'director', 'title'], axis=1)
+    gen = ['Action', 'Adventure', 'Animation', 'Children', 'Comedy', 'Crime', 'Documentary',
+                         'Drama', 'Fantasy', 'Film-Noir', 'Horror', 'IMAX', 'Musical', 'Mystery', 'Romance',
+                         'Sci-Fi', 'Thriller', 'War', 'Western']
+    tmp_dat = tmp_dat.reindex(columns=['movieId', 'rating', 'votes', 'budget', 'gross', 'Action',
+                                       'Adventure', 'Animation', 'Children', 'Comedy', 'Crime', 'Documentary', 'Drama',
+                                       'Fantasy', 'Film-Noir', 'Horror', 'IMAX', 'Musical', 'Mystery', 'Romance',
+                                        'Sci-Fi', 'Thriller', 'War', 'Western'])
+    res_dat = tmp_dat #.set_index('movieId')
+    for idx, item in enumerate(data.iterrows()):
+        genres = item[1][2]
+        for genre in gen:
+            if genre in genres:
+                res_dat.at[idx, genre] = 1
+            else:
+                res_dat.at[idx, genre] = 0
+    res_dat = res_dat.set_index('movieId')
+    print(res_dat)
+    res_dat.to_csv('item_feature_matrix.csv', sep='\t')
