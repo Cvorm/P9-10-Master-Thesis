@@ -15,13 +15,10 @@ item_item = pd.read_csv("../engine/item_item_matrix_peterrrrrrrr_correct_mirrore
 # user_item = pd.read_csv("../engine/user_item_matrix_peter.csv", sep='\t', index_col=0)
 # user_item = pd.read_csv("../engine/user_item_matrix_peterr_ratings.csv", sep='\t', index_col=0)
 user_item = pd.read_csv("../engine/user_item_ny.csv", sep='\t', index_col=0, low_memory=False)
+
 list_of_items = [x[0] for x in item_item.iterrows()]
 # print(item_feature)
-print(user_item)
-# print(item_item.shape, user_item.shape)
-# print(item_feature.shape)
-print(user_item.shape)
-print(item_item.shape)
+
 # exit(0)
 # user_item = user_item.values
 # user_user = user_user.to_numpy()
@@ -116,12 +113,12 @@ cross_validation(user_item, item_item)
 # "######################################################################"
 # print(len(xu_train_list), len(xu_test_list), len(xi_train_list), len(xi_test_list))
 
-prec_rec_at = 10
+prec_rec_at = 50
 k = 500
 alpha = 0.5
 lambdaa = 0.5
 epsilon = 0.001
-maxiter = 20
+maxiter = 500
 verbose = True
 beta = 0.0 #graph reguralization
 # beta = 0.05

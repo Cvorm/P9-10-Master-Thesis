@@ -11,6 +11,23 @@ from functools import partial
 from sklearn.decomposition import NMF
 
 from engine.recommender import *
+import multiprocessing as mp
+from multiprocessing import Pool
+from functools import partial
+import pickle
+import mapply as mpp
+
+specification_moviessss = [["movie", "has_genres", "has_votes", "has_imdb_rating", "has_user_rating", "has_director", "has_awards", "has_nominations",
+                        'Action', 'Adventure', 'Animation', 'Children', 'Comedy', 'Crime', 'Documentary', 'Drama', 'Fantasy', 'Film-Noir',
+                        'Horror', 'IMAX', 'Musical', 'Mystery', 'Romance', 'Sci-Fi', 'Thriller', 'War', 'Western'],
+                       [("movie", "has_genres"), ("movie", "has_votes"), ("movie", "has_imdb_rating"), ("movie", "has_user_rating"),
+                        ("movie", "has_director"),
+                        ("has_director", "has_awards"), ("has_director", "has_nominations"),
+                        ("has_genres", "Action"),  ("has_genres", "Adventure"), ("has_genres", "Animation"),  ("has_genres", "Children"),  ("has_genres", "Comedy"),
+                        ("has_genres", "Crime"),  ("has_genres", "Documentary"), ("has_genres", "Drama"),  ("has_genres", "Fantasy"),  ("has_genres", "Film-Noir"),
+                        ("has_genres", "Horror"),  ("has_genres", "IMAX"), ("has_genres", "Musical"),  ("has_genres", "Mystery"),  ("has_genres", "Romance"),
+                        ("has_genres", "Sci-Fi"),  ("has_genres", "Thriller"), ("has_genres", "War"),  ("has_genres", "Western")]]
+spec2 = tet_specification(specification_moviessss[0], specification_moviessss[1])
 # from engine.recommender import __distance
 
 # spec2 = [["user,", "movie", "genre", "director", "rating", "award"],
@@ -52,7 +69,228 @@ from engine.recommender import *
 # print(item_item.head(5))
 # print(user_item.head(5))
 
+# num_cpu = 8
 
+def dist_func(x, y, tet_dict, spec):
+    # print(x, y)
+    # print(int(x[1:]))
+    if x == y:
+        return 0
+    elif int(x[1:]) > int(y[1:]):
+        return 0
+    else:
+        # hist1 = tet_dict[int(x[1:])-1]
+        # hist2 = tet_dict[int(y[1:])-1]
+        hist1 = tet_dict[x]
+        hist2 = tet_dict[y]
+        lul = hist1.get_histogram()
+        lul2 = hist2.get_histogram()
+        dist = calc_distance(lul, lul2, spec, 'movie')
+        return dist
+
+# def parrallel_df_item_item(tet, spec, num_cpu):
+#     if __name__ == '__main__':
+#         movies = []
+#         for t in tet:
+#             movie = [x for x, y in t.graph.nodes(data=True) if y.get('root')]
+#             # print(movie)
+#             movies.append(movie[0])
+#         # for t in test_tet:
+#         #     movie = [x for x, y in t.graph.nodes(data=True) if y.get('root')]
+#         #     # print(movie)
+#         #     movies.append(movie[0])
+#
+#         sorted_movies = sort_items(movies)
+#         # print(sorted_movies)
+#         sorted_tets = sort_items_prefix(tet, "m")
+#
+#         item_item = pd.DataFrame(index=sorted_movies, columns=sorted_movies).fillna(0.0)
+#         split_size = math.floor(item_item.shape[1]/num_cpu)
+#         list_dfs = []
+#         for i in range(num_cpu-1):
+#             list_dfs.append(item_item.iloc[:, split_size*i:split_size*(i+1)])
+#         list_dfs.append(item_item.iloc[:,(num_cpu-1)*split_size:])
+#
+#         print("jungle gap")
+#
+#         pool = Pool(8)
+#         dataa = pd.concat(pool.map(partial(dist_func, sorted_tets=sorted_tets, spec=spec), list_dfs[0]))
+#         pool.close()
+#         pool.join()
+#
+#         return dataa
+
+
+# if __name__ == '__main__':
+#
+#     file = open("movie_tets.obj", 'rb')
+#     tet = pickle.load(file)
+#     file.close()
+#     movies = []
+#
+#     for t in tet:
+#         movie = [x for x, y in t.graph.nodes(data=True) if y.get('root')]
+#         # print(movie)
+#         movies.append(movie[0])
+#     # for t in test_tet:
+#     #     movie = [x for x, y in t.graph.nodes(data=True) if y.get('root')]
+#     #     # print(movie)
+#     #     movies.append(movie[0])
+#
+#     sorted_movies = sort_items(movies)
+#     # print(sorted_movies)
+#     sorted_tets = sort_items_prefix(tet, "m")
+#
+#     item_item = pd.DataFrame(index=sorted_movies, columns=sorted_movies).fillna(0.0)
+#     split_size = math.floor(item_item.shape[1]/num_cpu)
+#     list_dfs = []
+#     for i in range(num_cpu-1):
+#         list_dfs.append(item_item.iloc[:, split_size*i:split_size*(i+1)])
+#     list_dfs.append(item_item.iloc[:,(num_cpu-1)*split_size:])
+#
+#     print("jungle gap")
+#
+#     pool = Pool(8)
+#     dataa = pd.concat(pool.map(partial(dist_func, sorted_tets=sorted_tets, spec=spec2), list_dfs[0]))
+#     pool.close()
+#     pool.join()
+
+        # return dataa
+
+# def lulul(tet, spec, num_cpu):
+#     if __name__ == '__main__':
+#         pool = Pool(8)
+#         dataa = pd.concat(pool.map(partial(dist_func, sorted_tets=sorted_tets, spec=spec), list_dfs[0]))
+#         pool.close()
+#         pool.join()
+#         return dataa
+
+def split_df(df, num_cpu):
+
+    list_dfs = []
+    split_size = math.floor(df.shape[1] / num_cpu)
+    for i in range(num_cpu-1):
+        list_dfs.append(df.iloc[:, split_size*i:split_size*(i+1)])
+    list_dfs.append(df.iloc[:,(num_cpu-1)*split_size:])
+    return list_dfs
+
+# def parallelize(func, num_of_processes=8):
+#     file = open("movie_tets.obj", 'rb')
+#     tet = pickle.load(file)
+#     file.close()
+#
+#     movies = []
+#
+#     for t in tet:
+#         movie = [x for x, y in t.graph.nodes(data=True) if y.get('root')]
+#         # print(movie)
+#         movies.append(movie[0])
+#
+#     sorted_movies = sort_items(movies)
+#     # print(sorted_movies)
+#     sorted_tets = sort_items_prefix(tet, "m")
+#
+#     item_item = pd.DataFrame(index=sorted_movies, columns=sorted_movies).fillna(0.0)
+#     split_size = math.floor(item_item.shape[1]/num_of_processes)
+#     list_dfs = []
+#     for i in range(num_of_processes-1):
+#         list_dfs.append(item_item.iloc[:, split_size*i:split_size*(i+1)])
+#     list_dfs.append(item_item.iloc[:,(num_of_processes-1)*split_size:])
+#
+#     # data_split = np.array_split(data, num_of_processes)
+#     if __name__ == '__main__':
+#         pool = Pool(num_of_processes)
+#         data = pd.concat(pool.map(func, list_dfs))
+#         pool.close()
+#         pool.join()
+#         return data
+#
+# def run_on_subset(func, data_subset):
+#     return data_subset.apply(func, axis=1)
+#
+# def parallelize_on_rows(func, num_of_processes=8):
+#     return parallelize(partial(run_on_subset, func), num_of_processes)
+#
+# file = open("movie_tets.obj", 'rb')
+# tet = pickle.load(file)
+# file.close()
+#
+# movies = []
+#
+# for t in tet:
+#     movie = [x for x, y in t.graph.nodes(data=True) if y.get('root')]
+#     # print(movie)
+#     movies.append(movie[0])
+#
+# sorted_movies = sort_items(movies)
+# # print(sorted_movies)
+# sorted_tets = sort_items_prefix(tet, "m")
+#
+# yesshu = parallelize_on_rows(partial(dist_func, sorted_tets=sorted_tets, spec=spec2))
+
+
+def func_get_movie(element):
+    # print(element)
+    item = [x for x, y in element.graph.nodes(data=True) if y.get('root')]
+    # if len(item) >= 1:
+    myes = item[0]
+    # else:
+    #     myes = item
+    # print(myes)
+    return myes
+if __name__ == '__main__':
+    file = open("movie_tets.obj", 'rb')
+    tet = pickle.load(file)
+    file.close()
+    movies = []
+
+    for t in tet:
+        movie = [x for x, y in t.graph.nodes(data=True) if y.get('root')]
+        # print(movie)
+        movies.append(movie[0])
+    # for t in test_tet:
+    #     movie = [x for x, y in t.graph.nodes(data=True) if y.get('root')]
+    #     # print(movie)
+    #     movies.append(movie[0])
+
+    sorted_movies = sort_items(movies)
+    # print(sorted_movies)
+    sorted_tets = sort_items_prefix(tet, "m")
+
+    item_item = pd.DataFrame(index=sorted_movies, columns=sorted_movies).fillna(0.0)
+    splits = split_df(item_item, mp.cpu_count())
+    tet_dict = {}
+    for i in sorted_tets:
+        yes = func_get_movie(i)
+        tet_dict[yes] = i
+    # num_workers = mp.cpu_count()
+    # num_workers = 2
+    # pool = mp.Pool(num_workers)
+    # data = []
+
+    for split in splits:
+        # for column in df:
+        # yes = map(partial(dist_func, sorted_tets=sorted_tets, spec=spec2), df)
+        series_rows = pd.Series(split.index)
+        series_cols = pd.Series(split.columns)
+        # noinspection PyTypeChecker
+        # ny = mpp.mapply(item_item, series_rows.apply(lambda x: series_cols.apply(lambda y: dist_func(x, y, tet_dict=tet_dict, spec=spec2))))
+        res = pd.DataFrame(series_rows.apply(lambda x: series_cols.apply(lambda y: dist_func(x, y, tet_dict=tet_dict, spec=spec2))))
+        res.index = series_rows
+        res.columns = series_cols
+        print("yes")
+    # df['parcels'] = pool.map(func,df0['parcels'].values) # specify the function and arguments to map
+    # pool.close()
+    # pool.join()
+    item_item.to_csv("TEST_TEST_TEST_TEST_TEST.csv", sep='\t')
+
+
+    # data_split = np.array_split(data, num_cpu)
+    # pool = Pool(num_cpu)
+    # data = pd.concat(pool.map(func, data_split))
+    # pool.close()
+    # pool.join()
+    # return data
 def user_user_sim(tet, spec):
     # num_users = len(user_list)
     # print(num_users)
