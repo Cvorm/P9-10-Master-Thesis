@@ -4,6 +4,8 @@ import sys
 from engine.matrix_fac import *
 from engine.crossing import *
 import pickle
+from collections import Counter
+import matplotlib.pyplot as plt
 
 # tet specification settings: [[nodes],[edges]]
 specification_movie = [["user", "has_rated", "has_genres", "has_imdb_rating", "has_user_rating", "has_votes", "has_director", "has_awards", "has_nominations",
@@ -85,6 +87,13 @@ def run_movie():
     print("------------------------------")
     frames = [x_train, x_test]
     complete = pd.concat(frames)
+    yes = complete['movieId'].value_counts()
+    myes = Counter(yes)
+    plt.bar(myes.keys(), myes.values())
+    plt.show()
+    # yes = yes.groupby
+    print(yes)
+    exit(0)
     print('Building TET specification...')
     print('Building TET specification...', file=f)
     start_time = time.time()
@@ -244,7 +253,7 @@ def run_mymedialite(k):
     print(f'MyMediaLite Recall: {recommender_recall(predictions, actual)}')
 
 # run_book()
-#run_movie()
+run_movie()
 # run_baselines()
 #run_data_mymedialite()
-run_mymedialite(k_movies)
+# run_mymedialite(k_movies)

@@ -249,7 +249,7 @@ def run_data(normalize=True):
     print(f'Coverage of data: {coverage(data)}')
     if normalize == True:
         normalize_all_data()
-    x_train, x_test = split_data()
+    x_train, x_test = split_data(rdata)
     return x_train, x_test
 
 def run_data_mymedialite():
