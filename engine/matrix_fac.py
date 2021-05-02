@@ -15,7 +15,6 @@ import multiprocessing as mp
 from multiprocessing import Pool
 from functools import partial
 import pickle
-import mapply as mpp
 
 specification_moviessss = [["movie", "has_genres", "has_votes", "has_imdb_rating", "has_user_rating", "has_director", "has_awards", "has_nominations",
                         'Action', 'Adventure', 'Animation', 'Children', 'Comedy', 'Crime', 'Documentary', 'Drama', 'Fantasy', 'Film-Noir',
