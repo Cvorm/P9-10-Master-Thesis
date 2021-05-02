@@ -10,7 +10,7 @@ from sklearn.model_selection import train_test_split, GroupShuffleSplit
 
 moviesDB = imdb.IMDb()
 data = pd.read_csv('../Data/movie_new.csv', converters={'cast': eval}, thousands=',')
-movieratings = pd.read_csv('../Data/ratings_50k.csv', converters={'cast': eval})
+movieratings = pd.read_csv('../Data/ratings_1m.dat', converters={'cast': eval}, sep='::', names=['userId', 'movieId', 'rating', 'timestamp'])
 links = pd.read_csv('../Data/links.csv')
 rdata = pd.DataFrame(columns=['userId', 'movieId', 'rating'])
 adata = pd.DataFrame(columns=['actorId','awards'])
@@ -258,12 +258,12 @@ def run_data_mymedialite():
     rdata['rating'] = movieratings['rating']
     rdata['timestamp'] = movieratings['timestamp']
     users['UserID'] = users['UserID'][1:].astype(str)
-
-    movies = pd.read_csv('../Data/movies.csv', converters={'cast': eval})
-    x_train, x_test = split_data(rdata)
-    x_train.to_csv('train_mymedialite.csv', sep='\t', header=False, index=False)
-    x_test.to_csv('test_mymedialite.csv', sep='\t', header=False, index=False)
-    movies.to_csv('movies_mymedialite.dat', sep='\t', header=False, index=False)
+    return rdata
+    # movies = pd.read_csv('../Data/movies.csv', converters={'cast': eval})
+    # x_train, x_test = split_data(rdata)
+    # x_train.to_csv('train_mymedialite.csv', sep='\t', header=False, index=False)
+    # x_test.to_csv('test_mymedialite.csv', sep='\t', header=False, index=False)
+    # movies.to_csv('movies_mymedialite.dat', sep='\t', header=False, index=False)
 
 def cholo(train, test):
     lst = []

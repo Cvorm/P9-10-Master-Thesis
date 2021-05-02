@@ -3,10 +3,14 @@ from engine.LCE_code import *
 from engine.LCE_code.construct_A import *
 from engine.LCE_code.LCE_Beta0 import *
 from engine.evaluation import *
+from experiments.LIGHTFM import *
 import pandas as pd
 from sklearn.model_selection import KFold
+import statistics
 from sklearn.model_selection import train_test_split
 import sklearn as sk
+import subprocess
+import sys
 
 # user_user = pd.read_csv("../engine/user_user_matrix.csv", sep='\t', index_col=0, low_memory=False, dtype=float)
 # user_user = pd.read_csv("../engine/user_user_matrix.csv", sep='\t', index_col=0)
@@ -15,6 +19,7 @@ item_item = pd.read_csv("../engine/item_item_matrix_peterrrrrrrr_correct_mirrore
 # user_item = pd.read_csv("../engine/user_item_matrix_peter.csv", sep='\t', index_col=0)
 # user_item = pd.read_csv("../engine/user_item_matrix_peterr_ratings.csv", sep='\t', index_col=0)
 user_item = pd.read_csv("../engine/user_item_ny.csv", sep='\t', index_col=0, low_memory=False)
+
 
 list_of_items = [x[0] for x in item_item.iterrows()]
 # print(item_feature)
@@ -54,7 +59,7 @@ xu_train_list_kf = []
 xu_test_list_kf = []
 xi_train_list_kf = []
 xi_test_list_kf = []
-
+prec_rec_at = 10
 # print(item_item)
 #
 # for training, testing in kf.split(item_item):
@@ -64,6 +69,55 @@ xi_test_list_kf = []
 #     # print(X_train, X_test)
 "########################## CROSS-VALIDATION ##########################"
 def cross_validation(user, item):
+    # run_data_mymedialite()
+    items = list(np.unique(data['movieId']))
+    print(items)
+    item_interaction_count = dict.fromkeys(items, 0)
+
+    for idx, m in movieratings.iterrows():
+        mid = 'm' + m['movieId'].astype(str)
+        item_interaction_count[mid] += 1
+    # for k, v in list(item_interaction_count.items()): # code for deleting items with no ratings from dictionary
+    #     if v == 0:
+    #         del item_interaction_count[k]
+    item_interaction_count = dict(sorted(item_interaction_count.items(), key=lambda item: item[1], reverse=True))
+    tmp_count = 0
+    k_folds = 5
+    item_split = [[] for i in range(k_folds)]
+    for m in item_interaction_count.keys():
+        if tmp_count == k_folds:
+            tmp_count = 0
+        item_split[tmp_count].append(m)
+        tmp_count += 1
+    item_df_split = []
+    for split in item_split:
+        tmp = [z[1:] for z in split]
+        test_df = movieratings[movieratings['movieId'].isin(tmp)]
+        item_df_split.append(test_df)
+    item_df_split_split = []
+    # for d in item_df_split: # for splitting the item dataset 50% on ratings
+    #     tmp_d = d.sample(frac=1).reset_index(drop=True)
+    #     tmp_d = tmp_d.head(round(len(tmp_d) / 2 ))
+    #     item_df_split_split.append(tmp_d)
+    tmp_count = 0
+    for d in item_df_split:
+        d = d.sample(frac=1).reset_index(drop=True)
+        tmp = pd.DataFrame(columns=['userId', 'movieId', 'rating', 'timestamp'])
+        for s in item_split[tmp_count]:
+            s = int(s[1:])
+            y = d[d['movieId'] == s]
+            y = y.head(round(len(y) / 2))
+            tmp = tmp.append(y, ignore_index=True)
+        tmp_count += 1
+        item_df_split_split.append(tmp)
+    mean = statistics.mean(item_interaction_count.values())
+    median = statistics.median(item_interaction_count.values())
+    h_mean = statistics.harmonic_mean(item_interaction_count.values())
+    min_val, max_val = min(item_interaction_count.values()), max(item_interaction_count.values())
+    print(f"networth min: {min_val:.2f}\nnetworth max: {max_val:.2f}")
+    print(f"The mean networth is: {mean:.2f}")
+    print(f"The median networth is: {median:.2f}")
+    print(f"The h_mean networth is: {h_mean:.2f}")
     for training, testing in kf.split(item):
         X1_train, X1_test = item.iloc[training], item.iloc[testing]
         rows_train, cols_train, numpy_train = get_rows_cols_numpy_from_df(X1_train)
@@ -77,6 +131,17 @@ def cross_validation(user, item):
         rows_test, cols_test, numpy_test = get_rows_cols_numpy_from_df(X2_test)
         xu_train_list_kf.append((rows_train, cols_train, numpy_train))
         xu_test_list_kf.append((rows_test, cols_test, numpy_test))
+        b = movieratings.copy()
+        a = movieratings.copy()
+        # MyMediaLite
+        tmp = [z[1:] for z in rows_test]
+        test_df = movieratings[movieratings['movieId'].isin(tmp)]
+        b.loc[b.movieId.isin(tmp), "rating"] = 0
+        a.loc[~a.movieId.isin(tmp), "rating"] = 0
+        train_df = movieratings[~movieratings['movieId'].isin(tmp)]
+        data['movieId'] = data['movieId'][1:].astype(str)
+        print('hej')
+        run_lightfm(data, movieratings, b, a, prec_rec_at)
 
 cross_validation(user_item, item_item)
 #     xi_train_list.append(X1_train.to_numpy())
@@ -113,7 +178,7 @@ cross_validation(user_item, item_item)
 # "######################################################################"
 # print(len(xu_train_list), len(xu_test_list), len(xi_train_list), len(xi_test_list))
 
-prec_rec_at = 50
+
 k = 500
 alpha = 0.5
 lambdaa = 0.5
