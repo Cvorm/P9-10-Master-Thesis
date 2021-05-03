@@ -169,5 +169,9 @@ if __name__ == '__main__':
     mirrored = pd.DataFrame(data=X, index=rows, columns=cols)
 
     print("Item-item similarity matrix written to file:")
-    mirrored.to_csv("TEST_TEST_TEST_TEST_TEST.csv", sep='\t')
+    mirrored.to_csv(f'item_item_similarity_{movieratings.shape[0]}_ratings.csv', sep='\t')
+
+    user_item = format_data_matrix()
+    print("User-item  matrix written to file:")
+    user_item.to_csv(f'user_item_matrix_{movieratings.shape[0]}_ratings.csv', sep='\t')
     "############################################################################"

@@ -306,7 +306,9 @@ def format_data_matrix():
     for index, row in rdata.iterrows():
         user_item[row['userId']][row['movieId']] = row['rating']
     # print(user_item)
-    user_item.to_csv("user_item_ny.csv", sep='\t')
+
+    return user_item
+    # user_item.to_csv("user_item_ny.csv", sep='\t')
     # list(set(total_movies))
 
 def func(element):
