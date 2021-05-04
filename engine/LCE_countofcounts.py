@@ -3,10 +3,11 @@ from engine.LCE_code import *
 from engine.LCE_code.construct_A import *
 from engine.LCE_code.LCE_Beta0 import *
 from engine.evaluation import *
-from experiments.LIGHTFM import *
+# from experiments.LIGHTFM import *
 import pandas as pd
 from sklearn.model_selection import KFold
 import statistics
+import numpy as np
 from sklearn.model_selection import train_test_split
 import sklearn as sk
 import subprocess
@@ -67,6 +68,13 @@ prec_rec_at = 10
 #     print(X_train, X_test)
 #     X_train.to_csv(f'item_item_rating_matrix{len(X_train)}.csv', sep='\t')
 #     # print(X_train, X_test)
+
+    # if == True & int(y[1:]) in split.movieId == True:
+    #     print(x, y)
+    # if split['movieId'] == x and split['userId'] == y:
+    #     return 1
+    # else:
+    #     return 0
 "########################## CROSS-VALIDATION ##########################"
 def cross_validation(user, item):
     # run_data_mymedialite()
@@ -91,7 +99,9 @@ def cross_validation(user, item):
         tmp_count += 1
     item_df_split = []
     for split in item_split:
-        tmp = [z[1:] for z in split]
+        tmp = [int(z[1:]) for z in split]
+
+        myes = movieratings['movieId']
         test_df = movieratings[movieratings['movieId'].isin(tmp)]
         item_df_split.append(test_df)
     item_df_split_split = []
@@ -118,30 +128,64 @@ def cross_validation(user, item):
     print(f"The mean networth is: {mean:.2f}")
     print(f"The median networth is: {median:.2f}")
     print(f"The h_mean networth is: {h_mean:.2f}")
-    for training, testing in kf.split(item):
-        X1_train, X1_test = item.iloc[training], item.iloc[testing]
-        rows_train, cols_train, numpy_train = get_rows_cols_numpy_from_df(X1_train)
-        rows_test, cols_test, numpy_test = get_rows_cols_numpy_from_df(X1_test)
-        xi_train_list_kf.append((rows_train, cols_train, numpy_train))
-        xi_test_list_kf.append((rows_test, cols_test, numpy_test))
+    # for split1 in item_df_split_split:
+    #     rows_train, cols_train, numpy_train = get_rows_cols_numpy_from_df(item_item)
+    #     rows_test, cols_test, numpy_test = get_rows_cols_numpy_from_df(item_item)
+    #     xi_train_list_kf.append((rows_train, cols_train, numpy_train))
+    #     xi_test_list_kf.append((rows_test, cols_test, numpy_test))
 
-    for training, testing in kf.split(user):
-        X2_train, X2_test = user.iloc[training], user.iloc[testing]
-        rows_train, cols_train, numpy_train = get_rows_cols_numpy_from_df(X2_train)
-        rows_test, cols_test, numpy_test = get_rows_cols_numpy_from_df(X2_test)
+    for split in item_df_split:
+        # training = user_item.apply(lambda x: pd.DataFrame(x).apply(lambda y: bitch(x.name, y.name, split)), axis=1)
+        # for columns in user_item:
+        #     for y in user_item.itercols():
+        #         print(x, y)
+        mid_rows = ['m' + str(x) for x in split['movieId'].unique().tolist()]
+        train_user_item = user_item.drop([x for x in mid_rows])
+        train_rows = list(train_user_item.index)
+        test_user_item = user_item.drop([x for x in train_rows])
+
+        rows_train, cols_train, numpy_train = get_rows_cols_numpy_from_df(train_user_item)
+        rows_test, cols_test, numpy_test = get_rows_cols_numpy_from_df(test_user_item)
         xu_train_list_kf.append((rows_train, cols_train, numpy_train))
         xu_test_list_kf.append((rows_test, cols_test, numpy_test))
-        b = movieratings.copy()
-        a = movieratings.copy()
-        # MyMediaLite
-        tmp = [z[1:] for z in rows_test]
-        test_df = movieratings[movieratings['movieId'].isin(tmp)]
-        b.loc[b.movieId.isin(tmp), "rating"] = 0
-        a.loc[~a.movieId.isin(tmp), "rating"] = 0
-        train_df = movieratings[~movieratings['movieId'].isin(tmp)]
-        data['movieId'] = data['movieId'][1:].astype(str)
-        print('hej')
-        run_lightfm(data, movieratings, b, a, prec_rec_at)
+
+        train_item_item = item_item.drop([x for x in mid_rows])
+        test_item_item = item_item.drop([x for x in train_rows])
+
+        rows_train2, cols_train2, numpy_train2 = get_rows_cols_numpy_from_df(train_item_item)
+        rows_test2, cols_test2, numpy_test2 = get_rows_cols_numpy_from_df(test_item_item)
+        xi_train_list_kf.append((rows_train2, cols_train2, numpy_train2))
+        xi_test_list_kf.append((rows_test2, cols_test2, numpy_test2))
+        # train = user_item
+
+        # for index, row in split.iterrows():
+        #     test['u' + str(row['userId'])]['m' + str(row['movieId'])] = row['rating']
+        #     train['u' + str(row['userId'])]['m' + str(row['movieId'])] = 0
+
+
+        # matrix.apply(lambda x: pd.DataFrame(x).apply(lambda y: bitch(x.name, y.name), axis=1))
+        # lul = user_item.apply(lambda x: pd.DataFrame(x).apply(lambda y: bitch(x.name, y.name, split), axis=1))
+        # lul = scipy.sparse.csr_matrix(user_item.values)
+        # print("cfccfcf")
+
+
+    # for training, testing in kf.split(user):
+    #     X2_train, X2_test = user.iloc[training], user.iloc[testing]
+    #     rows_train, cols_train, numpy_train = get_rows_cols_numpy_from_df(X2_train)
+    #     rows_test, cols_test, numpy_test = get_rows_cols_numpy_from_df(X2_test)
+    #     xu_train_list_kf.append((rows_train, cols_train, numpy_train))
+    #     xu_test_list_kf.append((rows_test, cols_test, numpy_test))
+    #     b = movieratings.copy()
+    #     a = movieratings.copy()
+    #     # MyMediaLite
+    #     tmp = [z[1:] for z in rows_test]
+    #     test_df = movieratings[movieratings['movieId'].isin(tmp)]
+    #     b.loc[b.movieId.isin(tmp), "rating"] = 0
+    #     a.loc[~a.movieId.isin(tmp), "rating"] = 0
+    #     train_df = movieratings[~movieratings['movieId'].isin(tmp)]
+    #     data['movieId'] = data['movieId'][1:].astype(str)
+    #     print('hej')
+    #     run_lightfm(data, movieratings, b, a, prec_rec_at)
 
 cross_validation(user_item, item_item)
 #     xi_train_list.append(X1_train.to_numpy())
@@ -183,7 +227,7 @@ k = 500
 alpha = 0.5
 lambdaa = 0.5
 epsilon = 0.001
-maxiter = 500
+maxiter = 100
 verbose = True
 beta = 0.0 #graph reguralization
 # beta = 0.05
@@ -235,13 +279,13 @@ for xu_train, xu_test, xi_train, xi_test in zip(xu_train_list_kf, xu_test_list_k
         del pred_list[m-1]
     precision = recommender_precision(pred_list, test_list)
     recall = recommender_recall(pred_list, test_list)
-    users = rating_df.columns.tolist()
-    nov = novelty(pred_df, rating_df, list_of_items, users, prec_rec_at)
-    print(precision, recall, nov)
-    nov_list.append(nov)
+    # users = rating_df.columns.tolist()
+    # nov = novelty(pred_df, rating_df, list_of_items, users, prec_rec_at)
+    # print(precision, recall, nov)
+    # nov_list.append(nov)
     prec_list.append(precision)
     rec_list.append(recall)
-print(f'average novelty: {sum(nov_list) / len(nov_list)}')
+# print(f'average novelty: {sum(nov_list) / len(nov_list)}')
 print("average precision:", sum(prec_list) / len(prec_list))
 print("average recall", sum(rec_list) / len(rec_list))
 "############################################################################################################"

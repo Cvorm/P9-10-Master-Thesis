@@ -10,7 +10,11 @@ from sklearn.model_selection import train_test_split, GroupShuffleSplit
 
 moviesDB = imdb.IMDb()
 data = pd.read_csv('../Data/movie_new.csv', converters={'cast': eval}, thousands=',')
-movieratings = pd.read_csv('../Data/ratings_100k.csv', converters={'cast': eval})
+
+movieratings = pd.read_csv('../Data/ratings_50k.csv', converters={'cast': eval}) #, sep='::', names=['userId', 'movieId', 'rating', 'timestamp']
+
+#movieratings = pd.read_csv('../Data/ratings_100k.csv', converters={'cast': eval})
+
 links = pd.read_csv('../Data/links.csv')
 rdata = pd.DataFrame(columns=['userId', 'movieId', 'rating'])
 adata = pd.DataFrame(columns=['actorId','awards'])
@@ -246,7 +250,7 @@ def run_data(normalize=True):
     print(f'Coverage of data: {coverage(data)}')
     if normalize == True:
         normalize_all_data()
-    x_train, x_test = split_data()
+    x_train, x_test = split_data(rdata)
     return x_train, x_test
 
 def run_data_mymedialite():
@@ -303,7 +307,9 @@ def format_data_matrix():
     for index, row in rdata.iterrows():
         user_item[row['userId']][row['movieId']] = row['rating']
     # print(user_item)
-    user_item.to_csv("user_item_ny.csv", sep='\t')
+
+    return user_item
+    # user_item.to_csv("user_item_ny.csv", sep='\t')
     # list(set(total_movies))
 
 def func(element):

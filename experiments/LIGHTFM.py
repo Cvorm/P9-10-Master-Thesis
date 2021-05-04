@@ -1,19 +1,19 @@
-# from generic_preprocessing import *
-# from IPython.display import HTML
-import pandas as pd
-import numpy as np
-from scipy import sparse
-from lightfm import LightFM
-from sklearn.metrics.pairwise import cosine_similarity
-from lightfm.evaluation import precision_at_k
-from lightfm.cross_validation import random_train_test_split
-import scipy
-from scipy.sparse import coo_matrix
-from lightfm.evaluation import auc_score
-from lightfm.evaluation import precision_at_k
-from lightfm.evaluation import recall_at_k
-from engine import evaluation
-from engine.evaluation import recommender_precision,recommender_recall,novelty
+# # from generic_preprocessing import *
+# # from IPython.display import HTML
+# import pandas as pd
+# import numpy as np
+# from scipy import sparse
+# from lightfm import LightFM
+# from sklearn.metrics.pairwise import cosine_similarity
+# from lightfm.evaluation import precision_at_k
+# from lightfm.cross_validation import random_train_test_split
+# import scipy
+# from scipy.sparse import coo_matrix
+# from lightfm.evaluation import auc_score
+# from lightfm.evaluation import precision_at_k
+# from lightfm.evaluation import recall_at_k
+# from engine import evaluation
+# from engine.evaluation import recommender_precision,recommender_recall,novelty
 
 def run_lightfm(movies, ratings, train, test, k_items):
     def create_interaction_matrix(df,user_col, item_col, rating_col, norm= False, threshold = None):
