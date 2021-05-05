@@ -327,8 +327,8 @@ def __novelty(user_predictions, user_seen, item, users, k):
     count_recommended = 0
     count_no_interaction = 0
     for u, rating in user_predictions.items():
-        rating.sort(key=lambda x: x[1], reverse=True)
-        if item in (items[0] for items in rating[:k]):
+        # rating.sort(key=lambda x: x[1], reverse=True)
+        if item in rating: #(items[0] for items in rating[:k]):
             count_recommended += 1
            #print('hit')
         if item not in user_seen[u]:
@@ -341,24 +341,19 @@ def __novelty(user_predictions, user_seen, item, users, k):
     # print(f'Recommended count: {count_recommended}')
     # print(f'No interaction count: {count_no_interaction}')
     # print(f'Intermediate Novelty score for {item}: {novel}')
-    novel2 = 1 - (count_recommended / len(users))
+    # novel2 = 1 - (count_recommended / len(users))
     return novel
 
 
 def novelty(predicted, ratings, items, users, k_items):
     sum = 0
     count = 0
-    # users = ratings.columns.tolist()
-    # ratings = ratings.transpose()
-    predictions = defaultdict(list)
-    user_seen = dict()
+    seen_list = defaultdict(list)
     for u in users:
-        for z in predicted[u].iteritems():
-            predictions[u].append((z[0], z[1]))
-        u_seen = [x[0] for x in ratings[u].iteritems() if x[1] > 0]
-        user_seen[u] = u_seen
+        tmp_seen = ratings.movieId.loc[ratings['userId'] == u]
+        seen_list[u] = tmp_seen
     for i in items: #columns.tolist():
-        sum += __novelty(predictions, user_seen, i, users, k_items)
+        sum += __novelty(predicted, seen_list, i, users, k_items)
         count += 1
     return sum / count
 

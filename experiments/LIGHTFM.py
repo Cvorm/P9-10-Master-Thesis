@@ -1,5 +1,6 @@
 # from generic_preprocessing import *
 # from IPython.display import HTML
+from collections import defaultdict
 import pandas as pd
 import numpy as np
 from scipy import sparse
@@ -16,7 +17,7 @@ from lightfm.evaluation import recall_at_k
 from engine import evaluation
 from engine.evaluation import recommender_precision,recommender_recall,novelty
 
-def run_lightfm(movies, ratings, train, test, k_items):
+def run_lightfm(movies, ratings, train, test, k_items, train_df_split):
 
     def create_interaction_matrix(df,user_col, item_col, rating_col, norm= False, threshold = None):
         '''
@@ -130,14 +131,14 @@ def run_lightfm(movies, ratings, train, test, k_items):
     dataset_item_features = built_dif.build_item_features(item_features)
     (interactions, weights) = built_dif.build_interactions(((x['userId'], x['movieId']) for y, x in train.iterrows()))
     modelx = LightFM(no_components=30, loss='bpr', k=15, random_state=1)
-    modelx.fit(interactions, epochs=30, num_threads=4) #item_features=dataset_item_features
+    modelx.fit(interactions, epochs=30, num_threads=4, item_features=dataset_item_features) #item_features=dataset_item_features
     test = sparse.csr_matrix(test_interactions.values)
     test = test.tocoo()
     num_users, num_items = built_dif.interactions_shape()
     print('Num users: {}, num_items {}.'.format(num_users, num_items))
-    trainprecision = precision_at_k(modelx, test, k=k_items).mean() #item_features=dataset_item_features,
+    trainprecision = precision_at_k(modelx, test, k=k_items, item_features=dataset_item_features).mean() #item_features=dataset_item_features,
     print('Hybrid training set precision: %s' % trainprecision)
-    trainrecall = recall_at_k(modelx, test, k=k_items).mean() #item_features=dataset_item_features
+    trainrecall = recall_at_k(modelx, test, k=k_items, item_features=dataset_item_features).mean() #item_features=dataset_item_features
     print('Hybrid training set recall: %s' % trainrecall)
     # movies = pd.concat([movies_test, movies_train])
     # features = [(x['movieId'], x['rating']) for y, x in movies.iterrows()]
@@ -173,36 +174,37 @@ def run_lightfm(movies, ratings, train, test, k_items):
     #                  n_jobs=4)
 
 
-    # n_users, n_items = interactions.shape # no of users * no of items
-    # pred_df = pd.DataFrame(columns=np.unique(train['movieId']), index=np.unique(train['userId'])) #np.arange(n_users))
-    # for uid in pred_df.T.columns:
-    #     bobs = modelx.predict(uid, np.unique(train['movieId'])) #item_features=item_features
-    #     temp = bobs.tolist()
-    #     pred_df.loc[uid] = temp
-    # pred_df = pred_df.T
-    # pred_list = []
-    # test_list = []
-    # seen_list = []
-    # for column in pred_df:
-    #         user = pred_df[column]
-    #         sorted = user.sort_values(ascending=False)
-    #         pred_movies = list(sorted.index)
-    #         pred_list.append(pred_movies[:k_items])
-    # xu_train_df = pd.DataFrame(interactions.toarray(), columns=np.unique(ratings.movieId), index=np.arange(n_users))
-    # xu_train_df = xu_train_df.T
-    # xu_test_df = pd.DataFrame(test.toarray(), columns=np.unique(ratings.movieId), index=np.arange(n_users))
-    # xu_test_df = xu_test_df.T
-    # for column in xu_test_df:
-    #         user_test = xu_test_df[column]
-    #         filtered = user_test.where(user_test > 0)
-    #         # true_movies = list(filtered.index)
-    #         true_movies = user_test[user_test > 0]
-    #         true_movie_ids = list(true_movies.index)
-    #         test_list.append(true_movie_ids)
-    # precision = recommender_precision(pred_list, test_list)
-    # recall = recommender_recall(pred_list, test_list)
-    # # niggerty = novelty(pred_df.T, xu_train_df.T, np.unique(ratings.userId), np.unique(ratings.movieId), 5)
-    # print(precision, recall) # niggerty
+    n_users, n_items = interactions.shape # no of users * no of items
+    pred_df = pd.DataFrame(columns=item_ids, index=user_ids) #np.arange(n_users))
+    for uid in pred_df.T.columns:
+        bobs = modelx.predict(uid - 1, np.arange(n_items), item_features=dataset_item_features) #item_features=item_features
+        temp = bobs.tolist()
+        pred_df.loc[uid] = temp
+    pred_df = pred_df.T
+    pred_list = []
+    pred_dict = defaultdict(list)
+    test_list = []
+    for column in pred_df:
+            user = pred_df[column]
+            sorted = user.sort_values(ascending=False)
+            pred_movies = list(sorted.index)
+            pred_list.append(pred_movies[:k_items])
+            pred_dict[column] = pred_movies[:k_items]
+    xu_train_df = pd.DataFrame(interactions.toarray(), columns=np.unique(ratings.movieId), index=np.arange(n_users))
+    xu_train_df = xu_train_df.T
+    xu_test_df = pd.DataFrame(test.toarray(), columns=np.unique(ratings.movieId), index=np.arange(n_users))
+    xu_test_df = xu_test_df.T
+    for column in xu_test_df:
+            user_test = xu_test_df[column]
+            filtered = user_test.where(user_test > 0)
+            # true_movies = list(filtered.index)
+            true_movies = user_test[user_test > 0]
+            true_movie_ids = list(true_movies.index)
+            test_list.append(true_movie_ids)
+    precision = recommender_precision(pred_list, test_list)
+    recall = recommender_recall(pred_list, test_list)
+    niggerty = novelty(pred_dict, train_df_split, np.unique(ratings.userId), np.unique(ratings.movieId), 5) #pred_df.T
+    print(precision, recall, niggerty)
 
 # ratings = pd.read_csv('../Data/ratings_100k.csv', sep=',')
 # movies = pd.read_csv('../Data/movie_new.csv', sep=',')
