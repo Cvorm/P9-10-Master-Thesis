@@ -152,18 +152,15 @@ def cross_validation(user, item):
         movieidlist_test = [x for x in b['movieId']]
         movieidlist_test = list(map(str, movieidlist_test))
         mov_test = data[data.movieId.isin(movieidlist_test)]
-
         movieidlist = [x for x in b['movieId']]
-        # movieidlist_train = list(map(str, movieidlist_train))
-        # mov_train = data[~data.movieId.isin(movieidlist_train)]
-        test_df = movieratings[movieratings['movieId'].isin(tmp)]
-        train_df = movieratings[~movieratings['movieId'].isin(tmp)]
+        train_df = movieratings[movieratings['movieId'].isin(tmp)]
+        test_df = movieratings[~movieratings['movieId'].isin(tmp)]
         [movieidlist.append(x) for x in a['movieId']]
         mylist = list(dict.fromkeys(movieidlist))
         mylist = list(map(str, mylist))
         tmp_mov = data[data.movieId.isin(mylist)]
         #  vigtigt at movieId er samme TYPE i begge dataframes
-        run_lightfm(tmp_mov, movieratings, b, a, prec_rec_at)
+        run_lightfm(tmp_mov, movieratings, b, a, prec_rec_at, train_df)
     # for training, testing in kf.split(item):
     #     X1_train, X1_test = item.iloc[training], item.iloc[testing]
     #     rows_train, cols_train, numpy_train = get_rows_cols_numpy_from_df(X1_train)
@@ -244,7 +241,7 @@ for xu_train, xu_test, xi_train, xi_test in zip(xu_train_list_kf, xu_test_list_k
     nov_list = []
     test_list = []
     missing = []
-
+    pred_dict = defaultdict(list)
     pred_df = rows_cols_numpy_to_df(xu_test[0], xu_test[1], pred)
     xu_test_df = rows_cols_numpy_to_df(xu_test[0], xu_test[1], xu_test[2])
     rating_df = rows_cols_numpy_to_df(xu_train[0], xu_train[1], xu_train[2])
@@ -254,6 +251,7 @@ for xu_train, xu_test, xi_train, xi_test in zip(xu_train_list_kf, xu_test_list_k
         sorted = user.sort_values(ascending=False)
         pred_movies = list(sorted.index)
         pred_list.append(pred_movies[:prec_rec_at])
+        pred_dict[column] = pred_movies[:prec_rec_at]
     #         # print("xdxd")
     #
     for column in xu_test_df:
@@ -272,13 +270,13 @@ for xu_train, xu_test, xi_train, xi_test in zip(xu_train_list_kf, xu_test_list_k
         del pred_list[m-1]
     precision = recommender_precision(pred_list, test_list)
     recall = recommender_recall(pred_list, test_list)
-    # users = rating_df.columns.tolist()
-    # nov = novelty(pred_df, rating_df, list_of_items, users, prec_rec_at)
-    # print(precision, recall, nov)
-    # nov_list.append(nov)
+    users = rating_df.columns.tolist()
+    nov = novelty(pred_dict, rating_df, list_of_items, users, prec_rec_at)
+    print(precision, recall, nov)
+    nov_list.append(nov)
     prec_list.append(precision)
     rec_list.append(recall)
-# print(f'average novelty: {sum(nov_list) / len(nov_list)}')
+print(f'average novelty: {sum(nov_list) / len(nov_list)}')
 print("average precision:", sum(prec_list) / len(prec_list))
 print("average recall", sum(rec_list) / len(rec_list))
 "############################################################################################################"
