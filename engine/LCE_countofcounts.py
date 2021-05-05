@@ -12,6 +12,7 @@ from sklearn.model_selection import train_test_split
 import sklearn as sk
 import subprocess
 import sys
+from experiments.BPR_LIGHTFM import *
 
 # user_user = pd.read_csv("../engine/user_user_matrix.csv", sep='\t', index_col=0, low_memory=False, dtype=float)
 # user_user = pd.read_csv("../engine/user_user_matrix.csv", sep='\t', index_col=0)
@@ -156,6 +157,9 @@ def cross_validation(user, item):
         rows_test2, cols_test2, numpy_test2 = get_rows_cols_numpy_from_df(test_item_item)
         xi_train_list_kf.append((rows_train2, cols_train2, numpy_train2))
         xi_test_list_kf.append((rows_test2, cols_test2, numpy_test2))
+
+        run_BPR(split, user_item)
+        # exit(0)
         # train = user_item
 
         # for index, row in split.iterrows():
