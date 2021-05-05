@@ -3,10 +3,11 @@ from engine.LCE_code import *
 from engine.LCE_code.construct_A import *
 from engine.LCE_code.LCE_Beta0 import *
 from engine.evaluation import *
-from experiments.LIGHTFM import *
+# from experiments.LIGHTFM import *
 import pandas as pd
 from sklearn.model_selection import KFold
 import statistics
+import numpy as np
 from sklearn.model_selection import train_test_split
 import sklearn as sk
 import subprocess
@@ -67,6 +68,13 @@ prec_rec_at = 10
 #     print(X_train, X_test)
 #     X_train.to_csv(f'item_item_rating_matrix{len(X_train)}.csv', sep='\t')
 #     # print(X_train, X_test)
+
+    # if == True & int(y[1:]) in split.movieId == True:
+    #     print(x, y)
+    # if split['movieId'] == x and split['userId'] == y:
+    #     return 1
+    # else:
+    #     return 0
 "########################## CROSS-VALIDATION ##########################"
 def cross_validation(user, item):
     items = list(np.unique(data['movieId']))
@@ -90,10 +98,8 @@ def cross_validation(user, item):
         tmp_count += 1
     item_df_split = []
     for split in item_split:
-        tmp = [z[1:] for z in split]
-        myes = movieratings['movieId']
-        test_dfl = movieratings.movieId.isin(tmp)
-        test_df = movieratings[movieratings.movieId.isin(tmp)]
+        tmp = [int(z[1:]) for z in split]
+        test_df = movieratings[movieratings['movieId'].isin(tmp)]
         item_df_split.append(test_df)
     item_df_split_split = []
     # for d in item_df_split: # for splitting the item dataset 50% on ratings
@@ -121,7 +127,6 @@ def cross_validation(user, item):
         train_user_item = user_item.drop([x for x in mid_rows])
         train_rows = list(train_user_item.index)
         test_user_item = user_item.drop([x for x in train_rows])
-
         rows_train, cols_train, numpy_train = get_rows_cols_numpy_from_df(train_user_item)
         rows_test, cols_test, numpy_test = get_rows_cols_numpy_from_df(test_user_item)
         xu_train_list_kf.append((rows_train, cols_train, numpy_train))
@@ -134,6 +139,7 @@ def cross_validation(user, item):
         rows_test2, cols_test2, numpy_test2 = get_rows_cols_numpy_from_df(test_item_item)
         xi_train_list_kf.append((rows_train2, cols_train2, numpy_train2))
         xi_test_list_kf.append((rows_test2, cols_test2, numpy_test2))
+
 
         data['movieId'] = data['movieId'].str[1:]
         b = movieratings.copy()
@@ -162,13 +168,13 @@ def cross_validation(user, item):
     #     xi_train_list_kf.append((rows_train, cols_train, numpy_train))
     #     xi_test_list_kf.append((rows_test, cols_test, numpy_test))
 
+
     # for training, testing in kf.split(user):
     #     X2_train, X2_test = user.iloc[training], user.iloc[testing]
     #     rows_train, cols_train, numpy_train = get_rows_cols_numpy_from_df(X2_train)
     #     rows_test, cols_test, numpy_test = get_rows_cols_numpy_from_df(X2_test)
     #     xu_train_list_kf.append((rows_train, cols_train, numpy_train))
     #     xu_test_list_kf.append((rows_test, cols_test, numpy_test))
-
 
 
 cross_validation(user_item, item_item)
@@ -211,7 +217,7 @@ k = 500
 alpha = 0.5
 lambdaa = 0.5
 epsilon = 0.001
-maxiter = 500
+maxiter = 100
 verbose = True
 beta = 0.0 #graph reguralization
 # beta = 0.05

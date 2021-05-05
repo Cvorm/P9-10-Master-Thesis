@@ -35,10 +35,7 @@ data['gross'] = data['gross'].fillna(0).astype(float)
 # function used for updating the movies in movielens dataset by adding data from IMDb
 
 
-def eval_medialite(k):
-    inp = pd.read_csv('../Data/random_prediction.csv', sep='\t', header=None)
-    test_mymedia = pd.read_csv('../Data/test_mymedialite.csv', sep='\t', names=['userId', 'movieId', 'rating', 'timestamp'])
-    train_mymedia = pd.read_csv('../Data/train_mymedialite.csv', sep='\t', names=['userId', 'movieId', 'rating', 'timestamp'])
+def eval_medialite(train_mymedia, test_mymedia, inp, k):
     train_mymedia['userId'] = 'u' + train_mymedia['userId'].astype(str)
     test_mymedia['userId'] = 'u' + test_mymedia['userId'].astype(str)
     print('STEP 0')
@@ -250,7 +247,7 @@ def run_data(normalize=True):
     print(f'Coverage of data: {coverage(data)}')
     if normalize == True:
         normalize_all_data()
-    x_train, x_test = split_data()
+    x_train, x_test = split_data(rdata)
     return x_train, x_test
 
 def run_data_mymedialite():
@@ -307,7 +304,9 @@ def format_data_matrix():
     for index, row in rdata.iterrows():
         user_item[row['userId']][row['movieId']] = row['rating']
     # print(user_item)
-    user_item.to_csv("user_item_ny.csv", sep='\t')
+
+    return user_item
+    # user_item.to_csv("user_item_ny.csv", sep='\t')
     # list(set(total_movies))
 
 def func(element):

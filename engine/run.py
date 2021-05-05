@@ -1,5 +1,6 @@
 import time
 import sys
+import subprocess
 # from experiments.baselines import *
 from engine.matrix_fac import *
 from engine.crossing import *
@@ -68,7 +69,60 @@ def run_baselines():
     # print('Running Normal Predictor...')
     # run_NORMPRED(x_train, x_test, k_movies)
 
+def run_cross_validation():
+    #
+    # run_data_mymedialite()
+    items = list(np.unique(data['movieId']))
+    print(items)
+    item_interaction_count = dict.fromkeys(items, 0)
 
+    for idx, m in movieratings.iterrows():
+        mid = 'm' + m['movieId'].astype(str)
+        item_interaction_count[mid] += 1
+    # for k, v in list(item_interaction_count.items()): # code for deleting items with no ratings from dictionary
+    #     if v == 0:
+    #         del item_interaction_count[k]
+    item_interaction_count = dict(sorted(item_interaction_count.items(), key=lambda item: item[1], reverse=True))
+    tmp_count = 0
+    k_folds = 5
+    item_split = [[] for i in range(k_folds)]
+    for m in item_interaction_count.keys():
+        if tmp_count == k_folds:
+            tmp_count = 0
+        item_split[tmp_count].append(m)
+        tmp_count += 1
+    item_df_split = []
+    for split in item_split:
+        tmp = [int(z[1:]) for z in split]
+        test_df = movieratings[movieratings['movieId'].isin(tmp)]
+        item_df_split.append(test_df)
+    item_df_split_split = []
+    # for d in item_df_split: # for splitting the item dataset 50% on ratings
+    #     tmp_d = d.sample(frac=1).reset_index(drop=True)
+    #     tmp_d = tmp_d.head(round(len(tmp_d) / 2 ))
+    #     item_df_split_split.append(tmp_d)
+    tmp_count = 0
+    for d in item_df_split:
+        d = d.sample(frac=1).reset_index(drop=True)
+        tmp = pd.DataFrame(columns=['userId', 'movieId', 'rating', 'timestamp'])
+        for s in item_split[tmp_count]:
+            s = int(s[1:])
+            y = d[d['movieId'] == s]
+            y = y.head(round(len(y) / 2))
+            tmp = tmp.append(y, ignore_index=True)
+        tmp_count += 1
+        item_df_split_split.append(tmp)
+    counter = 1
+    for test in item_df_split_split:
+        train = pd.concat([test, movieratings]).drop_duplicates(keep=False)
+        train_name = "mymedialite_train.dat"
+        test_name = "mymedialite_test.dat"
+        prediction_name = f'Prediction_File.csv'
+        train.to_csv(train_name, sep='\t', header=False, index=False)
+        test.to_csv(test_name, sep='\t', header=False, index=False)
+        subprocess.run(f'item_recommendation --training-file={train_name} --test-file={test_name} --recommender=Random --prediction-file={prediction_name}', shell=True)
+        prediction_file = pd.read_csv(prediction_name, sep='\t', header=None)
+        run_mymedialite(train, test, prediction_file)
 # overall run function, where we run our 'pipeline'
 def run_movie():
     # format_data()
@@ -237,9 +291,9 @@ def run_book():
     [print(book_tet[i].graph.nodes(data=True)) for i in range(top)]
     f.close()
 
-def run_mymedialite(k):
-    predictions, actual, seen, lst, items, user_list = eval_medialite(k_movies)
-    print(f'MyMediaLite Novelty: {novelty2(lst, seen, items, user_list, k)}')
+def run_mymedialite(training, test, prediction):
+    predictions, actual, seen, lst, items, user_list = eval_medialite(training, test, prediction, k_movies)
+    # print(f'MyMediaLite Novelty: {novelty2(lst, seen, items, user_list, k)}')
     print(f'MyMediaLite Precision: {recommender_precision(predictions, actual)}')
     print(f'MyMediaLite Recall: {recommender_recall(predictions, actual)}')
 
@@ -247,4 +301,5 @@ def run_mymedialite(k):
 #run_movie()
 # run_baselines()
 #run_data_mymedialite()
-run_mymedialite(k_movies)
+run_cross_validation()
+#run_mymedialite(k_movies)
