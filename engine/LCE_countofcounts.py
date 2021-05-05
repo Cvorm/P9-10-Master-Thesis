@@ -46,7 +46,7 @@ def rows_cols_numpy_to_df(rows, cols, numpy):
     return df
 
 
-kf = KFold(n_splits=5)
+kf = KFold(n_splits=10)
 kf.get_n_splits(item_item)
 # kf.get_n_splits(item_feature) #item_feature
 xu_train_list = []
@@ -77,7 +77,6 @@ prec_rec_at = 10
     #     return 0
 "########################## CROSS-VALIDATION ##########################"
 def cross_validation(user, item):
-    # run_data_mymedialite()
     items = list(np.unique(data['movieId']))
     print(items)
     item_interaction_count = dict.fromkeys(items, 0)
@@ -100,8 +99,6 @@ def cross_validation(user, item):
     item_df_split = []
     for split in item_split:
         tmp = [int(z[1:]) for z in split]
-
-        myes = movieratings['movieId']
         test_df = movieratings[movieratings['movieId'].isin(tmp)]
         item_df_split.append(test_df)
     item_df_split_split = []
@@ -120,19 +117,6 @@ def cross_validation(user, item):
             tmp = tmp.append(y, ignore_index=True)
         tmp_count += 1
         item_df_split_split.append(tmp)
-    mean = statistics.mean(item_interaction_count.values())
-    median = statistics.median(item_interaction_count.values())
-    h_mean = statistics.harmonic_mean(item_interaction_count.values())
-    min_val, max_val = min(item_interaction_count.values()), max(item_interaction_count.values())
-    print(f"networth min: {min_val:.2f}\nnetworth max: {max_val:.2f}")
-    print(f"The mean networth is: {mean:.2f}")
-    print(f"The median networth is: {median:.2f}")
-    print(f"The h_mean networth is: {h_mean:.2f}")
-    # for split1 in item_df_split_split:
-    #     rows_train, cols_train, numpy_train = get_rows_cols_numpy_from_df(item_item)
-    #     rows_test, cols_test, numpy_test = get_rows_cols_numpy_from_df(item_item)
-    #     xi_train_list_kf.append((rows_train, cols_train, numpy_train))
-    #     xi_test_list_kf.append((rows_test, cols_test, numpy_test))
 
     for split in item_df_split:
         # training = user_item.apply(lambda x: pd.DataFrame(x).apply(lambda y: bitch(x.name, y.name, split)), axis=1)
@@ -143,7 +127,6 @@ def cross_validation(user, item):
         train_user_item = user_item.drop([x for x in mid_rows])
         train_rows = list(train_user_item.index)
         test_user_item = user_item.drop([x for x in train_rows])
-
         rows_train, cols_train, numpy_train = get_rows_cols_numpy_from_df(train_user_item)
         rows_test, cols_test, numpy_test = get_rows_cols_numpy_from_df(test_user_item)
         xu_train_list_kf.append((rows_train, cols_train, numpy_train))
@@ -156,17 +139,37 @@ def cross_validation(user, item):
         rows_test2, cols_test2, numpy_test2 = get_rows_cols_numpy_from_df(test_item_item)
         xi_train_list_kf.append((rows_train2, cols_train2, numpy_train2))
         xi_test_list_kf.append((rows_test2, cols_test2, numpy_test2))
-        # train = user_item
-
-        # for index, row in split.iterrows():
-        #     test['u' + str(row['userId'])]['m' + str(row['movieId'])] = row['rating']
-        #     train['u' + str(row['userId'])]['m' + str(row['movieId'])] = 0
 
 
-        # matrix.apply(lambda x: pd.DataFrame(x).apply(lambda y: bitch(x.name, y.name), axis=1))
-        # lul = user_item.apply(lambda x: pd.DataFrame(x).apply(lambda y: bitch(x.name, y.name, split), axis=1))
-        # lul = scipy.sparse.csr_matrix(user_item.values)
-        # print("cfccfcf")
+        data['movieId'] = data['movieId'].str[1:]
+        b = movieratings.copy()
+        a = movieratings.copy()
+        # LightFM
+        tmp = [int(z[1:]) for z in rows_test]
+
+        b.loc[b.movieId.isin(tmp), "rating"] = 0
+        a.loc[~a.movieId.isin(tmp), "rating"] = 0
+        movieidlist_test = [x for x in b['movieId']]
+        movieidlist_test = list(map(str, movieidlist_test))
+        mov_test = data[data.movieId.isin(movieidlist_test)]
+
+        movieidlist = [x for x in b['movieId']]
+        # movieidlist_train = list(map(str, movieidlist_train))
+        # mov_train = data[~data.movieId.isin(movieidlist_train)]
+        test_df = movieratings[movieratings['movieId'].isin(tmp)]
+        train_df = movieratings[~movieratings['movieId'].isin(tmp)]
+        [movieidlist.append(x) for x in a['movieId']]
+        mylist = list(dict.fromkeys(movieidlist))
+        mylist = list(map(str, mylist))
+        tmp_mov = data[data.movieId.isin(mylist)]
+        #  vigtigt at movieId er samme TYPE i begge dataframes
+        run_lightfm(tmp_mov, movieratings, b, a, prec_rec_at)
+    # for training, testing in kf.split(item):
+    #     X1_train, X1_test = item.iloc[training], item.iloc[testing]
+    #     rows_train, cols_train, numpy_train = get_rows_cols_numpy_from_df(X1_train)
+    #     rows_test, cols_test, numpy_test = get_rows_cols_numpy_from_df(X1_test)
+    #     xi_train_list_kf.append((rows_train, cols_train, numpy_train))
+    #     xi_test_list_kf.append((rows_test, cols_test, numpy_test))
 
 
     # for training, testing in kf.split(user):
@@ -175,17 +178,7 @@ def cross_validation(user, item):
     #     rows_test, cols_test, numpy_test = get_rows_cols_numpy_from_df(X2_test)
     #     xu_train_list_kf.append((rows_train, cols_train, numpy_train))
     #     xu_test_list_kf.append((rows_test, cols_test, numpy_test))
-    #     b = movieratings.copy()
-    #     a = movieratings.copy()
-    #     # MyMediaLite
-    #     tmp = [z[1:] for z in rows_test]
-    #     test_df = movieratings[movieratings['movieId'].isin(tmp)]
-    #     b.loc[b.movieId.isin(tmp), "rating"] = 0
-    #     a.loc[~a.movieId.isin(tmp), "rating"] = 0
-    #     train_df = movieratings[~movieratings['movieId'].isin(tmp)]
-    #     data['movieId'] = data['movieId'][1:].astype(str)
-    #     print('hej')
-    #     run_lightfm(data, movieratings, b, a, prec_rec_at)
+
 
 cross_validation(user_item, item_item)
 #     xi_train_list.append(X1_train.to_numpy())

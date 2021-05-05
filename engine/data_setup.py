@@ -12,9 +12,6 @@ moviesDB = imdb.IMDb()
 data = pd.read_csv('../Data/movie_new.csv', converters={'cast': eval}, thousands=',')
 
 movieratings = pd.read_csv('../Data/ratings_50k.csv', converters={'cast': eval}) #, sep='::', names=['userId', 'movieId', 'rating', 'timestamp']
-
-#movieratings = pd.read_csv('../Data/ratings_100k.csv', converters={'cast': eval})
-
 links = pd.read_csv('../Data/links.csv')
 rdata = pd.DataFrame(columns=['userId', 'movieId', 'rating'])
 adata = pd.DataFrame(columns=['actorId','awards'])
