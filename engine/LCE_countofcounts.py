@@ -8,6 +8,7 @@ import pandas as pd
 from sklearn.model_selection import KFold
 import statistics
 import numpy as np
+from engine.run import run_mymedialite
 from sklearn.model_selection import train_test_split
 import sklearn as sk
 import subprocess
@@ -156,6 +157,27 @@ def cross_validation(user, item):
         rows_test2, cols_test2, numpy_test2 = get_rows_cols_numpy_from_df(test_item_item)
         xi_train_list_kf.append((rows_train2, cols_train2, numpy_train2))
         xi_test_list_kf.append((rows_test2, cols_test2, numpy_test2))
+
+        b = movieratings.copy()
+        a = movieratings.copy()
+           # MyMediaLite
+        tmp = [z[1:] for z in rows_test]
+        test_df = movieratings[movieratings['movieId'].isin(tmp)]
+        b.loc[b.movieId.isin(tmp), "rating"] = 0
+        a.loc[~a.movieId.isin(tmp), "rating"] = 0
+        train_df = movieratings[~movieratings['movieId'].isin(tmp)]
+        data['movieId'] = data['movieId'][1:].astype(str)
+        train_x = pd.concat([test, movieratings]).drop_duplicates(keep=False)
+        train_name = "mymedialite_train.dat"
+        test_name = "mymedialite_test.dat"
+        prediction_name = f'Prediction_File.csv'
+        train_x.to_csv(train_name, sep='\t', header=False, index=False)
+        split.to_csv(test_name, sep='\t', header=False, index=False)
+        subprocess.run(
+            f'item_recommendation --training-file={train_name} --test-file={test_name} --recommender=Random --prediction-file={prediction_name}',
+            shell=True)
+        prediction_file = pd.read_csv(prediction_name, sep='\t', header=None)
+        run_mymedialite(train_x, split, prediction_file)
         # train = user_item
 
         # for index, row in split.iterrows():
