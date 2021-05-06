@@ -13,6 +13,7 @@ from sklearn.model_selection import train_test_split
 import sklearn as sk
 import subprocess
 import sys
+from experiments.BPR_LIGHTFM import *
 
 # user_user = pd.read_csv("../engine/user_user_matrix.csv", sep='\t', index_col=0, low_memory=False, dtype=float)
 # user_user = pd.read_csv("../engine/user_user_matrix.csv", sep='\t', index_col=0)
@@ -22,6 +23,14 @@ item_item = pd.read_csv("../engine/item_item_matrix_peterrrrrrrr_correct_mirrore
 # user_item = pd.read_csv("../engine/user_item_matrix_peterr_ratings.csv", sep='\t', index_col=0)
 user_item = pd.read_csv("../engine/user_item_ny.csv", sep='\t', index_col=0, low_memory=False)
 
+
+item_item222 = pd.read_csv("../engine/item_item_similarity_1000209_ratings.csv", sep='\t', index_col=0, low_memory=False)
+#item_item = pd.read_csv("../engine/item_feature_matrix.csv", sep='\t', index_col=0, low_memory=False)
+# user_item = pd.read_csv("../engine/user_item_matrix_peter.csv", sep='\t', index_col=0)
+# user_item = pd.read_csv("../engine/user_item_matrix_peterr_ratings.csv", sep='\t', index_col=0)
+user_item222 = pd.read_csv("../engine/user_item_matrix_1000209_ratings.csv", sep='\t', index_col=0, low_memory=False)
+print(item_item222.shape, user_item222.shape)
+exit(0)
 
 list_of_items = [x[0] for x in item_item.iterrows()]
 # print(item_feature)
@@ -140,6 +149,12 @@ def cross_validation(user, item):
         rows_test2, cols_test2, numpy_test2 = get_rows_cols_numpy_from_df(test_item_item)
         xi_train_list_kf.append((rows_train2, cols_train2, numpy_train2))
         xi_test_list_kf.append((rows_test2, cols_test2, numpy_test2))
+
+
+        # run_BPR(split, user_item)
+        # exit(0)
+        # train = user_item
+
 
 
         data['movieId'] = data['movieId'].str[1:]
