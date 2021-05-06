@@ -319,7 +319,19 @@ def format_data_matrix():
     format_data()
     print(rdata.head())
 
-    matrix = rdata.pivot(index='movieId', columns='userId', values='rating').fillna(0.0)
+    movies = np.unique(data['movieId'])
+    movies_rdata = np.unique(rdata['movieId'])
+    diff = list(set(movies).symmetric_difference(set(movies_rdata)))
+    # diff2 = ['m' + str(x) for x in diff]
+    print(diff)
+
+    # print(data.head())
+    matrix = rdata.pivot(index='movieId', columns='userId', values='rating')
+    for x in diff:
+        matrix.loc[x] = 0.0
+    matrix = matrix.fillna(0.0)
+    # print(matrix.shape, matrix.tail())
+
     new = matrix.reindex(sorted(matrix.columns, key=lambda x: int(x[1:])), axis=1)
     new2 = new.reindex(sorted(new.index, key=lambda x: int(x[1:])), axis=0)
     new2 = new2.rename_axis(None, axis=0)
@@ -331,7 +343,9 @@ def format_data_matrix():
     print(len(np.unique(movieratings['movieId'])))
     print(new2.head())
 
-    new2.to_csv("user_item_matrix_TETETETTETEETET.csv", sep='\t')
+    return new2
+
+    # new2.to_csv("user_item_matrix_TETETETTETEETET.csv", sep='\t')
     # new_rows = sorted([int(x[1:]) for x in matrix.index])
     # new_cols = sorted([int(x[1:]) for x in matrix.columns])
     #

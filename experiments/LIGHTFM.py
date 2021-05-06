@@ -203,8 +203,16 @@ def run_lightfm(movies, ratings, train, test, k_items, train_df_split):
             test_list.append(true_movie_ids)
     precision = recommender_precision(pred_list, test_list)
     recall = recommender_recall(pred_list, test_list)
-    niggerty = novelty(pred_dict, train_df_split, np.unique(ratings.userId), np.unique(ratings.movieId), 5) #pred_df.T
-    print(precision, recall, niggerty)
+    # niggerty = novelty(pred_dict, train_df_split, np.unique(ratings.userId), np.unique(ratings.movieId), 5) #pred_df.T
+
+    return precision, recall
+    # print(precision, recall, niggerty)
+    #
+    # file_object = open('../Results/LIGHTFM_WARP.txt', 'a')
+    # file_object.write(
+    #                   f'prec_rec_at = {k_items}'
+    #                   f'avg. precision = {sum(bpr_prec_list) / len(bpr_prec_list)},'
+    #                   f'avg. recall = {sum(bpr_rec_list) / len(bpr_rec_list)}\n')
 
 # ratings = pd.read_csv('../Data/ratings_100k.csv', sep=',')
 # movies = pd.read_csv('../Data/movie_new.csv', sep=',')
