@@ -11,7 +11,7 @@ from sklearn.model_selection import train_test_split, GroupShuffleSplit
 moviesDB = imdb.IMDb()
 data = pd.read_csv('../Data/movie_new.csv', converters={'cast': eval}, thousands=',')
 
-movieratings = pd.read_csv('../Data/ratings_50k.csv', converters={'cast': eval}) #, sep='::', names=['userId', 'movieId', 'rating', 'timestamp']
+movieratings = pd.read_csv('../Data/ratings_1m.dat', converters={'cast': eval}, sep='::', names=['userId', 'movieId', 'rating', 'timestamp'])
 
 #movieratings = pd.read_csv('../Data/ratings_100k.csv', converters={'cast': eval})
 
@@ -297,20 +297,43 @@ def coverage(dat):
     return tmp
 
 def format_data_matrix():
+    # format_data()
+    # movies = np.unique(data.movieId)
+    # users = list(set(rdata['userId'].tolist()))
+    # sorted_movies = sort_items(movies)
+    # sorted_users = sort_users(users)
+    # user_item = pd.DataFrame(index=movies, columns=sorted_users).fillna(0)
+    #
+    # for index, row in rdata.iterrows():
+    #     user_item[row['userId']][row['movieId']] = row['rating']
+    # # print(user_item)
+    #
+    # return user_item
+    # # user_item.to_csv("user_item_ny.csv", sep='\t')
+    # # list(set(total_movies))
+
     format_data()
-    movies = np.unique(data.movieId)
-    users = list(set(rdata['userId'].tolist()))
-    sorted_movies = sort_items(movies)
-    sorted_users = sort_users(users)
-    user_item = pd.DataFrame(index=movies, columns=sorted_users).fillna(0)
+    print(rdata.head())
 
-    for index, row in rdata.iterrows():
-        user_item[row['userId']][row['movieId']] = row['rating']
-    # print(user_item)
+    matrix = rdata.pivot(index='movieId', columns='userId', values='rating').fillna(0.0)
+    new = matrix.reindex(sorted(matrix.columns, key=lambda x: int(x[1:])), axis=1)
+    new2 = new.reindex(sorted(new.index, key=lambda x: int(x[1:])), axis=0)
+    new2 = new2.rename_axis(None, axis=0)
+    new2 = new2.rename_axis(None, axis=1)
 
-    return user_item
-    # user_item.to_csv("user_item_ny.csv", sep='\t')
-    # list(set(total_movies))
+    # new = matrix.sort_index(key=lambda x: x.split('m')[1])
+    print(matrix.shape)
+    print(len(np.unique(movieratings['userId'])))
+    print(len(np.unique(movieratings['movieId'])))
+    print(new2.head())
+
+    new2.to_csv("user_item_matrix_TETETETTETEETET.csv", sep='\t')
+    # new_rows = sorted([int(x[1:]) for x in matrix.index])
+    # new_cols = sorted([int(x[1:]) for x in matrix.columns])
+    #
+    # print(new_rows)
+    # print(new_cols)
+    # print(matrix)
 
 def func(element):
     # print(element)

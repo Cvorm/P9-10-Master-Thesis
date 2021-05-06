@@ -23,6 +23,14 @@ item_item = pd.read_csv("../engine/item_item_matrix_peterrrrrrrr_correct_mirrore
 user_item = pd.read_csv("../engine/user_item_ny.csv", sep='\t', index_col=0, low_memory=False)
 
 
+item_item222 = pd.read_csv("../engine/item_item_similarity_1000209_ratings.csv", sep='\t', index_col=0, low_memory=False)
+#item_item = pd.read_csv("../engine/item_feature_matrix.csv", sep='\t', index_col=0, low_memory=False)
+# user_item = pd.read_csv("../engine/user_item_matrix_peter.csv", sep='\t', index_col=0)
+# user_item = pd.read_csv("../engine/user_item_matrix_peterr_ratings.csv", sep='\t', index_col=0)
+user_item222 = pd.read_csv("../engine/user_item_matrix_1000209_ratings.csv", sep='\t', index_col=0, low_memory=False)
+print(item_item222.shape, user_item222.shape)
+exit(0)
+
 list_of_items = [x[0] for x in item_item.iterrows()]
 # print(item_feature)
 

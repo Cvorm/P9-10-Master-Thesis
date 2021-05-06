@@ -142,7 +142,7 @@ if __name__ == '__main__':
     "################## COMPUTE SIMILARITY BETWEEN MOVIE TETS ####################"
     num_movies = len(tet_dict)
     print(num_movies)
-    pool = Pool(mp.cpu_count()-1)
+    pool = Pool(mp.cpu_count()-2)
     results = (pool.map(partial(f, tet_dict=tet_dict, list_movies=list_movies, spec=spec2), list_movies))
 
     # filehandler = open("Matrix_lists.obj", "wb")
@@ -155,7 +155,7 @@ if __name__ == '__main__':
 
     data = [x[1] for x in results]
     movies = []
-    for x in tet:
+    for x in results:
         movies.append(x[0])
 
     df = pd.DataFrame(data=data, index=movies, columns=movies).fillna(0)
@@ -172,6 +172,6 @@ if __name__ == '__main__':
     mirrored.to_csv(f'item_item_similarity_{movieratings.shape[0]}_ratings.csv', sep='\t')
 
     user_item = format_data_matrix()
-    print("User-item  matrix written to file:")
+    print("User-item matrix written to file:")
     user_item.to_csv(f'user_item_matrix_{movieratings.shape[0]}_ratings.csv', sep='\t')
     "############################################################################"
