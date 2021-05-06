@@ -11,7 +11,7 @@ from sklearn.model_selection import train_test_split, GroupShuffleSplit
 moviesDB = imdb.IMDb()
 data = pd.read_csv('../Data/movie_new.csv', converters={'cast': eval}, thousands=',')
 
-movieratings = pd.read_csv('../Data/ratings_50k.csv', converters={'cast': eval}) #, sep='::', names=['userId', 'movieId', 'rating', 'timestamp']
+movieratings = pd.read_csv('../Data/ratings_50k.csv', converters={'cast': eval}) # sep='::', names=['userId', 'movieId', 'rating', 'timestamp'])
 links = pd.read_csv('../Data/links.csv')
 rdata = pd.DataFrame(columns=['userId', 'movieId', 'rating'])
 adata = pd.DataFrame(columns=['actorId','awards'])
@@ -52,7 +52,7 @@ def eval_medialite(train_mymedia, test_mymedia, inp, k):
     print('STEP 1')
     for x in lst.keys():
         tmp = dict(sorted(lst[x].items(), key=lambda item: item[1], reverse=True))
-        tmp_k = list(tmp.keys())[:k]
+        tmp_k = list(tmp.keys()) #[:k]
         pred_list.append(tmp_k)
         tmp_actual = test_mymedia.loc[test_mymedia['userId'] == x] # [y['movieId'] for z, y in test_mymedia.iterrows() if y['userId'] == x]
         tmp_actual = [(y['movieId']) for z, y in tmp_actual.iterrows()]
