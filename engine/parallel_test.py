@@ -108,12 +108,22 @@ if __name__ == '__main__':
     "##############################################"
 
     "################## CREATE TETS ####################"
-    x_train, x_test = run_data(normalize=False)
-    frames = [x_train, x_test]
-    complete = pd.concat(frames)
+    # x_train, x_test = run_data(normalize=False)
+    # frames = [x_train, x_test]
+    # complete = pd.concat(frames)
 
-    movie_tet = create_movie_tet(spec2, complete, "movie")
+    yes = data
+    # yes['userId'] = 'u' + yes['userId'].astype(str)
+    # yes['movieId'] = 'm' + yes['movieId'].astype(str)
+    #
+    # movies = np.unique(yes['movieId'])
+    # # print(x_train.head())
+    # print(yes.head())
+    # print(len(movies))
 
+
+    movie_tet = create_movie_tet(spec2, yes, "movie")
+    # exit(0)
     [g.logistic_eval(log_bias, log_weight) for g in movie_tet]
     [g.histogram(spec2, 'movie') for g in movie_tet]
 
