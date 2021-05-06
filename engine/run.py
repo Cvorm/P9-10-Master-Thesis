@@ -69,19 +69,23 @@ def run_baselines():
     # print('Running Normal Predictor...')
     # run_NORMPRED(x_train, x_test, k_movies)
 
-def run_mml(train, test):
+def run_mml(train, test, k):
     # train = pd.concat([test, movieratings]).drop_duplicates(keep=False)
     train_name = "mymedialite_train.dat"
     test_name = "mymedialite_test.dat"
     prediction_name = f'Prediction_File.csv'
     model1 = 'Random'
     model2 = 'ItemAttributeKNN'
+    item_atr = 'item-attributes-genres.txt'
 
     train.to_csv(train_name, sep='\t', header=False, index=False)
     test.to_csv(test_name, sep='\t', header=False, index=False)
-    subprocess.run(f'item_recommendation --training-file={train_name} --test-file={test_name} --recommender={model1} --prediction-file={prediction_name} --random-seed=1', shell=True)
+    subprocess.run(f'item_recommendation --training-file={train_name} --test-file={test_name} '
+                   f'--recommender={model1} --prediction-file={prediction_name} '
+                   f'--random-seed=1 --item-attributes={item_atr} '
+                   f'--predict-items-number={k} --all-items --measures=prec@{k}', shell=True)
     prediction_file = pd.read_csv(prediction_name, sep='\t', header=None)
-    run_mymedialite(train, test, prediction_file)
+    run_mymedialite(train, test, prediction_file, k)
 # overall run function, where we run our 'pipeline'
 def run_movie():
     # format_data()
@@ -250,8 +254,8 @@ def run_book():
     [print(book_tet[i].graph.nodes(data=True)) for i in range(top)]
     f.close()
 
-def run_mymedialite(training, test, prediction):
-    predictions, actual, seen, lst, items, user_list = eval_medialite(training, test, prediction, k_movies)
+def run_mymedialite(training, test, prediction, k):
+    predictions, actual, seen, lst, items, user_list = eval_medialite(training, test, prediction, k)
     # print(f'MyMediaLite Novelty: {novelty2(lst, seen, items, user_list, k)}')
     print(f'MyMediaLite Precision: {recommender_precision(predictions, actual)}')
     print(f'MyMediaLite Recall: {recommender_recall(predictions, actual)}')

@@ -61,7 +61,7 @@ xu_train_list_kf = []
 xu_test_list_kf = []
 xi_train_list_kf = []
 xi_test_list_kf = []
-prec_rec_at = 5
+prec_rec_at = 50
 # print(item_item)
 #
 # for training, testing in kf.split(item_item):
@@ -164,7 +164,7 @@ def cross_validation(user, item):
         mylist = list(map(str, mylist))
         tmp_mov = data[data.movieId.isin(mylist)]
         #  vigtigt at movieId er samme TYPE i begge dataframes
-        run_mml(b, a)
+        run_mml(train_df, test_df, prec_rec_at)
         run_lightfm(tmp_mov, movieratings, b, a, prec_rec_at, train_df)
     # for training, testing in kf.split(item):
     #     X1_train, X1_test = item.iloc[training], item.iloc[testing]
