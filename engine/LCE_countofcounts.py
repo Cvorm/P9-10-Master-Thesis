@@ -3,6 +3,9 @@ from engine.LCE_code import *
 from engine.LCE_code.construct_A import *
 from engine.LCE_code.LCE_Beta0 import *
 from engine.evaluation import *
+
+from engine.run import run_mml
+
 from experiments.LIGHTFM import *
 import pandas as pd
 from sklearn.model_selection import KFold
@@ -69,8 +72,11 @@ xu_train_list_kf = []
 xu_test_list_kf = []
 xi_train_list_kf = []
 xi_test_list_kf = []
+
 train_df_list = []
 prec_rec_at = 5
+
+
 # print(item_item)
 #
 # for training, testing in kf.split(item_item):
@@ -136,7 +142,7 @@ def cross_validation(user, item):
 
     for split in item_df_split:
         # training = user_item.apply(lambda x: pd.DataFrame(x).apply(lambda y: bitch(x.name, y.name, split)), axis=1)
-        # for columns in user_item:
+        # for columns in user_item:100
         #     for y in user_item.itercols():
         #         print(x, y)
         mid_rows = ['m' + str(x) for x in split['movieId'].unique().tolist()]
@@ -174,19 +180,27 @@ def cross_validation(user, item):
 
         b.loc[b.movieId.isin(tmp), "rating"] = 0
         a.loc[~a.movieId.isin(tmp), "rating"] = 0
-        movieidlist_test = [x for x in b['movieId']]
-        movieidlist_test = list(map(str, movieidlist_test))
-        mov_test = data[data.movieId.isin(movieidlist_test)]
+        # movieidlist_test = [x for x in b['movieId']]
+        # movieidlist_test = list(map(str, movieidlist_test))
+        # mov_test = data[data.movieId.isin(movieidlist_test)]
+
         movieidlist = [x for x in b['movieId']]
-        train_df = movieratings[movieratings['movieId'].isin(tmp)]
-        test_df = movieratings[~movieratings['movieId'].isin(tmp)]
+
+        #train_df = movieratings[movieratings['movieId'].isin(tmp)]
+        # test_df = movieratings[~movieratings['movieId'].isin(tmp)]     movieidlist = [x for x in b['movieId']]
+        test_df = movieratings[movieratings['movieId'].isin(tmp)]
+        train_df = movieratings[~movieratings['movieId'].isin(tmp)]
         train_df_list.append(train_df)
+
         [movieidlist.append(x) for x in a['movieId']]
         mylist = list(dict.fromkeys(movieidlist))
         mylist = list(map(str, mylist))
         tmp_mov = data[data.movieId.isin(mylist)]
         #  vigtigt at movieId er samme TYPE i begge dataframes
+
         lightfm_prec, lightfm_rec = run_lightfm(tmp_mov, movieratings, b, a, prec_rec_at, train_df)
+        run_mml(train_df, test_df, prec_rec_at)
+    
         lightfm_prec_list.append(lightfm_prec)
         lightfm_rec_list.append(lightfm_rec)
         # lightfm_nov_list.append(lightfm_nov)
@@ -203,6 +217,7 @@ def cross_validation(user, item):
     #                   f'prec_rec_at = {prec_rec_at},'
     #                   f'avg. precision = {sum(bpr_prec_list) / len(bpr_prec_list)},'
     #                   f'avg. recall = {sum(bpr_rec_list) / len(bpr_rec_list)}\n')
+
     # for training, testing in kf.split(item):
     #     X1_train, X1_test = item.iloc[training], item.iloc[testing]
     #     rows_train, cols_train, numpy_train = get_rows_cols_numpy_from_df(X1_train)

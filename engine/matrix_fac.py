@@ -664,6 +664,14 @@ def non_neg_matrix_fac(matrix):
 
 def item_feature_matrix():
     items = np.unique(data.movieId)
+    dataset = pd.DataFrame(columns=['movieId', 'Action', 'Adventure', 'Animation', 'Children', 'Comedy', 'Crime', 'Documentary',
+                         'Drama', 'Fantasy', 'Film-Noir', 'Horror', 'IMAX', 'Musical', 'Mystery', 'Romance',
+                         'Sci-Fi', 'Thriller', 'War', 'Western'])
+    dataset['movieId'] = data['movieId']
+
+    data['rating'] = data['rating'].round()
+    for rate in range(11):
+        dataset[f'rating_{rate}'] = int(0)
     tmp_dat = data.drop(['genres', 'director', 'title'], axis=1)
     gen = ['Action', 'Adventure', 'Animation', 'Children', 'Comedy', 'Crime', 'Documentary',
                          'Drama', 'Fantasy', 'Film-Noir', 'Horror', 'IMAX', 'Musical', 'Mystery', 'Romance',
@@ -672,14 +680,16 @@ def item_feature_matrix():
                                        'Adventure', 'Animation', 'Children', 'Comedy', 'Crime', 'Documentary', 'Drama',
                                        'Fantasy', 'Film-Noir', 'Horror', 'IMAX', 'Musical', 'Mystery', 'Romance',
                                         'Sci-Fi', 'Thriller', 'War', 'Western'])
-    res_dat = tmp_dat #.set_index('movieId')
+    res_dat = dataset #tmp_dat #.set_index('movieId')
     for idx, item in enumerate(data.iterrows()):
         genres = item[1][2]
+        rating = item[1][3]
         for genre in gen:
             if genre in genres:
                 res_dat.at[idx, genre] = 1
             else:
                 res_dat.at[idx, genre] = 0
+        res_dat.at[idx, f'rating_{int(rating)}'] = int(1)
     res_dat = res_dat.set_index('movieId')
     print(res_dat)
     res_dat.to_csv('item_feature_matrix.csv', sep='\t')
