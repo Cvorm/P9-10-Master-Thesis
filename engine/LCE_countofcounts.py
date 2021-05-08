@@ -6,7 +6,7 @@ from engine.evaluation import *
 
 from engine.run import run_mml
 
-from experiments.LIGHTFM import *
+from experiments.LIGHTFM import run_lightfm
 import pandas as pd
 from sklearn.model_selection import KFold
 import statistics
@@ -15,7 +15,7 @@ from sklearn.model_selection import train_test_split
 import sklearn as sk
 import subprocess
 import sys
-from experiments.BPR_LIGHTFM import *
+# from experiments.BPR_LIGHTFM import *
 
 # user_user = pd.read_csv("../engine/user_user_matrix.csv", sep='\t', index_col=0, low_memory=False, dtype=float)
 # user_user = pd.read_csv("../engine/user_user_matrix.csv", sep='\t', index_col=0)
@@ -26,11 +26,11 @@ from experiments.BPR_LIGHTFM import *
 # user_item = pd.read_csv("../engine/user_item_ny.csv", sep='\t', index_col=0, low_memory=False)
 
 
-item_item = pd.read_csv("../engine/item_item_similarity_1000209_ratings.csv", sep='\t', index_col=0, low_memory=False)
+item_item = pd.read_csv("../engine/item_feature_matrix.csv", sep='\t', index_col=0, low_memory=False)
 #item_item = pd.read_csv("../engine/item_feature_matrix.csv", sep='\t', index_col=0, low_memory=False)
 # user_item = pd.read_csv("../engine/user_item_matrix_peter.csv", sep='\t', index_col=0)
 # user_item = pd.read_csv("../engine/user_item_matrix_peterr_ratings.csv", sep='\t', index_col=0)
-user_item = pd.read_csv("../engine/user_user_matrix_TETETETTETEETET.csv", sep='\t', index_col=0, low_memory=False)
+user_item = pd.read_csv("../engine/user_item_matrix_1000209_ratings.csv", sep='\t', index_col=0, low_memory=False)
 print(item_item.shape, user_item.shape)
 
 
@@ -74,7 +74,7 @@ xi_train_list_kf = []
 xi_test_list_kf = []
 
 train_df_list = []
-prec_rec_at = 5
+prec_rec_at = 25
 
 
 # print(item_item)
@@ -199,13 +199,13 @@ def cross_validation(user, item):
         #  vigtigt at movieId er samme TYPE i begge dataframes
 
         lightfm_prec, lightfm_rec = run_lightfm(tmp_mov, movieratings, b, a, prec_rec_at, train_df)
-        run_mml(train_df, test_df, prec_rec_at)
+        # run_mml(train_df, test_df, prec_rec_at)
     
         lightfm_prec_list.append(lightfm_prec)
         lightfm_rec_list.append(lightfm_rec)
         # lightfm_nov_list.append(lightfm_nov)
 
-    file_object = open('LIGHTFM_Daniels_BPR.txt', 'a')
+    file_object = open('LIGHTFM_Daniels_WARP.txt', 'a')
     file_object.write(
                       f'prec_rec_at = {prec_rec_at},'
                       # f'avg. novelty = {sum(lightfm_nov_list) / len(lightfm_nov_list)},'
@@ -270,84 +270,84 @@ cross_validation(user_item, item_item)
 # print(len(xu_train_list), len(xu_test_list), len(xi_train_list), len(xi_test_list))
 
 
-# k = 100
-# alpha = 0.8
-# lambdaa = 1
-# epsilon = 0.001
-# maxiter = 200
-# verbose = True
-# beta = 0.0 #graph reguralization
-# # beta = 0.05
-# # offset = len(xu_train_list[0][:,0])
-# # iteration = 1
-# prec_list = []
-# rec_list = []
-# "######################################### CROSS VALIDATION KFOLDS #########################################"
-# print(len(xu_train_list_kf), len(xu_test_list_kf), len(xi_train_list_kf), len(xi_test_list_kf), len(train_df_list))
-#
-# for xu_train, xu_test, xi_train, xi_test in zip(xu_train_list_kf, xu_test_list_kf, xi_train_list_kf, xi_test_list_kf):
-#     print("yes")
-#     a = construct_A(xi_train[2], 1, True)
-#     w, hu, hs, objhistory = LCE(xi_train[2], L2_norm_row(xu_train[2]), a, k, alpha, beta, lambdaa, epsilon, maxiter, verbose)
-#
-#     w_test = np.dot(xi_test[2], np.linalg.pinv(hs)) #could be wrong: linalg.lstsq(b.T, a.T)[0]
-#         # w_test = np.linalg.lstsq(xi_test.T, hs.T)[0].T
-#     w_test[w_test < 0] = 0
-#     pred = np.dot(w_test, hu)
-#     pred_list = []
-#     nov_list = []
-#     test_list = []
-#     missing = []
-#     pred_dict = defaultdict(list)
-#     pred_df = rows_cols_numpy_to_df(xu_test[0], xu_test[1], pred)
-#     xu_test_df = rows_cols_numpy_to_df(xu_test[0], xu_test[1], xu_test[2])
-#     rating_df = rows_cols_numpy_to_df(xu_train[0], xu_train[1], xu_train[2])
-#     item_df = rows_cols_numpy_to_df(xi_train[0], xi_train[1], xi_train[2])
-#     for column in pred_df:
-#         user = pred_df[column]
-#         sorted = user.sort_values(ascending=False)
-#         pred_movies = list(sorted.index)
-#         pred_list.append(pred_movies[:prec_rec_at])
-#         pred_dict[column] = pred_movies[:prec_rec_at]
-#     #         # print("xdxd")
-#     #
-#     for column in xu_test_df:
-#         user_test = xu_test_df[column]
-#         filtered = user_test.where(user_test > 0)
-#         # true_movies = list(filtered.index)
-#         true_movies = user_test[user_test > 0]
-#         if len(true_movies) > 0:
-#             true_movie_ids = list(true_movies.index)
-#             test_list.append(true_movie_ids)
-#         else:
-#             missing.append(int(column[1:]))
-#
-#     print(missing)
-#     for m in missing:
-#         del pred_list[m-1]
-#     precision = recommender_precision(pred_list, test_list)
-#     recall = recommender_recall(pred_list, test_list)
-#     users = rating_df.columns.tolist()
-#     # nov = novelty(pred_dict, rating_df, list_of_items, users, prec_rec_at)
-#     print(precision, recall)
-#     # nov_list.append(nov)
-#     prec_list.append(precision)
-#     rec_list.append(recall)
-# # print(f'average novelty: {sum(nov_list) / len(nov_list)}')
-# print("average precision:", sum(prec_list) / len(prec_list))
-# print("average recall", sum(rec_list) / len(rec_list))
-#
-# file_object = open('LCE_COUNT.txt', 'a')
-# file_object.write(f'settings: k = {k},'
-#                   f' alpha = {alpha}, '
-#                   f'lambda = {lambdaa}, '
-#                   f'epsilon = {epsilon}, '
-#                   f'maxiter = {maxiter}, '
-#                   f'prec_rec_at = {prec_rec_at},'
-#                   # f'avg. novelty = {sum(nov_list) / len(nov_list)},'
-#                   f'avg. precision = {sum(prec_list) / len(prec_list)},'
-#                   f'avg. recall = {sum(rec_list) / len(rec_list)}\n')
-# "############################################################################################################"
+k = 100
+alpha = 0.8
+lambdaa = 1
+epsilon = 0.001
+maxiter = 200
+verbose = True
+beta = 0.0 #graph reguralization
+# beta = 0.05
+# offset = len(xu_train_list[0][:,0])
+# iteration = 1
+prec_list = []
+rec_list = []
+"######################################### CROSS VALIDATION KFOLDS #########################################"
+print(len(xu_train_list_kf), len(xu_test_list_kf), len(xi_train_list_kf), len(xi_test_list_kf), len(train_df_list))
+
+for xu_train, xu_test, xi_train, xi_test in zip(xu_train_list_kf, xu_test_list_kf, xi_train_list_kf, xi_test_list_kf):
+    print("yes")
+    a = construct_A(xi_train[2], 1, True)
+    w, hu, hs, objhistory = LCE(xi_train[2], L2_norm_row(xu_train[2]), a, k, alpha, beta, lambdaa, epsilon, maxiter, verbose)
+
+    w_test = np.dot(xi_test[2], np.linalg.pinv(hs)) #could be wrong: linalg.lstsq(b.T, a.T)[0]
+        # w_test = np.linalg.lstsq(xi_test.T, hs.T)[0].T
+    w_test[w_test < 0] = 0
+    pred = np.dot(w_test, hu)
+    pred_list = []
+    nov_list = []
+    test_list = []
+    missing = []
+    pred_dict = defaultdict(list)
+    pred_df = rows_cols_numpy_to_df(xu_test[0], xu_test[1], pred)
+    xu_test_df = rows_cols_numpy_to_df(xu_test[0], xu_test[1], xu_test[2])
+    rating_df = rows_cols_numpy_to_df(xu_train[0], xu_train[1], xu_train[2])
+    item_df = rows_cols_numpy_to_df(xi_train[0], xi_train[1], xi_train[2])
+    for column in pred_df:
+        user = pred_df[column]
+        sorted = user.sort_values(ascending=False)
+        pred_movies = list(sorted.index)
+        pred_list.append(pred_movies[:prec_rec_at])
+        pred_dict[column] = pred_movies[:prec_rec_at]
+    #         # print("xdxd")
+    #
+    for column in xu_test_df:
+        user_test = xu_test_df[column]
+        filtered = user_test.where(user_test > 0)
+        # true_movies = list(filtered.index)
+        true_movies = user_test[user_test > 0]
+        if len(true_movies) > 0:
+            true_movie_ids = list(true_movies.index)
+            test_list.append(true_movie_ids)
+        else:
+            missing.append(int(column[1:]))
+
+    print(missing)
+    for m in missing:
+        del pred_list[m-1]
+    precision = recommender_precision(pred_list, test_list)
+    recall = recommender_recall(pred_list, test_list)
+    users = rating_df.columns.tolist()
+    # nov = novelty(pred_dict, rating_df, list_of_items, users, prec_rec_at)
+    print(precision, recall)
+    # nov_list.append(nov)
+    prec_list.append(precision)
+    rec_list.append(recall)
+# print(f'average novelty: {sum(nov_list) / len(nov_list)}')
+print("average precision:", sum(prec_list) / len(prec_list))
+print("average recall", sum(rec_list) / len(rec_list))
+
+file_object = open('LCE_COUNT.txt', 'a')
+file_object.write(f'settings: k = {k},'
+                  f' alpha = {alpha}, '
+                  f'lambda = {lambdaa}, '
+                  f'epsilon = {epsilon}, '
+                  f'maxiter = {maxiter}, '
+                  f'prec_rec_at = {prec_rec_at},'
+                  # f'avg. novelty = {sum(nov_list) / len(nov_list)},'
+                  f'avg. precision = {sum(prec_list) / len(prec_list)},'
+                  f'avg. recall = {sum(rec_list) / len(rec_list)}\n')
+"############################################################################################################"
 
 
 

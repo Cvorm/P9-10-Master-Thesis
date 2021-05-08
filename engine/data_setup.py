@@ -16,12 +16,12 @@ movieratings = pd.read_csv('../Data/ratings_1m.dat', converters={'cast': eval}, 
 links = pd.read_csv('../Data/links.csv')
 rdata = pd.DataFrame(columns=['userId', 'movieId', 'rating'])
 adata = pd.DataFrame(columns=['actorId','awards'])
-books = pd.read_csv('../Data/BX-Books.csv', sep=';', error_bad_lines=False, encoding="latin-1")
-books.columns = ["ISBN", "BookTitle","BookAuthor", "YearOfPublication", "Publisher", "ImageURLS", "ImageURLM", "ImageURLL"]
-users = pd.read_csv('../Data/BX-Users - Kopi.csv', sep=';', error_bad_lines=False, encoding="latin-1")
-users.columns = ["UserID","Location","Age"]
-bookratings = pd.read_csv('../Data/BX-Book-Ratings2.csv', sep=';', error_bad_lines=False, encoding="latin-1")
-bookratings.columns = ["UserID", "ISBN", "BookRating"]
+# books = pd.read_csv('../Data/BX-Books.csv', sep=';', error_bad_lines=False, encoding="latin-1")
+# books.columns = ["ISBN", "BookTitle","BookAuthor", "YearOfPublication", "Publisher", "ImageURLS", "ImageURLM", "ImageURLL"]
+# users = pd.read_csv('../Data/BX-Users - Kopi.csv', sep=';', error_bad_lines=False, encoding="latin-1")
+# users.columns = ["UserID","Location","Age"]
+# bookratings = pd.read_csv('../Data/BX-Book-Ratings2.csv', sep=';', error_bad_lines=False, encoding="latin-1")
+# bookratings.columns = ["UserID", "ISBN", "BookRating"]
 
 # updated_data = pd.read_csv('../Data/movie_new.csv', converters={'cast': eval})
 

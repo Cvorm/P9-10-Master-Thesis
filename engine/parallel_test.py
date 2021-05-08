@@ -3,7 +3,7 @@ from engine.data_setup import *
 from engine.distance import *
 from engine.evaluation import *
 from collections import defaultdict
-from matrix_fac import *
+from engine.matrix_fac import *
 import itertools
 import pandas as pd
 # from pymf import *
@@ -17,7 +17,6 @@ from multiprocessing import Pool
 from functools import partial
 import pickle
 import os
-import mapply as mpp
 
 
 
@@ -86,6 +85,13 @@ if __name__ == '__main__':
     bucket_max_mt = 25
     mt_search_k = 1  # int(inp[1])
     k_movies = 5  # int(inp[2])
+    specification_movies_three_features = [
+        ["movie", "has_genres", "has_imdb_rating", "has_director", "has_awards", 'Action', 'Adventure', 'Animation', 'Children', 'Comedy', 'Crime', 'Documentary', 'Drama', 'Fantasy',
+         'Film-Noir', 'Horror', 'IMAX', 'Musical', 'Mystery', 'Romance', 'Sci-Fi', 'Thriller', 'War', 'Western'],
+        [("movie", "has_genres"), ("movie", "has_imdb_rating"), ("has_genres", "Action"), ("has_genres", "Adventure"), ("has_genres", "Animation"), ("has_genres", "Children"),
+         ("has_genres", "Comedy"), ("has_genres", "Crime"), ("has_genres", "Documentary"), ("has_genres", "Drama"), ("has_genres", "Fantasy"),
+         ("has_genres", "Film-Noir"), ("has_genres", "Horror"), ("has_genres", "IMAX"), ("has_genres", "Musical"), ("has_genres", "Mystery"),
+         ("has_genres", "Romance"), ("has_genres", "Sci-Fi"), ("has_genres", "Thriller"), ("has_genres", "War"), ("has_genres", "Western")]]
 
     specification_moviessss = [
         ["movie", "has_genres", "has_votes", "has_imdb_rating", "has_user_rating", "has_director", "has_awards",
@@ -103,7 +109,7 @@ if __name__ == '__main__':
          ("has_genres", "Horror"), ("has_genres", "IMAX"), ("has_genres", "Musical"), ("has_genres", "Mystery"),
          ("has_genres", "Romance"),
          ("has_genres", "Sci-Fi"), ("has_genres", "Thriller"), ("has_genres", "War"), ("has_genres", "Western")]]
-    spec2 = tet_specification(specification_moviessss[0], specification_moviessss[1])
+    spec2 = tet_specification(specification_movies_three_features[0], specification_movies_three_features[1])
 
     "##############################################"
 

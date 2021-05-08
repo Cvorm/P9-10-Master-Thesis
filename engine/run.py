@@ -3,7 +3,7 @@ import sys
 import subprocess
 # from experiments.baselines import *
 from engine.matrix_fac import *
-from engine.crossing import *
+# from engine.crossing import *
 import pickle
 
 # tet specification settings: [[nodes],[edges]]
